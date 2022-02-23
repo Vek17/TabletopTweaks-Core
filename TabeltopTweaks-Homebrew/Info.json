@@ -1,0 +1,14 @@
+﻿{
+  "AssemblyName": "TabletopTweaks-Homebrew.dll",
+  "Author": "Sean Petrie",
+  "DisplayName": "Tabletop Tweaks Homebrew",
+  "EntryMethod": "TabletopTweaks.Homebrew.Main.Load",
+  "GameVersion": "1.2.0",
+  "HomePage": "https://github.com/Vek17/WrathMods-TabletopTweaks/releases",
+  "Id": "TabletopTweaks-Homebrew",
+  "ManagerVersion": "0.23.0",
+  "Repository": "https://raw.githubusercontent.com/Vek17/WrathMods-TabletopTweaks/master/Repository.json",
+  "Requirements": [ "TabletopTweaks-Core" ],
+  "LoadAfter": [ "TabletopTweaks-Core" ],
+  "Version": "1.11.2"
+}

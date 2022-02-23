@@ -8,8 +8,8 @@
     <ProjectGuid>{E6F4977C-F1BD-45EC-96BA-4BF093C2DFBA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TabletopTweaks</RootNamespace>
-    <AssemblyName>TabletopTweaks</AssemblyName>
+    <RootNamespace>TabletopTweaks.Core</RootNamespace>
+    <AssemblyName>TabletopTweaks-Core</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <LangVersion>9</LangVersion>
@@ -844,6 +844,6 @@
     <Error Condition="!Exists('..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>(robocopy "$(TargetDir) " "%WrathPath%\Mods\TabletopTweaks\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
+    <PostBuildEvent>(robocopy "$(TargetDir) " "%25WrathPath%25\Mods\TabletopTweaks-Core\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
   </PropertyGroup>
 </Project>
