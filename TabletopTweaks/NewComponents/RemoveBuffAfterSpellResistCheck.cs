@@ -3,7 +3,7 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("ee58a44d90014e58a3c5320e53975043")]
     public class RemoveBuffAfterSpellResistCheck : UnitFactComponentDelegate, IInitiatorRulebookHandler<RuleSpellResistanceCheck>, IRulebookHandler<RuleSpellResistanceCheck>, ISubscriber, IInitiatorRulebookSubscriber {
         // Token: 0x0600A2AE RID: 41646 RVA: 0x000036D8 File Offset: 0x000018D8

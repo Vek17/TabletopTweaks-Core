@@ -1,8 +1,8 @@
 ﻿using HarmonyLib;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Config;
+using TabletopTweaks.Core.Config;
 
-namespace TabletopTweaks.Bugfixes.General {
+namespace TabletopTweaks.Core.Bugfixes.General {
     static class AddFactsFix {
         [HarmonyPatch(typeof(AddFacts), nameof(AddFacts.UpdateFacts))]
         static class AddFacts_UpdateFacts_CL_Patch {

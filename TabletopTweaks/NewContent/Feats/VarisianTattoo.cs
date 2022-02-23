@@ -3,13 +3,13 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Enums;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.Utilities;
-using static TabletopTweaks.MechanicsChanges.AdditionalModifierDescriptors;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 
-namespace TabletopTweaks.NewContent.Feats {
+namespace TabletopTweaks.Core.NewContent.Feats {
     static class VarisianTattoo {
         public static void AddVarisianTattoo() {
             var SchoolMasteryMythicFeat = Resources.GetBlueprint<BlueprintParametrizedFeature>("ac830015569352b458efcdfae00a948c");

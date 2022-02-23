@@ -10,9 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using static TabletopTweaks.NewUnitParts.CustomStatTypes;
+using static TabletopTweaks.Core.NewUnitParts.CustomStatTypes;
 
-namespace TabletopTweaks.NewUnitParts {
+namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartCustomStats : OldStyleUnitPart {
 
         public override void OnTurnOn() {

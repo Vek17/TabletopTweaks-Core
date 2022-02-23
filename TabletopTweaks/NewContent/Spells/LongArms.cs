@@ -11,11 +11,11 @@ using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Spells {
+namespace TabletopTweaks.Core.NewContent.Spells {
     static class LongArms {
         public static void AddLongArms() {
             //var icon = AssetLoader.Image2Sprite.Create($"{ModSettings.ModEntry.Path}Assets{Path.DirectorySeparatorChar}Abilities{Path.DirectorySeparatorChar}Icon_LongArm.png");

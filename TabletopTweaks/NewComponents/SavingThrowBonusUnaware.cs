@@ -6,7 +6,7 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Parts;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("95dfe16fb6c4457bafb5eb56c983b8b5")]
     public class SavingThrowBonusWhileUnaware : UnitFactComponentDelegate, IInitiatorRulebookHandler<RuleSavingThrow>, IRulebookHandler<RuleSavingThrow>, ISubscriber, IInitiatorRulebookSubscriber {
 

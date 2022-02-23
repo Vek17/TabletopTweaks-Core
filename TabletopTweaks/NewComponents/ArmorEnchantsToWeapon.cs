@@ -7,7 +7,7 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
 using System.Linq;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("1c41e810627b489bbdc47138903dbc86")]
     public class ArmorEnchantsToWeapon : WeaponEnchantmentLogic,
         ISubscriber, IInitiatorRulebookSubscriber,

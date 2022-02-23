@@ -1,9 +1,9 @@
 ﻿using Kingmaker.EntitySystem.Stats;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Feats {
+namespace TabletopTweaks.Core.NewContent.Feats {
     static class NatureSoul {
         public static void AddNatureSoul() {
             var NatureSoul = FeatTools.CreateSkillFeat("NatureSoul", StatType.SkillLoreNature, StatType.SkillPerception, bp => {

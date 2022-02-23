@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TabletopTweaks.NewUnitParts {
+namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartBuffSupressTTT : OldStyleUnitPart {
 
         public override void OnTurnOn() {

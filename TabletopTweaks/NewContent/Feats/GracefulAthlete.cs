@@ -5,12 +5,12 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents.Prerequisites;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents.Prerequisites;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Feats {
+namespace TabletopTweaks.Core.NewContent.Feats {
     class GracefulAthlete {
         public static void AddGracefulAthlete() {
 

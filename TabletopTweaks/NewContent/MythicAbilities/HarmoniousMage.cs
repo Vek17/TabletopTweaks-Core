@@ -1,10 +1,10 @@
 ﻿using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.MythicAbilities {
+namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class HarmoniousMage {
         public static void AddHarmoniousMage() {
             var SpecialisationSchoolUniversalistProgression = Resources.GetBlueprint<BlueprintProgression>("0933849149cfc9244ac05d6a5b57fd80");

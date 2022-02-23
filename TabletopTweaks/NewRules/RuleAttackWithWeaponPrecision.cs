@@ -7,7 +7,7 @@ using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
 
-namespace TabletopTweaks.NewRules {
+namespace TabletopTweaks.Core.NewRules {
     class RuleAttackWithWeaponPrecision : RuleAttackWithWeapon {
 
         public bool ForceSneakAttack { get; set; }

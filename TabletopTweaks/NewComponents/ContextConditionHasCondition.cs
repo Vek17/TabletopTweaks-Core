@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     public class ContextConditionHasCondition : ContextCondition {
 
         public override string GetConditionCaption() {

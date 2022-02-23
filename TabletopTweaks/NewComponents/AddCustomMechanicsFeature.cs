@@ -1,8 +1,8 @@
 ﻿using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic;
-using TabletopTweaks.NewUnitParts;
+using TabletopTweaks.Core.NewUnitParts;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("38965e585f1c4da78db9276a47571209")]
     public class AddCustomMechanicsFeature : UnitFactComponentDelegate {
         public override void OnTurnOn() {

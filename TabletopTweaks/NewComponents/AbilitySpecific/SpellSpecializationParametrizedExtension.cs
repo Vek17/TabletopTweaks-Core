@@ -2,9 +2,9 @@
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic;
-using TabletopTweaks.NewUnitParts;
+using TabletopTweaks.Core.NewUnitParts;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [AllowedOn(typeof(BlueprintParametrizedFeature), false)]
     [TypeId("b104bfacc8a3446ab149fb3241778d8e")]
     public class SpellSpecializationParametrizedExtension : UnitFactComponentDelegate {

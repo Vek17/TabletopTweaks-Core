@@ -4,7 +4,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Class.LevelUp;
 using System.Linq;
 
-namespace TabletopTweaks.Bugfixes.UI {
+namespace TabletopTweaks.Core.Bugfixes.UI {
     static class FeatureSelection {
         //[HarmonyPatch(typeof(NestedFeatureSelectionUtils), "AllNestedFeaturesUnavailable", new[] { typeof(UnitDescriptor), typeof(LevelUpState), typeof(FeatureSelectionState), typeof(BlueprintFeature) })]
         static class NestedFeatureSelectionUtils_AllNestedFeaturesUnavailable_Patch {

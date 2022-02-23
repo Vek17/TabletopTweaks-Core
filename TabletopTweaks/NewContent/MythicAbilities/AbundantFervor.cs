@@ -3,11 +3,11 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.MythicAbilities {
+namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class AbundantFervor {
         public static void AddAbundantFervor() {
             var WarpriestFervorBase = Resources.GetBlueprint<BlueprintFeature>("2d5140fd9f19a8e41be32d300eea2e18");

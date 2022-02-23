@@ -1,8 +1,8 @@
 ﻿using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic;
-using TabletopTweaks.NewUnitParts;
+using TabletopTweaks.Core.NewUnitParts;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("8390a2bda2e74bfb83cb0483adfcf5f7")]
     public class SpellSpecializationGreaterComponent : UnitFactComponentDelegate {
 

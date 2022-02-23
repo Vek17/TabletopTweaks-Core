@@ -4,9 +4,9 @@ using Kingmaker.EntitySystem.Entities;
 using Kingmaker.PubSubSystem;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Class.LevelUp;
-using TabletopTweaks.NewUnitParts;
+using TabletopTweaks.Core.NewUnitParts;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("446f9e9a24684cbdb77e3b270af7b5dc")]
     public class AddBlackBlade : UnitFactComponentDelegate, IUnitLevelUpHandler {
 

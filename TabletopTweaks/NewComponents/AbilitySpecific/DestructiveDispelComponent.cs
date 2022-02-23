@@ -11,7 +11,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.Utility;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [AllowedOn(typeof(BlueprintFeature), false)]
     [TypeId("ea475e4be98f4eabb361ed8ce58870ad")]
     public class DestructiveDispelComponent : UnitFactComponentDelegate,

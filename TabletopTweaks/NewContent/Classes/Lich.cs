@@ -1,9 +1,9 @@
 ﻿using Kingmaker.UnitLogic.Mechanics.Properties;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents.Properties;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents.Properties;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Classes {
+namespace TabletopTweaks.Core.NewContent.Classes {
     static class Lich {
         public static void AddLichFeatures() {
             var LichDCProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("LichDCProperty", bp => {

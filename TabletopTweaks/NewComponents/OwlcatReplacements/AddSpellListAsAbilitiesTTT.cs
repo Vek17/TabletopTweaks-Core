@@ -10,7 +10,7 @@ using Kingmaker.Utility;
 using Owlcat.QA.Validation;
 using UnityEngine;
 
-namespace TabletopTweaks.NewComponents.OwlcatReplacements {
+namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     public class AddSpellListAsAbilitiesTTT : UnitFactComponentDelegate<AddSpellListAsAbilitiesData> {
         private ReferenceArrayProxy<BlueprintAbilityResource, BlueprintAbilityResourceReference> ResourcePerSpellLevel {
             get {

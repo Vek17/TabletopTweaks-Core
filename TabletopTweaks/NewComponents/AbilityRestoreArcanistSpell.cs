@@ -5,7 +5,7 @@ using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.Utility;
 using System;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("3d768a2d4890495c8a76167a1c411c60")]
     public class AbilityRestoreArcanistSpell : AbilityApplyEffect, IAbilityRestriction, IAbilityRequiredParameters {
         public AbilityParameter RequiredParameters {

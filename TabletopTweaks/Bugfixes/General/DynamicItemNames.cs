@@ -10,10 +10,10 @@ using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
 
-namespace TabletopTweaks.Bugfixes.General {
+namespace TabletopTweaks.Core.Bugfixes.General {
     static class DynamicItemNames {
         [HarmonyPatch(typeof(ItemEntity), nameof(ItemEntity.Name), MethodType.Getter)]
         static class ItemEntity_Names_Patch {

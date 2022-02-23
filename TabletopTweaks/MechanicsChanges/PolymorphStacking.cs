@@ -12,12 +12,12 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewUnitParts;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewUnitParts;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.MechanicsChanges {
+namespace TabletopTweaks.Core.MechanicsChanges {
     class PolymorphStacking {
 
         private static class PolymorphMechanics {

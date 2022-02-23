@@ -8,13 +8,13 @@ using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Linq;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewActions;
-using TabletopTweaks.NewComponents.AbilitySpecific;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewActions;
+using TabletopTweaks.Core.NewComponents.AbilitySpecific;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.MythicAbilities {
+namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class DimensionalRetribution {
         public static void AddDimensionalRetribution() {
             var DimensionalRetribution = Resources.GetBlueprint<BlueprintFeature>("939f49ad995ee8d4fad03ad0c7f655d1");

@@ -26,12 +26,12 @@ using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Archetypes {
+namespace TabletopTweaks.Core.NewContent.Archetypes {
     static class ChannelerOfTheUnknown {
         private static readonly BlueprintFeatureSelection DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
         private static readonly BlueprintFeatureSelection MartialWeaponProficencySelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("MartialWeaponProficencySelection");

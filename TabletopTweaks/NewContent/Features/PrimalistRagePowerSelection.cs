@@ -1,8 +1,8 @@
 ﻿using Kingmaker.Blueprints.Classes.Selection;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Features {
+namespace TabletopTweaks.Core.NewContent.Features {
     class PrimalistRagePowerSelection {
         public static void AddPrimalistRagePowerSelection() {
             var RagePowerSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("28710502f46848d48b3f0d6132817c4e");

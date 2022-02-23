@@ -5,9 +5,9 @@ using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Components;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.NewEvents;
+using TabletopTweaks.Core.NewEvents;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("a0c9a0074a8944aca4b83d16126bfdb2")]
     public class SpontaneousSpecialListConversion : UnitFactComponentDelegate, ISpontaneousConversionHandler {
 

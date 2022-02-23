@@ -2,13 +2,13 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents.AbilitySpecific;
-using TabletopTweaks.NewComponents.Prerequisites;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents.AbilitySpecific;
+using TabletopTweaks.Core.NewComponents.Prerequisites;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.MythicAbilities {
+namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class MythicSpellCombat {
         public static void AddMythicSpellCombat() {
             var TricksterWizardSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("bbe483b903854104a11606412803f214");

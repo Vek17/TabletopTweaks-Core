@@ -4,9 +4,9 @@ using Kingmaker.EntitySystem;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics.Properties;
-using TabletopTweaks.NewComponents.OwlcatReplacements.DamageResistance;
+using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
 
-namespace TabletopTweaks.NewComponents.Properties {
+namespace TabletopTweaks.Core.NewComponents.Properties {
     [TypeId("bb71b6a071064d13b28aa71d626085d2")]
     public class MadDogPetDRProperty : PropertyValueGetter {
         private static BlueprintFeature MadDogMasterDamageReduction = Resources.GetBlueprint<BlueprintFeature>("a0d4a3295224b8f4387464a4447c31d5");

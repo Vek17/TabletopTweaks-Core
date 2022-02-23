@@ -2,9 +2,9 @@
 using Kingmaker.Blueprints;
 using System;
 using System.Collections.Generic;
-using TabletopTweaks.Config;
+using TabletopTweaks.Core.Config;
 
-namespace TabletopTweaks {
+namespace TabletopTweaks.Core {
     static class Resources {
         public static readonly Dictionary<BlueprintGuid, SimpleBlueprint> ModBlueprints = new Dictionary<BlueprintGuid, SimpleBlueprint>();
 

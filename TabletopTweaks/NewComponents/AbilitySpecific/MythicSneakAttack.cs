@@ -6,7 +6,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.Utility;
 using System.Linq;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("aabbfeda974c455aafe14d05efca4f67")]
     public class MythicSneakAttack : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RulePrepareDamage>,

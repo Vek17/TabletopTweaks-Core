@@ -4,7 +4,7 @@ using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintSpellbook), false)]
     [TypeId("076df57c9d7d415c81a3b968437d98ec")]
     public class CustomSpecialSlotAmount : BlueprintComponent {

@@ -6,7 +6,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.Utility;
 using System.Linq;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("0542dd3cbb5949a7b120f2165758db9b")]
     public class IgnoreArmorMaxDexBonus : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RuleCalculateArmorMaxDexBonusLimit>,

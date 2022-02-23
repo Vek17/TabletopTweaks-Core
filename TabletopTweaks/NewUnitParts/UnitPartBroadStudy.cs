@@ -7,9 +7,9 @@ using Kingmaker.UnitLogic.Parts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Config;
+using TabletopTweaks.Core.Config;
 
-namespace TabletopTweaks.NewUnitParts {
+namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartBroadStudy : OldStyleUnitPart {
 
         public void AddEntry(BlueprintCharacterClassReference characterClass, EntityFact source) {

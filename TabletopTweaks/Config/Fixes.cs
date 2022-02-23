@@ -1,7 +1,7 @@
 ﻿using Kingmaker.Utility;
 using System.Collections.Generic;
 
-namespace TabletopTweaks.Config {
+namespace TabletopTweaks.Core.Config {
     public class Fixes : IUpdatableSettings {
 
         public bool NewSettingsOffByDefault = false;

@@ -6,7 +6,7 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintBuff))]
     [TypeId("00008ebd4ddb41e6895baa47a7f19708")]
     public class RemoveBuffRankOnAttack : UnitFactComponentDelegate,

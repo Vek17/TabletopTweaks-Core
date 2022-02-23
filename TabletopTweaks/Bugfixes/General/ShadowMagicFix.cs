@@ -9,9 +9,9 @@ using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Parts;
 using System;
 using System.Linq;
-using TabletopTweaks.Config;
+using TabletopTweaks.Core.Config;
 
-namespace TabletopTweaks.Bugfixes.General {
+namespace TabletopTweaks.Core.Bugfixes.General {
     class ShadowMagicFix {
         [HarmonyPatch(typeof(AutoMetamagic), nameof(AutoMetamagic.ShouldApplyTo), new Type[] {
             typeof(AutoMetamagic),

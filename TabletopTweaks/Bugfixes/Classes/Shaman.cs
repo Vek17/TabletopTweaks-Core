@@ -1,10 +1,10 @@
 ﻿using HarmonyLib;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
-using TabletopTweaks.Config;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.Bugfixes.Classes {
+namespace TabletopTweaks.Core.Bugfixes.Classes {
     static class Shaman {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {

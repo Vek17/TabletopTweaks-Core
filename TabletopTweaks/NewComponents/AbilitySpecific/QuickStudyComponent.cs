@@ -18,10 +18,10 @@ using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Utilities;
 using UnityEngine;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("4515aeab69cc419ba926987dd2cce54f")]
     public class QuickStudyComponent : AbilityApplyEffect, IAbilityRestriction, IAbilityRequiredParameters {
 

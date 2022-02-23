@@ -9,7 +9,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace TabletopTweaks.NewComponents.OwlcatReplacements {
+namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [TypeId("febcdf299ca242a7be5bacfda8e4254f")]
     public class ContextRestoreResourcesTTT : ContextAction {
         public BlueprintAbilityResource Resource {

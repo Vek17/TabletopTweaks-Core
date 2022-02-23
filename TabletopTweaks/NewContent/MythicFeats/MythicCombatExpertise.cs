@@ -2,12 +2,12 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents.OwlcatReplacements;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.MythicFeats {
+namespace TabletopTweaks.Core.NewContent.MythicFeats {
     static class MythicCombatExpertise {
         public static void AddMythicCombatExpertise() {
             var CombatExpertiseFeature = Resources.GetBlueprint<BlueprintFeature>("4c44724ffa8844f4d9bedb5bb27d144a");

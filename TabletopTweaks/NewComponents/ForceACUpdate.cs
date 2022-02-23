@@ -2,7 +2,7 @@
 using Kingmaker.UnitLogic;
 
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("a736dbb1331c456488c601cefdbcd886")]
     public class ForceACUpdate : UnitFactComponentDelegate {
 

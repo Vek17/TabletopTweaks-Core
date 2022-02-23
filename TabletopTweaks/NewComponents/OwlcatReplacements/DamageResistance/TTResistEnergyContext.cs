@@ -3,7 +3,7 @@ using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 
-namespace TabletopTweaks.NewComponents.OwlcatReplacements.DamageResistance {
+namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [AllowedOn(typeof(BlueprintBuff), false)]
     [AllowMultipleComponents]

@@ -5,7 +5,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using static Kingmaker.Designers.Mechanics.Facts.ModifyD20;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("df847aa8e2f94af2a4efe8c73228dc97")]
     public class AeonPowerOfLaw : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RuleSavingThrow>,

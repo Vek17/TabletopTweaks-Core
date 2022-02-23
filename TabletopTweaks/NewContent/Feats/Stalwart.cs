@@ -17,14 +17,14 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using System;
 using System.Collections.Generic;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents.OwlcatReplacements;
-using TabletopTweaks.NewComponents.OwlcatReplacements.DamageResistance;
-using TabletopTweaks.NewComponents.Properties;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
+using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
+using TabletopTweaks.Core.NewComponents.Properties;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Feats {
+namespace TabletopTweaks.Core.NewContent.Feats {
     static class Stalwart {
 
         [HarmonyPatch(typeof(FightingDefensivelyACBonusProperty), nameof(FightingDefensivelyACBonusProperty.GetBaseValue))]

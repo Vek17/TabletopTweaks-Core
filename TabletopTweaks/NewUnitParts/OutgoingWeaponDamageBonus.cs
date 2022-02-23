@@ -3,7 +3,7 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
 
-namespace TabletopTweaks.NewUnitParts {
+namespace TabletopTweaks.Core.NewUnitParts {
     public class OutgoingWeaponDamageBonus : UnitPart {
 
         public void AddBonus(RuleCalculateDamage evt, BaseDamage additionalDamage) {

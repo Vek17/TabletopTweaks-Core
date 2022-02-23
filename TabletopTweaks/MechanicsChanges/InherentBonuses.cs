@@ -2,10 +2,10 @@
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using System;
-using TabletopTweaks.Config;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.MechanicsChanges {
+namespace TabletopTweaks.Core.MechanicsChanges {
     class InherentBonuses {
         [HarmonyPatch(typeof(ModifiableValueAttributeStat), "CalculatePermanentValueWithoutEnhancement")]
         static class ModifierDescriptorComparer_InherentSkillPoint_Compare_Patch {

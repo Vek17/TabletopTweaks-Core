@@ -15,15 +15,15 @@ using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.FactLogic;
 using System.Linq;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.NewContent.MechanicsChanges;
-using TabletopTweaks.Utilities;
-using static TabletopTweaks.NewContent.MechanicsChanges.MetamagicExtention;
-using static TabletopTweaks.NewUnitParts.UnitPartCustomMechanicsFeatures;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.NewContent.MechanicsChanges;
+using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.NewContent.MechanicsChanges.MetamagicExtention;
+using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
-namespace TabletopTweaks.NewContent.Feats {
+namespace TabletopTweaks.Core.NewContent.Feats {
     static class FlaringSpell {
         public static void AddFlaringSpell() {
             var DazzledBuff = Resources.GetBlueprint<BlueprintBuff>("df6d1025da07524429afbae248845ecc");

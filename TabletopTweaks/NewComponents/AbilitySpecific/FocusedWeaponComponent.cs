@@ -3,9 +3,9 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic;
-using TabletopTweaks.NewUnitParts;
+using TabletopTweaks.Core.NewUnitParts;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [AllowedOn(typeof(BlueprintParametrizedFeature))]
     [TypeId("fd74a9c62e844ac09f9aa5ce81a427cc")]
     public class FocusedWeaponComponent : UnitFactComponentDelegate {

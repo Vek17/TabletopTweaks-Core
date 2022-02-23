@@ -9,7 +9,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Buffs;
 using Kingmaker.UnitLogic.Parts;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("9f0ac1baab294739912163ea4b318c28")]
     public class DefensiveWeaponTrainingComponent : UnitFactComponentDelegate,
         IUnitActiveEquipmentSetHandler,

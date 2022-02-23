@@ -6,7 +6,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.Utility;
 using System.Linq;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("f361784981e6444d84312f063c506e76")]
     public class IgnoreArmorCheckPenalty : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RuleCalculateArmorCheckPenalty>,

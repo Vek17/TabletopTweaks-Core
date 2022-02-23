@@ -10,7 +10,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.Utility;
 
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("8eaee9bcf0ac4dab8cdcf8d21d38a876")]
     public class SharedSpellListDCIncrease : UnitFactComponentDelegate, 

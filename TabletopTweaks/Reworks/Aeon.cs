@@ -25,14 +25,14 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.MechanicsChanges;
-using TabletopTweaks.NewComponents.AbilitySpecific;
-using TabletopTweaks.NewComponents.Properties;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.MechanicsChanges;
+using TabletopTweaks.Core.NewComponents.AbilitySpecific;
+using TabletopTweaks.Core.NewComponents.Properties;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.Reworks {
+namespace TabletopTweaks.Core.Reworks {
     static class Aeon {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {

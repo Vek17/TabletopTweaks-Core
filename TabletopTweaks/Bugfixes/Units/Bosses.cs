@@ -2,10 +2,10 @@
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
 
-namespace TabletopTweaks.Bugfixes.Units {
+namespace TabletopTweaks.Core.Bugfixes.Units {
     static class Bosses {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {

@@ -6,12 +6,12 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem.Stats;
 using System.Linq;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents.Prerequisites;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents.Prerequisites;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.Bugfixes.Classes {
+namespace TabletopTweaks.Core.Bugfixes.Classes {
     static class Loremaster {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {

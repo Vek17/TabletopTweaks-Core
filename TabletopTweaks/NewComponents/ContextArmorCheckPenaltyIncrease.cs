@@ -9,7 +9,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using System.Linq;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("5c83ff59ace044d19376f4bbe035b544")]
     public class ContextArmorCheckPenaltyIncrease : UnitFactComponentDelegate,

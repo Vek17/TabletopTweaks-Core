@@ -4,7 +4,7 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("68de0e05a62241a6bd00a9107a493041")]
     public class ForceFlatFooted : UnitFactComponentDelegate, ITargetRulebookHandler<RuleCheckTargetFlatFooted>, ITargetRulebookSubscriber {
 

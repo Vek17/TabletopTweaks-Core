@@ -3,11 +3,11 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.UnitLogic.Mechanics.Properties;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents.Properties;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents.Properties;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.FighterAdvancedWeaponTrainings {
+namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
     public class AdvancedWeapontrainingSelection {
         public static void AddAdvancedWeaponTrainingSelection() {
             var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");

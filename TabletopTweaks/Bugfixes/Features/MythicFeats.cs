@@ -5,13 +5,13 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Enums;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.Utilities;
-using static TabletopTweaks.MechanicsChanges.AdditionalModifierDescriptors;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 
-namespace TabletopTweaks.Bugfixes.Features {
+namespace TabletopTweaks.Core.Bugfixes.Features {
     static class MythicFeats {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {

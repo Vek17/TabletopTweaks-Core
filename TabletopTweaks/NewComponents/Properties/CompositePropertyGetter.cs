@@ -4,7 +4,7 @@ using Kingmaker.UnitLogic.Mechanics.Properties;
 using System.Linq;
 using UnityEngine;
 
-namespace TabletopTweaks.NewComponents.Properties {
+namespace TabletopTweaks.Core.NewComponents.Properties {
     [TypeId("8050a764a88e4f199015f70ddb0c8eee")]
     public class CompositePropertyGetter : PropertyValueGetter {
         public override int GetBaseValue(UnitEntityData unit) {

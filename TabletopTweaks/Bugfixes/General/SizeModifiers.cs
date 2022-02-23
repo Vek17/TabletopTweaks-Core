@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using Kingmaker.EntitySystem.Entities;
 
-namespace TabletopTweaks.Bugfixes.General {
+namespace TabletopTweaks.Core.Bugfixes.General {
     static class SizeModifiers {
         [HarmonyPatch(typeof(UnitEntityData), "OnAreaDidLoad")]
         class UnitDescriptor_FixSizeModifiers_Patch {

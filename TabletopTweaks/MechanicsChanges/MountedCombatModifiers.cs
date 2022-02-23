@@ -3,12 +3,12 @@ using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.MechanicsChanges {
+namespace TabletopTweaks.Core.MechanicsChanges {
     class MountedCombatModifiers {
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]

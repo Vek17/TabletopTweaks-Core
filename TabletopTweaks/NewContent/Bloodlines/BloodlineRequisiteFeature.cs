@@ -1,8 +1,8 @@
 ﻿using Kingmaker.Blueprints.Classes;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Bloodlines {
+namespace TabletopTweaks.Core.NewContent.Bloodlines {
     static class BloodlineRequisiteFeature {
         public static void AddBloodlineRequisiteFeature() {
             var BloodlineRequisiteFeature = Helpers.CreateBlueprint<BlueprintFeature>("BloodlineRequisiteFeature", bp => {

@@ -2,10 +2,10 @@
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Mechanics;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.AlternateCapstones {
+namespace TabletopTweaks.Core.NewContent.AlternateCapstones {
     class MasterfulTalent {
         public static void AddMasterfulTalent() {
             var MasterfulTalent = Helpers.CreateBlueprint<BlueprintFeature>("MasterfulTalent", bp => {

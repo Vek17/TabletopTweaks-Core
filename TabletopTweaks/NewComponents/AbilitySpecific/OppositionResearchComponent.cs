@@ -5,7 +5,7 @@ using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [AllowMultipleComponents]
     [AllowedOn(typeof(BlueprintFeature), false)]
     [TypeId("12a7be82e1c945239fce42ad3410521f")]

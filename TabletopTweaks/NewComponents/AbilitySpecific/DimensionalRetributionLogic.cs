@@ -11,7 +11,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Utility;
 using UnityEngine;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("e7a4d4a377d44ab997dbaf1ec66b4b8b")]
     public class DimensionalRetributionLogic : UnitFactComponentDelegate<DweomerLeapLogicData>, IApplyAbilityEffectHandler, IGlobalSubscriber, ISubscriber {

@@ -16,12 +16,12 @@ using Kingmaker.UnitLogic.Parts;
 using Kingmaker.Utility;
 using System;
 using System.Linq;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.MechanicsChanges;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.MechanicsChanges;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.Bugfixes.Classes {
+namespace TabletopTweaks.Core.Bugfixes.Classes {
     class Fighter {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {

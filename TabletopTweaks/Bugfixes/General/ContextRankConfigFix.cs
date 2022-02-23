@@ -5,9 +5,9 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using System;
 using System.Linq;
-using TabletopTweaks.Extensions;
+using TabletopTweaks.Core.Extensions;
 
-namespace TabletopTweaks.Bugfixes.General {
+namespace TabletopTweaks.Core.Bugfixes.General {
     static class ContextRankConfigFix {
 
         [HarmonyPatch(typeof(ContextRankConfig), nameof(ContextRankConfig.GetBaseValue), new Type[] { typeof(MechanicsContext) })]

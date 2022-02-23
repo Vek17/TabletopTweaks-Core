@@ -11,7 +11,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Owlcat.QA.Validation;
 using UnityEngine;
 
-namespace TabletopTweaks.NewComponents.OwlcatReplacements {
+namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [AllowMultipleComponents]
     [TypeId("7601b8133d844f04956d9bc9a1cce210")]
     public class AddStatBonusIfHasFactTTT : UnitBuffComponentDelegate, IUnitGainFactHandler, IUnitSubscriber, ISubscriber, IUnitLostFactHandler {

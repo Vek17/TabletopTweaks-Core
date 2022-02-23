@@ -11,7 +11,7 @@ using Owlcat.QA.Validation;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace TabletopTweaks.NewComponents.OwlcatReplacements.DamageResistance {
+namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance {
     [ComponentName("Buffs/AddEffect/DR")]
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [AllowedOn(typeof(BlueprintUnit), false)]

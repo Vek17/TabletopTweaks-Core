@@ -19,10 +19,10 @@ using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Utilities;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 
-namespace TabletopTweaks.Extensions {
+namespace TabletopTweaks.Core.Extensions {
     static class ExtentionMethods {
         public static void TemporaryContext<T>(this T obj, Action<T> init = null) {
             init?.Invoke(obj);

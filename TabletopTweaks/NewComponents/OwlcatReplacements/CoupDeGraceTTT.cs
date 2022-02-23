@@ -12,9 +12,9 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.Utility;
 using System.Collections.Generic;
-using TabletopTweaks.NewRules;
+using TabletopTweaks.Core.NewRules;
 
-namespace TabletopTweaks.NewComponents.OwlcatReplacements {
+namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [TypeId("5da9ff47fe484e0faadd0330ec998a95")]
     [AllowedOn(typeof(BlueprintAbility))]
     //This is brought to you by Perunq

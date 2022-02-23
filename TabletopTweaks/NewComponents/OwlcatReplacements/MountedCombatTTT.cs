@@ -10,7 +10,7 @@ using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.Utility;
 using UnityEngine;
 
-namespace TabletopTweaks.NewComponents.OwlcatReplacements {
+namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [TypeId("6529138e5e96494f958a758ee21e451e")]
     public class MountedCombatTTT : UnitFactComponentDelegate, IRulebookHandler<RuleAttackRoll>, IGlobalRulebookHandler<RuleAttackRoll>, ISubscriber, IGlobalSubscriber {
 

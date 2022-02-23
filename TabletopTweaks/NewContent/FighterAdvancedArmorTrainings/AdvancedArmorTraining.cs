@@ -5,13 +5,13 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using System;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.NewComponents.Properties;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.NewComponents.Properties;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.FighterAdvancedArmorTrainings {
+namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
     public class AdvancedArmorTraining {
         public static void AddAdvancedArmorTraining() {
             var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");

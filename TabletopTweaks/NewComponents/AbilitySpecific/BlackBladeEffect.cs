@@ -2,9 +2,9 @@
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic;
 using Newtonsoft.Json;
-using TabletopTweaks.NewUnitParts;
+using TabletopTweaks.Core.NewUnitParts;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("aac8d3adce2c4251ba6531b47d099186")]
     public class BlackBladeEffect : UnitFactComponentDelegate<BlackBladeEffect.AppliedEnchantData> {
 

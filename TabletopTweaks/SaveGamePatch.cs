@@ -3,7 +3,7 @@ using Kingmaker.EntitySystem.Entities;
 using System;
 using System.Collections.Generic;
 
-namespace TabletopTweaks {
+namespace TabletopTweaks.Core {
     static class SaveGameFix {
         static private List<Action<UnitEntityData>> save_game_actions = new List<Action<UnitEntityData>>();
 

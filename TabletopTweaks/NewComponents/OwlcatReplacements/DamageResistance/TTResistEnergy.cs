@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.JsonSystem;
 
-namespace TabletopTweaks.NewComponents.OwlcatReplacements.DamageResistance {
+namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance {
     [ComponentName("Resist Energy")]
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [AllowedOn(typeof(BlueprintUnit), false)]

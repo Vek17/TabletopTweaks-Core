@@ -13,10 +13,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
 
-namespace TabletopTweaks.Bugfixes.Features {
+namespace TabletopTweaks.Core.Bugfixes.Features {
     class Backgrounds {
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]

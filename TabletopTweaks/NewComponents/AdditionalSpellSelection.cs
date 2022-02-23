@@ -12,9 +12,9 @@ using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("070fd2a4a2cb4f198a44ae036082818c")]
     public class AdditionalSpellSelection : UnitFactComponentDelegate, IUnitCompleteLevelUpHandler {
 

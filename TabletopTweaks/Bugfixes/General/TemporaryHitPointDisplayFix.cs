@@ -2,7 +2,7 @@
 using Kingmaker.EntitySystem.Stats;
 using System;
 
-namespace TabletopTweaks.Bugfixes.General {
+namespace TabletopTweaks.Core.Bugfixes.General {
     class TemporaryHitPointDisplayFix {
         [HarmonyPatch(typeof(ModifiableValueTemporaryHitPoints), "HandleDamage", new Type[] { typeof(int) })]
         static class ModifiableValueTemporaryHitPoints_HandleDamage_Patch {

@@ -22,14 +22,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TabletopTweaks.Config;
-using TabletopTweaks.NewUnitParts;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.NewUnitParts;
+using TabletopTweaks.Core.Utilities;
 using UnityEngine;
-using static TabletopTweaks.NewUnitParts.UnitPartCustomMechanicsFeatures;
+using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
 // This work is largly based on work by https://github.com/Stari0n/MagicTime Copyright (c) 2021 Starion
-namespace TabletopTweaks.NewContent.MechanicsChanges {
+namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
     static class MetamagicExtention {
 
         [Flags]

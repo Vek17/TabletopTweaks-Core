@@ -2,14 +2,14 @@
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.NewContent.MechanicsChanges;
-using TabletopTweaks.Utilities;
-using static TabletopTweaks.NewUnitParts.UnitPartCustomMechanicsFeatures;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.NewContent.MechanicsChanges;
+using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
-namespace TabletopTweaks.NewContent.MythicAbilities {
+namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class FavoriteMetamagicSelective {
         public static void AddFavoriteMetamagicSelective() {
             var SelectiveSpellFeat = Resources.GetBlueprint<BlueprintFeature>("85f3340093d144dd944fff9a9adfd2f2");

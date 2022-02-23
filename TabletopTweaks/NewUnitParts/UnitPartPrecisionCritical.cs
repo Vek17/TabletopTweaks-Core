@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TabletopTweaks.NewUnitParts {
+namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartPrecisionCritical : UnitPart {
 
         public int GetMultiplier() {

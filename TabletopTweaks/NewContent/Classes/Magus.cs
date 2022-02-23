@@ -3,11 +3,11 @@ using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Classes {
+namespace TabletopTweaks.Core.NewContent.Classes {
     static class Magus {
         public static void AddMagusFeatures() {
             var Icon_WarriorSpirit_FlamingBurst = AssetLoader.LoadInternal("Abilities", "Icon_WarriorSpirit_FlamingBurst.png");

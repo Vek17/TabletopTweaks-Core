@@ -12,7 +12,7 @@ using Kingmaker.Utility;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("7faa8aa8ecb445629a804248ac4fdba1")]
     public class SpellImmunityToSpellDescriptorAgainstAlignment : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RuleCanApplyBuff>,

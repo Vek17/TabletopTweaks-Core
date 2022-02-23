@@ -8,14 +8,14 @@ using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.NewComponents.OwlcatReplacements;
-using TabletopTweaks.NewComponents.Prerequisites;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
+using TabletopTweaks.Core.NewComponents.Prerequisites;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Domains {
+namespace TabletopTweaks.Core.NewContent.Domains {
     static class TricksterDomains {
         private static BlueprintGuid TricksterDomainMasterID = ModSettings.Blueprints.GetDerivedMaster("TricksterDomainMasterID");
         private static BlueprintGuid[] TricksterSpellResource = new BlueprintGuid[9] {

@@ -1,8 +1,8 @@
 ﻿using Kingmaker.Blueprints.Classes;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Features {
+namespace TabletopTweaks.Core.NewContent.Features {
     public class FighterTrainingFakeLevel {
         public static void AddFighterTrainingFakeLevel() {
             var FighterTrainingFakeLevel = Helpers.CreateBlueprint<BlueprintFeature>("FighterTrainingFakeLevel", bp => {

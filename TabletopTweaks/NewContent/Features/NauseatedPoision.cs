@@ -1,6 +1,6 @@
 ﻿using Kingmaker.Blueprints;
 
-namespace TabletopTweaks.NewContent.Features {
+namespace TabletopTweaks.Core.NewContent.Features {
     class NauseatedPoision {
         public static void AddNauseatedPoision() {
             var Nauseated = Resources.GetBlueprintReference<BlueprintBuffReference>("956331dba5125ef48afe41875a00ca0e");

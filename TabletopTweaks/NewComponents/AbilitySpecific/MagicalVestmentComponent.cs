@@ -13,7 +13,7 @@ using Kingmaker.Utility;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [AllowMultipleComponents]
     [TypeId("4db6644b48ed43a69e16d8c9b60dd775")]
     public class MagicalVestmentComponent : UnitBuffComponentDelegate<BuffEnchantWornItemData>, IUnitEquipmentHandler {

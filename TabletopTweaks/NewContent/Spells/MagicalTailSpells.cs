@@ -1,11 +1,11 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Spells {
+namespace TabletopTweaks.Core.NewContent.Spells {
     class MagicalTailSpells {
         public static void AddNewMagicalTailSpells() {
 

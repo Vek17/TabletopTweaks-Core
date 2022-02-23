@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace TabletopTweaks.NewComponents.OwlcatReplacements {
+namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [TypeId("39daf11ada364bbab00b4ff8a92dba1d")]
     public class AzataZippyMagicTTT : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RuleCastSpell>,

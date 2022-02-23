@@ -1,9 +1,9 @@
 ﻿using Kingmaker.UI.Common;
 using Kingmaker.UI.UnitSettings;
 using UnityEngine;
-using static TabletopTweaks.NewComponents.AbilitySpecific.MetaRageComponent;
+using static TabletopTweaks.Core.NewComponents.AbilitySpecific.MetaRageComponent;
 
-namespace TabletopTweaks.NewUI {
+namespace TabletopTweaks.Core.NewUI {
     class MechanicActionBarSlotMetaRage : MechanicActionBarSlotSpontaneusConvertedSpell {
 
         /*

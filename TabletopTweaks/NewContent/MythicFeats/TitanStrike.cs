@@ -1,10 +1,10 @@
 ﻿using Kingmaker.Blueprints.Classes;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents.AbilitySpecific;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents.AbilitySpecific;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.MythicFeats {
+namespace TabletopTweaks.Core.NewContent.MythicFeats {
     static class TitanStrike {
         public static void AddTitanStrike() {
             var ImprovedUnarmedStrikeMythicFeat = Resources.GetBlueprint<BlueprintFeature>("e086a07dae105244291fb11e05d0715f");

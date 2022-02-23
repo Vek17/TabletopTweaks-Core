@@ -11,12 +11,12 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Parts;
 using System;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.MechanicsChanges;
-using static TabletopTweaks.MechanicsChanges.ActivatableAbilitySpendLogic;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.MechanicsChanges;
+using static TabletopTweaks.Core.MechanicsChanges.ActivatableAbilitySpendLogic;
 
-namespace TabletopTweaks.Bugfixes.Classes {
+namespace TabletopTweaks.Core.Bugfixes.Classes {
     static class Magus {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {

@@ -17,14 +17,14 @@ using Kingmaker.Utility;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.NewComponents.AbilitySpecific;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.NewComponents.AbilitySpecific;
+using TabletopTweaks.Core.Utilities;
 using static Kingmaker.UnitLogic.Commands.Base.UnitCommand;
 
-namespace TabletopTweaks.NewContent.Archetypes {
+namespace TabletopTweaks.Core.NewContent.Archetypes {
     static class MetamagicRager {
         private static readonly BlueprintCharacterClass BloodragerClass = Resources.GetBlueprint<BlueprintCharacterClass>("d77e67a814d686842802c9cfd8ef8499");
         private static readonly BlueprintSpellbook BloodragerSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("e19484252c2f80e4a9439b3681b20f00");

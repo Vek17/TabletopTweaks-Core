@@ -2,9 +2,9 @@
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using System.Linq;
-using TabletopTweaks.Config;
+using TabletopTweaks.Core.Config;
 
-namespace TabletopTweaks.NewContent.Archetypes {
+namespace TabletopTweaks.Core.NewContent.Archetypes {
     static class ElementalMaster {
         public static void AddElementalMaster() {
             if (ModSettings.AddedContent.Archetypes.IsDisabled("ElementalMasterArchetype")) { return; }

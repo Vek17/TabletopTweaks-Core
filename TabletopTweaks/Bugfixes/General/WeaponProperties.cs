@@ -4,9 +4,9 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
 using System;
 using System.Linq;
-using TabletopTweaks.Config;
+using TabletopTweaks.Core.Config;
 
-namespace TabletopTweaks.Bugfixes.General {
+namespace TabletopTweaks.Core.Bugfixes.General {
     static class WeaponProperties {
         /**
          * This is a set of patches to apply weapon properties to all of a weapon's damage to support changes like vital strike

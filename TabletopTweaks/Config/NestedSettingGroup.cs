@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace TabletopTweaks.Config {
+namespace TabletopTweaks.Core.Config {
     public class NestedSettingGroup : SettingGroup {
         private IDisableableGroup parent;
         public IDisableableGroup Parent { set { parent = value; } }

@@ -16,12 +16,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
-using static TabletopTweaks.MechanicsChanges.AdditionalModifierDescriptors;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 
-namespace TabletopTweaks.MechanicsChanges {
+namespace TabletopTweaks.Core.MechanicsChanges {
     static class NaturalArmorStacking {
         [HarmonyPatch(typeof(ModifierDescriptorHelper), "IsStackable", new[] { typeof(ModifierDescriptor) })]
         static class ModifierDescriptorHelper_IsStackable_Patch {

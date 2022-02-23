@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TabletopTweaks.NewUnitParts {
+namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartWarriorSpirit : UnitPart {
         public void AddEntry(EntityFact source, int cost, params BlueprintWeaponEnchantmentReference[] enchants) {
             ClearSelectedEnchants(source);

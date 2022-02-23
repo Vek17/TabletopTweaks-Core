@@ -1,5 +1,5 @@
 ﻿
-namespace TabletopTweaks.Config {
+namespace TabletopTweaks.Core.Config {
     class Homebrew : IUpdatableSettings {
         public bool NewSettingsOffByDefault = false;
         public MythicReworkGroup MythicReworks = new MythicReworkGroup();

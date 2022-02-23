@@ -6,9 +6,9 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Class.LevelUp;
 using System.Linq;
 using System.Text;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewComponents.Prerequisites {
+namespace TabletopTweaks.Core.NewComponents.Prerequisites {
     [TypeId("08d2e61c79c64ee1afdca9fc834ffc32")]
     public class PrerequisiteMythicSpellbook : Prerequisite {
 

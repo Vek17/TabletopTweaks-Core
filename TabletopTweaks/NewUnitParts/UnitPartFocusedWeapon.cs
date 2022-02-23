@@ -4,7 +4,7 @@ using Kingmaker.UnitLogic;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TabletopTweaks.NewUnitParts {
+namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartFocusedWeapon : UnitPart {
         public void AddEntry(WeaponCategory? category, EntityFact source) {
             if (category == null) {

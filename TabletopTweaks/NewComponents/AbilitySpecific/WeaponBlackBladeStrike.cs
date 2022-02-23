@@ -4,7 +4,7 @@ using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("e3c345a3c9ae4f84a0f86b42101b294d")]
     public class WeaponBlackBladeStrike : WeaponEnchantmentLogic, IInitiatorRulebookHandler<RuleCalculateWeaponStats>,
         IRulebookHandler<RuleCalculateWeaponStats>, ISubscriber, IInitiatorRulebookSubscriber {

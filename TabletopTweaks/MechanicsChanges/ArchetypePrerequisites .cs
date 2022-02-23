@@ -13,10 +13,10 @@ using Kingmaker.UnitLogic.Class.LevelUp.Actions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Config;
-using TabletopTweaks.NewComponents;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.NewComponents;
 
-namespace TabletopTweaks.MechanicsChanges {
+namespace TabletopTweaks.Core.MechanicsChanges {
 
     static class ArchetypePrerequisites {
 

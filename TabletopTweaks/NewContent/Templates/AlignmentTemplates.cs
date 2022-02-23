@@ -24,11 +24,11 @@ using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
-using static TabletopTweaks.MechanicsChanges.AdditionalModifierDescriptors;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 
-namespace TabletopTweaks.NewContent.Templates {
+namespace TabletopTweaks.Core.NewContent.Templates {
     static class AlignmentTemplates {
         private static readonly BlueprintAbility SmiteEvilAbility = Resources.GetBlueprint<BlueprintAbility>("7bb9eb2042e67bf489ccd1374423cdec");
         private static readonly BlueprintBuff SmiteEvilBuff = Resources.GetBlueprint<BlueprintBuff>("b6570b8cbb32eaf4ca8255d0ec3310b0");

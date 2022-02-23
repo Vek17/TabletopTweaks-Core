@@ -8,10 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using TabletopTweaks.Config;
-using static TabletopTweaks.MechanicsChanges.AdditionalModifierDescriptors;
+using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 
-namespace TabletopTweaks.MechanicsChanges {
+namespace TabletopTweaks.Core.MechanicsChanges {
     class CannyDefenseStacking {
         [HarmonyPatch(typeof(CannyDefensePermanent), "ActivateModifier")]
         static class CannyDefensePermanent_Stacking_Patch {

@@ -1,10 +1,10 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents.OwlcatReplacements;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 
-namespace TabletopTweaks.Utilities {
+namespace TabletopTweaks.Core.Utilities {
     static class QuickFixTools {
         public static void ReplaceSuppression(BlueprintBuff buff, bool continuous = false) {
             var suppressBuffComponent = buff.GetComponent<SuppressBuffs>();

@@ -13,7 +13,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("44703c29059c48f8bd7d398b874c708e")]
     public class SuppressBuffsEveryRound : UnitFactComponentDelegate, ITickEachRound {
 

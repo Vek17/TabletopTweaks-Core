@@ -5,7 +5,7 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
 using UnityEngine;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintAbility))]
     [TypeId("974cd54a86984c36b459847fec6b2c4b")]
     public class AbilityShowIfCasterCanCastSpells : BlueprintComponent, IAbilityVisibilityProvider {

@@ -9,7 +9,7 @@ using Kingmaker.UnitLogic.Class.LevelUp;
 using Kingmaker.UnitLogic.Class.LevelUp.Actions;
 using System.Linq;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("459d17478d434bbb881b99d766113cb9")]
     public class AddAdditionalRacialFeatures : UnitFactComponentDelegate {
 

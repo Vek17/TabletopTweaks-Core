@@ -3,7 +3,7 @@ using Kingmaker.UI.UnitSettings;
 using Kingmaker.UnitLogic.Abilities;
 using UnityEngine;
 
-namespace TabletopTweaks.NewUI {
+namespace TabletopTweaks.Core.NewUI {
     public class MechanicActionBarSlotPseudoActivatableAbilityVariant :
         MechanicActionBarSlotSpontaneusConvertedSpell,
         IPseudoActivatableMechanicsBarSlot {

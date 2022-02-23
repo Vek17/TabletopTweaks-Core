@@ -14,9 +14,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.NewEvents;
+using TabletopTweaks.Core.NewEvents;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("d2cf98b4e2854b90b4d451059cc581c0")]
     public class AbilityActionTypeConversion : UnitFactComponentDelegate, ISpontaneousConversionHandler {
 

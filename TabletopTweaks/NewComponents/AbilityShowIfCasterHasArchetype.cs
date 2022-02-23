@@ -5,7 +5,7 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
 using UnityEngine;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintAbility))]
     [TypeId("faaed80f2d01490bb8be1424f8d12665")]
     public class AbilityShowIfCasterHasArchetype : BlueprintComponent, IAbilityVisibilityProvider {

@@ -8,7 +8,7 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic.Mechanics.Components;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("d6c77d2de4804f8e9aa06e01c9fb77fa")]
     public class AddWeaponDamageTrigger : WeaponEnchantmentLogic,
         IInitiatorRulebookHandler<RuleDealDamage>,

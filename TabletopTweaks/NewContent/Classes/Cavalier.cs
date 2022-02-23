@@ -7,12 +7,12 @@ using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.NewComponents.Prerequisites;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.NewComponents.Prerequisites;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Classes {
+namespace TabletopTweaks.Core.NewContent.Classes {
     static class Cavalier {
         public static void AddCavalierFeatures() {
             var MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");

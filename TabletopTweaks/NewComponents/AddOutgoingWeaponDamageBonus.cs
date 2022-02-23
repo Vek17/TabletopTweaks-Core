@@ -3,9 +3,9 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
-using TabletopTweaks.NewUnitParts;
+using TabletopTweaks.Core.NewUnitParts;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("03f55b5c7cb0445ab32ce2c8d44704ec")]
     public class AddOutgoingWeaponDamageBonus : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RuleCalculateDamage>,

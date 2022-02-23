@@ -10,11 +10,11 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.FactLogic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.Bugfixes.Features {
+namespace TabletopTweaks.Core.Bugfixes.Features {
     class Bloodlines {
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]

@@ -7,7 +7,7 @@ using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.Utility;
 using System;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
 
     [AllowedOn(typeof(BlueprintAbility))]
     [TypeId("6dc16c033e0d4f94827db76f1fbab421")]

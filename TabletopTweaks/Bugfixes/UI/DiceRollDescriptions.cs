@@ -5,9 +5,9 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.TextTools;
 using System;
 using System.Text;
-using TabletopTweaks.Config;
+using TabletopTweaks.Core.Config;
 
-namespace TabletopTweaks.Bugfixes.UI {
+namespace TabletopTweaks.Core.Bugfixes.UI {
     static class DiceRollDescriptions {
         [HarmonyPatch(typeof(LogHelper), "GetRollDescription")]
         private static class BuffPCView_Suppression_Patch {

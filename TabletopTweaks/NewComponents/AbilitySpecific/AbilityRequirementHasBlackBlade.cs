@@ -2,9 +2,9 @@
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
-using TabletopTweaks.NewUnitParts;
+using TabletopTweaks.Core.NewUnitParts;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("a0ff3623a0154448a082b1c5ea9898fc")]
     public class AbilityRequirementHasBlackBlade : BlueprintComponent, IAbilityRestriction {
         public string GetAbilityRestrictionUIText() {

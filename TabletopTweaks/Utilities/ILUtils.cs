@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
 
-namespace TabletopTweaks.Utilities {
+namespace TabletopTweaks.Core.Utilities {
     public static class ILUtils {
         public static void LogIL(List<CodeInstruction> codes) {
             Main.LogDebug("");

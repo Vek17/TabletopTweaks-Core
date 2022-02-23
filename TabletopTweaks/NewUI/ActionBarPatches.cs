@@ -9,11 +9,11 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.NewComponents.AbilitySpecific;
-using TabletopTweaks.NewUnitParts;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.NewComponents.AbilitySpecific;
+using TabletopTweaks.Core.NewUnitParts;
 
-namespace TabletopTweaks.NewUI {
+namespace TabletopTweaks.Core.NewUI {
     class ActionBarPatches {
 
         [HarmonyPatch(typeof(ActionBarSpontaneousConvertedSlot), "Set", new Type[] { typeof(UnitEntityData), typeof(AbilityData) })]

@@ -6,7 +6,7 @@ using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowMultipleComponents]
     [TypeId("9ea33bacd9fb466e996d243274f84f9a")]
     public class WeaponExtraDamageDice : WeaponEnchantmentLogic,

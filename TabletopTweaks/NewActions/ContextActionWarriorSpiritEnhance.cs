@@ -10,9 +10,9 @@ using Kingmaker.UnitLogic.Parts;
 using Kingmaker.Utility;
 using Owlcat.Runtime.Core.Logging;
 using System;
-using TabletopTweaks.NewUnitParts;
+using TabletopTweaks.Core.NewUnitParts;
 
-namespace TabletopTweaks.NewActions {
+namespace TabletopTweaks.Core.NewActions {
     [TypeId("229877cc362b41de85f45b30007aee19")]
     class ContextActionWarriorSpiritEnhance : ContextAction {
         private BlueprintItemEnchantmentReference[] m_DefaultEnchantments = new BlueprintItemEnchantmentReference[5];

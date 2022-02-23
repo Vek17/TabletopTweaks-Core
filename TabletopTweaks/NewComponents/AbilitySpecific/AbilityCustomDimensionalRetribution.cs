@@ -9,7 +9,7 @@ using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.UnitLogic.Commands;
 using Kingmaker.Utility;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("4b22554ea5ff4068ac8ef350e766bc8e")]
     public class AbilityCustomDimensionalRetribution : AbilityCustomDimensionDoor {
         public override bool LookAtTarget {

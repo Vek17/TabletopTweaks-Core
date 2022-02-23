@@ -3,7 +3,7 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.UnitLogic.Abilities;
 using System.Collections.Generic;
 
-namespace TabletopTweaks.NewEvents {
+namespace TabletopTweaks.Core.NewEvents {
     interface ISpontaneousConversionHandler : IUnitSubscriber {
         void HandleGetConversions(AbilityData ability, ref IEnumerable<AbilityData> conversions);
 

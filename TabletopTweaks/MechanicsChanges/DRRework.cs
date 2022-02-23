@@ -37,14 +37,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents.OwlcatReplacements.DamageResistance;
-using TabletopTweaks.NewComponents.Prerequisites;
-using TabletopTweaks.NewUnitParts;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
+using TabletopTweaks.Core.NewComponents.Prerequisites;
+using TabletopTweaks.Core.NewUnitParts;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.MechanicsChanges {
+namespace TabletopTweaks.Core.MechanicsChanges {
     class DRRework {
 
         [HarmonyPatch(typeof(AddDamageResistancePhysical), nameof(AddDamageResistancePhysical.IsStackable), MethodType.Getter)]

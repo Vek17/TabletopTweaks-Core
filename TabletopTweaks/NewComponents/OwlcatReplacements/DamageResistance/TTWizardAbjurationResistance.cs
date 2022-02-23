@@ -8,7 +8,7 @@ using Kingmaker.RuleSystem.Rules.Damage;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace TabletopTweaks.NewComponents.OwlcatReplacements.DamageResistance {
+namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance {
     [ComponentName("Resist Energy")]
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [AllowedOn(typeof(BlueprintUnit), false)]

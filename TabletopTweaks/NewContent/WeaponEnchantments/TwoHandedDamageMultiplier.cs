@@ -1,9 +1,9 @@
 ﻿using Kingmaker.Blueprints.Items.Ecnchantments;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.WeaponEnchantments {
+namespace TabletopTweaks.Core.NewContent.WeaponEnchantments {
     class TwoHandedDamageMultiplier {
         public static void AddTwoHandedDamageMultiplierEnchantment() {
             var TwoHandedDamageMultiplierEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>($"TwoHandedDamageMultiplierEnchantment", bp => {

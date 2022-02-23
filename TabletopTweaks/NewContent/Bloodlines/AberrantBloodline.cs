@@ -18,13 +18,13 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents.AbilitySpecific;
-using TabletopTweaks.Utilities;
-using static TabletopTweaks.NewUnitParts.CustomStatTypes;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents.AbilitySpecific;
+using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.NewUnitParts.CustomStatTypes;
 
-namespace TabletopTweaks.NewContent.Bloodlines {
+namespace TabletopTweaks.Core.NewContent.Bloodlines {
     public static class AberrantBloodline {
         static BlueprintFeatureReference BloodlineRequisiteFeature = Resources.GetModBlueprint<BlueprintFeature>("BloodlineRequisiteFeature").ToReference<BlueprintFeatureReference>();
         static BlueprintFeatureReference AberrantBloodlineRequisiteFeature = CreateBloodlineRequisiteFeature();

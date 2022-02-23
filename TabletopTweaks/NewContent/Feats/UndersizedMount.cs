@@ -3,14 +3,14 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.NewUnitParts;
-using TabletopTweaks.Utilities;
-using static TabletopTweaks.NewUnitParts.UnitPartCustomMechanicsFeatures;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.NewUnitParts;
+using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
-namespace TabletopTweaks.NewContent.Feats {
+namespace TabletopTweaks.Core.NewContent.Feats {
     class UndersizedMount {
         public static void AddUndersizedMount() {
             var Icon_UndersizedMount = AssetLoader.LoadInternal("Feats", "Icon_UndersizedMount.png");

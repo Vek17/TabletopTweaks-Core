@@ -1,7 +1,7 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.UnitLogic.Abilities;
 
-namespace TabletopTweaks.NewUI {
+namespace TabletopTweaks.Core.NewUI {
     public interface IPseudoActivatableMechanicsBarSlot {
         public abstract BlueprintBuffReference BuffToWatch { get; set; }
         public abstract bool ShouldBeActive { get; set; }

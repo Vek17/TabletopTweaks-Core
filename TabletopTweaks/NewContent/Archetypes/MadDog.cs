@@ -1,9 +1,9 @@
 ﻿using Kingmaker.UnitLogic.Mechanics.Properties;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents.Properties;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents.Properties;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Archetypes {
+namespace TabletopTweaks.Core.NewContent.Archetypes {
     static class MadDog {
         public static void AddMadDogFeatures() {
             var madDogPetDRProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("MadDogPetDRProperty", bp => {

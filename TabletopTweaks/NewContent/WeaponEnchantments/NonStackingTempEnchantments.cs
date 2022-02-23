@@ -1,9 +1,9 @@
 ﻿using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.Designers.Mechanics.Facts;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.WeaponEnchantments {
+namespace TabletopTweaks.Core.NewContent.WeaponEnchantments {
     class NonStackingTempEnchantments {
         public static void AddWeaponEnhancements() {
             CreateNonStackingEnhancement(1);

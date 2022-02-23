@@ -6,10 +6,10 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using System;
 using System.Reflection;
-using TabletopTweaks.Config;
+using TabletopTweaks.Core.Config;
 using UnityEngine;
 
-namespace TabletopTweaks.MechanicsChanges {
+namespace TabletopTweaks.Core.MechanicsChanges {
     class MetamagicDamage {
         [HarmonyPatch(typeof(RuleCalculateDamage), "CalculateDamageValue", new[] { typeof(BaseDamage) })]
         static class RuleCalculateDamage_Metamagic_Patch {

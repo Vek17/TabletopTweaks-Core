@@ -19,15 +19,15 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using System.Linq;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.NewContent.MechanicsChanges;
-using TabletopTweaks.Utilities;
-using static TabletopTweaks.NewContent.MechanicsChanges.MetamagicExtention;
-using static TabletopTweaks.NewUnitParts.UnitPartCustomMechanicsFeatures;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.NewContent.MechanicsChanges;
+using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.NewContent.MechanicsChanges.MetamagicExtention;
+using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
-namespace TabletopTweaks.NewContent.Feats {
+namespace TabletopTweaks.Core.NewContent.Feats {
     static class BurningSpell {
         public static void AddBurningSpell() {
             var CausticEruption = Resources.GetBlueprint<BlueprintAbility>("8c29e953190cc67429dc9c701b16b7c2");

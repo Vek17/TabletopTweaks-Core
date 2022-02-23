@@ -4,12 +4,12 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.MechanicsChanges;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.MechanicsChanges;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.WizardArcaneDiscoveries {
+namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
     static class KnowledgeIsPower {
         public static void AddKnowledgeIsPower() {
             var KnowledgeIsPower = Helpers.CreateBlueprint<BlueprintFeature>($"KnowledgeIsPower", bp => {

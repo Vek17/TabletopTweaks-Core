@@ -13,7 +13,7 @@ using Kingmaker.UnitLogic.Parts;
 using Kingmaker.Utility;
 
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintParametrizedFeature), false)]
     [TypeId("9593096f04ca4c63afee29478efac0cc")]
     public class BonusCasterLevelParametrized : UnitFactComponentDelegate,

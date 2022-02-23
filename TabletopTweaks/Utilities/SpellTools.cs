@@ -5,9 +5,9 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Extensions;
+using TabletopTweaks.Core.Extensions;
 
-namespace TabletopTweaks.Utilities {
+namespace TabletopTweaks.Core.Utilities {
     static class SpellTools {
         public static void AddToSpellList(this BlueprintAbility spell, BlueprintSpellList spellList, int level) {
             AddComponentIfMissing(spellList);

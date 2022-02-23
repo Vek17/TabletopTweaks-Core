@@ -1,10 +1,10 @@
 ﻿using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Features {
+namespace TabletopTweaks.Core.NewContent.Features {
     class LongspearChargeBuff {
         public static void AddLongspearChargeBuff() {
             var LongspearChargeBuff = Helpers.CreateBuff("LongspearChargeBuff", bp => {

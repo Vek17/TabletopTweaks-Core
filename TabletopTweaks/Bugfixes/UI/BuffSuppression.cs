@@ -6,11 +6,11 @@ using Kingmaker.UI.MVVM._PCView.Other;
 using Kingmaker.UI.MVVM._PCView.Party;
 using Kingmaker.UI.MVVM._PCView.ServiceWindows.CharacterInfo.Sections.Abilities;
 using Kingmaker.UI.MVVM._VM.Tooltip.Templates;
-using TabletopTweaks.Config;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Utilities;
 using UnityEngine;
 
-namespace TabletopTweaks.Bugfixes.UI {
+namespace TabletopTweaks.Core.Bugfixes.UI {
     static class BuffSuppression {
         //[HarmonyPatch(typeof(UnitBuffPartPCView), "DrawBuffs")]
         private static class BuffVM_Suppression_Patch {

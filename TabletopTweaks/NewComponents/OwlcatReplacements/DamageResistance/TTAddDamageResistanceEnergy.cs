@@ -8,7 +8,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.Utility;
 
-namespace TabletopTweaks.NewComponents.OwlcatReplacements.DamageResistance {
+namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance {
     [ComponentName("Buffs/AddEffect/EnergyResistance")]
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [AllowedOn(typeof(BlueprintUnit), false)]

@@ -6,9 +6,9 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.MechanicsChanges;
+using TabletopTweaks.Core.MechanicsChanges;
 
-namespace TabletopTweaks.NewUnitParts {
+namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartAeonGazeManager : OldStyleUnitPart {
 
         public void AddEntry(EntityFact source) {

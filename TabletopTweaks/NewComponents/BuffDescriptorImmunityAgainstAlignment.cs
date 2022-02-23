@@ -12,7 +12,7 @@ using Kingmaker.Utility;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowMultipleComponents]
     [AllowedOn(typeof(BlueprintUnitFact))]
     [TypeId("5b18fee676234c20afb6ee8321a7dd40")]

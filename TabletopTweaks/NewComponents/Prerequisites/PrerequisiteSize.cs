@@ -5,9 +5,9 @@ using Kingmaker.Localization;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Class.LevelUp;
 using System.Text;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewComponents.Prerequisites {
+namespace TabletopTweaks.Core.NewComponents.Prerequisites {
     [TypeId("e5db1c3ea30a44559f1f7542ed3b9d0d")]
     public class PrerequisiteSize : Prerequisite {
         [InitializeStaticString]

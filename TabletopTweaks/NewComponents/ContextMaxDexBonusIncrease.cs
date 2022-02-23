@@ -9,7 +9,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using System.Linq;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("39d2343f6d254e44ac05f3efb2c1937d")]
     public class ContextMaxDexBonusIncrease : UnitFactComponentDelegate,

@@ -8,7 +8,7 @@ using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("e8651c2865ee48f4a877df9d376bc37c")]
     public class ModifySavingThrowD20 : UnitFactComponentDelegate,

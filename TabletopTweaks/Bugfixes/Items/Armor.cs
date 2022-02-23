@@ -4,9 +4,9 @@ using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Items;
 using Kingmaker.UnitLogic;
 using System;
-using TabletopTweaks.Config;
+using TabletopTweaks.Core.Config;
 
-namespace TabletopTweaks.Bugfixes.Items {
+namespace TabletopTweaks.Core.Bugfixes.Items {
     static class Armor {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {

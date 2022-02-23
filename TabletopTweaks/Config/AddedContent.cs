@@ -1,5 +1,5 @@
 ﻿
-namespace TabletopTweaks.Config {
+namespace TabletopTweaks.Core.Config {
     public class AddedContent : IUpdatableSettings {
         public bool NewSettingsOffByDefault = false;
         public SettingGroup Archetypes = new SettingGroup();

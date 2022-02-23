@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-namespace TabletopTweaks.Utilities {
+namespace TabletopTweaks.Core.Utilities {
     class PostPatchInitializeAttribute : Attribute {
     }
     class InitializeStaticStringAttribute : Attribute {

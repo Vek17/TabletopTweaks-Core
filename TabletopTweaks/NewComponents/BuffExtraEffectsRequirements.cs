@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowMultipleComponents]
     [AllowedOn(typeof(BlueprintFeature))]
     [AllowedOn(typeof(BlueprintBuff))]

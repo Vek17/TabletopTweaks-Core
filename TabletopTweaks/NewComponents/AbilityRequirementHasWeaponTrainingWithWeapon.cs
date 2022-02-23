@@ -4,7 +4,7 @@ using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.UnitLogic.Parts;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("df38cda426724a6b9d5065585340d9d0")]
     public class AbilityRequirementHasWeaponTrainingWithWeapon : BlueprintComponent, IAbilityRestriction {
         public string GetAbilityRestrictionUIText() {

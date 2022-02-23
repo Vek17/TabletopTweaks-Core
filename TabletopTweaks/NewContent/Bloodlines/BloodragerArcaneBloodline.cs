@@ -11,11 +11,11 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using System.Collections.Generic;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents.Properties;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents.Properties;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Bloodlines {
+namespace TabletopTweaks.Core.NewContent.Bloodlines {
     static class BloodragerArcaneBloodline {
 
         public static void AddArcaneBloodrageReworkToggles() {

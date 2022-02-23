@@ -1,9 +1,9 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic;
-using TabletopTweaks.NewUnitParts;
+using TabletopTweaks.Core.NewUnitParts;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("a23b7a08964d4a3792a6754884eee8aa")]
     public class AddWarriorSpiritEnchantment : UnitFactComponentDelegate {
         public override void OnTurnOn() {

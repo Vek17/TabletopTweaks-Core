@@ -19,9 +19,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TabletopTweaks.NewComponents.OwlcatReplacements.DamageResistance;
+using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
 
-namespace TabletopTweaks.NewUnitParts {
+namespace TabletopTweaks.Core.NewUnitParts {
     public class TTUnitPartDamageReduction :
         OldStyleUnitPart,
         IUnitApplyDamageReduction,

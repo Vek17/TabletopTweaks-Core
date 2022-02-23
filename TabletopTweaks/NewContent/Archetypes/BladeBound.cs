@@ -29,17 +29,17 @@ using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewActions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.NewComponents.AbilitySpecific;
-using TabletopTweaks.NewComponents.Properties;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewActions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.NewComponents.AbilitySpecific;
+using TabletopTweaks.Core.NewComponents.Properties;
+using TabletopTweaks.Core.Utilities;
 using UnityEngine;
-using static TabletopTweaks.NewUnitParts.CustomStatTypes;
+using static TabletopTweaks.Core.NewUnitParts.CustomStatTypes;
 
-namespace TabletopTweaks.NewContent.Archetypes {
+namespace TabletopTweaks.Core.NewContent.Archetypes {
     static class BladeBound {
         public static void AddBlackBlade() {
             //var MagusClass = Resources.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");

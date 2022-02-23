@@ -4,7 +4,7 @@ using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using System;
 
-namespace TabletopTweaks.NewComponents.Properties {
+namespace TabletopTweaks.Core.NewComponents.Properties {
     [TypeId("b310257badf44a9d97d8f8fe8b3df3f6")]
     public class ProgressionRankGetter : PropertyValueGetter {
 

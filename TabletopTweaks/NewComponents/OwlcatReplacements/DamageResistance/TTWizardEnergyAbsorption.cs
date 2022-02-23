@@ -5,7 +5,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace TabletopTweaks.NewComponents.OwlcatReplacements.DamageResistance {
+namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("38d9082bfa624e3ab039a6d810cf99db")]
     public class TTWizardEnergyAbsorption : TTAddDamageResistanceEnergy {

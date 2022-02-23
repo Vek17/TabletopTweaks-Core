@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 
-namespace TabletopTweaks.Bugfixes.Features {
+namespace TabletopTweaks.Core.Bugfixes.Features {
     class BaseAbilities {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {

@@ -9,7 +9,7 @@ using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("6ac52746855e4c82a1427a787bb26edb")]
     public class SurviveDeathWithSave : UnitFactComponentDelegate, IDamageHandler, IGlobalSubscriber, ISubscriber {
 

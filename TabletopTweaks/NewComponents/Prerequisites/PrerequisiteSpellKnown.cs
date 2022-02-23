@@ -7,7 +7,7 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Class.LevelUp;
 using System.Linq;
 
-namespace TabletopTweaks.NewComponents.Prerequisites {
+namespace TabletopTweaks.Core.NewComponents.Prerequisites {
     [TypeId("e523c74b8da74fec91ae651138ec0ca0")]
     public class PrerequisiteSpellKnown : Prerequisite {
         private BlueprintAbility Spell {

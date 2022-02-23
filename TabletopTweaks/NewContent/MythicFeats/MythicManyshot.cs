@@ -4,14 +4,14 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.RuleSystem.Rules;
 using System;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.NewUnitParts;
-using TabletopTweaks.Utilities;
-using static TabletopTweaks.NewUnitParts.UnitPartCustomMechanicsFeatures;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.NewUnitParts;
+using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
-namespace TabletopTweaks.NewContent.MythicFeats {
+namespace TabletopTweaks.Core.NewContent.MythicFeats {
     static class MythicManyshot {
         public static void AddMythicManyshot() {
             var Manyshot = Resources.GetBlueprint<BlueprintFeature>("adf54af2a681792489826f7fd1b62889");

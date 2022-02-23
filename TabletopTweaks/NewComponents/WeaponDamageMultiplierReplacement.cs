@@ -3,7 +3,7 @@ using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("34455dfff53d4c349bd19eb9ebb85ab6")]
     public class WeaponDamageMultiplierReplacement : WeaponEnchantmentLogic,
         IInitiatorRulebookHandler<RuleCalculateWeaponStats>,

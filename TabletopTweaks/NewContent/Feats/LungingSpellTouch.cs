@@ -5,12 +5,12 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
-using static TabletopTweaks.NewUnitParts.CustomStatTypes;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.NewUnitParts.CustomStatTypes;
 
-namespace TabletopTweaks.NewContent.Feats {
+namespace TabletopTweaks.Core.NewContent.Feats {
     static class LungingSpellTouch {
         public static void AddLungingSpellTouch() {
             var Icon_LungingSpellTouch = AssetLoader.LoadInternal("Feats", "Icon_LungingSpellTouch.png");

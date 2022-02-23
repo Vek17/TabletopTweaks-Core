@@ -5,7 +5,7 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.UnitLogic;
 
-namespace TabletopTweaks.NewComponents.OwlcatReplacements {
+namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [TypeId("e3b2dcf430cb449684c76fd854e732ea")]
     public class AzataFavorableMagicTTT : UnitFactComponentDelegate,
         IWasRoll,

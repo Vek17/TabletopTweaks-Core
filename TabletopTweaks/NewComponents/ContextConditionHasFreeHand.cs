@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("5e7a0461a88943ea862df008d52e2cff")]
     public class ContextConditionHasFreeHand : ContextCondition {
         public override string GetConditionCaption() {

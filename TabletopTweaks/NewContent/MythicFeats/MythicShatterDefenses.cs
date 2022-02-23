@@ -1,10 +1,10 @@
 ﻿using Kingmaker.Blueprints.Classes;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.MythicFeats {
+namespace TabletopTweaks.Core.NewContent.MythicFeats {
     static class MythicShatterDefenses {
         public static void AddMythicShatterDefenses() {
             var ShatterDefenses = Resources.GetBlueprint<BlueprintFeature>("61a17ccbbb3d79445b0926347ec07577");

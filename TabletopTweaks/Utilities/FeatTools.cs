@@ -11,9 +11,9 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Utility;
 using System;
 using System.Linq;
-using TabletopTweaks.Extensions;
+using TabletopTweaks.Core.Extensions;
 
-namespace TabletopTweaks.Utilities {
+namespace TabletopTweaks.Core.Utilities {
     static class FeatTools {
         public static void AddAsFeat(params BlueprintFeature[] features) {
             foreach (var feature in features) {

@@ -26,16 +26,16 @@ using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewActions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.NewComponents.AbilitySpecific;
-using TabletopTweaks.NewComponents.OwlcatReplacements;
-using TabletopTweaks.Utilities;
-using static TabletopTweaks.NewContent.MechanicsChanges.MetamagicExtention;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewActions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.NewComponents.AbilitySpecific;
+using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
+using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.NewContent.MechanicsChanges.MetamagicExtention;
 
-namespace TabletopTweaks.Bugfixes.Abilities {
+namespace TabletopTweaks.Core.Bugfixes.Abilities {
     class Spells {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {

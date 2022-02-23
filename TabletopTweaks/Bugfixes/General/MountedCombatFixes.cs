@@ -3,10 +3,10 @@ using Kingmaker.Controllers.Combat;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.Parts;
-using TabletopTweaks.Config;
-using TabletopTweaks.NewUnitParts;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.NewUnitParts;
 
-namespace TabletopTweaks.Bugfixes.General {
+namespace TabletopTweaks.Core.Bugfixes.General {
     class MountedCombatFixes {
         // Need to fix cursor UI somehow
         [HarmonyPatch(typeof(UnitCombatState), nameof(UnitCombatState.IsFullAttackRestrictedBecauseOfMoveAction), MethodType.Getter)]

@@ -6,15 +6,15 @@ using Kingmaker.Items.Slots;
 using Kingmaker.PubSubSystem;
 using Kingmaker.TurnBasedMode.Controllers;
 using Kingmaker.View.Equipment;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.NewUnitParts;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.NewUnitParts;
+using TabletopTweaks.Core.Utilities;
 using TurnBased.Controllers;
-using static TabletopTweaks.NewUnitParts.UnitPartCustomMechanicsFeatures;
+using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
-namespace TabletopTweaks.NewContent.Feats {
+namespace TabletopTweaks.Core.NewContent.Feats {
     class QuickDraw {
         public static void AddQuickDraw() {
             var QuickDraw = Helpers.CreateBlueprint<BlueprintFeature>("QuickDraw", bp => {

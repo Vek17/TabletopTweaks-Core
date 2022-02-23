@@ -5,9 +5,9 @@ using Kingmaker.UnitLogic;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Config;
+using TabletopTweaks.Core.Config;
 
-namespace TabletopTweaks.MechanicsChanges {
+namespace TabletopTweaks.Core.MechanicsChanges {
     class BlueprintProgressionFix {
 
         [HarmonyPatch(typeof(BlueprintProgression), nameof(BlueprintProgression.CalcLevel))]

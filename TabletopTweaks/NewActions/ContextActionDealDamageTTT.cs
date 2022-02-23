@@ -17,7 +17,7 @@ using Owlcat.QA.Validation;
 using System;
 using UnityEngine;
 
-namespace TabletopTweaks.NewActions {
+namespace TabletopTweaks.Core.NewActions {
     class ContextActionDealDamageTTT : ContextAction, IValidated, IDealDamageProvider {
         private bool IsSimpleDamage {
             get {

@@ -6,9 +6,9 @@ using Kingmaker.Blueprints.Root.Strings;
 using Kingmaker.Localization;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Class.LevelUp;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewComponents.Prerequisites {
+namespace TabletopTweaks.Core.NewComponents.Prerequisites {
     [TypeId("59c3025feecf4113bef90196f2ce4ef9")]
     public class PrerequisiteCasterLevel : Prerequisite {
         [InitializeStaticString]

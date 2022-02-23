@@ -4,7 +4,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Owlcat.QA.Validation;
 
-namespace TabletopTweaks.NewComponents.Properties {
+namespace TabletopTweaks.Core.NewComponents.Properties {
     [TypeId("5f193022788a43d28c0bdaa913a21117")]
     public class StatValueGetter : PropertyValueGetter {
         public override int GetBaseValue(UnitEntityData unit) {

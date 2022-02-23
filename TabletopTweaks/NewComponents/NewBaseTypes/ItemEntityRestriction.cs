@@ -7,7 +7,7 @@ using Kingmaker.UnitLogic;
 using System;
 using System.Linq;
 
-namespace TabletopTweaks.NewComponents.NewBaseTypes {
+namespace TabletopTweaks.Core.NewComponents.NewBaseTypes {
     [AllowedOn(typeof(BlueprintItemEquipment), false)]
     [TypeId("342e5233ad9042ad820cec4d62e6e7c3")]
     public abstract class ItemEntityRestriction : BlueprintComponent {

@@ -19,7 +19,7 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Utility;
 using System.Linq;
 
-namespace TabletopTweaks.NewComponents.OwlcatReplacements {
+namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [AllowMultipleComponents]
     [TypeId("d9558dff3102481dbd918c2abdd0c95b")]
     public class AddOutgoingDamageTriggerTTT : UnitFactComponentDelegate<AddOutgoingDamageTriggerTTT.ComponentData>,

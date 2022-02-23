@@ -3,9 +3,9 @@ using Kingmaker.Blueprints;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.ActivatableAbilities;
-using TabletopTweaks.Config;
+using TabletopTweaks.Core.Config;
 
-namespace TabletopTweaks.MechanicsChanges {
+namespace TabletopTweaks.Core.MechanicsChanges {
     class ActivatableResourceFreeResourceLogic {
 
         [HarmonyPatch(typeof(ActivatableAbility), "HandleUnitLeaveCombat")]

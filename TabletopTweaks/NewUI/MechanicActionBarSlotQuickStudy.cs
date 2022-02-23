@@ -2,9 +2,9 @@
 using Kingmaker.UI.MVVM._VM.Tooltip.Templates;
 using Kingmaker.UI.UnitSettings;
 using UnityEngine;
-using static TabletopTweaks.NewComponents.AbilitySpecific.QuickStudyComponent;
+using static TabletopTweaks.Core.NewComponents.AbilitySpecific.QuickStudyComponent;
 
-namespace TabletopTweaks.NewUI {
+namespace TabletopTweaks.Core.NewUI {
     public class MechanicActionBarSlotQuickStudy : MechanicActionBarSlotSpontaneusConvertedSpell {
 
         public override string GetTitle() {

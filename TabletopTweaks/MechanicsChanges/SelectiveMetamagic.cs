@@ -1,8 +1,8 @@
 ﻿using HarmonyLib;
 using Kingmaker.EntitySystem.Entities;
-using TabletopTweaks.Config;
+using TabletopTweaks.Core.Config;
 
-namespace TabletopTweaks.MechanicsChanges {
+namespace TabletopTweaks.Core.MechanicsChanges {
     static class SelectiveMetamagic {
         [HarmonyPatch(typeof(AreaEffectEntityData), "CheckSelective")]
         class UnitDescriptor_FixSizeModifiers_Patch {

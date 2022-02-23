@@ -1,8 +1,8 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.UnitLogic;
-using TabletopTweaks.NewUnitParts;
+using TabletopTweaks.Core.NewUnitParts;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     public class BroadStudyComponent : UnitFactComponentDelegate {
         public override void OnTurnOn() {
             base.Owner.Ensure<UnitPartBroadStudy>().AddEntry(CharacterClass, base.Fact);

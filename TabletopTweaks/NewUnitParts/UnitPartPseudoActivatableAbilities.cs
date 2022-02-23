@@ -12,10 +12,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.NewComponents;
-using TabletopTweaks.NewUI;
+using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.NewUI;
 
-namespace TabletopTweaks.NewUnitParts {
+namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartPseudoActivatableAbilities :
         UnitPart,
         ISubscriber,

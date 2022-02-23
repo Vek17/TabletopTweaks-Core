@@ -12,11 +12,11 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Config;
-using TabletopTweaks.NewEvents;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.NewEvents;
 using UnityEngine;
 
-namespace TabletopTweaks.NewUnitParts {
+namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartSpellSpecialization : OldStyleUnitPart, ISpontaneousConversionHandler, IUnitSubscriber {
         public void AddEntry(BlueprintAbilityReference spell, EntityFact source) {
             SpellSpecializationEntry item = new SpellSpecializationEntry {

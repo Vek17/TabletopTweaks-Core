@@ -7,7 +7,7 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("8eb56941c0744505ae2e470528f9f1dd")]
     public class IgnoreEnergyImmunityOnTarget : UnitFactComponentDelegate,

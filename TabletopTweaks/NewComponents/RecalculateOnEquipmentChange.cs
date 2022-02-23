@@ -6,7 +6,7 @@ using Kingmaker.Items.Slots;
 using Kingmaker.PubSubSystem;
 using Kingmaker.UnitLogic;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
 
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [AllowMultipleComponents]

@@ -7,10 +7,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using TabletopTweaks.Config;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.Localization {
+namespace TabletopTweaks.Core.Localization {
     [JsonObject(MemberSerialization.OptIn)]
     class MultiLocalizationPack {
 

@@ -4,7 +4,7 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Class.LevelUp;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("0104e3c3ea2e4f789bc1b1ac4a874d7b")]
     public class RecalculateOnLevelUp : UnitFactComponentDelegate, IUnitLevelUpHandler {
         public void HandleUnitAfterLevelUp(UnitEntityData unit, LevelUpController controller) {

@@ -8,7 +8,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Buffs;
 using System;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("e90c706b6fd84f90b4dcd35ef2699483")]
     public class ArmoredMightComponent : UnitFactComponentDelegate,
         IUnitActiveEquipmentSetHandler,

@@ -8,7 +8,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Buffs;
 using System;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("4cc6ea51fc1b40dd965e44aa645751ff")]
     public class NegateArmorCheckSkillPenalty : UnitFactComponentDelegate,
         IUnitActiveEquipmentSetHandler,

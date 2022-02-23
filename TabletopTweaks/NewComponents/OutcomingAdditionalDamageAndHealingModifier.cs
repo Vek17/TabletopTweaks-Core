@@ -6,7 +6,7 @@ using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintUnitFact))]
     [TypeId("f9bd6635909c40e09c3f4a22b711945b")]
     public class OutcomingAdditionalDamageAndHealingModifier : UnitFactComponentDelegate,

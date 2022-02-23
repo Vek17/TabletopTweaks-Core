@@ -4,11 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using TabletopTweaks.Config;
+using TabletopTweaks.Core.Config;
 using UnityEngine;
 using UnityModManagerNet;
 
-namespace TabletopTweaks {
+namespace TabletopTweaks.Core {
     public static class UMMSettingsUI {
         private static int selectedTab;
         public static void OnGUI(UnityModManager.ModEntry modEntry) {

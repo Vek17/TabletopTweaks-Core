@@ -10,7 +10,7 @@ using Kingmaker.UnitLogic.Mechanics.Properties;
 using Newtonsoft.Json;
 using System.Linq;
 
-namespace TabletopTweaks.NewUnitParts {
+namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartBlackBlade : OldStyleUnitPart {
         public UnitPartBlackBlade() {
         }

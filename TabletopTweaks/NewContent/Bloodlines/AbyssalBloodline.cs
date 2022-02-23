@@ -1,10 +1,10 @@
 ﻿using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Components;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Bloodlines {
+namespace TabletopTweaks.Core.NewContent.Bloodlines {
     class AbyssalBloodline {
         public static void AddBloodragerAbyssalDemonicBulkEnlargeBuff() {
             var BloodragerAbyssalDemonicBulkEnlargeBuff = Helpers.CreateBuff("BloodragerAbyssalDemonicBulkEnlargeBuff", bp => {

@@ -19,10 +19,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.NewContent.MechanicsChanges;
-using TabletopTweaks.NewEvents;
+using TabletopTweaks.Core.NewContent.MechanicsChanges;
+using TabletopTweaks.Core.NewEvents;
 
-namespace TabletopTweaks.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("b522a7a4b3a44772bc5cfbdd55b1e0f9")]
     public class MetaRageComponent : UnitFactComponentDelegate, ISpontaneousConversionHandler {
 

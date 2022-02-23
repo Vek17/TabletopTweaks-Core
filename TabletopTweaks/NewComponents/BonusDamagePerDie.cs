@@ -8,7 +8,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.Utility;
 
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("5608ad3529df47a1821463fa85ce10b9")]
     public class BonusDamagePerDie : UnitFactComponentDelegate, 
         IInitiatorRulebookHandler<RuleCalculateDamage>, 

@@ -5,7 +5,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TabletopTweaks.Bugfixes.General {
+namespace TabletopTweaks.Core.Bugfixes.General {
     class ProfaneGift {
         [HarmonyPatch(typeof(AddNocticulaBonus), "OnTurnOn")]
         class UnitDescriptor_FixSizeModifiers_Patch {

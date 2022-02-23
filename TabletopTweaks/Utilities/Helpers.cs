@@ -22,12 +22,12 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Localization;
-using TabletopTweaks.NewComponents.OwlcatReplacements.DamageResistance;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Localization;
+using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
 
-namespace TabletopTweaks.Utilities {
+namespace TabletopTweaks.Core.Utilities {
     public static class Helpers {
         public static T Create<T>(Action<T> init = null) where T : new() {
             var result = new T();

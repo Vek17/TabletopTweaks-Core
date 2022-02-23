@@ -11,7 +11,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowMultipleComponents]
     [AllowedOn(typeof(BlueprintFeatureSelection))]
     [TypeId("2476cd4ea3674fc58402daf57bf72562")]

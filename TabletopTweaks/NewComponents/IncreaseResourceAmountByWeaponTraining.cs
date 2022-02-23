@@ -4,7 +4,7 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Parts;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("11729578161344d99990125910019bfd")]
     public class IncreaseResourceAmountByWeaponTraining : UnitFactComponentDelegate, IResourceAmountBonusHandler, IUnitSubscriber, ISubscriber {
 

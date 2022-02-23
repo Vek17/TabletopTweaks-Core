@@ -6,7 +6,7 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 
-namespace TabletopTweaks.NewActions {
+namespace TabletopTweaks.Core.NewActions {
     [TypeId("c932d7de9d3b4c558933292395aeda38")]
     class ContextActionTransferArcana : ContextAction {
 

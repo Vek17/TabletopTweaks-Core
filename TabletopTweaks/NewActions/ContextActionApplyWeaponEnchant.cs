@@ -8,7 +8,7 @@ using Kingmaker.Utility;
 using Owlcat.Runtime.Core.Logging;
 using System;
 
-namespace TabletopTweaks.NewActions {
+namespace TabletopTweaks.Core.NewActions {
     [TypeId("891df14e8a9b4f72a28dd2b7a8c2de08")]
     class ContextActionApplyWeaponEnchant : ContextAction {
         public override string GetCaption() {

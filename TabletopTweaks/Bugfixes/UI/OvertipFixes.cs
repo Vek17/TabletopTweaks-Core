@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace TabletopTweaks.Bugfixes.UI {
+namespace TabletopTweaks.Core.Bugfixes.UI {
     class OvertipFixes {
 
         [HarmonyPatch(typeof(OvertipsVM), "OnEventDidTrigger", new[] { typeof(RuleSavingThrow) })]

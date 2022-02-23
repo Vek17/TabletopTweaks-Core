@@ -4,7 +4,7 @@ using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
 using UnityEngine;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [TypeId("8c2d2cced7a44fa7a352e65a120466d6")]
     public class AbilityRequirementHasBuff : BlueprintComponent, IAbilityRestriction {
 

@@ -7,11 +7,11 @@ using Kingmaker.Localization;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Class.LevelUp;
 using System.Text;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Utilities;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace TabletopTweaks.NewComponents.Prerequisites {
+namespace TabletopTweaks.Core.NewComponents.Prerequisites {
     [TypeId("cb76145587814eabbbbaed3d2a9b5d99")]
     public class PrerequisiteNoClassLevelVisible : Prerequisite {
         [InitializeStaticString]

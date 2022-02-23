@@ -11,9 +11,9 @@ using Owlcat.QA.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.NewEvents;
+using TabletopTweaks.Core.NewEvents;
 
-namespace TabletopTweaks.NewComponents {
+namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintAbility), false)]
     [TypeId("a9892b3a72f349fe8acb2e7565d18f93")]
     public class NestedPseudoActivatableAbilities : UnitFactComponentDelegate, ISpontaneousConversionHandler, IUnitEquipmentHandler {

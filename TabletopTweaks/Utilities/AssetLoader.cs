@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using TabletopTweaks.Config;
+using TabletopTweaks.Core.Config;
 using UnityEngine;
 
-namespace TabletopTweaks.Utilities {
+namespace TabletopTweaks.Core.Utilities {
     class AssetLoader {
         public static Sprite LoadInternal(string folder, string file) {
             return Image2Sprite.Create($"{ModSettings.ModEntry.Path}Assets{Path.DirectorySeparatorChar}{folder}{Path.DirectorySeparatorChar}{file}");

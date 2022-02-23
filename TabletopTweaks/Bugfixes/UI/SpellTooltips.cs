@@ -5,9 +5,9 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Config;
+using TabletopTweaks.Core.Config;
 
-namespace TabletopTweaks.Bugfixes.UI {
+namespace TabletopTweaks.Core.Bugfixes.UI {
     static class SpellTooltips {
         [HarmonyPatch(typeof(TooltipTemplateAbility), "GetHeader", new Type[] { typeof(TooltipTemplateType) })]
         class DisplaySpellbookInSpellTooltips {

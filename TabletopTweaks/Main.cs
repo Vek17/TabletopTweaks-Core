@@ -3,11 +3,11 @@ using JetBrains.Annotations;
 using Kingmaker;
 using Kingmaker.Blueprints.JsonSystem;
 using System;
-using TabletopTweaks.Config;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Utilities;
 using UnityModManagerNet;
 
-namespace TabletopTweaks {
+namespace TabletopTweaks.Core {
     static class Main {
         public static bool Enabled;
         static bool Load(UnityModManager.ModEntry modEntry) {

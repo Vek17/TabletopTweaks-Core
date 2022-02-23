@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
 using System.Reflection;
-using TabletopTweaks.Localization;
+using TabletopTweaks.Core.Localization;
 using static UnityModManagerNet.UnityModManager;
 
-namespace TabletopTweaks.Config {
+namespace TabletopTweaks.Core.Config {
     static class ModSettings {
         public static ModEntry ModEntry;
         public static Fixes Fixes;

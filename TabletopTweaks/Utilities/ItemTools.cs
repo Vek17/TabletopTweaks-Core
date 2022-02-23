@@ -6,11 +6,11 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using System;
 using System.Collections.Generic;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewContent.MechanicsChanges;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using UnityEngine;
 
-namespace TabletopTweaks.Utilities {
+namespace TabletopTweaks.Core.Utilities {
     public static class ItemTools {
 
         public enum MetamagicRodType: int { 

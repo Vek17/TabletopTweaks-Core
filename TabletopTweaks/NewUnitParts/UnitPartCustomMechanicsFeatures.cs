@@ -2,9 +2,9 @@
 using Kingmaker.UnitLogic;
 using Kingmaker.Utility;
 using System.Collections.Generic;
-using static TabletopTweaks.NewUnitParts.UnitPartCustomMechanicsFeatures;
+using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
-namespace TabletopTweaks.NewUnitParts {
+namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartCustomMechanicsFeatures : OldStyleUnitPart {
 
         public void AddMechanicsFeature(CustomMechanicsFeature type) {

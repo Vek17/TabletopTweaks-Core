@@ -4,11 +4,11 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Config;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.Utilities;
+using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
-namespace TabletopTweaks.NewContent.Archetypes {
+namespace TabletopTweaks.Core.NewContent.Archetypes {
     static class NatureFang {
         private static readonly BlueprintFeature NatureSense = Resources.GetBlueprint<BlueprintFeature>("3a859e435fdd6d343b80d4970a7664c1");
         private static readonly BlueprintFeature WildShapeExtraUse = Resources.GetBlueprint<BlueprintFeature>("f78260b9a089ccc44b55f0fed08b1752");
