@@ -46,7 +46,7 @@ namespace TabletopTweaks.Core.Config {
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);
             var fileName = "LocalizationPack.json";
             var assembly = Assembly.GetExecutingAssembly();
-            var resourcePath = $"TabletopTweaks.Localization.{fileName}"; ;
+            var resourcePath = $"TabletopTweaks.Core.Localization.{fileName}"; ;
             var localizationPath = $"{localizationFolder}{Path.DirectorySeparatorChar}{fileName}";
             Directory.CreateDirectory(localizationFolder);
             if (File.Exists(localizationPath)) {
@@ -84,7 +84,7 @@ namespace TabletopTweaks.Core.Config {
         private static void LoadSettings<T>(string fileName, ref T setting) where T : IUpdatableSettings {
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);
             var assembly = Assembly.GetExecutingAssembly();
-            var resourcePath = $"TabletopTweaks.Config.{fileName}";
+            var resourcePath = $"TabletopTweaks.Core.Config.{fileName}";
             var userPath = $"{userConfigFolder}{Path.DirectorySeparatorChar}{fileName}";
 
             Directory.CreateDirectory(userConfigFolder);

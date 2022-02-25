@@ -4,12 +4,12 @@ using System.Linq;
 using System.Reflection;
 
 namespace TabletopTweaks.Core.Utilities {
-    class PostPatchInitializeAttribute : Attribute {
+    public class PostPatchInitializeAttribute : Attribute {
     }
-    class InitializeStaticStringAttribute : Attribute {
+    public class InitializeStaticStringAttribute : Attribute {
     }
 
-    static class PostPatchInitializer {
+    public static class PostPatchInitializer {
         public static void Initialize() {
             var methods = Assembly.GetExecutingAssembly()
                 .GetTypes()

@@ -23,7 +23,7 @@ using TabletopTweaks.Core.Utilities;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 
 namespace TabletopTweaks.Core.Extensions {
-    static class ExtentionMethods {
+    public static class ExtentionMethods {
         public static void TemporaryContext<T>(this T obj, Action<T> init = null) {
             init?.Invoke(obj);
         }

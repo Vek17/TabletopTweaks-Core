@@ -5,7 +5,7 @@
     "EntryMethod": "TabletopTweaks.Core.Main.Load",
     "GameVersion": "1.2.0",
     "HomePage": "https://github.com/Vek17/WrathMods-TabletopTweaks/releases",
-    "Id": "TabletopTweaksCore",
+    "Id": "TabletopTweaks-Core",
     "ManagerVersion": "0.23.0",
     "Repository": "https://raw.githubusercontent.com/Vek17/WrathMods-TabletopTweaks/master/Repository.json",
     "Requirements": [],

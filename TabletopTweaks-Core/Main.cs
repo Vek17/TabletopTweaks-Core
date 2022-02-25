@@ -2,8 +2,10 @@
 using JetBrains.Annotations;
 using Kingmaker;
 using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.EntitySystem.Persistence.Versioning;
 using System;
 using TabletopTweaks.Core.Config;
+using TabletopTweaks.Core.Upgraders;
 using TabletopTweaks.Core.Utilities;
 using UnityModManagerNet;
 
@@ -18,7 +20,12 @@ namespace TabletopTweaks.Core {
             ModSettings.ModEntry.OnGUI = UMMSettingsUI.OnGUI;
             harmony.PatchAll();
             PostPatchInitializer.Initialize();
+            RegisterUpgrades();
             return true;
+        }
+
+        static void RegisterUpgrades() {
+            JsonUpgradeSystem.Register(-17, "Migrate TabeltopTweaks to TabletopTweaks-Core", new TabletopTweaksMigration());
         }
 
         static void OnSaveGUI(UnityModManager.ModEntry modEntry) {
