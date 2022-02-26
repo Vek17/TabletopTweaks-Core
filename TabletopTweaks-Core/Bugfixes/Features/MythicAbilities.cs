@@ -129,18 +129,18 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                     .OfType<Conditional>()
                     .ForEach(c => {
                         c.IfTrue = Helpers.CreateActionList(
-                            new ContextActionDealDamageTTT() { 
-                                DamageType = new DamageTypeDescription() { 
+                            new ContextActionDealDamageTTT() {
+                                DamageType = new DamageTypeDescription() {
                                     Type = DamageType.Energy,
                                     Energy = DamageEnergyType.Divine
                                 },
-                                Duration = new ContextDurationValue() { 
-                                    DiceCountValue =new ContextValue(),
+                                Duration = new ContextDurationValue() {
+                                    DiceCountValue = new ContextValue(),
                                     BonusValue = new ContextValue()
                                 },
-                                Value = new ContextDiceValue() { 
+                                Value = new ContextDiceValue() {
                                     DiceType = DiceType.D6,
-                                    DiceCountValue = new ContextValue() { 
+                                    DiceCountValue = new ContextValue() {
                                         ValueType = ContextValueType.Rank,
                                     },
                                     BonusValue = new ContextValue()
@@ -155,7 +155,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                                 m_Buff = ExposeVulnerabilityBuff
                             }
                         );
-                });
+                    });
                 Main.LogPatch(ExposeVulnerability);
             }
             static void PatchMythicCharge() {

@@ -19,7 +19,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                 bp.IsClassFeature = true;
                 bp.ReapplyOnLevelUp = true;
                 bp.Ranks = 1;
-                bp.Groups = new FeatureGroup[] {};
+                bp.Groups = new FeatureGroup[] { };
                 bp.AddComponent<CMDBonus>(c => {
                     c.Descriptor = (ModifierDescriptor)AdditionalModifierDescriptors.Untyped.Intelligence;
                     c.Value = new ContextValue() {

@@ -41,8 +41,8 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
                                 .Append("<s>1</s> ")
                                 .Append("20")
                                 .Append(endingHTMLTag);
-                        } else if (ruleRollDice.ResultOverride.HasValue 
-                            && !ruleRollDice.m_PreRolledResult.HasValue 
+                        } else if (ruleRollDice.ResultOverride.HasValue
+                            && !ruleRollDice.m_PreRolledResult.HasValue
                             && roll == ruleRollDice.m_Result) {
                             var actualroll = ruleRollDice.m_PreRolledResult.GetValueOrDefault() > 0 ?
                                 ruleRollDice.m_PreRolledResult.Value : ruleRollDice.m_Result;

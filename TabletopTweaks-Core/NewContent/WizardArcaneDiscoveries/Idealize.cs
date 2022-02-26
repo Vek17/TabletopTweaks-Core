@@ -10,7 +10,6 @@ using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,7 +88,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
             static readonly MethodInfo Idealize_AddIdealizeBonus = AccessTools.Method(
                 typeof(Idealize),
                 nameof(Idealize.AddIdealizeBonus),
-                new Type[]{ typeof(int), typeof(AddStatBonus) }
+                new Type[] { typeof(int), typeof(AddStatBonus) }
             );
             //Add Idealize calculations
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {

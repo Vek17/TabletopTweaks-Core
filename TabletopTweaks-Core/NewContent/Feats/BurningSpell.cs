@@ -191,7 +191,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             );
 
             if (ModSettings.AddedContent.Feats.IsDisabled("MetamagicBurningSpell")) { return; }
-  
+
             UpdateSpells();
             AddRodsToVenders();
             FeatTools.AddAsFeat(BurningSpellFeat);

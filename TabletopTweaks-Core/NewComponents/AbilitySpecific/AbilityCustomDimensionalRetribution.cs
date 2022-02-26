@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Kingmaker;
+﻿using Kingmaker;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic.Abilities;
@@ -8,6 +6,8 @@ using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.UnitLogic.Commands;
 using Kingmaker.Utility;
+using System;
+using System.Collections.Generic;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("4b22554ea5ff4068ac8ef350e766bc8e")]

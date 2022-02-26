@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Kingmaker.Blueprints;
+﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.JsonSystem;
@@ -8,6 +7,7 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.UnitLogic;
 using Kingmaker.Utility;
+using System.Linq;
 
 namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintUnitFact), false)]

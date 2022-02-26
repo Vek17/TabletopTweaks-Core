@@ -1,11 +1,11 @@
-﻿using System.Text;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Blueprints.Root.Strings;
 using Kingmaker.Localization;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Class.LevelUp;
+using System.Text;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewComponents.Prerequisites {

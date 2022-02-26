@@ -45,7 +45,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
                 && base.Owner.State.CanAct
                 && base.Owner.CombatState.CanAttackOfOpportunity
                 && (context.MaybeCaster?.IsEnemy(target.Unit) ?? false)) {
-                Rulebook.Trigger(new RuleCastSpell(this.Data.AppliedAbility, context.Caster) { 
+                Rulebook.Trigger(new RuleCastSpell(this.Data.AppliedAbility, context.Caster) {
                     IsDuplicateSpellApplied = true
                 });
             }

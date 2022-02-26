@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Kingmaker.Blueprints;
+﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.JsonSystem;
@@ -8,14 +7,15 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.UnitLogic;
 using Kingmaker.Utility;
+using System.Linq;
 
 
 namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("8eaee9bcf0ac4dab8cdcf8d21d38a876")]
-    public class SharedSpellListDCIncrease : UnitFactComponentDelegate, 
-        IInitiatorRulebookHandler<RuleCalculateAbilityParams>, 
-        IRulebookHandler<RuleCalculateAbilityParams>, 
+    public class SharedSpellListDCIncrease : UnitFactComponentDelegate,
+        IInitiatorRulebookHandler<RuleCalculateAbilityParams>,
+        IRulebookHandler<RuleCalculateAbilityParams>,
         ISubscriber, IInitiatorRulebookSubscriber {
 
         private ReferenceArrayProxy<BlueprintSpellList, BlueprintSpellListReference> SpellLists {
@@ -28,8 +28,8 @@ namespace TabletopTweaks.Core.NewComponents {
             if (SpellsOnly && evt.Spellbook == null) {
                 return;
             }
-            if (SpellLists.Any(list => !list.Contains(evt.Spell))) { 
-                return; 
+            if (SpellLists.Any(list => !list.Contains(evt.Spell))) {
+                return;
             }
             evt.AddBonusDC(Bonus, ModifierDescriptor);
         }

@@ -160,7 +160,7 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                     Main.LogPatch(ManglingFrenzyFeature);
                 }
 
-                void PatchStormlordsResolve(){
+                void PatchStormlordsResolve() {
                     if (ModSettings.Fixes.Items.Equipment.IsDisabled("StormlordsResolve")) { return; }
 
                     var StormlordsResolveActivatableAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("ae908f59269c54c4d83ca51a63be8db4");

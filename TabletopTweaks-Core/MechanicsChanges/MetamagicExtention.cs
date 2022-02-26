@@ -419,7 +419,7 @@ namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
                 }
             }
             private class SolidShadowsMechanics : IAfterRulebookEventTriggerHandler<RuleCastSpell>, IGlobalSubscriber {
-                
+
                 private SolidShadowsMechanics() { }
                 public static SolidShadowsMechanics Instance = new();
 

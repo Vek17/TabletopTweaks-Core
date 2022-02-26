@@ -13,7 +13,7 @@ using UnityEngine;
 namespace TabletopTweaks.Core.Utilities {
     public static class ItemTools {
 
-        public enum MetamagicRodType: int { 
+        public enum MetamagicRodType : int {
             Lesser = 3,
             Normal = 6,
             Greater = 9

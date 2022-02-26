@@ -401,7 +401,7 @@ namespace TabletopTweaks.Core.Extensions {
             SetComponents(obj, components.ToArray());
         }
 
-        public static SelectionEntry GetSelection(this AddClassLevels obj, Predicate<SelectionEntry> predicate){
+        public static SelectionEntry GetSelection(this AddClassLevels obj, Predicate<SelectionEntry> predicate) {
             return obj.Selections.Where(c => predicate(c)).FirstOrDefault();
         }
 

@@ -8,9 +8,7 @@ using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Linq;
-using TabletopTweaks.Core.Config;
 using TabletopTweaks.Core.Extensions;
-using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 
@@ -25,7 +23,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.SetName("Dimensional Retribution");
                 bp.SetDescription("Every time you are targeted by an enemy spell, you may teleport to " +
                     "the spellcaster as an immediate action and make an attack of opportunity.");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration","");
+                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "");
                 bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.SavingThrow", "");
                 bp.m_Icon = DimensionalRetribution.Icon;
                 bp.Type = AbilityType.Supernatural;
@@ -58,7 +56,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.SetDescription(DimensionalRetributionTTTAbility.m_Description);
                 bp.AddComponent<DimensionalRetributionLogic>(c => {
                     c.m_Ability = DimensionalRetributionTTTAbility.ToReference<BlueprintAbilityReference>();
-                });                
+                });
             });
             var DimensionalRetributionTTTToggleAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("DimensionalRetributionTTTToggleAbility", bp => {
                 bp.m_Icon = DimensionalRetributionTTTAbility.Icon;

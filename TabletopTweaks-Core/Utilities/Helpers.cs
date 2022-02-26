@@ -96,7 +96,7 @@ namespace TabletopTweaks.Core.Utilities {
         }
 
         public static LevelEntry CreateLevelEntry(int level, params BlueprintFeatureBaseReference[] features) {
-            LevelEntry levelEntry = new LevelEntry() { 
+            LevelEntry levelEntry = new LevelEntry() {
                 Level = level,
                 m_Features = features.ToList()
             };

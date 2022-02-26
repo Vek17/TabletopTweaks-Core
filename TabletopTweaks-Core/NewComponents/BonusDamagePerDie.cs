@@ -10,9 +10,9 @@ using Kingmaker.Utility;
 
 namespace TabletopTweaks.Core.NewComponents {
     [TypeId("5608ad3529df47a1821463fa85ce10b9")]
-    public class BonusDamagePerDie : UnitFactComponentDelegate, 
-        IInitiatorRulebookHandler<RuleCalculateDamage>, 
-        IRulebookHandler<RuleCalculateDamage>, 
+    public class BonusDamagePerDie : UnitFactComponentDelegate,
+        IInitiatorRulebookHandler<RuleCalculateDamage>,
+        IRulebookHandler<RuleCalculateDamage>,
         ISubscriber, IInitiatorRulebookSubscriber {
         public void OnEventAboutToTrigger(RuleCalculateDamage evt) {
             MechanicsContext context = evt.Reason.Context;

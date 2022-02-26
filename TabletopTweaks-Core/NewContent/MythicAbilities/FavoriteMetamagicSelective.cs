@@ -1,13 +1,9 @@
 ﻿using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
-using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.Config;
 using TabletopTweaks.Core.Extensions;
-using TabletopTweaks.Core.NewComponents;
-using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
-using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class FavoriteMetamagicSelective {
