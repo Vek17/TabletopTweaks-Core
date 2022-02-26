@@ -557,6 +557,7 @@
     <Compile Include="Config\Fixes.cs" />
     <Compile Include="Utilities\ILUtils.cs" />
     <Compile Include="Utilities\ItemTools.cs" />
+    <Compile Include="Utilities\LocalizationExtensions.cs" />
     <Compile Include="Utilities\QuickFixTools.cs" />
     <Compile Include="Utilities\SpellTools.cs" />
     <Compile Include="Utilities\TypeReplaceTranspiler.cs" />
