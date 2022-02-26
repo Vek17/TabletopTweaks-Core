@@ -26,6 +26,9 @@ using TabletopTweaks.Core.Localization;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
 
 namespace TabletopTweaks.Core.Utilities {
+    /// <summary>
+    /// Collection of miscellaneous utilities
+    /// </summary>
     public static class Helpers {
         /// <summary>
         /// Executes an action on the called object.
@@ -38,12 +41,34 @@ namespace TabletopTweaks.Core.Utilities {
         public static void TemporaryContext<T>(this T obj, Action<T> run) {
             run?.Invoke(obj);
         }
+        /// <summary>
+        /// Creates a new object and initializes it with the supplied action.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="init">
+        /// Action to initialize the new object with.
+        /// </param>
+        /// <returns>
+        /// New object after it has been initialized.
+        /// </returns>
         public static T Create<T>(Action<T> init = null) where T : new() {
             var result = new T();
             init?.Invoke(result);
             return result;
         }
-
+        /// <summary>
+        /// Creates a new Blueprint with the supplied unity name and initializes it with the supplied action.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="name">
+        /// Unity name to give the created blueprint. This also determines the BlueprintGuid used.
+        /// </param>
+        /// <param name="init">
+        /// Action to initialize the new blueprint with.
+        /// </param>
+        /// <returns>
+        /// New blueprint after it has been initialized.
+        /// </returns>
         public static T CreateBlueprint<T>([NotNull] string name, Action<T> init = null) where T : SimpleBlueprint, new() {
             var result = new T {
                 name = name,
@@ -53,6 +78,26 @@ namespace TabletopTweaks.Core.Utilities {
             init?.Invoke(result);
             return result;
         }
+        /// <summary>
+        /// Creates a new Blueprint with the supplied unity name and initializes it with the supplied action.
+        /// This Blueprint will have a BlueprintGuid based on the supplied masterId and component blueprints.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="name">
+        /// Unity name to give the created blueprint. This also determines the BlueprintGuid used.
+        /// </param>
+        /// <param name="masterId">
+        /// Master Id used when generating a derived BlueprintGuid.
+        /// </param>
+        /// <param name="componentBlueprints">
+        /// Additional blueprints used when generating a derived BlueprintGuid.
+        /// </param>
+        /// <param name="init">
+        /// Action to initialize the new blueprint with.
+        /// </param>
+        /// <returns>
+        /// New blueprint after it has been initialized.
+        /// </returns>
         public static T CreateDerivedBlueprint<T>([NotNull] string name, BlueprintGuid masterId, [NotNull] IEnumerable<SimpleBlueprint> componentBlueprints, Action<T> init = null) where T : SimpleBlueprint, new() {
             var result = new T {
                 name = name,
@@ -62,7 +107,20 @@ namespace TabletopTweaks.Core.Utilities {
             init?.Invoke(result);
             return result;
         }
-
+        /// <summary>
+        /// Creates a new BlueprintBuff with the supplied unity name and initializes it with the supplied action.
+        /// This sets up some required values to prevent runtime exceptions.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="name">
+        /// Unity name to give the created BlueprintBuff. This also determines the BlueprintGuid used.
+        /// </param>
+        /// <param name="init">
+        /// Action to initialize the new BlueprintBuff with.
+        /// </param>
+        /// <returns>
+        /// New BlueprintBuff after it has been initialized.
+        /// </returns>
         public static BlueprintBuff CreateBuff(string name, Action<BlueprintBuff> init = null) {
             var result = Helpers.CreateBlueprint<BlueprintBuff>(name, bp => {
                 bp.FxOnStart = new PrefabLink();
@@ -71,17 +129,49 @@ namespace TabletopTweaks.Core.Utilities {
             init?.Invoke(result);
             return result;
         }
-
+        /// <summary>
+        /// Creates a deep copy of the object.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="original"></param>
+        /// <param name="init">
+        /// Action to initialize the new object with.
+        /// </param>
+        /// <returns>
+        /// New object after it has been initialized.
+        /// </returns>
         public static T CreateCopy<T>(T original, Action<T> init = null) {
             var result = (T)ObjectDeepCopier.Clone(original);
             init?.Invoke(result);
             return result;
         }
-
+        /// <summary>
+        /// Creates a new LevelEntry with the supplied level and features.
+        /// </summary>
+        /// <param name="level">
+        /// Level to use for the level entry.
+        /// </param>
+        /// <param name="features">
+        /// Features to add to the level entry.
+        /// </param>
+        /// <returns>
+        /// New Level entry setup with supplied arguments.
+        /// </returns>
         public static LevelEntry CreateLevelEntry(int level, params BlueprintFeatureBase[] features) {
             return CreateLevelEntry(level, features.Select(f => f.ToReference<BlueprintFeatureBaseReference>()).ToArray());
         }
-
+        /// <summary>
+        /// Creates a new LevelEntry with the supplied level and features.
+        /// </summary>
+        /// <param name="level">
+        /// Level to use for the level entry.
+        /// </param>
+        /// <param name="features">
+        /// Features to add to the level entry.
+        /// </param>
+        /// <returns>
+        /// New Level entry setup with supplied arguments.
+        /// </returns>
         public static LevelEntry CreateLevelEntry(int level, params BlueprintFeatureBaseReference[] features) {
             LevelEntry levelEntry = new LevelEntry() {
                 Level = level,
@@ -89,39 +179,51 @@ namespace TabletopTweaks.Core.Utilities {
             };
             return levelEntry;
         }
-
+        /// <summary>
+        /// Creates a new UI group including the supplied features.
+        /// </summary>
+        /// <param name="features">
+        /// Features to include in the UI group.
+        /// </param>
+        /// <returns>
+        /// New UI group built with the supplied features.
+        /// </returns>
         public static UIGroup CreateUIGroup(params BlueprintFeatureBase[] features) {
             UIGroup uiGroup = new UIGroup();
             features.ForEach(f => uiGroup.Features.Add(f));
             return uiGroup;
         }
-
-        public static ContextValue CreateContextValueRank(AbilityRankType value = AbilityRankType.Default) => value.CreateContextValue();
-        public static ContextValue CreateContextValue(this AbilityRankType value) {
-            return new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = value };
-        }
-        public static ContextValue CreateContextValue(this AbilitySharedValue value) {
-            return new ContextValue() { ValueType = ContextValueType.Shared, ValueShared = value };
-        }
+        /// <summary>
+        /// Creates a new action list populated with the supplied actions.
+        /// </summary>
+        /// <param name="actions">
+        /// Actions to add to the action list.
+        /// </param>
+        /// <returns>
+        /// New action list filled with the supplied actions.
+        /// </returns>
         public static ActionList CreateActionList(params GameAction[] actions) {
             if (actions == null || actions.Length == 1 && actions[0] == null) actions = Array.Empty<GameAction>();
             return new ActionList() { Actions = actions };
         }
-#if false
-        public static ContextActionSavingThrow CreateActionSavingThrow(this SavingThrowType savingThrow, params GameAction[] actions) {
-            var c = Create<ContextActionSavingThrow>();
-            c.Type = savingThrow;
-            c.Actions = CreateActionList(actions);
-            return c;
-        }
-        public static ContextActionConditionalSaved CreateConditionalSaved(GameAction[] success, GameAction[] failed) {
-            var c = Create<ContextActionConditionalSaved>();
-            c.Succeed = CreateActionList(success);
-            c.Failed = CreateActionList(failed);
-            return c;
-        }
-#endif
-
+        /// <summary>
+        /// Creates a new localized string.
+        /// </summary>
+        /// <param name="simpleName">
+        /// name used to refer to the string in the MultiLocalization pack.
+        /// </param>
+        /// <param name="text">
+        /// string that the new localized string will contain.
+        /// </param>
+        /// <param name="locale">
+        /// locale that the text will be created for.
+        /// </param>
+        /// <param name="shouldProcess">
+        /// Determines if the localized string should have tags added to it.
+        /// </param>
+        /// <returns>
+        /// New Localized String built with supplied arguments.
+        /// </returns>
         public static LocalizedString CreateString(string simpleName, string text, Locale locale = Locale.enGB, bool shouldProcess = false) {
             // See if we used the text previously.
             // (It's common for many features to use the same localized text.
@@ -131,41 +233,73 @@ namespace TabletopTweaks.Core.Utilities {
             if (ModSettings.ModLocalizationPack.TryGetText(strippedText, out multiLocalized)) {
                 return multiLocalized.LocalizedString;
             }
-#if false
-            if (ModSettings.ModLocalizationPack.Ids.TryGetValue(id, out multiLocalized)) {
-#if DEBUG
-                multiLocalized.SetText(locale, text.StripHTML().StripEncyclopediaTags());
-                multiLocalized.ProcessTemplates = shouldProcess;
-#endif
-                return multiLocalized.LocalizedString;
-            }
-#endif
             multiLocalized = new MultiLocalizationPack.MultiLocaleString(simpleName, strippedText, shouldProcess, locale);
             Main.LogDebug($"WARNING: Generated New Localizaed String: {multiLocalized.Key}:{multiLocalized.SimpleName}");
             ModSettings.ModLocalizationPack.AddString(multiLocalized);
             return multiLocalized.LocalizedString;
         }
-#if false
-        public static T CreateCopy<T>(this T original, Action<T> action = null) where T : UnityEngine.Object {
-            var clone = UnityEngine.Object.Instantiate(original);
-            if (action != null) {
-                action(clone);
-            }
-            return clone;
-        }
-#endif
+        /// <summary>
+        /// Creates a new ContextRankConfig based on the supplied arguments.
+        /// </summary>
+        /// <param name="baseValueType">
+        /// Base Value Type for the ContextRankConfig.
+        /// </param>
+        /// <param name="progression">
+        /// Progression type for the ContextRankConfig.
+        /// </param>
+        /// <param name="AbilityRankType">
+        /// Ability Rank Type for the ContextRankConfig.
+        /// </param>
+        /// <param name="min">
+        /// Minimum value to use use for the ContextRankConfig. If supplied UseMin is set to true. 
+        /// </param>
+        /// <param name="max">
+        /// Maximum value to use use for the ContextRankConfig. If supplied UseMax is set to true.
+        /// </param>
+        /// <param name="startLevel">
+        /// Start Value for the ContextRankConfig.
+        /// </param>
+        /// <param name="stepLevel">
+        /// Step Level for the ContextRankConfig.
+        /// </param>
+        /// <param name="exceptClasses">
+        /// Classes to exclude for the ContextRankConfig.
+        /// </param>
+        /// <param name="stat">
+        /// Stat to use for the ContextRankConfig.
+        /// </param>
+        /// <param name="customProperty">
+        /// Custom Property to use for the ContextRankConfig.
+        /// </param>
+        /// <param name="classes">
+        /// Classes to use for the ContextRankConfig.
+        /// </param>
+        /// <param name="archetypes">
+        /// Archetypes to use for the ContextRankConfig.
+        /// </param>
+        /// <param name="archetype">
+        /// Archetype to use for the ContextRankConfig.
+        /// </param>
+        /// <param name="feature">
+        /// Feature to use for the ContextRankConfig.
+        /// </param>
+        /// <param name="featureList">
+        /// Features to use for the ContextRankConfig.
+        /// </param>
+        /// <returns>
+        /// New ContextRankConfig configured with supplied arguments.
+        /// </returns>
         public static ContextRankConfig CreateContextRankConfig(
             ContextRankBaseValueType baseValueType = ContextRankBaseValueType.CasterLevel,
             ContextRankProgression progression = ContextRankProgression.AsIs,
-            AbilityRankType type = AbilityRankType.Default,
+            AbilityRankType AbilityRankType = AbilityRankType.Default,
             int? min = null, int? max = null, int startLevel = 0, int stepLevel = 0,
             bool exceptClasses = false, StatType stat = StatType.Unknown,
             BlueprintUnitProperty customProperty = null,
             BlueprintCharacterClass[] classes = null, BlueprintArchetype[] archetypes = null, BlueprintArchetype archetype = null,
-            BlueprintFeature feature = null, BlueprintFeature[] featureList = null,
-            (int, int)[] customProgression = null) {
+            BlueprintFeature feature = null, BlueprintFeature[] featureList = null) {
             var config = new ContextRankConfig() {
-                m_Type = type,
+                m_Type = AbilityRankType,
                 m_BaseValueType = baseValueType,
                 m_Progression = progression,
                 m_UseMin = min.HasValue,
@@ -185,11 +319,33 @@ namespace TabletopTweaks.Core.Utilities {
             };
             return config;
         }
+        /// <summary>
+        /// Creates a generic ContextRankConfig and initializes with the supplied action.
+        /// </summary>
+        /// <param name="init">
+        /// Action to initialize created ContextRankConfig.
+        /// </param>
+        /// <returns>
+        /// ContextRankConfig initialized by the supplied Action.
+        /// </returns>
         public static ContextRankConfig CreateContextRankConfig(Action<ContextRankConfig> init) {
             var config = CreateContextRankConfig();
             init?.Invoke(config);
             return config;
         }
+        /// <summary>
+        /// Replaces Vanilla Damage Resistance compoents with the TTT rework versions.
+        /// </summary>
+        /// <typeparam name="V">
+        /// Type of the original Damage Resistances.
+        /// </typeparam>
+        /// <typeparam name="N">
+        /// Type of the replacement TTT Damage Resistances.
+        /// </typeparam>
+        /// <param name="blueprint"></param>
+        /// <param name="additionalDamageResistanceConfiguration">
+        /// Action that configures additional details of the replacement TTT Damage Resistance.
+        /// </param>
         public static void ConvertVanillaDamageResistanceToRework<V, N>(
             this BlueprintScriptableObject blueprint,
             Action<N> additionalDamageResistanceConfiguration = null)
