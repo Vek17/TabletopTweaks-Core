@@ -6,7 +6,6 @@ using Kingmaker.Enums;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.NewUnitParts.CustomStatTypes;
 

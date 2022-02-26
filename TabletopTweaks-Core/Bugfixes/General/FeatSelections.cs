@@ -4,7 +4,6 @@ using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Utility;
 using System.Linq;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.General {

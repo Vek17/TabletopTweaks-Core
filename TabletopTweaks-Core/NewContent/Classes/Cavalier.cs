@@ -7,7 +7,6 @@ using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.Utilities;

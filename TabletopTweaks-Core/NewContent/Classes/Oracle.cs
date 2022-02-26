@@ -2,7 +2,6 @@
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 

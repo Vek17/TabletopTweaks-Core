@@ -7,7 +7,6 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.TurnBasedMode.Controllers;
 using Kingmaker.View.Equipment;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;

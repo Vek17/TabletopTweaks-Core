@@ -11,7 +11,6 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Utility;
 using System;
 using System.Linq;
-using TabletopTweaks.Core.Extensions;
 
 namespace TabletopTweaks.Core.Utilities {
     static class FeatTools {

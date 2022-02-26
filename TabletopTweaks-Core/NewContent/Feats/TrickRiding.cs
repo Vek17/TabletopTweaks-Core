@@ -4,7 +4,6 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
 

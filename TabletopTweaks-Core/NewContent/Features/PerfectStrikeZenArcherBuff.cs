@@ -3,7 +3,6 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Mechanics;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Features {

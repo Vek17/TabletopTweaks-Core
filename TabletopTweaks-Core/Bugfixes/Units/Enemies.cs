@@ -5,8 +5,8 @@ using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.Utilities;
 using static Kingmaker.UI.GenericSlot.EquipSlotBase;
 
 namespace TabletopTweaks.Core.Bugfixes.Units {

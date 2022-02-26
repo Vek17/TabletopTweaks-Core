@@ -4,7 +4,6 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Enums;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;

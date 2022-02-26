@@ -7,7 +7,6 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Enums;
 using Kingmaker.Utility;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Feats {

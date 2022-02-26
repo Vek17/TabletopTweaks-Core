@@ -1,7 +1,6 @@
 ﻿using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Components;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Bloodlines {

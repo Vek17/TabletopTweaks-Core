@@ -6,7 +6,6 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Utility;
 using System.Linq;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 

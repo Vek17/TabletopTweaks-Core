@@ -1,7 +1,6 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 
 namespace TabletopTweaks.Core.Utilities {

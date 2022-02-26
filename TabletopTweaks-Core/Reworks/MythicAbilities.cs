@@ -14,7 +14,6 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;

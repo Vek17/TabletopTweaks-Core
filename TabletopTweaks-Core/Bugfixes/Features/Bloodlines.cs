@@ -11,7 +11,6 @@ using Kingmaker.UnitLogic.FactLogic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Features {
@@ -412,7 +411,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                     };
                 });
                 bloodline.RemoveComponents<Prerequisite>();
-                bloodline.AddPrerequisite(requisiteFeature);
+                bloodline.AddPrerequisites(requisiteFeature);
                 bloodline.AddComponents(noBloodline, addFacts);
                 Main.LogPatch("Patched", bloodline);
                 AddSaveGamePatch(bloodline, requisite);

@@ -6,7 +6,6 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using System;
 using System.Collections.Generic;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using UnityEngine;
 

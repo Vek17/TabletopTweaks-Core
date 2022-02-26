@@ -1,5 +1,4 @@
 ﻿using Kingmaker.Blueprints.Items.Ecnchantments;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 

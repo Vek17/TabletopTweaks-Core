@@ -18,7 +18,6 @@ using Kingmaker.UnitLogic.Mechanics.Properties;
 using System;
 using System.Collections.Generic;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
 using TabletopTweaks.Core.NewComponents.Properties;

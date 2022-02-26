@@ -5,7 +5,6 @@ using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Designers.Mechanics.Facts;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Archetypes {

@@ -15,7 +15,6 @@ using Kingmaker.UnitLogic.Mechanics.Conditions;
 using System.Collections.Generic;
 using System.Linq;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
@@ -53,7 +52,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     PerfectStrikeAbility.RemoveComponents<AbilityEffectRunAction>();
                     PerfectStrikeAbility.AddComponent<AbilityEffectRunAction>();
                     PerfectStrikeAbility.GetComponent<AbilityEffectRunAction>()
-                        .AddAction(Helpers.Create<Conditional>(a => {
+                        .AddAction<Conditional>(a => {
                             a.ConditionsChecker = new ConditionsChecker() {
                                 Conditions = new Condition[] {
                                     Helpers.Create<ContextConditionHasFact>( c => {
@@ -90,7 +89,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                                     })
                                 }
                             };
-                        }));
+                        });
                     PerfectStrikeAbility.GetComponent<AbilityCasterHasNoFacts>()
                         .m_Facts = new BlueprintUnitFactReference[] {
                             PerfectStrikeOwnerBuff.ToReference<BlueprintUnitFactReference>(),

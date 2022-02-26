@@ -19,16 +19,25 @@ using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Localization;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
 
 namespace TabletopTweaks.Core.Utilities {
     public static class Helpers {
+        /// <summary>
+        /// Executes an action on the called object.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="run">
+        /// Action that is run on the object.
+        /// </param>
+        public static void TemporaryContext<T>(this T obj, Action<T> run) {
+            run?.Invoke(obj);
+        }
         public static T Create<T>(Action<T> init = null) where T : new() {
             var result = new T();
             init?.Invoke(result);
@@ -65,28 +74,6 @@ namespace TabletopTweaks.Core.Utilities {
 
         public static T CreateCopy<T>(T original, Action<T> init = null) {
             var result = (T)ObjectDeepCopier.Clone(original);
-            init?.Invoke(result);
-            return result;
-        }
-
-        public static T CreateCopy<T>(this T original, string name, Action<T> init = null) where T : SimpleBlueprint {
-            var result = (T)ObjectDeepCopier.Clone(original);
-            result.TemporaryContext(bp => {
-                bp.name = name;
-                bp.AssetGuid = ModSettings.Blueprints.GetGUID(name);
-            });
-            Resources.AddBlueprint(result);
-            init?.Invoke(result);
-            return result;
-        }
-
-        public static T CreateCopy<T>(this T original, string name, BlueprintGuid masterId, Action<T> init = null) where T : SimpleBlueprint {
-            var result = (T)ObjectDeepCopier.Clone(original);
-            result.TemporaryContext(bp => {
-                bp.name = name;
-                bp.AssetGuid = ModSettings.Blueprints.GetDerivedGUID(name, masterId, original.AssetGuid);
-            });
-            Resources.AddBlueprint(result);
             init?.Invoke(result);
             return result;
         }
@@ -158,45 +145,6 @@ namespace TabletopTweaks.Core.Utilities {
             ModSettings.ModLocalizationPack.AddString(multiLocalized);
             return multiLocalized.LocalizedString;
         }
-
-        public static FastRef<T, S> CreateFieldGetter<T, S>(string name) {
-            return new FastRef<T, S>(HarmonyLib.AccessTools.FieldRefAccess<T, S>(HarmonyLib.AccessTools.Field(typeof(T), name)));
-            //return new FastGetter<T, S>(HarmonyLib.FastAccess.CreateGetterHandler<T, S>(HarmonyLib.AccessTools.Field(typeof(T), name)));
-        }
-        public static void SetField(object obj, string name, object value) {
-            HarmonyLib.AccessTools.Field(obj.GetType(), name).SetValue(obj, value);
-        }
-        public static object GetField(object obj, string name) {
-            return HarmonyLib.AccessTools.Field(obj.GetType(), name).GetValue(obj);
-        }
-        // Parses the lowest 64 bits of the Guid (which corresponds to the last 16 characters).
-        static ulong ParseGuidLow(string id) => ulong.Parse(id.Substring(id.Length - 16), NumberStyles.HexNumber);
-        // Parses the high 64 bits of the Guid (which corresponds to the first 16 characters).
-        static ulong ParseGuidHigh(string id) => ulong.Parse(id.Substring(0, id.Length - 16), NumberStyles.HexNumber);
-        public static string MergeIds(string guid1, string guid2, string guid3 = null) {
-            // Parse into low/high 64-bit numbers, and then xor the two halves.
-            ulong low = ParseGuidLow(guid1);
-            ulong high = ParseGuidHigh(guid1);
-
-            low ^= ParseGuidLow(guid2);
-            high ^= ParseGuidHigh(guid2);
-
-            if (guid3 != null) {
-                low ^= ParseGuidLow(guid3);
-                high ^= ParseGuidHigh(guid3);
-            }
-            return high.ToString("x16") + low.ToString("x16");
-        }
-        public static string DeriveId(string guid1, int number) {
-            // Parse into low/high 64-bit numbers, and then xor the two halves.
-            ulong low = ParseGuidLow(guid1);
-            ulong high = ParseGuidHigh(guid1);
-
-            low ^= (ulong)Math.Abs(number);
-            high ^= (ulong)Math.Abs(number);
-
-            return high.ToString("x16") + low.ToString("x16");
-        }
 #if false
         public static T CreateCopy<T>(this T original, Action<T> action = null) where T : UnityEngine.Object {
             var clone = UnityEngine.Object.Instantiate(original);
@@ -235,27 +183,6 @@ namespace TabletopTweaks.Core.Utilities {
                 m_AdditionalArchetypes = archetypes == null ? Array.Empty<BlueprintArchetypeReference>() : archetypes.Select(c => c.ToReference<BlueprintArchetypeReference>()).ToArray(),
                 m_FeatureList = featureList == null ? Array.Empty<BlueprintFeatureReference>() : featureList.Select(c => c.ToReference<BlueprintFeatureReference>()).ToArray()
             };
-#if false
-            var config = Helpers.Create<ContextRankConfig>(bp => {
-                bp.m_Type = type;
-                bp.m_BaseValueType = baseValueType;
-                bp.m_Progression = progression;
-                bp.m_UseMin = min.HasValue;
-                bp.m_Min = min.GetValueOrDefault();
-                bp.m_UseMax = max.HasValue;
-                bp.m_Max = max.GetValueOrDefault();
-                bp.m_StartLevel = startLevel;
-                bp.m_StepLevel = stepLevel;
-                bp.m_Feature = feature.ToReference<BlueprintFeatureReference>();
-                bp.m_ExceptClasses = exceptClasses;
-                bp.m_CustomProperty = customProperty.ToReference<BlueprintUnitPropertyReference>();
-                bp.m_Stat = stat;
-                bp.m_Class = classes == null ? Array.Empty<BlueprintCharacterClassReference>() : classes.Select(c => c.ToReference<BlueprintCharacterClassReference>()).ToArray();
-                bp.Archetype = archetype.ToReference<BlueprintArchetypeReference>();
-                bp.m_AdditionalArchetypes = archetypes == null ? Array.Empty<BlueprintArchetypeReference>() : archetypes.Select(c => c.ToReference<BlueprintArchetypeReference>()).ToArray();
-                bp.m_FeatureList = featureList == null ? Array.Empty<BlueprintFeatureReference>() : featureList.Select(c => c.ToReference<BlueprintFeatureReference>()).ToArray();
-            });
-#endif
             return config;
         }
         public static ContextRankConfig CreateContextRankConfig(Action<ContextRankConfig> init) {
@@ -263,7 +190,6 @@ namespace TabletopTweaks.Core.Utilities {
             init?.Invoke(config);
             return config;
         }
-
         public static void ConvertVanillaDamageResistanceToRework<V, N>(
             this BlueprintScriptableObject blueprint,
             Action<N> additionalDamageResistanceConfiguration = null)
@@ -289,14 +215,14 @@ namespace TabletopTweaks.Core.Utilities {
                 }
             }
             if (!foundComponent) {
-                Main.Log($"COMPONENT NOT FOUND: {typeof(V).Name} or {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()}");
+                Main.LogDebug($"COMPONENT NOT FOUND: {typeof(V).Name} or {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()}");
             } else {
-                Main.Log($"Rebuilt DR for: {blueprint.AssetGuid} - {blueprint.NameSafe()}");
+                Main.LogDebug($"Rebuilt DR for: {blueprint.AssetGuid} - {blueprint.NameSafe()}");
             }
         }
 
-        private class ObjectDeepCopier {
-            private class ArrayTraverse {
+        internal class ObjectDeepCopier {
+            internal class ArrayTraverse {
                 public int[] Position;
                 private int[] maxLengths;
 
@@ -308,7 +234,7 @@ namespace TabletopTweaks.Core.Utilities {
                     Position = new int[array.Rank];
                 }
 
-                public bool Step() {
+                internal bool Step() {
                     for (int i = 0; i < Position.Length; ++i) {
                         if (Position[i] < maxLengths[i]) {
                             Position[i]++;
@@ -321,7 +247,7 @@ namespace TabletopTweaks.Core.Utilities {
                     return false;
                 }
             }
-            private class ReferenceEqualityComparer : EqualityComparer<Object> {
+            internal class ReferenceEqualityComparer : EqualityComparer<Object> {
                 public override bool Equals(object x, object y) {
                     return ReferenceEquals(x, y);
                 }
@@ -339,11 +265,11 @@ namespace TabletopTweaks.Core.Utilities {
             }
             private static readonly MethodInfo CloneMethod = typeof(Object).GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance);
 
-            public static bool IsPrimitive(Type type) {
+            internal static bool IsPrimitive(Type type) {
                 if (type == typeof(String)) return true;
                 return (type.IsValueType & type.IsPrimitive);
             }
-            public static Object Clone(Object originalObject) {
+            internal static Object Clone(Object originalObject) {
                 return InternalCopy(originalObject, new Dictionary<Object, Object>(new ReferenceEqualityComparer()));
             }
             private static Object InternalCopy(Object originalObject, IDictionary<Object, Object> visited) {
@@ -391,8 +317,4 @@ namespace TabletopTweaks.Core.Utilities {
             }
         }
     }
-    public delegate ref S FastRef<T, S>(T source = default);
-    public delegate void FastSetter<T, S>(T source, S value);
-    public delegate S FastGetter<T, S>(T source);
-    public delegate object FastInvoke(object target, params object[] paramters);
 }

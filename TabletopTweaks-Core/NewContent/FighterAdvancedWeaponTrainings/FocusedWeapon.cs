@@ -5,7 +5,6 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 
@@ -50,7 +49,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                         FocusedWeaponToggleAbility.ToReference<BlueprintUnitFactReference>(),
                     };
                 }));
-                bp.AddPrerequisite(Helpers.Create<PrerequisiteClassLevel>(c => {
+                bp.AddPrerequisites(Helpers.Create<PrerequisiteClassLevel>(c => {
                     c.m_CharacterClass = FighterClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 9;
                 }));

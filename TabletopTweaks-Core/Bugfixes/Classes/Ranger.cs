@@ -9,7 +9,6 @@ using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
@@ -59,7 +58,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         Main.LogPatch("Patched", FavoriteEnemy);
                     }
                     void AddPrerequisite(BlueprintFeature FavoriteEnemy) {
-                        FavoriteEnemy.AddPrerequisite(Helpers.Create<PrerequisiteFeature>(c => {
+                        FavoriteEnemy.AddPrerequisites(Helpers.Create<PrerequisiteFeature>(c => {
                             c.Group = Prerequisite.GroupType.All;
                             c.m_Feature = FavoriteEnemy.ToReference<BlueprintFeatureReference>();
                         }));
@@ -81,8 +80,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                             ValueType = ContextValueType.Rank
                         };
                     }));
-                    MasterSpyTrapfindingFeature.SetDescription("An espionage expert gets a {g|Encyclopedia:Bonus}bonus{/g} equal to 1/2 her "
-                        + "level on {g|Encyclopedia:Perception}Perception checks{/g} and {g|Encyclopedia:Trickery}Trickery checks{/g}.");
+                    MasterSpyTrapfindingFeature.SetDescription("An espionage expert gets a bonus equal to 1/2 her "
+                        + "level on Perception checks and Trickery checks.");
                     Main.LogPatch("Patched", MasterSpyTrapfindingFeature);
                 }
             }

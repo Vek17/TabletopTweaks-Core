@@ -2,7 +2,6 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 

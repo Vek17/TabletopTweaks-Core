@@ -38,7 +38,6 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.NewUnitParts;

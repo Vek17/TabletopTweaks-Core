@@ -4,7 +4,6 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;

@@ -3,7 +3,6 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.UnitLogic.Mechanics.Properties;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents.Properties;
 using TabletopTweaks.Core.Utilities;
 

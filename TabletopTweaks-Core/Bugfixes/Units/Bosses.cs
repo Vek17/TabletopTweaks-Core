@@ -3,7 +3,7 @@ using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Units {
     static class Bosses {

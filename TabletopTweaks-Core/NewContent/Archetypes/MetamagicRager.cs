@@ -18,7 +18,6 @@ using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;

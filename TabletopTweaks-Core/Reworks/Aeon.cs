@@ -26,7 +26,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.MechanicsChanges;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.NewComponents.Properties;

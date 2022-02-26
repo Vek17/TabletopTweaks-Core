@@ -2,7 +2,6 @@
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Mechanics;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.AlternateCapstones {

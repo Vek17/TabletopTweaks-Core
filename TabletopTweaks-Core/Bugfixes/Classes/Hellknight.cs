@@ -4,7 +4,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.JsonSystem;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
     class Hellknight {

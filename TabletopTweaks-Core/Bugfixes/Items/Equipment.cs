@@ -20,7 +20,6 @@ using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.Utility;
 using System.Linq;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;

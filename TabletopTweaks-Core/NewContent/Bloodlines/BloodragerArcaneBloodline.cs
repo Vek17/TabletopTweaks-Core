@@ -11,7 +11,6 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using System.Collections.Generic;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents.Properties;
 using TabletopTweaks.Core.Utilities;
 

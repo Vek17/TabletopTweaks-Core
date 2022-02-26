@@ -3,8 +3,8 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.Abilities;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Reworks {
     static class Feats {

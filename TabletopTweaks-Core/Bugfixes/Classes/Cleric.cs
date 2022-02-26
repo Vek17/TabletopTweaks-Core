@@ -4,7 +4,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
     static class Cleric {

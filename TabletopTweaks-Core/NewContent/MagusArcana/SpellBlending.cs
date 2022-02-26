@@ -3,7 +3,6 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -58,7 +57,7 @@ namespace TabletopTweaks.Core.NewContent.MagusArcana {
                     c.SpellLevelOffset = 1;
                     c.Count = 2;
                 });
-                bp.AddPrerequisite(Helpers.Create<PrerequisiteClassSpellLevel>(c => {
+                bp.AddPrerequisites(Helpers.Create<PrerequisiteClassSpellLevel>(c => {
                     c.m_CharacterClass = MagusClass.ToReference<BlueprintCharacterClassReference>();
                     c.RequiredSpellLevel = 2;
                 }));

@@ -13,7 +13,6 @@ using Kingmaker.UnitLogic.Mechanics.Conditions;
 using System.Collections.Generic;
 using System.Linq;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {

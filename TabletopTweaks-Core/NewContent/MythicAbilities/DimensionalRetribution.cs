@@ -8,7 +8,6 @@ using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Linq;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 

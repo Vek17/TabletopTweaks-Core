@@ -6,7 +6,6 @@ using Kingmaker.UI.UnitSettings.Blueprints;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;

@@ -13,7 +13,6 @@ using Kingmaker.UnitLogic.Mechanics.Actions;
 using System.Collections.Generic;
 using System.Linq;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;

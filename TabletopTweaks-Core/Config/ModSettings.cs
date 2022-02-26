@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Reflection;
 using TabletopTweaks.Core.Localization;
 using static UnityModManagerNet.UnityModManager;
 
 namespace TabletopTweaks.Core.Config {
+    [Obsolete("Needs to be replaced with instance version")]
     static class ModSettings {
         public static ModEntry ModEntry;
         public static Fixes Fixes;

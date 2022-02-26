@@ -3,7 +3,6 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Items.Armors;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Features {

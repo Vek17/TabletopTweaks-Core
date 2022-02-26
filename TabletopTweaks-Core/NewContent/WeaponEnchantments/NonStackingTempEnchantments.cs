@@ -1,6 +1,5 @@
 ﻿using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.Designers.Mechanics.Facts;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.WeaponEnchantments {

@@ -2,7 +2,6 @@
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -14,7 +13,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.SetName("Extra Mercy");
                 bp.SetDescription("Select one additional mercy for which you qualify. " +
                     "When you use lay on hands to heal damage to one target, it also receives the additional effects of this mercy.");
-                bp.AddPrerequisite(Helpers.Create<PrerequisiteNoFeature>(c => {
+                bp.AddPrerequisites(Helpers.Create<PrerequisiteNoFeature>(c => {
                     c.m_Feature = bp.ToReference<BlueprintFeatureReference>();
                 }));
             });

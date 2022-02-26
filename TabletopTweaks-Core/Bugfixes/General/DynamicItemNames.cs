@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.General {
     static class DynamicItemNames {

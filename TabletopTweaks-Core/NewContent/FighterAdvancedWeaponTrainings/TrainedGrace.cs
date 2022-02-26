@@ -3,7 +3,6 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 
@@ -29,11 +28,11 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                 bp.AddComponent(Helpers.Create<TrainedGraceComponent>(c => {
                     c.MeleeOnly = true;
                 }));
-                bp.AddPrerequisite(Helpers.Create<PrerequisiteClassLevel>(c => {
+                bp.AddPrerequisites(Helpers.Create<PrerequisiteClassLevel>(c => {
                     c.m_CharacterClass = FighterClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 9;
                 }));
-                bp.AddPrerequisite(Helpers.Create<PrerequisiteFeature>(c => {
+                bp.AddPrerequisites(Helpers.Create<PrerequisiteFeature>(c => {
                     c.m_Feature = WeaponFinesse.ToReference<BlueprintFeatureReference>();
                 }));
             });

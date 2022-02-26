@@ -9,7 +9,6 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.Utility;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 

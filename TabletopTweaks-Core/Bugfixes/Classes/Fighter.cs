@@ -17,7 +17,6 @@ using Kingmaker.Utility;
 using System;
 using System.Linq;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
 
@@ -204,7 +203,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
 
                     void PatchPrerequisites(BlueprintFeature AdvancedWeaponTraining) {
                         AdvancedWeaponTraining.GetComponent<PrerequisiteFeature>().Group = Prerequisite.GroupType.Any;
-                        AdvancedWeaponTraining.AddPrerequisite(Helpers.Create<PrerequisiteFeature>(c => {
+                        AdvancedWeaponTraining.AddPrerequisites(Helpers.Create<PrerequisiteFeature>(c => {
                             c.m_Feature = TwoHandedFighterWeaponTraining.ToReference<BlueprintFeatureReference>();
                             c.Group = Prerequisite.GroupType.Any;
                         }));

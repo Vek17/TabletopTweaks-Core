@@ -7,7 +7,6 @@ using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem.Stats;
 using System.Linq;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.Utilities;
 

@@ -2,7 +2,6 @@
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {

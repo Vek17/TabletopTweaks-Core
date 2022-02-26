@@ -20,7 +20,6 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Utility;
 using System.Linq;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.Utilities;
 
@@ -67,7 +66,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                     }
                 });
                 BloodlineAscendance.RemoveComponents<PrerequisiteFeature>();
-                BloodlineAscendance.AddPrerequisite(Helpers.Create<PrerequisiteFeaturesFromList>(c => {
+                BloodlineAscendance.AddPrerequisites(Helpers.Create<PrerequisiteFeaturesFromList>(c => {
                     c.m_Features = new BlueprintFeatureReference[] {
                         Resources.GetBlueprint<BlueprintFeature>("24bef8d1bee12274686f6da6ccbc8914").ToReference<BlueprintFeatureReference>(),    // SorcererBloodlineSelection
                         Resources.GetBlueprint<BlueprintFeature>("7bda7cdb0ccda664c9eb8978cf512dbc").ToReference<BlueprintFeatureReference>(),    // SeekerBloodlineSelection
@@ -87,7 +86,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 BlueprintFeatureSelection SecondBloodline = Resources.GetBlueprint<BlueprintFeatureSelection>("3cf2ab2c320b73347a7c21cf0d0995bd");
 
                 SecondBloodline.RemoveComponents<PrerequisiteFeature>();
-                SecondBloodline.AddPrerequisite(Helpers.Create<PrerequisiteFeaturesFromList>(c => {
+                SecondBloodline.AddPrerequisites(Helpers.Create<PrerequisiteFeaturesFromList>(c => {
                     c.m_Features = new BlueprintFeatureReference[] {
                         Resources.GetBlueprint<BlueprintFeature>("24bef8d1bee12274686f6da6ccbc8914").ToReference<BlueprintFeatureReference>(),    // SorcererBloodlineSelection
                         Resources.GetBlueprint<BlueprintFeature>("7bda7cdb0ccda664c9eb8978cf512dbc").ToReference<BlueprintFeatureReference>(),    // SeekerBloodlineSelection

@@ -5,7 +5,6 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Core.Extensions;
 
 namespace TabletopTweaks.Core.Utilities {
     static class SpellTools {

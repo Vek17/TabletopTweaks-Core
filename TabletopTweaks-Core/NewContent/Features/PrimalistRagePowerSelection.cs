@@ -1,5 +1,4 @@
 ﻿using Kingmaker.Blueprints.Classes.Selection;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Features {

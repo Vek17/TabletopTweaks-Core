@@ -4,7 +4,6 @@ using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 

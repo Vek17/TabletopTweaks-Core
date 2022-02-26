@@ -24,7 +24,6 @@ using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 

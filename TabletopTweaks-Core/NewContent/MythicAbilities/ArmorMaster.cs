@@ -8,7 +8,6 @@ using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -120,7 +119,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                         ArmorProficiencyGroup.TowerShield
                     };
                 });
-                bp.AddPrerequisite(Helpers.Create<PrerequisiteFeature>(c => {
+                bp.AddPrerequisites(Helpers.Create<PrerequisiteFeature>(c => {
                     c.m_Feature = ArmorMasterMediumFeature.ToReference<BlueprintFeatureReference>();
                 }));
             });

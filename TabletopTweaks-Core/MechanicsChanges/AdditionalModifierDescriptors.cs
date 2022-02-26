@@ -6,7 +6,6 @@ using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.MechanicsChanges {

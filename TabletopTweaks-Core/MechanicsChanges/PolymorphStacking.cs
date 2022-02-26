@@ -11,7 +11,6 @@ using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
 

@@ -3,8 +3,8 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.Config;
-using TabletopTweaks.Core.Extensions;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Reworks {
     class MythicFeats {
