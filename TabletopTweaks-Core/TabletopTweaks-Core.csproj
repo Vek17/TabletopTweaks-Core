@@ -204,7 +204,9 @@
     <Compile Include="Config\ICollapseableGroup.cs" />
     <Compile Include="Config\IDisableableGroup.cs" />
     <Compile Include="Config\IUpdatableSettings.cs" />
-    <Compile Include="Config\ModSettingsBase.cs" />
+    <Compile Include="ModLogic\ModContextTTTCore.cs" />
+    <Compile Include="ModLogic\ModLogger.cs" />
+    <Compile Include="ModLogic\ModContextBase.cs" />
     <Compile Include="Config\NestedSettingGroup.cs" />
     <Compile Include="Config\SettingGroup.cs" />
     <Compile Include="Utilities\BlueprintExtentions.cs" />

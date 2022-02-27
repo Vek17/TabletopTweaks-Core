@@ -1,4 +1,7 @@
 ﻿using HarmonyLib;
+using Kingmaker.EntitySystem.Stats;
+using Kingmaker.Enums;
+using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.Utilities;
 using UnityModManagerNet;
 
@@ -13,6 +16,12 @@ namespace TabletopTweaks.Homebrew {
             //ModSettings.ModEntry.OnGUI = UMMSettingsUI.OnGUI;
             harmony.PatchAll();
             PostPatchInitializer.Initialize();
+            Helpers.CreateString("test", "");
+            new AddStatBonus() { 
+                Descriptor = ModifierDescriptor.UntypedStackable,
+                Stat = StatType.Dexterity,
+                Value = 2
+            };
             return true;
         }
 
