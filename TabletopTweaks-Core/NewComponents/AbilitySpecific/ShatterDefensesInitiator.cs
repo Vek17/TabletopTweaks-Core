@@ -8,6 +8,9 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics.ContextData;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Custome on attack initiator for shatter defenses.
+    /// </summary>
     [TypeId("52c4991ee89544a2973b7e8b95396aba")]
     public class ShatterDefensesInitiator : EntityFactComponentDelegate,
         IInitiatorRulebookHandler<RuleAttackRoll>,
@@ -42,6 +45,9 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         }
 
         private bool IsValid;
+        /// <summary>
+        /// Actions to run if triggered.
+        /// </summary>
         public ActionList Action;
     }
 }

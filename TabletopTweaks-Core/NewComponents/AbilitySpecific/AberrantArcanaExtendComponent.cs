@@ -10,6 +10,9 @@ using System;
 using System.Linq;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Causes polymorph spells to be extended by 1.5 times. Does not stack with extend metamagic.
+    /// </summary>
     [TypeId("e9cfd3c8b2ee49caada37795d9925af3")]
     public class AberrantArcanaExtendComponent : UnitFactComponentDelegate, IUnitBuffHandler, IGlobalSubscriber, ISubscriber {
 

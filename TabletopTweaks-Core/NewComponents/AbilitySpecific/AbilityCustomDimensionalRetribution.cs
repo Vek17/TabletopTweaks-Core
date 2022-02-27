@@ -10,6 +10,9 @@ using System;
 using System.Collections.Generic;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Custom ability for Dimensional Retribution that causes the caster to teleport to the target and make an attack of opportunity.
+    /// </summary>
     [TypeId("4b22554ea5ff4068ac8ef350e766bc8e")]
     public class AbilityCustomDimensionalRetribution : AbilityCustomDimensionDoor {
         public override bool LookAtTarget {

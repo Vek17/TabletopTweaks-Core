@@ -9,6 +9,9 @@ using Kingmaker.UnitLogic.Buffs;
 using System;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Grants a focus bonus to AC based on 50% of your armor's AC bonus capped at (your mythic rank + 1) / 2.
+    /// </summary>
     [TypeId("e90c706b6fd84f90b4dcd35ef2699483")]
     public class ArmoredMightComponent : UnitFactComponentDelegate,
         IUnitActiveEquipmentSetHandler,

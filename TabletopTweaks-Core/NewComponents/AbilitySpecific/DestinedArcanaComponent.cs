@@ -9,6 +9,9 @@ using Kingmaker.Utility;
 using UnityEngine;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// When a spell is cast, applies a buff based on the spell level of the cast spell.
+    /// </summary>
     [TypeId("080a6418d97c4bd48cd37851b9cfe89e")]
     public class DestinedArcanaComponent : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RuleCastSpell>,
@@ -30,7 +33,9 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         public void OnEventDidTrigger(RuleCastSpell evt) {
 
         }
-
+        /// <summary>
+        /// Buffs applied when a spell is cast. The index of the buff corresponds to the spell level + 1.
+        /// </summary>
         [SerializeField]
         public BlueprintBuffReference[] Buffs;
     }

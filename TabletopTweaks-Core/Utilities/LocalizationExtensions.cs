@@ -5,6 +5,9 @@ using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.Localization;
 
 namespace TabletopTweaks.Core.Utilities {
+    /// <summary>
+    /// Collection of extentions for interacting with localized strings.
+    /// </summary>
     public static class LocalizationExtensions {
         /// <summary>
         /// Updates the name of the archetype to the supplied string.

@@ -4,7 +4,13 @@ using Kingmaker.UnitLogic;
 using TabletopTweaks.Core.NewUnitParts;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
-    public class PrecisionCriticalComponent : UnitFactComponentDelegate, IInitiatorRulebookHandler<RuleCalculateDamage>, IRulebookHandler<RuleCalculateDamage>, ISubscriber, IInitiatorRulebookSubscriber {
+    /// <summary>
+    /// Enables critical damage for precision damage with the specified multiplier.
+    /// </summary>
+    public class PrecisionCriticalComponent : UnitFactComponentDelegate, 
+        IInitiatorRulebookHandler<RuleCalculateDamage>, 
+        IRulebookHandler<RuleCalculateDamage>, 
+        ISubscriber, IInitiatorRulebookSubscriber {
 
         public override void OnTurnOn() {
             base.Owner.Ensure<UnitPartPrecisionCritical>().AddEntry(CriticalMultiplier, Additional, base.Fact);
@@ -27,8 +33,13 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         public void OnEventDidTrigger(RuleCalculateDamage evt) {
         }
-
-        public int CriticalMultiplier;
+        /// <summary>
+        /// Critical multiplier to use for precision damage.
+        /// </summary>
+        public int CriticalMultiplier = 2;
+        /// <summary>
+        /// Allow the multiplier to stack with other Precision Critical increases.
+        /// </summary>
         public bool Additional;
     }
 }

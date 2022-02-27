@@ -23,6 +23,10 @@ using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.NewEvents;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Generates spell conversions for known metamagics for the specified spellbook.
+    /// Conversions cost a specified resource value of 2 * (spell level + metamagic adjustment)
+    /// </summary>
     [TypeId("b522a7a4b3a44772bc5cfbdd55b1e0f9")]
     public class MetaRageComponent : UnitFactComponentDelegate, ISpontaneousConversionHandler {
 
@@ -111,12 +115,17 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             }
             return metamagic.DefaultCost();
         }
-
+        /// <summary>
+        /// Spellbook to generate conversion for.
+        /// </summary>
         public BlueprintSpellbookReference ConvertSpellbook;
+        /// <summary>
+        /// Resource used to cast converted spells.
+        /// </summary>
         public BlueprintAbilityResourceReference RequiredResource;
 
         [HarmonyPatch(typeof(AbilityData), nameof(AbilityData.Name), MethodType.Getter)]
-        static class AbilityData_Name_MetaRage_Patch {
+        internal static class AbilityData_Name_MetaRage_Patch {
             static void Postfix(AbilityData __instance, ref string __result) {
                 switch (__instance) {
                     case MetaRageAbilityData abilityData:

@@ -111,7 +111,6 @@ namespace TabletopTweaks.Core.Localization {
         public List<MultiLocaleString> Strings = new List<MultiLocaleString>();
         private SortedDictionary<string, MultiLocaleString> text;
         private SortedDictionary<string, MultiLocaleString> ids;
-
         /// <summary>
         /// Contains key used for LocalizedString as well as localized text for all supported lanagues.
         /// </summary>

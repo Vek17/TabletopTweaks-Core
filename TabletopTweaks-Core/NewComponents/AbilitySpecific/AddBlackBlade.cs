@@ -7,6 +7,9 @@ using Kingmaker.UnitLogic.Class.LevelUp;
 using TabletopTweaks.Core.NewUnitParts;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Adds a black blade to the fact owner that is assosiated with thier UnitPartBlackBlade.
+    /// </summary>
     [TypeId("446f9e9a24684cbdb77e3b270af7b5dc")]
     public class AddBlackBlade : UnitFactComponentDelegate, IUnitLevelUpHandler {
 

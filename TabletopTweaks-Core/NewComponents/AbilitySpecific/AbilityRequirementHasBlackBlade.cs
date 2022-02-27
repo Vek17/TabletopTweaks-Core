@@ -1,14 +1,21 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.Localization;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
 using TabletopTweaks.Core.NewUnitParts;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Ability Restriction that blocks usage unless the caster has a black blade equiped.
+    /// </summary>
     [TypeId("a0ff3623a0154448a082b1c5ea9898fc")]
     public class AbilityRequirementHasBlackBlade : BlueprintComponent, IAbilityRestriction {
+        [InitializeStaticString]
+        private static readonly LocalizedString UIText = Helpers.CreateString("AbilityRequirementHasBlackBlade.UI", "You must be wielding your Black Blade");
         public string GetAbilityRestrictionUIText() {
-            return $"You must be wielding your Black Blade";
+            return UIText;
         }
 
         public bool IsAbilityRestrictionPassed(AbilityData ability) {

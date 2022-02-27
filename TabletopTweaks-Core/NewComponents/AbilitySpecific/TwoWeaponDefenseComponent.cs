@@ -11,6 +11,9 @@ using Kingmaker.UnitLogic.Buffs.Blueprints;
 using System;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Two Weapon Defense custom logic.
+    /// </summary>
     public class TwoWeaponDefenseComponent : UnitFactComponentDelegate,
         IUnitActiveEquipmentSetHandler,
         IGlobalSubscriber,
@@ -93,8 +96,13 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         public void HandleBuffDidRemoved(Buff buff) {
             UpdateModifier();
         }
-
+        /// <summary>
+        /// Fighting defensivly buff.
+        /// </summary>
         public BlueprintBuffReference m_FightDefensivelyBuff;
+        /// <summary>
+        /// Mythic feature to increase two weapon defense.
+        /// </summary>
         public BlueprintFeatureReference m_MythicBlueprint;
     }
 }

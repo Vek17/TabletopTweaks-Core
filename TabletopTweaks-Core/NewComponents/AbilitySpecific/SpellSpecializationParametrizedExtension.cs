@@ -5,6 +5,9 @@ using Kingmaker.UnitLogic;
 using TabletopTweaks.Core.NewUnitParts;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Adds spells that have Spell Specialization to the Tabletop Tweaks unit part.
+    /// </summary>
     [AllowedOn(typeof(BlueprintParametrizedFeature), false)]
     [TypeId("b104bfacc8a3446ab149fb3241778d8e")]
     public class SpellSpecializationParametrizedExtension : UnitFactComponentDelegate {

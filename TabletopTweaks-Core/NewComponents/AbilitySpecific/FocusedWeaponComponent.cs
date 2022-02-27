@@ -6,6 +6,9 @@ using Kingmaker.UnitLogic;
 using TabletopTweaks.Core.NewUnitParts;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Adds an weapon category as a Focused weapon. This category is defined by the feature parameter.
+    /// </summary>
     [AllowedOn(typeof(BlueprintParametrizedFeature))]
     [TypeId("fd74a9c62e844ac09f9aa5ce81a427cc")]
     public class FocusedWeaponComponent : UnitFactComponentDelegate {

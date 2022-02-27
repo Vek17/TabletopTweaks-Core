@@ -10,6 +10,9 @@ using Kingmaker.UnitLogic.Parts;
 using TabletopTweaks.Core.NewUnitParts;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Overides focuses weapon's damage dice based on the focused weapon damage formula.
+    /// </summary>
     [AllowedOn(typeof(BlueprintUnitFact))]
     [TypeId("a945c1d2b2d44247bd37d651665d4f54")]
     public class FocusedWeaponDamageComponent : UnitFactComponentDelegate,

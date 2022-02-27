@@ -3,6 +3,9 @@ using Kingmaker.UnitLogic;
 using TabletopTweaks.Core.NewUnitParts;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Custom spend logic for Aeon Gazes to be attached to assosiated buffs.
+    /// </summary>
     [TypeId("1034d09d808c4a39b9d59c8a3097e126")]
     public class AeonGazeResouceLogic : UnitFactComponentDelegate {
         public override void OnActivate() {

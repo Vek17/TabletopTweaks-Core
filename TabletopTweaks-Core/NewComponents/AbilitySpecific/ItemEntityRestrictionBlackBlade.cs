@@ -7,6 +7,9 @@ using TabletopTweaks.Core.NewComponents.NewBaseTypes;
 using TabletopTweaks.Core.NewUnitParts;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Prevents black blades from being equiped by non owners.
+    /// </summary>
     [AllowedOn(typeof(BlueprintItemWeapon), false)]
     [TypeId("914ecd4aa8a04c24aa8dae7fd9d618de")]
     public class ItemEntityRestrictionBlackBlade : ItemEntityRestriction {

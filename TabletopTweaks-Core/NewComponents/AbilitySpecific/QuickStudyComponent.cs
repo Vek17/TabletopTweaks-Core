@@ -22,6 +22,9 @@ using TabletopTweaks.Core.Utilities;
 using UnityEngine;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Creates quick study conversions for the specified classes and archetypes.
+    /// </summary>
     [TypeId("4515aeab69cc419ba926987dd2cce54f")]
     public class QuickStudyComponent : AbilityApplyEffect, IAbilityRestriction, IAbilityRequiredParameters {
 
@@ -74,7 +77,10 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             var unitBooks = ValidSpellbooks(ability.Caster);
             var validSpellbook = spellbook != null && unitBooks.Contains(spellbook);
 
-            return abilityData != null && validSpellbook && (AnySpellLevel || paramSpellSlot?.SpellLevel <= SpellLevel) && (spellbook.Blueprint.IsArcanist || paramSpellSlot.Available);
+            return abilityData != null 
+                && validSpellbook 
+                && (AnySpellLevel || paramSpellSlot?.SpellLevel <= SpellLevel) 
+                && (spellbook.Blueprint.IsArcanist || paramSpellSlot.Available);
         }
 
         public bool AddAsVarriant(SpellSlot slot, Spellbook book, UnitDescriptor unit) {
@@ -116,7 +122,6 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             return Result.Select(c => unit.DemandSpellbook(c));
         }
 
-        [CanBeNull]
         private static SpellSlot GetNotAvailableSpellSlot(AbilityData ability) {
             if (ability.Spellbook == null) {
                 return null;
@@ -130,17 +135,22 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         }
 
         public bool AnySpellLevel;
-
         [HideIf("AnySpellLevel")]
         public int SpellLevel;
+        /// <summary>
+        /// Classes to create conversions for.
+        /// </summary>
         public BlueprintCharacterClassReference[] CharacterClass;
+        /// <summary>
+        /// Archetypes to create conversions for.
+        /// </summary>
         public BlueprintArchetypeReference[] Archetypes;
         private ContextActionProvokeAttackOfOpportunity ProvokeAoO = Helpers.Create<ContextActionProvokeAttackOfOpportunity>(a => {
             a.ApplyToCaster = true;
         });
 
         [HarmonyPatch(typeof(AbilityData), "GetConversions")]
-        static class AbilityData_GetConversions_QuickStudy_Patch {
+        internal static class AbilityData_GetConversions_QuickStudy_Patch {
             static void Postfix(AbilityData __instance, ref IEnumerable<AbilityData> __result) {
                 List<AbilityData> list = __result.ToList();
                 if (__instance.SpellSlot != null && __instance.Spellbook != null) {
@@ -170,7 +180,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             }
         }
         [HarmonyPatch(typeof(AbilityData), "IsAvailableInSpellbook", MethodType.Getter)]
-        static class AbilityData_IsAvailableInSpellbook_QuickStudy_Patch {
+        internal static class AbilityData_IsAvailableInSpellbook_QuickStudy_Patch {
             static void Postfix(AbilityData __instance, ref bool __result) {
                 if (__instance.Blueprint.GetComponent<QuickStudyComponent>()) {
                     __result = true;

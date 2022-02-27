@@ -10,10 +10,14 @@ using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.Utility;
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Applies an enchantment bonus to armor or shields based on the EnchantLevel context value.
+    /// </summary>
     [AllowMultipleComponents]
     [TypeId("4db6644b48ed43a69e16d8c9b60dd775")]
     public class MagicalVestmentComponent : UnitBuffComponentDelegate<BuffEnchantWornItemData>, IUnitEquipmentHandler {
@@ -29,7 +33,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             }
         }
 
-        private int EnhancementBonus => EnchantLevel.Calculate(base.Context);
+        private int EnhancementBonus => Math.Max(5, EnchantLevel.Calculate(base.Context));
 
         public override void OnActivate() {
             if (!base.Data.Enchantments.Empty()) { return; }
@@ -61,11 +65,19 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             }
             OnActivate();
         }
-
+        /// <summary>
+        /// List of Enchantments to apply to equipment. Index corresponds to EnchantLevel - 1.
+        /// </summary>
         [SerializeField]
         [FormerlySerializedAs("Enchantment")]
         public BlueprintItemEnchantmentReference[] m_EnchantmentBlueprints = new BlueprintItemEnchantmentReference[5];
+        /// <summary>
+        /// Enhancment bonus to apply. Is internally limited to +5.
+        /// </summary>
         public ContextValue EnchantLevel;
+        /// <summary>
+        /// Apply to shield instead of armor.
+        /// </summary>
         public bool Shield;
     }
 }

@@ -207,7 +207,6 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.IsClassFeature = true;
                 bp.m_Icon = Icon_BlackBlade_BlackBladeStrike;
                 bp.AddComponent<BlackBladeEffect>(c => {
-                    c.BlackBladeStrike = true;
                     c.Enchantment = BlackBladeStrikeEnchantment.ToReference<BlueprintWeaponEnchantmentReference>();
                 });
             });
@@ -753,7 +752,6 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.IsClassFeature = true;
                 bp.m_Icon = Icon_BlackBlade_LifeDrinkerBlade;
                 bp.AddComponent<BlackBladeEffect>(c => {
-                    c.LifeDrinker = true;
                     c.Enchantment = BlackBladeLifeDrinkerBladeEnchantment.ToReference<BlueprintWeaponEnchantmentReference>();
                 });
             });
@@ -833,7 +831,6 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.IsClassFeature = true;
                 bp.m_Icon = Icon_BlackBlade_LifeDrinkerShared;
                 bp.AddComponent<BlackBladeEffect>(c => {
-                    c.LifeDrinker = true;
                     c.Enchantment = BlackBladeLifeDrinkerSharedEnchantment.ToReference<BlueprintWeaponEnchantmentReference>();
                 });
             });
@@ -918,7 +915,6 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.IsClassFeature = true;
                 bp.m_Icon = Icon_BlackBlade_LifeDrinkerShared;
                 bp.AddComponent<BlackBladeEffect>(c => {
-                    c.LifeDrinker = true;
                     c.Enchantment = BlackBladeLifeDrinkerSharedEnchantment.ToReference<BlueprintWeaponEnchantmentReference>();
                 });
             });
@@ -1017,7 +1013,6 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.IsClassFeature = true;
                 bp.m_Icon = Icon_BlackBlade_LifeDrinkerSelf;
                 bp.AddComponent<BlackBladeEffect>(c => {
-                    c.LifeDrinker = true;
                     c.Enchantment = BlackBladeLifeDrinkerWielderEnchantment.ToReference<BlueprintWeaponEnchantmentReference>();
                 });
             });
@@ -1264,7 +1259,6 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.IsClassFeature = true;
                 bp.m_Icon = icon;
                 bp.AddComponent<BlackBladeEffect>(c => {
-                    c.EnergyAttunement = true;
                     c.Enchantment = enchant.ToReference<BlueprintWeaponEnchantmentReference>();
                 });
             });

@@ -12,6 +12,10 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.Utility;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// On a succsessful dispel check triggers a saving throw DC 10 + CL/2 + Highest Stat Bonus.
+    /// Runs actions based on the result.
+    /// </summary>
     [AllowedOn(typeof(BlueprintFeature), false)]
     [TypeId("ea475e4be98f4eabb361ed8ce58870ad")]
     public class DestructiveDispelComponent : UnitFactComponentDelegate,
@@ -24,7 +28,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         public void OnEventDidTrigger(RuleDispelMagic evt) {
             if (evt.Initiator.IsAlly(evt.Target)) { return; }
             MechanicsContext maybeContext = base.Fact.MaybeContext;
-            if (maybeContext != null && evt.Success && (this.TriggerOnAreaEffectsDispell || evt.AreaEffect == null)) {
+            if (maybeContext != null && evt.Success) {
                 var abilityParams = base.Context.TriggerRule(new RuleCalculateAbilityParams(evt.Initiator, base.OwnerBlueprint, null));
                 using (maybeContext.GetDataScope(evt.Target)) {
                     int dc = 10 + ((evt.CasterLevel + evt.Bonus) / 2) + abilityParams.m_BonusDC + getHighestStatBonus(evt.Initiator, StatType.Intelligence, StatType.Wisdom, StatType.Charisma);
@@ -50,11 +54,13 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             }
             return unit.Stats.GetStat<ModifiableValueAttributeStat>(highestStat).Bonus;
         }
-
-        [InfoBox("Use this bool if you want to trigger action on a caster of an AOE effect. Eg: Ember cast Grease, Nenio dispells it -> Ember is target, hence received 1d6 damage ")]
-        public bool TriggerOnAreaEffectsDispell;
-
+        /// <summary>
+        /// Actions to run if the save was failed.
+        /// </summary>
         public ActionList SaveFailed;
+        /// <summary>
+        /// Actions to run if the save was passed.
+        /// </summary>
         public ActionList SaveSuccees;
     }
 }

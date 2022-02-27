@@ -8,6 +8,9 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Increases the damage of unarmed strikes by one dice step. Additionally increases the DC of combat maneuvers and stunning fist based on the target's size.
+    /// </summary>
     [TypeId("4a2247bdf0cf4b139863f0136abd4af8")]
     public class TitanStrikeComponent : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RuleCalculateWeaponStats>,
@@ -64,7 +67,9 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         public void OnEventDidTrigger(RuleSavingThrow evt) {
         }
-
+        /// <summary>
+        /// Stunning fist buff to increase DC of.
+        /// </summary>
         public BlueprintBuffReference m_StunningFist;
     }
 }

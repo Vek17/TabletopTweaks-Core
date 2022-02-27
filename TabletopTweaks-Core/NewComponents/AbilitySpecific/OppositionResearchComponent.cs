@@ -5,6 +5,9 @@ using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Removes the specified school as an opposition school.
+    /// </summary>
     [AllowMultipleComponents]
     [AllowedOn(typeof(BlueprintFeature), false)]
     [TypeId("12a7be82e1c945239fce42ad3410521f")]
@@ -25,7 +28,9 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
                 spellbook.ExOppositionSchools.RemoveAll(s => s == School);
             }
         }
-
+        /// <summary>
+        /// School to remove as opposition school.
+        /// </summary>
         public SpellSchool School;
     }
 }

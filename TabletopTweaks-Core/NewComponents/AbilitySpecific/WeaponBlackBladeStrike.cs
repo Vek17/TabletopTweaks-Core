@@ -5,6 +5,9 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Adds flat damage bonus to the weapon's damage based on a unit property.
+    /// </summary>
     [TypeId("e3c345a3c9ae4f84a0f86b42101b294d")]
     public class WeaponBlackBladeStrike : WeaponEnchantmentLogic, IInitiatorRulebookHandler<RuleCalculateWeaponStats>,
         IRulebookHandler<RuleCalculateWeaponStats>, ISubscriber, IInitiatorRulebookSubscriber {
@@ -27,7 +30,9 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         public void OnEventDidTrigger(RuleCalculateWeaponStats evt) {
         }
-
+        /// <summary>
+        /// Weilder property to determine bonus with.
+        /// </summary>
         public BlueprintUnitPropertyReference WeilderProperty;
     }
 }

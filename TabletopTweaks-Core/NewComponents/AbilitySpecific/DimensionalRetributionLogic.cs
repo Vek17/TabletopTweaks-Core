@@ -12,6 +12,9 @@ using Kingmaker.Utility;
 using UnityEngine;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Triggers an ability when the owner is targeted by a spell and can make an attack of opportunity.
+    /// </summary>
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("e7a4d4a377d44ab997dbaf1ec66b4b8b")]
     public class DimensionalRetributionLogic : UnitFactComponentDelegate<DweomerLeapLogicData>, IApplyAbilityEffectHandler, IGlobalSubscriber, ISubscriber {
@@ -53,7 +56,9 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         public void OnAbilityEffectAppliedToTarget(AbilityExecutionContext context, TargetWrapper target) {
         }
-
+        /// <summary>
+        /// Ability to cast when triggered.
+        /// </summary>
         [SerializeField]
         public BlueprintAbilityReference m_Ability;
     }

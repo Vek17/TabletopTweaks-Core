@@ -10,6 +10,11 @@ using Kingmaker.UnitLogic.Buffs;
 using Kingmaker.UnitLogic.Parts;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Grants a shield bonus to AC equal to half the owner's weapon enhancement bonus + 1.
+    /// If the owner's weapon training rank is 4 or higher this increaes to the owner's weapon enhancement bonus + 2.
+    /// This bonus does not apply if the owner cannot move or cannot act.
+    /// </summary>
     [TypeId("9f0ac1baab294739912163ea4b318c28")]
     public class DefensiveWeaponTrainingComponent : UnitFactComponentDelegate,
         IUnitActiveEquipmentSetHandler,

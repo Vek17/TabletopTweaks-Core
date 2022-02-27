@@ -9,6 +9,8 @@ using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.MagusArcana {
     static class BroadStudy {
+        private static readonly BlueprintGuid BroadStudyMasterID = ModSettings.Blueprints.GetDerivedMaster("BroadStudyMasterID");
+
         public static void AddBroadStudy() {
             var MagusClass = Resources.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
             var MagusArcanaSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("e9dc4dfc73eaaf94aae27e0ed6cc9ada");
@@ -28,27 +30,30 @@ namespace TabletopTweaks.Core.NewContent.MagusArcana {
                 });
             });
 
-            BroadStudySelection.AddFeatures(CreateAllBroadStudtFeatures(SpellTools.SpellCastingClasses.AllClasses, BroadStudySelection));
+            BroadStudySelection.AddFeatures(CreateAllBroadStudyFeatures(SpellTools.SpellCastingClasses.AllClasses, BroadStudySelection));
 
-            BlueprintFeature[] CreateAllBroadStudtFeatures(BlueprintCharacterClass[] classes, BlueprintFeatureSelection selection) {
+            BlueprintFeature[] CreateAllBroadStudyFeatures(BlueprintCharacterClass[] classes, BlueprintFeatureSelection selection) {
                 return classes
                     .Where(c => c.AssetGuid != SpellTools.SpellCastingClasses.MagusClass.AssetGuid)
                     .Select(characterClass => {
-                        var spellSecret = Helpers.CreateBlueprint<BlueprintFeature>($"BroadStudy{characterClass.name}", bp => {
-                            bp.SetName($"Broad Study — {characterClass.Name}");
-                            bp.m_Description = selection.m_Description;
-                            bp.IsClassFeature = true;
-                            bp.Groups = selection.Groups;
-                            bp.HideNotAvailibleInUI = true;
-                            bp.AddComponent<BroadStudyComponent>(c => {
-                                c.CharacterClass = characterClass.ToReference<BlueprintCharacterClassReference>();
+                        var spellSecret = Helpers.CreateDerivedBlueprint<BlueprintFeature>($"BroadStudy{characterClass.name}",
+                            BroadStudyMasterID,
+                            new SimpleBlueprint[] { characterClass },
+                            bp => {
+                                bp.SetName($"Broad Study — {characterClass.Name}");
+                                bp.m_Description = selection.m_Description;
+                                bp.IsClassFeature = true;
+                                bp.Groups = selection.Groups;
+                                bp.HideNotAvailibleInUI = true;
+                                bp.AddComponent<BroadStudyComponent>(c => {
+                                    c.CharacterClass = characterClass.ToReference<BlueprintCharacterClassReference>();
+                                });
+                                bp.AddPrerequisite<PrerequisiteClassSpellLevel>(c => {
+                                    c.m_CharacterClass = characterClass.ToReference<BlueprintCharacterClassReference>();
+                                    c.RequiredSpellLevel = 1;
+                                    c.HideInUI = true;
+                                });
                             });
-                            bp.AddPrerequisite<PrerequisiteClassSpellLevel>(c => {
-                                c.m_CharacterClass = characterClass.ToReference<BlueprintCharacterClassReference>();
-                                c.RequiredSpellLevel = 1;
-                                c.HideInUI = true;
-                            });
-                        });
                         return spellSecret;
                     }).ToArray();
             }

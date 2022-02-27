@@ -7,6 +7,9 @@ using Kingmaker.Utility;
 using System.Linq;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Increases the die size of sneak attack damage by one step.
+    /// </summary>
     [TypeId("aabbfeda974c455aafe14d05efca4f67")]
     public class MythicSneakAttack : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RulePrepareDamage>,

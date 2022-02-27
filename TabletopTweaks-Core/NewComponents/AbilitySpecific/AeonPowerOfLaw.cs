@@ -6,6 +6,9 @@ using Kingmaker.UnitLogic.Mechanics;
 using static Kingmaker.Designers.Mechanics.Facts.ModifyD20;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    /// <summary>
+    /// Customized version of ModifyD20 to support reroll mechanics with power of law Aeon gaze.
+    /// </summary>
     [TypeId("df847aa8e2f94af2a4efe8c73228dc97")]
     public class AeonPowerOfLaw : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RuleSavingThrow>,
@@ -45,9 +48,20 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
                     return true;
             }
         }
-
+        /// <summary>
+        /// Value to override roll with if the required conditions are met.
+        /// </summary>
         public ContextValue RollResult;
+        /// <summary>
+        /// Value to compare to the base roll to determine if it should be overriden.
+        /// </summary>
         public ContextValue ValueToCompareRoll;
+        /// <summary>
+        /// Condition for overriding the base roll. Is used to compare with RollResult.
+        /// <para>
+        /// Comparision takes place as: Original Roll : RollCondition : RollResult
+        /// </para>
+        /// </summary>
         public RollConditionType RollCondition;
     }
 }
