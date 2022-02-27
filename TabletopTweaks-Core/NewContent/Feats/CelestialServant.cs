@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Designers.Mechanics.Facts;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -33,7 +33,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(AasimarRace);
                 bp.AddPrerequisite<PrerequisitePet>();
             });
-            if (ModSettings.AddedContent.Feats.IsDisabled("CelestialServant")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("CelestialServant")) { return; }
             FeatTools.AddAsFeat(CelestialServant);
         }
     }

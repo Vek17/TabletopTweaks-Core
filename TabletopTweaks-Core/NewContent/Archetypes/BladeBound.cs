@@ -29,7 +29,7 @@ using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
@@ -1236,7 +1236,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             };
             BlackBladeProgression.AddArchetype(BladeBoundArchetype);
 
-            if (ModSettings.AddedContent.Archetypes.IsDisabled("BladeBound")) { return; }
+            if (Main.ModContext.AddedContent.Archetypes.IsDisabled("BladeBound")) { return; }
             MagusClass.m_Archetypes = MagusClass.m_Archetypes.AppendToArray(BladeBoundArchetype.ToReference<BlueprintArchetypeReference>());
             MagusClass.Progression.UIGroups
                 .Where(group => group.Features.Contains(ArcanePoolFeature))

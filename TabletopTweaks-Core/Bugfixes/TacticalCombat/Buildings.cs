@@ -5,7 +5,7 @@ using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -22,7 +22,7 @@ namespace TabletopTweaks.Core.Bugfixes.TacticalCombat {
                 PatchTrainingGrounds();
 
                 void PatchTrainingGrounds() {
-                    if (ModSettings.Fixes.Crusade.Buildings.IsDisabled("TrainingGrounds")) { return; }
+                    if (ModContext.Fixes.Crusade.Buildings.IsDisabled("TrainingGrounds")) { return; }
                     var ArmyBuildingTrainingGrounds = Resources.GetBlueprint<BlueprintFeature>("b1ab3085e85243e8a13f6acf78023920");
                     ArmyBuildingTrainingGrounds.RemoveComponents<OutcomingDamageAndHealingModifier>();
                     ArmyBuildingTrainingGrounds.SetComponents(

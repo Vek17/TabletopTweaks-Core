@@ -4,7 +4,7 @@ using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
@@ -27,7 +27,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchElementalBloodlineDescriptions();
 
                 void PatchDraconicBloodlineDescriptions() {
-                    if (ModSettings.Fixes.Sorcerer.Base.IsDisabled("DraconicBloodlineDescriptions")) { return; }
+                    if (ModContext.Fixes.Sorcerer.Base.IsDisabled("DraconicBloodlineDescriptions")) { return; }
 
                     var BloodlineDraconicBrassArcana = Resources.GetBlueprint<BlueprintFeature>("153e9b6b5b0f34d45ae8e815838aca80");
                     var BloodlineDraconicRedArcana = Resources.GetBlueprint<BlueprintFeature>("a8baee8eb681d53438cc17bd1d125890");
@@ -62,7 +62,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     }
                 }
                 void PatchElementalBloodlineDescriptions() {
-                    if (ModSettings.Fixes.Sorcerer.Base.IsDisabled("PatchElementalBloodlineDescriptions")) { return; }
+                    if (ModContext.Fixes.Sorcerer.Base.IsDisabled("PatchElementalBloodlineDescriptions")) { return; }
 
                     var BloodlineElementalAirArcana = Resources.GetBlueprint<BlueprintFeature>("54ae8876bb5d78242beec0752592a018");
                     var BloodlineElementalAirArcanaAbilily = Resources.GetBlueprint<BlueprintActivatableAbility>("5f6315dfeb74a564f96f460d72f7206c");
@@ -107,7 +107,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchDrawbacks();
 
                 void PatchDrawbacks() {
-                    if (ModSettings.Fixes.Sorcerer.Archetypes["Crossblooded"].IsDisabled("Drawbacks")) { return; }
+                    if (ModContext.Fixes.Sorcerer.Archetypes["Crossblooded"].IsDisabled("Drawbacks")) { return; }
 
                     var CrossbloodedDrawbacks = Resources.GetBlueprint<BlueprintFeature>("f02fd748fecb4cc2a4d7d282c6b3de46");
                     CrossbloodedDrawbacks.SetName("Crossblooded Drawbacks");

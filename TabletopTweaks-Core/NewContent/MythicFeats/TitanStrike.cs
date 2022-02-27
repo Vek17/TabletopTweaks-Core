@@ -1,5 +1,5 @@
 ﻿using Kingmaker.Blueprints.Classes;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 
@@ -20,7 +20,7 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
                 bp.AddComponent<TitanStrikeComponent>();
                 bp.AddPrerequisiteFeature(ImprovedUnarmedStrikeMythicFeat);
             });
-            if (ModSettings.AddedContent.MythicFeats.IsDisabled("TitanStrike")) { return; }
+            if (ModContext.AddedContent.MythicFeats.IsDisabled("TitanStrike")) { return; }
             FeatTools.AddAsMythicFeat(TitanStrikeFeature);
         }
     }

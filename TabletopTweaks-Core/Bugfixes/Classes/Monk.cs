@@ -14,7 +14,7 @@ using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
@@ -39,7 +39,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchPerfectStrike();
 
                 void PatchPerfectStrike() {
-                    if (ModSettings.Fixes.Monk.Archetypes["ZenArcher"].IsDisabled("PerfectStrike")) { return; }
+                    if (ModContext.Fixes.Monk.Archetypes["ZenArcher"].IsDisabled("PerfectStrike")) { return; }
                     var PerfectStrikeAbility = Resources.GetBlueprint<BlueprintAbility>("bc656f51e407aad40bc8d974f3d5b04a");
                     var PerfectStrikeOwnerBuff = Resources.GetBlueprint<BlueprintBuff>("9a41e6d073b42564b9f00ad83b7d3b52");
                     var PerfectStrikeZenArcherBuff = Resources.GetModBlueprint<BlueprintBuff>("PerfectStrikeZenArcherBuff");

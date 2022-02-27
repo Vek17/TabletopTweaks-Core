@@ -4,7 +4,7 @@ using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Mechanics;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -22,7 +22,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchBrimorakAspect();
 
                 void PatchBrimorakAspect() {
-                    if (ModSettings.Fixes.Demon.IsDisabled("BrimorakAspect")) { return; }
+                    if (ModContext.Fixes.Demon.IsDisabled("BrimorakAspect")) { return; }
 
                     var BrimorakAspectEffectBuff = Resources.GetBlueprint<BlueprintBuff>("f154542e0b97908479a578dd7bf6d3f7");
                     var BrimorakAspectEffectProperty = Resources.GetBlueprintReference<BlueprintUnitPropertyReference>("d6a524d190f04a7ca3f920d2f96fa21b");

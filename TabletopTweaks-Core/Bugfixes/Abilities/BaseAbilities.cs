@@ -5,9 +5,9 @@ using Kingmaker.ElementsSystem;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Mechanics.Actions;
-using TabletopTweaks.Core.Config;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.Abilities {
     static class BaseAbilities {
@@ -22,7 +22,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
                 FixCoupDeGrace();
 
                 static void FixCoupDeGrace() {
-                    if (ModSettings.Fixes.BaseFixes.IsDisabled("CoupDeGrace")) { return; }
+                    if (ModContext.Fixes.BaseFixes.IsDisabled("CoupDeGrace")) { return; }
 
                     var CoupDeGraceAbility = ResourcesLibrary.TryGetBlueprint<BlueprintAbility>("32280b137ca642c45be17e2d92898758");
                     CoupDeGraceAbility.SetDescription("As a full-round action, you can use a melee weapon to deliver a coup de grace " +

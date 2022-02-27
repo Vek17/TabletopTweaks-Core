@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 
 namespace TabletopTweaks.Core.Utilities {
@@ -40,7 +40,7 @@ namespace TabletopTweaks.Core.Utilities {
             var result = (T)Helpers.ObjectDeepCopier.Clone(original);
             result.TemporaryContext(bp => {
                 bp.name = name;
-                bp.AssetGuid = ModSettings.Blueprints.GetGUID(name);
+                bp.AssetGuid = Main.ModContext.Blueprints.GetGUID(name);
             });
             Resources.AddBlueprint(result);
             init?.Invoke(result);
@@ -63,7 +63,7 @@ namespace TabletopTweaks.Core.Utilities {
             var result = (T)Helpers.ObjectDeepCopier.Clone(original);
             result.TemporaryContext(bp => {
                 bp.name = name;
-                bp.AssetGuid = ModSettings.Blueprints.GetDerivedGUID(name, masterId, original.AssetGuid);
+                bp.AssetGuid = Main.ModContext.Blueprints.GetDerivedGUID(name, masterId, original.AssetGuid);
             });
             Resources.AddBlueprint(result);
             init?.Invoke(result);

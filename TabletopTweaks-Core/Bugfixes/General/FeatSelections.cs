@@ -3,7 +3,7 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Utility;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.General {
@@ -19,7 +19,7 @@ namespace TabletopTweaks.Core.Bugfixes.General {
                 FixFeatSelections();
 
                 static void FixFeatSelections() {
-                    if (ModSettings.Fixes.BaseFixes.IsDisabled("FeatSelections")) { return; }
+                    if (Main.ModContext.Fixes.BaseFixes.IsDisabled("FeatSelections")) { return; }
 
                     Main.LogHeader("Patching Feat Selections");
                     var allFeats = FeatTools.Selections.BasicFeatSelection.m_AllFeatures;

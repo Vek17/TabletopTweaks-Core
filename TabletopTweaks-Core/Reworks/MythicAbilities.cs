@@ -13,7 +13,7 @@ using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
@@ -32,7 +32,7 @@ namespace TabletopTweaks.Core.Reworks {
                 PatchDimensionalRetribution();
             }
             static void PatchElementalBarrage() {
-                if (ModSettings.Homebrew.MythicAbilities.IsDisabled("ElementalBarrage")) { return; }
+                if (Main.ModContext.Homebrew.MythicAbilities.IsDisabled("ElementalBarrage")) { return; }
                 var ElementalBarrage = Resources.GetBlueprint<BlueprintFeature>("da56a1b21032a374783fdf46e1a92adb");
                 var ElementalBarrageAcidBuff = Resources.GetBlueprint<BlueprintBuff>("823d33bdb23e7c64d9cc1cce9b78fdea");
                 var ElementalBarrageColdBuff = Resources.GetBlueprint<BlueprintBuff>("c5e9031099d3e8d4788d3e51f7ffb8a0");
@@ -128,7 +128,7 @@ namespace TabletopTweaks.Core.Reworks {
                 }
             }
             static void PatchDimensionalRetribution() {
-                if (ModSettings.Homebrew.MythicAbilities.IsDisabled("DimensionalRetribution")) { return; }
+                if (Main.ModContext.Homebrew.MythicAbilities.IsDisabled("DimensionalRetribution")) { return; }
                 var DimensionalRetribution = Resources.GetBlueprint<BlueprintFeature>("939f49ad995ee8d4fad03ad0c7f655d1");
                 var DimensionalRetributionTTTToggleAbility = Resources.GetModBlueprintReference<BlueprintUnitFactReference>("DimensionalRetributionTTTToggleAbility");
 

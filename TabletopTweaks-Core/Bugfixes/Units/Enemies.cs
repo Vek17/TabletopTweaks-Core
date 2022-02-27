@@ -4,7 +4,7 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 using static Kingmaker.UI.GenericSlot.EquipSlotBase;
@@ -23,7 +23,7 @@ namespace TabletopTweaks.Core.Bugfixes.Units {
             }
         }
         static void PatchBalors() {
-            if (ModSettings.Fixes.Units.Enemies.IsDisabled("Balors")) { return; }
+            if (ModContext.Fixes.Units.Enemies.IsDisabled("Balors")) { return; }
 
             var BalorVorpalStrikeFeature = Resources.GetBlueprint<BlueprintFeature>("acc4a16c4088f2546b4237dcbb774f14");
             var BalorVorpalStrikeBuff = Resources.GetBlueprint<BlueprintBuff>("5220bc4386bf3e147b1beb93b0b8b5e7");

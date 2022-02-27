@@ -13,7 +13,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
@@ -69,7 +69,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(IntensifiedSpellFeat);
             });
 
-            if (ModSettings.AddedContent.Feats.IsEnabled("MetamagicIntensifiedSpell")) {
+            if (ModContext.AddedContent.Feats.IsEnabled("MetamagicIntensifiedSpell")) {
                 MetamagicExtention.RegisterMetamagic(
                     metamagic: (Metamagic)CustomMetamagic.Intensified,
                     name: "Intensified",
@@ -91,7 +91,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "to benefit from this feat."
             );
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("MetamagicIntensifiedSpell")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("MetamagicIntensifiedSpell")) { return; }
 
             UpdateSpells();
             AddRodsToVenders();

@@ -10,7 +10,7 @@ using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
 
@@ -22,14 +22,14 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             [PostPatchInitialize]
             public static void Initalize() {
                 if (Initialized) { return; }
-                if (ModSettings.Fixes.BaseFixes.IsEnabled("DisablePolymorphStacking")) {
+                if (Main.ModContext.Fixes.BaseFixes.IsEnabled("DisablePolymorphStacking")) {
                     EventBus.Subscribe(PolymorphStackingRules.Instance);
                 }
-                if (ModSettings.Fixes.BaseFixes.IsEnabled("DisablePolymorphSizeStacking")) {
+                if (Main.ModContext.Fixes.BaseFixes.IsEnabled("DisablePolymorphSizeStacking")) {
                     EventBus.Subscribe(PolymorphSizeRules.PolymorphBuffApply.Instance);
                 }
                 EventBus.Subscribe(PolymorphSizeRules.PolymorphBuffRemove.Instance);
-                if (ModSettings.Fixes.BaseFixes.IsEnabled("DisableSizeStacking")) {
+                if (Main.ModContext.Fixes.BaseFixes.IsEnabled("DisableSizeStacking")) {
                     EventBus.Subscribe(SizeStackingRules.SizeBuffApply.Instance);
                 }
                 EventBus.Subscribe(SizeStackingRules.SizeBuffRemove.Instance);
@@ -119,7 +119,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("DisablePolymorphStacking")) { return; }
+                if (Main.ModContext.Fixes.BaseFixes.IsDisabled("DisablePolymorphStacking")) { return; }
                 Main.LogHeader("Patching Polymorph Effects");
                 AddModifers();
                 RemoveModifiers();

@@ -6,7 +6,7 @@ using Kingmaker.UI.MVVM._PCView.Other;
 using Kingmaker.UI.MVVM._PCView.Party;
 using Kingmaker.UI.MVVM._PCView.ServiceWindows.CharacterInfo.Sections.Abilities;
 using Kingmaker.UI.MVVM._VM.Tooltip.Templates;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 using UnityEngine;
 
@@ -16,7 +16,7 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
         private static class BuffVM_Suppression_Patch {
             [HarmonyPrepare]
             static bool ApplyPatch() {
-                return ModSettings.Fixes.BaseFixes.IsEnabled("SuppressedBuffUI");
+                return ModContext.Fixes.BaseFixes.IsEnabled("SuppressedBuffUI");
             }
             static void Postfix(UnitBuffPartPCView __instance) {
                 foreach (var PCView in __instance.m_BuffList) {
@@ -30,7 +30,7 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
         private static class BuffPCView_Suppression_Patch {
             [HarmonyPrepare]
             static bool ApplyPatch() {
-                return ModSettings.Fixes.BaseFixes.IsEnabled("SuppressedBuffUI");
+                return ModContext.Fixes.BaseFixes.IsEnabled("SuppressedBuffUI");
             }
             static void Prefix(BuffPCView __instance) {
                 if (__instance?.ViewModel?.Buff?.IsSuppressed ?? false) {
@@ -47,7 +47,7 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
 
             [HarmonyPrepare]
             static bool ApplyPatch() {
-                return ModSettings.Fixes.BaseFixes.IsEnabled("SuppressedBuffUI");
+                return ModContext.Fixes.BaseFixes.IsEnabled("SuppressedBuffUI");
             }
 
             [HarmonyPatch("SetupIcon"), HarmonyPostfix]

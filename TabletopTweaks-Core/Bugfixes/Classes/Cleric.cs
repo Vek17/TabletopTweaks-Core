@@ -3,7 +3,7 @@ using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
@@ -23,7 +23,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchGloryDomain();
 
                 void PatchGloryDomain() {
-                    if (ModSettings.Fixes.Cleric.Base.IsDisabled("GloryDomain")) { return; }
+                    if (ModContext.Fixes.Cleric.Base.IsDisabled("GloryDomain")) { return; }
 
                     var GloryDomainBaseBuff = Resources.GetBlueprint<BlueprintBuff>("55edcfff497a1e04a963f72c485da5cb");
                     GloryDomainBaseBuff.RemoveComponents<AddContextStatBonus>(component => component.Stat == StatType.Charisma);

@@ -6,10 +6,11 @@ using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Mechanics;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
     static class Aeon {
@@ -28,12 +29,12 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchPowerOfLaw();
 
                 void PatchAeonDemythication() {
-                    if (ModSettings.Fixes.Aeon.IsDisabled("AeonDemythication")) { return; }
+                    if (ModContext.Fixes.Aeon.IsDisabled("AeonDemythication")) { return; }
                     var AeonDemythicationBuff = Resources.GetBlueprint<BlueprintBuff>("3c8a543e5b4e7154bb2cbe4d102a1604");
                     QuickFixTools.ReplaceSuppression(AeonDemythicationBuff, true);
                 }
                 void PatchAeonTenthLevelImmunities() {
-                    if (ModSettings.Fixes.Aeon.IsDisabled("AeonTenthLevelImmunities")) { return; }
+                    if (ModContext.Fixes.Aeon.IsDisabled("AeonTenthLevelImmunities")) { return; }
                     var AeonTenthLevelImmunities = Resources.GetBlueprint<BlueprintFeature>("711f6abfab877d342af9743a11c8f3aa");
                     AeonTenthLevelImmunities.RemoveComponents<ModifyD20>(c => c.Rule == RuleType.SavingThrow);
                     AeonTenthLevelImmunities.AddComponent<ModifySavingThrowD20>(c => {
@@ -50,7 +51,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     Main.LogPatch(AeonTenthLevelImmunities);
                 }
                 void PatchPowerOfLaw() {
-                    if (ModSettings.Fixes.Aeon.IsDisabled("PowerOfLaw")) { return; }
+                    if (ModContext.Fixes.Aeon.IsDisabled("PowerOfLaw")) { return; }
                     var AeonPowerOfLawGazeAllyBuff = Resources.GetBlueprint<BlueprintBuff>("1bf6049b6068400e8ac4e98e2e07b4f2");
                     var AeonPowerOfLawGazeEnemyBuff = Resources.GetBlueprint<BlueprintBuff>("648edba195d548f496c9367ddb4e2719");
 

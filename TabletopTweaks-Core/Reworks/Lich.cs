@@ -17,7 +17,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.Utilities;
 
@@ -39,7 +39,7 @@ namespace TabletopTweaks.Core.Reworks {
             }
 
             static void PatchDeadlyMagic() {
-                if (ModSettings.Homebrew.MythicReworks.Lich.IsDisabled("DeadlyMagic")) { return; }
+                if (ModContext.Homebrew.MythicReworks.Lich.IsDisabled("DeadlyMagic")) { return; }
 
                 var DeadlyMagicFeature = Resources.GetBlueprint<BlueprintFeature>("47a8a7fa7d4198f449db71cdbe4b8d3e");
                 var DeadlyMagicToggleAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("e72727ff8f28cae47a4cd56655ce7b10");
@@ -66,7 +66,7 @@ namespace TabletopTweaks.Core.Reworks {
             }
 
             static void PatchDecayingTouch() {
-                if (ModSettings.Homebrew.MythicReworks.Lich.IsDisabled("DecayingTouch")) { return; }
+                if (ModContext.Homebrew.MythicReworks.Lich.IsDisabled("DecayingTouch")) { return; }
 
                 var DecayingTouchFeature = Resources.GetBlueprint<BlueprintFeature>("3eb8922c8a9e25048b6689322c5ae131");
                 var PlantType = Resources.GetBlueprintReference<BlueprintUnitFactReference>("706e61781d692a042b35941f14bc41c5");
@@ -217,7 +217,7 @@ namespace TabletopTweaks.Core.Reworks {
             }
 
             static void PatchEclipseChill() {
-                if (ModSettings.Homebrew.MythicReworks.Lich.IsDisabled("EclipseChill")) { return; }
+                if (ModContext.Homebrew.MythicReworks.Lich.IsDisabled("EclipseChill")) { return; }
 
                 var EclipseChillFeature = Resources.GetBlueprint<BlueprintFeature>("731bebb09171d5748b6f08cbe88f8af7");
                 var EclipseChillToggleAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("a34b61de2713f604c9971d640ec50b8a");
@@ -318,7 +318,7 @@ namespace TabletopTweaks.Core.Reworks {
                 Main.LogPatch(EclipseChillResource);
             }
             static void PatchTainedSneakAttack() {
-                if (ModSettings.Homebrew.MythicReworks.Lich.IsDisabled("TainedSneakAttack")) { return; }
+                if (ModContext.Homebrew.MythicReworks.Lich.IsDisabled("TainedSneakAttack")) { return; }
 
                 var TaintedSneakAttackFeature = Resources.GetBlueprint<BlueprintFeature>("e6ce101a94ac9034b8b55c546e74b9dd");
                 var TaintedSneakAttackBuff = Resources.GetBlueprint<BlueprintBuff>("7860e92789511a24dba5906ac8d65f90");

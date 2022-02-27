@@ -18,7 +18,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.NewUnitParts.CustomStatTypes;
@@ -360,7 +360,7 @@ namespace TabletopTweaks.Core.NewContent.Bloodlines {
             BloodlineTools.ApplyPrimalistException(BloodragerAberrantUnusualAnatomy, 12, BloodragerAberrantBloodline);
             BloodlineTools.ApplyPrimalistException(BloodragerAberrantResistance, 16, BloodragerAberrantBloodline);
             BloodlineTools.ApplyPrimalistException(BloodragerAberrantForm, 20, BloodragerAberrantBloodline);
-            if (ModSettings.AddedContent.Bloodlines.IsDisabled("AberrantBloodline")) { return; }
+            if (ModContext.AddedContent.Bloodlines.IsDisabled("AberrantBloodline")) { return; }
             BloodlineTools.RegisterBloodragerBloodline(BloodragerAberrantBloodline, BloodragerAberrantBloodlineWandering);
         }
         public static void AddSorcererAberrantBloodline() {
@@ -844,7 +844,7 @@ namespace TabletopTweaks.Core.NewContent.Bloodlines {
             });
             BloodlineTools.RegisterSorcererFeatSelection(SorcererAberrantFeatSelection, SorcererAberrantBloodline);
 
-            if (ModSettings.AddedContent.Bloodlines.IsDisabled("AberrantBloodline")) { return; }
+            if (ModContext.AddedContent.Bloodlines.IsDisabled("AberrantBloodline")) { return; }
             BloodlineTools.RegisterSorcererBloodline(SorcererAberrantBloodline);
             BloodlineTools.RegisterCrossbloodedBloodline(CrossbloodedAberrantBloodline);
             BloodlineTools.RegisterSeekerBloodline(SeekerAberrantBloodline);

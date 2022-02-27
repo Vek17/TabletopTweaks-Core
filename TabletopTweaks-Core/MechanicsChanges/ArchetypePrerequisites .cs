@@ -13,7 +13,7 @@ using Kingmaker.UnitLogic.Class.LevelUp.Actions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
@@ -24,7 +24,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         [HarmonyPatch(typeof(CharGenClassSelectorItemVM), "GetArchetypesList", typeof(BlueprintCharacterClass))]
         static class CharGenClassSelectorItemVM_GetArchetypeList_Patch {
             static void Postfix(ref List<NestedSelectionGroupEntityVM> __result, CharGenClassSelectorItemVM __instance, BlueprintCharacterClass selectedClass) {
-                //if (!ModSettings.Fixes.EnableArchetypePrerequisites) { return; }
+                //if (!Context.Fixes.EnableArchetypePrerequisites) { return; }
                 List<NestedSelectionGroupEntityVM> list = new List<NestedSelectionGroupEntityVM>();
                 if (selectedClass == null) {
                     __result = list;
@@ -45,7 +45,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         [HarmonyPatch(typeof(CharGenClassPhaseVM), "CreateClassListSelector")]
         static class CharGenClassPhaseVM_CreateClassListSelector_Patch {
             static void Postfix(CharGenClassPhaseVM __instance) {
-                //if (!ModSettings.Fixes.EnableArchetypePrerequisites) { return; }
+                //if (!Context.Fixes.EnableArchetypePrerequisites) { return; }
                 ReferenceArrayProxy<BlueprintCharacterClass, BlueprintCharacterClassReference> referenceArrayProxy = (__instance.LevelUpController.State.Mode == LevelUpState.CharBuildMode.Mythic) ? Game.Instance.BlueprintRoot.Progression.CharacterMythics : Game.Instance.BlueprintRoot.Progression.CharacterClasses;
                 __instance.m_ClassesVMs = (from cls in referenceArrayProxy
                                      where cls.IsDlcAvailable() && (CharGenClassPhaseVM.MeetsPrerequisites(__instance.LevelUpController, cls) || !cls.HideIfRestricted)
@@ -56,7 +56,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         [HarmonyPatch(typeof(BlueprintCharacterClass), "MeetsPrerequisites", new Type[] { typeof(UnitDescriptor), typeof(LevelUpState) })]
         static class BlueprintCharacterClass_MeetsPrerequisites_Patch {
             static void Postfix(ref bool __result, BlueprintCharacterClass __instance, UnitDescriptor unit, LevelUpState state) {
-                //if (!ModSettings.Fixes.EnableArchetypePrerequisites) { return; }
+                //if (!Context.Fixes.EnableArchetypePrerequisites) { return; }
                 bool meetsArchetypePrerequisites = true;
                 int classLevel = unit.Progression.GetClassLevel(__instance);
                 if (classLevel >= 1) {
@@ -75,7 +75,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         [HarmonyPatch(typeof(BlueprintArchetype), "MeetsPrerequisites", new Type[] { typeof(UnitDescriptor), typeof(LevelUpState) })]
         static class BlueprintArchetype_MeetsPrerequisites_Patch {
             static void Postfix(ref bool __result, BlueprintArchetype __instance, UnitDescriptor unit, LevelUpState state) {
-                //if (!ModSettings.Fixes.EnableArchetypePrerequisites) { return; }
+                //if (!Context.Fixes.EnableArchetypePrerequisites) { return; }
                 Main.LogDebug($"{__instance.name}");
                 var temp = __instance.GetComponent<IgnoreClassPrerequisites>();
                 if (__instance.GetComponent<IgnoreClassPrerequisites>() != null) {
@@ -111,7 +111,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         [HarmonyPatch(typeof(BlueprintCharacterClass), "RestrictPrerequisites", new Type[] { typeof(UnitDescriptor), typeof(LevelUpState) })]
         static class BlueprintCharacterClass_RestrictPrerequisites_Patch {
             static void Postfix(BlueprintCharacterClass __instance, UnitDescriptor unit, LevelUpState state) {
-                //if (!ModSettings.Fixes.EnableArchetypePrerequisites) { return; }
+                //if (!Context.Fixes.EnableArchetypePrerequisites) { return; }
                 int classLevel = unit.Progression.GetClassLevel(__instance);
                 if (classLevel >= 1) {
                     var archetypes = unit.Progression.GetClassData(__instance).Archetypes;
@@ -147,7 +147,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         [HarmonyPatch(typeof(TooltipTemplateLevelUp), "AddClassPrerequisites")]
         static class TooltipTemplateLevelUp_AddClassPrerequisites_Patch {
             static bool Prefix(TooltipTemplateLevelUp __instance, List<ITooltipBrick> bricks) {
-                //if (!ModSettings.Fixes.EnableArchetypePrerequisites) { return true; }
+                //if (!Context.Fixes.EnableArchetypePrerequisites) { return true; }
                 if (__instance.ClassInfo.Class == null) { return true; }
                 var unit = __instance.LevelupInfo.Unit;
                 var selectionClass = __instance.ClassInfo.Class;

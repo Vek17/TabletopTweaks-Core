@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.Utilities;
@@ -32,7 +32,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisite<PrerequisiteMythicSpellbook>();
             });
 
-            if (ModSettings.AddedContent.MythicAbilities.IsDisabled("MythicSpellCombat")) { return; }
+            if (ModContext.AddedContent.MythicAbilities.IsDisabled("MythicSpellCombat")) { return; }
             FeatTools.AddAsMythicAbility(MythicSpellCombat);
         }
     }

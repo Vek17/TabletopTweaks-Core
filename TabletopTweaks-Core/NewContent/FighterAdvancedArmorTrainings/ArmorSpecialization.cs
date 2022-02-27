@@ -7,7 +7,7 @@ using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -148,7 +148,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
             });
 
             ArmorSpecializationSelection.AddFeatures(ArmorSpecializationLightFeature, ArmorSpecializationMediumFeature, ArmorSpecializationHeavyFeature);
-            if (ModSettings.AddedContent.FighterAdvancedArmorTraining.IsDisabled("ArmorSpecialization")) { return; }
+            if (ModContext.AddedContent.FighterAdvancedArmorTraining.IsDisabled("ArmorSpecialization")) { return; }
             AdvancedArmorTraining.AddToAdvancedArmorTrainingSelection(ArmorSpecializationSelection);
         }
     }

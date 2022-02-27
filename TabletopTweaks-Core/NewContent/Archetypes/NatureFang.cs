@@ -4,7 +4,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Archetypes {
@@ -125,7 +125,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             DispellingAttackConfig.m_AdditionalArchetypes = DispellingAttackConfig.m_AdditionalArchetypes.AppendToArray(NatureFangArcehtype.ToReference<BlueprintArchetypeReference>());
             DispellingAttackConfig.m_Class = DispellingAttackConfig.m_Class.AppendToArray(DruidClass.ToReference<BlueprintCharacterClassReference>());
 
-            if (ModSettings.AddedContent.Archetypes.IsDisabled("NatureFang")) { return; }
+            if (ModContext.AddedContent.Archetypes.IsDisabled("NatureFang")) { return; }
             DruidClass.m_Archetypes = DruidClass.m_Archetypes.AppendToArray(NatureFangArcehtype.ToReference<BlueprintArchetypeReference>());
 
             DruidClass.Progression.UIGroups = DruidClass.Progression.UIGroups.AppendToArray(

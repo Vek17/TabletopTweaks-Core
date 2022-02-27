@@ -1,5 +1,5 @@
 ﻿using Kingmaker.Blueprints.Classes;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 
@@ -22,7 +22,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 });
             });
 
-            if (ModSettings.AddedContent.MythicAbilities.IsDisabled("PrecisionCritical")) { return; }
+            if (ModContext.AddedContent.MythicAbilities.IsDisabled("PrecisionCritical")) { return; }
             FeatTools.AddAsMythicAbility(PrecisionCritical);
         }
     }

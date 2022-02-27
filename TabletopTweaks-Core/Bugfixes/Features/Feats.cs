@@ -32,7 +32,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
@@ -77,7 +77,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             }
 
             static void PatchAlliedSpellcaster() {
-                if (ModSettings.Fixes.Feats.IsDisabled("AlliedSpellcaster")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("AlliedSpellcaster")) { return; }
 
                 var AlliedSpellcaster = Resources.GetBlueprint<BlueprintFeature>("9093ceeefe9b84746a5993d619d7c86f");
                 AlliedSpellcaster.RemoveComponents<AlliedSpellcaster>();
@@ -90,7 +90,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             }
 
             static void PatchArcaneStrike() {
-                if (ModSettings.Fixes.Feats.IsDisabled("ArcaneStrike")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("ArcaneStrike")) { return; }
 
                 var ArcaneStrikeBuff = Resources.GetBlueprint<BlueprintBuff>("98ac795afd1b2014eb9fdf2b9820808f");
                 var DragonicStrikeAcid = Resources.GetBlueprintReference<BlueprintUnitFactReference>("b7d0c5d733a06e543b35d4e1c88d04f7");
@@ -131,7 +131,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             }
 
             static void PatchBrewPotions() {
-                if (ModSettings.Fixes.Feats.IsDisabled("BrewPotions")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("BrewPotions")) { return; }
 
                 var BrewPotions = Resources.GetBlueprint<BlueprintFeature>("c0f8c4e513eb493408b8070a1de93fc0");
                 BrewPotions.Groups = new FeatureGroup[] { FeatureGroup.Feat };
@@ -140,7 +140,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             }
 
             static void PatchDestructiveDispel() {
-                if (ModSettings.Fixes.Feats.IsDisabled("DestructiveDispel")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("DestructiveDispel")) { return; }
 
                 var DestructiveDispel = Resources.GetBlueprint<BlueprintFeature>("d298e64e14398e848a54db5a2619ba42");
                 var Sickened = Resources.GetBlueprintReference<BlueprintBuffReference>("4e42460798665fd4cb9173ffa7ada323");
@@ -172,7 +172,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             }
 
             static void PatchDestructiveDispelPrerequisites() {
-                if (ModSettings.Fixes.Feats.IsDisabled("DestructiveDispelPrerequisites")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("DestructiveDispelPrerequisites")) { return; }
 
                 var DestructiveDispel = Resources.GetBlueprint<BlueprintFeature>("d298e64e14398e848a54db5a2619ba42");
                 var DispelMagic = Resources.GetBlueprintReference<BlueprintAbilityReference>("92681f181b507b34ea87018e8f7a528a");
@@ -196,7 +196,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             }
 
             static void PatchDispelSynergy() {
-                if (ModSettings.Fixes.Feats.IsDisabled("DispelSynergy")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("DispelSynergy")) { return; }
 
                 var DispelSynergy = Resources.GetBlueprint<BlueprintFeature>("f3e3e29608ba07844ab3cafc4c8e4343");
 
@@ -208,7 +208,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             }
 
             static void PatchMagicalTail() {
-                if (ModSettings.Fixes.Feats.IsDisabled("MagicalTail")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("MagicalTail")) { return; }
 
                 BlueprintFeature magicalTail1 = Resources.GetBlueprint<BlueprintFeature>("5114829572da5a04f896a8c5b67be413");
                 BlueprintFeature magicalTail2 = Resources.GetBlueprint<BlueprintFeature>("c032f65c0bd9f6048a927fb07fc0195d"); // Abilities change for this one
@@ -267,7 +267,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             }
 
             static void PatchCraneWing() {
-                if (ModSettings.Fixes.Feats.IsDisabled("CraneWing")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("CraneWing")) { return; }
 
                 BlueprintBuff CraneStyleBuff = Resources.GetBlueprint<BlueprintBuff>("e8ea7bd10136195478d8a5fc5a44c7da");
                 var FightingDefensivlyTrigger = CraneStyleBuff.GetComponent<AddInitiatorAttackWithWeaponTrigger>();
@@ -279,21 +279,21 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 Main.LogPatch("Patched", CraneStyleBuff);
             }
             static void PatchFencingGrace() {
-                if (ModSettings.Fixes.Feats.IsDisabled("FencingGrace")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("FencingGrace")) { return; }
 
                 var FencingGrace = Resources.GetBlueprint<BlueprintParametrizedFeature>("47b352ea0f73c354aba777945760b441");
                 FencingGrace.ReplaceComponents<DamageGrace>(Helpers.Create<DamageGraceTTT>());
                 Main.LogPatch("Patched", FencingGrace);
             }
             static void PatchSlashingGrace() {
-                if (ModSettings.Fixes.Feats.IsDisabled("SlashingGrace")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("SlashingGrace")) { return; }
 
                 var SlashingGrace = Resources.GetBlueprint<BlueprintParametrizedFeature>("697d64669eb2c0543abb9c9b07998a38");
                 SlashingGrace.ReplaceComponents<DamageGrace>(Helpers.Create<DamageGraceTTT>());
                 Main.LogPatch("Patched", SlashingGrace);
             }
             static void PatchEndurance() {
-                if (ModSettings.Fixes.Feats.IsDisabled("Endurance")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("Endurance")) { return; }
                 var Endurance = Resources.GetBlueprint<BlueprintFeature>("54ee847996c25cd4ba8773d7b8555174");
                 Endurance.SetDescription("Harsh conditions or long exertions do not easily tire you.\nBenefit: You gain +4 bonus on Fortitude " +
                     "saves against fatigue and exhaustion and +2 " +
@@ -331,7 +331,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 Main.LogPatch("Patched", Endurance);
             }
             static void PatchMountedCombat() {
-                if (ModSettings.Fixes.Feats.IsDisabled("MountedCombat")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("MountedCombat")) { return; }
 
                 var MountedCombatBuff = Resources.GetBlueprint<BlueprintBuff>("5008df9965da43c593c98ed7e6cacfc6");
                 var MountedCombatCooldownBuff = Resources.GetBlueprint<BlueprintBuff>("5c9ef8224acdbab4fbaf59c710d0ef23");
@@ -347,7 +347,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 Main.LogPatch("Patched", MountedCombatBuff);
             }
             static void PatchIndomitableMount() {
-                if (ModSettings.Fixes.Feats.IsDisabled("IndomitableMount")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("IndomitableMount")) { return; }
 
                 var IndomitableMount = Resources.GetBlueprint<BlueprintFeature>("68e814f1f3ce55942a52c1dd536eaa5b");
                 var IndomitableMountCooldownBuff = Resources.GetBlueprint<BlueprintBuff>("34762bab68ec86c45a15884b9a9929fc");
@@ -358,7 +358,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 Main.LogPatch("Patched", IndomitableMount);
             }
             static void PatchPersistantMetamagic() {
-                if (ModSettings.Fixes.Feats.IsDisabled("PersistantMetamagic")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("PersistantMetamagic")) { return; }
 
                 var PersistentSpellFeat = Resources.GetBlueprint<BlueprintFeature>("cd26b9fa3f734461a0fcedc81cafaaac");
                 var spells = SpellTools.GetAllSpells();
@@ -384,7 +384,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 }
             }
             static void PatchBolsteredMetamagic() {
-                if (ModSettings.Fixes.Feats.IsDisabled("BolsteredMetamagic")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("BolsteredMetamagic")) { return; }
 
                 var BolsteredSpellFeat = Resources.GetBlueprint<BlueprintFeature>("fbf5d9ce931f47f3a0c818b3f8ef8414");
                 var spells = SpellTools.GetAllSpells();
@@ -406,7 +406,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 }
             }
             static void PatchEmpowerMetamagic() {
-                if (ModSettings.Fixes.Feats.IsDisabled("EmpowerMetamagic")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("EmpowerMetamagic")) { return; }
 
                 var EmpowerSpellFeat = Resources.GetBlueprint<BlueprintFeature>("a1de1e4f92195b442adb946f0e2b9d4e");
                 var spells = SpellTools.GetAllSpells();
@@ -428,7 +428,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 }
             }
             static void PatchMaximizeMetamagic() {
-                if (ModSettings.Fixes.Feats.IsDisabled("MaximizeMetamagic")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("MaximizeMetamagic")) { return; }
 
                 var MaximizeSpellFeat = Resources.GetBlueprint<BlueprintFeature>("7f2b282626862e345935bbea5e66424b");
                 var spells = SpellTools.GetAllSpells();
@@ -450,7 +450,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 }
             }
             static void PatchSelectiveMetamagic() {
-                if (ModSettings.Fixes.Feats.IsDisabled("SelectiveMetamagic")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("SelectiveMetamagic")) { return; }
 
                 var SelectiveSpellFeat = Resources.GetBlueprint<BlueprintFeature>("85f3340093d144dd944fff9a9adfd2f2");
                 var spells = SpellTools.GetAllSpells();
@@ -473,7 +473,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 }
             }
             static void PatchShatterDefenses() {
-                if (ModSettings.Fixes.Feats.IsDisabled("ShatterDefenses")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("ShatterDefenses")) { return; }
 
                 var ShatterDefenses = Resources.GetBlueprint<BlueprintFeature>("61a17ccbbb3d79445b0926347ec07577");
                 var ShatterDefensesBuff = Resources.GetModBlueprint<BlueprintBuff>("ShatterDefensesBuff");
@@ -535,7 +535,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 Main.LogPatch("Patched", ShatterDefenses);
             }
             static void PatchSpellSpecialization() {
-                if (ModSettings.Fixes.Feats.IsDisabled("SpellSpecialization")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("SpellSpecialization")) { return; }
 
                 var SpellSpecializationProgression = Resources.GetBlueprint<BlueprintProgression>("fe9220cdc16e5f444a84d85d5fa8e3d5");
 
@@ -546,7 +546,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 Main.LogPatch("Patched", SpellSpecializationProgression);
             }
             static void PatchSpiritedCharge() {
-                if (ModSettings.Fixes.Feats.IsDisabled("SpiritedCharge")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("SpiritedCharge")) { return; }
 
                 var ChargeBuff = Resources.GetBlueprint<BlueprintBuff>("f36da144a379d534cad8e21667079066");
                 var MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
@@ -569,7 +569,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 Main.LogPatch("Patched", SpiritedChargeBuff);
             }
             static void PatchWeaponFinesse() {
-                if (ModSettings.Fixes.Feats.IsDisabled("WeaponFinesse")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("WeaponFinesse")) { return; }
 
                 var WeaponFinesse = Resources.GetBlueprint<BlueprintFeature>("90e54424d682d104ab36436bd527af09");
 
@@ -580,7 +580,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 Main.LogPatch("Patched", WeaponFinesse);
             }
             static void PatchLunge() {
-                if (ModSettings.Fixes.Feats.IsDisabled("Lunge")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("Lunge")) { return; }
 
                 var LungeFeature = Resources.GetBlueprint<BlueprintFeature>("d41d5bd9a775d7245929256d58a3e03e");
 
@@ -589,7 +589,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 Main.LogPatch("Patched", LungeFeature);
             }
             static void PatchSelectiveMetamagicPrerequisites() {
-                if (ModSettings.Fixes.Feats.IsDisabled("SelectivePrerequisites")) { return; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("SelectivePrerequisites")) { return; }
 
                 var SelectiveSpellFeat = Resources.GetBlueprint<BlueprintFeature>("85f3340093d144dd944fff9a9adfd2f2");
                 SelectiveSpellFeat.AddPrerequisite<PrerequisiteStatValue>(c => {
@@ -633,7 +633,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             // eventHandlers.Add(new VitalStrikeEventHandler(maybeCaster, this.VitalStrikeMod, maybeCaster.HasFact(this.MythicBlueprint), maybeCaster.HasFact(this.RowdyFeature)));
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
                 var codes = new List<CodeInstruction>(instructions);
-                if (ModSettings.Fixes.Feats.IsDisabled("VitalStrike")) { return instructions; }
+                if (Main.ModContext.Fixes.Feats.IsDisabled("VitalStrike")) { return instructions; }
                 int target = FindInsertionTarget(codes);
                 //Main.Log($"OpperandType: {codes[71].operand.GetType()}");
                 //Utilities.ILUtils.LogIL(codes);

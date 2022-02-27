@@ -5,7 +5,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.NewUnitParts.CustomStatTypes;
 
@@ -61,7 +61,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("LungingSpellTouch")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("LungingSpellTouch")) { return; }
             FeatTools.AddAsFeat(LungingSpellTouchFeature);
         }
     }

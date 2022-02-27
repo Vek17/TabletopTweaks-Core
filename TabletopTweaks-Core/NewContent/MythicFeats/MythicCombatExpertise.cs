@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
 
@@ -31,7 +31,7 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
                 bp.AddPrerequisiteFeature(CombatExpertiseFeature);
             });
 
-            if (ModSettings.AddedContent.MythicFeats.IsDisabled("MythicCombatExpertise")) { return; }
+            if (ModContext.AddedContent.MythicFeats.IsDisabled("MythicCombatExpertise")) { return; }
             FeatTools.AddAsMythicFeat(CombatExpertiseMythicFeature);
         }
     }

@@ -4,7 +4,7 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -36,7 +36,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(IncenseFogFeature);
             });
 
-            if (ModSettings.AddedContent.MythicAbilities.IsDisabled("AbundantIncense")) { return; }
+            if (ModContext.AddedContent.MythicAbilities.IsDisabled("AbundantIncense")) { return; }
             FeatTools.AddAsMythicAbility(AbundantIncenseFeature);
         }
     }

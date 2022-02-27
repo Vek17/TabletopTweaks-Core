@@ -12,7 +12,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
@@ -241,7 +241,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                 });
             });
 
-            if (ModSettings.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("WarriorSpirit")) { return; }
+            if (ModContext.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("WarriorSpirit")) { return; }
             AdvancedWeapontrainingSelection.AddToAdvancedWeaponTrainingSelection(WarriorSpiritFeature);
         }
 

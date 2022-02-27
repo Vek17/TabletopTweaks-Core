@@ -10,7 +10,7 @@ using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.General {
@@ -19,7 +19,7 @@ namespace TabletopTweaks.Core.Bugfixes.General {
         static class ItemEntity_Names_Patch {
             static Regex EnhancementPatten = new Regex(@"\+\d");
             static bool Prefix(ItemEntity __instance, ref string __result) {
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("DynamicItemNaming")) { return true; }
+                if (Main.ModContext.Fixes.BaseFixes.IsDisabled("DynamicItemNaming")) { return true; }
                 if (!__instance.IsIdentified) { return true; }
                 string UniqueName = __instance.Blueprint.m_DisplayNameText;
                 string DefaultName = "";
@@ -56,7 +56,7 @@ namespace TabletopTweaks.Core.Bugfixes.General {
             }
         }
         private static string GetEnchantmentPrefixes(this IEnumerable<ItemEnchantment> enchants) {
-            var includeTemporary = ModSettings.Fixes.BaseFixes.IsEnabled("DynamicItemNamingTemporary");
+            var includeTemporary = Main.ModContext.Fixes.BaseFixes.IsEnabled("DynamicItemNamingTemporary");
             if (enchants == null || enchants.Empty()) {
                 return "";
             }
@@ -78,7 +78,7 @@ namespace TabletopTweaks.Core.Bugfixes.General {
                 .GetEnchantmentPrefixes();
         }
         private static string GetEnchantmentSuffixes(this IEnumerable<ItemEnchantment> enchants) {
-            var includeTemporary = ModSettings.Fixes.BaseFixes.IsEnabled("DynamicItemNamingTemporary");
+            var includeTemporary = Main.ModContext.Fixes.BaseFixes.IsEnabled("DynamicItemNamingTemporary");
             if (enchants == null || enchants.Empty()) {
                 return "";
             }
@@ -151,7 +151,7 @@ namespace TabletopTweaks.Core.Bugfixes.General {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("DynamicItemNaming")) { return; }
+                if (Main.ModContext.Fixes.BaseFixes.IsDisabled("DynamicItemNaming")) { return; }
                 Main.LogHeader("Patching Enchant Prefixes/Suffixes");
 
                 PatchWeaponEnchants();

@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Localization {
@@ -288,21 +288,21 @@ namespace TabletopTweaks.Core.Localization {
     [HarmonyPatch(typeof(StartGameLoader), nameof(StartGameLoader.LoadPackTOC))]
     internal class StartGameLoader_LocalizationPatch {
         static void Postfix() {
-            ModSettings.ModLocalizationPack.ApplyToCurrentPack();
-            ModSettings.SaveLocalization("LocalizationPack.Json", ModSettings.ModLocalizationPack);
+            ModContext.ModLocalizationPack.ApplyToCurrentPack();
+            ModContext.SaveLocalization("LocalizationPack.Json", ModContext.ModLocalizationPack);
         }
     }
     [HarmonyPatch(typeof(LocalizationManager), nameof(LocalizationManager.OnLocaleChanged))]
     internal static class LocalizationManager_OnLocaleChanged_LocalizationPatch {
         static void Postfix() {
-            ModSettings.ModLocalizationPack.ResetCache();
-            ModSettings.ModLocalizationPack.ApplyToCurrentPack();
+            ModContext.ModLocalizationPack.ResetCache();
+            ModContext.ModLocalizationPack.ApplyToCurrentPack();
         }
     }
     [HarmonyPatch(typeof(BlueprintsCache), nameof(BlueprintsCache.Init))]
     internal static class BlueprintsCache_LocalizationPatch {
         static bool Prefix() {
-            ModSettings.ModLocalizationPack.ApplyToCurrentPack();
+            ModContext.ModLocalizationPack.ApplyToCurrentPack();
             return true;
         }
     }

@@ -10,7 +10,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.FactLogic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Features {
@@ -28,7 +28,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             }
         }
         static void PatchBloodlineRestrictions() {
-            if (ModSettings.Fixes.Bloodlines.IsDisabled("BloodlineRestrictions")) { return; }
+            if (ModContext.Fixes.Bloodlines.IsDisabled("BloodlineRestrictions")) { return; }
             // Bloodline Requisite 
             var BloodlineRequisiteFeature = Resources.GetModBlueprint<BlueprintFeature>("BloodlineRequisiteFeature");
             // Requisite Features

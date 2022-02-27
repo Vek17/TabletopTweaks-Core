@@ -7,7 +7,7 @@ using Kingmaker.Designers.Mechanics.Recommendations;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Utility;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.Utilities;
@@ -54,7 +54,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeaturesFromList(1, SpellSpecializationSelection.Features.Append(SpellSpecializationFirst).ToArray());
             });
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("SpellSpecializationGreater")) { return; }
+            if (Main.ModContext.AddedContent.Feats.IsDisabled("SpellSpecializationGreater")) { return; }
 
             SpellSpecializationSelection
                 .Features

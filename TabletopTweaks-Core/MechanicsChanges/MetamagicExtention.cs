@@ -22,7 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
 using UnityEngine;
@@ -155,7 +155,7 @@ namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
                 var GetMetamagicName = AccessTools.Method(typeof(UIUtilityTexts), "GetMetamagicName");
                 var GetMetamagicListPostfix = AccessTools.Method(typeof(UIUtilityTexts_NewMetamagic_Patchs), "GetMetamagicList");
                 var GetMetamagicNamePostfix = AccessTools.Method(typeof(UIUtilityTexts_NewMetamagic_Patchs), "GetMetamagicName");
-                var harmony = new Harmony(ModSettings.ModEntry.Info.Id);
+                var harmony = new Harmony(Main.ModContext.ModEntry.Info.Id);
                 harmony.Patch(GetMetamagicList, postfix: new HarmonyMethod(GetMetamagicListPostfix));
                 harmony.Patch(GetMetamagicName, postfix: new HarmonyMethod(GetMetamagicNamePostfix));
                 patched = true;

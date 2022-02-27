@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
@@ -21,7 +21,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchAmelioratingHex();
 
                 void PatchAmelioratingHex() {
-                    if (ModSettings.Fixes.Shaman.Base.IsDisabled("AmelioratingHex")) { return; }
+                    if (ModContext.Fixes.Shaman.Base.IsDisabled("AmelioratingHex")) { return; }
 
                     var ShamanHexAmelioratingDazzleSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("ea8525d5efb6870418065c14d599c297");
                     var ShamanHexAmelioratingFatuguedSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("84660c99b75e6384b8a6b8fe34b57728");

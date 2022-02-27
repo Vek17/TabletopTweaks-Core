@@ -2,7 +2,7 @@
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using System;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
@@ -17,7 +17,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             };
 
             static void Postfix(ModifiableValueAttributeStat __instance, ref int __result) {
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("FixInherentSkillpoints")) { return; }
+                if (ModContext.Fixes.BaseFixes.IsDisabled("FixInherentSkillpoints")) { return; }
                 __result = __instance.ApplyModifiersFiltered(__instance.CalculateBaseValue(__instance.BaseValue), FilterGrantsSkillpoints);
             }
         }
@@ -25,7 +25,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         private static readonly Func<ModifiableValue.Modifier, bool> FilterIsPermanentOriginal = ModifiableValue.FilterIsPermanent;
         [PostPatchInitialize]
         static void Update_ModifiableValue_FilterIsPermanent() {
-            if (ModSettings.Fixes.BaseFixes.IsDisabled("FixInherentBonuses")) { return; }
+            if (ModContext.Fixes.BaseFixes.IsDisabled("FixInherentBonuses")) { return; }
             Func<ModifiableValue.Modifier, bool> newFilterIsPermanent = delegate (ModifiableValue.Modifier m) {
                 ModifierDescriptor modDescriptor = m.ModDescriptor;
                 return FilterIsPermanentOriginal(m) || modDescriptor == ModifierDescriptor.Inherent;

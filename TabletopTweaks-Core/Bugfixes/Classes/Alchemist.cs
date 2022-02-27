@@ -12,8 +12,9 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
     class Alchemist {
@@ -34,7 +35,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchMutagens();
 
                 void PatchMutagens() {
-                    if (ModSettings.Fixes.Alchemist.Base.IsDisabled("MutagenStacking")) { return; }
+                    if (ModContext.Fixes.Alchemist.Base.IsDisabled("MutagenStacking")) { return; }
 
                     var mutagenBuffs = new BlueprintBuff[] {
                         Resources.GetBlueprint<BlueprintBuff>("32f2bc843effd9b45a0952a3cffbbe9f"),    // CognatogenCharismaBuff,
@@ -103,7 +104,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchPoisonResistance();
 
                 void PatchBrewPotions() {
-                    if (ModSettings.Fixes.Alchemist.Archetypes["Grenadier"].IsDisabled("BrewPotions")) { return; }
+                    if (ModContext.Fixes.Alchemist.Archetypes["Grenadier"].IsDisabled("BrewPotions")) { return; }
 
                     var GrenadierArchetype = Resources.GetBlueprint<BlueprintArchetype>("6af888a7800b3e949a40f558ff204aae");
                     var BrewPotions = Resources.GetBlueprint<BlueprintFeature>("c0f8c4e513eb493408b8070a1de93fc0");
@@ -118,7 +119,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 }
 
                 void PatchPoisonResistance() {
-                    if (ModSettings.Fixes.Alchemist.Archetypes["Grenadier"].IsDisabled("PoisonResistance")) { return; }
+                    if (ModContext.Fixes.Alchemist.Archetypes["Grenadier"].IsDisabled("PoisonResistance")) { return; }
 
                     var GrenadierArchetype = Resources.GetBlueprint<BlueprintArchetype>("6af888a7800b3e949a40f558ff204aae");
                     var PoisonResistance = Resources.GetBlueprint<BlueprintFeature>("c9022272c87bd66429176ce5c597989c");

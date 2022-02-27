@@ -4,7 +4,7 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.Abilities;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 using static Kingmaker.Designers.Mechanics.Facts.AutoMetamagic;
 
@@ -91,7 +91,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 });
                 bp.AddPrerequisiteFeature(BlessingSelection);
             });
-            if (ModSettings.AddedContent.MythicAbilities.IsDisabled("EnhancedBlessings")) { return; }
+            if (ModContext.AddedContent.MythicAbilities.IsDisabled("EnhancedBlessings")) { return; }
             FeatTools.AddAsMythicAbility(EnhancedBlessingsFeature);
         }
     }

@@ -3,7 +3,7 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -35,7 +35,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(AlchemistBombsFeature);
             });
 
-            if (ModSettings.AddedContent.MythicAbilities.IsDisabled("AbundantBombs")) { return; }
+            if (ModContext.AddedContent.MythicAbilities.IsDisabled("AbundantBombs")) { return; }
             FeatTools.AddAsMythicAbility(AbundantBombsFeature);
         }
     }

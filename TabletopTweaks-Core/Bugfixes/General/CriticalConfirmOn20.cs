@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.General {
     class CriticalConfirmOn20 {
@@ -17,7 +17,7 @@ namespace TabletopTweaks.Core.Bugfixes.General {
             static readonly MethodInfo RuleRollDice_op_Implicit = AccessTools.Method(typeof(RuleRollDice), "op_Implicit");
 
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("FixCriticalConfirmation")) { return instructions; }
+                if (ModContext.Fixes.BaseFixes.IsDisabled("FixCriticalConfirmation")) { return instructions; }
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
                 //Utilities.ILUtils.LogIL(codes);

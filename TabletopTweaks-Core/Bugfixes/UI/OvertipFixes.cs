@@ -16,7 +16,7 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
 
             //Subtract the targets save bonus from the DC
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                //if (!ModSettings.Fixes.FixBackgroundModifiers) { return instructions; }
+                //if (!Context.Fixes.FixBackgroundModifiers) { return instructions; }
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
                 //Utilities.ILUtils.LogIL(codes);
@@ -48,7 +48,7 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
 
             //Change roll to be unmodified value
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                //if (!ModSettings.Fixes.FixBackgroundModifiers) { return instructions; }
+                //if (!Context.Fixes.FixBackgroundModifiers) { return instructions; }
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
                 //Utilities.ILUtils.LogIL(codes);
@@ -76,7 +76,7 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
 
             //Change roll to be unmodified value
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                //if (!ModSettings.Fixes.FixBackgroundModifiers) { return instructions; }
+                //if (!Context.Fixes.FixBackgroundModifiers) { return instructions; }
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
                 //Utilities.ILUtils.LogIL(codes);

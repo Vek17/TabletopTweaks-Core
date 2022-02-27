@@ -7,7 +7,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -165,7 +165,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
             LoremasterElf.AddTraitReplacment(ElvenMagic);
             LoremasterElf.AddSelectionCallback(ElvenHeritageSelection);
 
-            if (ModSettings.AddedContent.Races.IsDisabled("ElfAlternateTraits")) { return; }
+            if (ModContext.AddedContent.Races.IsDisabled("ElfAlternateTraits")) { return; }
             ElfRace.SetComponents(Helpers.Create<AddFeatureOnApply>(c => {
                 c.m_Feature = ElfAbilityModifiers.ToReference<BlueprintFeatureReference>();
             }));

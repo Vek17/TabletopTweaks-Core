@@ -11,13 +11,13 @@ using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Spells {
     static class LongArms {
         public static void AddLongArms() {
-            //var icon = AssetLoader.Image2Sprite.Create($"{ModSettings.ModEntry.Path}Assets{Path.DirectorySeparatorChar}Abilities{Path.DirectorySeparatorChar}Icon_LongArm.png");
+            //var icon = AssetLoader.Image2Sprite.Create($"{Context.ModEntry.Path}Assets{Path.DirectorySeparatorChar}Abilities{Path.DirectorySeparatorChar}Icon_LongArm.png");
             var icon = AssetLoader.LoadInternal("Abilities", "Icon_LongArm.png");
             var LongArmBuff = Helpers.CreateBuff("LongArmBuff", bp => {
                 bp.SetName("Long Arm");
@@ -69,7 +69,7 @@ namespace TabletopTweaks.Core.NewContent.Spells {
                     c.AOEType = CraftAOE.None;
                 }));
             });
-            if (ModSettings.AddedContent.Spells.IsDisabled("LongArm")) { return; }
+            if (ModContext.AddedContent.Spells.IsDisabled("LongArm")) { return; }
             LongArmAbility.AddToSpellList(SpellTools.SpellList.AlchemistSpellList, 1);
             LongArmAbility.AddToSpellList(SpellTools.SpellList.BloodragerSpellList, 1);
             LongArmAbility.AddToSpellList(SpellTools.SpellList.MagusSpellList, 1);

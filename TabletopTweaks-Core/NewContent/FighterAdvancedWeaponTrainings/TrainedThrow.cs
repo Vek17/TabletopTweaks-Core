@@ -3,7 +3,7 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Items.Weapons;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 
@@ -33,7 +33,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                     c.Level = 9;
                 }));
             });
-            if (ModSettings.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("TrainedThrow")) { return; }
+            if (ModContext.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("TrainedThrow")) { return; }
             AdvancedWeapontrainingSelection.AddToAdvancedWeaponTrainingSelection(TrainedThrowFeature);
         }
     }

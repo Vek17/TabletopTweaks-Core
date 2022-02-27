@@ -7,7 +7,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Designers.Mechanics.Recommendations;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
@@ -80,7 +80,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             });
             FixRecommendations(SlashingGrace, DervishDance);
             FixRecommendations(FencingGrace, DervishDance);
-            if (ModSettings.AddedContent.Feats.IsDisabled("DervishDance")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("DervishDance")) { return; }
             FeatTools.AddAsFeat(DervishDance);
         }
         private static void FixRecommendations(BlueprintFeature feature, BlueprintFeature avoid) {

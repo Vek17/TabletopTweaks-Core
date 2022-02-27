@@ -5,7 +5,7 @@ using Kingmaker.Enums;
 using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
@@ -131,7 +131,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             static void Postfix(ModifierDescriptor descriptor, ref string __result) {
                 switch (descriptor) {
                     case (ModifierDescriptor)NaturalArmor.Bonus:
-                        if (ModSettings.Fixes.BaseFixes.IsDisabled("DisableNaturalArmorStacking")) { break; }
+                        if (Main.ModContext.Fixes.BaseFixes.IsDisabled("DisableNaturalArmorStacking")) { break; }
                         __result = "Natural armor bonus";
                         break;
                     case (ModifierDescriptor)NaturalArmor.Size:

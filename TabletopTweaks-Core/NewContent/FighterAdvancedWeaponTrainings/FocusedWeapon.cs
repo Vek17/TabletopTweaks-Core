@@ -4,7 +4,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 
@@ -56,7 +56,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                 bp.AddComponent<FocusedWeaponComponent>();
             });
 
-            if (ModSettings.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("FocusedWeapon")) { return; }
+            if (ModContext.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("FocusedWeapon")) { return; }
             AdvancedWeapontrainingSelection.AddToAdvancedWeaponTrainingSelection(FocusedWeaponFeature);
         }
     }

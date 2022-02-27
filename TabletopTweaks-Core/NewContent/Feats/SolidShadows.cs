@@ -9,7 +9,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
@@ -66,7 +66,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(SolidShadowsSpellFeat);
             });
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("MetamagicSolidShadows")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("MetamagicSolidShadows")) { return; }
             MetamagicExtention.RegisterMetamagic(
                 metamagic: (Metamagic)CustomMetamagic.SolidShadows,
                 name: "Solid Shadows",

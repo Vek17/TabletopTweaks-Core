@@ -3,7 +3,7 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Enums;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
@@ -36,7 +36,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("VarisianTattoo")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("VarisianTattoo")) { return; }
             FeatTools.AddAsFeat(VarisianTattooFeature);
         }
     }

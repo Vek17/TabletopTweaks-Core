@@ -19,7 +19,7 @@ using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Utility;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.Utilities;
 
@@ -41,7 +41,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 PatchCloseToTheAbyss();
             }
             static void PatchCloseToTheAbyss() {
-                if (ModSettings.Fixes.MythicAbilities.IsDisabled("CloseToTheAbyss")) { return; }
+                if (Main.ModContext.Fixes.MythicAbilities.IsDisabled("CloseToTheAbyss")) { return; }
                 var MythicDemonGore = Resources.GetBlueprint<BlueprintItemWeapon>("bd4417c15511afe42850fb4d3a6b4a32");
                 var TwoHandedDamageMultiplierEnchantment = Resources.GetModBlueprint<BlueprintWeaponEnchantment>("TwoHandedDamageMultiplierEnchantment");
 
@@ -50,7 +50,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 Main.LogPatch("Patched", MythicDemonGore);
             }
             static void PatchBloodlineAscendance() {
-                if (ModSettings.Fixes.MythicAbilities.IsDisabled("BloodlineAscendance")) { return; }
+                if (Main.ModContext.Fixes.MythicAbilities.IsDisabled("BloodlineAscendance")) { return; }
                 var BloodlineAscendance = Resources.GetBlueprint<BlueprintFeatureSelection>("ce85aee1726900641ab53ede61ac5c19");
                 var SeekerBloodlineSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("7bda7cdb0ccda664c9eb8978cf512dbc");
 
@@ -82,7 +82,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 Main.LogPatch("Patched", BloodlineAscendance);
             }
             static void PatchSecondBloodline() {
-                if (ModSettings.Fixes.MythicAbilities.IsDisabled("SecondBloodline")) { return; }
+                if (Main.ModContext.Fixes.MythicAbilities.IsDisabled("SecondBloodline")) { return; }
                 BlueprintFeatureSelection SecondBloodline = Resources.GetBlueprint<BlueprintFeatureSelection>("3cf2ab2c320b73347a7c21cf0d0995bd");
 
                 SecondBloodline.RemoveComponents<PrerequisiteFeature>();
@@ -102,7 +102,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 Main.LogPatch("Patched", SecondBloodline);
             }
             static void PatchBloodragerSecondBloodline() {
-                if (ModSettings.Fixes.MythicAbilities.IsDisabled("SecondBloodragerBloodline")) { return; }
+                if (Main.ModContext.Fixes.MythicAbilities.IsDisabled("SecondBloodragerBloodline")) { return; }
                 var ReformedFiendBloodlineSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("dd62cb5011f64cd38b8b08abb19ba2cc");
                 var BloodragerBloodlineSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("62b33ac8ceb18dd47ad4c8f06849bc01");
                 var SecondBloodragerBloodline = Resources.GetBlueprint<BlueprintFeatureSelection>("b7f62628915bdb14d8888c25da3fac56");
@@ -119,7 +119,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 FeatTools.Selections.MythicAbilitySelection.RemoveFeatures(SecondBloodragerBloodlineReformedFiend);
             }
             static void PatchExposeVulnerability() {
-                if (ModSettings.Fixes.MythicAbilities.IsDisabled("ExposeVulnerability")) { return; }
+                if (Main.ModContext.Fixes.MythicAbilities.IsDisabled("ExposeVulnerability")) { return; }
 
                 var ExposeVulnerability = Resources.GetBlueprint<BlueprintFeature>("8ce3c4b3c1ad24f4dbb6cb4c72e1ec53");
                 var ExposeVulnerabilityBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("4edf0af9fd0ebb94ba5ef08b38768e06");
@@ -158,7 +158,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 Main.LogPatch(ExposeVulnerability);
             }
             static void PatchMythicCharge() {
-                if (ModSettings.Fixes.MythicAbilities.IsDisabled("MythicCharge")) { return; }
+                if (Main.ModContext.Fixes.MythicAbilities.IsDisabled("MythicCharge")) { return; }
 
                 var MythicCharge = Resources.GetBlueprint<BlueprintFeature>("3d1a968428c9b3d4d9d4d27e656b65a8");
                 MythicCharge.RemoveComponents<AddInitiatorAttackWithWeaponTrigger>();
@@ -188,7 +188,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             private static readonly BlueprintFeature EnduringSpellsGreater = Resources.GetBlueprint<BlueprintFeature>("13f9269b3b48ae94c896f0371ce5e23c");
 
             static bool Prefix(MechanicsContext parentContext, ref Rounds? duration, BlueprintItemEnchantment blueprint) {
-                if (ModSettings.Fixes.MythicAbilities.IsDisabled("EnduringSpells")) { return true; }
+                if (Main.ModContext.Fixes.MythicAbilities.IsDisabled("EnduringSpells")) { return true; }
                 if (parentContext != null && parentContext.MaybeOwner != null && duration != null) {
                     var abilityData = parentContext.SourceAbilityContext?.Ability;
                     if (abilityData == null || abilityData.Spellbook == null || abilityData.SourceItem != null) { return true; }
@@ -208,7 +208,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
         static class AscendantElement_OnEventAboutToTrigger_Patch {
 
             static bool Prefix(AscendantElement __instance, RuleCalculateDamage evt) {
-                if (ModSettings.Fixes.MythicAbilities.IsDisabled("AscendantElement")) { return true; }
+                if (Main.ModContext.Fixes.MythicAbilities.IsDisabled("AscendantElement")) { return true; }
                 foreach (BaseDamage baseDamage in evt.DamageBundle) {
                     EnergyDamage energyDamage;
                     if ((energyDamage = (baseDamage as EnergyDamage)) != null && energyDamage.EnergyType == __instance.Element) {

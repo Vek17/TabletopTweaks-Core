@@ -17,7 +17,7 @@ using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -138,7 +138,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 });
             });
 
-            if (ModSettings.AddedContent.MythicAbilities.IsDisabled("MountedManiac")) { return; }
+            if (ModContext.AddedContent.MythicAbilities.IsDisabled("MountedManiac")) { return; }
             FeatTools.AddAsMythicAbility(MountedManiacFeature);
         }
     }

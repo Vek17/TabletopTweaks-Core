@@ -1,6 +1,6 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 
@@ -18,7 +18,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(ArcanistArcaneReservoirFeature, GroupType.Any);
                 bp.AddPrerequisiteFeature(ArcaneEnforcerArcaneReservoirFeature, GroupType.Any);
             });
-            if (ModSettings.AddedContent.Feats.IsDisabled("ExtraReservoir")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("ExtraReservoir")) { return; }
             FeatTools.AddAsFeat(ExtraReservoir);
         }
     }

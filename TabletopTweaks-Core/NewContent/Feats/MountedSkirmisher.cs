@@ -1,6 +1,6 @@
 ﻿using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
@@ -30,8 +30,8 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(TrickRiding);
             });
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("MountedSkirmisher")) { return; }
-            if (ModSettings.Fixes.BaseFixes.IsDisabled("MountedActions")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("MountedSkirmisher")) { return; }
+            if (ModContext.Fixes.BaseFixes.IsDisabled("MountedActions")) { return; }
             FeatTools.AddAsFeat(MountedSkirmisher);
         }
     }

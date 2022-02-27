@@ -5,7 +5,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.Utilities;
 
@@ -41,7 +41,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     c.FeatureTags = FeatureTag.Skills;
                 }));
             });
-            if (ModSettings.AddedContent.Feats.IsDisabled("GracefulAthlete")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("GracefulAthlete")) { return; }
             FeatTools.AddAsFeat(GracefulAthlete);
             FeatTools.AddAsRogueTalent(GracefulAthlete);
         }

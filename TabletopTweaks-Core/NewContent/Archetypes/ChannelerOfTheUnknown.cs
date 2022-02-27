@@ -26,7 +26,7 @@ using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -463,7 +463,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            if (ModSettings.AddedContent.Archetypes.IsDisabled("ChannelerOfTheUnknown")) { return; }
+            if (Main.ModContext.AddedContent.Archetypes.IsDisabled("ChannelerOfTheUnknown")) { return; }
             ClericClass.m_Archetypes = ClericClass.m_Archetypes.AppendToArray(ChannelerOfTheUnknownArchetype.ToReference<BlueprintArchetypeReference>());
             SelectiveChannel.AddPrerequisiteFeature(ChannelerOfTheUnknownChannelEntropyFeature, Prerequisite.GroupType.Any);
             Main.LogPatch("Patched", SelectiveChannel);

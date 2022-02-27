@@ -234,7 +234,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             });
             */
 
-            //if (ModSettings.AddedContent.Archetypes.IsDisabled("ChannelerOfTheUnknown")) { return; }
+            //if (Context.AddedContent.Archetypes.IsDisabled("ChannelerOfTheUnknown")) { return; }
             //MagusClass.m_Archetypes = MagusClass.m_Archetypes.AppendToArray(MyrmidarchArchetype.ToReference<BlueprintArchetypeReference>());
 
             /*

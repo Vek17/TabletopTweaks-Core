@@ -1,5 +1,5 @@
 ﻿using Kingmaker.EntitySystem.Stats;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -12,7 +12,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "Use Magic Device skill checks. If you have 10 or more ranks in one of these skills," +
                     " the bonus increases to +4 for that skill.");
             });
-            if (ModSettings.AddedContent.Feats.IsDisabled("MagicalAptitude")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("MagicalAptitude")) { return; }
             FeatTools.AddAsFeat(MagicalAptitude);
         }
     }

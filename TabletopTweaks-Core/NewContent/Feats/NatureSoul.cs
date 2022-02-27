@@ -1,5 +1,5 @@
 ﻿using Kingmaker.EntitySystem.Stats;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -11,7 +11,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "\nYou get a +2 bonus on all Lore (Nature) checks and Perception checks. " +
                     "If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.");
             });
-            if (ModSettings.AddedContent.Feats.IsDisabled("NatureSoul")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("NatureSoul")) { return; }
             FeatTools.AddAsFeat(NatureSoul);
         }
     }

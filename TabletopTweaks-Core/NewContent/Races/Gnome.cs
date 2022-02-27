@@ -8,7 +8,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -219,7 +219,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
             TravellerGnome.AddTraitReplacment(SlowSpeedGnome);
             TravellerGnome.AddSelectionCallback(GnomeHeritageSelection);
 
-            if (ModSettings.AddedContent.Races.IsDisabled("GnomeAlternateTraits")) { return; }
+            if (ModContext.AddedContent.Races.IsDisabled("GnomeAlternateTraits")) { return; }
             GnomeRace.SetComponents(Helpers.Create<AddFeatureOnApply>(c => {
                 c.m_Feature = GnomeAbilityModifiers.ToReference<BlueprintFeatureReference>();
             }));

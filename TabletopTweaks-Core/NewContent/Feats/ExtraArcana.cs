@@ -1,5 +1,5 @@
 ﻿using Kingmaker.Blueprints.Classes.Selection;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -24,7 +24,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.SetDescription("You gain one additional magus arcana. You must meet all the prerequisites for this magus arcana." +
                     "\nYou can gain this feat multiple times. Its effects stack, granting a new arcana each time you gain this feat.");
             });
-            if (ModSettings.AddedContent.Feats.IsDisabled("ExtraArcana")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("ExtraArcana")) { return; }
             FeatTools.AddAsFeat(ExtraArcana);
             FeatTools.AddAsFeat(ExtraArcanaHexcrafter);
             FeatTools.AddAsFeat(ExtraArcanaEldritchScion);

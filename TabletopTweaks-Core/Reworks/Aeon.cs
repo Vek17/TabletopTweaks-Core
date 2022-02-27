@@ -25,7 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.MechanicsChanges;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.NewComponents.Properties;
@@ -54,7 +54,7 @@ namespace TabletopTweaks.Core.Reworks {
             }
 
             static void PatchAeonBaneIcon() {
-                if (ModSettings.Homebrew.MythicReworks.Aeon.IsDisabled("AeonBaneIcon")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonBaneIcon")) { return; }
                 var Icon_AeonBane = AssetLoader.LoadInternal("Abilities", "Icon_AeonBane.png");
                 var AeonBaneFeature = Resources.GetBlueprint<BlueprintFeature>("0b25e8d8b0488c84c9b5714e9ca0a204");
                 var AeonBaneAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("67fb31f553f2bb14bbfae0b1040169f1");
@@ -64,7 +64,7 @@ namespace TabletopTweaks.Core.Reworks {
                 Main.LogPatch("Patched", AeonBaneAbility);
             }
             static void PatchAeonBaneSpellResistance() {
-                if (ModSettings.Homebrew.MythicReworks.Aeon.IsDisabled("AeonBaneSpellResistance")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonBaneSpellResistance")) { return; }
                 var AeonBaneBuff = Resources.GetBlueprint<BlueprintBuff>("345160619fc2ddc44b8ad98c94dde448");
                 AeonBaneBuff.RemoveComponents<ModifyD20>();
                 AeonBaneBuff.AddComponent<SpellPenetrationBonus>(c => {
@@ -76,7 +76,7 @@ namespace TabletopTweaks.Core.Reworks {
                 Main.LogPatch("Patched", AeonBaneBuff);
             }
             static void PatchAeonBaneUses() {
-                if (ModSettings.Homebrew.MythicReworks.Aeon.IsDisabled("AeonBaneUses")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonBaneUses")) { return; }
                 var AeonClass = Resources.GetBlueprint<BlueprintCharacterClass>("15a85e67b7d69554cab9ed5830d0268e");
                 var AeonBaneFeature = Resources.GetBlueprint<BlueprintFeature>("0b25e8d8b0488c84c9b5714e9ca0a204");
                 var AeonBaneIncreaseResourceFeature = Resources.GetModBlueprint<BlueprintFeature>("AeonBaneIncreaseResourceFeature");
@@ -92,7 +92,7 @@ namespace TabletopTweaks.Core.Reworks {
                 Main.LogPatch("Patched", AeonBaneFeature);
             }
             static void PatchAeonImprovedBaneDispelLimit() {
-                if (ModSettings.Homebrew.MythicReworks.Aeon.IsDisabled("AeonImprovedBaneDispelLimit")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonImprovedBaneDispelLimit")) { return; }
 
                 var AeonBaneBuff = Resources.GetBlueprint<BlueprintBuff>("345160619fc2ddc44b8ad98c94dde448");
                 AeonBaneBuff.GetComponent<AddInitiatorAttackWithWeaponTrigger>()
@@ -143,13 +143,13 @@ namespace TabletopTweaks.Core.Reworks {
                 Main.LogPatch("Patched", AeonBaneBuff);
             }
             static void PatchAeonGreaterBaneDamage() {
-                if (ModSettings.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGreaterBaneDamage")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGreaterBaneDamage")) { return; }
                 var AeonGreaterBaneBuff = Resources.GetBlueprint<BlueprintBuff>("cdcc13884252b2c4d8dac57cb5f46555");
                 AeonGreaterBaneBuff.RemoveComponents<AddInitiatorAttackWithWeaponTrigger>(c => c.Action.Actions.OfType<ContextActionDealDamage>().Any());
                 Main.LogPatch("Patched", AeonGreaterBaneBuff);
             }
             static void PatchAeonGreaterBaneDispel() {
-                if (ModSettings.Homebrew.MythicReworks.Aeon.IsDisabled("PatchAeonGreaterBaneDispel")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Aeon.IsDisabled("PatchAeonGreaterBaneDispel")) { return; }
 
                 var AeonGreaterBaneBuff = Resources.GetBlueprint<BlueprintBuff>("cdcc13884252b2c4d8dac57cb5f46555");
                 AeonGreaterBaneBuff.GetComponents<AddInitiatorAttackWithWeaponTrigger>()
@@ -161,7 +161,7 @@ namespace TabletopTweaks.Core.Reworks {
                 Main.LogPatch("Patched", AeonGreaterBaneBuff);
             }
             static void PatchAeonGazeDC() {
-                if (ModSettings.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeDC")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeDC")) { return; }
                 var AeonGazeDCProperty = Resources.GetBlueprint<BlueprintUnitProperty>("4358468cba854a6db8f60909dacf8203");
                 var AeonAttackGazeAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("79d287eefba48424b9073a5cabba2a63");
 
@@ -189,7 +189,7 @@ namespace TabletopTweaks.Core.Reworks {
                 Main.LogPatch("Patched", AeonGazeDCProperty);
             }
             static void PatchAeonGazeAction() {
-                if (ModSettings.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeActionSystem")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeActionSystem")) { return; }
                 var AeonGazeThirdSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("0bec49f67ecb49a5826fcfefb9408a35");
                 AeonGazeThirdSelection.AllFeatures
                     .SelectMany(feature => feature.GetComponent<AddFacts>()?.m_Facts)
@@ -210,7 +210,7 @@ namespace TabletopTweaks.Core.Reworks {
                     });
             }
             static void PatchAeonGazeIcons() {
-                if (ModSettings.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeIcons")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeIcons")) { return; }
                 var AeonGazeThirdSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("0bec49f67ecb49a5826fcfefb9408a35");
                 AeonGazeThirdSelection.AllFeatures
                     .SelectMany(feature => feature.GetComponent<AddFacts>()?.m_Facts)
@@ -241,7 +241,7 @@ namespace TabletopTweaks.Core.Reworks {
         static class AbilityData_GetRuntimeActionType_MythicMoveAction_Patch {
             static readonly BlueprintBuff AeonGreaterBaneBuff = Resources.GetBlueprint<BlueprintBuff>("cdcc13884252b2c4d8dac57cb5f46555");
             static void Postfix(AbilityData __instance, ref UnitCommand.CommandType __result) {
-                if (ModSettings.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGreaterBaneActionBoost")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGreaterBaneActionBoost")) { return; }
                 UnitCommand.CommandType commandType = __instance.ActionType;
                 if (commandType == UnitCommand.CommandType.Swift) {
                     UnitDescriptor caster = __instance.Caster;
@@ -258,7 +258,7 @@ namespace TabletopTweaks.Core.Reworks {
         [HarmonyPatch(typeof(ActivatableAbility), nameof(ActivatableAbility.IsActivateWithSameCommand), new Type[] { typeof(ActivatableAbility) })]
         static class ActivatableAbility_IsActivateWithSameCommand_Aeon_Patch {
             static void Postfix(ActivatableAbility __instance, ActivatableAbility other, ref bool __result) {
-                if (ModSettings.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeActionSystem")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeActionSystem")) { return; }
                 if (__instance.Blueprint.Group == ActivatableAbilityGroup.AeonGaze && __instance.Blueprint.Group == other.Blueprint.Group) {
                     __result = true;
                 }
@@ -267,7 +267,7 @@ namespace TabletopTweaks.Core.Reworks {
         [HarmonyPatch(typeof(UnitPartActivatableAbility), nameof(UnitPartActivatableAbility.OnActivatedWithCommand))]
         static class UnitPartActivatableAbility_OnActivatedWithCommand_Aeon_Patch {
             static void Postfix(UnitPartActivatableAbility __instance, ActivatableAbility ability) {
-                if (ModSettings.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeActionSystem")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeActionSystem")) { return; }
                 int groupSize = __instance.GetGroupSize(ability.Blueprint.Group);
                 if (groupSize >= 2 || ability.Blueprint.Group != ActivatableAbilityGroup.Judgment) {
                     UnitPartActivatableAbility.ActivatedWithCommandData activatedWithCommandData =

@@ -6,7 +6,7 @@ using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Enums.Damage;
 using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -79,7 +79,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                 });
             });
 
-            if (ModSettings.AddedContent.FighterAdvancedArmorTraining.IsDisabled("SteelHeadbutt")) { return; }
+            if (ModContext.AddedContent.FighterAdvancedArmorTraining.IsDisabled("SteelHeadbutt")) { return; }
             AdvancedArmorTraining.AddToAdvancedArmorTrainingSelection(SteelHeadbuttFeature);
         }
     }

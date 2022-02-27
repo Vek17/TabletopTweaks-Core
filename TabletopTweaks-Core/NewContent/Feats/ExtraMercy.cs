@@ -1,7 +1,7 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -17,7 +17,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     c.m_Feature = bp.ToReference<BlueprintFeatureReference>();
                 }));
             });
-            if (ModSettings.AddedContent.Feats.IsDisabled("ExtraMercy")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("ExtraMercy")) { return; }
             FeatTools.AddAsFeat(ExtraMercy);
         }
     }

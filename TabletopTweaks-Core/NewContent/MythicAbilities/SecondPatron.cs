@@ -5,7 +5,7 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Utility;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 
@@ -46,7 +46,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(SecondPatronRequisiteFeature, GroupType.Any);
             });
 
-            if (ModSettings.AddedContent.MythicAbilities.IsDisabled("SecondPatron")) { return; }
+            if (Main.ModContext.AddedContent.MythicAbilities.IsDisabled("SecondPatron")) { return; }
             FeatTools.AddAsMythicAbility(SecondPatronFeature);
             WitchPatronSelection.m_AllFeatures
                 .Select(feature => feature.Get())

@@ -7,7 +7,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Designers.Mechanics.Recommendations;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
 
@@ -69,7 +69,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("ErastilsBlessing")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("ErastilsBlessing")) { return; }
             FeatTools.AddAsFeat(ErastilsBlessingFeature);
         }
     }

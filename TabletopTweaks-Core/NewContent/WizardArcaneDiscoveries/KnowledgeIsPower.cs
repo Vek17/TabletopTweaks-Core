@@ -4,7 +4,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
 
@@ -39,7 +39,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                     c.m_Stat = StatType.Intelligence;
                 });
             });
-            if (ModSettings.AddedContent.WizardArcaneDiscoveries.IsDisabled("KnowledgeIsPower")) { return; }
+            if (ModContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("KnowledgeIsPower")) { return; }
             ArcaneDiscoverySelection.AddToArcaneDiscoverySelection(KnowledgeIsPower);
         }
     }

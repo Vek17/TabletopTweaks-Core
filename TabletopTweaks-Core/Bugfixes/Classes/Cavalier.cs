@@ -7,7 +7,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -32,7 +32,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchSupremeCharge();
 
                 void PatchCavalierMountSelection() {
-                    if (ModSettings.Fixes.Cavalier.Base.IsDisabled("CavalierMountSelection")) { return; }
+                    if (ModContext.Fixes.Cavalier.Base.IsDisabled("CavalierMountSelection")) { return; }
 
                     var CavalierMountSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("0605927df6e2fdd42af6ee2424eb89f2");
                     var AnimalCompanionEmptyCompanion = Resources.GetBlueprint<BlueprintFeature>("472091361cf118049a2b4339c4ea836a");
@@ -50,7 +50,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     Main.LogPatch("Patched", CavalierMountSelection);
                 }
                 void PatchSupremeCharge() {
-                    if (ModSettings.Fixes.Cavalier.Base.IsDisabled("SupremeCharge")) { return; }
+                    if (ModContext.Fixes.Cavalier.Base.IsDisabled("SupremeCharge")) { return; }
 
                     var MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
                     var ChargeBuff = Resources.GetBlueprint<BlueprintBuff>("f36da144a379d534cad8e21667079066");
@@ -73,7 +73,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     Main.LogPatch("Patched", CavalierSupremeChargeBuff);
                 }
                 void PatchCavalierMobility() {
-                    if (ModSettings.Fixes.Cavalier.Base.IsDisabled("CavalierMobility")) { return; }
+                    if (ModContext.Fixes.Cavalier.Base.IsDisabled("CavalierMobility")) { return; }
 
                     var CavalierProgression = Resources.GetBlueprint<BlueprintProgression>("aa70326bdaa7015438df585cf2ab93b9");
                     var CavalierMobilityFeature = Resources.GetModBlueprint<BlueprintFeature>("CavalierMobilityFeature");
@@ -87,7 +87,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchTransfixingCharge();
 
                 void PatchTransfixingCharge() {
-                    if (ModSettings.Fixes.Cavalier.Archetypes["Gendarme"].IsDisabled("TransfixingCharge")) { return; }
+                    if (ModContext.Fixes.Cavalier.Archetypes["Gendarme"].IsDisabled("TransfixingCharge")) { return; }
 
                     var MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
                     var ChargeBuff = Resources.GetBlueprint<BlueprintBuff>("f36da144a379d534cad8e21667079066");

@@ -8,7 +8,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -164,7 +164,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
             HastyHalfling.AddTraitReplacment(SlowSpeedHalfling);
             HastyHalfling.AddSelectionCallback(HalflingHeritageSelection);
 
-            if (ModSettings.AddedContent.Races.IsDisabled("HalflingAlternateTraits")) { return; }
+            if (ModContext.AddedContent.Races.IsDisabled("HalflingAlternateTraits")) { return; }
             HalflingRace.SetComponents(Helpers.Create<AddFeatureOnApply>(c => {
                 c.m_Feature = HalflingAbilityModifiers.ToReference<BlueprintFeatureReference>();
             }));

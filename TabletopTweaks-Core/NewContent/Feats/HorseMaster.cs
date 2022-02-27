@@ -7,7 +7,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -75,7 +75,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("NatureSoul")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("NatureSoul")) { return; }
             FeatTools.AddAsFeat(HorseMaster);
             CavalierProgression.LevelEntries
                 .Where(entry => entry.Level == 4)

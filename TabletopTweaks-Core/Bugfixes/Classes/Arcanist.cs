@@ -9,7 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
     class Arcanist {
@@ -35,7 +36,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static readonly FieldInfo Spellbook_BlueprintSpellbook = AccessTools.Field(typeof(Spellbook), "Blueprint");
             //Add an exception to the spontantous spell UI if the spellbook is arcanist
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                if (ModSettings.Fixes.Arcanist.Base.IsDisabled("PreparedSpellUI")) { return instructions; }
+                if (ModContext.Fixes.Arcanist.Base.IsDisabled("PreparedSpellUI")) { return instructions; }
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
                 //Utilities.ILUtils.LogIL(codes);

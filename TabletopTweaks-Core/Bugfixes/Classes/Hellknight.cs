@@ -3,7 +3,7 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.JsonSystem;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
@@ -20,7 +20,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchPentamicFaith();
 
                 void PatchPentamicFaith() {
-                    if (ModSettings.Fixes.Hellknight.IsDisabled("PentamicFaith")) { return; }
+                    if (ModContext.Fixes.Hellknight.IsDisabled("PentamicFaith")) { return; }
 
                     var HellKnightOrderOfTheGodclaw = Resources.GetBlueprint<BlueprintFeature>("5636564c278583342aec54eb2b409029");
                     var HellknightDisciplinePentamicFaith = Resources.GetBlueprint<BlueprintFeatureSelection>("b9750875e9d7454e85347d739a1bc894");

@@ -19,7 +19,7 @@ using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -397,7 +397,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 Helpers.CreateLevelEntry(12, DivineCommanderBattleTacticianGreaterFeature, DivineCommanderBattleTacticianSelection)
             };
 
-            if (ModSettings.AddedContent.Archetypes.IsDisabled("DivineCommander")) { return; }
+            if (Main.ModContext.AddedContent.Archetypes.IsDisabled("DivineCommander")) { return; }
             WarpriestClass.m_Archetypes = WarpriestClass.m_Archetypes.AppendToArray(DivineCommanderArchetype.ToReference<BlueprintArchetypeReference>());
             WarpriestClass.Progression.UIGroups = WarpriestClass.Progression.UIGroups.AppendToArray(
                 Helpers.CreateUIGroup(DivineCommanderCompanionSelection, DivineCommanderBlessedMount),

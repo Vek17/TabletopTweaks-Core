@@ -3,7 +3,7 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
@@ -30,7 +30,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("UndersizedMount")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("UndersizedMount")) { return; }
             FeatTools.AddAsFeat(UndersizedMount);
         }
         [HarmonyPatch(typeof(AbilityTargetIsSuitableMountSize), nameof(AbilityTargetIsSuitableMountSize.CanMount))]

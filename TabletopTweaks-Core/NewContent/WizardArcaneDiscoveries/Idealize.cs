@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
@@ -74,7 +74,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                     p.Group = Prerequisite.GroupType.All;
                 });
             });
-            if (ModSettings.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return; }
+            if (ModContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return; }
             ArcaneDiscoverySelection.AddToArcaneDiscoverySelection(Idealize);
         }
         [HarmonyPatch(typeof(AddStatBonus), nameof(AddStatBonus.OnTurnOn))]
@@ -91,7 +91,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
             );
             //Add Idealize calculations
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                if (ModSettings.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return instructions; }
+                if (ModContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return instructions; }
 
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
@@ -130,7 +130,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
             );
             //Add Idealize calculations
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                if (ModSettings.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return instructions; }
+                if (ModContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return instructions; }
 
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
@@ -174,7 +174,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
             );
             //Add Idealize calculations
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                if (ModSettings.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return instructions; }
+                if (ModContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return instructions; }
 
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);

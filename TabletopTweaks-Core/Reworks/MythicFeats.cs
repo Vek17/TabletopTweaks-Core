@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 
@@ -19,7 +19,7 @@ namespace TabletopTweaks.Core.Reworks {
                 PatchMythicSneakAttack();
             }
             static void PatchMythicSneakAttack() {
-                if (ModSettings.Homebrew.MythicFeats.IsDisabled("MythicSneakAttack")) { return; }
+                if (ModContext.Homebrew.MythicFeats.IsDisabled("MythicSneakAttack")) { return; }
 
                 var SneakAttackerMythicFeat = Resources.GetBlueprint<BlueprintFeature>("d0a53bf03b978634890e5ebab4a90ecb");
 

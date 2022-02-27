@@ -3,7 +3,7 @@ using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -17,7 +17,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("FixMountedLongspearModifer")) { return; }
+                if (ModContext.Fixes.BaseFixes.IsDisabled("FixMountedLongspearModifer")) { return; }
                 Main.LogHeader("Patching Mounted Effects");
                 FixModifers();
 

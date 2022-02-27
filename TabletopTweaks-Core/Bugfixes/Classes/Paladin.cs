@@ -7,7 +7,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
@@ -27,7 +27,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchSmiteAttackBonus();
 
                 void PatchDivineMount() {
-                    if (ModSettings.Fixes.Paladin.Base.IsDisabled("DivineMountTemplate")) { return; }
+                    if (ModContext.Fixes.Paladin.Base.IsDisabled("DivineMountTemplate")) { return; }
 
                     var TemplateCelestial = Resources.GetModBlueprint<BlueprintFeature>("TemplateCelestial");
                     var PaladinDivineMount11Feature = Resources.GetBlueprint<BlueprintFeature>("ea31185f4e0f91041bf766d67214182f");
@@ -38,7 +38,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     Main.LogPatch("Patched", PaladinDivineMount11Feature);
                 }
                 void PatchSmiteAttackBonus() {
-                    if (ModSettings.Fixes.Paladin.Base.IsDisabled("SmiteAttackBonus")) { return; }
+                    if (ModContext.Fixes.Paladin.Base.IsDisabled("SmiteAttackBonus")) { return; }
 
                     var SmiteChaosBuff = Resources.GetBlueprint<BlueprintBuff>("161051816b1530843a8096167be9b8a7");
                     var SmiteEvilBuff = Resources.GetBlueprint<BlueprintBuff>("b6570b8cbb32eaf4ca8255d0ec3310b0");

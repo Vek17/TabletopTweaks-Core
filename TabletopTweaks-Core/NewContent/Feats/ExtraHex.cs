@@ -1,5 +1,5 @@
 ﻿using Kingmaker.Blueprints.Classes.Selection;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -19,7 +19,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "If you are a shaman, it must be a hex granted by your spirit rather than one from a wandering spirit." +
                     "\nYou can take this feat multiple times. Each time you do, you gain another hex.");
             });
-            if (ModSettings.AddedContent.Feats.IsDisabled("ExtraHex")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("ExtraHex")) { return; }
             FeatTools.AddAsFeat(ExtraHexWitch);
             FeatTools.AddAsFeat(ExtraHexShaman);
         }

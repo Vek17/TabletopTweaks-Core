@@ -4,7 +4,7 @@ using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
@@ -24,7 +24,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchSlayerTrapfinding();
 
                 void PatchSlayerTrapfinding() {
-                    if (ModSettings.Fixes.Slayer.Base.IsDisabled("Trapfinding")) { return; }
+                    if (ModContext.Fixes.Slayer.Base.IsDisabled("Trapfinding")) { return; }
                     var SlayerTrapfinding = Resources.GetBlueprint<BlueprintFeature>("e3c12938c2f93544da89824fbe0933a5");
                     SlayerTrapfinding.AddComponent(Helpers.Create<AddContextStatBonus>(c => {
                         c.Stat = StatType.SkillThievery;

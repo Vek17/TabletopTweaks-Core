@@ -3,7 +3,7 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Designers.Mechanics.Recommendations;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.Utilities;
@@ -63,9 +63,9 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(DispelFocusFeature);
             });
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("DispelFocus")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("DispelFocus")) { return; }
             FeatTools.AddAsFeat(DispelFocusFeature);
-            if (ModSettings.AddedContent.Feats.IsDisabled("DispelFocusGreater")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("DispelFocusGreater")) { return; }
             FeatTools.AddAsFeat(DispelFocusGreaterFeature);
         }
     }

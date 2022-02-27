@@ -1,5 +1,5 @@
 ﻿using Kingmaker.Blueprints.Classes.Selection;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -18,7 +18,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.SetDescription("You gain one additional medical discovery. You must meet all of the prerequisites for this discovery." +
                     "\nYou can gain Extra Medical Discovery multiple times.");
             });
-            if (ModSettings.AddedContent.Feats.IsDisabled("ExtraDiscovery")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("ExtraDiscovery")) { return; }
             FeatTools.AddAsFeat(ExtraDiscovery);
             FeatTools.AddAsFeat(ExtraDiscoveryVivsectionist);
         }

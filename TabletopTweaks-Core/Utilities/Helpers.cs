@@ -21,7 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Localization;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
 
@@ -72,7 +72,7 @@ namespace TabletopTweaks.Core.Utilities {
         public static T CreateBlueprint<T>([NotNull] string name, Action<T> init = null) where T : SimpleBlueprint, new() {
             var result = new T {
                 name = name,
-                AssetGuid = ModSettings.Blueprints.GetGUID(name)
+                AssetGuid = Main.ModContext.Blueprints.GetGUID(name)
             };
             Resources.AddBlueprint(result);
             init?.Invoke(result);
@@ -101,7 +101,7 @@ namespace TabletopTweaks.Core.Utilities {
         public static T CreateDerivedBlueprint<T>([NotNull] string name, BlueprintGuid masterId, [NotNull] IEnumerable<SimpleBlueprint> componentBlueprints, Action<T> init = null) where T : SimpleBlueprint, new() {
             var result = new T {
                 name = name,
-                AssetGuid = ModSettings.Blueprints.GetDerivedGUID(name, masterId, componentBlueprints.Select(bp => bp.AssetGuid).ToArray())
+                AssetGuid = Main.ModContext.Blueprints.GetDerivedGUID(name, masterId, componentBlueprints.Select(bp => bp.AssetGuid).ToArray())
             };
             Resources.AddBlueprint(result);
             init?.Invoke(result);
@@ -230,12 +230,12 @@ namespace TabletopTweaks.Core.Utilities {
             // In that case, we reuse the old entry instead of making a new one.)
             string strippedText = text.StripHTML().StripEncyclopediaTags();
             MultiLocalizationPack.MultiLocaleString multiLocalized;
-            if (ModSettings.ModLocalizationPack.TryGetText(strippedText, out multiLocalized)) {
+            if (Main.ModContext.ModLocalizationPack.TryGetText(strippedText, out multiLocalized)) {
                 return multiLocalized.LocalizedString;
             }
             multiLocalized = new MultiLocalizationPack.MultiLocaleString(simpleName, strippedText, shouldProcess, locale);
             Main.LogDebug($"WARNING: Generated New Localizaed String: {multiLocalized.Key}:{multiLocalized.SimpleName}");
-            ModSettings.ModLocalizationPack.AddString(multiLocalized);
+            Main.ModContext.ModLocalizationPack.AddString(multiLocalized);
             return multiLocalized.LocalizedString;
         }
         /// <summary>

@@ -4,7 +4,7 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
@@ -26,7 +26,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchMajorAmelioratingHex();
 
                 void PatchAgilityPatron() {
-                    if (ModSettings.Fixes.Witch.Base.IsDisabled("AgilityPatron")) { return; }
+                    if (ModContext.Fixes.Witch.Base.IsDisabled("AgilityPatron")) { return; }
 
                     var WitchAgilityPatronProgression = Resources.GetBlueprint<BlueprintProgression>("08518b2a62446c74b9ae08ee73664047");
                     var WitchAgilityPatronSpellLevel8 = Resources.GetBlueprint<BlueprintFeature>("6164c2aa71247bd4d91274ebe93a6c0f");
@@ -49,7 +49,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 }
 
                 void PatchAmelioratingHex() {
-                    if (ModSettings.Fixes.Witch.Base.IsDisabled("AmelioratingHex")) { return; }
+                    if (ModContext.Fixes.Witch.Base.IsDisabled("AmelioratingHex")) { return; }
 
                     var WitchHexAmelioratingDazzleSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("c1a5e2bb65fbc6d479f957fd54b2f313");
                     var WitchHexAmelioratingFatuguedSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("32b27dd734277464c954f22b35338a62");
@@ -63,7 +63,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 }
 
                 void PatchMajorAmelioratingHex() {
-                    if (ModSettings.Fixes.Witch.Base.IsDisabled("MajorAmelioratingHex")) { return; }
+                    if (ModContext.Fixes.Witch.Base.IsDisabled("MajorAmelioratingHex")) { return; }
 
                     var WitchHexMajorAmelioratingBlindedSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("66700a810f380c5419dc13f03bb76f45");
                     var WitchHexMajorAmelioratingCurseSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("ee471eead8a069c449710ac5073322c0");

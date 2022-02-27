@@ -10,7 +10,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.Utility;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
 
@@ -33,7 +33,7 @@ namespace TabletopTweaks.Core.Reworks {
             }
 
             static void PatchAzataPerformanceResource() {
-                if (ModSettings.Homebrew.MythicReworks.Azata.IsDisabled("AzataPerformanceResource")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Azata.IsDisabled("AzataPerformanceResource")) { return; }
                 var AzataPerformanceResource = Resources.GetBlueprint<BlueprintAbilityResource>("83f8a1c45ed205a4a989b7826f5c0687");
 
                 BlueprintCharacterClassReference[] characterClasses = ResourcesLibrary
@@ -48,7 +48,7 @@ namespace TabletopTweaks.Core.Reworks {
             }
 
             static void PatchAzataSongToggles() {
-                if (ModSettings.Homebrew.MythicReworks.Azata.IsDisabled("AzataSongToggles")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Azata.IsDisabled("AzataSongToggles")) { return; }
 
                 var SongOfHeroicResolveToggleAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("a95449d0ea0714a4ea5cffc83fc7624f");
                 var SongOfBrokenChainsToggleAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("ac08e4d23e2928148a7b4109e9485e6a");
@@ -67,7 +67,7 @@ namespace TabletopTweaks.Core.Reworks {
             }
 
             static void PatchFavorableMagic() {
-                if (ModSettings.Homebrew.MythicReworks.Azata.IsDisabled("FavorableMagic")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Azata.IsDisabled("FavorableMagic")) { return; }
                 var FavorableMagicFeature = Resources.GetBlueprint<BlueprintFeature>("afcee6925a6eadf43820d12e0d966ebe");
                 var fixedComponent = new AzataFavorableMagicTTT();
 
@@ -79,7 +79,7 @@ namespace TabletopTweaks.Core.Reworks {
             }
 
             static void PatchIncredibleMight() {
-                if (ModSettings.Homebrew.MythicReworks.Azata.IsDisabled("IncredibleMight")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Azata.IsDisabled("IncredibleMight")) { return; }
                 var IncredibleMightAllyBuff = Resources.GetBlueprint<BlueprintBuff>("8e041bd9d786d934892d892d179fc1e8");
                 var IncredibleMightMainBuff = Resources.GetBlueprint<BlueprintBuff>("9a86d073d91f599439c8d4588cdb1fc8");
                 var IncredibleMightFeature = Resources.GetBlueprint<BlueprintFeature>("eef8d23a7e4acfe4d834a5de844c8c7c");
@@ -104,7 +104,7 @@ namespace TabletopTweaks.Core.Reworks {
             }
 
             static void PatchZippyMagicFeature() {
-                if (ModSettings.Homebrew.MythicReworks.Azata.IsDisabled("ZippyMagic")) { return; }
+                if (Main.ModContext.Homebrew.MythicReworks.Azata.IsDisabled("ZippyMagic")) { return; }
                 var ZippyMagicFeature = Resources.GetBlueprint<BlueprintFeature>("30b4200f897ba25419ba3a292aed4053");
 
                 ZippyMagicFeature.RemoveComponents<DublicateSpellComponent>();

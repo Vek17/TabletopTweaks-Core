@@ -5,14 +5,14 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.UI {
     static class SpellTooltips {
         [HarmonyPatch(typeof(TooltipTemplateAbility), "GetHeader", new Type[] { typeof(TooltipTemplateType) })]
         class DisplaySpellbookInSpellTooltips {
             static void Postfix(TooltipTemplateAbility __instance, ref IEnumerable<ITooltipBrick> __result) {
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("DisplaySpellbookInTooltips")) { return; }
+                if (ModContext.Fixes.BaseFixes.IsDisabled("DisplaySpellbookInTooltips")) { return; }
                 if (__instance.m_AbilityData != null
                     && __instance.m_AbilityData.Spellbook != null
                     && __instance.m_AbilityData.Blueprint.Type == AbilityType.Spell) {

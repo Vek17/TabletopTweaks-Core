@@ -6,7 +6,7 @@ using Kingmaker.Items.Slots;
 using Kingmaker.PubSubSystem;
 using Kingmaker.TurnBasedMode.Controllers;
 using Kingmaker.View.Equipment;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
@@ -32,7 +32,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("QuickDraw")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("QuickDraw")) { return; }
             FeatTools.AddAsFeat(QuickDraw);
         }
 

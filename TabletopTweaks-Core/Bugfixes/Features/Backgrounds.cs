@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Features {
@@ -26,7 +26,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("FixBackgroundModifiers")) { return; }
+                if (Main.ModContext.Fixes.BaseFixes.IsDisabled("FixBackgroundModifiers")) { return; }
                 Main.LogHeader("Patching Backgrounds");
                 PatchMiner();
                 PatchFarmhand();
@@ -96,7 +96,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             });
             //Change bonus descriptor to Trait instead of Competence
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("FixBackgroundModifiers")) { return instructions; }
+                if (Main.ModContext.Fixes.BaseFixes.IsDisabled("FixBackgroundModifiers")) { return instructions; }
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
                 //Utilities.ILUtils.LogIL(codes);

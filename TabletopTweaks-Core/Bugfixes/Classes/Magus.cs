@@ -11,7 +11,7 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Parts;
 using System;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.MechanicsChanges.ActivatableAbilitySpendLogic;
@@ -35,7 +35,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchArcaneWeaponProperties();
 
                 void PatchSpellCombatDisableImmediatly() {
-                    if (ModSettings.Fixes.Magus.Base.IsDisabled("SpellCombatDisableImmediatly")) { return; }
+                    if (ModContext.Fixes.Magus.Base.IsDisabled("SpellCombatDisableImmediatly")) { return; }
 
                     var SpellCombatAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("8898a573e8a8a184b8186dbc3a26da74");
                     var SpellStrikeAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("e958891ef90f7e142a941c06c811181e");
@@ -47,7 +47,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     Main.LogPatch("Patched", SpellStrikeAbility);
                 }
                 void PatchArcaneWeaponProperties() {
-                    if (ModSettings.Fixes.Magus.Base.IsDisabled("AddMissingArcaneWeaponEffects")) { return; }
+                    if (ModContext.Fixes.Magus.Base.IsDisabled("AddMissingArcaneWeaponEffects")) { return; }
 
                     var ArcaneWeaponFlamingBurstChoice_TTT = Resources.GetModBlueprint<BlueprintActivatableAbility>("ArcaneWeaponFlamingBurstChoice_TTT");
                     var ArcaneWeaponIcyBurstChoice_TTT = Resources.GetModBlueprint<BlueprintActivatableAbility>("ArcaneWeaponIcyBurstChoice_TTT");
@@ -67,7 +67,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchPerfectCritical();
 
                 void PatchPerfectCritical() {
-                    if (ModSettings.Fixes.Magus.Archetypes["SwordSaint"].IsDisabled("PerfectCritical")) { return; }
+                    if (ModContext.Fixes.Magus.Archetypes["SwordSaint"].IsDisabled("PerfectCritical")) { return; }
 
                     var SwordSaintPerfectStrikeCritAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("c6559839738a7fc479aadc263ff9ffff");
 
@@ -83,7 +83,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
         [HarmonyPatch(typeof(ItemEntityWeapon), "HoldInTwoHands", MethodType.Getter)]
         static class ItemEntityWeapon_HoldInTwoHands_Patch {
             static void Postfix(ItemEntityWeapon __instance, ref bool __result) {
-                if (ModSettings.Fixes.Magus.Base.IsDisabled("SpellCombatDisableImmediatly")) { return; }
+                if (ModContext.Fixes.Magus.Base.IsDisabled("SpellCombatDisableImmediatly")) { return; }
                 var magusPart = __instance?.Wielder?.Get<UnitPartMagus>();
                 if (magusPart == null) { return; }
                 if (magusPart.CanUseSpellCombatInThisRound) {
@@ -118,7 +118,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static bool Prefix(UnitPartMagus __instance, ref bool __result, AbilityData spell) {
                 bool validWandSpell = __instance.WandWielder && spell.SourceItemUsableBlueprint != null && spell.SourceItemUsableBlueprint.Type == UsableItemType.Wand;
                 __result = validWandSpell || (spell.Spellbook != null && spell.Spellbook == __instance.Spellbook);
-                if (ModSettings.Fixes.Magus.Base.IsDisabled("SpellCombatSpellbookRestrictions")) {
+                if (ModContext.Fixes.Magus.Base.IsDisabled("SpellCombatSpellbookRestrictions")) {
                     __result |= __instance.Spellbook != null && spell.IsInSpellList(__instance.Spellbook.Blueprint.SpellList);
                 }
                 return false;
@@ -128,7 +128,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
         [HarmonyPatch(typeof(UnitPartMagus), "IsSpellFromMagusSpellList", new Type[] { typeof(AbilityData) })]
         class UnitPartMagus_IsSpellFromMagusSpellList_VarriantAbilities_Patch {
             static void Postfix(UnitPartMagus __instance, ref bool __result, AbilityData spell) {
-                if (ModSettings.Fixes.Magus.Base.IsDisabled("SpellCombatAbilityVariants")) { return; }
+                if (ModContext.Fixes.Magus.Base.IsDisabled("SpellCombatAbilityVariants")) { return; }
                 if (spell.ConvertedFrom != null) {
                     __result |= __instance.IsSpellFromMagusSpellList(spell.ConvertedFrom);
                 }

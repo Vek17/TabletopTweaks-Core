@@ -4,7 +4,7 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.RuleSystem.Rules;
 using System;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
@@ -27,13 +27,13 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
                 });
                 bp.AddPrerequisiteFeature(Manyshot);
             });
-            if (ModSettings.AddedContent.MythicFeats.IsDisabled("MythicManyshot")) { return; }
+            if (ModContext.AddedContent.MythicFeats.IsDisabled("MythicManyshot")) { return; }
             FeatTools.AddAsMythicFeat(ManyshotMythicFeature);
         }
         [HarmonyPatch(typeof(RuleAttackWithWeapon), nameof(RuleAttackWithWeapon.LaunchProjectiles), new Type[] { typeof(BlueprintProjectileReference[]) })]
         static class ItemEntityWeapon_HoldInTwoHands_Patch {
             static bool Prefix(RuleAttackWithWeapon __instance, BlueprintProjectileReference[] projectiles) {
-                if (ModSettings.AddedContent.MythicFeats.IsDisabled("MythicManyshot")) { return true; }
+                if (ModContext.AddedContent.MythicFeats.IsDisabled("MythicManyshot")) { return true; }
                 foreach (BlueprintProjectileReference blueprintProjectileReference in projectiles) {
                     if (blueprintProjectileReference.Get() != null) {
                         __instance.LaunchProjectile(blueprintProjectileReference.Get(), true);

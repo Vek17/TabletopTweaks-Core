@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
@@ -22,7 +22,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             });
             //Change bonus descriptor to Dodge.Intelligence instead of Dodge
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("DisableCannyDefenseStacking")) { return instructions; }
+                if (ModContext.Fixes.BaseFixes.IsDisabled("DisableCannyDefenseStacking")) { return instructions; }
 
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);

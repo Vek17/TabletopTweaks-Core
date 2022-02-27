@@ -4,7 +4,7 @@ using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -39,7 +39,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                     c.m_Min = 1;
                 });
             });
-            if (ModSettings.AddedContent.MythicAbilities.IsDisabled("ImpossibleSpeed")) { return; }
+            if (ModContext.AddedContent.MythicAbilities.IsDisabled("ImpossibleSpeed")) { return; }
             FeatTools.AddAsMythicAbility(ImpossibleSpeedFeature);
         }
     }

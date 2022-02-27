@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 
@@ -36,7 +36,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                     c.m_Feature = WeaponFinesse.ToReference<BlueprintFeatureReference>();
                 }));
             });
-            if (ModSettings.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("TrainedGrace")) { return; }
+            if (ModContext.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("TrainedGrace")) { return; }
             AdvancedWeapontrainingSelection.AddToAdvancedWeaponTrainingSelection(TrainedGraceFeature);
         }
     }

@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -65,7 +65,7 @@ namespace TabletopTweaks.Core.NewContent.MagusArcana {
 
             SpellBlendingSelection.AddFeatures(SpellBlending1, SpellBlending2);
 
-            if (ModSettings.AddedContent.MagusArcana.IsDisabled("SpellBlending")) { return; }
+            if (ModContext.AddedContent.MagusArcana.IsDisabled("SpellBlending")) { return; }
             FeatTools.AddAsMagusArcana(SpellBlendingSelection);
         }
     }

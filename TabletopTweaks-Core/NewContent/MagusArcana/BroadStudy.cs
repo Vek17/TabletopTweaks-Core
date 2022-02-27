@@ -3,13 +3,13 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.MagusArcana {
     static class BroadStudy {
-        private static readonly BlueprintGuid BroadStudyMasterID = ModSettings.Blueprints.GetDerivedMaster("BroadStudyMasterID");
+        private static readonly BlueprintGuid BroadStudyMasterID = ModContext.Blueprints.GetDerivedMaster("BroadStudyMasterID");
 
         public static void AddBroadStudy() {
             var MagusClass = Resources.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
@@ -58,7 +58,7 @@ namespace TabletopTweaks.Core.NewContent.MagusArcana {
                     }).ToArray();
             }
 
-            if (ModSettings.AddedContent.MagusArcana.IsDisabled("BroadStudy")) { return; }
+            if (ModContext.AddedContent.MagusArcana.IsDisabled("BroadStudy")) { return; }
             FeatTools.AddAsMagusArcana(BroadStudySelection);
         }
     }

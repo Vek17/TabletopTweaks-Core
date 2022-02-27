@@ -8,13 +8,13 @@ using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Spells {
     class ShadowEnchantment {
         public static void AddShadowEnchantment() {
-            //var icon = AssetLoader.Image2Sprite.Create($"{ModSettings.ModEntry.Path}Assets{Path.DirectorySeparatorChar}Abilities{Path.DirectorySeparatorChar}Icon_ShadowEnchantment.png");
+            //var icon = AssetLoader.Image2Sprite.Create($"{Context.ModEntry.Path}Assets{Path.DirectorySeparatorChar}Abilities{Path.DirectorySeparatorChar}Icon_ShadowEnchantment.png");
             var icon = AssetLoader.LoadInternal("Abilities", "Icon_ShadowEnchantment.png");
             var PowerfulShadows = Resources.GetBlueprint<BlueprintFeature>("6a9448ec047c642408af6debb8536c38");
             var ShadowEnchantmentProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("ShadowEnchantmentProperty", bp => {
@@ -92,13 +92,13 @@ namespace TabletopTweaks.Core.NewContent.Spells {
                     c.m_CustomPropertyList = new BlueprintUnitPropertyReference[0];
                 });
             });
-            if (ModSettings.AddedContent.Spells.IsDisabled("ShadowEnchantment")) { return; }
+            if (ModContext.AddedContent.Spells.IsDisabled("ShadowEnchantment")) { return; }
             ShadowEnchantment.AddToSpellList(SpellTools.SpellList.BardSpellList, 3);
             ShadowEnchantment.AddToSpellList(SpellTools.SpellList.TricksterSpelllist, 3);
             ShadowEnchantment.AddToSpellList(SpellTools.SpellList.WizardSpellList, 3);
         }
         public static void AddShadowEnchantmentGreater() {
-            //var icon = AssetLoader.Image2Sprite.Create($"{ModSettings.ModEntry.Path}Assets{Path.DirectorySeparatorChar}Abilities{Path.DirectorySeparatorChar}Icon_ShadowEnchantmentGreater.png");
+            //var icon = AssetLoader.Image2Sprite.Create($"{Context.ModEntry.Path}Assets{Path.DirectorySeparatorChar}Abilities{Path.DirectorySeparatorChar}Icon_ShadowEnchantmentGreater.png");
             var icon = AssetLoader.LoadInternal("Abilities", "Icon_ShadowEnchantmentGreater.png");
             var PowerfulShadows = Resources.GetBlueprint<BlueprintFeature>("6a9448ec047c642408af6debb8536c38");
             var ShadowEnchantmentGreaterProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("ShadowEnchantmentGreaterProperty", bp => {
@@ -170,7 +170,7 @@ namespace TabletopTweaks.Core.NewContent.Spells {
                     c.m_CustomPropertyList = new BlueprintUnitPropertyReference[0];
                 });
             });
-            if (ModSettings.AddedContent.Spells.IsDisabled("ShadowEnchantmentGreater")) { return; }
+            if (ModContext.AddedContent.Spells.IsDisabled("ShadowEnchantmentGreater")) { return; }
             ShadowEnchantmentGreater.AddToSpellList(SpellTools.SpellList.BardSpellList, 6);
             ShadowEnchantmentGreater.AddToSpellList(SpellTools.SpellList.TricksterSpelllist, 6);
             ShadowEnchantmentGreater.AddToSpellList(SpellTools.SpellList.WizardSpellList, 6);

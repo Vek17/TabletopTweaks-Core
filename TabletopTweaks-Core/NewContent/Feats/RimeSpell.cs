@@ -15,7 +15,7 @@ using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.FactLogic;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
@@ -90,7 +90,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddComponent<RemoveWhenCombatEnded>();
             });
 
-            if (ModSettings.AddedContent.Feats.IsEnabled("MetamagicRimeSpell")) {
+            if (ModContext.AddedContent.Feats.IsEnabled("MetamagicRimeSpell")) {
                 MetamagicExtention.RegisterMetamagic(
                     metamagic: (Metamagic)CustomMetamagic.Rime,
                     name: "Rime",
@@ -111,7 +111,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "for a number of rounds equal to the original level of the spell. This feat only affects spells with the cold descriptor."
             );
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("MetamagicRimeSpell")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("MetamagicRimeSpell")) { return; }
             UpdateSpells();
             AddRodsToVenders();
             FeatTools.AddAsFeat(RimeSpellFeat);

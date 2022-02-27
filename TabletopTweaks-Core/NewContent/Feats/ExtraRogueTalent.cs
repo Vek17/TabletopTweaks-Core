@@ -1,5 +1,5 @@
 ﻿using Kingmaker.Blueprints.Classes.Selection;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -18,7 +18,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.SetDescription("You gain one additional rogue talent. You must meet all of the prerequisites for this rogue talent." +
                     "\nYou can gain Extra Rogue Talent multiple times.");
             });
-            if (ModSettings.AddedContent.Feats.IsDisabled("ExtraRogueTalent")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("ExtraRogueTalent")) { return; }
             FeatTools.AddAsFeat(ExtraRogueTalent);
             FeatTools.AddAsFeat(ExtraRogueTalentSylvan);
         }

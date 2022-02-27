@@ -5,7 +5,7 @@ using Kingmaker.Items;
 using Kingmaker.UI.UnitSettings.Blueprints;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
@@ -52,14 +52,14 @@ namespace TabletopTweaks.Core.NewContent.BaseAbilities {
                 });
             });
 
-            if (ModSettings.AddedContent.BaseAbilities.IsDisabled("OneHandedToggle")) { return; }
+            if (ModContext.AddedContent.BaseAbilities.IsDisabled("OneHandedToggle")) { return; }
             var AddFacts = FightDefensivelyFeature.GetComponent<AddFacts>();
             AddFacts.m_Facts = AddFacts.m_Facts.AppendToArray(OneHandedToggleFeature.ToReference<BlueprintUnitFactReference>());
         }
         [HarmonyPatch(typeof(ItemEntityWeapon), "HoldInTwoHands", MethodType.Getter)]
         static class ItemEntityWeapon_HoldInTwoHands_Patch {
             static void Postfix(ItemEntityWeapon __instance, ref bool __result) {
-                if (ModSettings.AddedContent.BaseAbilities.IsDisabled("OneHandedToggle")) { return; }
+                if (ModContext.AddedContent.BaseAbilities.IsDisabled("OneHandedToggle")) { return; }
                 if (__instance.Wielder != null && __instance.Wielder.CustomMechanicsFeature(CustomMechanicsFeature.UseWeaponOneHanded)) {
                     if (__instance.Blueprint.IsOneHandedWhichCanBeUsedWithTwoHands && !__instance.Blueprint.IsTwoHanded) {
                         __result = false;

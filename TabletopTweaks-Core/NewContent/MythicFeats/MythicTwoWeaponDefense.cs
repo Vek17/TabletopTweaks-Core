@@ -1,5 +1,5 @@
 ﻿using Kingmaker.Blueprints.Classes;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.MythicFeats {
@@ -21,7 +21,7 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
                 bp.AddPrerequisiteFeature(TwoWeaponDefenseFeature);
             });
 
-            if (ModSettings.AddedContent.MythicFeats.IsDisabled("MythicTwoWeaponDefense")) { return; }
+            if (ModContext.AddedContent.MythicFeats.IsDisabled("MythicTwoWeaponDefense")) { return; }
             FeatTools.AddAsMythicFeat(TwoWeaponDefenseMythicFeature);
         }
     }

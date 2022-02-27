@@ -7,7 +7,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -193,12 +193,12 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 });
             });
 
-            if (ModSettings.AddedContent.MythicAbilities.IsEnabled("ArmorMaster")) {
+            if (ModContext.AddedContent.MythicAbilities.IsEnabled("ArmorMaster")) {
                 FeatTools.AddAsMythicAbility(ArmorMasterLightFeature);
                 FeatTools.AddAsMythicAbility(ArmorMasterMediumFeature);
                 FeatTools.AddAsMythicAbility(ArmorMasterHeavyFeature);
             }
-            if (ModSettings.AddedContent.MythicAbilities.IsEnabled("ArmorMasterHomebrew")) {
+            if (ModContext.AddedContent.MythicAbilities.IsEnabled("ArmorMasterHomebrew")) {
                 FeatTools.AddAsMythicAbility(ArmorMasterHomebrewFeature);
             }
         }

@@ -3,7 +3,7 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -34,7 +34,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(LayOnHandsFeature);
             });
 
-            if (ModSettings.AddedContent.MythicAbilities.IsDisabled("AbundantLayOnHands")) { return; }
+            if (ModContext.AddedContent.MythicAbilities.IsDisabled("AbundantLayOnHands")) { return; }
             FeatTools.AddAsMythicAbility(AbundantLayOnHandsFeature);
         }
     }

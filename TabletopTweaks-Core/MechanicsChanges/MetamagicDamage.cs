@@ -6,7 +6,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using System;
 using System.Reflection;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using UnityEngine;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
@@ -15,7 +15,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         static class RuleCalculateDamage_Metamagic_Patch {
 
             static void Postfix(RuleCalculateDamage __instance, ref DamageValue __result, BaseDamage damage) {
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("MetamagicStacking")) { return; }
+                if (ModContext.Fixes.BaseFixes.IsDisabled("MetamagicStacking")) { return; }
 
                 SettingsEntityEnum<CriticalHitPower> enemyCriticalHits = SettingsRoot.Difficulty.EnemyCriticalHits;
                 int num = damage.CriticalModifier ?? 1;
@@ -93,7 +93,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             }
             [HarmonyPostfix]
             static void StripExtraBolsterDamage(ref RuleDealDamage __result, ContextActionDealDamage.DamageInfo info) {
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("MetamagicBolsterDoubleDiping")) { return; }
+                if (ModContext.Fixes.BaseFixes.IsDisabled("MetamagicBolsterDoubleDiping")) { return; }
                 __result.DamageBundle.First.PreRolledValue = info.PreRolledValue;
             }
         }

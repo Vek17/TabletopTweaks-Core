@@ -6,7 +6,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -143,7 +143,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                 bp.AddComponent<RecalculateOnEquipmentChange>();
             });
 
-            if (ModSettings.AddedContent.FighterAdvancedArmorTraining.IsDisabled("ArmoredJuggernaut")) { return; }
+            if (ModContext.AddedContent.FighterAdvancedArmorTraining.IsDisabled("ArmoredJuggernaut")) { return; }
             AdvancedArmorTraining.AddToAdvancedArmorTrainingSelection(ArmoredJuggernautFeature);
         }
     }

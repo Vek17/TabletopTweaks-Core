@@ -17,7 +17,7 @@ using Kingmaker.Utility;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
@@ -85,7 +85,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             var MetaRageBaseAbility2 = CreateMetaRageLevel(2);
             var MetaRageBaseAbility3 = CreateMetaRageLevel(3);
             var MetaRageBaseAbility4 = CreateMetaRageLevel(4);
-            if (ModSettings.AddedContent.Archetypes.IsDisabled("MetamagicRager")) { return; }
+            if (Main.ModContext.AddedContent.Archetypes.IsDisabled("MetamagicRager")) { return; }
             BloodragerClass.m_Archetypes = BloodragerClass.m_Archetypes.AppendToArray(MetamagicRagerArchetype.ToReference<BlueprintArchetypeReference>());
             Main.LogPatch("Added", MetamagicRagerArchetype);
         }

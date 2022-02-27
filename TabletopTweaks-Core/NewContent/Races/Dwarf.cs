@@ -6,7 +6,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -131,7 +131,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
             UnstoppableDwarf.AddTraitReplacment(HatredGoblinoidOrc);
             UnstoppableDwarf.AddSelectionCallback(DwarfHeritageSelection);
 
-            if (ModSettings.AddedContent.Races.IsDisabled("DwarfAlternateTraits")) { return; }
+            if (ModContext.AddedContent.Races.IsDisabled("DwarfAlternateTraits")) { return; }
             DwarfRace.SetComponents(Helpers.Create<AddFeatureOnApply>(c => {
                 c.m_Feature = DwarfAbilityModifiers.ToReference<BlueprintFeatureReference>();
             }));

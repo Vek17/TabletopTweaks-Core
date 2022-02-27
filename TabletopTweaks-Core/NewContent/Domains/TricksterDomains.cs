@@ -7,24 +7,24 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Domains {
     static class TricksterDomains {
-        private static BlueprintGuid TricksterDomainMasterID = ModSettings.Blueprints.GetDerivedMaster("TricksterDomainMasterID");
+        private static BlueprintGuid TricksterDomainMasterID = Main.ModContext.Blueprints.GetDerivedMaster("TricksterDomainMasterID");
         private static BlueprintGuid[] TricksterSpellResource = new BlueprintGuid[9] {
-            ModSettings.Blueprints.GetDerivedMaster("TricksterSpellResource1"),
-            ModSettings.Blueprints.GetDerivedMaster("TricksterSpellResource2"),
-            ModSettings.Blueprints.GetDerivedMaster("TricksterSpellResource3"),
-            ModSettings.Blueprints.GetDerivedMaster("TricksterSpellResource4"),
-            ModSettings.Blueprints.GetDerivedMaster("TricksterSpellResource5"),
-            ModSettings.Blueprints.GetDerivedMaster("TricksterSpellResource6"),
-            ModSettings.Blueprints.GetDerivedMaster("TricksterSpellResource7"),
-            ModSettings.Blueprints.GetDerivedMaster("TricksterSpellResource8"),
-            ModSettings.Blueprints.GetDerivedMaster("TricksterSpellResource9")
+            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource1"),
+            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource2"),
+            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource3"),
+            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource4"),
+            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource5"),
+            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource6"),
+            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource7"),
+            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource8"),
+            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource9")
         };
         public static void AddTricksterDomains() {
             var DomainsSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("48525e5da45c9c243a343fc6545dbdb9");

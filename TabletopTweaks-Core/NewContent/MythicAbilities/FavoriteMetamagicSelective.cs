@@ -1,7 +1,7 @@
 ﻿using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -24,7 +24,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(SelectiveSpellFeat);
             });
 
-            if (ModSettings.AddedContent.MythicAbilities.IsDisabled("FavoriteMetamagicSelective")) { return; }
+            if (ModContext.AddedContent.MythicAbilities.IsDisabled("FavoriteMetamagicSelective")) { return; }
             FavoriteMetamagicSelection.AddFeatures(FavoriteMetamagicSelective);
         }
     }

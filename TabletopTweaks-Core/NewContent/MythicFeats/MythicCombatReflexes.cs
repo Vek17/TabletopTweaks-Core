@@ -2,7 +2,7 @@
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.MythicFeats {
@@ -24,7 +24,7 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
                 });
                 bp.AddPrerequisiteFeature(CombatReflexes);
             });
-            if (ModSettings.AddedContent.MythicFeats.IsDisabled("MythicCombatReflexes")) { return; }
+            if (ModContext.AddedContent.MythicFeats.IsDisabled("MythicCombatReflexes")) { return; }
             FeatTools.AddAsMythicFeat(CombatReflexesMythicFeature);
         }
     }

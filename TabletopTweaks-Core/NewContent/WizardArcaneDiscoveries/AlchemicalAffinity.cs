@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Enums;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -46,7 +46,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                     p.Group = Prerequisite.GroupType.All;
                 });
             });
-            if (ModSettings.AddedContent.WizardArcaneDiscoveries.IsDisabled("AlchemicalAffinity")) { return; }
+            if (ModContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("AlchemicalAffinity")) { return; }
             ArcaneDiscoverySelection.AddToArcaneDiscoverySelection(AlchemicalAffinity);
         }
     }

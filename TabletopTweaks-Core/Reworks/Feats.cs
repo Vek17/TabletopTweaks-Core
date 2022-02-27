@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.Abilities;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
 
@@ -19,7 +19,7 @@ namespace TabletopTweaks.Core.Reworks {
                 PatchBolsteredSpell();
             }
             static void PatchBolsteredSpell() {
-                if (ModSettings.Homebrew.Feats.IsDisabled("BolsterSpell")) { return; }
+                if (ModContext.Homebrew.Feats.IsDisabled("BolsterSpell")) { return; }
 
                 var BolsteredSpellFeat = Resources.GetBlueprint<BlueprintFeature>("fbf5d9ce931f47f3a0c818b3f8ef8414");
 

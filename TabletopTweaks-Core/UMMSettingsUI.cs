@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using TabletopTweaks.Core.Config;
 using UnityEngine;
 using UnityModManagerNet;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core {
     public static class UMMSettingsUI {
@@ -25,7 +26,7 @@ namespace TabletopTweaks.Core {
     static class SettingsTabs {
         public static void Fixes() {
             var TabLevel = SetttingUI.TabLevel.Zero;
-            var Fixes = ModSettings.Fixes;
+            var Fixes = Main.ModContext.Fixes;
             UI.Div(0, 15);
             using (UI.VerticalScope()) {
                 UI.Toggle("New Settings Off By Default".bold(), ref Fixes.NewSettingsOffByDefault);
@@ -137,7 +138,7 @@ namespace TabletopTweaks.Core {
         }
         public static void Homebrew() {
             var TabLevel = SetttingUI.TabLevel.Zero;
-            var Homebrew = ModSettings.Homebrew;
+            var Homebrew = Main.ModContext.Homebrew;
             UI.Div(0, 15);
             using (UI.VerticalScope()) {
                 UI.Toggle("New Settings Off By Default".bold(), ref Homebrew.NewSettingsOffByDefault);
@@ -154,7 +155,7 @@ namespace TabletopTweaks.Core {
         }
         public static void AddedContent() {
             var TabLevel = SetttingUI.TabLevel.Zero;
-            var AddedContent = ModSettings.AddedContent;
+            var AddedContent = Main.ModContext.AddedContent;
             UI.Div(0, 15);
             using (UI.VerticalScope()) {
                 UI.Toggle("New Settings Off By Default".bold(), ref AddedContent.NewSettingsOffByDefault);

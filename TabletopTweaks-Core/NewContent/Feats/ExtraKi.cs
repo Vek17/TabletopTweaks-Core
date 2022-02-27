@@ -1,6 +1,6 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -15,7 +15,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "\nYou can take this feat multiple times. Its effects stack.");
                 bp.AddPrerequisiteFeature(KiPowerFeature);
             });
-            if (ModSettings.AddedContent.Feats.IsDisabled("ExtraKi")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("ExtraKi")) { return; }
             FeatTools.AddAsFeat(ExtraKi);
         }
     }

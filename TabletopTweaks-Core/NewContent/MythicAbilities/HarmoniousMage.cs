@@ -1,6 +1,6 @@
 ﻿using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -23,7 +23,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(OppositionSchoolSelection);
             });
 
-            if (ModSettings.AddedContent.MythicAbilities.IsDisabled("HarmoniousMage")) { return; }
+            if (ModContext.AddedContent.MythicAbilities.IsDisabled("HarmoniousMage")) { return; }
             FeatTools.AddAsMythicAbility(HarmoniousMageFeature);
         }
     }

@@ -4,7 +4,7 @@ using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -34,7 +34,7 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
                 bp.AddComponent<RecalculateOnLevelUp>();
                 bp.AddPrerequisiteFeature(IntimidatingProwess);
             });
-            if (ModSettings.AddedContent.MythicFeats.IsDisabled("MythicIntimidatingProwess")) { return; }
+            if (ModContext.AddedContent.MythicFeats.IsDisabled("MythicIntimidatingProwess")) { return; }
             FeatTools.AddAsMythicFeat(IntimidatingProwessMythicFeature);
         }
     }

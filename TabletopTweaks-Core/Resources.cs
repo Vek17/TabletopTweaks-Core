@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints;
 using System;
 using System.Collections.Generic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core {
     static class Resources {
@@ -19,13 +19,13 @@ namespace TabletopTweaks.Core {
         }
 #endif
         public static T GetModBlueprintReference<T>(string name) where T : BlueprintReferenceBase {
-            BlueprintGuid? assetId = ModSettings.Blueprints.GetGUID(name);
+            BlueprintGuid? assetId = ModContext.Blueprints.GetGUID(name);
             var reference = Activator.CreateInstance<T>();
             reference.deserializedGuid = assetId ?? BlueprintGuid.Empty;
             return reference;
         }
         public static T GetModBlueprint<T>(string name) where T : SimpleBlueprint {
-            var assetId = ModSettings.Blueprints.GetGUID(name);
+            var assetId = ModContext.Blueprints.GetGUID(name);
             ModBlueprints.TryGetValue(assetId, out var value);
             return value as T;
         }

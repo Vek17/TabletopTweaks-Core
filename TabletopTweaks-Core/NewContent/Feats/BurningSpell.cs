@@ -19,7 +19,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
@@ -167,7 +167,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     c.Descriptor = SpellDescriptor.Acid;
                 });
             });
-            if (ModSettings.AddedContent.Feats.IsEnabled("MetamagicBurningSpell")) {
+            if (ModContext.AddedContent.Feats.IsEnabled("MetamagicBurningSpell")) {
                 MetamagicExtention.RegisterMetamagic(
                     metamagic: (Metamagic)CustomMetamagic.Burning,
                     name: "Burning",
@@ -189,7 +189,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "The damage is acid or fire, as determined by the spell’s descriptor."
             );
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("MetamagicBurningSpell")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("MetamagicBurningSpell")) { return; }
 
             UpdateSpells();
             AddRodsToVenders();

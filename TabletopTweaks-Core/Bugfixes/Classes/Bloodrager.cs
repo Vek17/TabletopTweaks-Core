@@ -15,7 +15,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -43,7 +43,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchTempHP();
 
                 void PatchAbysalBulk() {
-                    if (ModSettings.Fixes.Bloodrager.Base.IsDisabled("AbysalBulk")) { return; }
+                    if (ModContext.Fixes.Bloodrager.Base.IsDisabled("AbysalBulk")) { return; }
                     var BloodragerAbyssalBloodlineBaseBuff = Resources.GetBlueprint<BlueprintBuff>("2ba7b4b3b87156543b43d0686404655a");
                     var BloodragerAbyssalDemonicBulkBuff = Resources.GetBlueprint<BlueprintBuff>("031a8053a7c02ab42ad53f50dd2e9437");
                     var BloodragerAbyssalDemonicBulkEnlargeBuff = Resources.GetModBlueprint<BlueprintBuff>("BloodragerAbyssalDemonicBulkEnlargeBuff");
@@ -63,7 +63,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     AddFactContext.Deactivated.Actions.OfType<Conditional>().Where(a => a.Comment.Equals("Demonic Bulk")).First().AddActionIfTrue(RemoveBuff);
                 }
                 void PatchSpellbook() {
-                    if (ModSettings.Fixes.Bloodrager.Base.IsDisabled("Spellbook")) { return; }
+                    if (ModContext.Fixes.Bloodrager.Base.IsDisabled("Spellbook")) { return; }
                     BlueprintSpellbook BloodragerSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("e19484252c2f80e4a9439b3681b20f00");
                     var BloodragerSpellKnownTable = BloodragerSpellbook.SpellsKnown;
                     var BloodragerSpellPerDayTable = BloodragerSpellbook.SpellsPerDay;
@@ -117,7 +117,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     Main.LogPatch("Patched", BloodragerSpellPerDayTable);
                 }
                 void PatchTempHP() {
-                    if (ModSettings.Fixes.Bloodrager.Base.IsDisabled("TemporaryHitPoints")) { return; }
+                    if (ModContext.Fixes.Bloodrager.Base.IsDisabled("TemporaryHitPoints")) { return; }
                     var BloodragerStandartRageBuff = Resources.GetBlueprint<BlueprintBuff>("5eac31e457999334b98f98b60fc73b2f");
                     var BloodragerRageResource = Resources.GetBlueprint<BlueprintAbilityResource>("4aec9ec9d9cd5e24a95da90e56c72e37");
 
@@ -132,7 +132,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchPrimalistRageBuffs();
 
                 void PatchRagePowerFeatQualifications() {
-                    if (ModSettings.Fixes.Bloodrager.Archetypes["Primalist"].IsDisabled("RagePowerFeatQualifications")) { return; }
+                    if (ModContext.Fixes.Bloodrager.Archetypes["Primalist"].IsDisabled("RagePowerFeatQualifications")) { return; }
                     var PrimalistTakeRagePowers4 = Resources.GetBlueprint<BlueprintProgression>("8eb5c34bb8471a0438e7eb3994de3b92");
                     var PrimalistTakeRagePowers8 = Resources.GetBlueprint<BlueprintProgression>("db2710cd915bbcf4193fa54083e56b27");
                     var PrimalistTakeRagePowers12 = Resources.GetBlueprint<BlueprintProgression>("e43a7bfd5c90a514cab1c11b41c550b1");
@@ -160,7 +160,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     }
                 }
                 static void PatchPrimalistRageBuffs() {
-                    if (ModSettings.Fixes.Bloodrager.Archetypes["Primalist"].IsDisabled("FixBrokenRagePowers")) { return; }
+                    if (ModContext.Fixes.Bloodrager.Archetypes["Primalist"].IsDisabled("FixBrokenRagePowers")) { return; }
                     var BloodragerStandartRageBuff = Resources.GetBlueprint<BlueprintBuff>("5eac31e457999334b98f98b60fc73b2f");
                     PatchCelestialTotem();
                     PatchDaemonTotem();
@@ -274,7 +274,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchDamageReduction();
 
                 void PatchHatredAgainstEvil() {
-                    if (ModSettings.Fixes.Bloodrager.Archetypes["ReformedFiend"].IsDisabled("HatredAgainstEvil")) { return; }
+                    if (ModContext.Fixes.Bloodrager.Archetypes["ReformedFiend"].IsDisabled("HatredAgainstEvil")) { return; }
                     var BloodragerClass = Resources.GetBlueprint<BlueprintCharacterClass>("d77e67a814d686842802c9cfd8ef8499");
                     var ReformedFiendBloodrageBuff = Resources.GetBlueprint<BlueprintBuff>("72a679f712bd4f69a07bf03d5800900b");
                     var rankConfig = ReformedFiendBloodrageBuff.GetComponent<ContextRankConfig>();
@@ -284,14 +284,14 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     rankConfig.m_UseMin = true;
                 }
                 void PatchDamageReduction() {
-                    if (ModSettings.Fixes.Bloodrager.Archetypes["ReformedFiend"].IsDisabled("DamageReduction")) { return; }
+                    if (ModContext.Fixes.Bloodrager.Archetypes["ReformedFiend"].IsDisabled("DamageReduction")) { return; }
                     var ReformedFiendDamageReductionFeature = Resources.GetBlueprint<BlueprintFeature>("2a3243ad1ccf43d5a5d69de3f9d0420e");
                     ReformedFiendDamageReductionFeature.GetComponent<AddDamageResistancePhysical>().BypassedByAlignment = true;
                 }
             }
 
             static void PatchArcaneBloodrage() {
-                if (ModSettings.Fixes.Bloodrager.Base.IsDisabled("ArcaneBloodrage")) { return; }
+                if (ModContext.Fixes.Bloodrager.Base.IsDisabled("ArcaneBloodrage")) { return; }
                 var BloodragerArcaneSpellAbility = Resources.GetBlueprint<BlueprintAbility>("3151dfeeb202e38448d1fea1e8bc237e");
                 BloodragerArcaneSpellAbility.GetComponent<AbilityVariants>().m_Variants = new BlueprintAbilityReference[] {
                     Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellBlurToggle").ToReference<BlueprintAbilityReference>(),
@@ -310,7 +310,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             }
 
             static void PatchGreaterArcaneBloodrage() {
-                if (ModSettings.Fixes.Bloodrager.Base.IsDisabled("ArcaneBloodrage")) { return; }
+                if (ModContext.Fixes.Bloodrager.Base.IsDisabled("ArcaneBloodrage")) { return; }
                 var BloodragerArcaneGreaterSpell = Resources.GetBlueprint<BlueprintAbility>("31dbadf586920494b87e8e95452af998");
                 BloodragerArcaneGreaterSpell.GetComponent<AbilityVariants>().m_Variants = new BlueprintAbilityReference[] {
                     Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellGreaterDisplacementToggle").ToReference<BlueprintAbilityReference>(),
@@ -324,7 +324,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             }
 
             static void PatchTrueArcaneBloodrage() {
-                if (ModSettings.Fixes.Bloodrager.Base.IsDisabled("ArcaneBloodrage")) { return; }
+                if (ModContext.Fixes.Bloodrager.Base.IsDisabled("ArcaneBloodrage")) { return; }
                 var BloodragerArcaneTrueSpellAbility = Resources.GetBlueprint<BlueprintAbility>("9d4d7f56d2d87f643b5ef990ef481094");
                 BloodragerArcaneTrueSpellAbility.GetComponent<AbilityVariants>().m_Variants = new BlueprintAbilityReference[] {
                     Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellTrueBeastShapeIVShamblingMoundToggle").ToReference<BlueprintAbilityReference>(),

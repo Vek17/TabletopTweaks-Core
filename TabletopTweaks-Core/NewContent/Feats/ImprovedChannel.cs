@@ -6,7 +6,7 @@ using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Enums;
 using Kingmaker.Utility;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -35,7 +35,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     bp.AddPrerequisiteFeature(p.Feature, p.Group);
                 });
             });
-            if (ModSettings.AddedContent.Feats.IsDisabled("ImprovedChannel")) { return; }
+            if (Main.ModContext.AddedContent.Feats.IsDisabled("ImprovedChannel")) { return; }
             FeatTools.AddAsFeat(ImprovedChannel);
         }
     }

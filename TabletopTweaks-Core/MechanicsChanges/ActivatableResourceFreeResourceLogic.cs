@@ -3,7 +3,7 @@ using Kingmaker.Blueprints;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.ActivatableAbilities;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
     class ActivatableResourceFreeResourceLogic {
@@ -12,7 +12,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         static class ActivatableAbility_HandleUnitLeaveCombat_Patch {
             static bool Prefix(ActivatableAbility __instance, UnitEntityData unit) {
                 //Main.LogDebug($"{__instance.Owner.CharacterName}:{__instance.Blueprint.name} - OnNewRound");
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("DisableAfterCombatDeactivationOfUnlimitedAbilities")) { return true; }
+                if (ModContext.Fixes.BaseFixes.IsDisabled("DisableAfterCombatDeactivationOfUnlimitedAbilities")) { return true; }
                 var m_FreeBlueprint = __instance.Blueprint.GetComponent<ActivatableAbilityResourceLogic>()?.m_FreeBlueprint;
                 if (m_FreeBlueprint?.Get() == null) { return true; }
                 //Main.LogDebug($"{__instance.Owner.CharacterName}: {__instance.Blueprint.name} - {m_FreeBlueprint?.Get()} - HandleUnitLeaveCombat");
@@ -34,7 +34,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         static class ActivatableAbility_OnNewRound_Patch {
             static bool Prefix(ActivatableAbility __instance) {
                 //Main.LogDebug($"{__instance.Owner.CharacterName}:{__instance.Blueprint.name} - OnNewRound");
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("DisableAfterCombatDeactivationOfUnlimitedAbilities")) { return true; }
+                if (ModContext.Fixes.BaseFixes.IsDisabled("DisableAfterCombatDeactivationOfUnlimitedAbilities")) { return true; }
                 __instance.m_WasInCombat |= __instance.Owner.Unit.IsInCombat;
                 var m_FreeBlueprint = __instance.Blueprint.GetComponent<ActivatableAbilityResourceLogic>()?.m_FreeBlueprint;
                 if (m_FreeBlueprint?.Get() == null) { return true; }

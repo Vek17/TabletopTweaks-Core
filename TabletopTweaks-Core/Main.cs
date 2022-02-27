@@ -4,40 +4,38 @@ using Kingmaker;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem.Persistence.Versioning;
 using System;
-using TabletopTweaks.Core.Config;
 using TabletopTweaks.Core.ModLogic;
 using TabletopTweaks.Core.Upgraders;
 using TabletopTweaks.Core.Utilities;
 using UnityModManagerNet;
 
 namespace TabletopTweaks.Core {
-    static class Main {
+    internal static class Main {
         private static bool Enabled;
-        private static ModContextTTTCore Context;
+        public static ModContextTTTCore ModContext;
         static bool Load(UnityModManager.ModEntry modEntry) {
             var harmony = new Harmony(modEntry.Info.Id);
-            Context = new ModContextTTTCore(modEntry);
-            ModSettings.ModEntry = modEntry;
-            ModSettings.LoadAllSettings();
-            ModSettings.ModEntry.OnSaveGUI = OnSaveGUI;
-            ModSettings.ModEntry.OnGUI = UMMSettingsUI.OnGUI;
+            ModContext = new ModContextTTTCore(modEntry);
+            ModContext.LoadAllSettings();
+            ModContext.ModEntry.OnSaveGUI = OnSaveGUI;
+            ModContext.ModEntry.OnGUI = UMMSettingsUI.OnGUI;
             harmony.PatchAll();
             PostPatchInitializer.Initialize();
             RegisterUpgrades();
-            Context.Logger.Log("This is a test message!");
+            ModContext.Logger.Log("This is a test message!");
             return true;
         }
         private static void RegisterUpgrades() {
             JsonUpgradeSystem.Register(-117, "Migrate TabletopTweaks to TabletopTweaks-Core", new TabletopTweaksMigration());
         }
         private static void OnSaveGUI(UnityModManager.ModEntry modEntry) {
-            ModSettings.SaveSettings("Fixes.json", ModSettings.Fixes);
-            ModSettings.SaveSettings("AddedContent.json", ModSettings.AddedContent);
-            ModSettings.SaveSettings("Homebrew.json", ModSettings.Homebrew);
+            ModContext.SaveSettings("Fixes.json", ModContext.Fixes);
+            ModContext.SaveSettings("AddedContent.json", ModContext.AddedContent);
+            ModContext.SaveSettings("Homebrew.json", ModContext.Homebrew);
         }
         [Obsolete("Needs to be replaced with instance version")]
         public static void Log(string msg) {
-            ModSettings.ModEntry.Logger.Log(msg);
+            ModContext.ModEntry.Logger.Log(msg);
         }
         [Obsolete("Needs to be replaced with instance version")]
         [System.Diagnostics.Conditional("DEBUG")]

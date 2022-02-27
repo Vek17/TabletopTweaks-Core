@@ -11,7 +11,7 @@ using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.FactLogic;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
@@ -66,7 +66,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(PiercingSpellFeat);
             });
 
-            if (ModSettings.AddedContent.Feats.IsEnabled("MetamagicPiercingSpell")) {
+            if (ModContext.AddedContent.Feats.IsEnabled("MetamagicPiercingSpell")) {
                 MetamagicExtention.RegisterMetamagic(
                     metamagic: (Metamagic)CustomMetamagic.Piercing,
                     name: "Piercing",
@@ -87,7 +87,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "the spell resistance of the target as 5 lower than its actual SR."
             );
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("MetamagicPiercingSpell")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("MetamagicPiercingSpell")) { return; }
 
             UpdateSpells();
             AddRodsToVenders();

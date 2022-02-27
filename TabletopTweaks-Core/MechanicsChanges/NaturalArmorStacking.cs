@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 
@@ -26,7 +26,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         static class ModifierDescriptorHelper_IsStackable_Patch {
 
             static void Postfix(ref bool __result, ModifierDescriptor descriptor) {
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("DisableNaturalArmorStacking")) { return; }
+                if (Main.ModContext.Fixes.BaseFixes.IsDisabled("DisableNaturalArmorStacking")) { return; }
                 if (descriptor == ModifierDescriptor.NaturalArmor) {
                     __result = false;
                 }
@@ -45,7 +45,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             });
             //Change bonus descriptor to NaturalArmor.Bonus instead of ModifierDescriptor.NaturalArmorForm
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("DisableNaturalArmorStacking")) { return instructions; }
+                if (Main.ModContext.Fixes.BaseFixes.IsDisabled("DisableNaturalArmorStacking")) { return instructions; }
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
                 //Utilities.ILUtils.LogIL(codes);
@@ -73,7 +73,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("DisableNaturalArmorStacking")) { return; }
+                if (Main.ModContext.Fixes.BaseFixes.IsDisabled("DisableNaturalArmorStacking")) { return; }
                 Main.LogHeader("Patching NaturalArmor");
                 PatchNaturalArmorEffects();
 

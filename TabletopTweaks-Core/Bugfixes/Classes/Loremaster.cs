@@ -6,7 +6,7 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem.Stats;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.Utilities;
 
@@ -27,7 +27,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchTricksterTricks();
 
                 void PatchPrerequisites() {
-                    if (ModSettings.Fixes.Loremaster.IsDisabled("Prerequisites")) { return; }
+                    if (ModContext.Fixes.Loremaster.IsDisabled("Prerequisites")) { return; }
 
                     var LoremasterClass = Resources.GetBlueprint<BlueprintCharacterClass>("4a7c05adfbaf05446a6bf664d28fb103");
 
@@ -93,7 +93,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 }
 
                 void PatchSpellProgression() {
-                    if (ModSettings.Fixes.Loremaster.IsDisabled("SpellProgression")) { return; }
+                    if (ModContext.Fixes.Loremaster.IsDisabled("SpellProgression")) { return; }
                     var LoremasterProgression = Resources.GetBlueprint<BlueprintProgression>("2bcd2330cc2c5a747968a8c782d4fa0a");
                     var LoremasterSecretSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("beeb25d7a7732e14f9986cdb79acecfc");
                     var LoremasterSpellbookSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("7a28ab4dfc010834eabc770152997e87");
@@ -106,7 +106,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 }
 
                 void PatchSpellSecrets() {
-                    if (ModSettings.Fixes.Loremaster.IsDisabled("SpellSecrets")) { return; }
+                    if (ModContext.Fixes.Loremaster.IsDisabled("SpellSecrets")) { return; }
 
                     var LoremasterSecretSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("beeb25d7a7732e14f9986cdb79acecfc");
                     var LoremasterClericSpellSecret = Resources.GetBlueprint<BlueprintFeatureSelection>("904ce918c85c9f947910340b956fb877");
@@ -131,7 +131,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 }
 
                 void PatchTricksterTricks() {
-                    if (ModSettings.Fixes.Loremaster.IsDisabled("TricksterTricks")) { return; }
+                    if (ModContext.Fixes.Loremaster.IsDisabled("TricksterTricks")) { return; }
 
                     var LoremasterCombatFeatSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("90f105c8e31a6224ea319e6a810e4af8");
 

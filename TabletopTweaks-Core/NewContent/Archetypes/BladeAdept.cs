@@ -26,7 +26,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             };
             BlackBladeProgression.AddArchetype(BladeAdeptArchetype);
 
-            //if (ModSettings.AddedContent.Archetypes.IsDisabled("BladeAdept")) { return; }
+            //if (Context.AddedContent.Archetypes.IsDisabled("BladeAdept")) { return; }
             //ArcanistClass.m_Archetypes = ArcanistClass.m_Archetypes.AppendToArray(BladeAdeptArchetype.ToReference<BlueprintArchetypeReference>());
             //Main.LogPatch("Added", BladeAdeptArchetype);
         }

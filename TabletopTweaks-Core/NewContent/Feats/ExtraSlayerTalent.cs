@@ -1,6 +1,6 @@
 ﻿using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -23,7 +23,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     SlayerTalentSelection10
                 );
             });
-            if (ModSettings.AddedContent.Feats.IsDisabled("ExtraSlayerTalent")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("ExtraSlayerTalent")) { return; }
             FeatTools.AddAsFeat(ExtraSlayerTalent);
         }
     }

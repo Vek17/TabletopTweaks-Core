@@ -5,7 +5,7 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using System;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.Properties;
 using TabletopTweaks.Core.Utilities;
@@ -158,7 +158,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                 }));
             });
 
-            if (ModSettings.AddedContent.FighterAdvancedArmorTraining.IsDisabled("Feats")) { return; }
+            if (ModContext.AddedContent.FighterAdvancedArmorTraining.IsDisabled("Feats")) { return; }
             FeatTools.AddAsFeat(
                 AdvancedArmorTraining1,
                 AdvancedArmorTraining2,

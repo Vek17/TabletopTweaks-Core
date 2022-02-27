@@ -1,7 +1,7 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 
@@ -24,7 +24,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                     c.Level = 9;
                 });
             });
-            if (ModSettings.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("DefensiveWeaponTraining")) { return; }
+            if (ModContext.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("DefensiveWeaponTraining")) { return; }
             AdvancedWeapontrainingSelection.AddToAdvancedWeaponTrainingSelection(DefensiveWeaponTrainingFeature);
         }
     }

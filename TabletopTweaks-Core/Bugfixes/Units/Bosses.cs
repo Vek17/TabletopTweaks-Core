@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Bugfixes.Units {
@@ -19,7 +19,7 @@ namespace TabletopTweaks.Core.Bugfixes.Units {
             }
         }
         static void PatchStauntonVane() {
-            if (ModSettings.Fixes.Units.Bosses.IsDisabled("StauntonVane")) { return; }
+            if (ModContext.Fixes.Units.Bosses.IsDisabled("StauntonVane")) { return; }
 
             var StauntonVane_Boss = Resources.GetBlueprint<BlueprintUnit>("88f8535a8db0154488d5e72d74e0e466");
             var WarpriestClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("30b5e47d47a0e37438cc5a80c96cfb99");

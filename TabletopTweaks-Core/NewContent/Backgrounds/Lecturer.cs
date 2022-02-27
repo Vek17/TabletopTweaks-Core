@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Backgrounds {
@@ -37,7 +37,7 @@ namespace TabletopTweaks.Core.NewContent.Backgrounds {
                     c.BaseAttributeReplacement = StatType.Intelligence;
                 });
             });
-            if (ModSettings.AddedContent.Backgrounds.IsDisabled("Lecturer")) { return; }
+            if (ModContext.AddedContent.Backgrounds.IsDisabled("Lecturer")) { return; }
             BackgroundsScholarSelection.AddFeatures(BackgroundScholarLecturer);
         }
     }

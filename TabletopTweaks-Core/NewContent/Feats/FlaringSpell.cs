@@ -15,7 +15,7 @@ using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.FactLogic;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
@@ -89,7 +89,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddComponent<RemoveWhenCombatEnded>();
             });
 
-            if (ModSettings.AddedContent.Feats.IsEnabled("MetamagicFlaringSpell")) {
+            if (ModContext.AddedContent.Feats.IsEnabled("MetamagicFlaringSpell")) {
                 MetamagicExtention.RegisterMetamagic(
                     metamagic: (Metamagic)CustomMetamagic.Flaring,
                     name: "Flaring",
@@ -112,7 +112,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "A flaring spell only affects spells with a fire, light, or electricity descriptor."
             );
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("MetamagicFlaringSpell")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("MetamagicFlaringSpell")) { return; }
 
             UpdateSpells();
             AddRodsToVenders();

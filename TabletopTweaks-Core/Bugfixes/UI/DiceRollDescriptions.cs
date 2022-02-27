@@ -5,14 +5,14 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.TextTools;
 using System;
 using System.Text;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.UI {
     static class DiceRollDescriptions {
         [HarmonyPatch(typeof(LogHelper), "GetRollDescription")]
         private static class BuffPCView_Suppression_Patch {
             static bool Prefix(RuleRollDice ruleRollDice, ref string __result) {
-                if (ModSettings.Fixes.BaseFixes.IsDisabled("DiceReplacementUI")) { return true; }
+                if (ModContext.Fixes.BaseFixes.IsDisabled("DiceReplacementUI")) { return true; }
                 if (ruleRollDice == null) {
                     PFLog.Default.Error("Can't find d20 check in context for text template!", Array.Empty<object>());
                     __result = string.Empty;

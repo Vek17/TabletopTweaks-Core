@@ -1,5 +1,5 @@
 ﻿using Kingmaker.Blueprints.Classes;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -23,8 +23,8 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
                 bp.Groups = new FeatureGroup[] { FeatureGroup.MythicFeat };
                 bp.AddPrerequisiteFeature(ShatterDefenses);
             });
-            if (ModSettings.Fixes.Feats.IsDisabled("ShatterDefenses")) { return; }
-            if (ModSettings.AddedContent.MythicFeats.IsDisabled("MythicShatterDefenses")) { return; }
+            if (ModContext.Fixes.Feats.IsDisabled("ShatterDefenses")) { return; }
+            if (ModContext.AddedContent.MythicFeats.IsDisabled("MythicShatterDefenses")) { return; }
             FeatTools.AddAsMythicFeat(ShatterDefensesMythicFeat);
         }
     }

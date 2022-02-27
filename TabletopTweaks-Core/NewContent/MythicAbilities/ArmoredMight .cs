@@ -1,6 +1,6 @@
 ﻿using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 
@@ -22,7 +22,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddComponent(Helpers.Create<ArmoredMightComponent>());
             });
 
-            if (ModSettings.AddedContent.MythicAbilities.IsDisabled("ArmoredMight")) { return; }
+            if (ModContext.AddedContent.MythicAbilities.IsDisabled("ArmoredMight")) { return; }
             FeatTools.AddAsMythicAbility(ArmoredMightFeature);
         }
     }

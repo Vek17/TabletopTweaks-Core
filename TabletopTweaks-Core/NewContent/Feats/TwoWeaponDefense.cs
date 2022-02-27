@@ -3,7 +3,7 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Designers.Mechanics.Facts;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 
@@ -39,7 +39,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(TwoWeaponFighting);
             });
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("TwoWeaponDefense")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("TwoWeaponDefense")) { return; }
             FeatTools.AddAsFeat(TwoWeaponDefenseFeature);
         }
     }

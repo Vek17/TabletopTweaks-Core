@@ -5,7 +5,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -60,7 +60,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                 });
             });
 
-            if (ModSettings.AddedContent.FighterAdvancedArmorTraining.IsDisabled("CriticalDeflection")) { return; }
+            if (ModContext.AddedContent.FighterAdvancedArmorTraining.IsDisabled("CriticalDeflection")) { return; }
             AdvancedArmorTraining.AddToAdvancedArmorTrainingSelection(CriticalDeflectionFeature);
         }
     }

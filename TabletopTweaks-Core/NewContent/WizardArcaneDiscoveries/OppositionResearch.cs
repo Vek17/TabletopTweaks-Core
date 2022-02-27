@@ -3,7 +3,7 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 
@@ -51,7 +51,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                 );
             });
 
-            if (ModSettings.AddedContent.WizardArcaneDiscoveries.IsDisabled("OppositionResearch")) { return; }
+            if (ModContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("OppositionResearch")) { return; }
             ArcaneDiscoverySelection.AddToArcaneDiscoverySelection(OppositionResearchSelection);
         }
 

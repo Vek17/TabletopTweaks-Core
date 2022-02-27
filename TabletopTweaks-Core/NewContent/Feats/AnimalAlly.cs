@@ -5,7 +5,7 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Designers.Mechanics.Facts;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -102,8 +102,8 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            if (ModSettings.AddedContent.Feats.IsDisabled("NatureSoul")) { return; }
-            if (ModSettings.AddedContent.Feats.IsDisabled("AnimalAlly")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("NatureSoul")) { return; }
+            if (ModContext.AddedContent.Feats.IsDisabled("AnimalAlly")) { return; }
             var CompanionBoon = Resources.GetBlueprint<BlueprintFeature>("8fc01f06eab4dd946baa5bc658cac556");
             CompanionBoon.AddComponent<CompanionBoon>(c => {
                 c.m_RankFeature = AnimalAllyRank.ToReference<BlueprintFeatureReference>();

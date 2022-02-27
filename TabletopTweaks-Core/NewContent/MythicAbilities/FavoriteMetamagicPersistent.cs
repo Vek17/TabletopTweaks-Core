@@ -1,7 +1,7 @@
 ﻿using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.UnitLogic.Abilities;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
@@ -27,7 +27,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(PersistentSpellFeat);
             });
 
-            if (ModSettings.AddedContent.MythicAbilities.IsDisabled("FavoriteMetamagicPersistent")) { return; }
+            if (ModContext.AddedContent.MythicAbilities.IsDisabled("FavoriteMetamagicPersistent")) { return; }
             MetamagicExtention.RegisterMetamagic(
                 metamagic: Metamagic.Persistent,
                 name: "",

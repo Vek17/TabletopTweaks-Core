@@ -7,7 +7,7 @@ using Kingmaker.UnitLogic.Parts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartBroadStudy : OldStyleUnitPart {
@@ -74,7 +74,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
         [HarmonyPatch(typeof(UnitPartMagus), "IsSpellFromMagusSpellList", new Type[] { typeof(AbilityData) })]
         public class UnitDescriptor_IsSpellFromMagusSpellList_BroadStudy_Patch {
             static void Postfix(UnitPartMagus __instance, ref bool __result, AbilityData spell) {
-                if (ModSettings.AddedContent.MagusArcana.IsDisabled("BroadStudy")) { return; }
+                if (ModContext.AddedContent.MagusArcana.IsDisabled("BroadStudy")) { return; }
                 __result |= spell.Caster?.Get<UnitPartBroadStudy>()?.IsBroadStudy(spell) ?? false;
             }
         }
@@ -82,7 +82,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
         [HarmonyPatch(typeof(UnitPartMagus), "IsSpellFromMagusSpellList", new Type[] { typeof(AbilityData) })]
         public class UnitDescriptor_IsSpellFromMagusSpellList_MythicBroadStudy_Patch {
             static void Postfix(UnitPartMagus __instance, ref bool __result, AbilityData spell) {
-                if (ModSettings.AddedContent.MythicAbilities.IsDisabled("MythicSpellCombat")) { return; }
+                if (ModContext.AddedContent.MythicAbilities.IsDisabled("MythicSpellCombat")) { return; }
                 __result |= spell.Caster?.Get<UnitPartBroadStudy>()?.IsMythicBroadStudy(spell) ?? false;
             }
         }

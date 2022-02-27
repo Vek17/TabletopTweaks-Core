@@ -6,7 +6,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using TabletopTweaks.Core.Config;
+using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
 
@@ -27,7 +27,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchFlameMystery();
 
                 void PatchNaturesWhisper() {
-                    if (ModSettings.Fixes.Oracle.Base.IsDisabled("NaturesWhisperMonkStacking")) { return; }
+                    if (ModContext.Fixes.Oracle.Base.IsDisabled("NaturesWhisperMonkStacking")) { return; }
 
                     var OracleRevelationNatureWhispers = Resources.GetBlueprint<BlueprintFeature>("3d2cd23869f0d98458169b88738f3c32");
                     var NaturesWhispersACConversion = Resources.GetModBlueprint<BlueprintFeature>("NaturesWhispersACConversion");
@@ -47,7 +47,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     PatchRevelationBurningMagic();
 
                     void PatchRevelationBurningMagic() {
-                        if (ModSettings.Fixes.Oracle.Base.IsDisabled("RevelationBurningMagic")) { return; }
+                        if (ModContext.Fixes.Oracle.Base.IsDisabled("RevelationBurningMagic")) { return; }
 
                         var OracleRevelationBurningMagicBuff = Resources.GetBlueprint<BlueprintBuff>("4ae27ae7c3d758041b25e9a3aff73592");
                         OracleRevelationBurningMagicBuff.GetComponent<ContextRankConfig>().m_Progression = ContextRankProgression.AsIs;
