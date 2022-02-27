@@ -11,11 +11,16 @@ using TabletopTweaks.Core.Config;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Localization {
+    /// <summary>
+    /// Contains and manages localization for all available langauges.
+    /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
-    class MultiLocalizationPack {
+    public class MultiLocalizationPack {
 
         public MultiLocalizationPack() { }
-
+        /// <summary>
+        /// Dictionary of extisting strings of enGB text and corresponding MultiLocaleStrings.
+        /// </summary>
         public SortedDictionary<string, MultiLocaleString> Text {
             get {
                 if (text == null) {
@@ -27,6 +32,9 @@ namespace TabletopTweaks.Core.Localization {
                 return text;
             }
         }
+        /// <summary>
+        /// Dictionary of extisting LocalizedString Ids and corresponding MultiLocaleStrings.
+        /// </summary>
         public SortedDictionary<string, MultiLocaleString> Ids {
             get {
                 if (ids == null) {
@@ -38,27 +46,53 @@ namespace TabletopTweaks.Core.Localization {
                 return ids;
             }
         }
-
+        /// <summary>
+        /// Applies the contents of the MultiLocalizationPack to the current LocalizationPack in the LocalizationManager.
+        /// </summary>
         public void ApplyToCurrentPack() {
             LocalizationManager.CurrentPack.AddStrings(GeneratePack());
         }
-
+        /// <summary>
+        /// Clears data in Text and Ids.
+        /// </summary>
         public void ResetCache() {
             ids = null;
             text = null;
         }
-
+        /// <summary>
+        /// Gets the MultiLocaleString assosiated with the entered text.
+        /// </summary>
+        /// <param name="text">
+        /// Text to search for in the current cache.
+        /// </param>
+        /// <param name="result">
+        /// MultiLocaleString that will contain the result if the text exists.
+        /// </param>
+        /// <param name="locale"></param>
+        /// <returns>
+        /// true if the text exists in the current cache, otherwise false.
+        /// </returns>
         public bool TryGetText(string text, out MultiLocaleString result, Locale locale = Locale.enGB) {
             return Text.TryGetValue(text, out result);
         }
-
+        /// <summary>
+        /// Adds the MultiLocaleString to the MultiLocalizationPack as well as the CurrentPack in the LocalizationManager.
+        /// </summary>
+        /// <param name="newString">
+        /// MultiLocaleString to be added to the pack.
+        /// </param>
         public void AddString(MultiLocaleString newString) {
             Ids[newString.Key] = newString;
             Text[newString.StringEntry(LocalizationManager.CurrentLocale).Text] = newString;
             Strings.Add(newString);
             LocalizationManager.CurrentPack.m_Strings[newString.Key] = newString.StringEntry(LocalizationManager.CurrentLocale);
         }
-
+        /// <summary>
+        /// Generates a new LocalizationPack based on the contents of the MultiLocalizationPack.
+        /// </summary>
+        /// <returns>
+        /// New LocalizationPack created with the contents of the MultiLocalizationPack.
+        /// </returns>
         private LocalizationPack GeneratePack() {
             var pack = new LocalizationPack {
                 Locale = LocalizationManager.CurrentPack.Locale,
@@ -69,19 +103,33 @@ namespace TabletopTweaks.Core.Localization {
             }
             return pack;
         }
-
+        /// <summary>
+        /// All MultiLocaleStrings in the MultiLocalizationPack.
+        /// </summary>
         [NotNull]
         [JsonProperty(PropertyName = "LocalizedStrings")]
         public List<MultiLocaleString> Strings = new List<MultiLocaleString>();
         private SortedDictionary<string, MultiLocaleString> text;
         private SortedDictionary<string, MultiLocaleString> ids;
 
+        /// <summary>
+        /// Contains key used for LocalizedString as well as localized text for all supported lanagues.
+        /// </summary>
         [JsonObject(MemberSerialization.OptIn)]
         public class MultiLocaleString {
+            /// <summary>
+            /// Key used for the resulting LocalizedString.
+            /// </summary>
             [JsonProperty]
             public string Key;
+            /// <summary>
+            /// Used for human reference in the localization pack.
+            /// </summary>
             [JsonProperty]
             public string SimpleName;
+            /// <summary>
+            /// Determines if the text will be passed though the tagging system before being added to the current LocalizationPack.
+            /// </summary>
             [JsonProperty]
             public bool ProcessTemplates;
 #if DEBUG
@@ -89,19 +137,40 @@ namespace TabletopTweaks.Core.Localization {
             [DefaultValue(true)]
             private bool IsUsed = false;
 #endif
+            /// <summary>
+            /// English Text.
+            /// </summary>
             [JsonProperty]
             public string enGB = "";
+            /// <summary>
+            /// Russian Text.
+            /// </summary>
             [JsonProperty]
             public string ruRU;
+            /// <summary>
+            /// German Text.
+            /// </summary>
             [JsonProperty]
             public string deDE;
+            /// <summary>
+            /// French Text.
+            /// </summary>
             [JsonProperty]
             public string frFR;
+            /// <summary>
+            /// Chinese Text.
+            /// </summary>
             [JsonProperty]
             public string zhCN;
+            /// <summary>
+            /// Spanish Text.
+            /// </summary>
             [JsonProperty]
             public string esES;
             private LocalizedString m_LocalizedString;
+            /// <summary>
+            /// The LocalizedString representation of the the MultiLocaleString.
+            /// </summary>
             public LocalizedString LocalizedString {
                 get {
                     m_LocalizedString ??= new LocalizedString {
@@ -115,13 +184,34 @@ namespace TabletopTweaks.Core.Localization {
                 }
             }
             public MultiLocaleString() { }
+            /// <summary></summary>
+            /// <param name="simpleName">
+            /// Used for human reference in the localization pack.
+            /// </param>
+            /// <param name="text">
+            /// Initial text to include in the MultiLocaleString.
+            /// </param>
+            /// <param name="shouldProcess">
+            /// Determines if the resulting LocalizedString will be processed by the tagging system.
+            /// </param>
+            /// <param name="locale">
+            /// Locale to use for the initial text.
+            /// </param>
             public MultiLocaleString(string simpleName, string text, bool shouldProcess = false, Locale locale = Locale.enGB) {
                 ProcessTemplates = shouldProcess;
                 SimpleName = simpleName;
                 Key = Guid.NewGuid().ToString("N");
                 SetText(locale, text);
             }
-
+            /// <summary>
+            /// Sets to text for the specified locale.
+            /// </summary>
+            /// <param name="locale">
+            /// Locale to set the text for.
+            /// </param>
+            /// <param name="text">
+            /// Text to use for the specified locale.
+            /// </param>
             public void SetText(Locale locale, string text) {
                 switch (locale) {
                     case Locale.enGB:
@@ -147,7 +237,15 @@ namespace TabletopTweaks.Core.Localization {
                         break;
                 }
             }
-
+            /// <summary>
+            /// Generates a new StringEntry of the supplied locale.
+            /// </summary>
+            /// <param name="locale">
+            /// Locale to use the text of.
+            /// </param>
+            /// <returns>
+            /// StringEntry containing the text present in specified locale, or Locale.enGB if the text in the specified locale is null.
+            /// </returns>
             public LocalizationPack.StringEntry StringEntry(Locale locale = Locale.enGB) {
                 string result;
                 switch (locale) {
@@ -189,21 +287,21 @@ namespace TabletopTweaks.Core.Localization {
         }
     }
     [HarmonyPatch(typeof(StartGameLoader), nameof(StartGameLoader.LoadPackTOC))]
-    public static class StartGameLoader_LocalizationPatch {
+    internal class StartGameLoader_LocalizationPatch {
         static void Postfix() {
             ModSettings.ModLocalizationPack.ApplyToCurrentPack();
             ModSettings.SaveLocalization("LocalizationPack.Json", ModSettings.ModLocalizationPack);
         }
     }
     [HarmonyPatch(typeof(LocalizationManager), nameof(LocalizationManager.OnLocaleChanged))]
-    public static class LocalizationManager_OnLocaleChanged_LocalizationPatch {
+    internal static class LocalizationManager_OnLocaleChanged_LocalizationPatch {
         static void Postfix() {
             ModSettings.ModLocalizationPack.ResetCache();
             ModSettings.ModLocalizationPack.ApplyToCurrentPack();
         }
     }
     [HarmonyPatch(typeof(BlueprintsCache), nameof(BlueprintsCache.Init))]
-    public static class BlueprintsCache_LocalizationPatch {
+    internal static class BlueprintsCache_LocalizationPatch {
         static bool Prefix() {
             ModSettings.ModLocalizationPack.ApplyToCurrentPack();
             return true;

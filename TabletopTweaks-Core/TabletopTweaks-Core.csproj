@@ -204,6 +204,7 @@
     <Compile Include="Config\ICollapseableGroup.cs" />
     <Compile Include="Config\IDisableableGroup.cs" />
     <Compile Include="Config\IUpdatableSettings.cs" />
+    <Compile Include="Config\ModSettingsBase.cs" />
     <Compile Include="Config\NestedSettingGroup.cs" />
     <Compile Include="Config\SettingGroup.cs" />
     <Compile Include="Utilities\BlueprintExtentions.cs" />
