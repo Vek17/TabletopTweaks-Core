@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewUnitParts {
     public class TTUnitPartDamageReduction :
@@ -277,7 +278,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
         }
 
         private void RecalculateChunkStacks() {
-            //Main.LogDebug($"RecalculateChunkStacks ({this.Owner.CharacterName})");
+            //TTTContext.Logger.LogVerbose($"RecalculateChunkStacks ({this.Owner.CharacterName})");
 #if DEBUG
             var watch = new System.Diagnostics.Stopwatch();
             watch.Start();
@@ -346,7 +347,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             }
 #if DEBUG
             watch.Stop();
-            //Main.LogDebug($"Calculated DR stacking groups in {watch.ElapsedMilliseconds} ms");
+            //TTTContext.Logger.LogVerbose($"Calculated DR stacking groups in {watch.ElapsedMilliseconds} ms");
             //DebugLogChunkStacks();
 #endif
         }
@@ -357,7 +358,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             for (int i = 0; i < m_ChunkStacks.Length; i++) {
                 builder.Append(m_ChunkStacks[i].ToDebugString(indent));
             }
-            Main.LogDebug(builder.ToString());
+            TTTContext.Logger.LogVerbose(builder.ToString());
         }
 
         private void DebugLogReductionDisplays() {
@@ -369,7 +370,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             })) {
                 builder.Append(new string(' ', indent * 2) + "- " + rd.ToDebugString() + "\n");
             }
-            Main.LogDebug(builder.ToString());
+            TTTContext.Logger.LogVerbose(builder.ToString());
         }
 
         public void TryInitialize() {

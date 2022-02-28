@@ -21,7 +21,7 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
                 bp.AddPrerequisiteFeature(TwoWeaponDefenseFeature);
             });
 
-            if (ModContext.AddedContent.MythicFeats.IsDisabled("MythicTwoWeaponDefense")) { return; }
+            if (TTTContext.AddedContent.MythicFeats.IsDisabled("MythicTwoWeaponDefense")) { return; }
             FeatTools.AddAsMythicFeat(TwoWeaponDefenseMythicFeature);
         }
     }

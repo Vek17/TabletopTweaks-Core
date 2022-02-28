@@ -13,7 +13,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                //Main.LogHeader("Patching Trickster Resources");
+                //TTTContext.Logger.LogHeader("Patching Trickster Resources");
             }
         }
         [HarmonyPatch(typeof(BlueprintItemEquipment), "CanBeEquippedBy", new Type[] { typeof(UnitDescriptor) })]

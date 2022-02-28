@@ -18,11 +18,11 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Base Abilities");
+                TTTContext.Logger.LogHeader("Patching Base Abilities");
                 FixCoupDeGrace();
 
                 static void FixCoupDeGrace() {
-                    if (ModContext.Fixes.BaseFixes.IsDisabled("CoupDeGrace")) { return; }
+                    if (TTTContext.Fixes.BaseFixes.IsDisabled("CoupDeGrace")) { return; }
 
                     var CoupDeGraceAbility = ResourcesLibrary.TryGetBlueprint<BlueprintAbility>("32280b137ca642c45be17e2d92898758");
                     CoupDeGraceAbility.SetDescription("As a full-round action, you can use a melee weapon to deliver a coup de grace " +
@@ -37,7 +37,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
                             });
                         })
                     );
-                    Main.LogPatch("Patched", CoupDeGraceAbility);
+                    TTTContext.Logger.LogPatch("Patched", CoupDeGraceAbility);
                 }
             }
         }

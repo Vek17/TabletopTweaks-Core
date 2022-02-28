@@ -21,7 +21,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Warpriest");
+                TTTContext.Logger.LogHeader("Patching Warpriest");
                 PatchBase();
             }
             static void PatchBase() {
@@ -33,7 +33,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchLuckBlessing();
 
                 void PatchAirBlessing() {
-                    if (ModContext.Fixes.Warpriest.Base.IsDisabled("AirBlessing")) { return; }
+                    if (TTTContext.Fixes.Warpriest.Base.IsDisabled("AirBlessing")) { return; }
 
                     var AirBlessingMajorBuff = Resources.GetBlueprint<BlueprintBuff>("ac410725d8fc6fe4b81d47269f4f3ea1");
 
@@ -47,39 +47,39 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         c.Value = DealDamage.Value;
                         c.DamageType = DealDamage.DamageType;
                     });
-                    Main.LogPatch("Patched", AirBlessingMajorBuff);
+                    TTTContext.Logger.LogPatch("Patched", AirBlessingMajorBuff);
                 }
                 void PatchEarthBlessing() {
-                    if (ModContext.Fixes.Warpriest.Base.IsDisabled("EarthBlessing")) { return; }
+                    if (TTTContext.Fixes.Warpriest.Base.IsDisabled("EarthBlessing")) { return; }
 
                     var EarthBlessingMinorBuff = Resources.GetBlueprint<BlueprintBuff>("8237e758e7520fe46894bd00ebc9fac7");
                     PatchElementalDamageOnAttack(EarthBlessingMinorBuff);
                 }
                 void PatchFireBlessing() {
-                    if (ModContext.Fixes.Warpriest.Base.IsDisabled("FireBlessing")) { return; }
+                    if (TTTContext.Fixes.Warpriest.Base.IsDisabled("FireBlessing")) { return; }
 
                     var FireBlessingMinorBuff = Resources.GetBlueprint<BlueprintBuff>("35d99b00e5a28ff42ae609be9d621fdb");
                     PatchElementalDamageOnAttack(FireBlessingMinorBuff);
                 }
                 void PatchWaterBlessing() {
-                    if (ModContext.Fixes.Warpriest.Base.IsDisabled("WaterBlessing")) { return; }
+                    if (TTTContext.Fixes.Warpriest.Base.IsDisabled("WaterBlessing")) { return; }
 
                     var WaterBlessingMinorBuff = Resources.GetBlueprint<BlueprintBuff>("21cdbf11919e0eb4db1ed46ce488f206");
                     PatchElementalDamageOnAttack(WaterBlessingMinorBuff);
                 }
                 void PatchWeatherBlessing() {
-                    if (ModContext.Fixes.Warpriest.Base.IsDisabled("WeatherBlessing")) { return; }
+                    if (TTTContext.Fixes.Warpriest.Base.IsDisabled("WeatherBlessing")) { return; }
 
                     var WeatherBlessingMinorBuff = Resources.GetBlueprint<BlueprintBuff>("05a33a6177bf7f54695443fdf3faa701");
                     PatchElementalDamageOnAttack(WeatherBlessingMinorBuff);
                 }
                 void PatchLuckBlessing() {
-                    if (ModContext.Fixes.Warpriest.Base.IsDisabled("LuckBlessing")) { return; }
+                    if (TTTContext.Fixes.Warpriest.Base.IsDisabled("LuckBlessing")) { return; }
 
                     var LuckBlessingMajorFeature = Resources.GetBlueprint<BlueprintFeature>("0b59acd4d1fffa34da9fc91da05dd398");
                     var LuckBlessingMajorAbility = Resources.GetBlueprintReference<BlueprintUnitFactReference>("49fa2b54589c34a42b8f06b8de1a6639");
                     LuckBlessingMajorFeature.GetComponent<AddFacts>().m_Facts = new BlueprintUnitFactReference[] { LuckBlessingMajorAbility };
-                    Main.LogPatch("Patched", LuckBlessingMajorFeature);
+                    TTTContext.Logger.LogPatch("Patched", LuckBlessingMajorFeature);
                 }
 
                 void PatchElementalDamageOnAttack(BlueprintBuff buff) {
@@ -89,7 +89,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         c.Value = DealDamage.Value;
                         c.DamageType = DealDamage.DamageType;
                     });
-                    Main.LogPatch("Patched", buff);
+                    TTTContext.Logger.LogPatch("Patched", buff);
                 }
             }
 

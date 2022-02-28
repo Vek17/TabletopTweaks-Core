@@ -26,7 +26,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Monk");
+                TTTContext.Logger.LogHeader("Patching Monk");
 
                 PatchBase();
                 PatchZenArcher();
@@ -39,7 +39,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchPerfectStrike();
 
                 void PatchPerfectStrike() {
-                    if (ModContext.Fixes.Monk.Archetypes["ZenArcher"].IsDisabled("PerfectStrike")) { return; }
+                    if (TTTContext.Fixes.Monk.Archetypes["ZenArcher"].IsDisabled("PerfectStrike")) { return; }
                     var PerfectStrikeAbility = Resources.GetBlueprint<BlueprintAbility>("bc656f51e407aad40bc8d974f3d5b04a");
                     var PerfectStrikeOwnerBuff = Resources.GetBlueprint<BlueprintBuff>("9a41e6d073b42564b9f00ad83b7d3b52");
                     var PerfectStrikeZenArcherBuff = Resources.GetModBlueprint<BlueprintBuff>("PerfectStrikeZenArcherBuff");
@@ -108,16 +108,16 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         if (unit.Progression.GetClassLevel(MonkClass) >= 10 && unit.Progression.IsArchetype(ZenArcherArchetype)) {
                             if (!unit.HasFact(PerfectStrikeZenArcherUpgrade)) {
                                 if (unit.AddFact(PerfectStrikeZenArcherUpgrade) != null) {
-                                    Main.Log($"Added: {PerfectStrikeZenArcherUpgrade.name} To: {unit.CharacterName}");
+                                    TTTContext.Logger.Log($"Added: {PerfectStrikeZenArcherUpgrade.name} To: {unit.CharacterName}");
                                     return;
                                 }
-                                Main.Log($"Failed Add: {PerfectStrikeZenArcherUpgrade.name} To: {unit.CharacterName}");
+                                TTTContext.Logger.Log($"Failed Add: {PerfectStrikeZenArcherUpgrade.name} To: {unit.CharacterName}");
                             }
                         }
                     });
-                    Main.LogPatch("Patched", PerfectStrikeAbility);
-                    Main.LogPatch("Patched", ZenArcherArchetype);
-                    Main.LogPatch("Patched", MonkProgression);
+                    TTTContext.Logger.LogPatch("Patched", PerfectStrikeAbility);
+                    TTTContext.Logger.LogPatch("Patched", ZenArcherArchetype);
+                    TTTContext.Logger.LogPatch("Patched", MonkProgression);
                 }
             }
         }

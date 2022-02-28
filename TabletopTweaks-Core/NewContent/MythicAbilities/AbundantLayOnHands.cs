@@ -34,7 +34,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(LayOnHandsFeature);
             });
 
-            if (ModContext.AddedContent.MythicAbilities.IsDisabled("AbundantLayOnHands")) { return; }
+            if (TTTContext.AddedContent.MythicAbilities.IsDisabled("AbundantLayOnHands")) { return; }
             FeatTools.AddAsMythicAbility(AbundantLayOnHandsFeature);
         }
     }

@@ -27,7 +27,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(PersistentSpellFeat);
             });
 
-            if (ModContext.AddedContent.MythicAbilities.IsDisabled("FavoriteMetamagicPersistent")) { return; }
+            if (TTTContext.AddedContent.MythicAbilities.IsDisabled("FavoriteMetamagicPersistent")) { return; }
             MetamagicExtention.RegisterMetamagic(
                 metamagic: Metamagic.Persistent,
                 name: "",

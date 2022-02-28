@@ -16,7 +16,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Sorcerer");
+                TTTContext.Logger.LogHeader("Patching Sorcerer");
 
                 PatchBase();
                 PatchCrossblooded();
@@ -27,7 +27,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchElementalBloodlineDescriptions();
 
                 void PatchDraconicBloodlineDescriptions() {
-                    if (ModContext.Fixes.Sorcerer.Base.IsDisabled("DraconicBloodlineDescriptions")) { return; }
+                    if (TTTContext.Fixes.Sorcerer.Base.IsDisabled("DraconicBloodlineDescriptions")) { return; }
 
                     var BloodlineDraconicBrassArcana = Resources.GetBlueprint<BlueprintFeature>("153e9b6b5b0f34d45ae8e815838aca80");
                     var BloodlineDraconicRedArcana = Resources.GetBlueprint<BlueprintFeature>("a8baee8eb681d53438cc17bd1d125890");
@@ -62,7 +62,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     }
                 }
                 void PatchElementalBloodlineDescriptions() {
-                    if (ModContext.Fixes.Sorcerer.Base.IsDisabled("PatchElementalBloodlineDescriptions")) { return; }
+                    if (TTTContext.Fixes.Sorcerer.Base.IsDisabled("PatchElementalBloodlineDescriptions")) { return; }
 
                     var BloodlineElementalAirArcana = Resources.GetBlueprint<BlueprintFeature>("54ae8876bb5d78242beec0752592a018");
                     var BloodlineElementalAirArcanaAbilily = Resources.GetBlueprint<BlueprintActivatableAbility>("5f6315dfeb74a564f96f460d72f7206c");
@@ -97,8 +97,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
 
                         ability.DeactivateImmediately = true;
 
-                        Main.LogPatch(feature);
-                        Main.LogPatch(buff);
+                        TTTContext.Logger.LogPatch(feature);
+                        TTTContext.Logger.LogPatch(buff);
                     }
                 }
             }
@@ -107,7 +107,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchDrawbacks();
 
                 void PatchDrawbacks() {
-                    if (ModContext.Fixes.Sorcerer.Archetypes["Crossblooded"].IsDisabled("Drawbacks")) { return; }
+                    if (TTTContext.Fixes.Sorcerer.Archetypes["Crossblooded"].IsDisabled("Drawbacks")) { return; }
 
                     var CrossbloodedDrawbacks = Resources.GetBlueprint<BlueprintFeature>("f02fd748fecb4cc2a4d7d282c6b3de46");
                     CrossbloodedDrawbacks.SetName("Crossblooded Drawbacks");
@@ -120,7 +120,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         c.Value = -2;
                     });
 
-                    Main.LogPatch("Patched", CrossbloodedDrawbacks);
+                    TTTContext.Logger.LogPatch("Patched", CrossbloodedDrawbacks);
                 }
             }
         }

@@ -61,7 +61,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            if (ModContext.AddedContent.Feats.IsDisabled("LungingSpellTouch")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("LungingSpellTouch")) { return; }
             FeatTools.AddAsFeat(LungingSpellTouchFeature);
         }
     }

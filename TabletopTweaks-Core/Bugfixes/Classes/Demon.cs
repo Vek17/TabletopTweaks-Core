@@ -17,12 +17,12 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Demon Resources");
+                TTTContext.Logger.LogHeader("Patching Demon Resources");
 
                 PatchBrimorakAspect();
 
                 void PatchBrimorakAspect() {
-                    if (ModContext.Fixes.Demon.IsDisabled("BrimorakAspect")) { return; }
+                    if (TTTContext.Fixes.Demon.IsDisabled("BrimorakAspect")) { return; }
 
                     var BrimorakAspectEffectBuff = Resources.GetBlueprint<BlueprintBuff>("f154542e0b97908479a578dd7bf6d3f7");
                     var BrimorakAspectEffectProperty = Resources.GetBlueprintReference<BlueprintUnitPropertyReference>("d6a524d190f04a7ca3f920d2f96fa21b");
@@ -41,7 +41,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         });
                     });
 
-                    Main.LogPatch(BrimorakAspectEffectBuff);
+                    TTTContext.Logger.LogPatch(BrimorakAspectEffectBuff);
                 }
             }
         }

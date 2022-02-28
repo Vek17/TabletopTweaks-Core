@@ -36,7 +36,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(IncenseFogFeature);
             });
 
-            if (ModContext.AddedContent.MythicAbilities.IsDisabled("AbundantIncense")) { return; }
+            if (TTTContext.AddedContent.MythicAbilities.IsDisabled("AbundantIncense")) { return; }
             FeatTools.AddAsMythicAbility(AbundantIncenseFeature);
         }
     }

@@ -18,7 +18,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(ArcanistArcaneReservoirFeature, GroupType.Any);
                 bp.AddPrerequisiteFeature(ArcaneEnforcerArcaneReservoirFeature, GroupType.Any);
             });
-            if (ModContext.AddedContent.Feats.IsDisabled("ExtraReservoir")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("ExtraReservoir")) { return; }
             FeatTools.AddAsFeat(ExtraReservoir);
         }
     }

@@ -482,7 +482,7 @@ namespace TabletopTweaks.Core.NewContent.Bloodlines {
             BloodlineTools.ApplyPrimalistException(BloodragerDestinedDefyDeath, 12, BloodragerDestinedBloodline);
             BloodlineTools.ApplyPrimalistException(BloodragerDestinedUnstoppable, 16, BloodragerDestinedBloodline);
             BloodlineTools.ApplyPrimalistException(BloodragerDestinedVictoryOrDeath, 20, BloodragerDestinedBloodline);
-            if (ModContext.AddedContent.Bloodlines.IsDisabled("DestinedBloodline")) { return; }
+            if (TTTContext.AddedContent.Bloodlines.IsDisabled("DestinedBloodline")) { return; }
             BloodlineTools.RegisterBloodragerBloodline(BloodragerDestinedBloodline, BloodragerAberrantBloodlineWandering);
         }
         public static void AddSorcererDestinedBloodline() {
@@ -1323,7 +1323,7 @@ namespace TabletopTweaks.Core.NewContent.Bloodlines {
             });
             BloodlineTools.RegisterSorcererFeatSelection(SorcererDestinedFeatSelection, SorcererDestinedBloodline);
 
-            if (ModContext.AddedContent.Bloodlines.IsDisabled("DestinedBloodline")) { return; }
+            if (TTTContext.AddedContent.Bloodlines.IsDisabled("DestinedBloodline")) { return; }
             BloodlineTools.RegisterSorcererBloodline(SorcererDestinedBloodline);
             BloodlineTools.RegisterCrossbloodedBloodline(CrossbloodedDestinedBloodline);
             BloodlineTools.RegisterSeekerBloodline(SeekerDestinedBloodline);

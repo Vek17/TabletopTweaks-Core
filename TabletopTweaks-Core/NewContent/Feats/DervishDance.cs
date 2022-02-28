@@ -80,7 +80,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             });
             FixRecommendations(SlashingGrace, DervishDance);
             FixRecommendations(FencingGrace, DervishDance);
-            if (ModContext.AddedContent.Feats.IsDisabled("DervishDance")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("DervishDance")) { return; }
             FeatTools.AddAsFeat(DervishDance);
         }
         private static void FixRecommendations(BlueprintFeature feature, BlueprintFeature avoid) {

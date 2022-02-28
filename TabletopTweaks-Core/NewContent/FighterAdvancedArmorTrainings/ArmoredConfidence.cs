@@ -131,7 +131,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                 });
             });
 
-            if (ModContext.AddedContent.FighterAdvancedArmorTraining.IsDisabled("ArmoredConfidence")) { return; }
+            if (TTTContext.AddedContent.FighterAdvancedArmorTraining.IsDisabled("ArmoredConfidence")) { return; }
             AdvancedArmorTraining.AddToAdvancedArmorTrainingSelection(ArmoredConfidenceFeature);
         }
     }

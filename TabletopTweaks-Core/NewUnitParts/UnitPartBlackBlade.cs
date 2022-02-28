@@ -9,6 +9,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Newtonsoft.Json;
 using System.Linq;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartBlackBlade : OldStyleUnitPart {
@@ -22,7 +23,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
 
         public bool TryAddToInventory(BlueprintItem ItemToGive) {
             var valid = Game.Instance.Player.PartyCharacters.AsEnumerable().Append(Game.Instance.Player.MainCharacter.Value).Select(u => u.Value).ToList();
-            Main.Log($"Owner: {Owner.Unit.UniqueId}:{Owner.CharacterName} - {valid.Contains(Owner)}");
+            TTTContext.Logger.Log($"Owner: {Owner.Unit.UniqueId}:{Owner.CharacterName} - {valid.Contains(Owner)}");
             if (!BlackBlade.IsEmpty || !valid.Contains(Owner)) {
                 return false;
             }
@@ -46,7 +47,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
                 }
                 enchant = null;
             } catch {
-                Main.Error("Failed to clear Black Blade LifeDrinker");
+                TTTContext.Logger.LogError("Failed to clear Black Blade LifeDrinker");
             }
         }
 

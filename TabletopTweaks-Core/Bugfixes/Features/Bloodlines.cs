@@ -23,12 +23,12 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Bloodlines");
+                TTTContext.Logger.LogHeader("Patching Bloodlines");
                 PatchBloodlineRestrictions();
             }
         }
         static void PatchBloodlineRestrictions() {
-            if (ModContext.Fixes.Bloodlines.IsDisabled("BloodlineRestrictions")) { return; }
+            if (TTTContext.Fixes.Bloodlines.IsDisabled("BloodlineRestrictions")) { return; }
             // Bloodline Requisite 
             var BloodlineRequisiteFeature = Resources.GetModBlueprint<BlueprintFeature>("BloodlineRequisiteFeature");
             // Requisite Features
@@ -174,9 +174,9 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             FixRequisiteName(1, SerpentineBloodlineRequisiteFeature);
             FixRequisiteName(1, UndeadBloodlineRequisiteFeature);
             // Fix Mutated Bloodlines
-            AddRequisiteFeature(EmpyrealBloodlineProgression, BloodlineRequisiteFeature, CelestialBloodlineRequisiteFeature); Main.LogPatch("Patched", EmpyrealBloodlineProgression);
-            AddRequisiteFeature(SageBloodlineProgression, BloodlineRequisiteFeature, ArcaneBloodlineRequisiteFeature); Main.LogPatch("Patched", SageBloodlineProgression);
-            AddRequisiteFeature(SylvanBloodlineProgression, BloodlineRequisiteFeature, FeyBloodlineRequisiteFeature); Main.LogPatch("Patched", SylvanBloodlineProgression);
+            AddRequisiteFeature(EmpyrealBloodlineProgression, BloodlineRequisiteFeature, CelestialBloodlineRequisiteFeature); TTTContext.Logger.LogPatch("Patched", EmpyrealBloodlineProgression);
+            AddRequisiteFeature(SageBloodlineProgression, BloodlineRequisiteFeature, ArcaneBloodlineRequisiteFeature); TTTContext.Logger.LogPatch("Patched", SageBloodlineProgression);
+            AddRequisiteFeature(SylvanBloodlineProgression, BloodlineRequisiteFeature, FeyBloodlineRequisiteFeature); TTTContext.Logger.LogPatch("Patched", SylvanBloodlineProgression);
             // Fix Sorcerer Bloodlines
             FixBloodlineProgressionPrerequisites(BloodlineAbyssalProgression, AbyssalBloodlineRequisiteFeature);
             FixBloodlineProgressionPrerequisites(BloodlineArcaneProgression, ArcaneBloodlineRequisiteFeature);
@@ -272,7 +272,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                     c.Group = Prerequisite.GroupType.All;
                     c.m_Feature = BloodOfDragonsSelection.ToReference<BlueprintFeatureReference>();
                 }));
-                Main.LogPatch("Patched", SeekerSorcererArchetype);
+                TTTContext.Logger.LogPatch("Patched", SeekerSorcererArchetype);
 
                 void FixMutatedPrerequisites(BlueprintArchetype archetype, BlueprintFeature requisite) {
                     var noBloodline = Helpers.Create<PrerequisiteNoFeature>(c => {
@@ -284,7 +284,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                         c.m_Feature = requisite.ToReference<BlueprintFeatureReference>();
                     });
                     archetype.AddComponents(noBloodline, requisiteFeature);
-                    Main.LogPatch("Patched", archetype);
+                    TTTContext.Logger.LogPatch("Patched", archetype);
                 };
             }
             void FixDragonDisciple() {
@@ -308,9 +308,9 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                     Resources.GetModBlueprint<BlueprintFeature>("DragonDiscipleNatureMage"),
                     Resources.GetModBlueprint<BlueprintFeature>("DragonDiscipleAccursedWitch")
                 ); ;
-                Main.LogPatch("Patched", BloodOfDragonsSelection);
-                Main.LogPatch("Patched", DragonDiscipleSpellbookSelection);
-                Main.LogPatch("Patched", DragonDiscipleClass);
+                TTTContext.Logger.LogPatch("Patched", BloodOfDragonsSelection);
+                TTTContext.Logger.LogPatch("Patched", DragonDiscipleSpellbookSelection);
+                TTTContext.Logger.LogPatch("Patched", DragonDiscipleClass);
             }
             void FixDragonheirScion() {
                 var DragonheirScionArchetype = Resources.GetBlueprint<BlueprintArchetype>("8dff97413c63c1147be8a5ca229abefc");
@@ -353,13 +353,13 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                     feature.GetComponent<AddFeatureOnClassLevel>().m_AdditionalClasses = new BlueprintCharacterClassReference[] {
                         DragonDiscipleClass.ToReference<BlueprintCharacterClassReference>()
                     };
-                    Main.LogPatch("Patched", feature);
+                    TTTContext.Logger.LogPatch("Patched", feature);
                 }
                 void EnableDragonDisicpleProgression(BlueprintProgression feature) {
                     feature.m_Classes = feature.m_Classes.AddItem(new BlueprintProgression.ClassWithLevel {
                         m_Class = DragonDiscipleClass.ToReference<BlueprintCharacterClassReference>()
                     }).ToArray();
-                    Main.LogPatch("Patched", feature);
+                    TTTContext.Logger.LogPatch("Patched", feature);
                 }
             }
             void FixRequisiteName(int length, BlueprintFeature feature) {
@@ -370,7 +370,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                     feature.SetName($"{split[0]} {split[2]} — {split[1]}");
                 }
                 feature.SetDescription("Bloodline Requisite Feature");
-                Main.LogPatch("Patched", feature);
+                TTTContext.Logger.LogPatch("Patched", feature);
             }
             void AddRequisiteFeature(BlueprintProgression bloodline, params BlueprintFeature[] requisites) {
                 var levelOne = bloodline.LevelEntries.Where(entry => entry.Level == 1).First();
@@ -392,7 +392,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 AddRequisiteFeature(bloodline, BloodlineRequisiteFeature, requisite);
                 bloodline.RemoveComponents<Prerequisite>();
                 bloodline.AddComponents(noBloodline, requisiteFeature);
-                Main.LogPatch("Patched", bloodline);
+                TTTContext.Logger.LogPatch("Patched", bloodline);
                 AddSaveGamePatch(bloodline, requisite);
             }
             void FixBloodlineFeaturePrerequisites(BlueprintFeature bloodline, BlueprintFeature requisite) {
@@ -413,7 +413,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 bloodline.RemoveComponents<Prerequisite>();
                 bloodline.AddPrerequisites(requisiteFeature);
                 bloodline.AddComponents(noBloodline, addFacts);
-                Main.LogPatch("Patched", bloodline);
+                TTTContext.Logger.LogPatch("Patched", bloodline);
                 AddSaveGamePatch(bloodline, requisite);
             }
             void AddSaveGamePatch(BlueprintFeature bloodline, BlueprintFeature requisite) {
@@ -421,17 +421,17 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                     if (unit.HasFact(bloodline)) {
                         if (!unit.HasFact(BloodlineRequisiteFeature)) {
                             if (unit.AddFact(BloodlineRequisiteFeature) != null) {
-                                Main.Log($"Added: {BloodlineRequisiteFeature} To: {unit.CharacterName}");
+                                TTTContext.Logger.Log($"Added: {BloodlineRequisiteFeature} To: {unit.CharacterName}");
                                 return;
                             }
-                            Main.Log($"Failed Add: {BloodlineRequisiteFeature} To: {unit.CharacterName}");
+                            TTTContext.Logger.Log($"Failed Add: {BloodlineRequisiteFeature} To: {unit.CharacterName}");
                         }
                         if (!unit.HasFact(requisite)) {
                             if (unit.AddFact(BloodlineRequisiteFeature) != null) {
-                                Main.Log($"Added: {BloodlineRequisiteFeature} To: {unit.CharacterName}");
+                                TTTContext.Logger.Log($"Added: {BloodlineRequisiteFeature} To: {unit.CharacterName}");
                                 return;
                             }
-                            Main.Log($"Failed Add: {BloodlineRequisiteFeature} To: {unit.CharacterName}");
+                            TTTContext.Logger.Log($"Failed Add: {BloodlineRequisiteFeature} To: {unit.CharacterName}");
                         }
                     }
                 });

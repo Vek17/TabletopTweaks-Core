@@ -65,7 +65,7 @@ namespace TabletopTweaks.Core.NewContent.MagusArcana {
 
             SpellBlendingSelection.AddFeatures(SpellBlending1, SpellBlending2);
 
-            if (ModContext.AddedContent.MagusArcana.IsDisabled("SpellBlending")) { return; }
+            if (TTTContext.AddedContent.MagusArcana.IsDisabled("SpellBlending")) { return; }
             FeatTools.AddAsMagusArcana(SpellBlendingSelection);
         }
     }

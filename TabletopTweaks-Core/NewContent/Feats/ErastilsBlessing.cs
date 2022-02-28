@@ -69,7 +69,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            if (ModContext.AddedContent.Feats.IsDisabled("ErastilsBlessing")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("ErastilsBlessing")) { return; }
             FeatTools.AddAsFeat(ErastilsBlessingFeature);
         }
     }

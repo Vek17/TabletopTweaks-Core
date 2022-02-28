@@ -17,7 +17,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     c.m_Feature = bp.ToReference<BlueprintFeatureReference>();
                 }));
             });
-            if (ModContext.AddedContent.Feats.IsDisabled("ExtraMercy")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("ExtraMercy")) { return; }
             FeatTools.AddAsFeat(ExtraMercy);
         }
     }

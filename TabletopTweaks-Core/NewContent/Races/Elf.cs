@@ -165,7 +165,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
             LoremasterElf.AddTraitReplacment(ElvenMagic);
             LoremasterElf.AddSelectionCallback(ElvenHeritageSelection);
 
-            if (ModContext.AddedContent.Races.IsDisabled("ElfAlternateTraits")) { return; }
+            if (TTTContext.AddedContent.Races.IsDisabled("ElfAlternateTraits")) { return; }
             ElfRace.SetComponents(Helpers.Create<AddFeatureOnApply>(c => {
                 c.m_Feature = ElfAbilityModifiers.ToReference<BlueprintFeatureReference>();
             }));

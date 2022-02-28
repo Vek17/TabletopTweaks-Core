@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using TabletopTweaks.Core.Localization;
 using static UnityModManagerNet.UnityModManager;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Config {
     [Obsolete("Needs to be replaced with instance version")]
@@ -59,8 +60,8 @@ namespace TabletopTweaks.Core.Config {
                         ModLocalizationPack = localization;
                     } catch {
                         ModLocalizationPack = new MultiLocalizationPack();
-                        Main.Error("Failed to localization. Settings will be rebuilt.");
-                        try { File.Copy(localizationPath, ModEntry.Path + $"{Path.DirectorySeparatorChar}BROKEN_{fileName}", true); } catch { Main.Error("Failed to archive broken localization."); }
+                        TTTContext.Logger.LogError("Failed to localization. Settings will be rebuilt.");
+                        try { File.Copy(localizationPath, ModEntry.Path + $"{Path.DirectorySeparatorChar}BROKEN_{fileName}", true); } catch { TTTContext.Logger.LogError("Failed to archive broken localization."); }
                     }
                 }
             } else {
@@ -81,7 +82,7 @@ namespace TabletopTweaks.Core.Config {
             using (JsonWriter jsonWriter = new JsonTextWriter(streamWriter)) {
                 serializer.Serialize(jsonWriter, localizaiton);
             }
-            Main.Log($"Localization: {ModLocalizationPack.Strings.Count}");
+            TTTContext.Logger.Log($"Localization: {ModLocalizationPack.Strings.Count}");
         }
         private static void LoadSettings<T>(string fileName, ref T setting) where T : IUpdatableSettings {
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);
@@ -103,8 +104,8 @@ namespace TabletopTweaks.Core.Config {
                         T userSettings = serializer.Deserialize<T>(jsonReader);
                         setting.OverrideSettings(userSettings);
                     } catch {
-                        Main.Error("Failed to load user settings. Settings will be rebuilt.");
-                        try { File.Copy(userPath, userConfigFolder + $"{Path.DirectorySeparatorChar}BROKEN_{fileName}", true); } catch { Main.Error("Failed to archive broken settings."); }
+                        TTTContext.Logger.LogError("Failed to load user settings. Settings will be rebuilt.");
+                        try { File.Copy(userPath, userConfigFolder + $"{Path.DirectorySeparatorChar}BROKEN_{fileName}", true); } catch { TTTContext.Logger.LogError("Failed to archive broken settings."); }
                     }
                 }
             }

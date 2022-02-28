@@ -24,7 +24,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                     c.Level = 9;
                 });
             });
-            if (ModContext.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("DefensiveWeaponTraining")) { return; }
+            if (TTTContext.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("DefensiveWeaponTraining")) { return; }
             AdvancedWeapontrainingSelection.AddToAdvancedWeaponTrainingSelection(DefensiveWeaponTrainingFeature);
         }
     }

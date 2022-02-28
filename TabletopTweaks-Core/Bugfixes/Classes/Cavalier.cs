@@ -20,7 +20,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Cavalier");
+                TTTContext.Logger.LogHeader("Patching Cavalier");
 
                 PatchBase();
                 PatchGendarme();
@@ -32,7 +32,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchSupremeCharge();
 
                 void PatchCavalierMountSelection() {
-                    if (ModContext.Fixes.Cavalier.Base.IsDisabled("CavalierMountSelection")) { return; }
+                    if (TTTContext.Fixes.Cavalier.Base.IsDisabled("CavalierMountSelection")) { return; }
 
                     var CavalierMountSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("0605927df6e2fdd42af6ee2424eb89f2");
                     var AnimalCompanionEmptyCompanion = Resources.GetBlueprint<BlueprintFeature>("472091361cf118049a2b4339c4ea836a");
@@ -47,10 +47,10 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         CavalierMountFeatureWolf
                     );
                     CavalierMountSelection.m_Features = CavalierMountSelection.m_AllFeatures;
-                    Main.LogPatch("Patched", CavalierMountSelection);
+                    TTTContext.Logger.LogPatch("Patched", CavalierMountSelection);
                 }
                 void PatchSupremeCharge() {
-                    if (ModContext.Fixes.Cavalier.Base.IsDisabled("SupremeCharge")) { return; }
+                    if (TTTContext.Fixes.Cavalier.Base.IsDisabled("SupremeCharge")) { return; }
 
                     var MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
                     var ChargeBuff = Resources.GetBlueprint<BlueprintBuff>("f36da144a379d534cad8e21667079066");
@@ -69,11 +69,11 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         c.BonusDamageMultiplier = 1;
                     }));
                     CavalierSupremeChargeBuff.AddComponent(Helpers.Create<RemoveBuffOnAttack>());
-                    Main.LogPatch("Patched", CavalierSupremeCharge);
-                    Main.LogPatch("Patched", CavalierSupremeChargeBuff);
+                    TTTContext.Logger.LogPatch("Patched", CavalierSupremeCharge);
+                    TTTContext.Logger.LogPatch("Patched", CavalierSupremeChargeBuff);
                 }
                 void PatchCavalierMobility() {
-                    if (ModContext.Fixes.Cavalier.Base.IsDisabled("CavalierMobility")) { return; }
+                    if (TTTContext.Fixes.Cavalier.Base.IsDisabled("CavalierMobility")) { return; }
 
                     var CavalierProgression = Resources.GetBlueprint<BlueprintProgression>("aa70326bdaa7015438df585cf2ab93b9");
                     var CavalierMobilityFeature = Resources.GetModBlueprint<BlueprintFeature>("CavalierMobilityFeature");
@@ -87,7 +87,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchTransfixingCharge();
 
                 void PatchTransfixingCharge() {
-                    if (ModContext.Fixes.Cavalier.Archetypes["Gendarme"].IsDisabled("TransfixingCharge")) { return; }
+                    if (TTTContext.Fixes.Cavalier.Archetypes["Gendarme"].IsDisabled("TransfixingCharge")) { return; }
 
                     var MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
                     var ChargeBuff = Resources.GetBlueprint<BlueprintBuff>("f36da144a379d534cad8e21667079066");
@@ -106,8 +106,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         c.BonusDamageMultiplier = 2;
                     }));
                     GendarmeTransfixingChargeBuff.AddComponent(Helpers.Create<RemoveBuffOnAttack>());
-                    Main.LogPatch("Patched", GendarmeTransfixingCharge);
-                    Main.LogPatch("Patched", GendarmeTransfixingChargeBuff);
+                    TTTContext.Logger.LogPatch("Patched", GendarmeTransfixingCharge);
+                    TTTContext.Logger.LogPatch("Patched", GendarmeTransfixingChargeBuff);
                 }
             }
 

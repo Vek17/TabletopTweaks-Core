@@ -27,12 +27,12 @@ namespace TabletopTweaks.Core.Reworks {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Reworking Mythic Abilities");
+                TTTContext.Logger.LogHeader("Reworking Mythic Abilities");
                 PatchElementalBarrage();
                 PatchDimensionalRetribution();
             }
             static void PatchElementalBarrage() {
-                if (Main.ModContext.Homebrew.MythicAbilities.IsDisabled("ElementalBarrage")) { return; }
+                if (Main.TTTContext.Homebrew.MythicAbilities.IsDisabled("ElementalBarrage")) { return; }
                 var ElementalBarrage = Resources.GetBlueprint<BlueprintFeature>("da56a1b21032a374783fdf46e1a92adb");
                 var ElementalBarrageAcidBuff = Resources.GetBlueprint<BlueprintBuff>("823d33bdb23e7c64d9cc1cce9b78fdea");
                 var ElementalBarrageColdBuff = Resources.GetBlueprint<BlueprintBuff>("c5e9031099d3e8d4788d3e51f7ffb8a0");
@@ -65,7 +65,7 @@ namespace TabletopTweaks.Core.Reworks {
                 UpdateBuffVisability(ElementalBarrageElectricityBuff, "electricity");
                 UpdateBuffVisability(ElementalBarrageFireBuff, "fire");
 
-                Main.LogPatch("Patched", ElementalBarrage);
+                TTTContext.Logger.LogPatch("Patched", ElementalBarrage);
                 void AddOutgoingDamageTrigger(BlueprintFeature barrage, BlueprintBuff barrageBuff, DamageEnergyType trigger) {
                     barrage.AddComponent<AddOutgoingDamageTriggerTTT>(c => {
                         c.IgnoreDamageFromThisFact = true;
@@ -128,7 +128,7 @@ namespace TabletopTweaks.Core.Reworks {
                 }
             }
             static void PatchDimensionalRetribution() {
-                if (Main.ModContext.Homebrew.MythicAbilities.IsDisabled("DimensionalRetribution")) { return; }
+                if (Main.TTTContext.Homebrew.MythicAbilities.IsDisabled("DimensionalRetribution")) { return; }
                 var DimensionalRetribution = Resources.GetBlueprint<BlueprintFeature>("939f49ad995ee8d4fad03ad0c7f655d1");
                 var DimensionalRetributionTTTToggleAbility = Resources.GetModBlueprintReference<BlueprintUnitFactReference>("DimensionalRetributionTTTToggleAbility");
 

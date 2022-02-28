@@ -36,7 +36,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            if (ModContext.AddedContent.Feats.IsDisabled("VarisianTattoo")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("VarisianTattoo")) { return; }
             FeatTools.AddAsFeat(VarisianTattooFeature);
         }
     }

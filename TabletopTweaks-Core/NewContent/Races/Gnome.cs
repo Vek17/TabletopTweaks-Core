@@ -219,7 +219,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
             TravellerGnome.AddTraitReplacment(SlowSpeedGnome);
             TravellerGnome.AddSelectionCallback(GnomeHeritageSelection);
 
-            if (ModContext.AddedContent.Races.IsDisabled("GnomeAlternateTraits")) { return; }
+            if (TTTContext.AddedContent.Races.IsDisabled("GnomeAlternateTraits")) { return; }
             GnomeRace.SetComponents(Helpers.Create<AddFeatureOnApply>(c => {
                 c.m_Feature = GnomeAbilityModifiers.ToReference<BlueprintFeatureReference>();
             }));

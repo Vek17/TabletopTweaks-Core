@@ -20,7 +20,7 @@ namespace TabletopTweaks.Core.Bugfixes.General {
         })]
         static class AutoMetamagic_ShouldApplyTo_Shadow_Patch {
             static void Postfix(AutoMetamagic c, BlueprintAbility ability, AbilityData data, ref bool __result) {
-                if (ModContext.Fixes.BaseFixes.IsDisabled("FixShadowSpells")) { return; }
+                if (TTTContext.Fixes.BaseFixes.IsDisabled("FixShadowSpells")) { return; }
                 if (data?.ConvertedFrom?.Blueprint?.GetComponent<AbilityShadowSpell>() != null) {
                     __result |= AutoMetamagic.ShouldApplyTo(c, data.ConvertedFrom.Blueprint, data.ConvertedFrom);
                 }
@@ -29,7 +29,7 @@ namespace TabletopTweaks.Core.Bugfixes.General {
         [HarmonyPatch(typeof(IncreaseSpellDescriptorDC), "OnEventAboutToTrigger", new Type[] { typeof(RuleCalculateAbilityParams) })]
         static class IncreaseSpellDescriptorDC_OnEventAboutToTrigger_Shadow_Patch {
             static bool Prefix(IncreaseSpellDescriptorDC __instance, RuleCalculateAbilityParams evt) {
-                if (ModContext.Fixes.BaseFixes.IsDisabled("FixShadowSpells")) { return true; }
+                if (TTTContext.Fixes.BaseFixes.IsDisabled("FixShadowSpells")) { return true; }
                 SpellDescriptorComponent component = evt.Spell.GetComponent<SpellDescriptorComponent>();
 
                 var ParentAbility = evt.AbilityData?.ConvertedFrom;
@@ -47,7 +47,7 @@ namespace TabletopTweaks.Core.Bugfixes.General {
         static class IncreaseSpellSchoolDC_OnEventAboutToTrigger_Shadow_Patch {
 
             static bool Prefix(IncreaseSpellSchoolDC __instance, RuleCalculateAbilityParams evt) {
-                if (ModContext.Fixes.BaseFixes.IsDisabled("FixShadowSpells")) { return true; }
+                if (TTTContext.Fixes.BaseFixes.IsDisabled("FixShadowSpells")) { return true; }
                 var spell = evt.Spell;
                 var ParentAbility = evt.AbilityData?.ConvertedFrom;
                 if (ParentAbility?.Blueprint?.GetComponent<AbilityShadowSpell>() != null) {
@@ -70,7 +70,7 @@ namespace TabletopTweaks.Core.Bugfixes.General {
         static class SpellFocusParametrized_OnEventAboutToTrigger_Shadow_Patch {
 
             static bool Prefix(SpellFocusParametrized __instance, RuleCalculateAbilityParams evt) {
-                if (ModContext.Fixes.BaseFixes.IsDisabled("FixShadowSpells")) { return true; }
+                if (TTTContext.Fixes.BaseFixes.IsDisabled("FixShadowSpells")) { return true; }
                 var spell = evt.Spell;
                 var ParentAbility = evt.AbilityData?.ConvertedFrom;
                 if (ParentAbility?.Blueprint?.GetComponent<AbilityShadowSpell>() != null) {

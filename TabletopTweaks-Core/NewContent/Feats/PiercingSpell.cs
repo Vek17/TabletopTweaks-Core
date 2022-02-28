@@ -66,7 +66,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(PiercingSpellFeat);
             });
 
-            if (ModContext.AddedContent.Feats.IsEnabled("MetamagicPiercingSpell")) {
+            if (TTTContext.AddedContent.Feats.IsEnabled("MetamagicPiercingSpell")) {
                 MetamagicExtention.RegisterMetamagic(
                     metamagic: (Metamagic)CustomMetamagic.Piercing,
                     name: "Piercing",
@@ -87,7 +87,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "the spell resistance of the target as 5 lower than its actual SR."
             );
 
-            if (ModContext.AddedContent.Feats.IsDisabled("MetamagicPiercingSpell")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("MetamagicPiercingSpell")) { return; }
 
             UpdateSpells();
             AddRodsToVenders();
@@ -104,7 +104,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 if (validPiercing) {
                     if (!spell.AvailableMetamagic.HasMetamagic((Metamagic)CustomMetamagic.Piercing)) {
                         spell.AvailableMetamagic |= (Metamagic)CustomMetamagic.Piercing;
-                        Main.LogPatch("Enabled Piercing Metamagic", spell);
+                        TTTContext.Logger.LogPatch("Enabled Piercing Metamagic", spell);
                     }
                 };
             }

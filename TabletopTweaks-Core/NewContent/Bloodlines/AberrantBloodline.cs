@@ -360,7 +360,7 @@ namespace TabletopTweaks.Core.NewContent.Bloodlines {
             BloodlineTools.ApplyPrimalistException(BloodragerAberrantUnusualAnatomy, 12, BloodragerAberrantBloodline);
             BloodlineTools.ApplyPrimalistException(BloodragerAberrantResistance, 16, BloodragerAberrantBloodline);
             BloodlineTools.ApplyPrimalistException(BloodragerAberrantForm, 20, BloodragerAberrantBloodline);
-            if (ModContext.AddedContent.Bloodlines.IsDisabled("AberrantBloodline")) { return; }
+            if (TTTContext.AddedContent.Bloodlines.IsDisabled("AberrantBloodline")) { return; }
             BloodlineTools.RegisterBloodragerBloodline(BloodragerAberrantBloodline, BloodragerAberrantBloodlineWandering);
         }
         public static void AddSorcererAberrantBloodline() {
@@ -844,7 +844,7 @@ namespace TabletopTweaks.Core.NewContent.Bloodlines {
             });
             BloodlineTools.RegisterSorcererFeatSelection(SorcererAberrantFeatSelection, SorcererAberrantBloodline);
 
-            if (ModContext.AddedContent.Bloodlines.IsDisabled("AberrantBloodline")) { return; }
+            if (TTTContext.AddedContent.Bloodlines.IsDisabled("AberrantBloodline")) { return; }
             BloodlineTools.RegisterSorcererBloodline(SorcererAberrantBloodline);
             BloodlineTools.RegisterCrossbloodedBloodline(CrossbloodedAberrantBloodline);
             BloodlineTools.RegisterSeekerBloodline(SeekerAberrantBloodline);

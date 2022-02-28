@@ -32,7 +32,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             static BlueprintBuff StalwartBuff = Resources.GetModBlueprint<BlueprintBuff>("StalwartBuff");
 
             static bool Prefix(UnitEntityData unit, ref int __result) {
-                if (ModContext.AddedContent.Feats.IsDisabled("Stalwart")) { return true; }
+                if (TTTContext.AddedContent.Feats.IsDisabled("Stalwart")) { return true; }
                 if (unit.Descriptor.GetFact(StalwartBuff.ToReference<BlueprintUnitFactReference>()) != null) {
                     __result = 0;
                     return false;
@@ -49,7 +49,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "you can forgo the dodge bonus to AC you would normally gain to instead gain an equivalent amount of DR, " +
                     "to a maximum of DR 5/—, until the start of your next turn. This damage reduction stacks with DR you gain from class features, " +
                     "such as the barbarian’s, but not with DR from any other source.");
-            if (ModContext.Fixes.BaseFixes.IsDisabled("DamageReductionRework")) {
+            if (TTTContext.Fixes.BaseFixes.IsDisabled("DamageReductionRework")) {
                 return DamageReduction;
             } else {
                 return DamageReductionReworked;
@@ -91,7 +91,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.m_Icon = DefensiveStanceActivatableAbility.m_Icon;
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
                 bp.IsClassFeature = true;
-                if (ModContext.Fixes.BaseFixes.IsDisabled("DamageReductionRework")) {
+                if (TTTContext.Fixes.BaseFixes.IsDisabled("DamageReductionRework")) {
                     bp.AddComponent<AddDamageResistancePhysical>(c => {
                         c.Value = new ContextValue {
                             ValueType = ContextValueType.Rank
@@ -176,7 +176,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 p.Value = 11;
             });
 
-            if (ModContext.AddedContent.Feats.IsDisabled("Stalwart")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("Stalwart")) { return; }
 
             FeatTools.AddAsFeat(StalwartFeature);
             FeatTools.AddAsFeat(StalwartImprovedFeature);

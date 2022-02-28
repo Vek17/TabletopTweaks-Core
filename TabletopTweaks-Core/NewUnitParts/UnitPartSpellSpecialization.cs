@@ -76,7 +76,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
         }
 
         public void HandleGetConversions(AbilityData ability, ref IEnumerable<AbilityData> conversions) {
-            if (ModContext.AddedContent.Feats.IsDisabled("SpellSpecializationGreater")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("SpellSpecializationGreater")) { return; }
             List<AbilityData> list = conversions.ToList();
             UnitPartSpellSpecialization spellSpecialization = ability.Caster.Get<UnitPartSpellSpecialization>();
             if (spellSpecialization == null || !spellSpecialization.IsGreater() || spellSpecialization.HasEntry(ability)) {
@@ -128,7 +128,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
         [HarmonyPatch(typeof(AbilityData), nameof(AbilityData.RequireFullRoundAction), MethodType.Getter)]
         static class AbilityData_RequireFullRoundAction_SpellSpecializationGreater_Patch {
             static void Postfix(AbilityData __instance, ref bool __result) {
-                if (ModContext.AddedContent.Feats.IsDisabled("SpellSpecializationGreater")) { return; }
+                if (TTTContext.AddedContent.Feats.IsDisabled("SpellSpecializationGreater")) { return; }
                 switch (__instance) {
                     case SpontaneousConversionAbilityData abilityData:
                         __result = abilityData.RequireFullRoundAction;
@@ -140,7 +140,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
         [HarmonyPatch(typeof(AbilityData), nameof(AbilityData.SpellLevel), MethodType.Getter)]
         static class AbilityData_SpellLevel_SpellSpecializationGreater_Patch {
             static void Postfix(AbilityData __instance, ref int __result) {
-                if (ModContext.AddedContent.Feats.IsDisabled("SpellSpecializationGreater")) { return; }
+                if (TTTContext.AddedContent.Feats.IsDisabled("SpellSpecializationGreater")) { return; }
                 switch (__instance) {
                     case SpontaneousConversionAbilityData abilityData:
                         __result = abilityData.SpellLevel;
@@ -153,7 +153,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
         [HarmonyPatch(nameof(MechanicActionBarSlotSpontaneusConvertedSpell.GetDecorationSprite))]
         static class AbilityData_DecorationColorNumber_SpellSpecializationGreater_Patch {
             static void Postfix(MechanicActionBarSlotSpontaneusConvertedSpell __instance, ref Sprite __result) {
-                if (ModContext.AddedContent.Feats.IsDisabled("SpellSpecializationGreater")) { return; }
+                if (TTTContext.AddedContent.Feats.IsDisabled("SpellSpecializationGreater")) { return; }
                 switch (__instance.Spell) {
                     case SpontaneousConversionAbilityData abilityData:
                         __result = UIUtility.GetDecorationBorderByIndex(abilityData.DecorationBorderNumber);
@@ -166,7 +166,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
         [HarmonyPatch(nameof(MechanicActionBarSlotSpontaneusConvertedSpell.GetDecorationColor))]
         static class AbilityData_DecorationBorderNumber_SpellSpecializationGreater_Patch {
             static void Postfix(MechanicActionBarSlotSpontaneusConvertedSpell __instance, ref Color __result) {
-                if (ModContext.AddedContent.Feats.IsDisabled("SpellSpecializationGreater")) { return; }
+                if (TTTContext.AddedContent.Feats.IsDisabled("SpellSpecializationGreater")) { return; }
                 switch (__instance.Spell) {
                     case SpontaneousConversionAbilityData abilityData:
                         __result = UIUtility.GetDecorationColorByIndex(abilityData.DecorationColorNumber);

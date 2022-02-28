@@ -89,7 +89,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddComponent<RemoveWhenCombatEnded>();
             });
 
-            if (ModContext.AddedContent.Feats.IsEnabled("MetamagicFlaringSpell")) {
+            if (TTTContext.AddedContent.Feats.IsEnabled("MetamagicFlaringSpell")) {
                 MetamagicExtention.RegisterMetamagic(
                     metamagic: (Metamagic)CustomMetamagic.Flaring,
                     name: "Flaring",
@@ -112,7 +112,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "A flaring spell only affects spells with a fire, light, or electricity descriptor."
             );
 
-            if (ModContext.AddedContent.Feats.IsDisabled("MetamagicFlaringSpell")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("MetamagicFlaringSpell")) { return; }
 
             UpdateSpells();
             AddRodsToVenders();
@@ -132,7 +132,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 if (isFlaringSpell) {
                     if (!spell.AvailableMetamagic.HasMetamagic((Metamagic)CustomMetamagic.Flaring)) {
                         spell.AvailableMetamagic |= (Metamagic)CustomMetamagic.Flaring;
-                        Main.LogPatch("Enabled Flaring Metamagic", spell);
+                        TTTContext.Logger.LogPatch("Enabled Flaring Metamagic", spell);
                     }
                 };
             }

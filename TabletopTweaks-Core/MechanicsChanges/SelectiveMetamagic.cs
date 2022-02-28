@@ -7,7 +7,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         [HarmonyPatch(typeof(AreaEffectEntityData), "CheckSelective")]
         class UnitDescriptor_FixSizeModifiers_Patch {
             static void Postfix(AreaEffectEntityData __instance) {
-                if (ModContext.Fixes.BaseFixes.IsDisabled("SelectiveMetamagicNonInstantaneous")) { return; }
+                if (TTTContext.Fixes.BaseFixes.IsDisabled("SelectiveMetamagicNonInstantaneous")) { return; }
                 __instance.m_CanAffectAllies = true;
             }
         }

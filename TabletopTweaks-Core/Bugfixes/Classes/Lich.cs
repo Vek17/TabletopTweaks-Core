@@ -21,13 +21,13 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Lich Resources");
+                TTTContext.Logger.LogHeader("Patching Lich Resources");
 
                 PatchDeathRush();
                 PatchSpellbookMerging();
 
                 void PatchDeathRush() {
-                    if (ModContext.Fixes.Lich.IsDisabled("DeathRush")) { return; }
+                    if (TTTContext.Fixes.Lich.IsDisabled("DeathRush")) { return; }
 
                     var DeathRushFeature = Resources.GetBlueprint<BlueprintFeature>("ef847913c29a3cf44825eb30ae6f7c38");
                     DeathRushFeature.RemoveComponents<AddInitiatorAttackWithWeaponTrigger>();
@@ -47,12 +47,12 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                             Type = DamageType.Direct
                         };
                     });
-                    Main.LogPatch("Patched", DeathRushFeature);
+                    TTTContext.Logger.LogPatch("Patched", DeathRushFeature);
                 }
 
                 void PatchSpellbookMerging() {
 
-                    if (ModContext.Fixes.Lich.IsDisabled("SpellbookMerging")) { return; }
+                    if (TTTContext.Fixes.Lich.IsDisabled("SpellbookMerging")) { return; }
 
                     var LichIncorporateSpellbookFeature = Resources.GetBlueprint<BlueprintFeatureSelectMythicSpellbook>("3f16e9caf7c683c40884c7c455ed26af");
                     var NatureMageSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("3ed7e38dc8134af28e1a2b105f74fb7b");
@@ -62,7 +62,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         .Distinct()
                         .ToArray();
 
-                    Main.LogPatch("Patched", LichIncorporateSpellbookFeature);
+                    TTTContext.Logger.LogPatch("Patched", LichIncorporateSpellbookFeature);
                 }
             }
         }

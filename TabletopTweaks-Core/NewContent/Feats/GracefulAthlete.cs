@@ -41,7 +41,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     c.FeatureTags = FeatureTag.Skills;
                 }));
             });
-            if (ModContext.AddedContent.Feats.IsDisabled("GracefulAthlete")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("GracefulAthlete")) { return; }
             FeatTools.AddAsFeat(GracefulAthlete);
             FeatTools.AddAsRogueTalent(GracefulAthlete);
         }

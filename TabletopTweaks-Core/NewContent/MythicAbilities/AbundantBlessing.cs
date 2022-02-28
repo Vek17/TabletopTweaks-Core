@@ -35,7 +35,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(BlessingSelection);
             });
 
-            if (ModContext.AddedContent.MythicAbilities.IsDisabled("AbundantBlessing")) { return; }
+            if (TTTContext.AddedContent.MythicAbilities.IsDisabled("AbundantBlessing")) { return; }
             FeatTools.AddAsMythicAbility(AbundantBlessingFeature);
         }
     }

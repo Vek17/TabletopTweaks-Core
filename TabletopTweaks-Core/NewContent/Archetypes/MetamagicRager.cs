@@ -85,9 +85,9 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             var MetaRageBaseAbility2 = CreateMetaRageLevel(2);
             var MetaRageBaseAbility3 = CreateMetaRageLevel(3);
             var MetaRageBaseAbility4 = CreateMetaRageLevel(4);
-            if (Main.ModContext.AddedContent.Archetypes.IsDisabled("MetamagicRager")) { return; }
+            if (Main.TTTContext.AddedContent.Archetypes.IsDisabled("MetamagicRager")) { return; }
             BloodragerClass.m_Archetypes = BloodragerClass.m_Archetypes.AppendToArray(MetamagicRagerArchetype.ToReference<BlueprintArchetypeReference>());
-            Main.LogPatch("Added", MetamagicRagerArchetype);
+            TTTContext.Logger.LogPatch("Added", MetamagicRagerArchetype);
         }
         private static BlueprintBuff CreateMetamagicBuff(string name, BlueprintFeature metamagicFeat, int level, Action<BlueprintBuff> init = null) {
             var result = Helpers.CreateBuff(name, bp => {

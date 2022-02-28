@@ -35,7 +35,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
             });
 
-            if (ModContext.AddedContent.Feats.IsDisabled("TrickRiding")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("TrickRiding")) { return; }
             MountedCombatBuff.RemoveComponents<MountedCombat>();
             MountedCombatBuff.AddComponent<MountedCombatTTT>(c => {
                 c.m_CooldownBuff = MountedCombatCooldownBuff.ToReference<BlueprintBuffReference>();

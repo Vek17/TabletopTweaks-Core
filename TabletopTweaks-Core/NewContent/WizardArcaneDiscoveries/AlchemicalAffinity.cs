@@ -46,7 +46,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                     p.Group = Prerequisite.GroupType.All;
                 });
             });
-            if (ModContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("AlchemicalAffinity")) { return; }
+            if (TTTContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("AlchemicalAffinity")) { return; }
             ArcaneDiscoverySelection.AddToArcaneDiscoverySelection(AlchemicalAffinity);
         }
     }

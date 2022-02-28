@@ -60,7 +60,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                 });
             });
 
-            if (ModContext.AddedContent.FighterAdvancedArmorTraining.IsDisabled("CriticalDeflection")) { return; }
+            if (TTTContext.AddedContent.FighterAdvancedArmorTraining.IsDisabled("CriticalDeflection")) { return; }
             AdvancedArmorTraining.AddToAdvancedArmorTrainingSelection(CriticalDeflectionFeature);
         }
     }

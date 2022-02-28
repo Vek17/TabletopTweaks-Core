@@ -69,7 +69,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(IntensifiedSpellFeat);
             });
 
-            if (ModContext.AddedContent.Feats.IsEnabled("MetamagicIntensifiedSpell")) {
+            if (TTTContext.AddedContent.Feats.IsEnabled("MetamagicIntensifiedSpell")) {
                 MetamagicExtention.RegisterMetamagic(
                     metamagic: (Metamagic)CustomMetamagic.Intensified,
                     name: "Intensified",
@@ -91,7 +91,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "to benefit from this feat."
             );
 
-            if (ModContext.AddedContent.Feats.IsDisabled("MetamagicIntensifiedSpell")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("MetamagicIntensifiedSpell")) { return; }
 
             UpdateSpells();
             AddRodsToVenders();
@@ -112,7 +112,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 if (isIntensifiedSpell) {
                     if (!spell.AvailableMetamagic.HasMetamagic((Metamagic)CustomMetamagic.Intensified)) {
                         spell.AvailableMetamagic |= (Metamagic)CustomMetamagic.Intensified;
-                        Main.LogPatch("Enabled Intensified Metamagic", spell);
+                        TTTContext.Logger.LogPatch("Enabled Intensified Metamagic", spell);
                     }
                 };
             }

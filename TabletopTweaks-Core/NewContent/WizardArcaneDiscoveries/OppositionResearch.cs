@@ -51,7 +51,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                 );
             });
 
-            if (ModContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("OppositionResearch")) { return; }
+            if (TTTContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("OppositionResearch")) { return; }
             ArcaneDiscoverySelection.AddToArcaneDiscoverySelection(OppositionResearchSelection);
         }
 

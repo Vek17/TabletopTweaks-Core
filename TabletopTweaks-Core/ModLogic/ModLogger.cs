@@ -16,8 +16,8 @@ namespace TabletopTweaks.Core.ModLogic {
         }
 
         public void Log(string message) {
-            ModEntry.Logger.Log(message);
             ModChannel.Log(message);
+            //ModEntry.Logger.Log(message);
         }
 
         public void LogVerbose(string message) {
@@ -26,7 +26,7 @@ namespace TabletopTweaks.Core.ModLogic {
 
         public void LogWarning(string message) {
             ModChannel.Warning(message);
-            ModEntry.Logger.Log($"WARNING: {message}");
+            //ModEntry.Logger.Log($"WARNING: {message}");
         }
 
         public void LogPatch([NotNull] IScriptableObjectWithAssetId bp) {
@@ -38,19 +38,20 @@ namespace TabletopTweaks.Core.ModLogic {
         }
 
         public void LogHeader(string message) {
-            ModEntry.Logger.Log($"--{message.ToUpper()}--");
+            ModChannel.Log(message);
+            //ModEntry.Logger.Log($"--{message.ToUpper()}--");
         }
 
         public void LogError(Exception e, string message) {
 
             ModChannel.Error(message);
-            ModEntry.Logger.Log($"ERROR: {message}");
-            ModEntry.Logger.Log(e.ToString());
+            //ModEntry.Logger.Log($"ERROR: {message}");
+            //ModEntry.Logger.Log(e.ToString());
         }
 
         public void LogError(string message) {
-            ModEntry.Logger.Log(message);
             ModChannel.Error(message);
+            //ModEntry.Logger.Log(message);
         }
     }
 }

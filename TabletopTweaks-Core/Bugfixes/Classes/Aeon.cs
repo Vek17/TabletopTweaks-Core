@@ -22,19 +22,19 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Aeon Resources");
+                TTTContext.Logger.LogHeader("Patching Aeon Resources");
 
                 PatchAeonDemythication();
                 PatchAeonTenthLevelImmunities();
                 PatchPowerOfLaw();
 
                 void PatchAeonDemythication() {
-                    if (ModContext.Fixes.Aeon.IsDisabled("AeonDemythication")) { return; }
+                    if (TTTContext.Fixes.Aeon.IsDisabled("AeonDemythication")) { return; }
                     var AeonDemythicationBuff = Resources.GetBlueprint<BlueprintBuff>("3c8a543e5b4e7154bb2cbe4d102a1604");
-                    QuickFixTools.ReplaceSuppression(AeonDemythicationBuff, true);
+                    QuickFixTools.ReplaceSuppression(AeonDemythicationBuff, TTTContext, true);
                 }
                 void PatchAeonTenthLevelImmunities() {
-                    if (ModContext.Fixes.Aeon.IsDisabled("AeonTenthLevelImmunities")) { return; }
+                    if (TTTContext.Fixes.Aeon.IsDisabled("AeonTenthLevelImmunities")) { return; }
                     var AeonTenthLevelImmunities = Resources.GetBlueprint<BlueprintFeature>("711f6abfab877d342af9743a11c8f3aa");
                     AeonTenthLevelImmunities.RemoveComponents<ModifyD20>(c => c.Rule == RuleType.SavingThrow);
                     AeonTenthLevelImmunities.AddComponent<ModifySavingThrowD20>(c => {
@@ -48,10 +48,10 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         c.Alignment = AlignmentComponent.Chaotic;
                         c.AllTypes = true;
                     });
-                    Main.LogPatch(AeonTenthLevelImmunities);
+                    TTTContext.Logger.LogPatch(AeonTenthLevelImmunities);
                 }
                 void PatchPowerOfLaw() {
-                    if (ModContext.Fixes.Aeon.IsDisabled("PowerOfLaw")) { return; }
+                    if (TTTContext.Fixes.Aeon.IsDisabled("PowerOfLaw")) { return; }
                     var AeonPowerOfLawGazeAllyBuff = Resources.GetBlueprint<BlueprintBuff>("1bf6049b6068400e8ac4e98e2e07b4f2");
                     var AeonPowerOfLawGazeEnemyBuff = Resources.GetBlueprint<BlueprintBuff>("648edba195d548f496c9367ddb4e2719");
 

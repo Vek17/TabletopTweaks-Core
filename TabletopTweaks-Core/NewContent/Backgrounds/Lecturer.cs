@@ -37,7 +37,7 @@ namespace TabletopTweaks.Core.NewContent.Backgrounds {
                     c.BaseAttributeReplacement = StatType.Intelligence;
                 });
             });
-            if (ModContext.AddedContent.Backgrounds.IsDisabled("Lecturer")) { return; }
+            if (TTTContext.AddedContent.Backgrounds.IsDisabled("Lecturer")) { return; }
             BackgroundsScholarSelection.AddFeatures(BackgroundScholarLecturer);
         }
     }

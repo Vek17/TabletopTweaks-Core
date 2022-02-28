@@ -32,7 +32,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisite<PrerequisiteMythicSpellbook>();
             });
 
-            if (ModContext.AddedContent.MythicAbilities.IsDisabled("MythicSpellCombat")) { return; }
+            if (TTTContext.AddedContent.MythicAbilities.IsDisabled("MythicSpellCombat")) { return; }
             FeatTools.AddAsMythicAbility(MythicSpellCombat);
         }
     }

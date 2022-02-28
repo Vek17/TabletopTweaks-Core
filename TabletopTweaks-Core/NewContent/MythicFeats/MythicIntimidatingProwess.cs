@@ -34,7 +34,7 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
                 bp.AddComponent<RecalculateOnLevelUp>();
                 bp.AddPrerequisiteFeature(IntimidatingProwess);
             });
-            if (ModContext.AddedContent.MythicFeats.IsDisabled("MythicIntimidatingProwess")) { return; }
+            if (TTTContext.AddedContent.MythicFeats.IsDisabled("MythicIntimidatingProwess")) { return; }
             FeatTools.AddAsMythicFeat(IntimidatingProwessMythicFeature);
         }
     }

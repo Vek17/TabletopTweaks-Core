@@ -15,7 +15,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         static class RuleCalculateDamage_Metamagic_Patch {
 
             static void Postfix(RuleCalculateDamage __instance, ref DamageValue __result, BaseDamage damage) {
-                if (ModContext.Fixes.BaseFixes.IsDisabled("MetamagicStacking")) { return; }
+                if (TTTContext.Fixes.BaseFixes.IsDisabled("MetamagicStacking")) { return; }
 
                 SettingsEntityEnum<CriticalHitPower> enemyCriticalHits = SettingsRoot.Difficulty.EnemyCriticalHits;
                 int num = damage.CriticalModifier ?? 1;
@@ -50,7 +50,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                             __instance.UnitsCount,
                             DamageCalculationType.Normal
                         ) * empowerMultiplier);
-                        Main.LogDebug($"Empower Bonus {empowerMultiplier}: {damage.Dice.Rolls}{damage.Dice.Dice}/{1 / empowerMultiplier} = {empowerExtraDamage}");
+                        TTTContext.Logger.LogVerbose($"Empower Bonus {empowerMultiplier}: {damage.Dice.Rolls}{damage.Dice.Dice}/{1 / empowerMultiplier} = {empowerExtraDamage}");
                     }
                     num3 = ((num4 + empowerExtraDamage) + (damage.Bonus * __instance.UnitsCount) * empowerBonus * num2) * damage.TacticalCriticalModifier;
                 }
@@ -93,7 +93,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             }
             [HarmonyPostfix]
             static void StripExtraBolsterDamage(ref RuleDealDamage __result, ContextActionDealDamage.DamageInfo info) {
-                if (ModContext.Fixes.BaseFixes.IsDisabled("MetamagicBolsterDoubleDiping")) { return; }
+                if (TTTContext.Fixes.BaseFixes.IsDisabled("MetamagicBolsterDoubleDiping")) { return; }
                 __result.DamageBundle.First.PreRolledValue = info.PreRolledValue;
             }
         }

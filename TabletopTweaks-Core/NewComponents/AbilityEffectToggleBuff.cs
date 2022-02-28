@@ -6,6 +6,7 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.Utility;
 using System;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents {
 
@@ -22,7 +23,7 @@ namespace TabletopTweaks.Core.NewComponents {
                 return;
 
             if (this.OwnerBlueprint is not BlueprintAbility sourceAbility) {
-                Main.Log("WARNING: AbilityEffectToggleBuff component is present on a blueprint that is not a BlueprintAbility. This will not work.");
+                TTTContext.Logger.LogWarning("WARNING: AbilityEffectToggleBuff component is present on a blueprint that is not a BlueprintAbility. This will not work.");
                 return;
             }
 

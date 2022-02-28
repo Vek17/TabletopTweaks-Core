@@ -16,7 +16,7 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
         private static class BuffVM_Suppression_Patch {
             [HarmonyPrepare]
             static bool ApplyPatch() {
-                return ModContext.Fixes.BaseFixes.IsEnabled("SuppressedBuffUI");
+                return TTTContext.Fixes.BaseFixes.IsEnabled("SuppressedBuffUI");
             }
             static void Postfix(UnitBuffPartPCView __instance) {
                 foreach (var PCView in __instance.m_BuffList) {
@@ -30,7 +30,7 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
         private static class BuffPCView_Suppression_Patch {
             [HarmonyPrepare]
             static bool ApplyPatch() {
-                return ModContext.Fixes.BaseFixes.IsEnabled("SuppressedBuffUI");
+                return TTTContext.Fixes.BaseFixes.IsEnabled("SuppressedBuffUI");
             }
             static void Prefix(BuffPCView __instance) {
                 if (__instance?.ViewModel?.Buff?.IsSuppressed ?? false) {
@@ -47,7 +47,7 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
 
             [HarmonyPrepare]
             static bool ApplyPatch() {
-                return ModContext.Fixes.BaseFixes.IsEnabled("SuppressedBuffUI");
+                return TTTContext.Fixes.BaseFixes.IsEnabled("SuppressedBuffUI");
             }
 
             [HarmonyPatch("SetupIcon"), HarmonyPostfix]

@@ -90,7 +90,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddComponent<RemoveWhenCombatEnded>();
             });
 
-            if (ModContext.AddedContent.Feats.IsEnabled("MetamagicRimeSpell")) {
+            if (TTTContext.AddedContent.Feats.IsEnabled("MetamagicRimeSpell")) {
                 MetamagicExtention.RegisterMetamagic(
                     metamagic: (Metamagic)CustomMetamagic.Rime,
                     name: "Rime",
@@ -111,7 +111,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "for a number of rounds equal to the original level of the spell. This feat only affects spells with the cold descriptor."
             );
 
-            if (ModContext.AddedContent.Feats.IsDisabled("MetamagicRimeSpell")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("MetamagicRimeSpell")) { return; }
             UpdateSpells();
             AddRodsToVenders();
             FeatTools.AddAsFeat(RimeSpellFeat);
@@ -129,7 +129,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 if (isColdSpell) {
                     if (!spell.AvailableMetamagic.HasMetamagic((Metamagic)CustomMetamagic.Rime)) {
                         spell.AvailableMetamagic |= (Metamagic)CustomMetamagic.Rime;
-                        Main.LogPatch("Enabled Rime Metamagic", spell);
+                        TTTContext.Logger.LogPatch("Enabled Rime Metamagic", spell);
                     }
                 };
             }

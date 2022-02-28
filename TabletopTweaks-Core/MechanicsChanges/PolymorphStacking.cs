@@ -22,14 +22,14 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             [PostPatchInitialize]
             public static void Initalize() {
                 if (Initialized) { return; }
-                if (Main.ModContext.Fixes.BaseFixes.IsEnabled("DisablePolymorphStacking")) {
+                if (Main.TTTContext.Fixes.BaseFixes.IsEnabled("DisablePolymorphStacking")) {
                     EventBus.Subscribe(PolymorphStackingRules.Instance);
                 }
-                if (Main.ModContext.Fixes.BaseFixes.IsEnabled("DisablePolymorphSizeStacking")) {
+                if (Main.TTTContext.Fixes.BaseFixes.IsEnabled("DisablePolymorphSizeStacking")) {
                     EventBus.Subscribe(PolymorphSizeRules.PolymorphBuffApply.Instance);
                 }
                 EventBus.Subscribe(PolymorphSizeRules.PolymorphBuffRemove.Instance);
-                if (Main.ModContext.Fixes.BaseFixes.IsEnabled("DisableSizeStacking")) {
+                if (Main.TTTContext.Fixes.BaseFixes.IsEnabled("DisableSizeStacking")) {
                     EventBus.Subscribe(SizeStackingRules.SizeBuffApply.Instance);
                 }
                 EventBus.Subscribe(SizeStackingRules.SizeBuffRemove.Instance);
@@ -119,8 +119,8 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                if (Main.ModContext.Fixes.BaseFixes.IsDisabled("DisablePolymorphStacking")) { return; }
-                Main.LogHeader("Patching Polymorph Effects");
+                if (Main.TTTContext.Fixes.BaseFixes.IsDisabled("DisablePolymorphStacking")) { return; }
+                TTTContext.Logger.LogHeader("Patching Polymorph Effects");
                 AddModifers();
                 RemoveModifiers();
 
@@ -143,7 +143,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                                 c.Descriptor = SpellDescriptor.Polymorph;
                             }));
                         }
-                        Main.LogPatch("Patched", buff);
+                        TTTContext.Logger.LogPatch("Patched", buff);
                     });
             }
             static void RemoveModifiers() {
@@ -169,7 +169,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                     .OrderBy(buff => buff.name)
                     .ForEach(buff => {
                         buff.RemoveComponents<SpellDescriptorComponent>(c => c.Descriptor.HasAnyFlag(SpellDescriptor.Polymorph));
-                        Main.LogPatch("Patched", buff);
+                        TTTContext.Logger.LogPatch("Patched", buff);
                     });
             }
         }

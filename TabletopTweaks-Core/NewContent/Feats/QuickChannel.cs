@@ -47,7 +47,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     p.Value = 5;
                 });
             });
-            if (Main.ModContext.AddedContent.Feats.IsDisabled("QuickChannel")) { return; }
+            if (Main.TTTContext.AddedContent.Feats.IsDisabled("QuickChannel")) { return; }
             FeatTools.AddAsFeat(QuickChannel);
         }
     }

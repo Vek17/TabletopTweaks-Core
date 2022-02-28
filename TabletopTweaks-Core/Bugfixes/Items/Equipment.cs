@@ -34,7 +34,7 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                 if (Initialized) return;
                 Initialized = true;
 
-                Main.LogHeader("Patching Equipment");
+                TTTContext.Logger.LogHeader("Patching Equipment");
                 PatchAspectOfTheAsp();
                 PatchMagiciansRing();
                 PatchManglingFrenzy();
@@ -44,7 +44,7 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                 PatchStormlordsResolve();
 
                 void PatchAspectOfTheAsp() {
-                    if (Main.ModContext.Fixes.Items.Equipment.IsDisabled("AspectOfTheAsp")) { return; }
+                    if (Main.TTTContext.Fixes.Items.Equipment.IsDisabled("AspectOfTheAsp")) { return; }
 
                     var AspectOfTheAspItem = Resources.GetBlueprint<BlueprintItemEquipmentNeck>("7d55f6615f884bc45b85fdaa45cd7672");
                     var AspectOfTheAspFeature = Resources.GetBlueprint<BlueprintFeature>("9b3f6877efdf29a4e821c33ec830f312");
@@ -83,19 +83,19 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                             })
                         );
                     });
-                    Main.LogPatch(AspectOfTheAspFeature);
+                    TTTContext.Logger.LogPatch(AspectOfTheAspFeature);
                 }
 
                 void PatchMagiciansRing() {
-                    if (Main.ModContext.Fixes.Items.Equipment.IsDisabled("MagiciansRing")) { return; }
+                    if (Main.TTTContext.Fixes.Items.Equipment.IsDisabled("MagiciansRing")) { return; }
 
                     var RingOfTheSneakyWizardFeature = Resources.GetBlueprint<BlueprintFeature>("d848f1f1b31b3e143ba4aeeecddb17f4");
                     RingOfTheSneakyWizardFeature.GetComponent<IncreaseSpellSchoolDC>().BonusDC = 2;
-                    Main.LogPatch(RingOfTheSneakyWizardFeature);
+                    TTTContext.Logger.LogPatch(RingOfTheSneakyWizardFeature);
                 }
 
                 void PatchHalfOfThePair() {
-                    if (Main.ModContext.Fixes.Items.Equipment.IsDisabled("HalfOfThePair")) { return; }
+                    if (Main.TTTContext.Fixes.Items.Equipment.IsDisabled("HalfOfThePair")) { return; }
 
                     var HalfOfPairedPendantArea = Resources.GetBlueprint<BlueprintAbilityAreaEffect>("8187fd9306b8c4f46824fbba9808f458");
                     var HalfOfPairedPendantBuff = Resources.GetBlueprint<BlueprintBuff>("066229a41ae97d6439fea81ebf141528");
@@ -127,11 +127,11 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                     HalfOfPairedPendantArea.FlattenAllActions()
                         .OfType<ContextActionRemoveBuff>()
                         .ForEach(c => c.ToCaster = false);
-                    Main.LogPatch(HalfOfPairedPendantArea);
+                    TTTContext.Logger.LogPatch(HalfOfPairedPendantArea);
                 }
 
                 void PatchHolySymbolofIomedae() {
-                    if (Main.ModContext.Fixes.Items.Equipment.IsDisabled("HolySymbolofIomedae")) { return; }
+                    if (Main.TTTContext.Fixes.Items.Equipment.IsDisabled("HolySymbolofIomedae")) { return; }
 
                     var Artifact_HolySymbolOfIomedaeArea = Resources.GetBlueprint<BlueprintAbilityAreaEffect>("e6dff35442f00ab4fa2468804c15efc0");
                     var Artifact_HolySymbolOfIomedaeBuff = Resources.GetBlueprint<BlueprintBuff>("c8b1c0f5cd21f1d4e892f7440ec28e24");
@@ -140,12 +140,12 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                         .UnitExit = Helpers.CreateActionList(
                             Helpers.Create<ContextActionRemoveBuff>(a => a.m_Buff = Artifact_HolySymbolOfIomedaeBuff.ToReference<BlueprintBuffReference>())
                     );
-                    Main.LogPatch(Artifact_HolySymbolOfIomedaeArea);
+                    TTTContext.Logger.LogPatch(Artifact_HolySymbolOfIomedaeArea);
                 }
 
                 // Fix Mangling Frenzy does not apply to Bloodrager's Rage
                 void PatchManglingFrenzy() {
-                    if (Main.ModContext.Fixes.Items.Equipment.IsDisabled("ManglingFrenzy")) { return; }
+                    if (Main.TTTContext.Fixes.Items.Equipment.IsDisabled("ManglingFrenzy")) { return; }
 
                     var ManglingFrenzyFeature = Resources.GetBlueprint<BlueprintFeature>("29e2f51e6dd7427099b015de88718990");
                     var ManglingFrenzyBuff = Resources.GetBlueprint<BlueprintBuff>("1581c5ceea24418cadc9f26ce4d391a9");
@@ -156,20 +156,20 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                         c.m_ExtraEffectBuff = ManglingFrenzyBuff.ToReference<BlueprintBuffReference>();
                     }));
 
-                    Main.LogPatch(ManglingFrenzyFeature);
+                    TTTContext.Logger.LogPatch(ManglingFrenzyFeature);
                 }
 
                 void PatchStormlordsResolve() {
-                    if (Main.ModContext.Fixes.Items.Equipment.IsDisabled("StormlordsResolve")) { return; }
+                    if (Main.TTTContext.Fixes.Items.Equipment.IsDisabled("StormlordsResolve")) { return; }
 
                     var StormlordsResolveActivatableAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("ae908f59269c54c4d83ca51a63be8db4");
                     StormlordsResolveActivatableAbility.DeactivateImmediately = true;
 
-                    Main.LogPatch(StormlordsResolveActivatableAbility);
+                    TTTContext.Logger.LogPatch(StormlordsResolveActivatableAbility);
                 }
 
                 void PatchMetamagicRods() {
-                    if (Main.ModContext.Fixes.Items.Equipment.IsDisabled("MetamagicRods")) { return; }
+                    if (Main.TTTContext.Fixes.Items.Equipment.IsDisabled("MetamagicRods")) { return; }
 
                     BlueprintActivatableAbility[] MetamagicRodAbilities = new BlueprintActivatableAbility[] {
                         Resources.GetBlueprint<BlueprintActivatableAbility>("ccffef1193d04ad1a9430a8009365e81"), //MetamagicRodGreaterBolsterToggleAbility
@@ -205,7 +205,7 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                     MetamagicRodAbilities.ForEach(ability => {
                         ability.IsOnByDefault = false;
                         ability.DoNotTurnOffOnRest = false;
-                        Main.LogPatch("Patched", ability);
+                        TTTContext.Logger.LogPatch("Patched", ability);
                     });
                 }
             }

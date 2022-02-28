@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUI;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartPseudoActivatableAbilities :
@@ -103,7 +104,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             var abilityBlueprint = ability.Blueprint;
             var pseudoActivatableComponent = abilityBlueprint.GetComponent<PseudoActivatable>();
             if (pseudoActivatableComponent == null) {
-                Main.Log($"WARNING: UnitPartPseudoActivatableAbilities.RegisterPseudoActivatableAbility called for ability \"{abilityBlueprint.NameSafe()}\", which does not have a PseudoActivatable component");
+                TTTContext.Logger.Log($"WARNING: UnitPartPseudoActivatableAbilities.RegisterPseudoActivatableAbility called for ability \"{abilityBlueprint.NameSafe()}\", which does not have a PseudoActivatable component");
                 return;
             }
             if (!pseudoActivatableComponent.Buff.Equals(_nullBuffRef)) {
@@ -111,7 +112,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             } else {
                 var abilityVariants = ability.GetConversions();
                 if (abilityVariants.Empty()) {
-                    Main.LogDebug($"UnitPartPseudoActivatableAbilities.RegisterPseudoActivatableAbility called for ability \"{abilityBlueprint.NameSafe()}\", but the PseudoActivatable component has no Buff set, and the ability does not have variants.");
+                    TTTContext.Logger.LogVerbose($"UnitPartPseudoActivatableAbilities.RegisterPseudoActivatableAbility called for ability \"{abilityBlueprint.NameSafe()}\", but the PseudoActivatable component has no Buff set, and the ability does not have variants.");
                     if (!m_AbilitiesToBuffs.ContainsKey(abilityBlueprint)) {
                         m_AbilitiesToBuffs.Add(abilityBlueprint, new HashSet<BlueprintBuffReference>());
                     }
@@ -238,7 +239,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
 
             foreach (var activeBuff in m_ActiveWatchedBuffs) {
                 if (!this.Owner.HasFact(activeBuff)) {
-                    Main.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": buff \"{activeBuff.NameSafe()}\" is in active watched buffs list, but owner does not actually have that buff.");
+                    TTTContext.Logger.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": buff \"{activeBuff.NameSafe()}\" is in active watched buffs list, but owner does not actually have that buff.");
                 }
             }
 
@@ -247,21 +248,21 @@ namespace TabletopTweaks.Core.NewUnitParts {
                     && buff.SourceAbility.GetComponent<PseudoActivatable>() != null
                     && buff.SourceAbility.GetComponent<PseudoActivatable>().Buff.Equals(buff.Blueprint.ToReference<BlueprintBuffReference>())
                     && !m_ActiveWatchedBuffs.Contains(buff.Blueprint.ToReference<BlueprintBuffReference>())) {
-                    Main.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": unit has buff \"{buff.Name}\", which is toggled by pseudo activatable ability \"{buff.SourceAbility.NameSafe()}\", but this buff is not present in active watched buff list.");
+                    TTTContext.Logger.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": unit has buff \"{buff.Name}\", which is toggled by pseudo activatable ability \"{buff.SourceAbility.NameSafe()}\", but this buff is not present in active watched buff list.");
                 }
             }
 
             var abilitiesInBuffsDictionary = m_BuffsToAbilities.Values.SelectMany(x => x).ToHashSet();
             foreach (var abilityBlueprint in abilitiesInBuffsDictionary) {
                 if (!m_AbilitiesToBuffs.ContainsKey(abilityBlueprint)) {
-                    Main.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": ability \"{abilityBlueprint.NameSafe()}\" is in values of Buff dictionary, but is not a key in Abilities dictionary");
+                    TTTContext.Logger.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": ability \"{abilityBlueprint.NameSafe()}\" is in values of Buff dictionary, but is not a key in Abilities dictionary");
                 }
             }
 
             var buffsInAbilitiesDictionary = m_AbilitiesToBuffs.Values.SelectMany(x => x).ToHashSet();
             foreach (var buff in buffsInAbilitiesDictionary) {
                 if (!m_BuffsToAbilities.ContainsKey(buff)) {
-                    Main.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": buff \"{buff.NameSafe()}\" is in values of Abilities dictionary, but is not a key in the Buffs dictionary");
+                    TTTContext.Logger.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": buff \"{buff.NameSafe()}\" is in values of Abilities dictionary, but is not a key in the Buffs dictionary");
                 }
             }
 
@@ -278,16 +279,16 @@ namespace TabletopTweaks.Core.NewUnitParts {
 
             foreach (var abilityBlueprint in abilitiesInMechanicsSlots) {
                 if (!m_AbilitiesToBuffs.ContainsKey(abilityBlueprint)) {
-                    Main.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": a MechanicSlot is registered for ability \"{abilityBlueprint.NameSafe()}\", but this ability is not a key in the Abilities dictionary");
+                    TTTContext.Logger.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": a MechanicSlot is registered for ability \"{abilityBlueprint.NameSafe()}\", but this ability is not a key in the Abilities dictionary");
                 }
             }
 
             foreach (var buffGroup in m_GroupsToBuffs) {
                 foreach (var buffRef in buffGroup.Value) {
                     if (!m_BuffsToGroups.ContainsKey(buffRef)) {
-                        Main.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": buff \"{buffRef.NameSafe()}\" is in group named \"{buffGroup.Key}\" in m_GroupsToBuffs, but this buff is not present as a key in m_BuffsToGroups");
+                        TTTContext.Logger.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": buff \"{buffRef.NameSafe()}\" is in group named \"{buffGroup.Key}\" in m_GroupsToBuffs, but this buff is not present as a key in m_BuffsToGroups");
                     } else if (!m_BuffsToGroups[buffRef].Contains(buffGroup.Key)) {
-                        Main.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": buff \"{buffRef.NameSafe()}\" is in group named \"{buffGroup.Key}\" in m_GroupsToBuffs, but the groups for this buff in m_BuffsToGroups do not contain \"{buffGroup.Key}\"");
+                        TTTContext.Logger.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": buff \"{buffRef.NameSafe()}\" is in group named \"{buffGroup.Key}\" in m_GroupsToBuffs, but the groups for this buff in m_BuffsToGroups do not contain \"{buffGroup.Key}\"");
                     }
                 }
             }
@@ -295,9 +296,9 @@ namespace TabletopTweaks.Core.NewUnitParts {
             foreach (var groupedBuff in m_BuffsToGroups) {
                 foreach (var groupName in groupedBuff.Value) {
                     if (!m_GroupsToBuffs.ContainsKey(groupName)) {
-                        Main.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": buff group \"{groupName}\" is linked to buff \"{groupedBuff.Key.NameSafe()}\" in m_BuffsToGroups, but this group is not present as a key in m_GroupsToBuffs");
+                        TTTContext.Logger.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": buff group \"{groupName}\" is linked to buff \"{groupedBuff.Key.NameSafe()}\" in m_BuffsToGroups, but this group is not present as a key in m_GroupsToBuffs");
                     } else if (!m_GroupsToBuffs[groupName].Contains(groupedBuff.Key)) {
-                        Main.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": buff group \"{groupName}\" is linked to buff \"{groupedBuff.Key.NameSafe()}\" in m_BuffsToGroups, but the buffs for this group in m_GroupsToBuffs do not contain \"{groupedBuff.Key.NameSafe()}\"");
+                        TTTContext.Logger.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": buff group \"{groupName}\" is linked to buff \"{groupedBuff.Key.NameSafe()}\" in m_BuffsToGroups, but the buffs for this group in m_GroupsToBuffs do not contain \"{groupedBuff.Key.NameSafe()}\"");
                     }
                 }
             }
@@ -310,9 +311,9 @@ namespace TabletopTweaks.Core.NewUnitParts {
                     }
                 }
                 if (hasBuffs.Count > 1) {
-                    Main.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": multiple buffs are active for group {buffGroup.Key}. Active buffs: ");
+                    TTTContext.Logger.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\": multiple buffs are active for group {buffGroup.Key}. Active buffs: ");
                     foreach (var activeBuff in hasBuffs) {
-                        Main.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\":  - {activeBuff.NameSafe()}");
+                        TTTContext.Logger.Log($"WARNING: UnitPartPseudoActivatableAbilities Validation Error on unit \"{Owner.CharacterName}\":  - {activeBuff.NameSafe()}");
                     }
                 }
             }

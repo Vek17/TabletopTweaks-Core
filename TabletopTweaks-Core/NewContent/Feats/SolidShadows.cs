@@ -66,7 +66,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(SolidShadowsSpellFeat);
             });
 
-            if (ModContext.AddedContent.Feats.IsDisabled("MetamagicSolidShadows")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("MetamagicSolidShadows")) { return; }
             MetamagicExtention.RegisterMetamagic(
                 metamagic: (Metamagic)CustomMetamagic.SolidShadows,
                 name: "Solid Shadows",
@@ -86,7 +86,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 if (validShadow) {
                     if (!spell.AvailableMetamagic.HasMetamagic((Metamagic)CustomMetamagic.SolidShadows)) {
                         spell.AvailableMetamagic |= (Metamagic)CustomMetamagic.SolidShadows;
-                        Main.LogPatch("Enabled Solid Shadows Metamagic", spell);
+                        TTTContext.Logger.LogPatch("Enabled Solid Shadows Metamagic", spell);
                     }
                 };
             }

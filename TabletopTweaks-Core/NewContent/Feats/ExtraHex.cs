@@ -19,7 +19,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "If you are a shaman, it must be a hex granted by your spirit rather than one from a wandering spirit." +
                     "\nYou can take this feat multiple times. Each time you do, you gain another hex.");
             });
-            if (ModContext.AddedContent.Feats.IsDisabled("ExtraHex")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("ExtraHex")) { return; }
             FeatTools.AddAsFeat(ExtraHexWitch);
             FeatTools.AddAsFeat(ExtraHexShaman);
         }

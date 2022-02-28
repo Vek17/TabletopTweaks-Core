@@ -167,7 +167,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     c.Descriptor = SpellDescriptor.Acid;
                 });
             });
-            if (ModContext.AddedContent.Feats.IsEnabled("MetamagicBurningSpell")) {
+            if (TTTContext.AddedContent.Feats.IsEnabled("MetamagicBurningSpell")) {
                 MetamagicExtention.RegisterMetamagic(
                     metamagic: (Metamagic)CustomMetamagic.Burning,
                     name: "Burning",
@@ -189,7 +189,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "The damage is acid or fire, as determined by the spell’s descriptor."
             );
 
-            if (ModContext.AddedContent.Feats.IsDisabled("MetamagicBurningSpell")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("MetamagicBurningSpell")) { return; }
 
             UpdateSpells();
             AddRodsToVenders();
@@ -208,7 +208,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 if (isBurningSpell) {
                     if (!spell.AvailableMetamagic.HasMetamagic((Metamagic)CustomMetamagic.Burning)) {
                         spell.AvailableMetamagic |= (Metamagic)CustomMetamagic.Burning;
-                        Main.LogPatch("Enabled Burning Metamagic", spell);
+                        TTTContext.Logger.LogPatch("Enabled Burning Metamagic", spell);
                     }
                 };
             }

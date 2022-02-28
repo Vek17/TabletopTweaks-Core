@@ -34,7 +34,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(WarpriestFervorBase);
             });
 
-            if (ModContext.AddedContent.MythicAbilities.IsDisabled("AbundantFervor")) { return; }
+            if (TTTContext.AddedContent.MythicAbilities.IsDisabled("AbundantFervor")) { return; }
             FeatTools.AddAsMythicAbility(AbundantFervorFeature);
         }
     }

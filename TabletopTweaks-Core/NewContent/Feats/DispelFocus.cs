@@ -63,9 +63,9 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(DispelFocusFeature);
             });
 
-            if (ModContext.AddedContent.Feats.IsDisabled("DispelFocus")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("DispelFocus")) { return; }
             FeatTools.AddAsFeat(DispelFocusFeature);
-            if (ModContext.AddedContent.Feats.IsDisabled("DispelFocusGreater")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("DispelFocusGreater")) { return; }
             FeatTools.AddAsFeat(DispelFocusGreaterFeature);
         }
     }

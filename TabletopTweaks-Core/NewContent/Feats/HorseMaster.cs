@@ -75,7 +75,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            if (ModContext.AddedContent.Feats.IsDisabled("NatureSoul")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("NatureSoul")) { return; }
             FeatTools.AddAsFeat(HorseMaster);
             CavalierProgression.LevelEntries
                 .Where(entry => entry.Level == 4)
@@ -98,10 +98,10 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                         || achetype == KnightOfTheWallArchetype)) {
                     if (!unit.HasFact(ExpertTrainer)) {
                         if (unit.AddFact(ExpertTrainer) != null) {
-                            Main.Log($"Added: {ExpertTrainer.name} To: {unit.CharacterName}");
+                            TTTContext.Logger.Log($"Added: {ExpertTrainer.name} To: {unit.CharacterName}");
                             return;
                         }
-                        Main.Log($"Failed Add: {ExpertTrainer.name} To: {unit.CharacterName}");
+                        TTTContext.Logger.Log($"Failed Add: {ExpertTrainer.name} To: {unit.CharacterName}");
                     }
                 }
             });

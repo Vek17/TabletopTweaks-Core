@@ -39,7 +39,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                     c.m_Min = 1;
                 });
             });
-            if (ModContext.AddedContent.MythicAbilities.IsDisabled("ImpossibleSpeed")) { return; }
+            if (TTTContext.AddedContent.MythicAbilities.IsDisabled("ImpossibleSpeed")) { return; }
             FeatTools.AddAsMythicAbility(ImpossibleSpeedFeature);
         }
     }

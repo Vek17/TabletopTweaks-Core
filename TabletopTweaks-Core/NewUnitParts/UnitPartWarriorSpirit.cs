@@ -8,6 +8,7 @@ using Kingmaker.Utility;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartWarriorSpirit : UnitPart {
@@ -48,7 +49,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
                         entity.Facts.Remove(fact, true);
                     }
                 } catch {
-                    Main.Error("Failed to clear Warrior Spirit Enchants");
+                    TTTContext.Logger.LogError("Failed to clear Warrior Spirit Enchants");
                 }
             }
             ActiveEnchants.Clear();

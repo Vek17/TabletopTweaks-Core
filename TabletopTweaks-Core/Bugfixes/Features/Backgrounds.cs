@@ -26,8 +26,8 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                if (Main.ModContext.Fixes.BaseFixes.IsDisabled("FixBackgroundModifiers")) { return; }
-                Main.LogHeader("Patching Backgrounds");
+                if (Main.TTTContext.Fixes.BaseFixes.IsDisabled("FixBackgroundModifiers")) { return; }
+                TTTContext.Logger.LogHeader("Patching Backgrounds");
                 PatchMiner();
                 PatchFarmhand();
                 PatchBackgrounds();
@@ -54,7 +54,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                             }
                             if (changed) {
                                 f.SetDescription(description);
-                                Main.LogPatch("Patched", f);
+                                TTTContext.Logger.LogPatch("Patched", f);
                             }
                         });
                 }
@@ -69,7 +69,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                     });
                     var addFacts = BackgroundMiner.GetComponent<AddFacts>();
                     addFacts.m_Facts = addFacts.m_Facts.AppendToArray(EarthBreakerProficiency.ToReference<BlueprintUnitFactReference>());
-                    Main.LogPatch("Patched", BackgroundMiner);
+                    TTTContext.Logger.LogPatch("Patched", BackgroundMiner);
                 }
                 void PatchFarmhand() {
                     var KamaProficiency = Resources.GetBlueprint<BlueprintFeature>("403740e8112651141a12f0d73d793dbc");
@@ -82,7 +82,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                     });
                     var addFacts = BackgroundFarmhand.GetComponent<AddFacts>();
                     addFacts.m_Facts = addFacts.m_Facts.AppendToArray(KamaProficiency.ToReference<BlueprintUnitFactReference>());
-                    Main.LogPatch("Patched", BackgroundFarmhand);
+                    TTTContext.Logger.LogPatch("Patched", BackgroundFarmhand);
                 }
             }
         }
@@ -96,7 +96,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             });
             //Change bonus descriptor to Trait instead of Competence
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                if (Main.ModContext.Fixes.BaseFixes.IsDisabled("FixBackgroundModifiers")) { return instructions; }
+                if (Main.TTTContext.Fixes.BaseFixes.IsDisabled("FixBackgroundModifiers")) { return instructions; }
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
                 //Utilities.ILUtils.LogIL(codes);
@@ -111,7 +111,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                         return i - 1;
                     }
                 }
-                Main.Log("BACKGROUND PATCH: COULD NOT FIND TARGET");
+                TTTContext.Logger.Log("BACKGROUND PATCH: COULD NOT FIND TARGET");
                 return -1;
             }
         }

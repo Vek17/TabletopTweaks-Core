@@ -193,12 +193,12 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 });
             });
 
-            if (ModContext.AddedContent.MythicAbilities.IsEnabled("ArmorMaster")) {
+            if (TTTContext.AddedContent.MythicAbilities.IsEnabled("ArmorMaster")) {
                 FeatTools.AddAsMythicAbility(ArmorMasterLightFeature);
                 FeatTools.AddAsMythicAbility(ArmorMasterMediumFeature);
                 FeatTools.AddAsMythicAbility(ArmorMasterHeavyFeature);
             }
-            if (ModContext.AddedContent.MythicAbilities.IsEnabled("ArmorMasterHomebrew")) {
+            if (TTTContext.AddedContent.MythicAbilities.IsEnabled("ArmorMasterHomebrew")) {
                 FeatTools.AddAsMythicAbility(ArmorMasterHomebrewFeature);
             }
         }

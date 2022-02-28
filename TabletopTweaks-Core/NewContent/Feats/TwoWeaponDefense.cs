@@ -39,7 +39,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(TwoWeaponFighting);
             });
 
-            if (ModContext.AddedContent.Feats.IsDisabled("TwoWeaponDefense")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("TwoWeaponDefense")) { return; }
             FeatTools.AddAsFeat(TwoWeaponDefenseFeature);
         }
     }

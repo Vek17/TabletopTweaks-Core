@@ -9,15 +9,23 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.NewEvents;
+using Kingmaker.PubSubSystem;
+using TabletopTweaks.Core.Modlogic;
 
 namespace TabletopTweaks.Core.Localization {
     /// <summary>
     /// Contains and manages localization for all available langauges.
     /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
-    public class MultiLocalizationPack {
+    public class MultiLocalizationPack : ILocaleChangedHandler,
+        IBlueprintCacheInitHandler,
+        IGlobalSubscriber, ISubscriber {
 
         public MultiLocalizationPack() { }
+        public MultiLocalizationPack(ModContextBase context) {
+            this.Context = context;
+        }
         /// <summary>
         /// Dictionary of extisting strings of enGB text and corresponding MultiLocaleStrings.
         /// </summary>
@@ -51,6 +59,7 @@ namespace TabletopTweaks.Core.Localization {
         /// </summary>
         public void ApplyToCurrentPack() {
             LocalizationManager.CurrentPack.AddStrings(GeneratePack());
+            applied = true;
         }
         /// <summary>
         /// Clears data in Text and Ids.
@@ -83,9 +92,11 @@ namespace TabletopTweaks.Core.Localization {
         /// </param>
         public void AddString(MultiLocaleString newString) {
             Ids[newString.Key] = newString;
-            Text[newString.StringEntry(LocalizationManager.CurrentLocale).Text] = newString;
+            Text[newString.StringEntry(applied ? LocalizationManager.CurrentLocale : Locale.enGB).Text] = newString;
             Strings.Add(newString);
-            LocalizationManager.CurrentPack.m_Strings[newString.Key] = newString.StringEntry(LocalizationManager.CurrentLocale);
+            if (applied) {
+                LocalizationManager.CurrentPack.m_Strings[newString.Key] = newString.StringEntry(LocalizationManager.CurrentLocale);
+            }
         }
         /// <summary>
         /// Generates a new LocalizationPack based on the contents of the MultiLocalizationPack.
@@ -103,6 +114,26 @@ namespace TabletopTweaks.Core.Localization {
             }
             return pack;
         }
+
+        public void HandleLocaleChanged() {
+            this.ResetCache();
+            this.ApplyToCurrentPack();
+        }
+
+        public void BeforeBlueprintCacheInit() {
+            this.ApplyToCurrentPack();
+        }
+
+        public void AfterBlueprintCacheInit() {
+        }
+
+        public void BeforeBlueprintCachePatches() {
+        }
+
+        public void AfterBlueprintCachePatches() {
+            Context.SaveLocalization(this);
+        }
+
         /// <summary>
         /// All MultiLocaleStrings in the MultiLocalizationPack.
         /// </summary>
@@ -111,6 +142,11 @@ namespace TabletopTweaks.Core.Localization {
         public List<MultiLocaleString> Strings = new List<MultiLocaleString>();
         private SortedDictionary<string, MultiLocaleString> text;
         private SortedDictionary<string, MultiLocaleString> ids;
+        private bool applied = false;
+        /// <summary>
+        /// Context used to load the pack.
+        /// </summary>
+        public ModContextBase Context;
         /// <summary>
         /// Contains key used for LocalizedString as well as localized text for all supported lanagues.
         /// </summary>
@@ -283,27 +319,6 @@ namespace TabletopTweaks.Core.Localization {
             public override int GetHashCode() {
                 return Key.GetHashCode() ^ enGB.GetHashCode();
             }
-        }
-    }
-    [HarmonyPatch(typeof(StartGameLoader), nameof(StartGameLoader.LoadPackTOC))]
-    internal class StartGameLoader_LocalizationPatch {
-        static void Postfix() {
-            ModContext.ModLocalizationPack.ApplyToCurrentPack();
-            ModContext.SaveLocalization("LocalizationPack.Json", ModContext.ModLocalizationPack);
-        }
-    }
-    [HarmonyPatch(typeof(LocalizationManager), nameof(LocalizationManager.OnLocaleChanged))]
-    internal static class LocalizationManager_OnLocaleChanged_LocalizationPatch {
-        static void Postfix() {
-            ModContext.ModLocalizationPack.ResetCache();
-            ModContext.ModLocalizationPack.ApplyToCurrentPack();
-        }
-    }
-    [HarmonyPatch(typeof(BlueprintsCache), nameof(BlueprintsCache.Init))]
-    internal static class BlueprintsCache_LocalizationPatch {
-        static bool Prefix() {
-            ModContext.ModLocalizationPack.ApplyToCurrentPack();
-            return true;
         }
     }
 }

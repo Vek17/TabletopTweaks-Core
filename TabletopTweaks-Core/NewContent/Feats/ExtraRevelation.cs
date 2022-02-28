@@ -12,7 +12,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.SetDescription("You gain one additional revelation. You must meet all of the prerequisites for this revelation." +
                     "\nYou can gain Extra Revelation multiple times.");
             });
-            if (ModContext.AddedContent.Feats.IsDisabled("ExtraRevelation")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("ExtraRevelation")) { return; }
             FeatTools.AddAsFeat(ExtraRevelation);
         }
     }

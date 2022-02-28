@@ -37,7 +37,7 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                 if (Initialized) return;
                 Initialized = true;
 
-                Main.LogHeader("Patching Weapons");
+                TTTContext.Logger.LogHeader("Patching Weapons");
 
                 PatchBladeOfTheMerciful();
                 PatchFinnean();
@@ -49,7 +49,7 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                 PatchVorpal();
 
                 void PatchBladeOfTheMerciful() {
-                    if (Main.ModContext.Fixes.Items.Weapons.IsDisabled("BladeOfTheMerciful")) { return; }
+                    if (Main.TTTContext.Fixes.Items.Weapons.IsDisabled("BladeOfTheMerciful")) { return; }
 
                     var BladeOfTheMercifulEnchant = Resources.GetBlueprint<BlueprintWeaponEnchantment>("a5e3fe4a71e331e4aa41f9a07cfd3729");
                     BladeOfTheMercifulEnchant.RemoveComponents<AddInitiatorAttackWithWeaponTrigger>();
@@ -73,10 +73,10 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                             }
                         };
                     });
-                    Main.LogPatch("Patched", BladeOfTheMercifulEnchant);
+                    TTTContext.Logger.LogPatch("Patched", BladeOfTheMercifulEnchant);
                 }
                 void PatchHonorableJudgement() {
-                    if (Main.ModContext.Fixes.Items.Weapons.IsDisabled("HonorableJudgement")) { return; }
+                    if (Main.TTTContext.Fixes.Items.Weapons.IsDisabled("HonorableJudgement")) { return; }
 
                     var JudgementOfRuleItem = Resources.GetBlueprint<BlueprintItemWeapon>("f40895a7dfab41c40b42657fc3f5bdfe");
                     var JudgementOfRuleSecondItem = Resources.GetBlueprint<BlueprintItemWeapon>("ca0e81e14d675c34b862aad509be573d");
@@ -106,10 +106,10 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                             }
                         };
                     });
-                    Main.LogPatch("Patched", JudgementOfRuleEnchantment);
+                    TTTContext.Logger.LogPatch("Patched", JudgementOfRuleEnchantment);
                 }
                 void PatchFinnean() {
-                    if (Main.ModContext.Fixes.Items.Weapons.IsDisabled("Finnean")) { return; }
+                    if (Main.TTTContext.Fixes.Items.Weapons.IsDisabled("Finnean")) { return; }
 
                     var FinneanChapter3Enchantment = Resources.GetBlueprint<BlueprintWeaponEnchantment>("b183bd491793d194c9e4c96cd11769b1");
                     var FinneanChapter5EnchantmentBase = Resources.GetBlueprint<BlueprintWeaponEnchantment>("6b66e949f348ccd4989a5fd9254f8958");
@@ -123,10 +123,10 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                         };
                     });
 
-                    Main.LogPatch("Patched", FinneanChapter3Enchantment);
+                    TTTContext.Logger.LogPatch("Patched", FinneanChapter3Enchantment);
                 }
                 void PatchTerribleTremble() {
-                    if (Main.ModContext.Fixes.Items.Weapons.IsDisabled("TerrifyingTremble")) { return; }
+                    if (Main.TTTContext.Fixes.Items.Weapons.IsDisabled("TerrifyingTremble")) { return; }
 
                     var TerrifyingTrembleItem = Resources.GetBlueprint<BlueprintItemWeapon>("8c31891423c4405393741e829aebec85");
                     var Enhancement5 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("bdba267e951851449af552aa9f9e3992");
@@ -142,10 +142,10 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                         TerrifyingTrembleEnchant_TTT.ToReference<BlueprintWeaponEnchantmentReference>(),
                     };
 
-                    Main.LogPatch("Patched", TerrifyingTrembleItem);
+                    TTTContext.Logger.LogPatch("Patched", TerrifyingTrembleItem);
                 }
                 void PatchRadiance() {
-                    if (Main.ModContext.Fixes.Items.Weapons.IsDisabled("Radiance")) { return; }
+                    if (Main.TTTContext.Fixes.Items.Weapons.IsDisabled("Radiance")) { return; }
 
                     var RadianceEffectBuff = Resources.GetBlueprint<BlueprintBuff>("0c03ba5e0c3fd304eb0a221e83f4ce1d");
                     RadianceEffectBuff.RemoveComponents<SpellPenetrationBonus>();
@@ -155,18 +155,18 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                         };
                     });
 
-                    Main.LogPatch("Patched", RadianceEffectBuff);
+                    TTTContext.Logger.LogPatch("Patched", RadianceEffectBuff);
                 }
                 void PatchThunderingBurst() {
-                    if (Main.ModContext.Fixes.Items.Weapons.IsDisabled("ThunderingBurst")) { return; }
+                    if (Main.TTTContext.Fixes.Items.Weapons.IsDisabled("ThunderingBurst")) { return; }
 
                     var ThunderingBurst = Resources.GetBlueprint<BlueprintWeaponEnchantment>("83bd616525288b34a8f34976b2759ea1");
                     ThunderingBurst.GetComponent<WeaponEnergyBurst>().Dice = DiceType.D10;
 
-                    Main.LogPatch("Patched", ThunderingBurst);
+                    TTTContext.Logger.LogPatch("Patched", ThunderingBurst);
                 }
                 void PatchVorpal() {
-                    if (Main.ModContext.Fixes.Items.Weapons.IsDisabled("Vorpal")) { return; }
+                    if (Main.TTTContext.Fixes.Items.Weapons.IsDisabled("Vorpal")) { return; }
 
                     var Vorpal = Resources.GetBlueprint<BlueprintWeaponEnchantment>("2f60bfcba52e48a479e4a69868e24ebc");
                     var VorpalBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("4c02715a54a497a408a93a5d80e91a24");
@@ -179,7 +179,7 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                         c.OnTarget = true;
                     });
 
-                    Main.LogPatch("Patched", Vorpal);
+                    TTTContext.Logger.LogPatch("Patched", Vorpal);
                 }
             }
         }
@@ -193,7 +193,7 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
             // ------------after-------------
             // RuleCalculateWeaponStats ruleCalculateWeaponStats = Rulebook.Trigger<RuleCalculateWeaponStats>(new RuleCalculateWeaponStats(evt.Initiator, base.Owner, null, null));
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                if (Main.ModContext.Fixes.Items.Weapons.IsDisabled("EnergyBurst")) { return instructions; }
+                if (Main.TTTContext.Fixes.Items.Weapons.IsDisabled("EnergyBurst")) { return instructions; }
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
                 //Utilities.ILUtils.LogIL(codes);
@@ -210,7 +210,7 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                         return i;
                     }
                 }
-                Main.Log("ENERGY BURST PATCH: COULD NOT FIND TARGET");
+                TTTContext.Logger.Log("ENERGY BURST PATCH: COULD NOT FIND TARGET");
                 return -1;
             }
         }

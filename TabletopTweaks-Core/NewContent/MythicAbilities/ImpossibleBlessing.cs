@@ -25,7 +25,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(BlessingSelection);
             });
 
-            if (ModContext.AddedContent.MythicAbilities.IsDisabled("ImpossibleBlessing")) { return; }
+            if (TTTContext.AddedContent.MythicAbilities.IsDisabled("ImpossibleBlessing")) { return; }
             FeatTools.AddAsMythicAbility(ImpossibleBlessingFeature);
         }
     }

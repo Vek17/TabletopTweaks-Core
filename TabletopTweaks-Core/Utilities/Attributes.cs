@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using TabletopTweaks.Core.Modlogic;
 
 namespace TabletopTweaks.Core.Utilities {
     public class PostPatchInitializeAttribute : Attribute {
@@ -10,27 +11,27 @@ namespace TabletopTweaks.Core.Utilities {
     }
 
     public static class PostPatchInitializer {
-        public static void Initialize() {
-            var methods = Assembly.GetExecutingAssembly()
-                .GetTypes()
+        public static void Initialize(ModContextBase context) {
+            var assembly = Assembly.GetCallingAssembly();
+            context.Logger.Log($"PostPatchInitializer: {assembly.FullName}");
+            var methods = assembly.GetTypes()
                 .Where(x => x.IsClass)
                 .SelectMany(x => AccessTools.GetDeclaredMethods(x))
                 .Where(x => x.GetCustomAttributes(typeof(PostPatchInitializeAttribute), false).FirstOrDefault() != null);
 
             foreach (var method in methods) {
-                Main.LogDebug($"Executing Post Patch: {method.Name}");
+                context.Logger.Log($"Executing Post Patch: {method.Name}");
                 method.Invoke(null, null); // invoke the method
             }
 
-            var fields = Assembly.GetExecutingAssembly()
-                .GetTypes()
+            var fields = assembly.GetTypes()
                 .Where(x => x.IsClass)
                 .SelectMany(x => AccessTools.GetDeclaredFields(x))
                 .Where(x => x.IsStatic)
-                .Where(x => x.GetCustomAttributes(typeof(PostPatchInitializeAttribute), false).FirstOrDefault() != null);
+                .Where(x => x.GetCustomAttributes(typeof(InitializeStaticStringAttribute), false).FirstOrDefault() != null);
 
             foreach (var field in fields) {
-                Main.LogDebug($"Loading Static String: {field.Name}");
+                context.Logger.Log($"Loading Static String: {field.DeclaringType.Name}.{field.Name}");
                 field.GetValue(null); // load the field
             }
         }

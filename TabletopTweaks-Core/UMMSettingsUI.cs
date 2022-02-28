@@ -26,7 +26,7 @@ namespace TabletopTweaks.Core {
     static class SettingsTabs {
         public static void Fixes() {
             var TabLevel = SetttingUI.TabLevel.Zero;
-            var Fixes = Main.ModContext.Fixes;
+            var Fixes = Main.TTTContext.Fixes;
             UI.Div(0, 15);
             using (UI.VerticalScope()) {
                 UI.Toggle("New Settings Off By Default".bold(), ref Fixes.NewSettingsOffByDefault);
@@ -138,7 +138,7 @@ namespace TabletopTweaks.Core {
         }
         public static void Homebrew() {
             var TabLevel = SetttingUI.TabLevel.Zero;
-            var Homebrew = Main.ModContext.Homebrew;
+            var Homebrew = Main.TTTContext.Homebrew;
             UI.Div(0, 15);
             using (UI.VerticalScope()) {
                 UI.Toggle("New Settings Off By Default".bold(), ref Homebrew.NewSettingsOffByDefault);
@@ -155,7 +155,7 @@ namespace TabletopTweaks.Core {
         }
         public static void AddedContent() {
             var TabLevel = SetttingUI.TabLevel.Zero;
-            var AddedContent = Main.ModContext.AddedContent;
+            var AddedContent = Main.TTTContext.AddedContent;
             UI.Div(0, 15);
             using (UI.VerticalScope()) {
                 UI.Toggle("New Settings Off By Default".bold(), ref AddedContent.NewSettingsOffByDefault);

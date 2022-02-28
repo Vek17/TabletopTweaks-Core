@@ -44,7 +44,7 @@ namespace TabletopTweaks.Core.Bugfixes.General {
         [HarmonyPatch(typeof(RuleCalculateWeaponStats), nameof(RuleCalculateWeaponStats.CriticalRange), MethodType.Getter)]
         class RuleCalculateWeaponStats_CriticalRange_Patch {
             static void Postfix(RuleCalculateWeaponStats __instance, ref int __result) {
-                if (ModContext.Fixes.BaseFixes.IsDisabled("CriticalRangeIncreases")) { return; }
+                if (TTTContext.Fixes.BaseFixes.IsDisabled("CriticalRangeIncreases")) { return; }
                 __result = ((21 - __instance.Weapon.Blueprint.CriticalRollEdge) * (__instance.DoubleCriticalEdge ? 2 : 1))
                     + __instance.CriticalEdgeBonus;
             }

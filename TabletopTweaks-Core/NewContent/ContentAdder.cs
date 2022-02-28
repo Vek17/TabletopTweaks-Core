@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using Kingmaker.Blueprints.JsonSystem;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent {
     class ContentAdder {
@@ -11,7 +12,7 @@ namespace TabletopTweaks.Core.NewContent {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Loading New Content");
+                TTTContext.Logger.LogHeader("Loading New Content");
                 BaseAbilities.OneHandedToggleAbility.AddOneHandedToggle();
 
                 Features.MartialWeaponProficencySelection.AddMartialWeaponProficencySelection();

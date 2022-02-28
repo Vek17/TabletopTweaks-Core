@@ -28,7 +28,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
 
             //if (Context.AddedContent.Archetypes.IsDisabled("BladeAdept")) { return; }
             //ArcanistClass.m_Archetypes = ArcanistClass.m_Archetypes.AppendToArray(BladeAdeptArchetype.ToReference<BlueprintArchetypeReference>());
-            //Main.LogPatch("Added", BladeAdeptArchetype);
+            //TTTContext.Logger.LogPatch("Added", BladeAdeptArchetype);
         }
     }
 }

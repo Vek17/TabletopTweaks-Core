@@ -15,7 +15,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "\nYou can take this feat multiple times. Its effects stack.");
                 bp.AddPrerequisiteFeature(KiPowerFeature);
             });
-            if (ModContext.AddedContent.Feats.IsDisabled("ExtraKi")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("ExtraKi")) { return; }
             FeatTools.AddAsFeat(ExtraKi);
         }
     }

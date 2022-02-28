@@ -76,10 +76,10 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         static class BlueprintArchetype_MeetsPrerequisites_Patch {
             static void Postfix(ref bool __result, BlueprintArchetype __instance, UnitDescriptor unit, LevelUpState state) {
                 //if (!Context.Fixes.EnableArchetypePrerequisites) { return; }
-                Main.LogDebug($"{__instance.name}");
+                TTTContext.Logger.LogVerbose($"{__instance.name}");
                 var temp = __instance.GetComponent<IgnoreClassPrerequisites>();
                 if (__instance.GetComponent<IgnoreClassPrerequisites>() != null) {
-                    Main.LogDebug($"IgnoreClassPrerequisites");
+                    TTTContext.Logger.LogVerbose($"IgnoreClassPrerequisites");
                     int classLevel = unit.Progression.GetClassLevel(__instance.GetParentClass());
                     if (IgnorePrerequisites.Ignore) { __result = true; return; }
                     if (classLevel >= 20) { __result = false; return; }
@@ -87,7 +87,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                     bool? All = null;
                     bool? Any = null;
                     foreach (Prerequisite prerequisite in __instance.GetComponents<Prerequisite>()) {
-                        Main.LogDebug($"{prerequisite.name}");
+                        TTTContext.Logger.LogVerbose($"{prerequisite.name}");
                         bool Check = prerequisite.Check(null, unit, state);
                         switch (prerequisite.Group) {
                             case Prerequisite.GroupType.All:
@@ -101,8 +101,8 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                                 break;
                         }
                     }
-                    Main.LogDebug($"All: {(All ?? true)}");
-                    Main.LogDebug($"Any: {(Any ?? true)}");
+                    TTTContext.Logger.LogVerbose($"All: {(All ?? true)}");
+                    TTTContext.Logger.LogVerbose($"Any: {(Any ?? true)}");
                     __result = (All ?? true) & (Any ?? true);
                 }
             }
@@ -126,7 +126,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         [HarmonyPatch(typeof(AddArchetype), "Apply", new Type[] { typeof(LevelUpState), typeof(UnitDescriptor) })]
         static class AddArchetype_Apply_Patch {
             static bool Prefix(AddArchetype __instance, LevelUpState state, UnitDescriptor unit) {
-                Main.LogDebug($"{__instance.Archetype.name} AddArchetype - Apply");
+                TTTContext.Logger.LogVerbose($"{__instance.Archetype.name} AddArchetype - Apply");
                 if(__instance.Archetype.GetComponent<IgnoreClassPrerequisites>() != null) {
                     state.AlignmentRestriction.m_Entries.Clear();
                 }
@@ -138,7 +138,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         [HarmonyPatch(typeof(SelectClass), "Apply", new Type[] { typeof(LevelUpState), typeof(UnitDescriptor) })]
         static class SelectClass_Apply_Patch {
             static void Postfix(LevelUpState state, UnitDescriptor unit) {
-                Main.LogDebug($"{state.SelectedClass.name} SelectClass - Apply");
+                TTTContext.Logger.LogVerbose($"{state.SelectedClass.name} SelectClass - Apply");
                 //state.SelectedClass.RestrictPrerequisites(unit, state);
             }
         }
@@ -159,10 +159,10 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                 }
 
                 if (archetypes.Count() == 0) { return true; }
-                Main.LogDebug($"{__instance.ClassInfo.Archetype.name}: Checking for ignore");
+                TTTContext.Logger.LogVerbose($"{__instance.ClassInfo.Archetype.name}: Checking for ignore");
                 archetypes = archetypes.Where(a => a.ComponentsArray.Where(c => c is IgnoreClassPrerequisites).Count() > 0).ToList();
                 if(archetypes.Count() > 0) {
-                    Main.LogDebug($"{__instance.ClassInfo.Archetype.name}: Ignoring");
+                    TTTContext.Logger.LogVerbose($"{__instance.ClassInfo.Archetype.name}: Ignoring");
                     IEnumerable<Prerequisite> components = archetypes.SelectMany(bp => bp.GetComponents<Prerequisite>());
                     __instance.AddPrerequisites(bricks, components, __instance.ClassInfo.ParentFeatureSelection);
                     return false;

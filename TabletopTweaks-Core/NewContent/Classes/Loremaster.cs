@@ -17,7 +17,7 @@ namespace TabletopTweaks.Core.NewContent.Classes {
         private static readonly BlueprintFeatureSelection LoremasterClericSpellSecret = Resources.GetBlueprint<BlueprintFeatureSelection>("904ce918c85c9f947910340b956fb877");
         private static readonly BlueprintFeatureSelection LoremasterDruidSpellSecret = Resources.GetBlueprint<BlueprintFeatureSelection>("6b73ba9d8a718fb419a484c6e1b92c6d");
         private static readonly BlueprintFeatureSelection LoremasterWizardSpellSecret = Resources.GetBlueprint<BlueprintFeatureSelection>("f97986f19a595e2409cfe5d92bcf697c");
-        private static readonly BlueprintGuid LoremasterSpellbookMasterID = Main.ModContext.Blueprints.GetDerivedMaster("LoremasterSpellbookMasterID");
+        private static readonly BlueprintGuid LoremasterSpellbookMasterID = Main.TTTContext.Blueprints.GetDerivedMaster("LoremasterSpellbookMasterID");
 
         public static void AddLoremasterFeatures() {
 

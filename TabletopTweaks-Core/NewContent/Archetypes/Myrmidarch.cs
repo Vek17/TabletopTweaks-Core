@@ -251,7 +251,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 Helpers.CreateUIGroup(MyrmidarchFighterTraining, MyrmidarchFighterTrainingUpgrade)
             );
 
-            //Main.LogPatch("Added", MyrmidarchArchetype);
+            //TTTContext.Logger.LogPatch("Added", MyrmidarchArchetype);
 
             /*
             // Add to Mystic Theurge
@@ -260,19 +260,19 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 c.m_Archetype = ChannelerOfTheUnknownArchetype.ToReference<BlueprintArchetypeReference>();
             });
             MysticTheurgeDivineSpellbookSelection.AddFeatures(MysticTheurgeChannelerOfTheUnknownProgression);
-            Main.LogPatch("Patched", MysticTheurgeClericProgression);
-            Main.LogPatch("Patched", MysticTheurgeDivineSpellbookSelection);
+            TTTContext.Logger.LogPatch("Patched", MysticTheurgeClericProgression);
+            TTTContext.Logger.LogPatch("Patched", MysticTheurgeDivineSpellbookSelection);
             // Add to Hellknight Signifier
             HellknightSigniferClericProgression.AddPrerequisite<PrerequisiteNoArchetype>(c => {
                 c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = ChannelerOfTheUnknownArchetype.ToReference<BlueprintArchetypeReference>();
             });
             HellknightSigniferSpellbook.AddFeatures(HellknightSigniferChannelerOfTheUnknownProgression);
-            Main.LogPatch("Patched", HellknightSigniferClericProgression);
-            Main.LogPatch("Patched", HellknightSigniferSpellbook);
+            TTTContext.Logger.LogPatch("Patched", HellknightSigniferClericProgression);
+            TTTContext.Logger.LogPatch("Patched", HellknightSigniferSpellbook);
             // Enable Angel Merge
             AngelIncorporateSpellbook.m_AllowedSpellbooks = AngelIncorporateSpellbook.m_AllowedSpellbooks.AppendToArray(ChannelerOfTheUnknownSpellbook.ToReference<BlueprintSpellbookReference>());
-            Main.LogPatch("Patched", AngelIncorporateSpellbook);
+            TTTContext.Logger.LogPatch("Patched", AngelIncorporateSpellbook);
             */
         }
     }

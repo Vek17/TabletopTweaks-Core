@@ -35,7 +35,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     bp.AddPrerequisiteFeature(p.Feature, p.Group);
                 });
             });
-            if (Main.ModContext.AddedContent.Feats.IsDisabled("ImprovedChannel")) { return; }
+            if (Main.TTTContext.AddedContent.Feats.IsDisabled("ImprovedChannel")) { return; }
             FeatTools.AddAsFeat(ImprovedChannel);
         }
     }

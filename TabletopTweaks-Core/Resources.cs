@@ -19,13 +19,13 @@ namespace TabletopTweaks.Core {
         }
 #endif
         public static T GetModBlueprintReference<T>(string name) where T : BlueprintReferenceBase {
-            BlueprintGuid? assetId = ModContext.Blueprints.GetGUID(name);
+            BlueprintGuid? assetId = TTTContext.Blueprints.GetGUID(name);
             var reference = Activator.CreateInstance<T>();
             reference.deserializedGuid = assetId ?? BlueprintGuid.Empty;
             return reference;
         }
         public static T GetModBlueprint<T>(string name) where T : SimpleBlueprint {
-            var assetId = ModContext.Blueprints.GetGUID(name);
+            var assetId = TTTContext.Blueprints.GetGUID(name);
             ModBlueprints.TryGetValue(assetId, out var value);
             return value as T;
         }
@@ -42,7 +42,7 @@ namespace TabletopTweaks.Core {
         public static T GetBlueprint<T>(BlueprintGuid id) where T : SimpleBlueprint {
             SimpleBlueprint asset = ResourcesLibrary.TryGetBlueprint(id);
             T value = asset as T;
-            if (value == null) { Main.Error($"COULD NOT LOAD: {id} - {typeof(T)}"); }
+            if (value == null) { TTTContext.Logger.LogError($"COULD NOT LOAD: {id} - {typeof(T)}"); }
             return value;
         }
         public static void AddBlueprint([NotNull] SimpleBlueprint blueprint) {
@@ -58,10 +58,10 @@ namespace TabletopTweaks.Core {
                 ModBlueprints[assetId] = blueprint;
                 ResourcesLibrary.BlueprintsCache.AddCachedBlueprint(assetId, blueprint);
                 blueprint.OnEnable();
-                Main.LogPatch("Added", blueprint);
+                TTTContext.Logger.LogPatch("Added", blueprint);
             } else {
-                Main.Log($"Failed to Add: {blueprint.name}");
-                Main.Log($"Asset ID: {assetId} already in use by: {loadedBlueprint.name}");
+                TTTContext.Logger.Log($"Failed to Add: {blueprint.name}");
+                TTTContext.Logger.Log($"Asset ID: {assetId} already in use by: {loadedBlueprint.name}");
             }
         }
     }

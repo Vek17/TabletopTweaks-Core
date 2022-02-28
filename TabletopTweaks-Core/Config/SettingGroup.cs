@@ -27,7 +27,7 @@ namespace TabletopTweaks.Core.Config {
         }
         public virtual bool IsEnabled(string key) {
             if (!Settings.TryGetValue(key, out SettingData result)) {
-                Main.LogDebug($"COULD NOT FIND SETTING KEY: {key}");
+                //TTTContext.Logger.LogVerbose($"COULD NOT FIND SETTING KEY: {key}");
             }
             return result.Enabled && !GroupIsDisabled();
         }

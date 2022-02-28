@@ -31,7 +31,7 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
                 bp.AddPrerequisiteFeature(CombatExpertiseFeature);
             });
 
-            if (ModContext.AddedContent.MythicFeats.IsDisabled("MythicCombatExpertise")) { return; }
+            if (TTTContext.AddedContent.MythicFeats.IsDisabled("MythicCombatExpertise")) { return; }
             FeatTools.AddAsMythicFeat(CombatExpertiseMythicFeature);
         }
     }

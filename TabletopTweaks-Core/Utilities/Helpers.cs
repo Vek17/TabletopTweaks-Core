@@ -72,7 +72,7 @@ namespace TabletopTweaks.Core.Utilities {
         public static T CreateBlueprint<T>([NotNull] string name, Action<T> init = null) where T : SimpleBlueprint, new() {
             var result = new T {
                 name = name,
-                AssetGuid = Main.ModContext.Blueprints.GetGUID(name)
+                AssetGuid = Main.TTTContext.Blueprints.GetGUID(name)
             };
             Resources.AddBlueprint(result);
             init?.Invoke(result);
@@ -101,7 +101,7 @@ namespace TabletopTweaks.Core.Utilities {
         public static T CreateDerivedBlueprint<T>([NotNull] string name, BlueprintGuid masterId, [NotNull] IEnumerable<SimpleBlueprint> componentBlueprints, Action<T> init = null) where T : SimpleBlueprint, new() {
             var result = new T {
                 name = name,
-                AssetGuid = Main.ModContext.Blueprints.GetDerivedGUID(name, masterId, componentBlueprints.Select(bp => bp.AssetGuid).ToArray())
+                AssetGuid = Main.TTTContext.Blueprints.GetDerivedGUID(name, masterId, componentBlueprints.Select(bp => bp.AssetGuid).ToArray())
             };
             Resources.AddBlueprint(result);
             init?.Invoke(result);
@@ -230,12 +230,12 @@ namespace TabletopTweaks.Core.Utilities {
             // In that case, we reuse the old entry instead of making a new one.)
             string strippedText = text.StripHTML().StripEncyclopediaTags();
             MultiLocalizationPack.MultiLocaleString multiLocalized;
-            if (Main.ModContext.ModLocalizationPack.TryGetText(strippedText, out multiLocalized)) {
+            if (Main.TTTContext.ModLocalizationPack.TryGetText(strippedText, out multiLocalized)) {
                 return multiLocalized.LocalizedString;
             }
             multiLocalized = new MultiLocalizationPack.MultiLocaleString(simpleName, strippedText, shouldProcess, locale);
-            Main.LogDebug($"WARNING: Generated New Localizaed String: {multiLocalized.Key}:{multiLocalized.SimpleName}");
-            Main.ModContext.ModLocalizationPack.AddString(multiLocalized);
+            TTTContext.Logger.LogVerbose($"WARNING: Generated New Localizaed String: {multiLocalized.Key}:{multiLocalized.SimpleName}");
+            Main.TTTContext.ModLocalizationPack.AddString(multiLocalized);
             return multiLocalized.LocalizedString;
         }
         /// <summary>
@@ -359,21 +359,21 @@ namespace TabletopTweaks.Core.Utilities {
                     if (additionalDamageResistanceConfiguration != null)
                         additionalDamageResistanceConfiguration(newResistance);
                     blueprint.ComponentsArray[i] = newResistance;
-                    Main.LogDebug($"Replaced component: {typeof(V).Name} -> {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()}");
+                    TTTContext.Logger.LogVerbose($"Replaced component: {typeof(V).Name} -> {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()}");
                 } else if (blueprint.ComponentsArray[i] is N newResistance) {
                     foundComponent = true;
                     if (additionalDamageResistanceConfiguration != null) {
                         additionalDamageResistanceConfiguration(newResistance);
-                        Main.LogDebug($"Configured component: {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()}");
+                        TTTContext.Logger.LogVerbose($"Configured component: {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()}");
                     } else {
-                        Main.LogDebug($"Skipped component: {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()} (no additional configration specified)");
+                        TTTContext.Logger.LogVerbose($"Skipped component: {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()} (no additional configration specified)");
                     }
                 }
             }
             if (!foundComponent) {
-                Main.LogDebug($"COMPONENT NOT FOUND: {typeof(V).Name} or {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()}");
+                TTTContext.Logger.LogVerbose($"COMPONENT NOT FOUND: {typeof(V).Name} or {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()}");
             } else {
-                Main.LogDebug($"Rebuilt DR for: {blueprint.AssetGuid} - {blueprint.NameSafe()}");
+                TTTContext.Logger.LogVerbose($"Rebuilt DR for: {blueprint.AssetGuid} - {blueprint.NameSafe()}");
             }
         }
 

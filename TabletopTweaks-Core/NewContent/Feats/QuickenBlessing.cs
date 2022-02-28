@@ -129,7 +129,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 CreateQuickenedBlessing("Weather", WeatherBlessingFeature, WeatherBlessingMinorAbility, WeatherBlessingMajorAbility)
             );
 
-            if (ModContext.AddedContent.Feats.IsDisabled("QuickenBlessing")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("QuickenBlessing")) { return; }
             FeatTools.AddAsFeat(QuickenBlessing);
         }
 

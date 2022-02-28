@@ -10,6 +10,7 @@ using Kingmaker.Utility;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents {
     [AllowMultipleComponents]
@@ -46,21 +47,21 @@ namespace TabletopTweaks.Core.NewComponents {
 
         private void ApplyDefaultIfMissing() {
             var Selection = Fact.Blueprint as BlueprintFeatureSelection;
-            if (Selection == null) { Main.Log($"{Fact.Blueprint.AssetGuid} - {Fact.Blueprint.name}: SelectionDefaultFeature Applied on Null Selection"); return; }
+            if (Selection == null) { TTTContext.Logger.Log($"{Fact.Blueprint.AssetGuid} - {Fact.Blueprint.name}: SelectionDefaultFeature Applied on Null Selection"); return; }
             if (!Owner.Progression.GetSelectionData(Selection).IsEmpty) { return; }
-            Main.LogDebug($"Apply Default: {Owner.CharacterName} - {Owner.Progression.CharacterLevel} - {Owner.Blueprint.AssetGuid} - {Owner.UniqueId}");
+            TTTContext.Logger.LogVerbose($"Apply Default: {Owner.CharacterName} - {Owner.Progression.CharacterLevel} - {Owner.Blueprint.AssetGuid} - {Owner.UniqueId}");
 
             var Progressions = Owner.Progression.m_Progressions;
             foreach (var Progression in Progressions) {
                 for (int level = 1; level <= Progression.Value.Level; level++) {
                     foreach (var entry in Progression.Key.LevelEntries.Where(e => e.Level == level)) {
-                        Main.LogDebug($"Checking Level {level} - {Progression.Key.name}");
+                        TTTContext.Logger.LogVerbose($"Checking Level {level} - {Progression.Key.name}");
                         if (entry.Features.Contains(Selection)) {
                             var Selections = Owner.Progression.GetSelections(Selection, level);
                             if (Selections.Empty()) {
                                 Owner.Progression.AddSelection(Selection, Progression.Key, level, DefaultFeature.Get());
                                 Owner.AddFact(DefaultFeature.Get(), null, null);
-                                Main.LogDebug($"Added Default to: {Owner.CharacterName} - {level}");
+                                TTTContext.Logger.LogVerbose($"Added Default to: {Owner.CharacterName} - {level}");
                             }
                         }
                     }

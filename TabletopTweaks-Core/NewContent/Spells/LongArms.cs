@@ -69,7 +69,7 @@ namespace TabletopTweaks.Core.NewContent.Spells {
                     c.AOEType = CraftAOE.None;
                 }));
             });
-            if (ModContext.AddedContent.Spells.IsDisabled("LongArm")) { return; }
+            if (TTTContext.AddedContent.Spells.IsDisabled("LongArm")) { return; }
             LongArmAbility.AddToSpellList(SpellTools.SpellList.AlchemistSpellList, 1);
             LongArmAbility.AddToSpellList(SpellTools.SpellList.BloodragerSpellList, 1);
             LongArmAbility.AddToSpellList(SpellTools.SpellList.MagusSpellList, 1);

@@ -92,7 +92,7 @@ namespace TabletopTweaks.Core.NewContent.Spells {
                     c.m_CustomPropertyList = new BlueprintUnitPropertyReference[0];
                 });
             });
-            if (ModContext.AddedContent.Spells.IsDisabled("ShadowEnchantment")) { return; }
+            if (TTTContext.AddedContent.Spells.IsDisabled("ShadowEnchantment")) { return; }
             ShadowEnchantment.AddToSpellList(SpellTools.SpellList.BardSpellList, 3);
             ShadowEnchantment.AddToSpellList(SpellTools.SpellList.TricksterSpelllist, 3);
             ShadowEnchantment.AddToSpellList(SpellTools.SpellList.WizardSpellList, 3);
@@ -170,7 +170,7 @@ namespace TabletopTweaks.Core.NewContent.Spells {
                     c.m_CustomPropertyList = new BlueprintUnitPropertyReference[0];
                 });
             });
-            if (ModContext.AddedContent.Spells.IsDisabled("ShadowEnchantmentGreater")) { return; }
+            if (TTTContext.AddedContent.Spells.IsDisabled("ShadowEnchantmentGreater")) { return; }
             ShadowEnchantmentGreater.AddToSpellList(SpellTools.SpellList.BardSpellList, 6);
             ShadowEnchantmentGreater.AddToSpellList(SpellTools.SpellList.TricksterSpelllist, 6);
             ShadowEnchantmentGreater.AddToSpellList(SpellTools.SpellList.WizardSpellList, 6);

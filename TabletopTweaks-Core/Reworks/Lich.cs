@@ -31,7 +31,7 @@ namespace TabletopTweaks.Core.Reworks {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Lich Rework");
+                TTTContext.Logger.LogHeader("Lich Rework");
                 PatchDeadlyMagic();
                 PatchDecayingTouch();
                 PatchEclipseChill();
@@ -39,7 +39,7 @@ namespace TabletopTweaks.Core.Reworks {
             }
 
             static void PatchDeadlyMagic() {
-                if (ModContext.Homebrew.MythicReworks.Lich.IsDisabled("DeadlyMagic")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Lich.IsDisabled("DeadlyMagic")) { return; }
 
                 var DeadlyMagicFeature = Resources.GetBlueprint<BlueprintFeature>("47a8a7fa7d4198f449db71cdbe4b8d3e");
                 var DeadlyMagicToggleAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("e72727ff8f28cae47a4cd56655ce7b10");
@@ -66,7 +66,7 @@ namespace TabletopTweaks.Core.Reworks {
             }
 
             static void PatchDecayingTouch() {
-                if (ModContext.Homebrew.MythicReworks.Lich.IsDisabled("DecayingTouch")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Lich.IsDisabled("DecayingTouch")) { return; }
 
                 var DecayingTouchFeature = Resources.GetBlueprint<BlueprintFeature>("3eb8922c8a9e25048b6689322c5ae131");
                 var PlantType = Resources.GetBlueprintReference<BlueprintUnitFactReference>("706e61781d692a042b35941f14bc41c5");
@@ -213,11 +213,11 @@ namespace TabletopTweaks.Core.Reworks {
                     });
                 });
 
-                Main.LogPatch(DecayingTouchFeature);
+                TTTContext.Logger.LogPatch(DecayingTouchFeature);
             }
 
             static void PatchEclipseChill() {
-                if (ModContext.Homebrew.MythicReworks.Lich.IsDisabled("EclipseChill")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Lich.IsDisabled("EclipseChill")) { return; }
 
                 var EclipseChillFeature = Resources.GetBlueprint<BlueprintFeature>("731bebb09171d5748b6f08cbe88f8af7");
                 var EclipseChillToggleAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("a34b61de2713f604c9971d640ec50b8a");
@@ -311,14 +311,14 @@ namespace TabletopTweaks.Core.Reworks {
                         c.m_BaseValueType = ContextRankBaseValueType.MythicLevel;
                     });
                 });
-                Main.LogPatch(EclipseChillFeature);
-                Main.LogPatch(EclipseChillToggleAbility);
-                Main.LogPatch(EclipseChillOnBuff);
-                Main.LogPatch(EclipseChillEffectBuff);
-                Main.LogPatch(EclipseChillResource);
+                TTTContext.Logger.LogPatch(EclipseChillFeature);
+                TTTContext.Logger.LogPatch(EclipseChillToggleAbility);
+                TTTContext.Logger.LogPatch(EclipseChillOnBuff);
+                TTTContext.Logger.LogPatch(EclipseChillEffectBuff);
+                TTTContext.Logger.LogPatch(EclipseChillResource);
             }
             static void PatchTainedSneakAttack() {
-                if (ModContext.Homebrew.MythicReworks.Lich.IsDisabled("TainedSneakAttack")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Lich.IsDisabled("TainedSneakAttack")) { return; }
 
                 var TaintedSneakAttackFeature = Resources.GetBlueprint<BlueprintFeature>("e6ce101a94ac9034b8b55c546e74b9dd");
                 var TaintedSneakAttackBuff = Resources.GetBlueprint<BlueprintBuff>("7860e92789511a24dba5906ac8d65f90");
@@ -381,8 +381,8 @@ namespace TabletopTweaks.Core.Reworks {
                     });
                 });
 
-                Main.LogPatch(TaintedSneakAttackFeature);
-                Main.LogPatch(TaintedSneakAttackBuff);
+                TTTContext.Logger.LogPatch(TaintedSneakAttackFeature);
+                TTTContext.Logger.LogPatch(TaintedSneakAttackBuff);
             }
         }
     }

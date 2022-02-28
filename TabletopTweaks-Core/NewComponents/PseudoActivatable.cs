@@ -6,6 +6,7 @@ using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.NewUnitParts;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents {
 
@@ -32,7 +33,7 @@ namespace TabletopTweaks.Core.NewComponents {
 
         public override void OnTurnOn() {
             if (this.Fact is not Ability ability) {
-                Main.Log($"WARNING: PseudoActivatable component is present on Fact \"{this.Fact?.Name}\", but this Fact is not an Ability.");
+                TTTContext.Logger.LogWarning($"PseudoActivatable component is present on Fact \"{this.Fact?.Name}\", but this Fact is not an Ability.");
                 return;
             }
             this.Owner.Ensure<UnitPartPseudoActivatableAbilities>().RegisterPseudoActivatableAbility(ability.Data);

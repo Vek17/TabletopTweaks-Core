@@ -12,7 +12,7 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
         [HarmonyPatch(typeof(LogHelper), "GetRollDescription")]
         private static class BuffPCView_Suppression_Patch {
             static bool Prefix(RuleRollDice ruleRollDice, ref string __result) {
-                if (ModContext.Fixes.BaseFixes.IsDisabled("DiceReplacementUI")) { return true; }
+                if (TTTContext.Fixes.BaseFixes.IsDisabled("DiceReplacementUI")) { return true; }
                 if (ruleRollDice == null) {
                     PFLog.Default.Error("Can't find d20 check in context for text template!", Array.Empty<object>());
                     __result = string.Empty;

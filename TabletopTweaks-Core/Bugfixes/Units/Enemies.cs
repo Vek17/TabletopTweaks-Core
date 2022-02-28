@@ -18,12 +18,12 @@ namespace TabletopTweaks.Core.Bugfixes.Units {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Bosses");
+                TTTContext.Logger.LogHeader("Patching Bosses");
                 PatchBalors();
             }
         }
         static void PatchBalors() {
-            if (ModContext.Fixes.Units.Enemies.IsDisabled("Balors")) { return; }
+            if (TTTContext.Fixes.Units.Enemies.IsDisabled("Balors")) { return; }
 
             var BalorVorpalStrikeFeature = Resources.GetBlueprint<BlueprintFeature>("acc4a16c4088f2546b4237dcbb774f14");
             var BalorVorpalStrikeBuff = Resources.GetBlueprint<BlueprintBuff>("5220bc4386bf3e147b1beb93b0b8b5e7");
@@ -40,8 +40,8 @@ namespace TabletopTweaks.Core.Bugfixes.Units {
             });
             BalorVorpalStrikeFeature.AddComponent<RecalculateOnEquipmentChange>();
 
-            Main.LogPatch(BalorVorpalStrikeFeature);
-            Main.LogPatch(BalorVorpalStrikeBuff);
+            TTTContext.Logger.LogPatch(BalorVorpalStrikeFeature);
+            TTTContext.Logger.LogPatch(BalorVorpalStrikeBuff);
         }
     }
 }

@@ -16,14 +16,14 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                 if (Initialized) return;
                 Initialized = true;
 
-                Main.LogHeader("Patching Armor");
+                TTTContext.Logger.LogHeader("Patching Armor");
                 PatchHaramaki();
 
                 void PatchHaramaki() {
-                    if (ModContext.Fixes.Items.Armor.IsDisabled("Haramaki")) { return; }
+                    if (TTTContext.Fixes.Items.Armor.IsDisabled("Haramaki")) { return; }
                     var HaramakiType = Resources.GetBlueprint<BlueprintArmorType>("9511d62bcfc57c245bf64350a5933470");
                     HaramakiType.m_ProficiencyGroup = ArmorProficiencyGroup.Light;
-                    Main.LogPatch("Patched", HaramakiType);
+                    TTTContext.Logger.LogPatch("Patched", HaramakiType);
                 }
             }
         }
@@ -31,7 +31,7 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
         static class IncreaseSpellSchoolDC_OnEventAboutToTrigger_Shadow_Patch {
             static BlueprintArmorType HaramakiType = Resources.GetBlueprint<BlueprintArmorType>("9511d62bcfc57c245bf64350a5933470");
             static void Postfix(ItemEntityArmor __instance, UnitDescriptor owner, ref bool __result) {
-                if (ModContext.Fixes.Items.Armor.IsDisabled("Haramaki")) { return; }
+                if (TTTContext.Fixes.Items.Armor.IsDisabled("Haramaki")) { return; }
                 if (__instance.Blueprint.Type == HaramakiType) { __result = true; }
             }
         }

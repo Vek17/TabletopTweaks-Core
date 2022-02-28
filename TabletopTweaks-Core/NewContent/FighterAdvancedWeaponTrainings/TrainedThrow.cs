@@ -33,7 +33,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                     c.Level = 9;
                 }));
             });
-            if (ModContext.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("TrainedThrow")) { return; }
+            if (TTTContext.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("TrainedThrow")) { return; }
             AdvancedWeapontrainingSelection.AddToAdvancedWeaponTrainingSelection(TrainedThrowFeature);
         }
     }

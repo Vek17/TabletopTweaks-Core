@@ -65,7 +65,6 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
             if (hasMountedCombatCooldown && hasTrickRidingCooldown) {
                 return;
             }
-            Main.Log($"IsHit: {evt.IsHit} - {evt.Result}");
             bool success = GameHelper.TriggerSkillCheck(new RuleSkillCheck(base.Owner, StatType.SkillMobility, evt.Roll), null, false).Success;
             if (!hasMountedCombatCooldown) {
                 GameHelper.ApplyBuff(Owner, CooldownBuff, new Rounds?(1.Rounds()));

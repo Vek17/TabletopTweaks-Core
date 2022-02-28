@@ -14,9 +14,9 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         static class BlueprintProgression_AllOtherClasses_CalcLevel_Fix {
 
             static void Postfix(BlueprintProgression __instance, ref int __result, [NotNull] UnitDescriptor unit) {
-                if (Main.ModContext.Fixes.BaseFixes.IsDisabled("AlternateClassProgressions")) { return; }
+                if (Main.TTTContext.Fixes.BaseFixes.IsDisabled("AlternateClassProgressions")) { return; }
                 if (!__instance.ForAllOtherClasses) { return; }
-                //Main.Log($"{__instance.name} - {__result}");
+                //TTTContext.Logger.Log($"{__instance.name} - {__result}");
                 //Old Progression logic so we can remove it from the total
                 using (List<ClassData>.Enumerator enumerator = unit.Progression.Classes.GetEnumerator()) {
                     int originalIncrease = 0;
@@ -32,9 +32,9 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                             originalIncrease /= 2;
                             break;
                     }
-                    //Main.Log($"Original Increase: {originalIncrease}");
+                    //TTTContext.Logger.Log($"Original Increase: {originalIncrease}");
                     __result -= originalIncrease;
-                    //Main.Log($"TotalValue: {__result}\n");
+                    //TTTContext.Logger.Log($"TotalValue: {__result}\n");
                 }
                 //New correct logic
                 int newIncrease = 0;
@@ -52,9 +52,9 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                         newIncrease /= 2;
                         break;
                 }
-                //Main.Log($"New Increase: {newIncrease}");
+                //TTTContext.Logger.Log($"New Increase: {newIncrease}");
                 __result += newIncrease;
-                //Main.Log($"TotalValue: {__result}\n");
+                //TTTContext.Logger.Log($"TotalValue: {__result}\n");
             }
         }
     }

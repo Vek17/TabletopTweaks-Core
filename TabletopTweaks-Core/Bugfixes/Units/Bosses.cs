@@ -14,12 +14,12 @@ namespace TabletopTweaks.Core.Bugfixes.Units {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Bosses");
+                TTTContext.Logger.LogHeader("Patching Bosses");
                 PatchStauntonVane();
             }
         }
         static void PatchStauntonVane() {
-            if (ModContext.Fixes.Units.Bosses.IsDisabled("StauntonVane")) { return; }
+            if (TTTContext.Fixes.Units.Bosses.IsDisabled("StauntonVane")) { return; }
 
             var StauntonVane_Boss = Resources.GetBlueprint<BlueprintUnit>("88f8535a8db0154488d5e72d74e0e466");
             var WarpriestClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("30b5e47d47a0e37438cc5a80c96cfb99");
@@ -32,7 +32,7 @@ namespace TabletopTweaks.Core.Bugfixes.Units {
                 .TemporaryContext(c => {
                     c.m_Selection = WarpriestFeatSelection;
                 });
-            Main.LogPatch(StauntonVane_Boss);
+            TTTContext.Logger.LogPatch(StauntonVane_Boss);
         }
     }
 }

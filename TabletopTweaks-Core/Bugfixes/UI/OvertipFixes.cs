@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.UI {
     class OvertipFixes {
@@ -35,7 +36,7 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
                         return i - 2;
                     }
                 }
-                Main.Log("DisplayFix_OvertipsVM_SavingThrow_Patch: COULD NOT FIND TARGET");
+                TTTContext.Logger.LogError("DisplayFix_OvertipsVM_SavingThrow_Patch: COULD NOT FIND TARGET");
                 return -1;
             }
         }
@@ -63,7 +64,7 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
                         return i;
                     }
                 }
-                Main.Log("DisplayFix_OvertipsVM_AttackRollHit_Patch: COULD NOT FIND TARGET");
+                TTTContext.Logger.Log("DisplayFix_OvertipsVM_AttackRollHit_Patch: COULD NOT FIND TARGET");
                 return -1;
             }
         }
@@ -91,7 +92,7 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
                         return i;
                     }
                 }
-                Main.Log("DisplayFix_OvertipsVM_AttackRollMiss_Patch: COULD NOT FIND TARGET");
+                TTTContext.Logger.Log("DisplayFix_OvertipsVM_AttackRollMiss_Patch: COULD NOT FIND TARGET");
                 return -1;
             }
         }

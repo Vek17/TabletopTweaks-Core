@@ -17,8 +17,8 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                if (ModContext.Fixes.BaseFixes.IsDisabled("FixMountedLongspearModifer")) { return; }
-                Main.LogHeader("Patching Mounted Effects");
+                if (TTTContext.Fixes.BaseFixes.IsDisabled("FixMountedLongspearModifer")) { return; }
+                TTTContext.Logger.LogHeader("Patching Mounted Effects");
                 FixModifers();
 
             }
@@ -33,7 +33,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                     c.WeaponCategory = WeaponCategory.Longspear;
                     c.ExtraEffectBuff = LongspearChargeBuff.ToReference<BlueprintBuffReference>();
                 }));
-                Main.LogPatch("Patched", MountedBuff);
+                TTTContext.Logger.LogPatch("Patched", MountedBuff);
             }
         }
     }

@@ -16,7 +16,7 @@ namespace TabletopTweaks.Core.ModLogic {
             LoadSettings("AddedContent.json", "TabletopTweaks.Core.Config", ref AddedContent);
             LoadSettings("Homebrew.json", "TabletopTweaks.Core.Config", ref Homebrew);
             LoadSettings("Blueprints.json", "TabletopTweaks.Core.Config", ref Blueprints);
-            LoadLocalization("LocalizationPack.json", "TabletopTweaks.Core.Localization");
+            LoadLocalization("TabletopTweaks.Core.Localization");
         }
     }
 }

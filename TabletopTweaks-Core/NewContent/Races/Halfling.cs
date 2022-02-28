@@ -164,7 +164,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
             HastyHalfling.AddTraitReplacment(SlowSpeedHalfling);
             HastyHalfling.AddSelectionCallback(HalflingHeritageSelection);
 
-            if (ModContext.AddedContent.Races.IsDisabled("HalflingAlternateTraits")) { return; }
+            if (TTTContext.AddedContent.Races.IsDisabled("HalflingAlternateTraits")) { return; }
             HalflingRace.SetComponents(Helpers.Create<AddFeatureOnApply>(c => {
                 c.m_Feature = HalflingAbilityModifiers.ToReference<BlueprintFeatureReference>();
             }));

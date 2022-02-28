@@ -19,13 +19,13 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Mythic Feats");
+                TTTContext.Logger.LogHeader("Patching Mythic Feats");
                 PatchExpandedArsenal();
                 PatchExtraMythicAbility();
                 PatchExtraFeat();
             }
             static void PatchExpandedArsenal() {
-                if (ModContext.Fixes.MythicFeats.IsDisabled("ExpandedArsenal")) { return; }
+                if (TTTContext.Fixes.MythicFeats.IsDisabled("ExpandedArsenal")) { return; }
                 var ExpandedArsenalSchool = Resources.GetBlueprint<BlueprintParametrizedFeature>("f137089c48364014aa3ec3b92ccaf2e2");
                 var SpellFocus = Resources.GetBlueprint<BlueprintParametrizedFeature>("16fa59cc9a72a6043b566b49184f53fe");
                 var SpellFocusGreater = Resources.GetBlueprint<BlueprintParametrizedFeature>("5b04b45b228461c43bad768eb0f7c7bf");
@@ -41,12 +41,12 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                     });
                 });
 
-                Main.LogPatch("Patched", SpellFocus);
-                Main.LogPatch("Patched", SpellFocusGreater);
-                Main.LogPatch("Patched", ExpandedArsenalSchool);
+                TTTContext.Logger.LogPatch("Patched", SpellFocus);
+                TTTContext.Logger.LogPatch("Patched", SpellFocusGreater);
+                TTTContext.Logger.LogPatch("Patched", ExpandedArsenalSchool);
             }
             static void PatchExtraMythicAbility() {
-                if (ModContext.Fixes.MythicFeats.IsDisabled("ExtraMythicAbility")) { return; }
+                if (TTTContext.Fixes.MythicFeats.IsDisabled("ExtraMythicAbility")) { return; }
                 FeatTools.Selections.ExtraMythicAbilityMythicFeat
                     .AddPrerequisite<PrerequisiteNoFeature>(p => {
                         p.m_Feature = FeatTools.Selections.ExtraMythicAbilityMythicFeat.ToReference<BlueprintFeatureReference>();
@@ -54,7 +54,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 );
             }
             static void PatchExtraFeat() {
-                if (ModContext.Fixes.MythicFeats.IsDisabled("ExtraFeat")) { return; }
+                if (TTTContext.Fixes.MythicFeats.IsDisabled("ExtraFeat")) { return; }
                 FeatTools.Selections.ExtraFeatMythicFeat
                     .AddPrerequisite<PrerequisiteNoFeature>(p => {
                         p.m_Feature = FeatTools.Selections.ExtraFeatMythicFeat.ToReference<BlueprintFeatureReference>();

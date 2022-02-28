@@ -12,7 +12,7 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
         [HarmonyPatch(typeof(TooltipTemplateAbility), "GetHeader", new Type[] { typeof(TooltipTemplateType) })]
         class DisplaySpellbookInSpellTooltips {
             static void Postfix(TooltipTemplateAbility __instance, ref IEnumerable<ITooltipBrick> __result) {
-                if (ModContext.Fixes.BaseFixes.IsDisabled("DisplaySpellbookInTooltips")) { return; }
+                if (TTTContext.Fixes.BaseFixes.IsDisabled("DisplaySpellbookInTooltips")) { return; }
                 if (__instance.m_AbilityData != null
                     && __instance.m_AbilityData.Spellbook != null
                     && __instance.m_AbilityData.Blueprint.Type == AbilityType.Spell) {

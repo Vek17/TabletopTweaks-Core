@@ -52,14 +52,14 @@ namespace TabletopTweaks.Core.NewContent.BaseAbilities {
                 });
             });
 
-            if (ModContext.AddedContent.BaseAbilities.IsDisabled("OneHandedToggle")) { return; }
+            if (TTTContext.AddedContent.BaseAbilities.IsDisabled("OneHandedToggle")) { return; }
             var AddFacts = FightDefensivelyFeature.GetComponent<AddFacts>();
             AddFacts.m_Facts = AddFacts.m_Facts.AppendToArray(OneHandedToggleFeature.ToReference<BlueprintUnitFactReference>());
         }
         [HarmonyPatch(typeof(ItemEntityWeapon), "HoldInTwoHands", MethodType.Getter)]
         static class ItemEntityWeapon_HoldInTwoHands_Patch {
             static void Postfix(ItemEntityWeapon __instance, ref bool __result) {
-                if (ModContext.AddedContent.BaseAbilities.IsDisabled("OneHandedToggle")) { return; }
+                if (TTTContext.AddedContent.BaseAbilities.IsDisabled("OneHandedToggle")) { return; }
                 if (__instance.Wielder != null && __instance.Wielder.CustomMechanicsFeature(CustomMechanicsFeature.UseWeaponOneHanded)) {
                     if (__instance.Blueprint.IsOneHandedWhichCanBeUsedWithTwoHands && !__instance.Blueprint.IsTwoHanded) {
                         __result = false;

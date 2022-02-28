@@ -397,14 +397,14 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 Helpers.CreateLevelEntry(12, DivineCommanderBattleTacticianGreaterFeature, DivineCommanderBattleTacticianSelection)
             };
 
-            if (Main.ModContext.AddedContent.Archetypes.IsDisabled("DivineCommander")) { return; }
+            if (Main.TTTContext.AddedContent.Archetypes.IsDisabled("DivineCommander")) { return; }
             WarpriestClass.m_Archetypes = WarpriestClass.m_Archetypes.AppendToArray(DivineCommanderArchetype.ToReference<BlueprintArchetypeReference>());
             WarpriestClass.Progression.UIGroups = WarpriestClass.Progression.UIGroups.AppendToArray(
                 Helpers.CreateUIGroup(DivineCommanderCompanionSelection, DivineCommanderBlessedMount),
                 Helpers.CreateUIGroup(DivineCommanderBattleTacticianFeature, DivineCommanderBattleTacticianGreaterFeature),
                 Helpers.CreateUIGroup(DivineCommanderBattleTacticianSelection)
             );
-            Main.LogPatch("Added", DivineCommanderArchetype);
+            TTTContext.Logger.LogPatch("Added", DivineCommanderArchetype);
         }
     }
 }

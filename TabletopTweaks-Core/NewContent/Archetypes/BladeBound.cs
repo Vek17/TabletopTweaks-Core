@@ -1236,12 +1236,12 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             };
             BlackBladeProgression.AddArchetype(BladeBoundArchetype);
 
-            if (Main.ModContext.AddedContent.Archetypes.IsDisabled("BladeBound")) { return; }
+            if (Main.TTTContext.AddedContent.Archetypes.IsDisabled("BladeBound")) { return; }
             MagusClass.m_Archetypes = MagusClass.m_Archetypes.AppendToArray(BladeBoundArchetype.ToReference<BlueprintArchetypeReference>());
             MagusClass.Progression.UIGroups
                 .Where(group => group.Features.Contains(ArcanePoolFeature))
                 .ForEach(group => group.m_Features.Add(BladeBoundArcanePool.ToReference<BlueprintFeatureBaseReference>()));
-            Main.LogPatch("Added", BladeBoundArchetype);
+            TTTContext.Logger.LogPatch("Added", BladeBoundArchetype);
         }
 
         private static BlueprintAbility CreateEnergyAttunement(

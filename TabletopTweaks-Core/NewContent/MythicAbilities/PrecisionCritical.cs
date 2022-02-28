@@ -22,7 +22,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 });
             });
 
-            if (ModContext.AddedContent.MythicAbilities.IsDisabled("PrecisionCritical")) { return; }
+            if (TTTContext.AddedContent.MythicAbilities.IsDisabled("PrecisionCritical")) { return; }
             FeatTools.AddAsMythicAbility(PrecisionCritical);
         }
     }

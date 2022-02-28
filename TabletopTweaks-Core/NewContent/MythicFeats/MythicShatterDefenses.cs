@@ -23,8 +23,8 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
                 bp.Groups = new FeatureGroup[] { FeatureGroup.MythicFeat };
                 bp.AddPrerequisiteFeature(ShatterDefenses);
             });
-            if (ModContext.Fixes.Feats.IsDisabled("ShatterDefenses")) { return; }
-            if (ModContext.AddedContent.MythicFeats.IsDisabled("MythicShatterDefenses")) { return; }
+            if (TTTContext.Fixes.Feats.IsDisabled("ShatterDefenses")) { return; }
+            if (TTTContext.AddedContent.MythicFeats.IsDisabled("MythicShatterDefenses")) { return; }
             FeatTools.AddAsMythicFeat(ShatterDefensesMythicFeat);
         }
     }

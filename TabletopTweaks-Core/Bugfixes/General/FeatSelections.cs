@@ -19,9 +19,9 @@ namespace TabletopTweaks.Core.Bugfixes.General {
                 FixFeatSelections();
 
                 static void FixFeatSelections() {
-                    if (Main.ModContext.Fixes.BaseFixes.IsDisabled("FeatSelections")) { return; }
+                    if (Main.TTTContext.Fixes.BaseFixes.IsDisabled("FeatSelections")) { return; }
 
-                    Main.LogHeader("Patching Feat Selections");
+                    TTTContext.Logger.LogHeader("Patching Feat Selections");
                     var allFeats = FeatTools.Selections.BasicFeatSelection.m_AllFeatures;
                     foreach (var feat in allFeats) {
                         FeatTools.Selections.FeatSelections

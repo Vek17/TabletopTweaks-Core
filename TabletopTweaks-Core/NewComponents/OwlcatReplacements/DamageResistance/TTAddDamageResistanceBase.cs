@@ -10,6 +10,7 @@ using Kingmaker.Utility;
 using Newtonsoft.Json;
 using System;
 using TabletopTweaks.Core.NewUnitParts;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
@@ -133,7 +134,7 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance 
             public override void OnActivate() => m_RemainPool = Settings.Pool.Calculate(Fact.MaybeContext);
 
             public override void OnTurnOn() {
-                Main.LogDebug("DR Fact turned on: " + Fact.Blueprint.name + ":" + Fact.Blueprint.AssetGuid.ToString());
+                TTTContext.Logger.LogVerbose("DR Fact turned on: " + Fact.Blueprint.name + ":" + Fact.Blueprint.AssetGuid.ToString());
                 Owner.Ensure<TTUnitPartDamageReduction>().Add(Fact);
             }
 

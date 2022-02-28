@@ -33,7 +33,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(AasimarRace);
                 bp.AddPrerequisite<PrerequisitePet>();
             });
-            if (ModContext.AddedContent.Feats.IsDisabled("CelestialServant")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("CelestialServant")) { return; }
             FeatTools.AddAsFeat(CelestialServant);
         }
     }

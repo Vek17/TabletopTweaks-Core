@@ -18,7 +18,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.SetDescription("You gain one additional rogue talent. You must meet all of the prerequisites for this rogue talent." +
                     "\nYou can gain Extra Rogue Talent multiple times.");
             });
-            if (ModContext.AddedContent.Feats.IsDisabled("ExtraRogueTalent")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("ExtraRogueTalent")) { return; }
             FeatTools.AddAsFeat(ExtraRogueTalent);
             FeatTools.AddAsFeat(ExtraRogueTalentSylvan);
         }

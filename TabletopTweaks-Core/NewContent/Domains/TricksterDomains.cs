@@ -14,17 +14,17 @@ using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Domains {
     static class TricksterDomains {
-        private static BlueprintGuid TricksterDomainMasterID = Main.ModContext.Blueprints.GetDerivedMaster("TricksterDomainMasterID");
+        private static BlueprintGuid TricksterDomainMasterID = Main.TTTContext.Blueprints.GetDerivedMaster("TricksterDomainMasterID");
         private static BlueprintGuid[] TricksterSpellResource = new BlueprintGuid[9] {
-            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource1"),
-            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource2"),
-            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource3"),
-            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource4"),
-            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource5"),
-            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource6"),
-            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource7"),
-            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource8"),
-            Main.ModContext.Blueprints.GetDerivedMaster("TricksterSpellResource9")
+            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource1"),
+            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource2"),
+            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource3"),
+            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource4"),
+            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource5"),
+            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource6"),
+            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource7"),
+            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource8"),
+            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource9")
         };
         public static void AddTricksterDomains() {
             var DomainsSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("48525e5da45c9c243a343fc6545dbdb9");

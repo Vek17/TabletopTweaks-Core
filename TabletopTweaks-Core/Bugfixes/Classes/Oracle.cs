@@ -19,7 +19,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Oracle");
+                TTTContext.Logger.LogHeader("Patching Oracle");
                 PatchBase();
             }
             static void PatchBase() {
@@ -27,7 +27,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchFlameMystery();
 
                 void PatchNaturesWhisper() {
-                    if (ModContext.Fixes.Oracle.Base.IsDisabled("NaturesWhisperMonkStacking")) { return; }
+                    if (TTTContext.Fixes.Oracle.Base.IsDisabled("NaturesWhisperMonkStacking")) { return; }
 
                     var OracleRevelationNatureWhispers = Resources.GetBlueprint<BlueprintFeature>("3d2cd23869f0d98458169b88738f3c32");
                     var NaturesWhispersACConversion = Resources.GetModBlueprint<BlueprintFeature>("NaturesWhispersACConversion");
@@ -40,18 +40,18 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         c.m_Feature = NaturesWhispersACConversion.ToReference<BlueprintUnitFactReference>();
                         c.Not = true;
                     });
-                    Main.LogPatch("Patched", OracleRevelationNatureWhispers);
+                    TTTContext.Logger.LogPatch("Patched", OracleRevelationNatureWhispers);
                 }
 
                 void PatchFlameMystery() {
                     PatchRevelationBurningMagic();
 
                     void PatchRevelationBurningMagic() {
-                        if (ModContext.Fixes.Oracle.Base.IsDisabled("RevelationBurningMagic")) { return; }
+                        if (TTTContext.Fixes.Oracle.Base.IsDisabled("RevelationBurningMagic")) { return; }
 
                         var OracleRevelationBurningMagicBuff = Resources.GetBlueprint<BlueprintBuff>("4ae27ae7c3d758041b25e9a3aff73592");
                         OracleRevelationBurningMagicBuff.GetComponent<ContextRankConfig>().m_Progression = ContextRankProgression.AsIs;
-                        Main.LogPatch("Patched", OracleRevelationBurningMagicBuff);
+                        TTTContext.Logger.LogPatch("Patched", OracleRevelationBurningMagicBuff);
                     }
                 }
             }

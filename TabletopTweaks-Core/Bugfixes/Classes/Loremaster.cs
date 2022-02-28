@@ -19,7 +19,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Loremaster Resources");
+                TTTContext.Logger.LogHeader("Patching Loremaster Resources");
 
                 PatchPrerequisites();
                 PatchSpellProgression();
@@ -27,7 +27,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchTricksterTricks();
 
                 void PatchPrerequisites() {
-                    if (ModContext.Fixes.Loremaster.IsDisabled("Prerequisites")) { return; }
+                    if (TTTContext.Fixes.Loremaster.IsDisabled("Prerequisites")) { return; }
 
                     var LoremasterClass = Resources.GetBlueprint<BlueprintCharacterClass>("4a7c05adfbaf05446a6bf664d28fb103");
 
@@ -89,11 +89,11 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         .ToArray();
                         c.Amount = 3;
                     });
-                    Main.LogPatch("Patched", LoremasterClass);
+                    TTTContext.Logger.LogPatch("Patched", LoremasterClass);
                 }
 
                 void PatchSpellProgression() {
-                    if (ModContext.Fixes.Loremaster.IsDisabled("SpellProgression")) { return; }
+                    if (TTTContext.Fixes.Loremaster.IsDisabled("SpellProgression")) { return; }
                     var LoremasterProgression = Resources.GetBlueprint<BlueprintProgression>("2bcd2330cc2c5a747968a8c782d4fa0a");
                     var LoremasterSecretSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("beeb25d7a7732e14f9986cdb79acecfc");
                     var LoremasterSpellbookSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("7a28ab4dfc010834eabc770152997e87");
@@ -102,11 +102,11 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     LoremasterProgression.LevelEntries = LoremasterProgression.LevelEntries
                         .Where(entry => entry.Level != 1)
                         .Append(Helpers.CreateLevelEntry(1, LoremasterSpellbookSelectionTTT, LoremasterSecretSelection)).ToArray();
-                    Main.LogPatch("Patched", LoremasterProgression);
+                    TTTContext.Logger.LogPatch("Patched", LoremasterProgression);
                 }
 
                 void PatchSpellSecrets() {
-                    if (ModContext.Fixes.Loremaster.IsDisabled("SpellSecrets")) { return; }
+                    if (TTTContext.Fixes.Loremaster.IsDisabled("SpellSecrets")) { return; }
 
                     var LoremasterSecretSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("beeb25d7a7732e14f9986cdb79acecfc");
                     var LoremasterClericSpellSecret = Resources.GetBlueprint<BlueprintFeatureSelection>("904ce918c85c9f947910340b956fb877");
@@ -127,11 +127,11 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         LoremasterDruidSpellSecret_TTT,
                         LoremasterWizardSpellSecret_TTT
                     );
-                    Main.LogPatch("Patched", LoremasterSecretSelection);
+                    TTTContext.Logger.LogPatch("Patched", LoremasterSecretSelection);
                 }
 
                 void PatchTricksterTricks() {
-                    if (ModContext.Fixes.Loremaster.IsDisabled("TricksterTricks")) { return; }
+                    if (TTTContext.Fixes.Loremaster.IsDisabled("TricksterTricks")) { return; }
 
                     var LoremasterCombatFeatSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("90f105c8e31a6224ea319e6a810e4af8");
 
@@ -144,7 +144,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         TricksterImprovedImprovedImprovedCritical,
                         TricksterImprovedImprovedImprovedCriticalImproved
                     );
-                    Main.LogPatch("Patched", LoremasterCombatFeatSelection);
+                    TTTContext.Logger.LogPatch("Patched", LoremasterCombatFeatSelection);
                 }
             }
         }

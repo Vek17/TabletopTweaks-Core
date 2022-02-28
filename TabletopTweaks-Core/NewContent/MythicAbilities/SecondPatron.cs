@@ -46,7 +46,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(SecondPatronRequisiteFeature, GroupType.Any);
             });
 
-            if (Main.ModContext.AddedContent.MythicAbilities.IsDisabled("SecondPatron")) { return; }
+            if (Main.TTTContext.AddedContent.MythicAbilities.IsDisabled("SecondPatron")) { return; }
             FeatTools.AddAsMythicAbility(SecondPatronFeature);
             WitchPatronSelection.m_AllFeatures
                 .Select(feature => feature.Get())
@@ -56,7 +56,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                     patron.AddComponent<AddFacts>(c => {
                         c.m_Facts = new BlueprintUnitFactReference[] { SecondPatronRequisiteFeature.ToReference<BlueprintUnitFactReference>() };
                     });
-                    Main.LogPatch("Patched", patron);
+                    TTTContext.Logger.LogPatch("Patched", patron);
                 });
         }
     }

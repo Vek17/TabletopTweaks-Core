@@ -13,7 +13,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Shaman");
+                TTTContext.Logger.LogHeader("Patching Shaman");
 
                 PatchBaseClass();
             }
@@ -21,17 +21,17 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchAmelioratingHex();
 
                 void PatchAmelioratingHex() {
-                    if (ModContext.Fixes.Shaman.Base.IsDisabled("AmelioratingHex")) { return; }
+                    if (TTTContext.Fixes.Shaman.Base.IsDisabled("AmelioratingHex")) { return; }
 
                     var ShamanHexAmelioratingDazzleSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("ea8525d5efb6870418065c14d599c297");
                     var ShamanHexAmelioratingFatuguedSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("84660c99b75e6384b8a6b8fe34b57728");
                     var ShamanHexAmelioratingShakenSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("90295b0de24b3d2469edad595528eb08");
                     var ShamanHexAmelioratingSickenedSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("1ee56c72f388a4c40bf19a53ae66b6fe");
 
-                    QuickFixTools.ReplaceSuppression(ShamanHexAmelioratingDazzleSuppressBuff);
-                    QuickFixTools.ReplaceSuppression(ShamanHexAmelioratingFatuguedSuppressBuff);
-                    QuickFixTools.ReplaceSuppression(ShamanHexAmelioratingShakenSuppressBuff);
-                    QuickFixTools.ReplaceSuppression(ShamanHexAmelioratingSickenedSuppressBuff);
+                    QuickFixTools.ReplaceSuppression(ShamanHexAmelioratingDazzleSuppressBuff, TTTContext);
+                    QuickFixTools.ReplaceSuppression(ShamanHexAmelioratingFatuguedSuppressBuff, TTTContext);
+                    QuickFixTools.ReplaceSuppression(ShamanHexAmelioratingShakenSuppressBuff, TTTContext);
+                    QuickFixTools.ReplaceSuppression(ShamanHexAmelioratingSickenedSuppressBuff, TTTContext);
                 }
             }
         }

@@ -36,7 +36,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                     c.m_Feature = WeaponFinesse.ToReference<BlueprintFeatureReference>();
                 }));
             });
-            if (ModContext.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("TrainedGrace")) { return; }
+            if (TTTContext.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("TrainedGrace")) { return; }
             AdvancedWeapontrainingSelection.AddToAdvancedWeaponTrainingSelection(TrainedGraceFeature);
         }
     }

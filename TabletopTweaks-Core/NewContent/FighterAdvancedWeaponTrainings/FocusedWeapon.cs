@@ -56,7 +56,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                 bp.AddComponent<FocusedWeaponComponent>();
             });
 
-            if (ModContext.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("FocusedWeapon")) { return; }
+            if (TTTContext.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("FocusedWeapon")) { return; }
             AdvancedWeapontrainingSelection.AddToAdvancedWeaponTrainingSelection(FocusedWeaponFeature);
         }
     }

@@ -15,11 +15,11 @@ namespace TabletopTweaks.Core.Reworks {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Reworking Mythic Feats");
+                TTTContext.Logger.LogHeader("Reworking Mythic Feats");
                 PatchMythicSneakAttack();
             }
             static void PatchMythicSneakAttack() {
-                if (ModContext.Homebrew.MythicFeats.IsDisabled("MythicSneakAttack")) { return; }
+                if (TTTContext.Homebrew.MythicFeats.IsDisabled("MythicSneakAttack")) { return; }
 
                 var SneakAttackerMythicFeat = Resources.GetBlueprint<BlueprintFeature>("d0a53bf03b978634890e5ebab4a90ecb");
 
@@ -28,7 +28,7 @@ namespace TabletopTweaks.Core.Reworks {
                 SneakAttackerMythicFeat.SetDescription("Your sneak attacks are especially deadly.\n" +
                     "Benifit: Your sneak attack dice are one size larger than normal. " +
                     "For example if you would normally roll d6s for sneak attacks you would roll d8s instead.");
-                Main.LogPatch("Patched", SneakAttackerMythicFeat);
+                TTTContext.Logger.LogPatch("Patched", SneakAttackerMythicFeat);
             }
         }
     }

@@ -11,7 +11,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "\nYou get a +2 bonus on all Lore (Nature) checks and Perception checks. " +
                     "If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.");
             });
-            if (ModContext.AddedContent.Feats.IsDisabled("NatureSoul")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("NatureSoul")) { return; }
             FeatTools.AddAsFeat(NatureSoul);
         }
     }

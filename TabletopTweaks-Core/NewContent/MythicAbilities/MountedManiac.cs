@@ -138,7 +138,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 });
             });
 
-            if (ModContext.AddedContent.MythicAbilities.IsDisabled("MountedManiac")) { return; }
+            if (TTTContext.AddedContent.MythicAbilities.IsDisabled("MountedManiac")) { return; }
             FeatTools.AddAsMythicAbility(MountedManiacFeature);
         }
     }

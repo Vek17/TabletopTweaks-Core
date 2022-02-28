@@ -155,7 +155,7 @@ namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
                 var GetMetamagicName = AccessTools.Method(typeof(UIUtilityTexts), "GetMetamagicName");
                 var GetMetamagicListPostfix = AccessTools.Method(typeof(UIUtilityTexts_NewMetamagic_Patchs), "GetMetamagicList");
                 var GetMetamagicNamePostfix = AccessTools.Method(typeof(UIUtilityTexts_NewMetamagic_Patchs), "GetMetamagicName");
-                var harmony = new Harmony(Main.ModContext.ModEntry.Info.Id);
+                var harmony = new Harmony(Main.TTTContext.ModEntry.Info.Id);
                 harmony.Patch(GetMetamagicList, postfix: new HarmonyMethod(GetMetamagicListPostfix));
                 harmony.Patch(GetMetamagicName, postfix: new HarmonyMethod(GetMetamagicNamePostfix));
                 patched = true;
@@ -350,7 +350,7 @@ namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
                         .Any(damage => !damage.Immune)) { return; }
                     var casterLevel = context.Params?.SpellLevel ?? context.SpellLevel;
                     if (context.SpellDescriptor.HasAnyFlag(SpellDescriptor.Fire)) {
-                        Main.Log("Burning FIRE");
+                        TTTContext.Logger.Log("Burning FIRE");
                         var fakeContext = new MechanicsContext(
                             caster: evt.Initiator,
                             owner: evt.Target,
@@ -364,7 +364,7 @@ namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
                             buff.IsFromSpell = true;
                             buff.IsNotDispelable = true;
                         } else {
-                            Main.Log("Buff was null?");
+                            TTTContext.Logger.Log("Buff was null?");
                         }
                     }
                     if (context.SpellDescriptor.HasAnyFlag(SpellDescriptor.Acid)) {

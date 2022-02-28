@@ -24,7 +24,7 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
                 });
                 bp.AddPrerequisiteFeature(CombatReflexes);
             });
-            if (ModContext.AddedContent.MythicFeats.IsDisabled("MythicCombatReflexes")) { return; }
+            if (TTTContext.AddedContent.MythicFeats.IsDisabled("MythicCombatReflexes")) { return; }
             FeatTools.AddAsMythicFeat(CombatReflexesMythicFeature);
         }
     }

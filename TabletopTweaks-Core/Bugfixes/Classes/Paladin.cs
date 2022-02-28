@@ -19,7 +19,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Paladin");
+                TTTContext.Logger.LogHeader("Patching Paladin");
                 PatchBase();
             }
             static void PatchBase() {
@@ -27,7 +27,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchSmiteAttackBonus();
 
                 void PatchDivineMount() {
-                    if (ModContext.Fixes.Paladin.Base.IsDisabled("DivineMountTemplate")) { return; }
+                    if (TTTContext.Fixes.Paladin.Base.IsDisabled("DivineMountTemplate")) { return; }
 
                     var TemplateCelestial = Resources.GetModBlueprint<BlueprintFeature>("TemplateCelestial");
                     var PaladinDivineMount11Feature = Resources.GetBlueprint<BlueprintFeature>("ea31185f4e0f91041bf766d67214182f");
@@ -35,10 +35,10 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     if (addFeatureToPet != null) {
                         addFeatureToPet.m_Feature = TemplateCelestial.ToReference<BlueprintFeatureReference>();
                     }
-                    Main.LogPatch("Patched", PaladinDivineMount11Feature);
+                    TTTContext.Logger.LogPatch("Patched", PaladinDivineMount11Feature);
                 }
                 void PatchSmiteAttackBonus() {
-                    if (ModContext.Fixes.Paladin.Base.IsDisabled("SmiteAttackBonus")) { return; }
+                    if (TTTContext.Fixes.Paladin.Base.IsDisabled("SmiteAttackBonus")) { return; }
 
                     var SmiteChaosBuff = Resources.GetBlueprint<BlueprintBuff>("161051816b1530843a8096167be9b8a7");
                     var SmiteEvilBuff = Resources.GetBlueprint<BlueprintBuff>("b6570b8cbb32eaf4ca8255d0ec3310b0");
@@ -54,12 +54,12 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     FiendishSmiteGoodBuff.GetComponent<AttackBonusAgainstTarget>().Descriptor = (ModifierDescriptor)Untyped.Charisma;
                     HalfFiendSmiteGoodBuff.GetComponent<AttackBonusAgainstTarget>().Descriptor = (ModifierDescriptor)Untyped.Charisma;
 
-                    Main.LogPatch("Patched", SmiteChaosBuff);
-                    Main.LogPatch("Patched", SmiteEvilBuff);
-                    Main.LogPatch("Patched", AuraOfJusticeSmiteEvilBuff);
-                    Main.LogPatch("Patched", CelestialSmiteEvilBuff);
-                    Main.LogPatch("Patched", FiendishSmiteGoodBuff);
-                    Main.LogPatch("Patched", HalfFiendSmiteGoodBuff);
+                    TTTContext.Logger.LogPatch("Patched", SmiteChaosBuff);
+                    TTTContext.Logger.LogPatch("Patched", SmiteEvilBuff);
+                    TTTContext.Logger.LogPatch("Patched", AuraOfJusticeSmiteEvilBuff);
+                    TTTContext.Logger.LogPatch("Patched", CelestialSmiteEvilBuff);
+                    TTTContext.Logger.LogPatch("Patched", FiendishSmiteGoodBuff);
+                    TTTContext.Logger.LogPatch("Patched", HalfFiendSmiteGoodBuff);
                 }
             }
 

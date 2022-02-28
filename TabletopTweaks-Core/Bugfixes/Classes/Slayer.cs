@@ -16,7 +16,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Slayer");
+                TTTContext.Logger.LogHeader("Patching Slayer");
 
                 PatchBaseClass();
             }
@@ -24,7 +24,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchSlayerTrapfinding();
 
                 void PatchSlayerTrapfinding() {
-                    if (ModContext.Fixes.Slayer.Base.IsDisabled("Trapfinding")) { return; }
+                    if (TTTContext.Fixes.Slayer.Base.IsDisabled("Trapfinding")) { return; }
                     var SlayerTrapfinding = Resources.GetBlueprint<BlueprintFeature>("e3c12938c2f93544da89824fbe0933a5");
                     SlayerTrapfinding.AddComponent(Helpers.Create<AddContextStatBonus>(c => {
                         c.Stat = StatType.SkillThievery;
@@ -33,7 +33,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                             ValueType = ContextValueType.Rank
                         };
                     }));
-                    Main.LogPatch("Patched", SlayerTrapfinding);
+                    TTTContext.Logger.LogPatch("Patched", SlayerTrapfinding);
                 }
             }
         }

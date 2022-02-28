@@ -27,13 +27,13 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
                 });
                 bp.AddPrerequisiteFeature(Manyshot);
             });
-            if (ModContext.AddedContent.MythicFeats.IsDisabled("MythicManyshot")) { return; }
+            if (TTTContext.AddedContent.MythicFeats.IsDisabled("MythicManyshot")) { return; }
             FeatTools.AddAsMythicFeat(ManyshotMythicFeature);
         }
         [HarmonyPatch(typeof(RuleAttackWithWeapon), nameof(RuleAttackWithWeapon.LaunchProjectiles), new Type[] { typeof(BlueprintProjectileReference[]) })]
         static class ItemEntityWeapon_HoldInTwoHands_Patch {
             static bool Prefix(RuleAttackWithWeapon __instance, BlueprintProjectileReference[] projectiles) {
-                if (ModContext.AddedContent.MythicFeats.IsDisabled("MythicManyshot")) { return true; }
+                if (TTTContext.AddedContent.MythicFeats.IsDisabled("MythicManyshot")) { return true; }
                 foreach (BlueprintProjectileReference blueprintProjectileReference in projectiles) {
                     if (blueprintProjectileReference.Get() != null) {
                         __instance.LaunchProjectile(blueprintProjectileReference.Get(), true);

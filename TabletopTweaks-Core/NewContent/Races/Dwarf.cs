@@ -131,7 +131,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
             UnstoppableDwarf.AddTraitReplacment(HatredGoblinoidOrc);
             UnstoppableDwarf.AddSelectionCallback(DwarfHeritageSelection);
 
-            if (ModContext.AddedContent.Races.IsDisabled("DwarfAlternateTraits")) { return; }
+            if (TTTContext.AddedContent.Races.IsDisabled("DwarfAlternateTraits")) { return; }
             DwarfRace.SetComponents(Helpers.Create<AddFeatureOnApply>(c => {
                 c.m_Feature = DwarfAbilityModifiers.ToReference<BlueprintFeatureReference>();
             }));

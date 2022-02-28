@@ -30,7 +30,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            if (ModContext.AddedContent.Feats.IsDisabled("UndersizedMount")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("UndersizedMount")) { return; }
             FeatTools.AddAsFeat(UndersizedMount);
         }
         [HarmonyPatch(typeof(AbilityTargetIsSuitableMountSize), nameof(AbilityTargetIsSuitableMountSize.CanMount))]

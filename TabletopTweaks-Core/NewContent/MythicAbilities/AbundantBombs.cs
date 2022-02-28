@@ -35,7 +35,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(AlchemistBombsFeature);
             });
 
-            if (ModContext.AddedContent.MythicAbilities.IsDisabled("AbundantBombs")) { return; }
+            if (TTTContext.AddedContent.MythicAbilities.IsDisabled("AbundantBombs")) { return; }
             FeatTools.AddAsMythicAbility(AbundantBombsFeature);
         }
     }

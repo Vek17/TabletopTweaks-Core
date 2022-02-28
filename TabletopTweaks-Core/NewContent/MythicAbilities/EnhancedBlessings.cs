@@ -91,7 +91,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 });
                 bp.AddPrerequisiteFeature(BlessingSelection);
             });
-            if (ModContext.AddedContent.MythicAbilities.IsDisabled("EnhancedBlessings")) { return; }
+            if (TTTContext.AddedContent.MythicAbilities.IsDisabled("EnhancedBlessings")) { return; }
             FeatTools.AddAsMythicAbility(EnhancedBlessingsFeature);
         }
     }

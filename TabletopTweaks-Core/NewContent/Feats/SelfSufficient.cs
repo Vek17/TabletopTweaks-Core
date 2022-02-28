@@ -13,7 +13,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     "Lore (Religion) skill checks. If you have 10 or more ranks in one of these skills," +
                     " the bonus increases to +4 for that skill.");
             });
-            if (ModContext.AddedContent.Feats.IsDisabled("Self-Sufficient")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("Self-Sufficient")) { return; }
             FeatTools.AddAsFeat(SelfSufficent);
         }
     }

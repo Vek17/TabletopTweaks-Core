@@ -45,7 +45,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                     p.Group = Prerequisite.GroupType.All;
                 });
             });
-            if (ModContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("YuelralsBlessing")) { return; }
+            if (TTTContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("YuelralsBlessing")) { return; }
             ArcaneDiscoverySelection.AddToArcaneDiscoverySelection(YuelralsBlessing);
         }
     }

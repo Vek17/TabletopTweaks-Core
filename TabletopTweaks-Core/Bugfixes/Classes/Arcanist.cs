@@ -21,7 +21,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Arcanist Resources");
+                TTTContext.Logger.LogHeader("Patching Arcanist Resources");
 
                 PatchBase();
             }
@@ -36,7 +36,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static readonly FieldInfo Spellbook_BlueprintSpellbook = AccessTools.Field(typeof(Spellbook), "Blueprint");
             //Add an exception to the spontantous spell UI if the spellbook is arcanist
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                if (ModContext.Fixes.Arcanist.Base.IsDisabled("PreparedSpellUI")) { return instructions; }
+                if (TTTContext.Fixes.Arcanist.Base.IsDisabled("PreparedSpellUI")) { return instructions; }
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
                 //Utilities.ILUtils.LogIL(codes);
@@ -57,7 +57,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     }
                 }
 
-                Main.Log("ARCANIST SPELLBOOK ACTION BAR PATCH: COULD NOT FIND TARGET");
+                TTTContext.Logger.Log("ARCANIST SPELLBOOK ACTION BAR PATCH: COULD NOT FIND TARGET");
                 return -1;
             }
         }

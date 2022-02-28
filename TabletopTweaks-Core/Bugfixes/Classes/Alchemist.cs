@@ -25,7 +25,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Alchemist Resources");
+                TTTContext.Logger.LogHeader("Patching Alchemist Resources");
 
                 PatchBase();
                 PatchGrenadier();
@@ -35,7 +35,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchMutagens();
 
                 void PatchMutagens() {
-                    if (ModContext.Fixes.Alchemist.Base.IsDisabled("MutagenStacking")) { return; }
+                    if (TTTContext.Fixes.Alchemist.Base.IsDisabled("MutagenStacking")) { return; }
 
                     var mutagenBuffs = new BlueprintBuff[] {
                         Resources.GetBlueprint<BlueprintBuff>("32f2bc843effd9b45a0952a3cffbbe9f"),    // CognatogenCharismaBuff,
@@ -94,7 +94,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                             };
                             addFactContextActions.Activated.Actions = addFactContextActions.Activated.Actions.AppendToArray(conditional);
                         }
-                        Main.LogPatch("Patched", mutagen);
+                        TTTContext.Logger.LogPatch("Patched", mutagen);
                     }
                 }
             }
@@ -104,7 +104,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchPoisonResistance();
 
                 void PatchBrewPotions() {
-                    if (ModContext.Fixes.Alchemist.Archetypes["Grenadier"].IsDisabled("BrewPotions")) { return; }
+                    if (TTTContext.Fixes.Alchemist.Archetypes["Grenadier"].IsDisabled("BrewPotions")) { return; }
 
                     var GrenadierArchetype = Resources.GetBlueprint<BlueprintArchetype>("6af888a7800b3e949a40f558ff204aae");
                     var BrewPotions = Resources.GetBlueprint<BlueprintFeature>("c0f8c4e513eb493408b8070a1de93fc0");
@@ -115,11 +115,11 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                             BrewPotions.ToReference<BlueprintFeatureBaseReference>()
                         }
                     }); ;
-                    Main.LogPatch("Patched", GrenadierArchetype);
+                    TTTContext.Logger.LogPatch("Patched", GrenadierArchetype);
                 }
 
                 void PatchPoisonResistance() {
-                    if (ModContext.Fixes.Alchemist.Archetypes["Grenadier"].IsDisabled("PoisonResistance")) { return; }
+                    if (TTTContext.Fixes.Alchemist.Archetypes["Grenadier"].IsDisabled("PoisonResistance")) { return; }
 
                     var GrenadierArchetype = Resources.GetBlueprint<BlueprintArchetype>("6af888a7800b3e949a40f558ff204aae");
                     var PoisonResistance = Resources.GetBlueprint<BlueprintFeature>("c9022272c87bd66429176ce5c597989c");
@@ -133,7 +133,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                             Helpers.CreateLevelEntry(8, PoisonResistance),
                             Helpers.CreateLevelEntry(10, PoisonImmunity)
                         }).ToArray();
-                    Main.LogPatch("Patched", GrenadierArchetype);
+                    TTTContext.Logger.LogPatch("Patched", GrenadierArchetype);
                 }
             }
         }

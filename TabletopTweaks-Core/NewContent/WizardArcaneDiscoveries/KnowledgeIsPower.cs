@@ -39,7 +39,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                     c.m_Stat = StatType.Intelligence;
                 });
             });
-            if (ModContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("KnowledgeIsPower")) { return; }
+            if (TTTContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("KnowledgeIsPower")) { return; }
             ArcaneDiscoverySelection.AddToArcaneDiscoverySelection(KnowledgeIsPower);
         }
     }

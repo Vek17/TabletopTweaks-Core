@@ -18,11 +18,11 @@ namespace TabletopTweaks.Core.Bugfixes.TacticalCombat {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Buildings");
+                TTTContext.Logger.LogHeader("Patching Buildings");
                 PatchTrainingGrounds();
 
                 void PatchTrainingGrounds() {
-                    if (ModContext.Fixes.Crusade.Buildings.IsDisabled("TrainingGrounds")) { return; }
+                    if (TTTContext.Fixes.Crusade.Buildings.IsDisabled("TrainingGrounds")) { return; }
                     var ArmyBuildingTrainingGrounds = Resources.GetBlueprint<BlueprintFeature>("b1ab3085e85243e8a13f6acf78023920");
                     ArmyBuildingTrainingGrounds.RemoveComponents<OutcomingDamageAndHealingModifier>();
                     ArmyBuildingTrainingGrounds.SetComponents(
@@ -42,7 +42,7 @@ namespace TabletopTweaks.Core.Bugfixes.TacticalCombat {
                             c.m_StepLevel = 10;
                         })
                     );
-                    Main.LogPatch("Patched", ArmyBuildingTrainingGrounds);
+                    TTTContext.Logger.LogPatch("Patched", ArmyBuildingTrainingGrounds);
                 }
             }
         }

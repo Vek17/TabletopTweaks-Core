@@ -29,7 +29,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Fighter");
+                TTTContext.Logger.LogHeader("Patching Fighter");
 
                 PatchBase();
                 PatchTwoHandedFighter();
@@ -42,7 +42,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 EnableAdvancedArmorTraining();
 
                 void PatchAdvancedWeaponTraining() {
-                    if (Main.ModContext.Fixes.Fighter.Base.IsDisabled("AdvancedWeaponTraining")) { return; }
+                    if (Main.TTTContext.Fixes.Fighter.Base.IsDisabled("AdvancedWeaponTraining")) { return; }
                     var WeaponTrainingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b8cecf4e5e464ad41b79d5b42b76b399");
                     var WeaponTrainingRankUpSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("5f3cc7b9a46b880448275763fe70c0b0");
                     var AdvancedWeaponTraining1 = Resources.GetBlueprint<BlueprintFeatureSelection>("3aa4cbdd4af5ba54888b0dc7f07f80c4");
@@ -54,32 +54,32 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     WeaponTrainingSelection.m_AllFeatures = WeaponTrainingSelection.m_AllFeatures.Where(feature => !AdvancedWeapontrainingSelection.m_AllFeatures.Contains(feature)).ToArray();
                     WeaponTrainingSelection.Mode = SelectionMode.Default;
                     WeaponTrainingSelection.AddFeatures(AdvancedWeapontrainingSelection);
-                    Main.LogPatch("Patched", WeaponTrainingSelection);
+                    TTTContext.Logger.LogPatch("Patched", WeaponTrainingSelection);
                     WeaponTrainingRankUpSelection.m_AllFeatures = WeaponTrainingRankUpSelection.m_AllFeatures.Where(feature => !AdvancedWeapontrainingSelection.m_AllFeatures.Contains(feature)).ToArray();
                     WeaponTrainingRankUpSelection.m_AllFeatures.ForEach(feature => {
                         feature.Get().AddComponent(Helpers.Create<PrerequisiteNoFeature>(c => {
                             c.m_Feature = feature;
                             c.HideInUI = true;
                         }));
-                        Main.LogPatch("Patched", feature.Get());
+                        TTTContext.Logger.LogPatch("Patched", feature.Get());
                     });
                     WeaponTrainingRankUpSelection.IgnorePrerequisites = true;
-                    Main.LogPatch("Patched", WeaponTrainingRankUpSelection);
+                    TTTContext.Logger.LogPatch("Patched", WeaponTrainingRankUpSelection);
                     AdvancedWeapontrainingSelection.m_AllFeatures.ForEach(feature => {
                         feature.Get().RemoveComponents<PrerequisiteClassLevel>();
-                        Main.LogPatch("Patched", feature.Get());
+                        TTTContext.Logger.LogPatch("Patched", feature.Get());
                     });
                     AdvancedWeaponTraining1.IgnorePrerequisites = false;
                     AdvancedWeaponTraining2.IgnorePrerequisites = false;
                     AdvancedWeaponTraining3.IgnorePrerequisites = false;
                     AdvancedWeaponTraining4.IgnorePrerequisites = false;
-                    Main.LogPatch("Patched", AdvancedWeaponTraining1);
-                    Main.LogPatch("Patched", AdvancedWeaponTraining2);
-                    Main.LogPatch("Patched", AdvancedWeaponTraining3);
-                    Main.LogPatch("Patched", AdvancedWeaponTraining4);
+                    TTTContext.Logger.LogPatch("Patched", AdvancedWeaponTraining1);
+                    TTTContext.Logger.LogPatch("Patched", AdvancedWeaponTraining2);
+                    TTTContext.Logger.LogPatch("Patched", AdvancedWeaponTraining3);
+                    TTTContext.Logger.LogPatch("Patched", AdvancedWeaponTraining4);
                 }
                 void PatchTwoHandedWeaponTraining() {
-                    if (Main.ModContext.Fixes.Fighter.Base.IsDisabled("TwoHandedWeaponTraining")) { return; }
+                    if (Main.TTTContext.Fixes.Fighter.Base.IsDisabled("TwoHandedWeaponTraining")) { return; }
                     var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
                     var TwoHandedFighterArchetype = Resources.GetBlueprint<BlueprintArchetype>("84643e02a764bff4a9c1aba333a53c89");
                     var TwoHandedFighterWeaponTraining = Resources.GetBlueprint<BlueprintFeature>("88da2a5dfc505054f933bb81014e864f");
@@ -104,19 +104,19 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         c.m_Archetype = TwoHandedFighterArchetype.ToReference<BlueprintArchetypeReference>();
                         c.Level = 5;
                     });
-                    Main.LogPatch("Patched", TwoHandedFighterWeaponTraining);
+                    TTTContext.Logger.LogPatch("Patched", TwoHandedFighterWeaponTraining);
                     WeaponTrainingSelection.m_AllFeatures
                         .Where(feature => !AdvancedWeapontrainingSelection.m_AllFeatures.Contains(feature))
                         .ForEach(feature => {
                             var component = feature.Get().GetComponent<WeaponGroupDamageBonus>();
                             if (component != null) {
                                 component.Descriptor = (ModifierDescriptor)AdditionalModifierDescriptors.Untyped.WeaponTraining;
-                                Main.LogPatch("Patched", feature.Get());
+                                TTTContext.Logger.LogPatch("Patched", feature.Get());
                             }
                         });
                 }
                 void PatchWeaponTrainingStacking() {
-                    if (Main.ModContext.Fixes.Fighter.Base.IsDisabled("WeaponTrainingStacking")) { return; }
+                    if (Main.TTTContext.Fixes.Fighter.Base.IsDisabled("WeaponTrainingStacking")) { return; }
                     var WeaponTrainingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b8cecf4e5e464ad41b79d5b42b76b399");
                     var AdvancedWeapontrainingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("AdvancedWeaponTrainingSelection");
                     WeaponTrainingSelection.m_AllFeatures
@@ -132,22 +132,22 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                                 attackComponent.Descriptor = (ModifierDescriptor)AdditionalModifierDescriptors.Untyped.WeaponTraining;
                             }
                             if (damageComponent != null || attackComponent != null) {
-                                Main.LogPatch("Patched", feature.Get());
+                                TTTContext.Logger.LogPatch("Patched", feature.Get());
                             }
                         });
 
                 }
                 void PatchUnarmedWeaponTraining() {
-                    if (Main.ModContext.Fixes.Fighter.Base.IsDisabled("UnarmedWeaponTraining")) { return; }
+                    if (Main.TTTContext.Fixes.Fighter.Base.IsDisabled("UnarmedWeaponTraining")) { return; }
                     var EmptyHand = Resources.GetBlueprint<BlueprintWeaponType>("a8b38f6b734daa44087ec0ec2e80c1cd");
                     var Unarmed = Resources.GetBlueprint<BlueprintWeaponType>("fcca8e6b85d19b14786ba1ab553e23ad");
                     Unarmed.m_FighterGroupFlags |= WeaponFighterGroupFlags.Close | WeaponFighterGroupFlags.Natural;
                     EmptyHand.m_FighterGroupFlags |= WeaponFighterGroupFlags.Close | WeaponFighterGroupFlags.Natural;
-                    Main.LogPatch("Patched", Unarmed);
-                    Main.LogPatch("Patched", EmptyHand);
+                    TTTContext.Logger.LogPatch("Patched", Unarmed);
+                    TTTContext.Logger.LogPatch("Patched", EmptyHand);
                 }
                 void EnableAdvancedArmorTraining() {
-                    if (Main.ModContext.Fixes.Fighter.Base.IsDisabled("AdvancedArmorTraining")) { return; }
+                    if (Main.TTTContext.Fixes.Fighter.Base.IsDisabled("AdvancedArmorTraining")) { return; }
                     var ArmorTraining = Resources.GetBlueprint<BlueprintFeature>("3c380607706f209499d951b29d3c44f3");
                     var ArmorTrainingSpeedFeature = Resources.GetModBlueprint<BlueprintFeature>("ArmorTrainingSpeedFeature");
                     var ArmorTrainingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("ArmorTrainingSelection");
@@ -171,7 +171,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         });
                     BaseProgression.LevelEntries
                         .Where(entry => entry.m_Features.Contains(ArmorTraining.ToReference<BlueprintFeatureBaseReference>()));
-                    Main.LogPatch("Patched", BaseProgression);
+                    TTTContext.Logger.LogPatch("Patched", BaseProgression);
                     foreach (var Archetype in FighterClass.Archetypes) {
                         Archetype.RemoveFeatures
                             .Where(entry => entry.m_Features.Contains(ArmorTraining.ToReference<BlueprintFeatureBaseReference>()))
@@ -185,7 +185,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                                 entry.m_Features.Add(ArmorTrainingSelection.ToReference<BlueprintFeatureBaseReference>());
                                 entry.m_Features.Remove(ArmorTraining.ToReference<BlueprintFeatureBaseReference>());
                             });
-                        Main.LogPatch("Patched", Archetype);
+                        TTTContext.Logger.LogPatch("Patched", Archetype);
                     }
                 }
             }
@@ -193,7 +193,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchAdvancedWeaponTraining();
 
                 void PatchAdvancedWeaponTraining() {
-                    if (Main.ModContext.Fixes.Fighter.Archetypes["TwoHandedFighter"].IsDisabled("AdvancedWeaponTraining")) { return; }
+                    if (Main.TTTContext.Fixes.Fighter.Archetypes["TwoHandedFighter"].IsDisabled("AdvancedWeaponTraining")) { return; }
 
                     var TwoHandedFighterWeaponTraining = Resources.GetBlueprint<BlueprintFeature>("88da2a5dfc505054f933bb81014e864f");
                     var WeaponTrainingSelection = Resources.GetBlueprint<BlueprintFeature>("b8cecf4e5e464ad41b79d5b42b76b399");
@@ -207,7 +207,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                             c.m_Feature = TwoHandedFighterWeaponTraining.ToReference<BlueprintFeatureReference>();
                             c.Group = Prerequisite.GroupType.Any;
                         }));
-                        Main.LogPatch("Patched", AdvancedWeaponTraining);
+                        TTTContext.Logger.LogPatch("Patched", AdvancedWeaponTraining);
                     }
                 }
             }
@@ -219,7 +219,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
         [HarmonyPatch(typeof(UnitPartWeaponTraining), "GetWeaponRank", new Type[] { typeof(ItemEntityWeapon) })]
         static class UnitPartWeaponTraining_GetWeaponRank_Patch {
             static bool Prefix(UnitPartWeaponTraining __instance, ref int __result, ItemEntityWeapon weapon) {
-                if (Main.ModContext.Fixes.Fighter.Base.IsDisabled("TwoHandedWeaponTraining")) { return true; }
+                if (Main.TTTContext.Fixes.Fighter.Base.IsDisabled("TwoHandedWeaponTraining")) { return true; }
 
                 if (weapon == null) {
                     __result = 0;
@@ -250,7 +250,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
         [HarmonyPatch(typeof(WeaponGroupAttackBonus), "OnEventAboutToTrigger", new Type[] { typeof(RuleCalculateAttackBonusWithoutTarget) })]
         static class WeaponGroupAttackBonus_OnEventAboutToTrigger_Patch {
             static bool Prefix(WeaponGroupAttackBonus __instance, RuleCalculateAttackBonusWithoutTarget evt) {
-                if (Main.ModContext.Fixes.Fighter.Base.IsDisabled("TwoHandedWeaponTraining")) { return true; }
+                if (Main.TTTContext.Fixes.Fighter.Base.IsDisabled("TwoHandedWeaponTraining")) { return true; }
 
                 if (evt.Weapon != null && evt.Weapon.Blueprint.FighterGroup.HasFlag(__instance.WeaponGroup.ToFlags())) {
                     int num = __instance.multiplyByContext ? (__instance.contextMultiplier.Calculate(__instance.Context) * __instance.AttackBonus) : __instance.AttackBonus;
@@ -279,7 +279,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
         [HarmonyPatch(typeof(WeaponGroupDamageBonus), "OnEventAboutToTrigger", new Type[] { typeof(RuleCalculateWeaponStats) })]
         static class WeaponGroupDamageBonus_OnEventAboutToTrigger_Patch {
             static bool Prefix(WeaponGroupDamageBonus __instance, RuleCalculateWeaponStats evt) {
-                if (Main.ModContext.Fixes.Fighter.Base.IsDisabled("TwoHandedWeaponTraining")) { return true; }
+                if (Main.TTTContext.Fixes.Fighter.Base.IsDisabled("TwoHandedWeaponTraining")) { return true; }
 
                 int num = __instance.AdditionalValue.Calculate(__instance.Context);
                 if (evt.Weapon.Blueprint.FighterGroup.HasFlag(__instance.WeaponGroup.ToFlags())) {

@@ -32,7 +32,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            if (ModContext.AddedContent.Feats.IsDisabled("QuickDraw")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("QuickDraw")) { return; }
             FeatTools.AddAsFeat(QuickDraw);
         }
 

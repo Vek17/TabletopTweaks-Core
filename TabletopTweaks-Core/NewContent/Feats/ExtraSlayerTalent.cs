@@ -23,7 +23,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     SlayerTalentSelection10
                 );
             });
-            if (ModContext.AddedContent.Feats.IsDisabled("ExtraSlayerTalent")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("ExtraSlayerTalent")) { return; }
             FeatTools.AddAsFeat(ExtraSlayerTalent);
         }
     }

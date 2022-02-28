@@ -23,7 +23,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddPrerequisiteFeature(OppositionSchoolSelection);
             });
 
-            if (ModContext.AddedContent.MythicAbilities.IsDisabled("HarmoniousMage")) { return; }
+            if (TTTContext.AddedContent.MythicAbilities.IsDisabled("HarmoniousMage")) { return; }
             FeatTools.AddAsMythicAbility(HarmoniousMageFeature);
         }
     }

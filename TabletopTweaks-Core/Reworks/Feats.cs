@@ -15,11 +15,11 @@ namespace TabletopTweaks.Core.Reworks {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Reworking Feats");
+                TTTContext.Logger.LogHeader("Reworking Feats");
                 PatchBolsteredSpell();
             }
             static void PatchBolsteredSpell() {
-                if (ModContext.Homebrew.Feats.IsDisabled("BolsterSpell")) { return; }
+                if (TTTContext.Homebrew.Feats.IsDisabled("BolsterSpell")) { return; }
 
                 var BolsteredSpellFeat = Resources.GetBlueprint<BlueprintFeature>("fbf5d9ce931f47f3a0c818b3f8ef8414");
 
@@ -36,7 +36,7 @@ namespace TabletopTweaks.Core.Reworks {
                     defaultCost: 2,
                     favoriteMetamagic: null
                 );
-                Main.LogPatch("Patched", BolsteredSpellFeat);
+                TTTContext.Logger.LogPatch("Patched", BolsteredSpellFeat);
             }
         }
     }

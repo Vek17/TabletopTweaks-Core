@@ -40,7 +40,7 @@ namespace TabletopTweaks.Core.Utilities {
             var result = (T)Helpers.ObjectDeepCopier.Clone(original);
             result.TemporaryContext(bp => {
                 bp.name = name;
-                bp.AssetGuid = Main.ModContext.Blueprints.GetGUID(name);
+                bp.AssetGuid = Main.TTTContext.Blueprints.GetGUID(name);
             });
             Resources.AddBlueprint(result);
             init?.Invoke(result);
@@ -63,7 +63,7 @@ namespace TabletopTweaks.Core.Utilities {
             var result = (T)Helpers.ObjectDeepCopier.Clone(original);
             result.TemporaryContext(bp => {
                 bp.name = name;
-                bp.AssetGuid = Main.ModContext.Blueprints.GetDerivedGUID(name, masterId, original.AssetGuid);
+                bp.AssetGuid = Main.TTTContext.Blueprints.GetDerivedGUID(name, masterId, original.AssetGuid);
             });
             Resources.AddBlueprint(result);
             init?.Invoke(result);

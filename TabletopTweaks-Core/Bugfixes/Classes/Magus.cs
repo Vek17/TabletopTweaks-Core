@@ -25,7 +25,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Magus Resources");
+                TTTContext.Logger.LogHeader("Patching Magus Resources");
 
                 PatchBase();
                 PatchSwordSaint();
@@ -35,7 +35,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchArcaneWeaponProperties();
 
                 void PatchSpellCombatDisableImmediatly() {
-                    if (ModContext.Fixes.Magus.Base.IsDisabled("SpellCombatDisableImmediatly")) { return; }
+                    if (TTTContext.Fixes.Magus.Base.IsDisabled("SpellCombatDisableImmediatly")) { return; }
 
                     var SpellCombatAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("8898a573e8a8a184b8186dbc3a26da74");
                     var SpellStrikeAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("e958891ef90f7e142a941c06c811181e");
@@ -43,11 +43,11 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     SpellCombatAbility.DeactivateImmediately = true;
                     SpellStrikeAbility.DeactivateImmediately = true;
 
-                    Main.LogPatch("Patched", SpellCombatAbility);
-                    Main.LogPatch("Patched", SpellStrikeAbility);
+                    TTTContext.Logger.LogPatch("Patched", SpellCombatAbility);
+                    TTTContext.Logger.LogPatch("Patched", SpellStrikeAbility);
                 }
                 void PatchArcaneWeaponProperties() {
-                    if (ModContext.Fixes.Magus.Base.IsDisabled("AddMissingArcaneWeaponEffects")) { return; }
+                    if (TTTContext.Fixes.Magus.Base.IsDisabled("AddMissingArcaneWeaponEffects")) { return; }
 
                     var ArcaneWeaponFlamingBurstChoice_TTT = Resources.GetModBlueprint<BlueprintActivatableAbility>("ArcaneWeaponFlamingBurstChoice_TTT");
                     var ArcaneWeaponIcyBurstChoice_TTT = Resources.GetModBlueprint<BlueprintActivatableAbility>("ArcaneWeaponIcyBurstChoice_TTT");
@@ -60,14 +60,14 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         ArcaneWeaponIcyBurstChoice_TTT.ToReference<BlueprintUnitFactReference>(),
                         ArcaneWeaponShockingBurstChoice_TTT.ToReference<BlueprintUnitFactReference>()
                     );
-                    Main.LogPatch("Patched", ArcaneWeaponPlus3);
+                    TTTContext.Logger.LogPatch("Patched", ArcaneWeaponPlus3);
                 }
             }
             static void PatchSwordSaint() {
                 PatchPerfectCritical();
 
                 void PatchPerfectCritical() {
-                    if (ModContext.Fixes.Magus.Archetypes["SwordSaint"].IsDisabled("PerfectCritical")) { return; }
+                    if (TTTContext.Fixes.Magus.Archetypes["SwordSaint"].IsDisabled("PerfectCritical")) { return; }
 
                     var SwordSaintPerfectStrikeCritAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("c6559839738a7fc479aadc263ff9ffff");
 
@@ -76,14 +76,14 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     SwordSaintPerfectStrikeCritAbility
                         .GetComponent<ActivatableAbilityResourceLogic>()
                         .SpendType = ValueSpendType.Crit.Amount(2);
-                    Main.LogPatch("Patched", SwordSaintPerfectStrikeCritAbility);
+                    TTTContext.Logger.LogPatch("Patched", SwordSaintPerfectStrikeCritAbility);
                 }
             }
         }
         [HarmonyPatch(typeof(ItemEntityWeapon), "HoldInTwoHands", MethodType.Getter)]
         static class ItemEntityWeapon_HoldInTwoHands_Patch {
             static void Postfix(ItemEntityWeapon __instance, ref bool __result) {
-                if (ModContext.Fixes.Magus.Base.IsDisabled("SpellCombatDisableImmediatly")) { return; }
+                if (TTTContext.Fixes.Magus.Base.IsDisabled("SpellCombatDisableImmediatly")) { return; }
                 var magusPart = __instance?.Wielder?.Get<UnitPartMagus>();
                 if (magusPart == null) { return; }
                 if (magusPart.CanUseSpellCombatInThisRound) {
@@ -118,7 +118,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static bool Prefix(UnitPartMagus __instance, ref bool __result, AbilityData spell) {
                 bool validWandSpell = __instance.WandWielder && spell.SourceItemUsableBlueprint != null && spell.SourceItemUsableBlueprint.Type == UsableItemType.Wand;
                 __result = validWandSpell || (spell.Spellbook != null && spell.Spellbook == __instance.Spellbook);
-                if (ModContext.Fixes.Magus.Base.IsDisabled("SpellCombatSpellbookRestrictions")) {
+                if (TTTContext.Fixes.Magus.Base.IsDisabled("SpellCombatSpellbookRestrictions")) {
                     __result |= __instance.Spellbook != null && spell.IsInSpellList(__instance.Spellbook.Blueprint.SpellList);
                 }
                 return false;
@@ -128,7 +128,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
         [HarmonyPatch(typeof(UnitPartMagus), "IsSpellFromMagusSpellList", new Type[] { typeof(AbilityData) })]
         class UnitPartMagus_IsSpellFromMagusSpellList_VarriantAbilities_Patch {
             static void Postfix(UnitPartMagus __instance, ref bool __result, AbilityData spell) {
-                if (ModContext.Fixes.Magus.Base.IsDisabled("SpellCombatAbilityVariants")) { return; }
+                if (TTTContext.Fixes.Magus.Base.IsDisabled("SpellCombatAbilityVariants")) { return; }
                 if (spell.ConvertedFrom != null) {
                     __result |= __instance.IsSpellFromMagusSpellList(spell.ConvertedFrom);
                 }

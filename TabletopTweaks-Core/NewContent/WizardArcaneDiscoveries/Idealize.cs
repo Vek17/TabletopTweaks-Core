@@ -74,7 +74,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                     p.Group = Prerequisite.GroupType.All;
                 });
             });
-            if (ModContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return; }
+            if (TTTContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return; }
             ArcaneDiscoverySelection.AddToArcaneDiscoverySelection(Idealize);
         }
         [HarmonyPatch(typeof(AddStatBonus), nameof(AddStatBonus.OnTurnOn))]
@@ -91,7 +91,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
             );
             //Add Idealize calculations
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                if (ModContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return instructions; }
+                if (TTTContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return instructions; }
 
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
@@ -112,7 +112,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                         return target;
                     }
                 }
-                Main.Log("ADD STAT IDEALIZE PATCH - AddStatBonus: COULD NOT FIND TARGET");
+                TTTContext.Logger.Log("ADD STAT IDEALIZE PATCH - AddStatBonus: COULD NOT FIND TARGET");
                 return -1;
             }
         }
@@ -130,7 +130,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
             );
             //Add Idealize calculations
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                if (ModContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return instructions; }
+                if (TTTContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return instructions; }
 
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
@@ -156,7 +156,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                         return target;
                     }
                 }
-                Main.Log("ADD STAT IDEALIZE PATCH - AddContextStatBonus: COULD NOT FIND TARGET");
+                TTTContext.Logger.Log("ADD STAT IDEALIZE PATCH - AddContextStatBonus: COULD NOT FIND TARGET");
                 return -1;
             }
         }
@@ -174,7 +174,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
             );
             //Add Idealize calculations
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                if (ModContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return instructions; }
+                if (TTTContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return instructions; }
 
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
@@ -195,7 +195,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                         return target;
                     }
                 }
-                Main.Log("ADD STAT IDEALIZE PATCH - AddGenericStatBonus: COULD NOT FIND TARGET");
+                TTTContext.Logger.Log("ADD STAT IDEALIZE PATCH - AddGenericStatBonus: COULD NOT FIND TARGET");
                 return -1;
             }
         }

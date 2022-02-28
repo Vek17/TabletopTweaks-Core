@@ -125,7 +125,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             DispellingAttackConfig.m_AdditionalArchetypes = DispellingAttackConfig.m_AdditionalArchetypes.AppendToArray(NatureFangArcehtype.ToReference<BlueprintArchetypeReference>());
             DispellingAttackConfig.m_Class = DispellingAttackConfig.m_Class.AppendToArray(DruidClass.ToReference<BlueprintCharacterClassReference>());
 
-            if (ModContext.AddedContent.Archetypes.IsDisabled("NatureFang")) { return; }
+            if (TTTContext.AddedContent.Archetypes.IsDisabled("NatureFang")) { return; }
             DruidClass.m_Archetypes = DruidClass.m_Archetypes.AppendToArray(NatureFangArcehtype.ToReference<BlueprintArchetypeReference>());
 
             DruidClass.Progression.UIGroups = DruidClass.Progression.UIGroups.AppendToArray(
@@ -139,7 +139,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     NatureFangStudiedTargetSwiftFeature
                 )
             );
-            Main.LogPatch("Added", NatureFangArcehtype);
+            TTTContext.Logger.LogPatch("Added", NatureFangArcehtype);
         }
     }
 }

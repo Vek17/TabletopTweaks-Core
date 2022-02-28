@@ -15,7 +15,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
             static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.LogHeader("Patching Cleric");
+                TTTContext.Logger.LogHeader("Patching Cleric");
 
                 PatchBaseClass();
             }
@@ -23,11 +23,11 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchGloryDomain();
 
                 void PatchGloryDomain() {
-                    if (ModContext.Fixes.Cleric.Base.IsDisabled("GloryDomain")) { return; }
+                    if (TTTContext.Fixes.Cleric.Base.IsDisabled("GloryDomain")) { return; }
 
                     var GloryDomainBaseBuff = Resources.GetBlueprint<BlueprintBuff>("55edcfff497a1e04a963f72c485da5cb");
                     GloryDomainBaseBuff.RemoveComponents<AddContextStatBonus>(component => component.Stat == StatType.Charisma);
-                    Main.LogPatch("Patched", GloryDomainBaseBuff);
+                    TTTContext.Logger.LogPatch("Patched", GloryDomainBaseBuff);
                 }
             }
         }

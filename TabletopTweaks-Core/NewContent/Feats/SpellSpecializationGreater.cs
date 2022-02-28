@@ -54,7 +54,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeaturesFromList(1, SpellSpecializationSelection.Features.Append(SpellSpecializationFirst).ToArray());
             });
 
-            if (Main.ModContext.AddedContent.Feats.IsDisabled("SpellSpecializationGreater")) { return; }
+            if (Main.TTTContext.AddedContent.Feats.IsDisabled("SpellSpecializationGreater")) { return; }
 
             SpellSpecializationSelection
                 .Features

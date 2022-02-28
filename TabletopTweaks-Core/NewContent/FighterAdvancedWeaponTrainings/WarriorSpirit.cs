@@ -241,7 +241,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                 });
             });
 
-            if (ModContext.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("WarriorSpirit")) { return; }
+            if (TTTContext.AddedContent.FighterAdvancedWeaponTraining.IsDisabled("WarriorSpirit")) { return; }
             AdvancedWeapontrainingSelection.AddToAdvancedWeaponTrainingSelection(WarriorSpiritFeature);
         }
 

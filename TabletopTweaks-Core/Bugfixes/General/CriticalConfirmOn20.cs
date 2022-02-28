@@ -17,7 +17,7 @@ namespace TabletopTweaks.Core.Bugfixes.General {
             static readonly MethodInfo RuleRollDice_op_Implicit = AccessTools.Method(typeof(RuleRollDice), "op_Implicit");
 
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                if (ModContext.Fixes.BaseFixes.IsDisabled("FixCriticalConfirmation")) { return instructions; }
+                if (TTTContext.Fixes.BaseFixes.IsDisabled("FixCriticalConfirmation")) { return instructions; }
                 var codes = new List<CodeInstruction>(instructions);
                 int target = FindInsertionTarget(codes);
                 //Utilities.ILUtils.LogIL(codes);
@@ -43,7 +43,7 @@ namespace TabletopTweaks.Core.Bugfixes.General {
                         break;
                     }
                 }
-                Main.Log("CRITICAL CONFIRM PATCH: COULD NOT FIND TARGET");
+                TTTContext.Logger.Log("CRITICAL CONFIRM PATCH: COULD NOT FIND TARGET");
                 return -1;
             }
         }

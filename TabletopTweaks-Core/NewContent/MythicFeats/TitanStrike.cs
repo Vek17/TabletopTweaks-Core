@@ -20,7 +20,7 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
                 bp.AddComponent<TitanStrikeComponent>();
                 bp.AddPrerequisiteFeature(ImprovedUnarmedStrikeMythicFeat);
             });
-            if (ModContext.AddedContent.MythicFeats.IsDisabled("TitanStrike")) { return; }
+            if (TTTContext.AddedContent.MythicFeats.IsDisabled("TitanStrike")) { return; }
             FeatTools.AddAsMythicFeat(TitanStrikeFeature);
         }
     }

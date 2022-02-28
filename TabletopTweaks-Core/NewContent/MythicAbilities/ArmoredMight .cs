@@ -22,7 +22,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.AddComponent(Helpers.Create<ArmoredMightComponent>());
             });
 
-            if (ModContext.AddedContent.MythicAbilities.IsDisabled("ArmoredMight")) { return; }
+            if (TTTContext.AddedContent.MythicAbilities.IsDisabled("ArmoredMight")) { return; }
             FeatTools.AddAsMythicAbility(ArmoredMightFeature);
         }
     }

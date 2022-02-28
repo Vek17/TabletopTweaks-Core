@@ -30,8 +30,8 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddPrerequisiteFeature(TrickRiding);
             });
 
-            if (ModContext.AddedContent.Feats.IsDisabled("MountedSkirmisher")) { return; }
-            if (ModContext.Fixes.BaseFixes.IsDisabled("MountedActions")) { return; }
+            if (TTTContext.AddedContent.Feats.IsDisabled("MountedSkirmisher")) { return; }
+            if (TTTContext.Fixes.BaseFixes.IsDisabled("MountedActions")) { return; }
             FeatTools.AddAsFeat(MountedSkirmisher);
         }
     }

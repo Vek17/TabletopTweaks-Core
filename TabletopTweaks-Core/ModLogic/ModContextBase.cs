@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Kingmaker.PubSubSystem;
+using Newtonsoft.Json;
 using System.IO;
 using System.Reflection;
 using TabletopTweaks.Core.Config;
@@ -14,6 +15,7 @@ namespace TabletopTweaks.Core.Modlogic {
         public MultiLocalizationPack ModLocalizationPack = new MultiLocalizationPack();
         public virtual string userConfigFolder => ModEntry.Path + "UserSettings";
         public virtual string localizationFolder => ModEntry.Path + "Localization";
+        public string localizationFile = "LocalizationPack.Json";
         private static JsonSerializerSettings cachedSettings;
         private static JsonSerializerSettings SerializerSettings {
             get {
@@ -42,11 +44,11 @@ namespace TabletopTweaks.Core.Modlogic {
         }
 
         public abstract void LoadAllSettings();
-        public virtual void LoadLocalization(string fileName, string path) {
+        public virtual void LoadLocalization(string classPath) {
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);
             var assembly = Assembly.GetExecutingAssembly();
-            var resourcePath = $"{path}.{fileName}"; ;
-            var localizationPath = $"{localizationFolder}{Path.DirectorySeparatorChar}{fileName}";
+            var resourcePath = $"{classPath}.{localizationFile}"; ;
+            var localizationPath = $"{localizationFolder}{Path.DirectorySeparatorChar}{localizationFile}";
             Directory.CreateDirectory(localizationFolder);
             if (File.Exists(localizationPath)) {
                 using (StreamReader streamReader = File.OpenText(localizationPath))
@@ -56,8 +58,8 @@ namespace TabletopTweaks.Core.Modlogic {
                         ModLocalizationPack = localization;
                     } catch {
                         ModLocalizationPack = new MultiLocalizationPack();
-                        Main.Error("Failed to localization. Settings will be rebuilt.");
-                        try { File.Copy(localizationPath, ModEntry.Path + $"{Path.DirectorySeparatorChar}BROKEN_{fileName}", true); } catch { Main.Error("Failed to archive broken localization."); }
+                        Logger.LogError("Failed to localization. Settings will be rebuilt.");
+                        try { File.Copy(localizationPath, ModEntry.Path + $"{Path.DirectorySeparatorChar}BROKEN_{localizationFile}", true); } catch { Logger.LogError("Failed to archive broken localization."); }
                     }
                 }
             } else {
@@ -67,18 +69,20 @@ namespace TabletopTweaks.Core.Modlogic {
                     ModLocalizationPack = serializer.Deserialize<MultiLocalizationPack>(jsonReader);
                 }
             }
+            ModLocalizationPack.Context = this;
+            EventBus.Subscribe(ModLocalizationPack);
         }
-        public virtual void SaveLocalization(string fileName, MultiLocalizationPack localizaiton) {
+        public virtual void SaveLocalization(MultiLocalizationPack localizaiton) {
             localizaiton.Strings.Sort((x, y) => string.Compare(x.SimpleName, y.SimpleName));
             Directory.CreateDirectory(userConfigFolder);
-            var localizationPath = $"{localizationFolder}{Path.DirectorySeparatorChar}{fileName}";
+            var localizationPath = $"{localizationFolder}{Path.DirectorySeparatorChar}{localizationFile}";
 
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);
             using (StreamWriter streamWriter = new StreamWriter(localizationPath))
             using (JsonWriter jsonWriter = new JsonTextWriter(streamWriter)) {
                 serializer.Serialize(jsonWriter, localizaiton);
             }
-            Main.Log($"Localization: {ModLocalizationPack.Strings.Count}");
+            Logger.Log($"Localization: {ModLocalizationPack.Strings.Count}");
         }
         public virtual void LoadSettings<T>(string fileName, string path, ref T setting) where T : IUpdatableSettings {
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);
@@ -100,8 +104,8 @@ namespace TabletopTweaks.Core.Modlogic {
                         T userSettings = serializer.Deserialize<T>(jsonReader);
                         setting.OverrideSettings(userSettings);
                     } catch {
-                        Main.Error("Failed to load user settings. Settings will be rebuilt.");
-                        try { File.Copy(userPath, userConfigFolder + $"{Path.DirectorySeparatorChar}BROKEN_{fileName}", true); } catch { Main.Error("Failed to archive broken settings."); }
+                        Logger.LogError("Failed to load user settings. Settings will be rebuilt.");
+                        try { File.Copy(userPath, userConfigFolder + $"{Path.DirectorySeparatorChar}BROKEN_{fileName}", true); } catch { Logger.LogError("Failed to archive broken settings."); }
                     }
                 }
             }

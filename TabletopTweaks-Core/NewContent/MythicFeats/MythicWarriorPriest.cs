@@ -40,7 +40,7 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
                 bp.AddComponent<RecalculateOnLevelUp>();
                 bp.AddPrerequisiteFeature(WarriorPriest);
             });
-            if (ModContext.AddedContent.MythicFeats.IsDisabled("MythicWarriorPriest")) { return; }
+            if (TTTContext.AddedContent.MythicFeats.IsDisabled("MythicWarriorPriest")) { return; }
             FeatTools.AddAsMythicFeat(WarriorPriestMythicFeature);
         }
     }
