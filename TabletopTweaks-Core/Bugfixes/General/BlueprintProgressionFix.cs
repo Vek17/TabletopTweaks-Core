@@ -5,7 +5,6 @@ using Kingmaker.UnitLogic;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
-using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
     class BlueprintProgressionFix {

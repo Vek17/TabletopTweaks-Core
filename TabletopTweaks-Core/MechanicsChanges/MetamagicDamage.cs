@@ -6,8 +6,8 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using System;
 using System.Reflection;
-using static TabletopTweaks.Core.Main;
 using UnityEngine;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
     class MetamagicDamage {

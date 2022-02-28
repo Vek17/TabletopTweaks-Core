@@ -8,9 +8,9 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Races {
     static class Gnome {

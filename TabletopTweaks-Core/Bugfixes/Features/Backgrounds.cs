@@ -13,8 +13,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.Features {
     class Backgrounds {

@@ -10,7 +10,6 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using static TabletopTweaks.Core.Main;
-using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
     class Arcanist {

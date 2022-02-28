@@ -10,9 +10,9 @@ using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
     class PolymorphStacking {

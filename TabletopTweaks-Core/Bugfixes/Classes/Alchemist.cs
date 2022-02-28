@@ -12,7 +12,6 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using System.Collections.Generic;
 using System.Linq;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.Main;
 

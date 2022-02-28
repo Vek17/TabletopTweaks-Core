@@ -11,9 +11,9 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Parts;
 using System;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.MechanicsChanges.ActivatableAbilitySpendLogic;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {

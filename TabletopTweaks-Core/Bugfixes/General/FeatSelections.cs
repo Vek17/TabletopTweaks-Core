@@ -3,8 +3,8 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Utility;
 using System.Linq;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.General {
     static class FeatSelections {

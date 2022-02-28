@@ -1,8 +1,8 @@
 ﻿using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.UnitLogic.FactLogic;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class FavoriteMetamagicSelective {

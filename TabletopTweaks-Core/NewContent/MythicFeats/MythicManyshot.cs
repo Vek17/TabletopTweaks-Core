@@ -4,10 +4,10 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.RuleSystem.Rules;
 using System;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
 namespace TabletopTweaks.Core.NewContent.MythicFeats {

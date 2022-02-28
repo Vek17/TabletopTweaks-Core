@@ -12,7 +12,7 @@ namespace TabletopTweaks.Core.Utilities {
 
     public static class PostPatchInitializer {
         public static void Initialize(ModContextBase context) {
-            var assembly = Assembly.GetCallingAssembly();
+            var assembly = context.ModEntry.Assembly;
             context.Logger.Log($"PostPatchInitializer: {assembly.FullName}");
             var methods = assembly.GetTypes()
                 .Where(x => x.IsClass)
@@ -20,7 +20,7 @@ namespace TabletopTweaks.Core.Utilities {
                 .Where(x => x.GetCustomAttributes(typeof(PostPatchInitializeAttribute), false).FirstOrDefault() != null);
 
             foreach (var method in methods) {
-                context.Logger.Log($"Executing Post Patch: {method.Name}");
+                context.Logger.Log($"Executing Post Patch: {method.DeclaringType.Name}.{method.Name}");
                 method.Invoke(null, null); // invoke the method
             }
 

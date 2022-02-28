@@ -1,6 +1,6 @@
 ﻿using Kingmaker.EntitySystem.Stats;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class MagicalAptitude {

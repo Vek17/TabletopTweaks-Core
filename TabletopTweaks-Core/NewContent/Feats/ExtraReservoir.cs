@@ -1,8 +1,8 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class ExtraReservoir {

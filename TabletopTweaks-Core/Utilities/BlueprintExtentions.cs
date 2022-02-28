@@ -3,11 +3,7 @@ using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
-using Kingmaker.Blueprints.Facts;
-using Kingmaker.Blueprints.Items;
-using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.ElementsSystem;
-using Kingmaker.Localization;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Mechanics.Components;
@@ -16,7 +12,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using static TabletopTweaks.Core.Main;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 
 namespace TabletopTweaks.Core.Utilities {

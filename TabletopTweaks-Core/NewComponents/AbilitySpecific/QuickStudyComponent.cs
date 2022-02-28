@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using JetBrains.Annotations;
 using Kingmaker;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
@@ -77,9 +76,9 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             var unitBooks = ValidSpellbooks(ability.Caster);
             var validSpellbook = spellbook != null && unitBooks.Contains(spellbook);
 
-            return abilityData != null 
-                && validSpellbook 
-                && (AnySpellLevel || paramSpellSlot?.SpellLevel <= SpellLevel) 
+            return abilityData != null
+                && validSpellbook
+                && (AnySpellLevel || paramSpellSlot?.SpellLevel <= SpellLevel)
                 && (spellbook.Blueprint.IsArcanist || paramSpellSlot.Available);
         }
 

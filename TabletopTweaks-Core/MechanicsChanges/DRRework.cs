@@ -37,11 +37,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
     class DRRework {

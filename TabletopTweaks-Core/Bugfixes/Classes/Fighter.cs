@@ -16,9 +16,9 @@ using Kingmaker.UnitLogic.Parts;
 using Kingmaker.Utility;
 using System;
 using System.Linq;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.Classes {
     class Fighter {

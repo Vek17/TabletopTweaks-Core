@@ -12,12 +12,12 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using System.Collections.Generic;
 using System.Linq;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 using UnityEngine;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
     static class WarriorSpirit {

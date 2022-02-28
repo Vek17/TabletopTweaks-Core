@@ -10,8 +10,8 @@ using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.General {
     static class DynamicItemNames {

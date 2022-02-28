@@ -29,13 +29,13 @@ using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.NewComponents.Properties;
 using TabletopTweaks.Core.Utilities;
 using UnityEngine;
+using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewUnitParts.CustomStatTypes;
 
 namespace TabletopTweaks.Core.NewContent.Archetypes {

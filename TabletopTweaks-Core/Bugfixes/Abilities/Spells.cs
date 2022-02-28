@@ -26,14 +26,13 @@ using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
-using static TabletopTweaks.Core.NewContent.MechanicsChanges.MetamagicExtention;
 using static TabletopTweaks.Core.Main;
+using static TabletopTweaks.Core.NewContent.MechanicsChanges.MetamagicExtention;
 
 namespace TabletopTweaks.Core.Bugfixes.Abilities {
     class Spells {

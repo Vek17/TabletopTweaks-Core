@@ -12,9 +12,9 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using System.Collections.Generic;
 using System.Linq;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewEvents;
 using UnityEngine;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartSpellSpecialization : OldStyleUnitPart, ISpontaneousConversionHandler, IUnitSubscriber {

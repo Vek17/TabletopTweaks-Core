@@ -6,11 +6,11 @@ using Kingmaker.Items.Slots;
 using Kingmaker.PubSubSystem;
 using Kingmaker.TurnBasedMode.Controllers;
 using Kingmaker.View.Equipment;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
 using TurnBased.Controllers;
+using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
 namespace TabletopTweaks.Core.NewContent.Feats {

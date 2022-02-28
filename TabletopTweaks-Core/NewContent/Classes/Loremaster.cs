@@ -6,7 +6,6 @@ using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.Utilities;

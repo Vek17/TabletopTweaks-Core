@@ -11,8 +11,8 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.Clases {
     class Rogue {

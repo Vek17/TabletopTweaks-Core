@@ -10,8 +10,8 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.FactLogic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.Features {
     class Bloodlines {

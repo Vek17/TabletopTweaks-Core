@@ -17,7 +17,7 @@ namespace TabletopTweaks.Homebrew {
             harmony.PatchAll();
             //PostPatchInitializer.Initialize();
             Helpers.CreateString("test", "");
-            new AddStatBonus() { 
+            new AddStatBonus() {
                 Descriptor = ModifierDescriptor.UntypedStackable,
                 Stat = StatType.Dexterity,
                 Value = 2

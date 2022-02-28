@@ -9,7 +9,6 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.Utility;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     /// <summary>

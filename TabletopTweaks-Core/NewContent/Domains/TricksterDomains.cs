@@ -7,7 +7,6 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;

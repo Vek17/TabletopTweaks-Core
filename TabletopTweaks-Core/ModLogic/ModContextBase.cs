@@ -40,7 +40,7 @@ namespace TabletopTweaks.Core.Modlogic {
         public ModContextBase(ModEntry modEntry) {
             Blueprints = new Blueprints();
             ModEntry = modEntry;
-            Logger = new ModLogger(ModEntry);       
+            Logger = new ModLogger(ModEntry);
         }
 
         public abstract void LoadAllSettings();

@@ -6,9 +6,9 @@ using Kingmaker.UI.MVVM._PCView.Other;
 using Kingmaker.UI.MVVM._PCView.Party;
 using Kingmaker.UI.MVVM._PCView.ServiceWindows.CharacterInfo.Sections.Abilities;
 using Kingmaker.UI.MVVM._VM.Tooltip.Templates;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
 using UnityEngine;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.UI {
     static class BuffSuppression {

@@ -17,11 +17,11 @@ using Kingmaker.Utility;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 using static Kingmaker.UnitLogic.Commands.Base.UnitCommand;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Archetypes {
     static class MetamagicRager {

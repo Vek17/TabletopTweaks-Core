@@ -6,9 +6,9 @@ using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Enums.Damage;
 using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.FactLogic;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
     class SteelHeadbutt {

@@ -10,10 +10,8 @@ using Kingmaker.Enums;
 using Kingmaker.Localization;
 using Kingmaker.Localization.Shared;
 using Kingmaker.ResourceLinks;
-using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
@@ -21,9 +19,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Localization;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Utilities {
     /// <summary>

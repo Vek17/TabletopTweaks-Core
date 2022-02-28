@@ -1,6 +1,6 @@
 ﻿using System.IO;
-using static TabletopTweaks.Core.Main;
 using UnityEngine;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Utilities {
     class AssetLoader {

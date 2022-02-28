@@ -3,8 +3,8 @@ using Kingmaker.Controllers.Combat;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.Parts;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewUnitParts;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.General {
     class MountedCombatFixes {

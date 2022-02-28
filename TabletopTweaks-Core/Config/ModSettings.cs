@@ -3,8 +3,8 @@ using System;
 using System.IO;
 using System.Reflection;
 using TabletopTweaks.Core.Localization;
-using static UnityModManagerNet.UnityModManager;
 using static TabletopTweaks.Core.Main;
+using static UnityModManagerNet.UnityModManager;
 
 namespace TabletopTweaks.Core.Config {
     [Obsolete("Needs to be replaced with instance version")]

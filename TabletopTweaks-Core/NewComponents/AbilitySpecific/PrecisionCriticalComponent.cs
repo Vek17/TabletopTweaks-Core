@@ -7,9 +7,9 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     /// <summary>
     /// Enables critical damage for precision damage with the specified multiplier.
     /// </summary>
-    public class PrecisionCriticalComponent : UnitFactComponentDelegate, 
-        IInitiatorRulebookHandler<RuleCalculateDamage>, 
-        IRulebookHandler<RuleCalculateDamage>, 
+    public class PrecisionCriticalComponent : UnitFactComponentDelegate,
+        IInitiatorRulebookHandler<RuleCalculateDamage>,
+        IRulebookHandler<RuleCalculateDamage>,
         ISubscriber, IInitiatorRulebookSubscriber {
 
         public override void OnTurnOn() {

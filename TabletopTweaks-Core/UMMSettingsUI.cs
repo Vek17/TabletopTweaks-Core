@@ -7,7 +7,6 @@ using System.Text.RegularExpressions;
 using TabletopTweaks.Core.Config;
 using UnityEngine;
 using UnityModManagerNet;
-using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core {
     public static class UMMSettingsUI {

@@ -2,8 +2,8 @@
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using System;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
     class InherentBonuses {

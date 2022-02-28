@@ -16,8 +16,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 
 namespace TabletopTweaks.Core.MechanicsChanges {

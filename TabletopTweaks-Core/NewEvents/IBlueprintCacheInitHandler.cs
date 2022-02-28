@@ -11,7 +11,7 @@ namespace TabletopTweaks.Core.NewEvents {
 
         [HarmonyPatch(typeof(BlueprintsCache), nameof(BlueprintsCache.Init))]
         internal static class BlueprintsCache_Init_EventHandler {
-            
+
             static void Prefix() {
                 EventBus.RaiseEvent<IBlueprintCacheInitHandler>(h => h.BeforeBlueprintCacheInit());
             }

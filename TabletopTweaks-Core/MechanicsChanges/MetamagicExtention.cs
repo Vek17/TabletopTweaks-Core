@@ -22,10 +22,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using static TabletopTweaks.Core.Main;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
 using UnityEngine;
+using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
 // This work is largly based on work by https://github.com/Stari0n/MagicTime Copyright (c) 2021 Starion

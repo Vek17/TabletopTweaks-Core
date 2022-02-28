@@ -1,17 +1,14 @@
-﻿using HarmonyLib;
-using JetBrains.Annotations;
-using Kingmaker.Blueprints.JsonSystem;
+﻿using JetBrains.Annotations;
 using Kingmaker.Localization;
 using Kingmaker.Localization.Shared;
+using Kingmaker.PubSubSystem;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using static TabletopTweaks.Core.Main;
-using TabletopTweaks.Core.Utilities;
-using TabletopTweaks.Core.NewEvents;
-using Kingmaker.PubSubSystem;
 using TabletopTweaks.Core.Modlogic;
+using TabletopTweaks.Core.NewEvents;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.Localization {
     /// <summary>
