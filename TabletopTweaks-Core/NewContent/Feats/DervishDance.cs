@@ -10,6 +10,7 @@ using Kingmaker.Enums;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -24,7 +25,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var FinesseTrainingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b78d146cea711a84598f0acef69462ea");
             var Scimitar = Resources.GetBlueprint<BlueprintWeaponType>("d9fbec4637d71bd4ebc977628de3daf3");
 
-            var DervishDance = Helpers.CreateBlueprint<BlueprintFeature>("DervishDance", bp => {
+            var DervishDance = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DervishDance", bp => {
                 bp.SetName("Dervish Dance");
                 bp.SetDescription("When wielding a scimitar with one hand, you can use your Dexterity modifier instead of your Strength modifier " +
                     "on melee attack and damage rolls. You treat the scimitar as a one-handed piercing weapon for all feats and class abilities that " +

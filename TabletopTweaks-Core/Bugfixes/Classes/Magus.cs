@@ -13,6 +13,7 @@ using Kingmaker.UnitLogic.Parts;
 using System;
 using TabletopTweaks.Core.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.MechanicsChanges.ActivatableAbilitySpendLogic;
 
@@ -49,9 +50,9 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchArcaneWeaponProperties() {
                     if (TTTContext.Fixes.Magus.Base.IsDisabled("AddMissingArcaneWeaponEffects")) { return; }
 
-                    var ArcaneWeaponFlamingBurstChoice_TTT = Resources.GetModBlueprint<BlueprintActivatableAbility>("ArcaneWeaponFlamingBurstChoice_TTT");
-                    var ArcaneWeaponIcyBurstChoice_TTT = Resources.GetModBlueprint<BlueprintActivatableAbility>("ArcaneWeaponIcyBurstChoice_TTT");
-                    var ArcaneWeaponShockingBurstChoice_TTT = Resources.GetModBlueprint<BlueprintActivatableAbility>("ArcaneWeaponShockingBurstChoice_TTT");
+                    var ArcaneWeaponFlamingBurstChoice_TTT = Resources.GetModBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "ArcaneWeaponFlamingBurstChoice_TTT");
+                    var ArcaneWeaponIcyBurstChoice_TTT = Resources.GetModBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "ArcaneWeaponIcyBurstChoice_TTT");
+                    var ArcaneWeaponShockingBurstChoice_TTT = Resources.GetModBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "ArcaneWeaponShockingBurstChoice_TTT");
                     var ArcaneWeaponPlus3 = Resources.GetBlueprint<BlueprintFeature>("70be888059f99a245a79d6d61b90edc5");
 
                     var AddFacts = ArcaneWeaponPlus3.GetComponent<AddFacts>();

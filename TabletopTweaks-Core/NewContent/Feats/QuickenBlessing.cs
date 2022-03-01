@@ -6,6 +6,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.Commands.Base;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -84,7 +85,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var WeatherBlessingMajorAbility = Resources.GetBlueprintReference<BlueprintAbilityReference>("f9e01aec7f35ec94ea7f2b3f73f1e98f");
             var WeatherBlessingMinorAbility = Resources.GetBlueprintReference<BlueprintAbilityReference>("df8099d3937d52440a5bbec98751ecde");
 
-            var QuickenBlessing = Helpers.CreateBlueprint<BlueprintFeatureSelection>("QuickenBlessing", bp => {
+            var QuickenBlessing = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "QuickenBlessing", bp => {
                 bp.SetName("Quicken Blessing");
                 bp.SetDescription("You can deliver one of your blessings with greater speed.\n" +
                     "Choose one of your blessings that normally requires a standard action to use. " +
@@ -134,7 +135,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
         }
 
         private static BlueprintFeature CreateQuickenedBlessing(string blessingName, BlueprintFeature blessing, params BlueprintAbilityReference[] powers) {
-            var QuickenBlessing = Helpers.CreateBlueprint<BlueprintFeature>($"QuickenBlessing{blessingName}Feature", bp => {
+            var QuickenBlessing = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, $"QuickenBlessing{blessingName}Feature", bp => {
                 bp.SetName($"Quicken Blessing — {blessingName}");
                 bp.SetDescription("Choose one of your blessings that normally requires a standard action to use. " +
                     "You can expend two of your daily uses of blessings to deliver that blessing " +

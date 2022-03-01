@@ -8,6 +8,7 @@ using System;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.Properties;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
@@ -16,9 +17,9 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
             var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
             var ArmorTraining = Resources.GetBlueprint<BlueprintFeature>("3c380607706f209499d951b29d3c44f3");
             var FighterFeatSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("41c8486641f7d6d4283ca9dae4147a9f");
-            var FighterTrainingFakeLevel = Resources.GetModBlueprintReference<BlueprintUnitFactReference>("FighterTrainingFakeLevel");
+            var FighterTrainingFakeLevel = Resources.GetModBlueprintReference<BlueprintUnitFactReference>(modContext: TTTContext, "FighterTrainingFakeLevel");
 
-            var FighterArmorTrainingProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("FighterArmorTrainingProperty", bp => {
+            var FighterArmorTrainingProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "FighterArmorTrainingProperty", bp => {
                 bp.AddComponent<CompositeCustomPropertyGetter>(c => {
                     c.CalculationMode = CompositeCustomPropertyGetter.Mode.Sum;
                     c.Properties = new CompositeCustomPropertyGetter.ComplexCustomProperty[] {
@@ -35,7 +36,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                     };
                 });
             });
-            var ArmorTrainingSpeedFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArmorTrainingSpeedFeature", bp => {
+            var ArmorTrainingSpeedFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmorTrainingSpeedFeature", bp => {
                 bp.Ranks = 5;
                 bp.SetName("Armor Training Speed");
                 bp.SetDescription("");
@@ -44,7 +45,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                 bp.IsClassFeature = true;
                 bp.AddComponent<ArmorSpeedPenaltyRemoval>();
             });
-            var AdvancedArmorTrainingSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("AdvancedArmorTrainingSelection", bp => {
+            var AdvancedArmorTrainingSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "AdvancedArmorTrainingSelection", bp => {
                 bp.SetName("Advanced Armor Training");
                 bp.SetDescription("Beginning at 7th level, instead of increasing the benefits provided by armor training " +
                     "(reducing his armor check penalty by 1 and increasing its maximum Dexterity bonus by 1), a fighter can " +
@@ -142,7 +143,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                 }));
             });
 
-            var ArmorTrainingSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("ArmorTrainingSelection", bp => {
+            var ArmorTrainingSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "ArmorTrainingSelection", bp => {
                 bp.Ranks = 4;
                 bp.m_Icon = ArmorTraining.Icon;
                 bp.SetName("Armor Training");
@@ -177,7 +178,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
             );
 
             BlueprintFeatureSelection CreateAdvancedArmorFeat(string name, Action<BlueprintFeatureSelection> init = null) {
-                var ArmorTrainingFeat = Helpers.CreateBlueprint<BlueprintFeatureSelection>(name, bp => {
+                var ArmorTrainingFeat = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, name, bp => {
                     bp.SetName("Advanced Armor Training");
                     bp.SetDescription("Select one advanced armor training option.");
                     bp.Groups = new FeatureGroup[] {
@@ -194,13 +195,13 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
             }
         }
         public static void AddToAdvancedArmorTrainingSelection(params BlueprintFeature[] features) {
-            var AdvancedArmorTrainingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("AdvancedArmorTrainingSelection");
-            var AdvancedArmorTraining1 = Resources.GetModBlueprint<BlueprintFeatureSelection>("AdvancedArmorTraining1");
-            var AdvancedArmorTraining2 = Resources.GetModBlueprint<BlueprintFeatureSelection>("AdvancedArmorTraining2");
-            var AdvancedArmorTraining3 = Resources.GetModBlueprint<BlueprintFeatureSelection>("AdvancedArmorTraining3");
-            var AdvancedArmorTraining4 = Resources.GetModBlueprint<BlueprintFeatureSelection>("AdvancedArmorTraining4");
-            var AdvancedArmorTraining5 = Resources.GetModBlueprint<BlueprintFeatureSelection>("AdvancedArmorTraining5");
-            var AdvancedArmorTraining6 = Resources.GetModBlueprint<BlueprintFeatureSelection>("AdvancedArmorTraining6");
+            var AdvancedArmorTrainingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "AdvancedArmorTrainingSelection");
+            var AdvancedArmorTraining1 = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "AdvancedArmorTraining1");
+            var AdvancedArmorTraining2 = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "AdvancedArmorTraining2");
+            var AdvancedArmorTraining3 = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "AdvancedArmorTraining3");
+            var AdvancedArmorTraining4 = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "AdvancedArmorTraining4");
+            var AdvancedArmorTraining5 = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "AdvancedArmorTraining5");
+            var AdvancedArmorTraining6 = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "AdvancedArmorTraining6");
 
             AdvancedArmorTrainingSelection.AddFeatures(features);
             AdvancedArmorTraining1.AddFeatures(features);

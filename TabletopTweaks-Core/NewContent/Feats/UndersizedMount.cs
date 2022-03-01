@@ -6,6 +6,7 @@ using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
@@ -13,7 +14,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
     class UndersizedMount {
         public static void AddUndersizedMount() {
             var Icon_UndersizedMount = AssetLoader.LoadInternal("Feats", "Icon_UndersizedMount.png");
-            var UndersizedMount = Helpers.CreateBlueprint<BlueprintFeature>("UndersizedMount", bp => {
+            var UndersizedMount = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "UndersizedMount", bp => {
                 bp.SetName("Undersized Mount");
                 bp.SetDescription("You can ride creatures equal to your own size category instead of only creatures larger than you.");
                 bp.m_Icon = Icon_UndersizedMount;

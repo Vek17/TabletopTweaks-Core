@@ -1,6 +1,8 @@
 ﻿using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.Designers.Mechanics.Facts;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.WeaponEnchantments {
     class NonStackingTempEnchantments {
@@ -14,7 +16,7 @@ namespace TabletopTweaks.Core.NewContent.WeaponEnchantments {
         }
 
         private static BlueprintWeaponEnchantment CreateNonStackingEnhancement(int enhancmentBonus) {
-            return Helpers.CreateBlueprint<BlueprintWeaponEnchantment>($"TemporaryEnhancement{enhancmentBonus}NonStacking", bp => {
+            return Helpers.CreateBlueprint<BlueprintWeaponEnchantment>(TTTContext, $"TemporaryEnhancement{enhancmentBonus}NonStacking", bp => {
                 bp.m_EnchantmentCost = enhancmentBonus;
                 bp.SetName($"Temporary Enhancement +{enhancmentBonus}");
                 bp.SetDescription($"Attacks with this weapon get +{enhancmentBonus} " +

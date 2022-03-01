@@ -10,6 +10,8 @@ using System.Linq;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
     class SpellSpecializationGreater {
@@ -20,7 +22,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var SpellSpecializationSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("fe67bc3b04f1cd542b4df6e28b6e0ff5");
             var GreaterElementalFocusSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("1c17446a3eb744f438488711b792ca4d");
 
-            var SpellSpecializationGreater = Helpers.CreateBlueprint<BlueprintFeature>("SpellSpecializationGreater", bp => {
+            var SpellSpecializationGreater = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "SpellSpecializationGreater", bp => {
                 bp.SetName("Greater Spell Specialization");
                 bp.SetDescription("By sacrificing a prepared spell of the same or higher level than your specialized spell, " +
                     "you may spontaneously cast your specialized spell. The specialized spell is treated as its normal level, " +

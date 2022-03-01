@@ -9,16 +9,17 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
     class ArmorSpecialization {
         public static void AddArmorSpecialization() {
             var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
-            var FighterArmorTrainingProperty = Resources.GetModBlueprintReference<BlueprintUnitPropertyReference>("FighterArmorTrainingProperty");
+            var FighterArmorTrainingProperty = Resources.GetModBlueprintReference<BlueprintUnitPropertyReference>(modContext: TTTContext, "FighterArmorTrainingProperty");
             var ArmorFocusLight = Resources.GetBlueprint<BlueprintFeature>("3bc6e1d2b44b5bb4d92e6ba59577cf62");
 
-            var ArmorSpecializationSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("ArmorSpecializationSelection", bp => {
+            var ArmorSpecializationSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "ArmorSpecializationSelection", bp => {
                 bp.SetName("Armor Specialization");
                 bp.SetDescription("The fighter selects one specific type of armor with which he is proficient, such as light or heavy. " +
                     "While wearing the selected type of armor, the fighter adds one-quarter of his fighter level to the armor’s " +
@@ -30,7 +31,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                 bp.m_Features = new BlueprintFeatureReference[0];
                 bp.IsClassFeature = true;
             });
-            var ArmorSpecializationLightEffect = Helpers.CreateBlueprint<BlueprintFeature>("ArmorSpecializationLightEffect", bp => {
+            var ArmorSpecializationLightEffect = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmorSpecializationLightEffect", bp => {
                 bp.SetName("Light Armor Specialization");
                 bp.SetDescription("Light Armor Specialization");
                 bp.IsClassFeature = true;
@@ -57,7 +58,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                     c.m_UseMax = true;
                 });
             });
-            var ArmorSpecializationLightFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArmorSpecializationLightFeature", bp => {
+            var ArmorSpecializationLightFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmorSpecializationLightFeature", bp => {
                 bp.m_Icon = ArmorFocusLight.Icon;
                 bp.SetName("Light Armor Specialization");
                 bp.SetDescription("The AC bonus granted by any light armor you equip increases by 1 for every 4 fighter levels you possess up to a maximum of 3.");
@@ -68,7 +69,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                     c.RequiredArmor = new ArmorProficiencyGroup[] { ArmorProficiencyGroup.Light };
                 });
             });
-            var ArmorSpecializationMediumEffect = Helpers.CreateBlueprint<BlueprintFeature>("ArmorSpecializationMediumEffect", bp => {
+            var ArmorSpecializationMediumEffect = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmorSpecializationMediumEffect", bp => {
                 bp.SetName("Medium Armor Specialization");
                 bp.SetDescription("Medium Armor Specialization");
                 bp.IsClassFeature = true;
@@ -95,7 +96,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                     c.m_UseMax = true;
                 });
             });
-            var ArmorSpecializationMediumFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArmorSpecializationMediumFeature", bp => {
+            var ArmorSpecializationMediumFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmorSpecializationMediumFeature", bp => {
                 bp.m_Icon = ArmorFocusLight.Icon;
                 bp.SetName("Medium Armor Specialization");
                 bp.SetDescription("The AC bonus granted by any medium armor " +
@@ -107,7 +108,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                     c.RequiredArmor = new ArmorProficiencyGroup[] { ArmorProficiencyGroup.Medium };
                 });
             });
-            var ArmorSpecializationHeavyEffect = Helpers.CreateBlueprint<BlueprintFeature>("ArmorSpecializationHeavyEffect", bp => {
+            var ArmorSpecializationHeavyEffect = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmorSpecializationHeavyEffect", bp => {
                 bp.SetName("Heavy Armor Specialization");
                 bp.SetDescription("Heavy Armor Specialization");
                 bp.IsClassFeature = true;
@@ -134,7 +135,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                     c.m_UseMax = true;
                 });
             });
-            var ArmorSpecializationHeavyFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArmorSpecializationHeavyFeature", bp => {
+            var ArmorSpecializationHeavyFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmorSpecializationHeavyFeature", bp => {
                 bp.m_Icon = ArmorFocusLight.Icon;
                 bp.SetName("Heavy Armor Specialization");
                 bp.SetDescription("The AC bonus " +

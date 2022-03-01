@@ -7,6 +7,7 @@ using System;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
@@ -14,7 +15,7 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
     static class MythicManyshot {
         public static void AddMythicManyshot() {
             var Manyshot = Resources.GetBlueprint<BlueprintFeature>("adf54af2a681792489826f7fd1b62889");
-            var ManyshotMythicFeature = Helpers.CreateBlueprint<BlueprintFeature>("ManyshotMythicFeature", bp => {
+            var ManyshotMythicFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ManyshotMythicFeature", bp => {
                 bp.m_Icon = Manyshot.m_Icon;
                 bp.SetName("Manyshot (Mythic)");
                 bp.SetDescription("You can fire a barrage of arrows at your target with very little effort.\n" +

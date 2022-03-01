@@ -542,7 +542,7 @@
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
     <Compile Include="UMMSettingsUI.cs" />
-    <Compile Include="Upgraders\TabletopTweaksMigration.cs" />
+    <Compile Include="SaveUpgrades\TabletopTweaksMigration.cs" />
     <Compile Include="Utilities\AssetLoader.cs" />
     <Compile Include="Utilities\Attributes.cs" />
     <Compile Include="Utilities\BloodlineTools.cs" />
@@ -566,6 +566,7 @@
     <Compile Include="Utilities\QuickFixTools.cs" />
     <Compile Include="Utilities\SpellTools.cs" />
     <Compile Include="Utilities\TypeReplaceTranspiler.cs" />
+    <Compile Include="Wrappers\LocalizationWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Config\AddedContent.json" />

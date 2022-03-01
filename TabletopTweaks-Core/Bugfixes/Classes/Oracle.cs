@@ -30,7 +30,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     if (TTTContext.Fixes.Oracle.Base.IsDisabled("NaturesWhisperMonkStacking")) { return; }
 
                     var OracleRevelationNatureWhispers = Resources.GetBlueprint<BlueprintFeature>("3d2cd23869f0d98458169b88738f3c32");
-                    var NaturesWhispersACConversion = Resources.GetModBlueprint<BlueprintFeature>("NaturesWhispersACConversion");
+                    var NaturesWhispersACConversion = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "NaturesWhispersACConversion");
                     var ScaledFistACBonus = Resources.GetBlueprint<BlueprintFeature>("3929bfd1beeeed243970c9fc0cf333f8");
 
                     OracleRevelationNatureWhispers.RemoveComponents<ReplaceStatBaseAttribute>();

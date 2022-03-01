@@ -10,6 +10,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Races {
@@ -30,7 +31,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
 
         public static void AddHalflingHeritage() {
 
-            var HalflingAbilityModifiers = Helpers.CreateBlueprint<BlueprintFeature>("HalflingAbilityModifiers", bp => {
+            var HalflingAbilityModifiers = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "HalflingAbilityModifiers", bp => {
                 bp.IsClassFeature = true;
                 bp.HideInUI = true;
                 bp.Ranks = 1;
@@ -60,7 +61,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
                     c.m_CheckedFacts = new BlueprintUnitFactReference[] { DestinyBeyondBirthMythicFeat.ToReference<BlueprintUnitFactReference>() };
                 }));
             });
-            var HalflingNoAlternateTrait = Helpers.CreateBlueprint<BlueprintFeature>("HalflingNoAlternateTrait", bp => {
+            var HalflingNoAlternateTrait = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "HalflingNoAlternateTrait", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Racial };
@@ -69,7 +70,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
                 bp.SetName("None");
                 bp.SetDescription("No Alternate Trait");
             });
-            var HalflingBruiserFeature = Helpers.CreateBlueprint<BlueprintFeature>("HalflingBruiserFeature", bp => {
+            var HalflingBruiserFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "HalflingBruiserFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Racial };
@@ -100,7 +101,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
                 bp.AddTraitReplacment(HalflingAbilityModifiers);
                 bp.AddSelectionCallback(HalflingHeritageSelection);
             });
-            var HalflingBlessedFeature = Helpers.CreateBlueprint<BlueprintFeature>("HalflingBlessedFeature", bp => {
+            var HalflingBlessedFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "HalflingBlessedFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Racial };
@@ -116,7 +117,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
                 bp.AddTraitReplacment(Fearless);
                 bp.AddSelectionCallback(HalflingHeritageSelection);
             });
-            var HalflingSecretiveSurvivorFeature = Helpers.CreateBlueprint<BlueprintFeature>("HalflingSecretiveSurvivorFeature", bp => {
+            var HalflingSecretiveSurvivorFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "HalflingSecretiveSurvivorFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Racial };
@@ -136,7 +137,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
                 bp.AddTraitReplacment(SureFooted);
                 bp.AddSelectionCallback(HalflingHeritageSelection);
             });
-            var HalflingUnderfootFeature = Helpers.CreateBlueprint<BlueprintFeature>("HalflingUnderfootFeature", bp => {
+            var HalflingUnderfootFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "HalflingUnderfootFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Racial };

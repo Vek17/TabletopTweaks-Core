@@ -34,6 +34,7 @@ using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.NewComponents.Properties;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using UnityEngine;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewUnitParts.CustomStatTypes;
@@ -43,9 +44,9 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
         public static void AddBlackBlade() {
             //var MagusClass = Resources.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
             var MagusClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("45a4607686d96a1498891b3286121780");
-            var BladeBoundArchetype = Resources.GetModBlueprintReference<BlueprintArchetypeReference>("BladeBoundArchetype");
+            var BladeBoundArchetype = Resources.GetModBlueprintReference<BlueprintArchetypeReference>(modContext: TTTContext, "BladeBoundArchetype");
             var ArcanistClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("52dbfd8505e22f84fad8d702611f60b7");
-            var BladeAdeptArchetype = Resources.GetModBlueprintReference<BlueprintArchetypeReference>("BladeAdeptArchetype");
+            var BladeAdeptArchetype = Resources.GetModBlueprintReference<BlueprintArchetypeReference>(modContext: TTTContext, "BladeAdeptArchetype");
 
             var ArcanePoolFeature = Resources.GetBlueprint<BlueprintFeature>("3ce9bb90749c21249adc639031d5eed1");
             var ArcanePoolResourse = Resources.GetBlueprint<BlueprintAbilityResource>("effc3e386331f864e9e06d19dc218b37");
@@ -85,7 +86,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             var Icon_BlackBlade_LifeDrinkerSelf = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade_LifeDrinkerSelf.png");
             var Icon_BlackBlade_LifeDrinkerShared = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade_LifeDrinkerShared.png");
 
-            var BlackBladeEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>($"BlackBladeEnchantment", bp => {
+            var BlackBladeEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, $"BlackBladeEnchantment", bp => {
                 bp.SetName("");
                 bp.SetDescription("");
                 bp.SetPrefix("");
@@ -109,7 +110,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             var BlackBladeShortSword = CreateBlackBlade(ShortSwordPlus5, BlackBladeEnchantment);
             var BlackBladeSickle = CreateBlackBlade(SicklePlus5, BlackBladeEnchantment);
 
-            var BlackBladeSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("BlackBladeSelection", bp => {
+            var BlackBladeSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "BlackBladeSelection", bp => {
                 bp.SetName("Black Blade Selection");
                 bp.SetDescription("At 3rd level, the bladebound magus’ gains a powerful sentient weapon called a black blade, " +
                     "whose weapon type is chosen by the magus. A magus with this class feature cannot take the familiar magus arcana, " +
@@ -137,7 +138,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.AnyFeatureFromSelection = true;
                 });
             });
-            var BlackBladeArcanePool = Helpers.CreateBlueprint<BlueprintAbilityResource>("BlackBladeArcanePool", bp => {
+            var BlackBladeArcanePool = Helpers.CreateBlueprint<BlueprintAbilityResource>(modContext: TTTContext, "BlackBladeArcanePool", bp => {
                 bp.m_Min = 1;
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 1,
@@ -149,7 +150,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     m_ArchetypesDiv = new BlueprintArchetypeReference[0],
                 };
             });
-            var BlackBladeArcanePoolFeature = Helpers.CreateBlueprint<BlueprintFeature>("BlackBladeArcanePoolFeature", bp => {
+            var BlackBladeArcanePoolFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BlackBladeArcanePoolFeature", bp => {
                 bp.SetName("Black Blade Arcane Pool");
                 bp.SetDescription("A black blade has an arcane pool with a number of points equal to 1 + its Intelligence bonus.");
                 bp.IsClassFeature = true;
@@ -161,7 +162,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.Ranks = 1;
                 bp.m_Icon = ArcanePoolFeature.Icon;
             });
-            var BlackBladeProgression = Helpers.CreateBlueprint<BlueprintProgression>("BlackBladeProgression", bp => {
+            var BlackBladeProgression = Helpers.CreateBlueprint<BlueprintProgression>(modContext: TTTContext, "BlackBladeProgression", bp => {
                 bp.SetName("Black Blade");
                 bp.SetDescription("At level 3 the you will gain a black blade that will grow stronger along side you.");
                 bp.Ranks = 1;
@@ -173,7 +174,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.m_ExclusiveProgression = new BlueprintCharacterClassReference();
                 bp.m_FeaturesRankIncrease = new List<BlueprintFeatureReference>();
             });
-            var BlackBladeProgressionProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("BlackBladeProgressionProperty", bp => {
+            var BlackBladeProgressionProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "BlackBladeProgressionProperty", bp => {
                 bp.AddComponent<ProgressionRankGetter>(c => {
                     c.Progression = BlackBladeProgression.ToReference<BlueprintProgressionReference>();
                     c.UseMax = true;
@@ -181,13 +182,13 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var BlackBladeEgoProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("BlackBladeEgoProperty", bp => {
+            var BlackBladeEgoProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "BlackBladeEgoProperty", bp => {
                 bp.AddComponent<StatValueGetter>(c => {
                     c.Stat = CustomStatType.BlackBladeEgo.Stat();
                 });
             });
 
-            var BlackBladeStrikeEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>($"BlackBladeStrikeEnchantment", bp => {
+            var BlackBladeStrikeEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, $"BlackBladeStrikeEnchantment", bp => {
                 bp.SetName("Black Blade Strike");
                 bp.SetDescription("The Black Blade gains a +1 bonus on damage rolls. For every four levels beyond 1st, " +
                     "this bonus increases by 1.");
@@ -198,7 +199,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.WeilderProperty = BlackBladeProgressionProperty.ToReference<BlueprintUnitPropertyReference>();
                 });
             });
-            var BlackBladeStrikeBuff = Helpers.CreateBuff("BlackBladeStrikeBuff", bp => {
+            var BlackBladeStrikeBuff = Helpers.CreateBuff(modContext: TTTContext, "BlackBladeStrikeBuff", bp => {
                 bp.Ranks = 1;
                 bp.SetName("Black Blade Strike");
                 bp.SetDescription("As a free action, the magus can spend a point from the black blade’s arcane pool " +
@@ -210,10 +211,10 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.Enchantment = BlackBladeStrikeEnchantment.ToReference<BlueprintWeaponEnchantmentReference>();
                 });
             });
-            var BlackBladeStrikeAbility = Helpers.CreateBlueprint<BlueprintAbility>("BlackBladeStrikeAbility", bp => {
+            var BlackBladeStrikeAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "BlackBladeStrikeAbility", bp => {
                 bp.SetName(BlackBladeStrikeBuff.m_DisplayName);
                 bp.SetDescription(BlackBladeStrikeBuff.Description);
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "1 minute");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Duration", "1 minute");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
                 bp.Range = AbilityRange.Personal;
                 bp.Type = AbilityType.Special;
@@ -247,7 +248,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     };
                 });
             });
-            var BlackBladeStrike = Helpers.CreateBlueprint<BlueprintFeature>("BlackBladeStrike", bp => {
+            var BlackBladeStrike = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BlackBladeStrike", bp => {
                 bp.SetName(BlackBladeStrikeAbility.m_DisplayName);
                 bp.SetDescription(BlackBladeStrikeAbility.m_Description);
                 bp.IsClassFeature = true;
@@ -261,7 +262,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.m_Icon = BlackBladeStrikeBuff.Icon;
             });
 
-            var BlackBladeEnergyAttunementCold = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>($"BlackBladeEnergyAttunementCold", bp => {
+            var BlackBladeEnergyAttunementCold = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, $"BlackBladeEnergyAttunementCold", bp => {
                 bp.SetName("Energy Attunement");
                 bp.SetDescription("The Black Blade's damage is converted into cold damage.");
                 bp.SetPrefix("");
@@ -277,7 +278,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     };
                 });
             });
-            var BlackBladeEnergyAttunementElectricity = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>($"BlackBladeEnergyAttunementElectricity", bp => {
+            var BlackBladeEnergyAttunementElectricity = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, $"BlackBladeEnergyAttunementElectricity", bp => {
                 bp.SetName("Energy Attunement");
                 bp.SetDescription("The Black Blade's damage is converted into electricity damage.");
                 bp.SetPrefix("");
@@ -293,7 +294,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     };
                 });
             });
-            var BlackBladeEnergyAttunementFire = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>($"BlackBladeEnergyAttunementFire", bp => {
+            var BlackBladeEnergyAttunementFire = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, $"BlackBladeEnergyAttunementFire", bp => {
                 bp.SetName("Energy Attunement");
                 bp.SetDescription("The Black Blade's damage is converted into fire damage.");
                 bp.SetPrefix("");
@@ -309,7 +310,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     };
                 });
             });
-            var BlackBladeEnergyAttunementSonic = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>($"BlackBladeEnergyAttunementSonic", bp => {
+            var BlackBladeEnergyAttunementSonic = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, $"BlackBladeEnergyAttunementSonic", bp => {
                 bp.SetName("Energy Attunement");
                 bp.SetDescription("The Black Blade's damage is converted into sonic damage.");
                 bp.SetPrefix("");
@@ -325,7 +326,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     };
                 });
             });
-            var BlackBladeEnergyAttunementForce = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>($"BlackBladeEnergyAttunementForce", bp => {
+            var BlackBladeEnergyAttunementForce = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, $"BlackBladeEnergyAttunementForce", bp => {
                 bp.SetName("Energy Attunement");
                 bp.SetDescription("The Black Blade's damage is converted into force damage.");
                 bp.SetPrefix("");
@@ -340,7 +341,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     };
                 });
             });
-            var BlackBladeEnergyAttunementBuff = Helpers.CreateBuff("BlackBladeEnergyAttunementBuff", bp => {
+            var BlackBladeEnergyAttunementBuff = Helpers.CreateBuff(modContext: TTTContext, "BlackBladeEnergyAttunementBuff", bp => {
                 bp.Ranks = 1;
                 bp.SetName("Energy Attunement");
                 bp.SetDescription("At 5th level, as a free action, the wielder can spend a point of his black blade’s arcane pool to have it deal " +
@@ -390,12 +391,12 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 BlackBladeEnergyAttunementBuff,
                 Icon_BlackBlade_ElementalAttunment_Force
             );
-            var BlackBladeEnergyAttunementBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("BlackBladeEnergyAttunementBaseAbility", bp => {
+            var BlackBladeEnergyAttunementBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "BlackBladeEnergyAttunementBaseAbility", bp => {
                 bp.SetName("Energy Attunement");
                 bp.SetDescription("At 5th level, as a free action, a wielder can spend a point of his black blade’s arcane pool to have it deal one " +
                     "of the following types of damage instead of weapon damage: cold, electricity, or fire. He can spend 2 points from the black " +
                     "blade’s arcane pool to deal sonic or force damage instead of weapon damage. This effect lasts until the start of the wielder’s next turn.");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.LocalizedDuration", "1 round");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.LocalizedDuration", "1 round");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
                 bp.m_Icon = Icon_BlackBlade_ElementalAttunment_Base;
                 bp.ActionType = UnitCommand.CommandType.Free;
@@ -414,7 +415,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     };
                 });
             });
-            var BlackBladeEnergyAttunement = Helpers.CreateBlueprint<BlueprintFeature>("BlackBladeEnergyAttunement", bp => {
+            var BlackBladeEnergyAttunement = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BlackBladeEnergyAttunement", bp => {
                 bp.SetName(BlackBladeEnergyAttunementBaseAbility.m_DisplayName);
                 bp.SetDescription(BlackBladeEnergyAttunementBaseAbility.m_Description);
                 bp.IsClassFeature = true;
@@ -429,15 +430,15 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             });
 
 
-            var BlackBladeTransferArcanaAbility = Helpers.CreateBlueprint<BlueprintAbility>("BlackBladeTransferArcanaAbility", bp => {
+            var BlackBladeTransferArcanaAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "BlackBladeTransferArcanaAbility", bp => {
                 bp.SetName("Transfer Arcana — Magus");
                 bp.SetDescription("At 13th level a magus can attempt to siphon points from his black blade’s arcane pool " +
                     "into his own arcane pool. Doing so takes a full-round action and the magus must succeed at a Will saving throw with " +
                     "a DC equal to the black blade’s ego. If the magus succeeds, he regains 1 point to his arcane pool for every 2 points " +
                     "he saps from his black blade. If he fails the saving throw, the magus becomes fatigued. If he is " +
                     "fatigued, he becomes exhausted instead. He cannot use this ability if he is exhausted.");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "1 round");
-                bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.Save", "");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Duration", "1 round");
+                bp.LocalizedSavingThrow = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Save", "");
                 bp.m_Icon = Icon_BlackBlade_TransferArcana;
                 bp.Range = AbilityRange.Personal;
                 bp.Type = AbilityType.Supernatural;
@@ -506,15 +507,15 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.Resource = BlackBladeArcanePool.ToReference<BlueprintAbilityResourceReference>();
                 });
             });
-            var BlackBladeTransferArcanaArcanistAbility = Helpers.CreateBlueprint<BlueprintAbility>("BlackBladeTransferArcanaArcanistAbility", bp => {
+            var BlackBladeTransferArcanaArcanistAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "BlackBladeTransferArcanaArcanistAbility", bp => {
                 bp.SetName("Transfer Arcana — Arcanist");
                 bp.SetDescription("At 13th level a magus can attempt to siphon points from his black blade’s arcane pool " +
                     "into his own arcane reservoir. Doing so takes a full-round action and the arcanist must succeed at a Will saving throw with " +
                     "a DC equal to the black blade’s ego. If the arcanist succeeds, he regains 1 point to his arcane reservoir for every 2 points " +
                     "he saps from his black blade. If he fails the saving throw, the magus becomes fatigued. If he is " +
                     "fatigued, he becomes exhausted instead. He cannot use this ability if he is exhausted.");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "1 round");
-                bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.Save", "");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Duration", "1 round");
+                bp.LocalizedSavingThrow = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Save", "");
                 bp.m_Icon = Icon_BlackBlade_TransferArcana;
                 bp.Range = AbilityRange.Personal;
                 bp.Type = AbilityType.Supernatural;
@@ -583,15 +584,15 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.Resource = BlackBladeArcanePool.ToReference<BlueprintAbilityResourceReference>();
                 });
             });
-            var BlackBladeTransferArcanaBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("BlackBladeTransferArcanaBaseAbility", bp => {
+            var BlackBladeTransferArcanaBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "BlackBladeTransferArcanaBaseAbility", bp => {
                 bp.SetName("Transfer Arcana");
                 bp.SetDescription("At 13th level a magus can attempt to siphon points from his black blade’s arcane pool " +
                     "into his own arcane pool. Doing so takes a full-round action and the magus must succeed at a Will saving throw with " +
                     "a DC equal to the black blade’s ego. If the magus succeeds, he regains 1 point to his arcane pool for every 2 points " +
                     "he saps from his black blade. If he fails the saving throw, the magus becomes fatigued. If he is " +
                     "fatigued, he becomes exhausted instead. He cannot use this ability if he is exhausted.");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "1 round");
-                bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.Save", "");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Duration", "1 round");
+                bp.LocalizedSavingThrow = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Save", "");
                 bp.m_Icon = Icon_BlackBlade_TransferArcana;
                 bp.Range = AbilityRange.Personal;
                 bp.Type = AbilityType.Supernatural;
@@ -606,7 +607,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     };
                 });
             });
-            var BlackBladeTransferArcana = Helpers.CreateBlueprint<BlueprintFeature>("BlackBladeTransferArcana", bp => {
+            var BlackBladeTransferArcana = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BlackBladeTransferArcana", bp => {
                 bp.SetName(BlackBladeTransferArcanaAbility.m_DisplayName);
                 bp.SetDescription(BlackBladeTransferArcanaAbility.m_Description);
                 bp.IsClassFeature = true;
@@ -620,7 +621,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.m_Icon = BlackBladeTransferArcanaAbility.Icon;
             });
 
-            var BlackBladeSpellDefenseBuff = Helpers.CreateBuff("BlackBladeSpellDefenseBuff", bp => {
+            var BlackBladeSpellDefenseBuff = Helpers.CreateBuff(modContext: TTTContext, "BlackBladeSpellDefenseBuff", bp => {
                 bp.Ranks = 1;
                 bp.SetName("Spell Defense");
                 bp.SetDescription("A wielder of a black black of 17th level or higher can expend an arcane point from his weapon’s arcane pool as a free action; " +
@@ -634,10 +635,10 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     };
                 });
             });
-            var BlackBladeSpellDefenseAbility = Helpers.CreateBlueprint<BlueprintAbility>("BlackBladeSpellDefenseAbility", bp => {
+            var BlackBladeSpellDefenseAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "BlackBladeSpellDefenseAbility", bp => {
                 bp.SetName(BlackBladeSpellDefenseBuff.m_DisplayName);
                 bp.SetDescription(BlackBladeSpellDefenseBuff.Description);
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "1 round");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Duration", "1 round");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
                 bp.Range = AbilityRange.Personal;
                 bp.Type = AbilityType.Special;
@@ -667,7 +668,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     };
                 });
             });
-            var BlackBladeSpellDefense = Helpers.CreateBlueprint<BlueprintFeature>("BlackBladeSpellDefense", bp => {
+            var BlackBladeSpellDefense = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BlackBladeSpellDefense", bp => {
                 bp.SetName(BlackBladeSpellDefenseAbility.m_DisplayName);
                 bp.SetDescription(BlackBladeSpellDefenseAbility.m_Description);
                 bp.IsClassFeature = true;
@@ -681,7 +682,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.m_Icon = BlackBladeSpellDefenseAbility.Icon;
             });
 
-            var BlackBladeLifeDrinkerBase = Helpers.CreateBlueprint<BlueprintAbility>("BlackBladeLifeDrinkerBase", bp => {
+            var BlackBladeLifeDrinkerBase = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "BlackBladeLifeDrinkerBase", bp => {
                 bp.SetName("Life Drinker");
                 bp.SetDescription("At 19th level, each time the wielder kills a living creature with the black blade, he can pick one of the " +
                     "following effects: \n" +
@@ -689,7 +690,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     "Shared - The Black Blade restores 1 point to its arcane pool and the magus restores 1 point to his arcane pool\n" +
                     "Wielder - The Wielder gains a number of temporary hit points equal to the black blade’s ego " +
                     "(these temporary hit points last until spent or 1 minute, whichever is shorter).");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "1 round");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Duration", "1 round");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
                 bp.Range = AbilityRange.Personal;
                 bp.Type = AbilityType.Supernatural;
@@ -705,13 +706,13 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.m_UseActiveVariantForeIcon = true;
                 });
             });
-            var BlackBladeLifeDrinkerBladeEnchantAbility = Helpers.CreateBlueprint<BlueprintAbility>($"BlackBladeLifeDrinkerBladeEnchantAbility", bp => {
+            var BlackBladeLifeDrinkerBladeEnchantAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, $"BlackBladeLifeDrinkerBladeEnchantAbility", bp => {
                 bp.SetName("Life Drinker");
                 bp.SetDescription("");
                 bp.DisableLog = true;
                 bp.m_Icon = Icon_BlackBlade_LifeDrinkerBlade;
-                bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.Save", $"");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", $"");
+                bp.LocalizedSavingThrow = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Save", $"");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Duration", $"");
                 bp.CanTargetSelf = true;
                 bp.ActionType = UnitCommand.CommandType.Free;
                 bp.Type = AbilityType.Supernatural;
@@ -726,7 +727,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     );
                 });
             });
-            var BlackBladeLifeDrinkerBladeEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>($"BlackBladeLifeDrinkerBladeEnchantment", bp => {
+            var BlackBladeLifeDrinkerBladeEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, $"BlackBladeLifeDrinkerBladeEnchantment", bp => {
                 bp.SetName("Life Drinker");
                 bp.SetDescription("Each time the wielder kills a living creature with the black blade, the black blade restores 2 points of its arcane pool.");
                 bp.SetPrefix("");
@@ -745,7 +746,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.TargetKilledByThisDamage = true;
                 });
             });
-            var BlackBladeLifeDrinkerBladeBuff = Helpers.CreateBuff($"BlackBladeLifeDrinkerBladeBuff", bp => {
+            var BlackBladeLifeDrinkerBladeBuff = Helpers.CreateBuff(modContext: TTTContext, $"BlackBladeLifeDrinkerBladeBuff", bp => {
                 bp.Ranks = 1;
                 bp.SetName("Life Drinker — Blade");
                 bp.SetDescription(BlackBladeLifeDrinkerBladeEnchantment.m_Description);
@@ -755,7 +756,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.Enchantment = BlackBladeLifeDrinkerBladeEnchantment.ToReference<BlueprintWeaponEnchantmentReference>();
                 });
             });
-            var BlackBladeLifeDrinkerBladeAbility = Helpers.CreateBlueprint<BlueprintAbility>("BlackBladeLifeDrinkerBladeAbility", bp => {
+            var BlackBladeLifeDrinkerBladeAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "BlackBladeLifeDrinkerBladeAbility", bp => {
                 bp.SetName(BlackBladeLifeDrinkerBladeBuff.m_DisplayName);
                 bp.SetDescription(BlackBladeLifeDrinkerBladeEnchantment.m_Description);
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
@@ -778,13 +779,13 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.m_Buff = BlackBladeLifeDrinkerBladeBuff.ToReference<BlueprintBuffReference>();
                 });
             });
-            var BlackBladeLifeDrinkerSharedEnchantAbility = Helpers.CreateBlueprint<BlueprintAbility>($"BlackBladeLifeDrinkerSharedEnchantAbility", bp => {
+            var BlackBladeLifeDrinkerSharedEnchantAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, $"BlackBladeLifeDrinkerSharedEnchantAbility", bp => {
                 bp.SetName("Life Drinker");
                 bp.SetDescription("");
                 bp.DisableLog = true;
                 bp.m_Icon = Icon_BlackBlade_LifeDrinkerShared;
-                bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.Save", $"");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", $"");
+                bp.LocalizedSavingThrow = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Save", $"");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Duration", $"");
                 bp.CanTargetSelf = true;
                 bp.ActionType = UnitCommand.CommandType.Free;
                 bp.Type = AbilityType.Supernatural;
@@ -804,7 +805,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     );
                 });
             });
-            var BlackBladeLifeDrinkerSharedEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>($"BlackBladeLifeDrinkerSharedEnchantment", bp => {
+            var BlackBladeLifeDrinkerSharedEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, $"BlackBladeLifeDrinkerSharedEnchantment", bp => {
                 bp.SetName("Life Drinker");
                 bp.SetDescription("Each time the wielder kills a living creature with the black blade, " +
                     "the black blade restores 1 point to its arcane pool and the wielder restores 1 point to his arcane pool.");
@@ -824,7 +825,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.TargetKilledByThisDamage = true;
                 });
             });
-            var BlackBladeLifeDrinkerSharedBuff = Helpers.CreateBuff($"BlackBladeLifeDrinkerSharedBuff", bp => {
+            var BlackBladeLifeDrinkerSharedBuff = Helpers.CreateBuff(modContext: TTTContext, $"BlackBladeLifeDrinkerSharedBuff", bp => {
                 bp.Ranks = 1;
                 bp.SetName("Life Drinker — Shared (Magus)");
                 bp.SetDescription(BlackBladeLifeDrinkerSharedEnchantment.m_Description);
@@ -834,7 +835,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.Enchantment = BlackBladeLifeDrinkerSharedEnchantment.ToReference<BlueprintWeaponEnchantmentReference>();
                 });
             });
-            var BlackBladeLifeDrinkerSharedAbility = Helpers.CreateBlueprint<BlueprintAbility>("BlackBladeLifeDrinkerSharedAbility", bp => {
+            var BlackBladeLifeDrinkerSharedAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "BlackBladeLifeDrinkerSharedAbility", bp => {
                 bp.SetName(BlackBladeLifeDrinkerSharedBuff.m_DisplayName);
                 bp.SetDescription(BlackBladeLifeDrinkerSharedBuff.m_Description);
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
@@ -862,13 +863,13 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var BlackBladeLifeDrinkerSharedArcanistEnchantAbility = Helpers.CreateBlueprint<BlueprintAbility>($"BlackBladeLifeDrinkerSharedArcanistEnchantAbility", bp => {
+            var BlackBladeLifeDrinkerSharedArcanistEnchantAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, $"BlackBladeLifeDrinkerSharedArcanistEnchantAbility", bp => {
                 bp.SetName("Life Drinker");
                 bp.SetDescription("");
                 bp.DisableLog = true;
                 bp.m_Icon = Icon_BlackBlade_LifeDrinkerShared;
-                bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.Save", $"");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", $"");
+                bp.LocalizedSavingThrow = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Save", $"");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Duration", $"");
                 bp.CanTargetSelf = true;
                 bp.ActionType = UnitCommand.CommandType.Free;
                 bp.Type = AbilityType.Supernatural;
@@ -888,7 +889,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     );
                 });
             });
-            var BlackBladeLifeDrinkerSharedArcanistEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>($"BlackBladeLifeDrinkerSharedArcanistEnchantment", bp => {
+            var BlackBladeLifeDrinkerSharedArcanistEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, $"BlackBladeLifeDrinkerSharedArcanistEnchantment", bp => {
                 bp.SetName("Life Drinker");
                 bp.SetDescription("Each time the wielder kills a living creature with the black blade, " +
                     "the black blade restores 1 point to its arcane pool and the wielder restores 1 point to his arcane reservoir.");
@@ -908,7 +909,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.TargetKilledByThisDamage = true;
                 });
             });
-            var BlackBladeLifeDrinkerSharedArcanistBuff = Helpers.CreateBuff($"BlackBladeLifeDrinkerSharedArcanistBuff", bp => {
+            var BlackBladeLifeDrinkerSharedArcanistBuff = Helpers.CreateBuff(modContext: TTTContext, $"BlackBladeLifeDrinkerSharedArcanistBuff", bp => {
                 bp.Ranks = 1;
                 bp.SetName("Life Drinker — Shared (Arcanist)");
                 bp.SetDescription(BlackBladeLifeDrinkerSharedArcanistEnchantment.m_Description);
@@ -918,7 +919,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.Enchantment = BlackBladeLifeDrinkerSharedEnchantment.ToReference<BlueprintWeaponEnchantmentReference>();
                 });
             });
-            var BlackBladeLifeDrinkerSharedArcanistAbility = Helpers.CreateBlueprint<BlueprintAbility>("BlackBladeLifeDrinkerSharedArcanistAbility", bp => {
+            var BlackBladeLifeDrinkerSharedArcanistAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "BlackBladeLifeDrinkerSharedArcanistAbility", bp => {
                 bp.SetName(BlackBladeLifeDrinkerSharedArcanistBuff.m_DisplayName);
                 bp.SetDescription(BlackBladeLifeDrinkerSharedArcanistBuff.m_Description);
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
@@ -946,7 +947,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var BlackBladeLifeDrinkerTempHPBuff = Helpers.CreateBuff($"BlackBladeLifeDrinkerTempHPBuff", bp => {
+            var BlackBladeLifeDrinkerTempHPBuff = Helpers.CreateBuff(modContext: TTTContext, $"BlackBladeLifeDrinkerTempHPBuff", bp => {
                 bp.Ranks = 1;
                 bp.SetName("Life Drinker Temp HP");
                 bp.SetDescription("");
@@ -960,13 +961,13 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.RemoveWhenHitPointsEnd = true;
                 });
             });
-            var BlackBladeLifeDrinkerWielderEnchantAbility = Helpers.CreateBlueprint<BlueprintAbility>($"BlackBladeLifeDrinkerWielderEnchantAbility", bp => {
+            var BlackBladeLifeDrinkerWielderEnchantAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, $"BlackBladeLifeDrinkerWielderEnchantAbility", bp => {
                 bp.SetName("Life Drinker");
                 bp.SetDescription("");
                 bp.DisableLog = true;
                 bp.m_Icon = Icon_BlackBlade_LifeDrinkerSelf;
-                bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.Save", $"");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", $"");
+                bp.LocalizedSavingThrow = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Save", $"");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Duration", $"");
                 bp.CanTargetSelf = true;
                 bp.ActionType = UnitCommand.CommandType.Free;
                 bp.Type = AbilityType.Supernatural;
@@ -986,7 +987,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     );
                 });
             });
-            var BlackBladeLifeDrinkerWielderEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>($"BlackBladeLifeDrinkerWielderEnchantment", bp => {
+            var BlackBladeLifeDrinkerWielderEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, $"BlackBladeLifeDrinkerWielderEnchantment", bp => {
                 bp.SetName("Life Drinker");
                 bp.SetDescription("Each time the wielder kills a living creature with the black blade, " +
                     "the wielder gains a number of temporary hit points equal to the black blade’s ego (these temporary hit points last until spent or 1 minute, whichever is shorter).");
@@ -1006,7 +1007,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.TargetKilledByThisDamage = true;
                 });
             });
-            var BlackBladeLifeDrinkerWielderBuff = Helpers.CreateBuff($"BlackBladeLifeDrinkerWielderBuff", bp => {
+            var BlackBladeLifeDrinkerWielderBuff = Helpers.CreateBuff(modContext: TTTContext, $"BlackBladeLifeDrinkerWielderBuff", bp => {
                 bp.Ranks = 1;
                 bp.SetName("Life Drinker — Wielder");
                 bp.SetDescription(BlackBladeLifeDrinkerWielderEnchantment.m_Description);
@@ -1016,7 +1017,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.Enchantment = BlackBladeLifeDrinkerWielderEnchantment.ToReference<BlueprintWeaponEnchantmentReference>();
                 });
             });
-            var BlackBladeLifeDrinkerWielderAbility = Helpers.CreateBlueprint<BlueprintAbility>("BlackBladeLifeDrinkerWielderAbility", bp => {
+            var BlackBladeLifeDrinkerWielderAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "BlackBladeLifeDrinkerWielderAbility", bp => {
                 bp.SetName(BlackBladeLifeDrinkerWielderBuff.m_DisplayName);
                 bp.SetDescription(BlackBladeLifeDrinkerWielderEnchantment.m_Description);
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
@@ -1046,7 +1047,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 BlackBladeLifeDrinkerWielderAbility.ToReference<BlueprintAbilityReference>(),
             };
 
-            var BlackBladeLifeDrinker = Helpers.CreateBlueprint<BlueprintFeature>("BlackBladeLifeDrinker", bp => {
+            var BlackBladeLifeDrinker = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BlackBladeLifeDrinker", bp => {
                 bp.SetName(BlackBladeLifeDrinkerBase.m_DisplayName);
                 bp.SetDescription(BlackBladeLifeDrinkerBase.m_Description);
                 bp.IsClassFeature = true;
@@ -1060,7 +1061,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.m_Icon = BlackBladeLifeDrinkerBase.Icon;
             });
 
-            var BlackBladeBaseStats = Helpers.CreateBlueprint<BlueprintFeature>("BlackBladeBaseStats", bp => {
+            var BlackBladeBaseStats = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BlackBladeBaseStats", bp => {
                 bp.SetName("Black Blade Base Stats");
                 bp.SetDescription("The Black Blade starts with the following stats:\n" +
                     "Ego: 5\n" +
@@ -1090,7 +1091,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                 });
             });
-            var BlackBladeStatIncrease = Helpers.CreateBlueprint<BlueprintFeature>("BlackBladeMentalIncrease", bp => {
+            var BlackBladeStatIncrease = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BlackBladeMentalIncrease", bp => {
                 bp.SetName("Black Blade Stat Increase");
                 bp.SetDescription("The Black Blade's mental stats increase by 1.");
                 bp.Ranks = 8;
@@ -1111,7 +1112,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                 });
             });
-            var BlackBladeEgoIncrease2 = Helpers.CreateBlueprint<BlueprintFeature>("BlackBladeEgoIncrease2", bp => {
+            var BlackBladeEgoIncrease2 = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BlackBladeEgoIncrease2", bp => {
                 bp.SetName("Black Blade Ego Increase");
                 bp.SetDescription("The Black Blade's ego increases by 2.");
                 bp.Ranks = 6;
@@ -1122,7 +1123,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                 });
             });
-            var BlackBladeEgoIncrease3 = Helpers.CreateBlueprint<BlueprintFeature>("BlackBladeEgoIncrease3", bp => {
+            var BlackBladeEgoIncrease3 = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BlackBladeEgoIncrease3", bp => {
                 bp.SetName("Black Blade Ego Increase");
                 bp.SetDescription("The Black Blade's ego increases by 3.");
                 bp.Ranks = 1;
@@ -1133,7 +1134,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                 });
             });
-            var BlackBladeEgoIncrease4 = Helpers.CreateBlueprint<BlueprintFeature>("BlackBladeEgoIncrease4", bp => {
+            var BlackBladeEgoIncrease4 = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BlackBladeEgoIncrease4", bp => {
                 bp.SetName("Black Blade Ego Increase");
                 bp.SetDescription("The Black Blade's ego increases by 4.");
                 bp.Ranks = 1;
@@ -1167,9 +1168,9 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             var MagusArcanaSelection = Resources.GetBlueprint<BlueprintFeature>("e9dc4dfc73eaaf94aae27e0ed6cc9ada");
             var ArcanePoolFeature = Resources.GetBlueprint<BlueprintFeature>("3ce9bb90749c21249adc639031d5eed1");
             var ArcanePoolResourse = Resources.GetBlueprint<BlueprintAbilityResource>("effc3e386331f864e9e06d19dc218b37");
-            var BlackBladeProgression = Resources.GetModBlueprint<BlueprintProgression>("BlackBladeProgression");
+            var BlackBladeProgression = Resources.GetModBlueprint<BlueprintProgression>(modContext: TTTContext, "BlackBladeProgression");
 
-            var BladeBoundArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("BladeBoundArchetype", bp => {
+            var BladeBoundArchetype = Helpers.CreateBlueprint<BlueprintArchetype>(modContext: TTTContext, "BladeBoundArchetype", bp => {
                 bp.SetName("Bladebound");
                 bp.SetDescription("A select group of magi are called to carry a black blade, a sentient " +
                     "weapon of often unknown and possibly unknowable purpose. These weapons become " +
@@ -1177,7 +1178,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     "but as a black blade becomes more aware, its true motivations manifest, and as does its " +
                     "ability to influence its wielder with its ever-increasing ego.");
             });
-            var BladeBoundArcanePool = Helpers.CreateBlueprint<BlueprintFeature>("BladeBoundArcanePool", bp => {
+            var BladeBoundArcanePool = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BladeBoundArcanePool", bp => {
                 bp.SetName(ArcanePoolFeature.m_DisplayName);
                 bp.SetDescription("Instead of the normal arcane pool amount, the bladebound magus’s arcane pool has a number of points " +
                     "equal to 1/3 his level (minimum 1) plus his Intelligence bonus.");
@@ -1252,7 +1253,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             BlueprintBuff buff,
             Sprite icon = null) {
 
-            var EnergyAttunementBuff = Helpers.CreateBuff($"{name}Buff", bp => {
+            var EnergyAttunementBuff = Helpers.CreateBuff(modContext: TTTContext, $"{name}Buff", bp => {
                 bp.Ranks = 1;
                 bp.SetName(DisplayName);
                 bp.SetDescription("");
@@ -1263,10 +1264,10 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var EnergyAttunement = Helpers.CreateBlueprint<BlueprintAbility>(name, bp => {
+            var EnergyAttunement = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, name, bp => {
                 bp.SetName(DisplayName);
                 bp.SetDescription("");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "1 round");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Duration", "1 round");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
                 bp.Range = AbilityRange.Personal;
                 bp.Type = AbilityType.Supernatural;
@@ -1317,9 +1318,9 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             //var LexiconAssemble_BE = Resources.GetBlueprint<BlueprintDialog>("9df5b313d792a424392ae64647e36969");
             var CatergorySplit = Regex.Split(baseWeapon.Category.ToString(), @"(?<!^)(?=[A-Z])");
             var CatergoryName = string.Join(" ", CatergorySplit);
-            var BlackBlade = baseWeapon.CreateCopy($"BlackBlade{baseWeapon.Category}", bp => {
-                bp.m_DisplayNameText = Helpers.CreateString($"{bp.name}.Name", "Black Blade");
-                bp.m_DescriptionText = Helpers.CreateString($"{bp.name}.Description", "A black blade's enhancement bonus increases " +
+            var BlackBlade = baseWeapon.CreateCopy(modContext: TTTContext, $"BlackBlade{baseWeapon.Category}", bp => {
+                bp.m_DisplayNameText = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Name", "Black Blade");
+                bp.m_DescriptionText = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Description", "A black blade's enhancement bonus increases " +
                     "as it gains levels. It is +1 at level 1 and increases by 1 every 4 levels thereafter. " +
                     "A black blade cannot be wielded by anyone other than its owner.");
                 bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { enchant.ToReference<BlueprintWeaponEnchantmentReference>() };
@@ -1338,7 +1339,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
                 */
             });
-            var BlackBladeFeature = Helpers.CreateBlueprint<BlueprintFeature>($"{BlackBlade.name}Feature", bp => {
+            var BlackBladeFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, $"{BlackBlade.name}Feature", bp => {
                 bp.SetName($"{CatergoryName}");
                 bp.SetDescription($"Your Black Blade takes the form of a {CatergoryName}.");
                 bp.Ranks = 1;

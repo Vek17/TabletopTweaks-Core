@@ -43,7 +43,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchCloseToTheAbyss() {
                 if (Main.TTTContext.Fixes.MythicAbilities.IsDisabled("CloseToTheAbyss")) { return; }
                 var MythicDemonGore = Resources.GetBlueprint<BlueprintItemWeapon>("bd4417c15511afe42850fb4d3a6b4a32");
-                var TwoHandedDamageMultiplierEnchantment = Resources.GetModBlueprint<BlueprintWeaponEnchantment>("TwoHandedDamageMultiplierEnchantment");
+                var TwoHandedDamageMultiplierEnchantment = Resources.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TwoHandedDamageMultiplierEnchantment");
 
                 MythicDemonGore.m_Enchantments = MythicDemonGore.m_Enchantments
                     .AppendToArray(TwoHandedDamageMultiplierEnchantment.ToReference<BlueprintWeaponEnchantmentReference>());

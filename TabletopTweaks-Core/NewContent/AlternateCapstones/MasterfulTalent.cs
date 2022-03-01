@@ -3,11 +3,13 @@ using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Mechanics;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.AlternateCapstones {
     class MasterfulTalent {
         public static void AddMasterfulTalent() {
-            var MasterfulTalent = Helpers.CreateBlueprint<BlueprintFeature>("MasterfulTalent", bp => {
+            var MasterfulTalent = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "MasterfulTalent", bp => {
                 bp.SetName("Masterful Talent");
                 bp.SetDescription("At 20th level, the rogue has been a thief, an actor, a merchant, a scout, a confessor, a friend, an assassin, " +
                     "and a dozen more things besides. The rogue gains a +4 bonus on all of her skills.");

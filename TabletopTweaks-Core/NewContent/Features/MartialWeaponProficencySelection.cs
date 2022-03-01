@@ -4,6 +4,8 @@ using Kingmaker.Blueprints.Items.Armors;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Features {
     static class MartialWeaponProficencySelection {
@@ -34,7 +36,7 @@ namespace TabletopTweaks.Core.NewContent.Features {
             var TridentProficiency = Resources.GetBlueprint<BlueprintFeature>("f9565a97342ac594e9b6a495368c1a57");
             var ThrowingAxeProficiency = Resources.GetBlueprint<BlueprintFeature>("579ab5b0c5bbce445a5a9bee1b1fe057");
 
-            var EarthBreakerProficiency = Helpers.CreateBlueprint<BlueprintFeature>("EarthBreakerProficiency", bp => {
+            var EarthBreakerProficiency = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "EarthBreakerProficiency", bp => {
                 bp.SetName("Weapon Proficiency (Earth Breaker)");
                 bp.SetDescription("You become proficient with earth breakers and can use them as a weapon.");
                 bp.Groups = new FeatureGroup[0];
@@ -46,7 +48,7 @@ namespace TabletopTweaks.Core.NewContent.Features {
                     c.WeaponProficiencies = new WeaponCategory[] { WeaponCategory.EarthBreaker };
                 });
             });
-            var BardicheProficiency = Helpers.CreateBlueprint<BlueprintFeature>("BardicheProficiency", bp => {
+            var BardicheProficiency = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BardicheProficiency", bp => {
                 bp.SetName("Weapon Proficiency (Bardiche)");
                 bp.SetDescription("You become proficient with bardiches and can use them as a weapon.");
                 bp.Groups = new FeatureGroup[0];
@@ -58,7 +60,7 @@ namespace TabletopTweaks.Core.NewContent.Features {
                     c.WeaponProficiencies = new WeaponCategory[] { WeaponCategory.Bardiche };
                 });
             });
-            var MartialWeaponProficencySelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("MartialWeaponProficencySelection", bp => {
+            var MartialWeaponProficencySelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "MartialWeaponProficencySelection", bp => {
                 bp.SetName("Martial Weapon Proficency Selection");
                 bp.SetDescription("");
                 bp.Groups = new FeatureGroup[0];

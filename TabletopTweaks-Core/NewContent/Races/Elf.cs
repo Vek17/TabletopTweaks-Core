@@ -9,6 +9,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Races {
@@ -28,7 +29,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
 
         public static void AddElfHeritage() {
 
-            var ElfAbilityModifiers = Helpers.CreateBlueprint<BlueprintFeature>("ElfAbilityModifiers", bp => {
+            var ElfAbilityModifiers = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ElfAbilityModifiers", bp => {
                 bp.IsClassFeature = true;
                 bp.HideInUI = true;
                 bp.Ranks = 1;
@@ -57,7 +58,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
                     c.m_CheckedFacts = new BlueprintUnitFactReference[] { DestinyBeyondBirthMythicFeat.ToReference<BlueprintUnitFactReference>() };
                 }));
             });
-            var ElfNoAlternateTrait = Helpers.CreateBlueprint<BlueprintFeature>("ElfNoAlternateTrait", bp => {
+            var ElfNoAlternateTrait = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ElfNoAlternateTrait", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Racial };
@@ -66,7 +67,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
                 bp.SetName("None");
                 bp.SetDescription("No Alternate Trait");
             });
-            var ElfFieraniFeature = Helpers.CreateBlueprint<BlueprintFeature>("ElfFieraniFeature", bp => {
+            var ElfFieraniFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ElfFieraniFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Racial };
@@ -97,7 +98,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
                 bp.AddTraitReplacment(ElfAbilityModifiers);
                 bp.AddSelectionCallback(ElvenHeritageSelection);
             });
-            var ElfArcaneFocusFeature = Helpers.CreateBlueprint<BlueprintFeature>("ElfArcaneFocusFeature", bp => {
+            var ElfArcaneFocusFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ElfArcaneFocusFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Racial };
@@ -111,7 +112,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
                 bp.AddTraitReplacment(ElvenWeaponFamiliarity);
                 bp.AddSelectionCallback(ElvenHeritageSelection);
             });
-            var ElfLongLimbedFeature = Helpers.CreateBlueprint<BlueprintFeature>("ElfLongLimbedFeature", bp => {
+            var ElfLongLimbedFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ElfLongLimbedFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Racial };
@@ -125,7 +126,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
                 bp.AddTraitReplacment(ElvenWeaponFamiliarity);
                 bp.AddSelectionCallback(ElvenHeritageSelection);
             });
-            var ElfMoonkissedFeature = Helpers.CreateBlueprint<BlueprintFeature>("ElfMoonkissedFeature", bp => {
+            var ElfMoonkissedFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ElfMoonkissedFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Racial };
@@ -139,7 +140,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
                 bp.AddTraitReplacment(ElvenImmunities);
                 bp.AddSelectionCallback(ElvenHeritageSelection);
             });
-            var ElfVigilanceFeature = Helpers.CreateBlueprint<BlueprintFeature>("ElfVigilanceFeature", bp => {
+            var ElfVigilanceFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ElfVigilanceFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Racial };

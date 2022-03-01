@@ -37,6 +37,7 @@ using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.Features {
@@ -219,8 +220,8 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 BlueprintFeature magicalTail7 = Resources.GetBlueprint<BlueprintFeature>("041f91c25586d48469dce6b4575053f6");
                 BlueprintFeature magicalTail8 = Resources.GetBlueprint<BlueprintFeature>("df186ef345849d149bdbf4ddb45aee35");
 
-                var hideousLaughterKitsune = Resources.GetModBlueprint<BlueprintAbility>("HideousLaughterKitsune");
-                var heroismKitsune = Resources.GetModBlueprint<BlueprintAbility>("HeroismKitsune");
+                var hideousLaughterKitsune = Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "HideousLaughterKitsune");
+                var heroismKitsune = Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "HeroismKitsune");
 
                 var magicalTailDescription = "You gain a new {g|Encyclopedia:Special_Abilities}spell-like ability{/g}, each usable twice per day," +
                                              " from the following list, in order:\n1. vanish\n2. hideous laughter\n3. blur\n4. invisibility\n5. heroism\n6." +
@@ -335,7 +336,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
 
                 var MountedCombatBuff = Resources.GetBlueprint<BlueprintBuff>("5008df9965da43c593c98ed7e6cacfc6");
                 var MountedCombatCooldownBuff = Resources.GetBlueprint<BlueprintBuff>("5c9ef8224acdbab4fbaf59c710d0ef23");
-                var TrickRiding = Resources.GetModBlueprint<BlueprintFeature>("TrickRiding");
+                var TrickRiding = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TrickRiding");
                 var TrickRidingCooldownBuff = Resources.GetBlueprint<BlueprintBuff>("5c9ef8224acdbab4fbaf59c710d0ef23");
                 MountedCombatBuff.RemoveComponents<MountedCombat>();
                 MountedCombatBuff.RemoveComponents<MountedCombatTTT>();
@@ -476,9 +477,9 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("ShatterDefenses")) { return; }
 
                 var ShatterDefenses = Resources.GetBlueprint<BlueprintFeature>("61a17ccbbb3d79445b0926347ec07577");
-                var ShatterDefensesBuff = Resources.GetModBlueprint<BlueprintBuff>("ShatterDefensesBuff");
-                var ShatterDefensesMythicFeat = Resources.GetModBlueprint<BlueprintFeature>("ShatterDefensesMythicFeat");
-                var ShatterDefensesMythicBuff = Resources.GetModBlueprint<BlueprintBuff>("ShatterDefensesMythicBuff");
+                var ShatterDefensesBuff = Resources.GetModBlueprint<BlueprintBuff>(modContext: TTTContext, "ShatterDefensesBuff");
+                var ShatterDefensesMythicFeat = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "ShatterDefensesMythicFeat");
+                var ShatterDefensesMythicBuff = Resources.GetModBlueprint<BlueprintBuff>(modContext: TTTContext, "ShatterDefensesMythicBuff");
 
                 ShatterDefenses.RemoveComponents<AddMechanicsFeature>();
                 ShatterDefenses.RemoveComponents<AddFacts>();

@@ -6,6 +6,7 @@ using Kingmaker.Designers.Mechanics.Recommendations;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -15,7 +16,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var Icon_GreaterDispelFocus = AssetLoader.LoadInternal("Feats", "Icon_GreaterDispelFocus.png");
             var DispelMagic = Resources.GetBlueprintReference<BlueprintAbilityReference>("92681f181b507b34ea87018e8f7a528a");
 
-            var DispelFocusFeature = Helpers.CreateBlueprint<BlueprintFeature>("DispelFocusFeature", bp => {
+            var DispelFocusFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DispelFocusFeature", bp => {
                 bp.SetName("Dispel Focus");
                 bp.SetDescription("You are skilled at the art of dispelling.\n" +
                     "Whenever you attempt a dispel check based on your " +
@@ -37,7 +38,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            var DispelFocusGreaterFeature = Helpers.CreateBlueprint<BlueprintFeature>("DispelFocusGreaterFeature", bp => {
+            var DispelFocusGreaterFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DispelFocusGreaterFeature", bp => {
                 bp.SetName("Greater Dispel Focus");
                 bp.SetDescription("You are a master of the art of dispelling.\n" +
                     "Whenever you attempt a dispel check based on your " +

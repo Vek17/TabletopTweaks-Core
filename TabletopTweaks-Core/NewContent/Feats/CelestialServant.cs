@@ -3,15 +3,16 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Designers.Mechanics.Facts;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class CelestialServant {
         public static void AddCelestialServant() {
-            var TemplateCelestial = Resources.GetModBlueprint<BlueprintFeature>("TemplateCelestial");
+            var TemplateCelestial = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TemplateCelestial");
             var AasimarRace = Resources.GetBlueprint<BlueprintRace>("b7f02ba92b363064fb873963bec275ee");
 
-            var CelestialServant = Helpers.CreateBlueprint<BlueprintFeature>("CelestialServant", bp => {
+            var CelestialServant = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "CelestialServant", bp => {
                 bp.SetName("Celestial Servant");
                 bp.SetDescription("Your animal companion, familiar, or mount gains the celestial template and becomes a magical beast, " +
                     "though you may still treat it as an animal when using Handle Animal, wild empathy, or any other spells or class abilities " +

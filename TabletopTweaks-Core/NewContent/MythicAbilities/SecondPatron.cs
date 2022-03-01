@@ -6,6 +6,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Utility;
 using System.Linq;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 using static TabletopTweaks.Core.Main;
 
@@ -18,7 +19,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
 
             var WitchHexAmelioratingFeature = Resources.GetBlueprint<BlueprintFeature>("3cdd3660fb69f3e4db0160fa97dfa85d");
 
-            var SecondPatronRequisiteFeature = Helpers.CreateBlueprint<BlueprintFeature>("SecondPatronRequisiteFeature", bp => {
+            var SecondPatronRequisiteFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "SecondPatronRequisiteFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.HideInUI = true;
                 bp.Ranks = 1;
@@ -26,7 +27,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.SetName("Witch Patron");
                 bp.SetDescription("Patron Requisite Feature");
             });
-            var SecondPatronFeature = Helpers.CreateBlueprint<BlueprintFeatureSelection>("SecondPatronFeature", bp => {
+            var SecondPatronFeature = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "SecondPatronFeature", bp => {
                 bp.SetName("Second Patron");
                 bp.SetDescription("You've attracted the favor of a second patron.\n" +
                     "You select a second patron, gaining all its benifits.");

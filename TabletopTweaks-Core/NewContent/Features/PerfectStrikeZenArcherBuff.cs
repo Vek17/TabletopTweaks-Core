@@ -4,12 +4,14 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Mechanics;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Features {
     class PerfectStrikeZenArcherBuff {
         public static void AddPerfectStrikeZenArcherBuff() {
             var PerfectStrikeOwnerBuff = Resources.GetBlueprint<BlueprintBuff>("9a41e6d073b42564b9f00ad83b7d3b52");
-            var PerfectStrikeZenArcherBuff = Helpers.CreateBuff("PerfectStrikeZenArcherBuff", bp => {
+            var PerfectStrikeZenArcherBuff = Helpers.CreateBuff(modContext: TTTContext, "PerfectStrikeZenArcherBuff", bp => {
                 bp.SetName(PerfectStrikeOwnerBuff.m_DisplayName);
                 bp.SetDescription($"{PerfectStrikeOwnerBuff.Description}\n" +
                     $"At 10th level, the monk can roll his attack roll three times and take the highest result.");
@@ -27,7 +29,7 @@ namespace TabletopTweaks.Core.NewContent.Features {
                     c.Value = new ContextValue();
                 }));
             });
-            var PerfectStrikeZenArcherUpgrade = Helpers.CreateBlueprint<BlueprintFeature>("PerfectStrikeZenArcherUpgrade", bp => {
+            var PerfectStrikeZenArcherUpgrade = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "PerfectStrikeZenArcherUpgrade", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.m_Icon = PerfectStrikeOwnerBuff.Icon;

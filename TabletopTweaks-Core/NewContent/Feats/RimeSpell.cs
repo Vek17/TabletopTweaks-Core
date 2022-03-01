@@ -18,6 +18,7 @@ using System.Linq;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewContent.MechanicsChanges.MetamagicExtention;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
@@ -34,7 +35,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var Icon_MetamagicRodRimeNormal = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodRimeNormal.png", 64);
             var Icon_MetamagicRodRimeGreater = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodRimeGreater.png", 64);
 
-            var RimeSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>("RimeSpellFeat", bp => {
+            var RimeSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "RimeSpellFeat", bp => {
                 bp.SetName("Metamagic (Rime Spell)");
                 bp.SetDescription("Creatures damaged by your spells with the cold descriptor become entangled.\n" +
                     "Benefit: The frost of your cold spell clings to the target, impeding it for a short time. " +
@@ -59,7 +60,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
                 bp.AddComponent<RecommendationRequiresSpellbook>();
             });
-            var FavoriteMetamagicRime = Helpers.CreateBlueprint<BlueprintFeature>("FavoriteMetamagicRime", bp => {
+            var FavoriteMetamagicRime = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "FavoriteMetamagicRime", bp => {
                 bp.SetName("Favorite Metamagic — Rime");
                 bp.m_Description = FavoriteMetamagicSelection.m_Description;
                 //bp.m_Icon = Icon_IntensifiedSpellFeat;
@@ -72,7 +73,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
                 bp.AddPrerequisiteFeature(RimeSpellFeat);
             });
-            var RimeEntagledBuff = Helpers.CreateBuff("RimeEntagledBuff", bp => {
+            var RimeEntagledBuff = Helpers.CreateBuff(modContext: TTTContext, "RimeEntagledBuff", bp => {
                 bp.m_DisplayName = EntangleBuff.m_DisplayName;
                 bp.m_Description = EntangleBuff.m_Description;
                 bp.m_Icon = IcyPrisonEntangledBuff.Icon;
@@ -100,7 +101,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 );
             }
             var MetamagicRodsRime = ItemTools.CreateAllMetamagicRods(
-                rodName: "Rime Metamagic Rod",
+                modContext: TTTContext, rodName: "Rime Metamagic Rod",
                 lesserIcon: Icon_MetamagicRodRimeLesser,
                 normalIcon: Icon_MetamagicRodRimeNormal,
                 greaterIcon: Icon_MetamagicRodRimeGreater,
@@ -140,14 +141,14 @@ namespace TabletopTweaks.Core.NewContent.Feats {
 
             RE_Chapter3VendorTableMagic.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>("MetamagicRodNormalRime"),
+                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodNormalRime"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;
             });
             KrebusSlaveTraderTable.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>("MetamagicRodGreaterRime"),
+                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodGreaterRime"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;

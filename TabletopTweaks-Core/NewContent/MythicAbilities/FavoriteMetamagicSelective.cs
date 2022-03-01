@@ -2,6 +2,7 @@
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -10,7 +11,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
             var SelectiveSpellFeat = Resources.GetBlueprint<BlueprintFeature>("85f3340093d144dd944fff9a9adfd2f2");
             var FavoriteMetamagicSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
 
-            var FavoriteMetamagicSelective = Helpers.CreateBlueprint<BlueprintFeature>("FavoriteMetamagicSelective", bp => {
+            var FavoriteMetamagicSelective = Helpers.CreateBlueprint<BlueprintFeature>(TTTContext, "FavoriteMetamagicSelective", bp => {
                 bp.SetName("Favorite Metamagic — Selective");
                 bp.m_Description = FavoriteMetamagicSelection.m_Description;
                 //bp.m_Icon = Icon_IntensifiedSpellFeat;

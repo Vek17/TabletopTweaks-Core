@@ -6,13 +6,14 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicFeats {
     static class MythicIntimidatingProwess {
         public static void AddMythicIntimidatingProwess() {
             var IntimidatingProwess = Resources.GetBlueprint<BlueprintFeature>("d76497bfc48516e45a0831628f767a0f");
-            var IntimidatingProwessMythicFeature = Helpers.CreateBlueprint<BlueprintFeature>("IntimidatingProwessMythicFeature", bp => {
+            var IntimidatingProwessMythicFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "IntimidatingProwessMythicFeature", bp => {
                 bp.m_Icon = IntimidatingProwess.m_Icon;
                 bp.SetName("Intimidating Prowess (Mythic)");
                 bp.SetDescription("Your mythic stature makes others uneasy.\n" +

@@ -2,6 +2,7 @@
 using Kingmaker.Blueprints.Classes.Selection;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -11,7 +12,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
             var ExtraMythicAbilityMythicFeat = Resources.GetBlueprint<BlueprintFeatureSelection>("8a6a511c55e67d04db328cc49aaad2b8");
             var icon = AssetLoader.LoadInternal("Feats", "Icon_ArmoredMight.png");
 
-            var ArmoredMightFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArmoredMightFeature", bp => {
+            var ArmoredMightFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmoredMightFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.ReapplyOnLevelUp = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.MythicAbility };

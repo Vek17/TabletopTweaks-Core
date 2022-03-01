@@ -5,6 +5,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -13,7 +14,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
             var BlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("6d9dcc2a59210a14891aeedb09d406aa");
             var BlessingResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("d128a6332e4ea7c4a9862b9fdb358cca");
 
-            var AbundantBlessingFeature = Helpers.CreateBlueprint<BlueprintFeature>("AbundantBlessingFeature", bp => {
+            var AbundantBlessingFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "AbundantBlessingFeature", bp => {
                 bp.SetName("Abundant Blessing");
                 bp.SetDescription("You've learned a way to increase the number of uses of your Blessing ability.\n" +
                     "Benefit: You can use Blessings a number of additional times per day equal to your mythic rank.");

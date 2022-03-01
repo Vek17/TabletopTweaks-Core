@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
-using TabletopTweaks.Core.Modlogic;
+using TabletopTweaks.Core.ModLogic;
 
 namespace TabletopTweaks.Core.Utilities {
     public static class ILUtils {

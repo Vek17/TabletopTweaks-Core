@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -15,7 +16,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
         public static void AddAnimalAlly() {
             var MountTargetFeature = Resources.GetBlueprint<BlueprintFeature>("cb06f0e72ffb5c640a156bd9f8000c1d");
             var AnimalCompanionArchetypeSelection = Resources.GetBlueprint<BlueprintFeature>("65af7290b4efd5f418132141aaa36c1b");
-            var NatureSoul = Resources.GetModBlueprint<BlueprintFeature>("NatureSoul");
+            var NatureSoul = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "NatureSoul");
             var AnimalCompanionSelectionRanger = Resources.GetBlueprint<BlueprintFeatureSelection>("ee63330662126374e8785cc901941ac7");
 
             var AnimalCompanionFeatureDog = Resources.GetBlueprint<BlueprintFeature>("f894e003d31461f48a02f5caec4e3359");
@@ -27,7 +28,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var AnimalCompanionFeatureHorse_PreorderBonus = Resources.GetBlueprint<BlueprintFeature>("bfeb9be0a3c9420b8b2beecc8171029c");
 
             var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
-            var AnimalAllyRank = Helpers.CreateBlueprint<BlueprintFeature>("AnimalAllyRank", bp => {
+            var AnimalAllyRank = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "AnimalAllyRank", bp => {
                 bp.IsClassFeature = true;
                 bp.HideInUI = true;
                 bp.Ranks = 20;
@@ -38,7 +39,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            var AnimalAllyProgression = Helpers.CreateBlueprint<BlueprintProgression>("AnimalAllyProgression", bp => {
+            var AnimalAllyProgression = Helpers.CreateBlueprint<BlueprintProgression>(modContext: TTTContext, "AnimalAllyProgression", bp => {
                 bp.SetName("Animal Ally Progression");
                 bp.SetName("");
                 bp.HideInUI = true;
@@ -59,7 +60,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     .ToArray();
             });
 
-            var AnimalAllyFeatureSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("AnimalAllyFeatureSelection", bp => {
+            var AnimalAllyFeatureSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "AnimalAllyFeatureSelection", bp => {
                 bp.SetName("Animal Ally");
                 bp.SetDescription("You gain an animal companion as if you were a druid of your character level –3. Unlike normal animals of its kind, " +
                     "an animal companion's Hit Dice, abilities, skills, and feats advance as you advance in level.");

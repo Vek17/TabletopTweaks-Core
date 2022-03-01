@@ -4,6 +4,7 @@ using Kingmaker.UnitLogic.Abilities;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
@@ -13,7 +14,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
             var PersistentSpellFeat = Resources.GetBlueprint<BlueprintFeature>("cd26b9fa3f734461a0fcedc81cafaaac");
             var FavoriteMetamagicSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
 
-            var FavoriteMetamagicPersistent = Helpers.CreateBlueprint<BlueprintFeature>("FavoriteMetamagicPersistent", bp => {
+            var FavoriteMetamagicPersistent = Helpers.CreateBlueprint<BlueprintFeature>(TTTContext, "FavoriteMetamagicPersistent", bp => {
                 bp.SetName("Favorite Metamagic — Persistent");
                 bp.m_Description = FavoriteMetamagicSelection.m_Description;
                 //bp.m_Icon = Icon_IntensifiedSpellFeat;

@@ -6,6 +6,8 @@ using Kingmaker.Designers.Mechanics.Facts;
 using System.Collections.Generic;
 using System.Linq;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Archetypes {
     static class Myrmidarch {
@@ -27,17 +29,17 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             var WeaponTrainingRankUpSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("5f3cc7b9a46b880448275763fe70c0b0");
             var ArmorTraining = Resources.GetBlueprint<BlueprintFeature>("3c380607706f209499d951b29d3c44f3");
             var ArmorMastery = Resources.GetBlueprint<BlueprintFeature>("ae177f17cfb45264291d4d7c2cb64671");
-            var ArmorTrainingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("ArmorTrainingSelection");
-            var FighterTrainingFakeLevel = Resources.GetModBlueprintReference<BlueprintFeatureBaseReference>("FighterTrainingFakeLevel");
+            var ArmorTrainingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "ArmorTrainingSelection");
+            var FighterTrainingFakeLevel = Resources.GetModBlueprintReference<BlueprintFeatureBaseReference>(modContext: TTTContext, "FighterTrainingFakeLevel");
 
             var ArcaneMediumArmor = Resources.GetBlueprintReference<BlueprintFeatureBaseReference>("b24897e082896654c8dd64c8fb677363");
             var ArcaneHeavyArmor = Resources.GetBlueprintReference<BlueprintFeatureBaseReference>("447ca91389e5c9246acb2c640d63f4da");
 
-            var MyrmidarchSpellLevels = Helpers.CreateBlueprint<BlueprintSpellsTable>("MyrmidarchSpellLevels", bp => {
+            var MyrmidarchSpellLevels = Helpers.CreateBlueprint<BlueprintSpellsTable>(modContext: TTTContext, "MyrmidarchSpellLevels", bp => {
                 bp.Levels = SwordSaintSpellLevels.Levels.Select(level => SpellTools.CreateSpellLevelEntry(level.Count)).ToArray();
             });
 
-            var MyrmidarchSpellbook = MagusClass.Spellbook.CreateCopy("MyrmidarchSpellbook", bp => {
+            var MyrmidarchSpellbook = MagusClass.Spellbook.CreateCopy(TTTContext, "MyrmidarchSpellbook",bp => {
                 bp.m_SpellsPerDay = MyrmidarchSpellLevels.ToReference<BlueprintSpellsTableReference>();
                 SpellTools.Spellbook.AllSpellbooks.Add(bp);
             });
@@ -60,7 +62,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 SpellTools.Spellbook.AllSpellbooks.Add(bp);
             });
             */
-            var MyrmidarchFighterTraining = Helpers.CreateBlueprint<BlueprintFeature>("MyrmidarchFighterTraining", bp => {
+            var MyrmidarchFighterTraining = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "MyrmidarchFighterTraining", bp => {
                 bp.SetName("Fighter Training");
                 bp.SetDescription("At 7th level, a myrmidarch counts his magus level –3 as his fighter level for " +
                     "the purpose of qualifying for feats (if he has levels in fighter, these levels stack).");
@@ -75,7 +77,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var MyrmidarchFighterTrainingUpgrade = Helpers.CreateBlueprint<BlueprintProgression>("MyrmidarchFighterTrainingUpgrade", bp => {
+            var MyrmidarchFighterTrainingUpgrade = Helpers.CreateBlueprint<BlueprintProgression>(modContext: TTTContext, "MyrmidarchFighterTrainingUpgrade", bp => {
                 bp.SetName("Fighter Training Upgrade");
                 bp.SetDescription("At 10th level, the myrmidarch treats his magus levels as fighter levels for the purposes of fighter training.");
                 bp.m_Icon = FighterTraining.Icon;
@@ -96,7 +98,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.AddClass(MagusClass);
             });
 
-            var MyrmidarchArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("MyrmidarchArchetype", bp => {
+            var MyrmidarchArchetype = Helpers.CreateBlueprint<BlueprintArchetype>(modContext: TTTContext, "MyrmidarchArchetype", bp => {
                 bp.SetName("Myrmidarch");
                 bp.SetDescription("The myrmidarch is a skilled specialist, using magic to supplement and augment his martial mastery. " +
                     "Less inclined to mix the two than a typical magus, the myrmidarch seeks supremacy with blade, bow, and armor.");

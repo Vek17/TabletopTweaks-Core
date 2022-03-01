@@ -8,6 +8,7 @@ using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Races {
@@ -30,7 +31,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
 
         public static void AddDwarfHeritage() {
 
-            var DwarfAbilityModifiers = Helpers.CreateBlueprint<BlueprintFeature>("DwarfAbilityModifiers", bp => {
+            var DwarfAbilityModifiers = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DwarfAbilityModifiers", bp => {
                 bp.IsClassFeature = true;
                 bp.HideInUI = true;
                 bp.Ranks = 1;
@@ -59,7 +60,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
                     c.m_CheckedFacts = new BlueprintUnitFactReference[] { DestinyBeyondBirthMythicFeat.ToReference<BlueprintUnitFactReference>() };
                 }));
             });
-            var DwarfNoAlternateTrait = Helpers.CreateBlueprint<BlueprintFeature>("DwarfNoAlternateTrait", bp => {
+            var DwarfNoAlternateTrait = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DwarfNoAlternateTrait", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Racial };
@@ -68,7 +69,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
                 bp.SetName("None");
                 bp.SetDescription("No Alternate Trait");
             });
-            var DwarfStoutheartFeature = Helpers.CreateBlueprint<BlueprintFeature>("DwarfStoutheartFeature", bp => {
+            var DwarfStoutheartFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DwarfStoutheartFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Racial };
@@ -99,7 +100,7 @@ namespace TabletopTweaks.Core.NewContent.Races {
                 bp.AddTraitReplacment(DwarfAbilityModifiers);
                 bp.AddSelectionCallback(DwarfHeritageSelection);
             });
-            var DwarfStoicNegotiatorFeature = Helpers.CreateBlueprint<BlueprintFeature>("DwarfStoicNegotiatorFeature", bp => {
+            var DwarfStoicNegotiatorFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DwarfStoicNegotiatorFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Racial };

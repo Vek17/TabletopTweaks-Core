@@ -7,17 +7,18 @@ using Kingmaker.UnitLogic.Class.LevelUp;
 using System.Linq;
 using System.Text;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents.Prerequisites {
     [TypeId("08d2e61c79c64ee1afdca9fc834ffc32")]
     public class PrerequisiteMythicSpellbook : Prerequisite {
 
         [InitializeStaticString]
-        private static readonly LocalizedString CastCastSpellsOfLevel = Helpers.CreateString("PrerequisiteMythicSpellbook.UI", "Can cast spells of level");
+        private static readonly LocalizedString CastCastSpellsOfLevel = Helpers.CreateString(modContext: TTTContext, "PrerequisiteMythicSpellbook.UI", "Can cast spells of level");
         [InitializeStaticString]
-        private static readonly LocalizedString FromMythicSpellbook = Helpers.CreateString("PrerequisiteMythicSpellbook.UI", "or higher from mythic spellbook");
+        private static readonly LocalizedString FromMythicSpellbook = Helpers.CreateString(modContext: TTTContext, "PrerequisiteMythicSpellbook.UI", "or higher from mythic spellbook");
         [InitializeStaticString]
-        private static readonly LocalizedString HasMythicSpellbook = Helpers.CreateString("PrerequisiteMythicSpellbook.UI", "Has mythic spellbook");
+        private static readonly LocalizedString HasMythicSpellbook = Helpers.CreateString(modContext: TTTContext, "PrerequisiteMythicSpellbook.UI", "Has mythic spellbook");
         public override bool CheckInternal([CanBeNull] FeatureSelectionState selectionState, [NotNull] UnitDescriptor unit, [CanBeNull] LevelUpState state) {
             return unit.Spellbooks
                 .Where(book => book.IsMythic)

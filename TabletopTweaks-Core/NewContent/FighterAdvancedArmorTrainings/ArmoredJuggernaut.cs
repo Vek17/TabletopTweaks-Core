@@ -8,15 +8,16 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
     class ArmoredJuggernaut {
         public static void AddArmoredJuggernaut() {
             var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
-            var FighterArmorTrainingProperty = Resources.GetModBlueprintReference<BlueprintUnitPropertyReference>("FighterArmorTrainingProperty");
+            var FighterArmorTrainingProperty = Resources.GetModBlueprintReference<BlueprintUnitPropertyReference>(modContext: TTTContext, "FighterArmorTrainingProperty");
 
-            var ArmoredJuggernautLightEffect = Helpers.CreateBlueprint<BlueprintFeature>("ArmoredJuggernautLightEffect", bp => {
+            var ArmoredJuggernautLightEffect = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmoredJuggernautLightEffect", bp => {
                 bp.SetName("Armored Juggernaut Effect");
                 bp.SetDescription("Armored Juggernaut");
                 bp.IsClassFeature = true;
@@ -47,7 +48,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                     c.m_UseMax = true;
                 });
             });
-            var ArmoredJuggernautMediumEffect = Helpers.CreateBlueprint<BlueprintFeature>("ArmoredJuggernautMediumEffect", bp => {
+            var ArmoredJuggernautMediumEffect = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmoredJuggernautMediumEffect", bp => {
                 bp.SetName("Armored Juggernaut Effect");
                 bp.SetDescription("Armored Juggernaut");
                 bp.IsClassFeature = true;
@@ -76,7 +77,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                     c.m_UseMax = true;
                 });
             });
-            var ArmoredJuggernautHeavyEffect = Helpers.CreateBlueprint<BlueprintFeature>("ArmoredJuggernautHeavyEffect", bp => {
+            var ArmoredJuggernautHeavyEffect = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmoredJuggernautHeavyEffect", bp => {
                 bp.SetName("Armored Juggernaut Effect");
                 bp.SetDescription("Armored Juggernaut");
                 bp.IsClassFeature = true;
@@ -117,13 +118,13 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                 });
             });
 
-            var ArmoredJuggernautDRProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("ArmoredJuggernautDRProperty", bp => {
+            var ArmoredJuggernautDRProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "ArmoredJuggernautDRProperty", bp => {
                 bp.AddComponent<ArmoredJuggernautDRProperty>(c => {
                     c.FighterArmorTrainingProperty = FighterArmorTrainingProperty;
                 });
             });
 
-            var ArmoredJuggernautFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArmoredJuggernautFeature", bp => {
+            var ArmoredJuggernautFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmoredJuggernautFeature", bp => {
                 bp.SetName("Armored Juggernaut");
                 bp.SetDescription("When wearing heavy armor, the fighter gains DR 1/—. At 7th level, the fighter gains DR 1/— when wearing medium armor, " +
                     "and DR 2/— when wearing heavy armor. At 11th level, the fighter gains DR 1/— when wearing light armor, DR 2/— when wearing medium armor, " +

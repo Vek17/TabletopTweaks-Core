@@ -11,6 +11,7 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Utility;
 using System;
 using System.Linq;
+using TabletopTweaks.Core.ModLogic;
 
 namespace TabletopTweaks.Core.Utilities {
     static class FeatTools {
@@ -69,8 +70,8 @@ namespace TabletopTweaks.Core.Utilities {
         public static void AddAsMythicFeat(BlueprintFeature feature) {
             Selections.MythicFeatSelection.AddFeatures(feature);
         }
-        public static BlueprintFeature CreateSkillFeat(string name, StatType skill1, StatType skill2, Action<BlueprintFeature> init = null) {
-            var SkillFeat = Helpers.CreateBlueprint<BlueprintFeature>(name, bp => {
+        public static BlueprintFeature CreateSkillFeat(ModContextBase modContext, string name, StatType skill1, StatType skill2, Action<BlueprintFeature> init = null) {
+            var SkillFeat = Helpers.CreateBlueprint<BlueprintFeature>(modContext, name, bp => {
                 bp.Ranks = 1;
                 bp.ReapplyOnLevelUp = true;
                 bp.IsClassFeature = true;
@@ -143,8 +144,8 @@ namespace TabletopTweaks.Core.Utilities {
             return SkillFeat;
         }
 
-        public static BlueprintFeature CreateExtraResourceFeat(string name, BlueprintAbilityResource resource, int amount, Action<BlueprintFeature> init = null) {
-            var extraResourceFeat = Helpers.CreateBlueprint<BlueprintFeature>(name, bp => {
+        public static BlueprintFeature CreateExtraResourceFeat(ModContextBase modContext, string name, BlueprintAbilityResource resource, int amount, Action<BlueprintFeature> init = null) {
+            var extraResourceFeat = Helpers.CreateBlueprint<BlueprintFeature>(modContext, name, bp => {
                 bp.Ranks = 10;
                 bp.ReapplyOnLevelUp = true;
                 bp.IsClassFeature = true;
@@ -161,8 +162,8 @@ namespace TabletopTweaks.Core.Utilities {
             return extraResourceFeat;
         }
 
-        public static BlueprintFeatureSelection CreateExtraSelectionFeat(string name, BlueprintFeatureSelection selection, Action<BlueprintFeatureSelection> init = null) {
-            var extraResourceFeat = Helpers.CreateBlueprint<BlueprintFeatureSelection>(name, bp => {
+        public static BlueprintFeatureSelection CreateExtraSelectionFeat(ModContextBase modContext, string name, BlueprintFeatureSelection selection, Action<BlueprintFeatureSelection> init = null) {
+            var extraResourceFeat = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext, name, bp => {
                 bp.ReapplyOnLevelUp = true;
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Feat };

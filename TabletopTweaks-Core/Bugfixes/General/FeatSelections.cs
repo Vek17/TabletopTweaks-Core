@@ -28,7 +28,7 @@ namespace TabletopTweaks.Core.Bugfixes.General {
                             .Where(selection => feat.Get().HasGroup(selection.Group) || feat.Get().HasGroup(selection.Group2))
                             .ForEach(selection => selection.AddFeatures(feat));
                     }
-                    var ArcaneDiscoverySelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("ArcaneDiscoverySelection");
+                    var ArcaneDiscoverySelection = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "ArcaneDiscoverySelection");
                     FeatTools.Selections.LoremasterWizardFeatSelection.RemoveFeatures(ArcaneDiscoverySelection);
                 }
             }

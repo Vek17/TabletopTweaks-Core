@@ -5,6 +5,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -14,7 +15,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
             var IncenseFogToggleAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("b62231e54e07068419a420f2988157b3");
             var IncenseFogResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("d03d97aac38e798479b81dfa9eda55c6");
 
-            var AbundantIncenseFeature = Helpers.CreateBlueprint<BlueprintFeature>("AbundantIncenseFeature", bp => {
+            var AbundantIncenseFeature = Helpers.CreateBlueprint<BlueprintFeature>(TTTContext, "AbundantIncenseFeature", bp => {
                 bp.SetName("Abundant Incense");
                 bp.SetDescription("You've learned a way to increase the number of rounds per day you can use Incense Fog.\n" +
                     "Benefit: The number of rounds per day you can use Incense Fog increases by a number of rounds equal to your mythic rank.");

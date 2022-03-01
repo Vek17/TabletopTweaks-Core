@@ -6,12 +6,13 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using TabletopTweaks.Core.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
     static class KnowledgeIsPower {
         public static void AddKnowledgeIsPower() {
-            var KnowledgeIsPower = Helpers.CreateBlueprint<BlueprintFeature>($"KnowledgeIsPower", bp => {
+            var KnowledgeIsPower = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, $"KnowledgeIsPower", bp => {
                 bp.SetName($"Knowledge Is Power");
                 bp.SetDescription("Your understanding of physical forces gives you power over them.\n" +
                     "You add your Intelligence modifier on combat maneuver checks and to your CMD.");

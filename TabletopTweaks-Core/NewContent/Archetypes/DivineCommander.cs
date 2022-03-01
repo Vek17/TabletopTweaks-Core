@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Archetypes {
@@ -40,7 +41,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
 
         private static readonly BlueprintFeature AnimalCompanionFeatureHorse = Resources.GetBlueprint<BlueprintFeature>("9dc58b5901677c942854019d1dd98374");
         private static readonly BlueprintFeature AnimalCompanionFeatureHorse_PreorderBonus = Resources.GetBlueprint<BlueprintFeature>("bfeb9be0a3c9420b8b2beecc8171029c");
-        private static readonly BlueprintFeature CavalierMountFeatureWolf = Resources.GetModBlueprint<BlueprintFeature>("CavalierMountFeatureWolf");
+        private static readonly BlueprintFeature CavalierMountFeatureWolf = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "CavalierMountFeatureWolf");
         private static readonly BlueprintFeature AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
 
         private static readonly BlueprintBuff MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
@@ -48,14 +49,14 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
         private static readonly BlueprintFeature AnimalCompanionArchetypeSelection = Resources.GetBlueprint<BlueprintFeature>("65af7290b4efd5f418132141aaa36c1b");
         private static readonly BlueprintFeature OtherworldlyCompanionFiendish = Resources.GetBlueprint<BlueprintFeature>("4d7607a0155af7d43b49b785f2051e21");
 
-        private static readonly BlueprintFeature TemplateCelestial = Resources.GetModBlueprint<BlueprintFeature>("TemplateCelestial");
-        private static readonly BlueprintFeature TemplateEntropic = Resources.GetModBlueprint<BlueprintFeature>("TemplateEntropic");
-        private static readonly BlueprintFeature TemplateFiendish = Resources.GetModBlueprint<BlueprintFeature>("TemplateFiendish");
-        private static readonly BlueprintFeature TemplateResolute = Resources.GetModBlueprint<BlueprintFeature>("TemplateResolute");
+        private static readonly BlueprintFeature TemplateCelestial = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TemplateCelestial");
+        private static readonly BlueprintFeature TemplateEntropic = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TemplateEntropic");
+        private static readonly BlueprintFeature TemplateFiendish = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TemplateFiendish");
+        private static readonly BlueprintFeature TemplateResolute = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TemplateResolute");
 
         public static void AddDivineCommander() {
 
-            var DivineCommanderArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("DivineCommanderArchetype", bp => {
+            var DivineCommanderArchetype = Helpers.CreateBlueprint<BlueprintArchetype>(modContext: TTTContext, "DivineCommanderArchetype", bp => {
                 bp.SetName("Divine Commander");
                 bp.SetDescription("Some warpriests are called to lead great armies and" +
                     " face legions of foes. These divine commanders live for war and fight for glory." +
@@ -63,7 +64,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     " These leaders of armies do so to promote the agenda of their faith, and lead armies of devoted followers willing to give their lives for the cause.");
             });
 
-            var DivineCommanderMobilityBuff = Helpers.CreateBuff("DivineCommanderMobilityBuff", bp => {
+            var DivineCommanderMobilityBuff = Helpers.CreateBuff(modContext: TTTContext, "DivineCommanderMobilityBuff", bp => {
                 bp.SetName("Divine Commander Mobility");
                 bp.SetDescription("A divine commander does not take an armor check penalty on Mobility checks while riding his mount.");
                 bp.IsClassFeature = true;
@@ -74,7 +75,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var DivineCommanderMobilityFeature = Helpers.CreateBlueprint<BlueprintFeature>("DivineCommanderMobilityFeature", bp => {
+            var DivineCommanderMobilityFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DivineCommanderMobilityFeature", bp => {
                 bp.SetName("Divine Commander Mobility");
                 bp.SetDescription("A divine commander does not take an armor check penalty on Mobility checks while riding his mount.");
                 bp.IsClassFeature = true;
@@ -85,7 +86,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var DivineCommanderAnimalCompanionProgression = Helpers.CreateBlueprint<BlueprintProgression>("DivineCommanderAnimalCompanionProgression", bp => {
+            var DivineCommanderAnimalCompanionProgression = Helpers.CreateBlueprint<BlueprintProgression>(modContext: TTTContext, "DivineCommanderAnimalCompanionProgression", bp => {
                 bp.SetName("Divine Commander Animal Companion Progression");
                 bp.SetName("");
                 bp.HideInUI = true;
@@ -112,7 +113,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.UIGroups = new UIGroup[0];
             });
 
-            var DivineCommanderCompanionSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DivineCommanderCompanionSelection", bp => {
+            var DivineCommanderCompanionSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "DivineCommanderCompanionSelection", bp => {
                 bp.SetName("Mount");
                 bp.SetDescription("A divine commander gains the service of a loyal and trusty steed to carry her into battle. This mount functions " +
                     "as a druid’s animal companion, using the divine commander’s level as her effective druid level. The creature must be one that " +
@@ -148,7 +149,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var DivineCommanderBlessedMountCelestial = Helpers.CreateBlueprint<BlueprintFeature>("DivineCommanderBlessedMountCelestial", bp => {
+            var DivineCommanderBlessedMountCelestial = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DivineCommanderBlessedMountCelestial", bp => {
                 bp.SetName("Blessed Mount — Celestial");
                 bp.SetDescription("Animal Companion gains spell resistance equal to its level +5. It also gains:\n" +
                     "1 — 4 HD: resistance 5 to cold, acid, and electricity.\n" +
@@ -169,7 +170,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var DivineCommanderBlessedMountEntropic = Helpers.CreateBlueprint<BlueprintFeature>("DivineCommanderBlessedMountEntropic", bp => {
+            var DivineCommanderBlessedMountEntropic = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DivineCommanderBlessedMountEntropic", bp => {
                 bp.SetName("Blessed Mount — Entropic");
                 bp.SetDescription("Animal Companion gains spell resistance equal to its level +5. It also gains:\n" +
                     "1 — 4 HD: resistance 5 to acid and fire.\n" +
@@ -190,7 +191,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var DivineCommanderBlessedMountFiendish = Helpers.CreateBlueprint<BlueprintFeature>("DivineCommanderBlessedMountFiendish", bp => {
+            var DivineCommanderBlessedMountFiendish = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DivineCommanderBlessedMountFiendish", bp => {
                 bp.SetName("Blessed Mount — Fiendish");
                 bp.SetDescription("Animal Companion gains spell resistance equal to its level +5. It also gains:\n" +
                     "1 — 4 HD: resistance 5 to cold and fire.\n" +
@@ -211,7 +212,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var DivineCommanderBlessedMountResolute = Helpers.CreateBlueprint<BlueprintFeature>("DivineCommanderBlessedMountResolute", bp => {
+            var DivineCommanderBlessedMountResolute = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DivineCommanderBlessedMountResolute", bp => {
                 bp.SetName("Blessed Mount — Resolute");
                 bp.SetDescription("Animal Companion gains spell resistance equal to its level +5. It also gains:\n" +
                     "1 — 4 HD: resistance 5 to acid, cold and fire.\n" +
@@ -231,7 +232,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     p.HideInUI = true;
                 });
             });
-            var DivineCommanderBlessedMount = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DivineCommanderBlessedMount", bp => {
+            var DivineCommanderBlessedMount = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "DivineCommanderBlessedMount", bp => {
                 bp.SetName("Blessed Mount");
                 bp.SetDescription("At 6th level, a divine commander’s mount becomes a creature blessed by his deity. The divine commander’s mount gains either the celestial, " +
                     "entropic, fiendish, or resolute template, matching the alignment of the warpriest (celestial for good, entropic for chaotic, fiendish for evil, " +
@@ -249,7 +250,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 );
             });
 
-            var DivineCommanderBattleTacticianResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("DivineCommanderBattleTacticianResource", bp => {
+            var DivineCommanderBattleTacticianResource = Helpers.CreateBlueprint<BlueprintAbilityResource>(modContext: TTTContext, "DivineCommanderBattleTacticianResource", bp => {
                 bp.m_Min = 1;
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 1,
@@ -270,7 +271,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 };
             });
 
-            var DivineCommanderBattleTacticianSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DivineCommanderBattleTacticianSelection", bp => {
+            var DivineCommanderBattleTacticianSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "DivineCommanderBattleTacticianSelection", bp => {
                 bp.SetName("Battle Tactician — Bonus Feat");
                 bp.SetDescription("");
                 bp.m_Icon = CavalierTacticianAbility.Icon;
@@ -281,7 +282,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.IsClassFeature = true;
             });
 
-            var DivineCommanderBattleTacticianAbility = Helpers.CreateBlueprint<BlueprintAbility>("DivineCommanderBattleTacticianAbility", bp => {
+            var DivineCommanderBattleTacticianAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "DivineCommanderBattleTacticianAbility", bp => {
                 bp.SetName("Battle Tactician");
                 bp.SetDescription("At 3rd level, a divine commander gains a teamwork feat as a bonus feat." +
                     " She must meet the prerequisites for this feat." +
@@ -289,8 +290,8 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     " Allies retain the use of this bonus feat for 4 rounds, plus 1 round for every 2 levels beyond 3rd that the divine commander possesses." +
                     " Allies do not need to meet the prerequisites of this bonus feat." +
                     " The divine commander can use this ability once per day at 3rd level, plus one additional time per day at 9th and 15th levels.");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "");
-                bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.SavingThrow", "");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Duration", "");
+                bp.LocalizedSavingThrow = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.SavingThrow", "");
                 bp.m_Icon = CavalierTacticianAbility.Icon;
                 bp.Type = AbilityType.Extraordinary;
                 bp.Range = AbilityRange.Personal;
@@ -340,14 +341,14 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var DivineCommanderBattleTacticianAbilitySwift = Helpers.CreateBlueprint<BlueprintAbility>("DivineCommanderBattleTacticianAbilitySwift", bp => {
+            var DivineCommanderBattleTacticianAbilitySwift = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "DivineCommanderBattleTacticianAbilitySwift", bp => {
                 bp.SetName("Battle Tactician (Swift)");
                 bp.SetDescription("At 12th level, the divine commander gains an additional teamwork feat as a bonus feat." +
                     " She must meet the prerequisites for this feat." +
                     " The divine commander can grant this feat to her allies using the battle tactician ability." +
                     " Additionally, using the battle tactician ability is now a swift action.");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "");
-                bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.SavingThrow", "");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.Duration", "");
+                bp.LocalizedSavingThrow = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.SavingThrow", "");
                 bp.m_Icon = CavalierTacticianAbility.Icon;
                 bp.Type = AbilityType.Extraordinary;
                 bp.Range = AbilityRange.Personal;
@@ -357,7 +358,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.ComponentsArray = DivineCommanderBattleTacticianAbility.ComponentsArray;
             });
 
-            var DivineCommanderBattleTacticianFeature = Helpers.CreateBlueprint<BlueprintFeature>("DivineCommanderBattleTacticianFeature", bp => {
+            var DivineCommanderBattleTacticianFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DivineCommanderBattleTacticianFeature", bp => {
                 bp.SetName("Battle Tactician");
                 bp.SetDescription(DivineCommanderBattleTacticianAbility.Description);
                 bp.m_Icon = CavalierTacticianAbility.Icon;
@@ -373,7 +374,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var DivineCommanderBattleTacticianGreaterFeature = Helpers.CreateBlueprint<BlueprintFeature>("DivineCommanderBattleTacticianGreaterFeature", bp => {
+            var DivineCommanderBattleTacticianGreaterFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DivineCommanderBattleTacticianGreaterFeature", bp => {
                 bp.SetName("Greater Battle Tactician");
                 bp.SetDescription(DivineCommanderBattleTacticianAbilitySwift.m_Description);
                 bp.m_Icon = CavalierTacticianAbility.Icon;

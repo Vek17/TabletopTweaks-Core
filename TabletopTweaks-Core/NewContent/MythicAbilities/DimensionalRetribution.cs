@@ -10,6 +10,8 @@ using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Linq;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class DimensionalRetribution {
@@ -18,12 +20,12 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
             var DweomercatDweomerleap = Resources.GetBlueprint<BlueprintAbility>("cde8c0c172c9fa34cba7703ba4824d32");
             var MidnightFane_DimensionLock_Buff = Resources.GetBlueprint<BlueprintBuff>("4b0cd08a3cea2844dba9889c1d34d667");
 
-            var DimensionalRetributionTTTAbility = Helpers.CreateBlueprint<BlueprintAbility>("DimensionalRetributionTTTAbility", bp => {
+            var DimensionalRetributionTTTAbility = Helpers.CreateBlueprint<BlueprintAbility>(TTTContext, "DimensionalRetributionTTTAbility", bp => {
                 bp.SetName("Dimensional Retribution");
                 bp.SetDescription("Every time you are targeted by an enemy spell, you may teleport to " +
                     "the spellcaster as an immediate action and make an attack of opportunity.");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "");
-                bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.SavingThrow", "");
+                bp.LocalizedDuration = Helpers.CreateString(TTTContext, $"{bp.name}.Duration", "");
+                bp.LocalizedSavingThrow = Helpers.CreateString(TTTContext, $"{bp.name}.SavingThrow", "");
                 bp.m_Icon = DimensionalRetribution.Icon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Unlimited;
@@ -49,7 +51,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                     c.SideAppearFx = DweomerleapComponent.SideAppearFx;
                 });
             });
-            var DimensionalRetributionTTTBuff = Helpers.CreateBuff("DimensionalRetributionTTTBuff", bp => {
+            var DimensionalRetributionTTTBuff = Helpers.CreateBuff(TTTContext, "DimensionalRetributionTTTBuff", bp => {
                 bp.m_Icon = DimensionalRetributionTTTAbility.Icon;
                 bp.SetName("Dimensional Retribution");
                 bp.SetDescription(DimensionalRetributionTTTAbility.m_Description);
@@ -57,7 +59,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                     c.m_Ability = DimensionalRetributionTTTAbility.ToReference<BlueprintAbilityReference>();
                 });
             });
-            var DimensionalRetributionTTTToggleAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("DimensionalRetributionTTTToggleAbility", bp => {
+            var DimensionalRetributionTTTToggleAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>(TTTContext, "DimensionalRetributionTTTToggleAbility", bp => {
                 bp.m_Icon = DimensionalRetributionTTTAbility.Icon;
                 bp.SetName("Dimensional Retribution");
                 bp.SetDescription(DimensionalRetributionTTTAbility.m_Description);

@@ -5,6 +5,7 @@ using Kingmaker.Blueprints.Classes.Selection;
 using System.Linq;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MagusArcana {
@@ -15,7 +16,7 @@ namespace TabletopTweaks.Core.NewContent.MagusArcana {
             var MagusClass = Resources.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
             var MagusArcanaSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("e9dc4dfc73eaaf94aae27e0ed6cc9ada");
 
-            var BroadStudySelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("BroadStudySelection", bp => {
+            var BroadStudySelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "BroadStudySelection", bp => {
                 bp.SetName("Broad Study");
                 bp.SetDescription("The magus selects another one of his spellcasting classes. The magus can use his spellstrike and " +
                     "spell combat abilities while casting or using spells from the spell list of that class. This does not allow him " +
@@ -36,7 +37,7 @@ namespace TabletopTweaks.Core.NewContent.MagusArcana {
                 return classes
                     .Where(c => c.AssetGuid != SpellTools.SpellCastingClasses.MagusClass.AssetGuid)
                     .Select(characterClass => {
-                        var spellSecret = Helpers.CreateDerivedBlueprint<BlueprintFeature>($"BroadStudy{characterClass.name}",
+                        var spellSecret = Helpers.CreateDerivedBlueprint<BlueprintFeature>(modContext: TTTContext, $"BroadStudy{characterClass.name}",
                             BroadStudyMasterID,
                             new SimpleBlueprint[] { characterClass },
                             bp => {

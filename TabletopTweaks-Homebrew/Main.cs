@@ -16,7 +16,7 @@ namespace TabletopTweaks.Homebrew {
             //ModSettings.ModEntry.OnGUI = UMMSettingsUI.OnGUI;
             harmony.PatchAll();
             //PostPatchInitializer.Initialize();
-            Helpers.CreateString("test", "");
+            //Helpers.CreateString("test", "");
             new AddStatBonus() {
                 Descriptor = ModifierDescriptor.UntypedStackable,
                 Stat = StatType.Dexterity,

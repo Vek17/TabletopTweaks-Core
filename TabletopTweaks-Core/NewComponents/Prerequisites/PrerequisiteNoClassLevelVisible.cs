@@ -10,12 +10,13 @@ using System.Text;
 using TabletopTweaks.Core.Utilities;
 using UnityEngine;
 using UnityEngine.Serialization;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents.Prerequisites {
     [TypeId("cb76145587814eabbbbaed3d2a9b5d99")]
     public class PrerequisiteNoClassLevelVisible : Prerequisite {
         [InitializeStaticString]
-        private static readonly LocalizedString NoLevelsInClass = Helpers.CreateString("PrerequisiteNoClassLevelVisible.UI", "Has no levels in the class:");
+        private static readonly LocalizedString NoLevelsInClass = Helpers.CreateString(modContext: TTTContext, "PrerequisiteNoClassLevelVisible.UI", "Has no levels in the class:");
         public BlueprintCharacterClass CharacterClass {
             get {
                 BlueprintCharacterClassReference characterClass = m_CharacterClass;

@@ -5,6 +5,7 @@ using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -13,7 +14,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
             var MythicAbilitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("ba0e5a900b775be4a99702f1ed08914d");
             var ExtraMythicAbilityMythicFeat = Resources.GetBlueprint<BlueprintFeatureSelection>("8a6a511c55e67d04db328cc49aaad2b8");
             var FastMovement = Resources.GetBlueprint<BlueprintFeature>("d294a5dddd0120046aae7d4eb6cbc4fc");
-            var ImpossibleSpeedFeature = Helpers.CreateBlueprint<BlueprintFeature>("ImpossibleSpeedFeature", bp => {
+            var ImpossibleSpeedFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ImpossibleSpeedFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.ReapplyOnLevelUp = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.MythicAbility };

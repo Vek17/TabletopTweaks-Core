@@ -10,6 +10,7 @@ using System.Linq;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Domains {
     static class TricksterDomains {
@@ -32,7 +33,7 @@ namespace TabletopTweaks.Core.NewContent.Domains {
                 .ForEach(domain => GenerateTricksterDomain(TricksterDomainMasterID, domain));
         }
         private static BlueprintProgression GenerateTricksterDomain(BlueprintGuid masterID, BlueprintProgression domain) {
-            return domain.CreateCopy($"TricksterTTT{domain.name}", masterID, bp => {
+            return domain.CreateCopy(TTTContext, $"TricksterTTT{domain.name}", masterID, bp => {
                 var SpellList = bp.GetComponent<LearnSpellList>()?.m_SpellList;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[0];
                 bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[0];
@@ -67,7 +68,7 @@ namespace TabletopTweaks.Core.NewContent.Domains {
         }
         private static BlueprintAbilityResourceReference CreateTricksterSpellResource(int spellLevel, BlueprintSpellList spellList) {
             return Helpers.CreateDerivedBlueprint<BlueprintAbilityResource>(
-                $"TricksterTTT{spellList.name}Resource{spellLevel}",
+                modContext: TTTContext, $"TricksterTTT{spellList.name}Resource{spellLevel}",
                 TricksterSpellResource[spellLevel - 1],
                 new SimpleBlueprint[] { spellList },
                 bp => {

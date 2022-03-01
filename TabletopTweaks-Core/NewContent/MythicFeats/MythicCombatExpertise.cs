@@ -4,6 +4,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicFeats {
@@ -11,9 +12,9 @@ namespace TabletopTweaks.Core.NewContent.MythicFeats {
         public static void AddMythicCombatExpertise() {
             var CombatExpertiseFeature = Resources.GetBlueprint<BlueprintFeature>("4c44724ffa8844f4d9bedb5bb27d144a");
             var CombatExpertiseBuff = Resources.GetBlueprintReference<BlueprintUnitFactReference>("e81cd772a7311554090e413ea28ceea1");
-            var StalwartBuff = Resources.GetModBlueprintReference<BlueprintUnitFactReference>("StalwartBuff");
+            var StalwartBuff = Resources.GetModBlueprintReference<BlueprintUnitFactReference>(modContext: TTTContext, "StalwartBuff");
 
-            var CombatExpertiseMythicFeature = Helpers.CreateBlueprint<BlueprintFeature>("CombatExpertiseMythicFeature", bp => {
+            var CombatExpertiseMythicFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "CombatExpertiseMythicFeature", bp => {
                 bp.m_Icon = CombatExpertiseFeature.m_Icon;
                 bp.SetName("Combat Expertise (Mythic)");
                 bp.SetDescription("You can dart out of the way of attacks with skill and defiance.\n" +

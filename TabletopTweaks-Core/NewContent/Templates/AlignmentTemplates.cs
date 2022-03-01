@@ -25,7 +25,9 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Templates {
     static class AlignmentTemplates {
@@ -164,7 +166,7 @@ namespace TabletopTweaks.Core.NewContent.Templates {
         }
 
         private static BlueprintFeature CreateAlignmentTemplate(string name, DamageAlignment dr, params DamageEnergyType[] resists) {
-            return Helpers.CreateBlueprint<BlueprintFeature>(name, bp => {
+            return Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, name, bp => {
                 var Name = Regex.Split(name, @"(?<!^)(?=[A-Z])");
                 bp.SetName($"{Name[1]} {Name[0]}");
                 bp.SetDescription("");
@@ -247,7 +249,7 @@ namespace TabletopTweaks.Core.NewContent.Templates {
             });
         }
         private static BlueprintBuff CreateAlignmentSmiteBuff(string name, BlueprintBuff buffEffects, Action<BlueprintBuff> init = null) {
-            var smiteBuff = Helpers.CreateBuff(name, bp => {
+            var smiteBuff = Helpers.CreateBuff(modContext: TTTContext, name, bp => {
                 bp.IsClassFeature = true;
                 bp.Stacking = StackingType.Stack;
                 bp.m_Icon = buffEffects.Icon;
@@ -285,11 +287,11 @@ namespace TabletopTweaks.Core.NewContent.Templates {
             BlueprintBuff smiteBuff,
             BlueprintAbility abilityEffects) {
 
-            return Helpers.CreateBlueprint<BlueprintAbility>(name, bp => {
+            return Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, name, bp => {
                 bp.m_DisplayName = smiteBuff.m_DisplayName;
                 bp.m_Description = smiteBuff.m_Description;
-                bp.LocalizedDuration = Helpers.CreateString($"AlignmentSmite.Duration", "Until the target of the smite is dead");
-                bp.LocalizedSavingThrow = Helpers.CreateString($"AlignmentSmite.SavingThrow", "");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"AlignmentSmite.Duration", "Until the target of the smite is dead");
+                bp.LocalizedSavingThrow = Helpers.CreateString(modContext: TTTContext, $"AlignmentSmite.SavingThrow", "");
                 bp.m_Icon = SmiteEvilAbility.Icon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Medium;
@@ -380,7 +382,7 @@ namespace TabletopTweaks.Core.NewContent.Templates {
             });
         }
         private static BlueprintAbilityResource CreateAlignmentResource(string name) {
-            return Helpers.CreateBlueprint<BlueprintAbilityResource>(name, bp => {
+            return Helpers.CreateBlueprint<BlueprintAbilityResource>(modContext: TTTContext, name, bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount() {
                     BaseValue = 1,
                     IncreasedByLevel = false,

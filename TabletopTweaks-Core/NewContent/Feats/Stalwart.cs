@@ -21,6 +21,7 @@ using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
 using TabletopTweaks.Core.NewComponents.Properties;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -29,7 +30,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
         [HarmonyPatch(typeof(FightingDefensivelyACBonusProperty), nameof(FightingDefensivelyACBonusProperty.GetBaseValue))]
         static class FightingDefensivelyACBonusProperty_GetBaseValue_Patch {
 
-            static BlueprintBuff StalwartBuff = Resources.GetModBlueprint<BlueprintBuff>("StalwartBuff");
+            static BlueprintBuff StalwartBuff = Resources.GetModBlueprint<BlueprintBuff>(modContext: TTTContext, "StalwartBuff");
 
             static bool Prefix(UnitEntityData unit, ref int __result) {
                 if (TTTContext.AddedContent.Feats.IsDisabled("Stalwart")) { return true; }
@@ -42,10 +43,10 @@ namespace TabletopTweaks.Core.NewContent.Feats {
         }
 
         private static LocalizedString StalwartDescription() {
-            var DamageReduction = Helpers.CreateString("Stalwart.Description", "While fighting defensively or using Combat Expertise, " +
+            var DamageReduction = Helpers.CreateString(modContext: TTTContext, "Stalwart.Description", "While fighting defensively or using Combat Expertise, " +
                     "you can forgo the dodge bonus to AC you would normally gain to instead gain an equivalent amount of DR, " +
                     "to a maximum of DR 5/—, until the start of your next turn.");
-            var DamageReductionReworked = Helpers.CreateString("Stalwart.DescriptionReworked", "While fighting defensively or using Combat Expertise, " +
+            var DamageReductionReworked = Helpers.CreateString(modContext: TTTContext, "Stalwart.DescriptionReworked", "While fighting defensively or using Combat Expertise, " +
                     "you can forgo the dodge bonus to AC you would normally gain to instead gain an equivalent amount of DR, " +
                     "to a maximum of DR 5/—, until the start of your next turn. This damage reduction stacks with DR you gain from class features, " +
                     "such as the barbarian’s, but not with DR from any other source.");
@@ -59,7 +60,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
         public static void AddStalwart() {
             var Diehard = Resources.GetBlueprint<BlueprintFeature>("86669ce8759f9d7478565db69b8c19ad");
 
-            var CombatExpertiseMythicFeature = Resources.GetModBlueprintReference<BlueprintUnitFactReference>("CombatExpertiseMythicFeature");
+            var CombatExpertiseMythicFeature = Resources.GetModBlueprintReference<BlueprintUnitFactReference>(modContext: TTTContext, "CombatExpertiseMythicFeature");
             var CombatExpertiseBuff = Resources.GetBlueprint<BlueprintBuff>("e81cd772a7311554090e413ea28ceea1");
             var FightDefensivelyBuff = Resources.GetBlueprint<BlueprintBuff>("6ffd93355fb3bcf4592a5d976b1d32a9");
             var CraneStyleBuff = Resources.GetBlueprint<BlueprintBuff>("e8ea7bd10136195478d8a5fc5a44c7da");
@@ -69,12 +70,12 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var DefensiveStanceActivatableAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("be68c660b41bc9247bcab727b10d2cd1");
 
 
-            var StalwartImprovedFeature = Helpers.CreateBlueprint<BlueprintFeature>("StalwartImprovedFeature", bp => {
+            var StalwartImprovedFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "StalwartImprovedFeature", bp => {
                 bp.SetName("Improved Stalwart");
                 bp.SetDescription("Double the DR you gain from Stalwart, to a maximum of DR 10/—.");
             });
 
-            var StalwartDRPropertyBlueprint = Helpers.CreateBlueprint<BlueprintUnitProperty>("StalwartDRProperty", bp => {
+            var StalwartDRPropertyBlueprint = Helpers.CreateBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "StalwartDRProperty", bp => {
                 bp.AddComponent(new StalwartDRProperty(
                     CombatExpertiseBuff.ToReference<BlueprintUnitFactReference>(),
                     CombatExpertiseMythicFeature,
@@ -85,7 +86,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     StalwartImprovedFeature.ToReference<BlueprintUnitFactReference>()));
             });
 
-            var StalwartBuff = Helpers.CreateBuff("StalwartBuff", bp => {
+            var StalwartBuff = Helpers.CreateBuff(modContext: TTTContext, "StalwartBuff", bp => {
                 bp.SetName("Stalwart");
                 bp.SetDescription(StalwartDescription());
                 bp.m_Icon = DefensiveStanceActivatableAbility.m_Icon;
@@ -132,7 +133,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            var StalwartToggleAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("StalwartToggleAbility", bp => {
+            var StalwartToggleAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "StalwartToggleAbility", bp => {
                 bp.SetName("Stalwart");
                 bp.SetDescription(StalwartDescription());
                 bp.m_Icon = DefensiveStanceActivatableAbility.m_Icon;
@@ -142,7 +143,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.ResourceAssetIds = Array.Empty<string>();
             });
 
-            var StalwartFeature = Helpers.CreateBlueprint<BlueprintFeature>("StalwartFeature", bp => {
+            var StalwartFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "StalwartFeature", bp => {
                 bp.SetName("Stalwart");
                 bp.SetDescription(StalwartDescription());
                 bp.Ranks = 1;

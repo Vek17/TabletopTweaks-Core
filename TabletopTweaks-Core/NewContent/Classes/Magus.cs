@@ -4,6 +4,8 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Classes {
     static class Magus {
@@ -16,17 +18,17 @@ namespace TabletopTweaks.Core.NewContent.Classes {
             var IcyBurst = Resources.GetBlueprint<BlueprintWeaponEnchantment>("564a6924b246d254c920a7c44bf2a58b");
             var ShockingBurst = Resources.GetBlueprint<BlueprintWeaponEnchantment>("914d7ee77fb09d846924ca08bccee0ff");
 
-            var FlamingBurst_ArcaneWeapon_TTT = FlamingBurst.CreateCopy("FlamingBurst_ArcaneWeapon_TTT", bp => {
+            var FlamingBurst_ArcaneWeapon_TTT = FlamingBurst.CreateCopy(TTTContext, "FlamingBurst_ArcaneWeapon_TTT", bp => {
                 bp.m_EnchantmentCost = 1;
             });
-            var IcyBurst_ArcaneWeapon_TTT = IcyBurst.CreateCopy("IcyBurst_ArcaneWeapon_TTT", bp => {
+            var IcyBurst_ArcaneWeapon_TTT = IcyBurst.CreateCopy(TTTContext, "IcyBurst_ArcaneWeapon_TTT", bp => {
                 bp.m_EnchantmentCost = 1;
             });
-            var ShockingBurst_ArcaneWeapon_TTT = ShockingBurst.CreateCopy("ShockingBurst_ArcaneWeapon_TTT", bp => {
+            var ShockingBurst_ArcaneWeapon_TTT = ShockingBurst.CreateCopy(TTTContext, "ShockingBurst_ArcaneWeapon_TTT", bp => {
                 bp.m_EnchantmentCost = 1;
             });
 
-            var ArcaneWeaponFlamingBurstBuff_TTT = Helpers.CreateBuff("ArcaneWeaponFlamingBurstBuff_TTT", bp => {
+            var ArcaneWeaponFlamingBurstBuff_TTT = Helpers.CreateBuff(TTTContext, "ArcaneWeaponFlamingBurstBuff_TTT", bp => {
                 bp.SetName("Flaming Burst");
                 bp.SetDescription("");
                 bp.IsClassFeature = true;
@@ -37,7 +39,7 @@ namespace TabletopTweaks.Core.NewContent.Classes {
                     c.EnchantPool = EnchantPoolType.ArcanePool;
                 });
             });
-            var ArcaneWeaponFlamingBurstChoice_TTT = Helpers.CreateBlueprint<BlueprintActivatableAbility>("ArcaneWeaponFlamingBurstChoice_TTT", bp => {
+            var ArcaneWeaponFlamingBurstChoice_TTT = Helpers.CreateBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "ArcaneWeaponFlamingBurstChoice_TTT", bp => {
                 bp.SetName("Arcane Weapon — Flaming Burst");
                 bp.SetDescription("A flaming burst weapon explodes with flame upon striking a successful critical hit. " +
                     "The fire does not harm the wielder. A flaming burst weapon deals an extra 1d10 points of fire damage" +
@@ -49,7 +51,7 @@ namespace TabletopTweaks.Core.NewContent.Classes {
                 bp.m_Buff = ArcaneWeaponFlamingBurstBuff_TTT.ToReference<BlueprintBuffReference>();
             });
 
-            var ArcaneWeaponIcyBurstBuff_TTT = Helpers.CreateBuff("ArcaneWeaponIcyBurstBuff_TTT", bp => {
+            var ArcaneWeaponIcyBurstBuff_TTT = Helpers.CreateBuff(modContext: TTTContext, "ArcaneWeaponIcyBurstBuff_TTT", bp => {
                 bp.SetName("Icy Burst");
                 bp.SetDescription("");
                 bp.IsClassFeature = true;
@@ -60,7 +62,7 @@ namespace TabletopTweaks.Core.NewContent.Classes {
                     c.EnchantPool = EnchantPoolType.ArcanePool;
                 });
             });
-            var ArcaneWeaponIcyBurstChoice_TTT = Helpers.CreateBlueprint<BlueprintActivatableAbility>("ArcaneWeaponIcyBurstChoice_TTT", bp => {
+            var ArcaneWeaponIcyBurstChoice_TTT = Helpers.CreateBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "ArcaneWeaponIcyBurstChoice_TTT", bp => {
                 bp.SetName("Arcane Weapon — Icy Burst");
                 bp.SetDescription("A icy burst weapon explodes with ice upon striking a successful critical hit. " +
                     "The cold does not harm the wielder. An icy burst weapon deals an extra 1d10 points of cold damage" +
@@ -72,7 +74,7 @@ namespace TabletopTweaks.Core.NewContent.Classes {
                 bp.m_Buff = ArcaneWeaponIcyBurstBuff_TTT.ToReference<BlueprintBuffReference>();
             });
 
-            var ArcaneWeaponShockingBurstBuff_TTT = Helpers.CreateBuff("ArcaneWeaponShockingBurstBuff_TTT", bp => {
+            var ArcaneWeaponShockingBurstBuff_TTT = Helpers.CreateBuff(modContext: TTTContext, "ArcaneWeaponShockingBurstBuff_TTT", bp => {
                 bp.SetName("Shocking Burst");
                 bp.SetDescription("");
                 bp.IsClassFeature = true;
@@ -83,7 +85,7 @@ namespace TabletopTweaks.Core.NewContent.Classes {
                     c.EnchantPool = EnchantPoolType.ArcanePool;
                 });
             });
-            var ArcaneWeaponShockingBurstChoice_TTT = Helpers.CreateBlueprint<BlueprintActivatableAbility>("ArcaneWeaponShockingBurstChoice_TTT", bp => {
+            var ArcaneWeaponShockingBurstChoice_TTT = Helpers.CreateBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "ArcaneWeaponShockingBurstChoice_TTT", bp => {
                 bp.SetName("Arcane Weapon — Shocking Burst");
                 bp.SetDescription("A shocking burst weapon explodes with electricity upon striking a successful critical hit. " +
                     "The electricity does not harm the wielder. A shocking burst weapon deals an extra 1d10 points of electricity damage" +

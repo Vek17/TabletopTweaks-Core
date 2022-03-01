@@ -46,7 +46,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     if (TTTContext.Fixes.Bloodrager.Base.IsDisabled("AbysalBulk")) { return; }
                     var BloodragerAbyssalBloodlineBaseBuff = Resources.GetBlueprint<BlueprintBuff>("2ba7b4b3b87156543b43d0686404655a");
                     var BloodragerAbyssalDemonicBulkBuff = Resources.GetBlueprint<BlueprintBuff>("031a8053a7c02ab42ad53f50dd2e9437");
-                    var BloodragerAbyssalDemonicBulkEnlargeBuff = Resources.GetModBlueprint<BlueprintBuff>("BloodragerAbyssalDemonicBulkEnlargeBuff");
+                    var BloodragerAbyssalDemonicBulkEnlargeBuff = Resources.GetModBlueprint<BlueprintBuff>(modContext: TTTContext, "BloodragerAbyssalDemonicBulkEnlargeBuff");
 
                     var ApplyBuff = new ContextActionApplyBuff() {
                         m_Buff = BloodragerAbyssalDemonicBulkEnlargeBuff.ToReference<BlueprintBuffReference>(),
@@ -146,7 +146,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     PatchPrimalistTakeRagePowers(PrimalistTakeRagePowers20, 20);
 
                     void PatchPrimalistTakeRagePowers(BlueprintProgression PrimalistTakeRagePowers, int level) {
-                        var PrimalistRagePowerSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("PrimalistRagePowerSelection");
+                        var PrimalistRagePowerSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "PrimalistRagePowerSelection");
                         PrimalistTakeRagePowers.LevelEntries = new LevelEntry[] {
                             new LevelEntry {
                                 Level = level,
@@ -294,13 +294,13 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 if (TTTContext.Fixes.Bloodrager.Base.IsDisabled("ArcaneBloodrage")) { return; }
                 var BloodragerArcaneSpellAbility = Resources.GetBlueprint<BlueprintAbility>("3151dfeeb202e38448d1fea1e8bc237e");
                 BloodragerArcaneSpellAbility.GetComponent<AbilityVariants>().m_Variants = new BlueprintAbilityReference[] {
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellBlurToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellProtectionFromArrowsToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellResistFireToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellResistColdToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellResistElectricityToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellResistAcidToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellResistSonicToggle").ToReference<BlueprintAbilityReference>()
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellBlurToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellProtectionFromArrowsToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellResistFireToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellResistColdToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellResistElectricityToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellResistAcidToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellResistSonicToggle").ToReference<BlueprintAbilityReference>()
                 };
                 BloodragerArcaneSpellAbility.AddComponent<PseudoActivatable>(c => {
                     c.m_Type = PseudoActivatable.PseudoActivatableType.VariantsBase;
@@ -313,8 +313,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 if (TTTContext.Fixes.Bloodrager.Base.IsDisabled("ArcaneBloodrage")) { return; }
                 var BloodragerArcaneGreaterSpell = Resources.GetBlueprint<BlueprintAbility>("31dbadf586920494b87e8e95452af998");
                 BloodragerArcaneGreaterSpell.GetComponent<AbilityVariants>().m_Variants = new BlueprintAbilityReference[] {
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellGreaterDisplacementToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellGreaterHasteToggle").ToReference<BlueprintAbilityReference>()
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellGreaterDisplacementToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellGreaterHasteToggle").ToReference<BlueprintAbilityReference>()
                 };
                 BloodragerArcaneGreaterSpell.AddComponent<PseudoActivatable>(c => {
                     c.m_Type = PseudoActivatable.PseudoActivatableType.VariantsBase;
@@ -327,17 +327,17 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 if (TTTContext.Fixes.Bloodrager.Base.IsDisabled("ArcaneBloodrage")) { return; }
                 var BloodragerArcaneTrueSpellAbility = Resources.GetBlueprint<BlueprintAbility>("9d4d7f56d2d87f643b5ef990ef481094");
                 BloodragerArcaneTrueSpellAbility.GetComponent<AbilityVariants>().m_Variants = new BlueprintAbilityReference[] {
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellTrueBeastShapeIVShamblingMoundToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellTrueBeastShapeIVSmilodonToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellTrueBeastShapeIVWyvernToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellTrueFormOfTheDragonIBlackToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellTrueFormOfTheDragonIBlueToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellTrueFormOfTheDragonIBrassToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellTrueFormOfTheDragonIBronzeToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellTrueFormOfTheDragonICopperToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellTrueFormOfTheDragonIGoldToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellTrueFormOfTheDragonIGreenToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>("BloodragerArcaneSpellTrueTransformationToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueBeastShapeIVShamblingMoundToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueBeastShapeIVSmilodonToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueBeastShapeIVWyvernToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIBlackToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIBlueToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIBrassToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIBronzeToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonICopperToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIGoldToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIGreenToggle").ToReference<BlueprintAbilityReference>(),
+                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueTransformationToggle").ToReference<BlueprintAbilityReference>(),
                 };
                 BloodragerArcaneTrueSpellAbility.AddComponent<PseudoActivatable>(c => {
                     c.m_Type = PseudoActivatable.PseudoActivatableType.VariantsBase;

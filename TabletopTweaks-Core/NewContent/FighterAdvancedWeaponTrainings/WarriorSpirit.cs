@@ -16,6 +16,7 @@ using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using UnityEngine;
 using static TabletopTweaks.Core.Main;
 
@@ -77,7 +78,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
             var TemporaryEnhancement4 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("6a6a0901d799ceb49b33d4851ff72132");
             var TemporaryEnhancement5 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("746ee366e50611146821d61e391edf16");
 
-            var WarriorSpiritResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("WarriorSpiritResource", bp => {
+            var WarriorSpiritResource = Helpers.CreateBlueprint<BlueprintAbilityResource>(modContext: TTTContext, "WarriorSpiritResource", bp => {
                 bp.m_Icon = Icon_WarriorSpirit_Activation;
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount() {
                     m_Class = new BlueprintCharacterClassReference[0],
@@ -88,7 +89,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                 };
             });
 
-            var WarriorSpiritResourceIncrease = Helpers.CreateBlueprint<BlueprintFeature>("WarriorSpiritResourceIncrease", bp => {
+            var WarriorSpiritResourceIncrease = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "WarriorSpiritResourceIncrease", bp => {
                 bp.SetName("");
                 bp.SetDescription("");
                 bp.IsClassFeature = true;
@@ -101,7 +102,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                 });
             });
 
-            var WarriorSpiritDurationBuff = Helpers.CreateBuff("WarriorSpiritDurationBuff", bp => {
+            var WarriorSpiritDurationBuff = Helpers.CreateBuff(modContext: TTTContext, "WarriorSpiritDurationBuff", bp => {
                 bp.IsClassFeature = true;
                 bp.SetName("Warrior Spirit");
                 bp.SetDescription("");
@@ -109,7 +110,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                 bp.m_Icon = Icon_WarriorSpirit_Activation;
             });
 
-            var WarriorSpiritToggleAbility = Helpers.CreateBlueprint<BlueprintAbility>("WarriorSpiritToggleAbility", bp => {
+            var WarriorSpiritToggleAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "WarriorSpiritToggleAbility", bp => {
                 var effect1 = WeaponBondSwitchAbility.GetComponents<AbilitySpawnFx>().ToArray()[0];
                 var effect2 = WeaponBondSwitchAbility.GetComponents<AbilitySpawnFx>().ToArray()[1];
                 bp.SetName("Warrior Spirit");
@@ -121,7 +122,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                     "The fighter can also imbue the weapon with any one weapon special " +
                     "ability with an equivalent enhancement bonus less than or equal to his maximum bonus by reducing the granted enhancement " +
                     "bonus by the amount of the equivalent enhancement bonus. These bonuses last for 1 minute.");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.LocalizedDuration", "1 Minute");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.LocalizedDuration", "1 Minute");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
                 bp.m_Icon = Icon_WarriorSpirit_Activation;
                 bp.ActionType = Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Standard;
@@ -219,7 +220,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
             CreateWarriorSpiritToggle("WarriorSpiritSpeed", Icon_WarriorSpirit_Speed, WarriorSpiritToggleAbility, 3, Speed);
             CreateWarriorSpiritToggle("WarriorSpiritBrilliantEnergy", Icon_WarriorSpirit_BrilliantEnergy, WarriorSpiritToggleAbility, 4, BrilliantEnergy);
 
-            var WarriorSpiritFeature = Helpers.CreateBlueprint<BlueprintFeature>("WarriorSpiritFeature", bp => {
+            var WarriorSpiritFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "WarriorSpiritFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.WeaponTraining };
@@ -247,7 +248,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
 
         private static BlueprintBuff CreateWarriorSpiritWeaponBuff(string blueprintName, Sprite icon, int cost, params BlueprintWeaponEnchantment[] enchants) {
 
-            var weaponBuff = Helpers.CreateBuff(blueprintName, bp => {
+            var weaponBuff = Helpers.CreateBuff(modContext: TTTContext, blueprintName, bp => {
                 bp.m_DisplayName = enchants.First().m_EnchantName;
                 bp.m_Description = enchants.First().m_Description;
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
@@ -263,11 +264,11 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
 
         public static BlueprintAbility CreateWarriorSpiritToggle(string baseName, Sprite icon, BlueprintAbility parent, int cost, params BlueprintWeaponEnchantment[] enchants) {
             var weaponBuff = CreateWarriorSpiritWeaponBuff($"{baseName}Buff", icon, cost, enchants);
-            var toggleAbility = Helpers.CreateBlueprint<BlueprintAbility>($"{baseName}Toggle", bp => {
+            var toggleAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, $"{baseName}Toggle", bp => {
                 bp.m_DisplayName = weaponBuff.m_DisplayName;
                 bp.m_Description = weaponBuff.m_Description;
                 bp.m_DescriptionShort = weaponBuff.m_DescriptionShort;
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.LocalizedDuration", "1 Minute");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, $"{bp.name}.LocalizedDuration", "1 Minute");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
                 bp.m_Icon = weaponBuff.m_Icon;
                 bp.m_Parent = parent.ToReference<BlueprintAbilityReference>();

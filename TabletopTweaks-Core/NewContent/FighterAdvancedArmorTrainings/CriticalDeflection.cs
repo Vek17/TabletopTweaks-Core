@@ -7,15 +7,16 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
     class CriticalDeflection {
         public static void AddCriticalDeflection() {
             var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
-            var FighterArmorTrainingProperty = Resources.GetModBlueprintReference<BlueprintUnitPropertyReference>("FighterArmorTrainingProperty");
+            var FighterArmorTrainingProperty = Resources.GetModBlueprintReference<BlueprintUnitPropertyReference>(modContext: TTTContext, "FighterArmorTrainingProperty");
 
-            var CriticalDeflectionEffect = Helpers.CreateBlueprint<BlueprintFeature>("CriticalDeflectionEffect", bp => {
+            var CriticalDeflectionEffect = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "CriticalDeflectionEffect", bp => {
                 bp.SetName("Critical Deflection");
                 bp.SetDescription("Critical Deflection");
                 bp.IsClassFeature = true;
@@ -40,7 +41,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
                     c.m_UseMax = true;
                 });
             });
-            var CriticalDeflectionFeature = Helpers.CreateBlueprint<BlueprintFeature>("CriticalDeflectionFeature", bp => {
+            var CriticalDeflectionFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "CriticalDeflectionFeature", bp => {
                 bp.SetName("Critical Deflection");
                 bp.SetDescription("While wearing armor or using a shield, the fighter gains a +2 bonus to his AC against attack rolls made to " +
                     "confirm a critical hit. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum of +6 at 19th level.");

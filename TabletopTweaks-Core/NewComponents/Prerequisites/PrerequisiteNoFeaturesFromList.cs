@@ -10,16 +10,17 @@ using System.Text;
 using TabletopTweaks.Core.Utilities;
 using UnityEngine;
 using UnityEngine.Serialization;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents.Prerequisites {
     [TypeId("33c66b9aaaa348cfa8efd39841cf255b")]
     public class PrerequisiteNoFeaturesFromList : Prerequisite {
         [InitializeStaticString]
-        private static readonly LocalizedString DoesntHaveFeature = Helpers.CreateString("PrerequisiteNoFeaturesFromList.UI", "Doesn't have any of the following features");
+        private static readonly LocalizedString DoesntHaveFeature = Helpers.CreateString(modContext: TTTContext, "PrerequisiteNoFeaturesFromList.UI", "Doesn't have any of the following features");
         [InitializeStaticString]
-        private static readonly LocalizedString DoesntHaveMoreThan = Helpers.CreateString("PrerequisiteNoFeaturesFromList.UI", "Doesn't have more than");
+        private static readonly LocalizedString DoesntHaveMoreThan = Helpers.CreateString(modContext: TTTContext, "PrerequisiteNoFeaturesFromList.UI", "Doesn't have more than");
         [InitializeStaticString]
-        private static readonly LocalizedString OfTheFollowingFeatures = Helpers.CreateString("PrerequisiteNoFeaturesFromList.UI", "of the following features");
+        private static readonly LocalizedString OfTheFollowingFeatures = Helpers.CreateString(modContext: TTTContext, "PrerequisiteNoFeaturesFromList.UI", "of the following features");
         public ReferenceArrayProxy<BlueprintFeature, BlueprintFeatureReference> Features {
             get {
                 return m_Features;

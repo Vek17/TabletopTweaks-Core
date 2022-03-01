@@ -16,6 +16,7 @@ using System.Linq;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewContent.MechanicsChanges.MetamagicExtention;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
@@ -30,7 +31,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var Icon_MetamagicRodIntensifiedNormal = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodIntensifiedNormal.png", 64);
             var Icon_MetamagicRodIntensifiedGreater = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodIntensifiedGreater.png", 64);
 
-            var IntensifiedSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>("IntensifiedSpellFeat", bp => {
+            var IntensifiedSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "IntensifiedSpellFeat", bp => {
                 bp.SetName("Metamagic (Intensified Spell)");
                 bp.SetDescription("Your spells can go beyond several normal limitations.\n" +
                     "Benefit: An intensified spell increases the maximum number of damage dice by 5 levels. " +
@@ -55,7 +56,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
                 bp.AddComponent<RecommendationRequiresSpellbook>();
             });
-            var FavoriteMetamagicIntensified = Helpers.CreateBlueprint<BlueprintFeature>("FavoriteMetamagicIntensified", bp => {
+            var FavoriteMetamagicIntensified = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "FavoriteMetamagicIntensified", bp => {
                 bp.SetName("Favorite Metamagic — Intensified");
                 bp.m_Description = FavoriteMetamagicSelection.m_Description;
                 //bp.m_Icon = Icon_IntensifiedSpellFeat;
@@ -79,7 +80,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 );
             }
             var MetamagicRodsIntensified = ItemTools.CreateAllMetamagicRods(
-                rodName: "Intensified Metamagic Rod",
+                modContext: TTTContext, rodName: "Intensified Metamagic Rod",
                 lesserIcon: Icon_MetamagicRodIntensifiedLesser,
                 normalIcon: Icon_MetamagicRodIntensifiedNormal,
                 greaterIcon: Icon_MetamagicRodIntensifiedGreater,
@@ -124,21 +125,21 @@ namespace TabletopTweaks.Core.NewContent.Feats {
 
             WarCamp_REVendorTableMagic.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>("MetamagicRodLesserIntensified"),
+                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodLesserIntensified"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;
             });
             RE_Chapter3VendorTableMagic.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>("MetamagicRodNormalIntensified"),
+                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodNormalIntensified"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;
             });
             RE_Chapter5VendorTableMagic.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>("MetamagicRodGreaterIntensified"),
+                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodGreaterIntensified"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;

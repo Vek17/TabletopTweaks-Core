@@ -16,6 +16,7 @@ using Kingmaker.Utility;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Reworks {
@@ -130,7 +131,7 @@ namespace TabletopTweaks.Core.Reworks {
             static void PatchDimensionalRetribution() {
                 if (Main.TTTContext.Homebrew.MythicAbilities.IsDisabled("DimensionalRetribution")) { return; }
                 var DimensionalRetribution = Resources.GetBlueprint<BlueprintFeature>("939f49ad995ee8d4fad03ad0c7f655d1");
-                var DimensionalRetributionTTTToggleAbility = Resources.GetModBlueprintReference<BlueprintUnitFactReference>("DimensionalRetributionTTTToggleAbility");
+                var DimensionalRetributionTTTToggleAbility = Resources.GetModBlueprintReference<BlueprintUnitFactReference>(modContext: TTTContext, "DimensionalRetributionTTTToggleAbility");
 
                 DimensionalRetribution.SetDescription("You leave a mystical link with enemy spellcasters that lets you instantly move to them." +
                     "Benefit: Every time you are targeted by an enemy spell, you may teleport to the " +

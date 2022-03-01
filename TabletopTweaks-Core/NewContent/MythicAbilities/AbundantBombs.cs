@@ -4,6 +4,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -12,7 +13,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
             var AlchemistBombsFeature = Resources.GetBlueprint<BlueprintFeature>("c59b2f256f5a70a4d896568658315b7d");
             var AlchemistBombsResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("1633025edc9d53f4691481b48248edd7");
 
-            var AbundantBombsFeature = Helpers.CreateBlueprint<BlueprintFeature>("AbundantBombsFeature", bp => {
+            var AbundantBombsFeature = Helpers.CreateBlueprint<BlueprintFeature>(TTTContext, "AbundantBombsFeature", bp => {
                 bp.SetName("Abundant Bombs");
                 bp.SetDescription("You've leaned a way to increase the number of bombs you can use in a day.\n" +
                     "Benefit: You can throw a number of additional bombs per day equal to twice your mythic rank.");

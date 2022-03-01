@@ -21,7 +21,7 @@ using System.Linq;
 using System.Reflection;
 using TabletopTweaks.Core.Localization;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
-using static TabletopTweaks.Core.Main;
+using TabletopTweaks.Core.ModLogic;
 
 namespace TabletopTweaks.Core.Utilities {
     /// <summary>
@@ -58,21 +58,24 @@ namespace TabletopTweaks.Core.Utilities {
         /// Creates a new Blueprint with the supplied unity name and initializes it with the supplied action.
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <param name="modContext">
+        /// Context of the mod to record the Blueprint in.
+        /// </param>
         /// <param name="name">
         /// Unity name to give the created blueprint. This also determines the BlueprintGuid used.
-        /// </param>
-        /// <param name="init">
-        /// Action to initialize the new blueprint with.
         /// </param>
         /// <returns>
         /// New blueprint after it has been initialized.
         /// </returns>
-        public static T CreateBlueprint<T>([NotNull] string name, Action<T> init = null) where T : SimpleBlueprint, new() {
+        /// <param name="init">
+        /// Action to initialize the new blueprint with.
+        /// </param>
+        public static T CreateBlueprint<T>(ModContextBase modContext, [NotNull] string name, Action<T> init = null) where T : SimpleBlueprint, new() {
             var result = new T {
                 name = name,
-                AssetGuid = Main.TTTContext.Blueprints.GetGUID(name)
+                AssetGuid = modContext.Blueprints.GetGUID(name)
             };
-            Resources.AddBlueprint(result);
+            Resources.AddBlueprint(modContext, result);
             init?.Invoke(result);
             return result;
         }
@@ -81,6 +84,9 @@ namespace TabletopTweaks.Core.Utilities {
         /// This Blueprint will have a BlueprintGuid based on the supplied masterId and component blueprints.
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <param name="modContext">
+        /// Context of the mod to record the Blueprint in.
+        /// </param>
         /// <param name="name">
         /// Unity name to give the created blueprint. This also determines the BlueprintGuid used.
         /// </param>
@@ -90,18 +96,18 @@ namespace TabletopTweaks.Core.Utilities {
         /// <param name="componentBlueprints">
         /// Additional blueprints used when generating a derived BlueprintGuid.
         /// </param>
-        /// <param name="init">
-        /// Action to initialize the new blueprint with.
-        /// </param>
         /// <returns>
         /// New blueprint after it has been initialized.
         /// </returns>
-        public static T CreateDerivedBlueprint<T>([NotNull] string name, BlueprintGuid masterId, [NotNull] IEnumerable<SimpleBlueprint> componentBlueprints, Action<T> init = null) where T : SimpleBlueprint, new() {
+        /// <param name="init">
+        /// Action to initialize the new blueprint with.
+        /// </param>
+        public static T CreateDerivedBlueprint<T>(ModContextBase modContext, [NotNull] string name, BlueprintGuid masterId, [NotNull] IEnumerable<SimpleBlueprint> componentBlueprints, Action<T> init = null) where T : SimpleBlueprint, new() {
             var result = new T {
                 name = name,
                 AssetGuid = Main.TTTContext.Blueprints.GetDerivedGUID(name, masterId, componentBlueprints.Select(bp => bp.AssetGuid).ToArray())
             };
-            Resources.AddBlueprint(result);
+            Resources.AddBlueprint(modContext, result);
             init?.Invoke(result);
             return result;
         }
@@ -110,17 +116,20 @@ namespace TabletopTweaks.Core.Utilities {
         /// This sets up some required values to prevent runtime exceptions.
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <param name="modContext">
+        /// Context of the mod to record the Blueprint in.
+        /// </param>
         /// <param name="name">
         /// Unity name to give the created BlueprintBuff. This also determines the BlueprintGuid used.
-        /// </param>
-        /// <param name="init">
-        /// Action to initialize the new BlueprintBuff with.
         /// </param>
         /// <returns>
         /// New BlueprintBuff after it has been initialized.
         /// </returns>
-        public static BlueprintBuff CreateBuff(string name, Action<BlueprintBuff> init = null) {
-            var result = Helpers.CreateBlueprint<BlueprintBuff>(name, bp => {
+        /// <param name="init">
+        /// Action to initialize the new BlueprintBuff with.
+        /// </param>
+        public static BlueprintBuff CreateBuff(ModContextBase modContext, string name, Action<BlueprintBuff> init = null) {
+            var result = Helpers.CreateBlueprint<BlueprintBuff>(modContext, name, bp => {
                 bp.FxOnStart = new PrefabLink();
                 bp.FxOnRemove = new PrefabLink();
             });
@@ -207,6 +216,9 @@ namespace TabletopTweaks.Core.Utilities {
         /// <summary>
         /// Creates a new localized string.
         /// </summary>
+        /// <param name="modContext">
+        /// Context of the mod to record the LocalizedString in.
+        /// </param>
         /// <param name="simpleName">
         /// name used to refer to the string in the MultiLocalization pack.
         /// </param>
@@ -216,24 +228,24 @@ namespace TabletopTweaks.Core.Utilities {
         /// <param name="locale">
         /// locale that the text will be created for.
         /// </param>
-        /// <param name="shouldProcess">
-        /// Determines if the localized string should have tags added to it.
-        /// </param>
         /// <returns>
         /// New Localized String built with supplied arguments.
         /// </returns>
-        public static LocalizedString CreateString(string simpleName, string text, Locale locale = Locale.enGB, bool shouldProcess = false) {
+        /// <param name="shouldProcess">
+        /// Determines if the localized string should have tags added to it.
+        /// </param>
+        public static LocalizedString CreateString(ModContextBase modContext, string simpleName, string text, Locale locale = Locale.enGB, bool shouldProcess = false) {
             // See if we used the text previously.
             // (It's common for many features to use the same localized text.
             // In that case, we reuse the old entry instead of making a new one.)
             string strippedText = text.StripHTML().StripEncyclopediaTags();
             MultiLocalizationPack.MultiLocaleString multiLocalized;
-            if (Main.TTTContext.ModLocalizationPack.TryGetText(strippedText, out multiLocalized)) {
+            if (modContext.ModLocalizationPack.TryGetText(strippedText, out multiLocalized)) {
                 return multiLocalized.LocalizedString;
             }
             multiLocalized = new MultiLocalizationPack.MultiLocaleString(simpleName, strippedText, shouldProcess, locale);
-            TTTContext.Logger.LogVerbose($"WARNING: Generated New Localizaed String: {multiLocalized.Key}:{multiLocalized.SimpleName}");
-            Main.TTTContext.ModLocalizationPack.AddString(multiLocalized);
+            modContext.Logger.LogWarning($"Generated New Localizaed String: {multiLocalized.Key}:{multiLocalized.SimpleName}");
+            modContext.ModLocalizationPack.AddString(multiLocalized);
             return multiLocalized.LocalizedString;
         }
         /// <summary>
@@ -341,12 +353,15 @@ namespace TabletopTweaks.Core.Utilities {
         /// Type of the replacement TTT Damage Resistances.
         /// </typeparam>
         /// <param name="blueprint"></param>
+        /// <param name="modContext">
+        /// Context of the mod to log in.
+        /// </param>
         /// <param name="additionalDamageResistanceConfiguration">
         /// Action that configures additional details of the replacement TTT Damage Resistance.
         /// </param>
         public static void ConvertVanillaDamageResistanceToRework<V, N>(
             this BlueprintScriptableObject blueprint,
-            Action<N> additionalDamageResistanceConfiguration = null)
+            ModContextBase modContext, Action<N> additionalDamageResistanceConfiguration = null)
             where V : AddDamageResistanceBase
             where N : TTAddDamageResistanceBase, new() {
             bool foundComponent = false;
@@ -357,21 +372,21 @@ namespace TabletopTweaks.Core.Utilities {
                     if (additionalDamageResistanceConfiguration != null)
                         additionalDamageResistanceConfiguration(newResistance);
                     blueprint.ComponentsArray[i] = newResistance;
-                    TTTContext.Logger.LogVerbose($"Replaced component: {typeof(V).Name} -> {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()}");
+                    modContext.Logger.LogVerbose($"Replaced component: {typeof(V).Name} -> {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()}");
                 } else if (blueprint.ComponentsArray[i] is N newResistance) {
                     foundComponent = true;
                     if (additionalDamageResistanceConfiguration != null) {
                         additionalDamageResistanceConfiguration(newResistance);
-                        TTTContext.Logger.LogVerbose($"Configured component: {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()}");
+                        modContext.Logger.LogVerbose($"Configured component: {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()}");
                     } else {
-                        TTTContext.Logger.LogVerbose($"Skipped component: {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()} (no additional configration specified)");
+                        modContext.Logger.LogVerbose($"Skipped component: {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()} (no additional configration specified)");
                     }
                 }
             }
             if (!foundComponent) {
-                TTTContext.Logger.LogVerbose($"COMPONENT NOT FOUND: {typeof(V).Name} or {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()}");
+                modContext.Logger.LogVerbose($"COMPONENT NOT FOUND: {typeof(V).Name} or {typeof(N).Name} on {blueprint.AssetGuid} - {blueprint.NameSafe()}");
             } else {
-                TTTContext.Logger.LogVerbose($"Rebuilt DR for: {blueprint.AssetGuid} - {blueprint.NameSafe()}");
+                modContext.Logger.LogVerbose($"Rebuilt DR for: {blueprint.AssetGuid} - {blueprint.NameSafe()}");
             }
         }
 

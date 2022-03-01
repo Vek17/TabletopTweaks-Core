@@ -2,11 +2,13 @@
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Components;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Bloodlines {
     class AbyssalBloodline {
         public static void AddBloodragerAbyssalDemonicBulkEnlargeBuff() {
-            var BloodragerAbyssalDemonicBulkEnlargeBuff = Helpers.CreateBuff("BloodragerAbyssalDemonicBulkEnlargeBuff", bp => {
+            var BloodragerAbyssalDemonicBulkEnlargeBuff = Helpers.CreateBuff(modContext: TTTContext, "BloodragerAbyssalDemonicBulkEnlargeBuff", bp => {
                 bp.SetName("Abyssal Bulk");
                 bp.SetDescription("At 4th level, when entering a bloodrage, you can choose to grow one size category larger than your base size (as enlarge person) even if you aren't humanoid.");
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;

@@ -4,11 +4,13 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Classes {
     class Oracle {
         public static void AddOracleFeatures() {
-            var NaturesWhispersACConversion = Helpers.CreateBlueprint<BlueprintFeature>("NaturesWhispersACConversion", bp => {
+            var NaturesWhispersACConversion = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "NaturesWhispersACConversion", bp => {
                 bp.SetName("Natures Whispers AC Conversion");
                 bp.SetDescription("");
                 bp.IsClassFeature = true;

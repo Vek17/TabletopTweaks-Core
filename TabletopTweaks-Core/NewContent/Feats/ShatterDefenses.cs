@@ -6,19 +6,21 @@ using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class ShatterDefenses {
         public static void AddNewShatterDefenseBlueprints() {
             var ShatterDefenses = Resources.GetBlueprint<BlueprintFeature>("61a17ccbbb3d79445b0926347ec07577");
 
-            var ShatterDefensesDisplayBuff = Helpers.CreateBuff("ShatterDefensesDisplayBuff", bp => {
+            var ShatterDefensesDisplayBuff = Helpers.CreateBuff(modContext: TTTContext, "ShatterDefensesDisplayBuff", bp => {
                 bp.m_Icon = ShatterDefenses.m_Icon;
                 bp.Stacking = StackingType.Prolong;
                 bp.SetName("Shattered Defenses");
                 bp.SetDescription("An opponent you affect with Shatter Defenses is flat-footed to your attacks.");
             });
-            var ShatterDefensesBuff = Helpers.CreateBuff("ShatterDefensesBuff", bp => {
+            var ShatterDefensesBuff = Helpers.CreateBuff(modContext: TTTContext, "ShatterDefensesBuff", bp => {
                 bp.m_Icon = ShatterDefenses.m_Icon;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.Stacking = StackingType.Stack;

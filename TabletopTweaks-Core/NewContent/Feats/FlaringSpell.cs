@@ -18,6 +18,7 @@ using System.Linq;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewContent.MechanicsChanges.MetamagicExtention;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
@@ -33,7 +34,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var Icon_MetamagicRodFlaringNormal = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodFlaringNormal.png", 64);
             var Icon_MetamagicRodFlaringGreater = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodFlaringGreater.png", 64);
 
-            var FlaringSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>("FlaringSpellFeat", bp => {
+            var FlaringSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "FlaringSpellFeat", bp => {
                 bp.SetName("Metamagic (Flaring Spell)");
                 bp.SetDescription("You dazzle creatures when you affect them with a spell that has the fire, light, or electricity descriptor.\n" +
                     "Benefit: The electricity, fire, or light effects of the affected spell create a flaring that " +
@@ -59,7 +60,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
                 bp.AddComponent<RecommendationRequiresSpellbook>();
             });
-            var FavoriteMetamagicFlaring = Helpers.CreateBlueprint<BlueprintFeature>("FavoriteMetamagicFlaring", bp => {
+            var FavoriteMetamagicFlaring = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "FavoriteMetamagicFlaring", bp => {
                 bp.SetName("Favorite Metamagic — Flaring");
                 bp.m_Description = FavoriteMetamagicSelection.m_Description;
                 //bp.m_Icon = Icon_IntensifiedSpellFeat;
@@ -72,7 +73,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
                 bp.AddPrerequisiteFeature(FlaringSpellFeat);
             });
-            var FlaringDazzledBuff = Helpers.CreateBuff("FlaringDazzledBuff", bp => {
+            var FlaringDazzledBuff = Helpers.CreateBuff(modContext: TTTContext, "FlaringDazzledBuff", bp => {
                 bp.m_DisplayName = DazzledBuff.m_DisplayName;
                 bp.m_Description = DazzledBuff.m_Description;
                 bp.m_Icon = DazzledBuff.Icon;
@@ -99,7 +100,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 );
             }
             var MetamagicRodsFlaring = ItemTools.CreateAllMetamagicRods(
-                rodName: "Flaring Metamagic Rod",
+                modContext: TTTContext, rodName: "Flaring Metamagic Rod",
                 lesserIcon: Icon_MetamagicRodFlaringLesser,
                 normalIcon: Icon_MetamagicRodFlaringNormal,
                 greaterIcon: Icon_MetamagicRodFlaringGreater,
@@ -143,14 +144,14 @@ namespace TabletopTweaks.Core.NewContent.Feats {
 
             Scroll_Chapter3VendorTable.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>("MetamagicRodNormalFlaring"),
+                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodNormalFlaring"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;
             });
             Scroll_Chapter5VendorTable.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>("MetamagicRodGreaterFlaring"),
+                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodGreaterFlaring"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;

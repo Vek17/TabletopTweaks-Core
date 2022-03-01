@@ -52,7 +52,7 @@ namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
             int defaultCost,
             CustomMechanicsFeature? favoriteMetamagic) {
             var metamagicData = new CustomMetamagicData() {
-                Name = name == null ? null : Helpers.CreateString($"{name}SpellMetamagic", name),
+                Name = name == null ? null : Helpers.CreateString(modContext: TTTContext, $"{name}SpellMetamagic", name),
                 Icon = icon,
                 DefaultCost = defaultCost,
                 FavoriteMetamagic = favoriteMetamagic
@@ -315,7 +315,7 @@ namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
                 private RimeSpellMechanics() { }
                 public static RimeSpellMechanics Instance = new();
 
-                static BlueprintBuffReference RimeEntagledBuff = Resources.GetModBlueprintReference<BlueprintBuffReference>("RimeEntagledBuff");
+                static BlueprintBuffReference RimeEntagledBuff = Resources.GetModBlueprintReference<BlueprintBuffReference>(modContext: TTTContext, "RimeEntagledBuff");
                 public void OnAfterRulebookEventTrigger(RuleDealDamage evt) {
                     var context = evt.Reason.Context;
                     if (context == null) { return; }
@@ -337,8 +337,8 @@ namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
                 private BurningSpellMechanics() { }
                 public static BurningSpellMechanics Instance = new();
 
-                private static BlueprintBuffReference BurningSpellAcidBuff = Resources.GetModBlueprintReference<BlueprintBuffReference>("BurningSpellAcidBuff");
-                private static BlueprintBuffReference BurningSpellFireBuff = Resources.GetModBlueprintReference<BlueprintBuffReference>("BurningSpellFireBuff");
+                private static BlueprintBuffReference BurningSpellAcidBuff = Resources.GetModBlueprintReference<BlueprintBuffReference>(modContext: TTTContext, "BurningSpellAcidBuff");
+                private static BlueprintBuffReference BurningSpellFireBuff = Resources.GetModBlueprintReference<BlueprintBuffReference>(modContext: TTTContext, "BurningSpellFireBuff");
                 public void OnAfterRulebookEventTrigger(RuleDealDamage evt) {
                     var context = evt.Reason.Context;
                     if (context == null) { return; }
@@ -389,7 +389,7 @@ namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
                 private FlaringSpellMechanics() { }
                 public static FlaringSpellMechanics Instance = new();
 
-                private static BlueprintBuffReference FlaringDazzledBuff = Resources.GetModBlueprintReference<BlueprintBuffReference>("FlaringDazzledBuff");
+                private static BlueprintBuffReference FlaringDazzledBuff = Resources.GetModBlueprintReference<BlueprintBuffReference>(modContext: TTTContext, "FlaringDazzledBuff");
                 public void OnAfterRulebookEventTrigger(RuleDealDamage evt) {
                     var context = evt.Reason.Context;
                     if (context == null) { return; }

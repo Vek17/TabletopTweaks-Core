@@ -16,6 +16,8 @@ using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.Utility;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.WeaponEnchantments {
     static class TerrifyingTremble {
@@ -23,7 +25,7 @@ namespace TabletopTweaks.Core.NewContent.WeaponEnchantments {
             var TerrifyingTrembleItem = Resources.GetBlueprint<BlueprintItemWeapon>("8c31891423c4405393741e829aebec85");
             var ThunderingBlowsAbility = Resources.GetBlueprint<BlueprintAbility>("a9c0ab0293b0c3245881b27ea4e8f95d");
 
-            var TerrifyingTrembleAbility_TTT = Helpers.CreateBlueprint<BlueprintAbility>($"TerrifyingTrembleAbility_TTT", bp => {
+            var TerrifyingTrembleAbility_TTT = Helpers.CreateBlueprint<BlueprintAbility>(TTTContext, $"TerrifyingTrembleAbility_TTT", bp => {
                 var effects = ThunderingBlowsAbility.GetComponent<AbilitySpawnFx>();
                 bp.SetName("Terrifying Tremble");
                 bp.SetDescription("Whenever the wielder of this weapon lands a killing blow, " +
@@ -31,8 +33,8 @@ namespace TabletopTweaks.Core.NewContent.WeaponEnchantments {
                     "Successful Reflex save (DC 30) halves the damage.");
                 bp.m_Icon = TerrifyingTrembleItem.Icon;
                 bp.ResourceAssetIds = ThunderingBlowsAbility.ResourceAssetIds;
-                bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.save", $"");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.duration", $"");
+                bp.LocalizedSavingThrow = Helpers.CreateString(TTTContext, $"{bp.name}.save", $"");
+                bp.LocalizedDuration = Helpers.CreateString(TTTContext, $"{bp.name}.duration", $"");
                 bp.CanTargetEnemies = true;
                 bp.ActionType = Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Free;
                 bp.Type = AbilityType.Special;
@@ -101,7 +103,7 @@ namespace TabletopTweaks.Core.NewContent.WeaponEnchantments {
                     c.OrientationAnchor = effects.OrientationAnchor;
                 });
             });
-            var TerrifyingTrembleEnchant_TTT = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>($"TerrifyingTrembleEnchant_TTT", bp => {
+            var TerrifyingTrembleEnchant_TTT = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>(TTTContext, $"TerrifyingTrembleEnchant_TTT", bp => {
                 bp.SetName("");
                 bp.SetDescription("");
                 bp.SetPrefix("");

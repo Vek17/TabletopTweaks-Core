@@ -2,6 +2,7 @@
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Spells {
     class MagicalTailSpells {
@@ -13,7 +14,7 @@ namespace TabletopTweaks.Core.NewContent.Spells {
             BlueprintAbility deepSlumberKitsune = Resources.GetBlueprint<BlueprintAbility>("2bc8d4bb8baa23a4b84ef34945d13733");
             BlueprintAbility heroism = Resources.GetBlueprint<BlueprintAbility>("5ab0d42fb68c9e34abae4921822b9d63");
 
-            var hideousLaughterKitsune = hideousLaughter.CreateCopy("HideousLaughterKitsune", bp => {
+            var hideousLaughterKitsune = hideousLaughter.CreateCopy(TTTContext, "HideousLaughterKitsune", bp => {
                 bp.RemoveComponents<AbilityResourceLogic>();
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.Amount = sleepKitsune.GetComponent<AbilityResourceLogic>().Amount;
@@ -26,7 +27,7 @@ namespace TabletopTweaks.Core.NewContent.Spells {
                 });
             });
 
-            var heroismKitsune = heroism.CreateCopy("HeroismKitsune", bp => {
+            var heroismKitsune = heroism.CreateCopy(TTTContext, "HeroismKitsune", bp => {
                 bp.RemoveComponents<AbilityResourceLogic>();
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.Amount = deepSlumberKitsune.GetComponent<AbilityResourceLogic>().Amount;

@@ -9,6 +9,7 @@ using Kingmaker.View.Equipment;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using TurnBased.Controllers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
@@ -16,7 +17,7 @@ using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 namespace TabletopTweaks.Core.NewContent.Feats {
     class QuickDraw {
         public static void AddQuickDraw() {
-            var QuickDraw = Helpers.CreateBlueprint<BlueprintFeature>("QuickDraw", bp => {
+            var QuickDraw = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "QuickDraw", bp => {
                 bp.IsClassFeature = true;
                 bp.ReapplyOnLevelUp = true;
                 bp.Ranks = 1;

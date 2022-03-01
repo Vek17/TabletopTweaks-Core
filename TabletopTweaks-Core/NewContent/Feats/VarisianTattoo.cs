@@ -5,6 +5,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Enums;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 
@@ -14,7 +15,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var SchoolMasteryMythicFeat = Resources.GetBlueprint<BlueprintParametrizedFeature>("ac830015569352b458efcdfae00a948c");
             var SpellFocus = Resources.GetBlueprint<BlueprintParametrizedFeature>("16fa59cc9a72a6043b566b49184f53fe");
 
-            var VarisianTattooFeature = Helpers.CreateBlueprint<BlueprintParametrizedFeature>("VarisianTattooFeature", bp => {
+            var VarisianTattooFeature = Helpers.CreateBlueprint<BlueprintParametrizedFeature>(modContext: TTTContext, "VarisianTattooFeature", bp => {
                 bp.SetName("Varisian Tattoo");
                 bp.SetDescription("You bear intricate tattoos that inspire and empower your natural magic ability. " +
                     "These tattoos mark you as a worker of the ancient traditions of Varisian magic. " +

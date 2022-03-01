@@ -19,6 +19,7 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Reworks {
@@ -26,7 +27,7 @@ namespace TabletopTweaks.Core.Reworks {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {
             static bool Initialized;
-            static BlueprintUnitPropertyReference LichDCProperty = Resources.GetModBlueprintReference<BlueprintUnitPropertyReference>("LichDCProperty");
+            static BlueprintUnitPropertyReference LichDCProperty = Resources.GetModBlueprintReference<BlueprintUnitPropertyReference>(modContext: TTTContext, "LichDCProperty");
 
             static void Postfix() {
                 if (Initialized) return;

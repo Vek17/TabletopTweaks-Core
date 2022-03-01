@@ -14,6 +14,7 @@ using System.Linq;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewContent.MechanicsChanges.MetamagicExtention;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
@@ -29,7 +30,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var Icon_MetamagicRodPiercingNormal = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodPiercingNormal.png", 64);
             var Icon_MetamagicRodPiercingGreater = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodPiercingGreater.png", 64);
 
-            var PiercingSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>("PiercingSpellFeat", bp => {
+            var PiercingSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "PiercingSpellFeat", bp => {
                 bp.SetName("Metamagic (Piercing Spell)");
                 bp.SetDescription("Your studies have helped you develop methods to overcome spell resistance.\n" +
                     "Benefit: When you cast a piercing spell against a target with spell resistance, it treats " +
@@ -52,7 +53,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
                 bp.AddComponent<RecommendationRequiresSpellbook>();
             });
-            var FavoriteMetamagicFlaring = Helpers.CreateBlueprint<BlueprintFeature>("FavoriteMetamagicPiercing", bp => {
+            var FavoriteMetamagicFlaring = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "FavoriteMetamagicPiercing", bp => {
                 bp.SetName("Favorite Metamagic — Piercing");
                 bp.m_Description = FavoriteMetamagicSelection.m_Description;
                 //bp.m_Icon = Icon_IntensifiedSpellFeat;
@@ -76,7 +77,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 );
             }
             var MetamagicRodsPiercing = ItemTools.CreateAllMetamagicRods(
-                rodName: "Piercing Metamagic Rod",
+                modContext: TTTContext, rodName: "Piercing Metamagic Rod",
                 lesserIcon: Icon_MetamagicRodPiercingLesser,
                 normalIcon: Icon_MetamagicRodPiercingNormal,
                 greaterIcon: Icon_MetamagicRodPiercingGreater,
@@ -115,14 +116,14 @@ namespace TabletopTweaks.Core.NewContent.Feats {
 
             Scrolls_DefendersHeartVendorTable.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>("MetamagicRodLesserPiercing"),
+                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodLesserPiercing"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;
             });
             WarCamp_ScrollVendorClericTable.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>("MetamagicRodNormalPiercing"),
+                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodNormalPiercing"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;

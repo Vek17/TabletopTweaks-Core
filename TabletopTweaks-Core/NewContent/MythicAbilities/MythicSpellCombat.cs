@@ -5,6 +5,7 @@ using Kingmaker.Blueprints.Classes.Spells;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -13,7 +14,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
             var TricksterWizardSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("bbe483b903854104a11606412803f214");
             var SpellCombatFeature = Resources.GetBlueprint<BlueprintFeature>("2464ba53317c7fc4d88f383fac2b45f9");
 
-            var MythicSpellCombat = Helpers.CreateBlueprint<BlueprintFeature>("MythicSpellCombat", bp => {
+            var MythicSpellCombat = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "MythicSpellCombat", bp => {
                 bp.IsClassFeature = true;
                 bp.ReapplyOnLevelUp = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.MythicAbility };

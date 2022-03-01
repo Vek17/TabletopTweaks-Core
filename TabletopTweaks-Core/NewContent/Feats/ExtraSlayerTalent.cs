@@ -1,6 +1,7 @@
 ﻿using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -11,7 +12,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var SlayerTalentSelection10 = Resources.GetBlueprint<BlueprintFeatureSelection>("913b9cf25c9536949b43a2651b7ffb66");
             var RangerStyleSelection2 = Resources.GetBlueprint<BlueprintFeatureSelection>("c6d0da9124735a44f93ac31df803b9a9");
 
-            var ExtraSlayerTalent = FeatTools.CreateExtraSelectionFeat("ExtraSlayerTalent", SlayerTalentSelection2, bp => {
+            var ExtraSlayerTalent = FeatTools.CreateExtraSelectionFeat(modContext: TTTContext, "ExtraSlayerTalent", SlayerTalentSelection2, bp => {
                 bp.SetName("Extra Slayer Talent");
                 bp.SetDescription("You gain one additional slayer talent. You must meet the prerequisites for this slayer talent." +
                     "\nYou can take this feat multiple times. Each time you do, you gain another slayer talent.");

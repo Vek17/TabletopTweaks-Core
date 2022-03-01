@@ -3,6 +3,7 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Backgrounds {
@@ -10,7 +11,7 @@ namespace TabletopTweaks.Core.NewContent.Backgrounds {
         public static void AddLecturer() {
             var BackgroundsScholarSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("273fab44409035f42a7e2af0858a463d");
 
-            var BackgroundScholarLecturer = Helpers.CreateBlueprint<BlueprintFeature>("BackgroundScholarLecturer", bp => {
+            var BackgroundScholarLecturer = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BackgroundScholarLecturer", bp => {
                 bp.SetName("Lecturer");
                 bp.SetDescription("Lecturer adds Knowledge (World) and Persuasion to the list of her class skills. " +
                     "She can also use her Intelligence instead of Charisma while attempting Persuasion checks.\n" +

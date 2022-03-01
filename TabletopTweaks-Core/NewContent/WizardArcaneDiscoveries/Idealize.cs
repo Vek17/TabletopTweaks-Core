@@ -18,6 +18,7 @@ using System.Reflection.Emit;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
@@ -28,7 +29,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
             var ThassilonianEnchantmentFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("e1ebc61a71c55054991863a5f6f6d2c2");
             var ThassilonianIllusionFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("aa271e69902044b47a8e62c4e58a9dcb");
 
-            var IdealizeUpgrade = Helpers.CreateBlueprint<BlueprintFeature>($"IdealizeUpgrade", bp => {
+            var IdealizeUpgrade = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, $"IdealizeUpgrade", bp => {
                 bp.SetName($"Idealize Upgrade");
                 bp.SetDescription("In your quest for self-perfection, you have discovered a way to further enhance yourself and others.\n" +
                     "When a transmutation spell you cast grants an enhancement bonus to an ability score, that bonus increases by 2. " +
@@ -41,7 +42,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                     c.Feature = CustomMechanicsFeature.IdealizeDiscoveryUpgrade;
                 });
             });
-            var Idealize = Helpers.CreateBlueprint<BlueprintFeature>($"Idealize", bp => {
+            var Idealize = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, $"Idealize", bp => {
                 bp.SetName($"Idealize");
                 bp.SetDescription("In your quest for self-perfection, you have discovered a way to further enhance yourself and others.\n" +
                     "When a transmutation spell you cast grants an enhancement bonus to an ability score, that bonus increases by 2. " +

@@ -2,9 +2,9 @@
 using Newtonsoft.Json.Linq;
 using System.Linq;
 using System.Text.RegularExpressions;
-using TabletopTweaks.Core.Modlogic;
+using TabletopTweaks.Core.ModLogic;
 
-namespace TabletopTweaks.Core.Upgraders {
+namespace TabletopTweaks.Core.SaveUpgrades {
     internal class TabletopTweaksMigration : IJsonUpgrader {
         public bool NeedsPlayerPriorityLoad => false;
         private readonly ModContextBase Context;

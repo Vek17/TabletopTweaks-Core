@@ -17,6 +17,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 

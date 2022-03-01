@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -22,7 +23,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var DiscipleOfThePikeArchetype = Resources.GetBlueprint<BlueprintArchetype>("4c4c3f9df00a5e04680d172a290111c4");
             var KnightOfTheWallArchetype = Resources.GetBlueprint<BlueprintArchetype>("112dd0e61f95c3a459ac0a565472e685");
 
-            var ExpertTrainer = Helpers.CreateBlueprint<BlueprintFeature>("ExpertTrainer", bp => {
+            var ExpertTrainer = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ExpertTrainer", bp => {
                 bp.SetName("Expert Trainer");
                 bp.SetDescription("At 4th level, a cavalier learns to train mounts with speed and unsurpassed expertise.");
                 bp.m_Icon = CavalierMountSelection.Icon;
@@ -30,7 +31,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             });
 
             var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
-            var HorseMasterRank = Helpers.CreateBlueprint<BlueprintFeature>("HorseMasterRank", bp => {
+            var HorseMasterRank = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "HorseMasterRank", bp => {
                 bp.IsClassFeature = true;
                 bp.HideInUI = true;
                 bp.Ranks = 20;
@@ -42,7 +43,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
             });
 
-            var HorseMaster = Helpers.CreateBlueprint<BlueprintProgression>("HorseMaster", bp => {
+            var HorseMaster = Helpers.CreateBlueprint<BlueprintProgression>(modContext: TTTContext, "HorseMaster", bp => {
                 bp.SetName("Horse Master");
                 bp.SetDescription("You blend horsemanship skills from disparate traditions into a seamless mounted combat technique.\n" +
                     "Use your character level to determine your effective druid level for determining the powers and abilities of your mount.");

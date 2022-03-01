@@ -7,6 +7,8 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Enums;
 using Kingmaker.Utility;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class ImprovedChannel {
@@ -14,7 +16,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var SelectiveChannel = Resources.GetBlueprint<BlueprintFeature>("fd30c69417b434d47b6b03b9c1f568ff");
             var ExtraChannel = Resources.GetBlueprint<BlueprintFeature>("cd9f19775bd9d3343a31a065e93f0c47");
 
-            var ImprovedChannel = Helpers.CreateBlueprint<BlueprintFeature>("ImprovedChannel", bp => {
+            var ImprovedChannel = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ImprovedChannel", bp => {
                 bp.SetName("Improved Channel");
                 bp.SetDescription("Add 2 to the DC of saving throws made to resist the effects of your channel energy ability.");
                 bp.m_Icon = ExtraChannel.Icon;

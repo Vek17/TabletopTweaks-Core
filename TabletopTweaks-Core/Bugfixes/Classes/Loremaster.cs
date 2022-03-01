@@ -97,7 +97,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     var LoremasterProgression = Resources.GetBlueprint<BlueprintProgression>("2bcd2330cc2c5a747968a8c782d4fa0a");
                     var LoremasterSecretSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("beeb25d7a7732e14f9986cdb79acecfc");
                     var LoremasterSpellbookSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("7a28ab4dfc010834eabc770152997e87");
-                    var LoremasterSpellbookSelectionTTT = Resources.GetModBlueprint<BlueprintFeatureSelection>("LoremasterSpellbookSelectionTTT");
+                    var LoremasterSpellbookSelectionTTT = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "LoremasterSpellbookSelectionTTT");
 
                     LoremasterProgression.LevelEntries = LoremasterProgression.LevelEntries
                         .Where(entry => entry.Level != 1)
@@ -113,9 +113,9 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     var LoremasterDruidSpellSecret = Resources.GetBlueprint<BlueprintFeatureSelection>("6b73ba9d8a718fb419a484c6e1b92c6d");
                     var LoremasterWizardSpellSecret = Resources.GetBlueprint<BlueprintFeatureSelection>("f97986f19a595e2409cfe5d92bcf697c");
 
-                    var LoremasterClericSpellSecret_TTT = Resources.GetModBlueprint<BlueprintFeatureSelection>("LoremasterClericSpellSecret_TTT");
-                    var LoremasterDruidSpellSecret_TTT = Resources.GetModBlueprint<BlueprintFeatureSelection>("LoremasterDruidSpellSecret_TTT");
-                    var LoremasterWizardSpellSecret_TTT = Resources.GetModBlueprint<BlueprintFeatureSelection>("LoremasterWizardSpellSecret_TTT");
+                    var LoremasterClericSpellSecret_TTT = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "LoremasterClericSpellSecret_TTT");
+                    var LoremasterDruidSpellSecret_TTT = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "LoremasterDruidSpellSecret_TTT");
+                    var LoremasterWizardSpellSecret_TTT = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "LoremasterWizardSpellSecret_TTT");
 
                     LoremasterSecretSelection.RemoveFeatures(
                         LoremasterClericSpellSecret,

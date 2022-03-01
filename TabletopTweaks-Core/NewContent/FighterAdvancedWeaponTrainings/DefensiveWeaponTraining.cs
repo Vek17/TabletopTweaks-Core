@@ -3,6 +3,7 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
@@ -10,7 +11,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
         public static void AddDefensiveWeaponTraining() {
             var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
 
-            var DefensiveWeaponTrainingFeature = Helpers.CreateBlueprint<BlueprintFeature>("DefensiveWeaponTrainingFeature", bp => {
+            var DefensiveWeaponTrainingFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DefensiveWeaponTrainingFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.WeaponTraining };

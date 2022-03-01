@@ -6,6 +6,7 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using System;
 using System.Collections.Generic;
+using TabletopTweaks.Core.ModLogic;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using UnityEngine;
 
@@ -21,35 +22,35 @@ namespace TabletopTweaks.Core.Utilities {
         private static readonly string NormalMetamagicRodString = "Regular rods can be used with spells of 6th level or lower.";
         private static readonly string GreaterMetamagicRodString = "Greater rods can be used with spells of 9th level or lower.";
         private static BlueprintItemEquipmentUsable CreateMetamagicRod(
+            ModContextBase modContext,
             string rodName,
             Sprite icon,
             Metamagic metamagic,
             string metamagicName,
             MetamagicRodType type,
             string rodDescriptionStart,
-            string metamagicDescription,
-            Action<BlueprintItemEquipmentUsable> init = null
+            string metamagicDescription, Action<BlueprintItemEquipmentUsable> init = null
         ) {
             var description = $"{rodDescriptionStart}\n{GetRodString(type)}\n{metamagicDescription}";
 
-            var Buff = Helpers.CreateBuff($"MetamagicRod{type}{metamagicName}Buff", bp => {
+            var Buff = Helpers.CreateBuff(modContext, $"MetamagicRod{type}{metamagicName}Buff", bp => {
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
                 bp.ResourceAssetIds = new string[0];
-                bp.SetName(rodName);
-                bp.SetDescription(description);
-                bp.m_DescriptionShort = Helpers.CreateString($"{bp.name}.Description_Short", "");
+                bp.SetName(modContext, rodName);
+                bp.SetDescription(modContext, description);
+                bp.m_DescriptionShort = Helpers.CreateString(modContext, $"{bp.name}.Description_Short", "");
                 bp.m_Icon = icon;
             });
-            var ActivatableAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>($"MetamagicRod{type}{metamagicName}ToggleAbility", bp => {
+            var ActivatableAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>(modContext, $"MetamagicRod{type}{metamagicName}ToggleAbility", bp => {
                 bp.m_Buff = Buff.ToReference<BlueprintBuffReference>();
                 bp.m_SelectTargetAbility = new BlueprintAbilityReference();
                 bp.Group = ActivatableAbilityGroup.MetamagicRod;
                 bp.WeightInGroup = 1;
                 bp.DeactivateImmediately = true;
                 bp.ResourceAssetIds = new string[0];
-                bp.SetName(rodName);
-                bp.SetDescription(description);
-                bp.m_DescriptionShort = Helpers.CreateString($"{bp.name}.Description_Short", "");
+                bp.SetName(modContext, rodName);
+                bp.SetDescription(modContext, description);
+                bp.m_DescriptionShort = Helpers.CreateString(modContext, $"{bp.name}.Description_Short", "");
                 bp.m_Icon = icon;
                 bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
                     c.m_RequiredResource = new BlueprintAbilityResourceReference();
@@ -63,7 +64,7 @@ namespace TabletopTweaks.Core.Utilities {
                 c.Metamagic = metamagic;
                 c.MaxSpellLevel = (int)type;
             });
-            var MetamagicRod = Helpers.CreateBlueprint<BlueprintItemEquipmentUsable>($"MetamagicRod{type}{metamagicName}", bp => {
+            var MetamagicRod = Helpers.CreateBlueprint<BlueprintItemEquipmentUsable>(modContext, $"MetamagicRod{type}{metamagicName}", bp => {
                 bp.m_InventoryEquipSound = "WandPut";
                 bp.m_BeltItemPrefab = new Kingmaker.ResourceLinks.PrefabLink();
                 bp.m_Enchantments = new BlueprintEquipmentEnchantmentReference[0];
@@ -74,11 +75,11 @@ namespace TabletopTweaks.Core.Utilities {
                 bp.SpendCharges = true;
                 bp.Charges = 3;
                 bp.RestoreChargesOnRest = true;
-                bp.m_DisplayNameText = Helpers.CreateString($"{bp.name}.Name", rodName);
-                bp.m_DescriptionText = Helpers.CreateString($"{bp.name}.Description", description, shouldProcess: true);
-                bp.m_FlavorText = Helpers.CreateString($"{bp.name}.Flavor", "");
-                bp.m_NonIdentifiedNameText = Helpers.CreateString($"{bp.name}.Unidentified_Name", "Rod");
-                bp.m_NonIdentifiedDescriptionText = Helpers.CreateString($"{bp.name}.Unidentified_Description", "");
+                bp.m_DisplayNameText = Helpers.CreateString(modContext, $"{bp.name}.Name", rodName);
+                bp.m_DescriptionText = Helpers.CreateString(modContext, $"{bp.name}.Description", description, shouldProcess: true);
+                bp.m_FlavorText = Helpers.CreateString(modContext, $"{bp.name}.Flavor", "");
+                bp.m_NonIdentifiedNameText = Helpers.CreateString(modContext, $"{bp.name}.Unidentified_Name", "Rod");
+                bp.m_NonIdentifiedDescriptionText = Helpers.CreateString(modContext, $"{bp.name}.Unidentified_Description", "");
                 bp.m_Icon = icon;
                 bp.m_Cost = GetRodCost(metamagic, type);
                 bp.m_Weight = 1;
@@ -157,17 +158,17 @@ namespace TabletopTweaks.Core.Utilities {
             }
         }
         public static BlueprintItemEquipmentUsable CreateMetamagicRod(
+            ModContextBase modContext,
             string rodName,
             Sprite icon,
             Metamagic metamagic,
             MetamagicRodType type,
             string rodDescriptionStart,
-            string metamagicDescription,
-            Action<BlueprintItemEquipmentUsable> init = null
+            string metamagicDescription, Action<BlueprintItemEquipmentUsable> init = null
         ) {
             if (metamagic.IsNewMetamagic()) {
                 return CreateMetamagicRod(
-                    rodName,
+                    modContext, rodName,
                     icon,
                     metamagic,
                     ((MetamagicExtention.CustomMetamagic)metamagic).ToString(),
@@ -177,7 +178,7 @@ namespace TabletopTweaks.Core.Utilities {
                 );
             }
             return CreateMetamagicRod(
-                rodName,
+                modContext, rodName,
                 icon,
                 metamagic,
                 metamagic.ToString(),
@@ -187,38 +188,38 @@ namespace TabletopTweaks.Core.Utilities {
             );
         }
         public static BlueprintItemEquipmentUsable[] CreateAllMetamagicRods(
+            ModContextBase modContext,
             string rodName,
             Sprite lesserIcon,
             Sprite normalIcon,
             Sprite greaterIcon,
             Metamagic metamagic,
-            string rodDescriptionStart,
-            string metamagicDescription) {
+            string rodDescriptionStart, string metamagicDescription) {
 
             return new BlueprintItemEquipmentUsable[] {
                 CreateMetamagicRod(
-                    $"Lesser {rodName}",
+                    modContext, $"Lesser {rodName}",
                     lesserIcon,
                     metamagic,
                     type: MetamagicRodType.Lesser,
-                    rodDescriptionStart,
-                    metamagicDescription
+                    rodDescriptionStart: rodDescriptionStart,
+                    metamagicDescription: metamagicDescription
                 ),
                 CreateMetamagicRod(
-                    rodName,
+                    modContext, rodName,
                     normalIcon,
                     metamagic,
                     type: MetamagicRodType.Normal,
-                    rodDescriptionStart,
-                    metamagicDescription
+                    rodDescriptionStart: rodDescriptionStart,
+                    metamagicDescription: metamagicDescription
                 ),
                 CreateMetamagicRod(
-                    $"Greater {rodName}",
+                    modContext, $"Greater {rodName}",
                     greaterIcon,
                     metamagic,
                     type: MetamagicRodType.Greater,
-                    rodDescriptionStart,
-                    metamagicDescription
+                    rodDescriptionStart: rodDescriptionStart,
+                    metamagicDescription: metamagicDescription
                 )
             };
         }

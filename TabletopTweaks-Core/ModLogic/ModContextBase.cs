@@ -7,7 +7,7 @@ using TabletopTweaks.Core.Localization;
 using TabletopTweaks.Core.ModLogic;
 using static UnityModManagerNet.UnityModManager;
 
-namespace TabletopTweaks.Core.Modlogic {
+namespace TabletopTweaks.Core.ModLogic {
     public abstract class ModContextBase {
         public readonly ModEntry ModEntry;
         public readonly ModLogger Logger;

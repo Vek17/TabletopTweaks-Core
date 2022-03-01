@@ -4,6 +4,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Enums;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
@@ -13,7 +14,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
             var WizardSpellList = Resources.GetBlueprintReference<BlueprintSpellListReference>("ba0401fdeb4062f40a7aa95b6f07fe89");
             var AlchemistSpellList = Resources.GetBlueprintReference<BlueprintSpellListReference>("f60d0cd93edc65c42ad31e34a905fb2f");
 
-            var AlchemicalAffinity = Helpers.CreateBlueprint<BlueprintFeature>($"AlchemicalAffinity", bp => {
+            var AlchemicalAffinity = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, $"AlchemicalAffinity", bp => {
                 bp.SetName($"Alchemical Affinity");
                 bp.SetDescription("Having studied alongside alchemists, you’ve learned to use their methodologies to enhance your spellcraft.\n" +
                     "Whenever you cast a spell that appears on both the wizard and alchemist spell lists, " +

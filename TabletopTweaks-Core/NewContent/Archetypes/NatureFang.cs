@@ -5,6 +5,7 @@ using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Archetypes {
@@ -43,7 +44,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
 
         public static void AddNatureFang() {
 
-            var NatureFangStudiedTargetFeature = Helpers.CreateBlueprint<BlueprintFeature>("NatureFangStudiedTargetFeature", bp => {
+            var NatureFangStudiedTargetFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "NatureFangStudiedTargetFeature", bp => {
                 bp.SetName("Studied Target");
                 bp.SetDescription("At 1st level, a nature fang gains the slayer’s studied target class feature." +
                     " At 5th level and every 5 levels thereafter, the nature fang’s bonus against her studied target increases by 1.");
@@ -54,7 +55,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var NatureFangStudiedTargetSwiftFeature = Helpers.CreateBlueprint<BlueprintFeature>("NatureFangStudiedTargetSwiftFeature", bp => {
+            var NatureFangStudiedTargetSwiftFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "NatureFangStudiedTargetSwiftFeature", bp => {
                 bp.SetName("Studied Target");
                 bp.SetDescription("At 7th level, a character can study an opponent as a move or swift action.");
                 bp.m_Icon = SlayerSwiftStudyTargetFeature.Icon;
@@ -64,7 +65,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var NatureFangAdvancedSlayerTalent = Helpers.CreateBlueprint<BlueprintFeature>("NatureFangAdvancedSlayerTalent", bp => {
+            var NatureFangAdvancedSlayerTalent = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "NatureFangAdvancedSlayerTalent", bp => {
                 bp.SetName("Advanced Talent");
                 bp.SetDescription("Starting at 12th level, a Nature Fang can select an advanced slayer talent in place of a slayer talent.");
                 bp.m_Icon = SlayerAdvancedTalents.Icon;
@@ -74,7 +75,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 });
             });
 
-            var NatureFangArcehtype = Helpers.CreateBlueprint<BlueprintArchetype>("NatureFangArcehtype", bp => {
+            var NatureFangArcehtype = Helpers.CreateBlueprint<BlueprintArchetype>(modContext: TTTContext, "NatureFangArcehtype", bp => {
                 bp.SetName("Nature Fang");
                 bp.SetDescription("A nature fang is a druid who stalks and slays those who despoil nature, kill scarce animals, or introduce diseases to unprotected habitats." +
                     " She gives up a close empathic connection with the natural world to become its deadly champion and avenger.");

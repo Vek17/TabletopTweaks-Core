@@ -5,6 +5,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.Abilities;
 using System.Linq;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static Kingmaker.Designers.Mechanics.Facts.AutoMetamagic;
 using static TabletopTweaks.Core.Main;
 
@@ -75,7 +76,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 Resources.GetBlueprintReference<BlueprintAbilityReference>("f9e01aec7f35ec94ea7f2b3f73f1e98f"),    // WeatherBlessingMajorAbility,
                 Resources.GetBlueprintReference<BlueprintAbilityReference>("df8099d3937d52440a5bbec98751ecde"),    // WeatherBlessingMinorAbility,
             };
-            var EnhancedBlessingsFeature = Helpers.CreateBlueprint<BlueprintFeature>("EnhancedBlessingsFeature", bp => {
+            var EnhancedBlessingsFeature = Helpers.CreateBlueprint<BlueprintFeature>(TTTContext, "EnhancedBlessingsFeature", bp => {
                 bp.m_Icon = DomainMastery.m_Icon;
                 bp.SetName("Enhanced Blessings");
                 bp.SetDescription("You have moved closer to your deity and to the power it has over its blessings.\n" +

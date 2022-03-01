@@ -9,6 +9,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -18,7 +19,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
             var ExtraMythicAbilityMythicFeat = Resources.GetBlueprint<BlueprintFeatureSelection>("8a6a511c55e67d04db328cc49aaad2b8");
             var icon = AssetLoader.LoadInternal("Feats", "Icon_ArmorMaster.png");
 
-            var ArmorMasterLightFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArmorMasterLightFeature", bp => {
+            var ArmorMasterLightFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmorMasterLightFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.ReapplyOnLevelUp = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.MythicAbility };
@@ -51,7 +52,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                     };
                 });
             });
-            var ArmorMasterMediumFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArmorMasterMediumFeature", bp => {
+            var ArmorMasterMediumFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmorMasterMediumFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.ReapplyOnLevelUp = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.MythicAbility };
@@ -87,7 +88,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                     c.m_Feature = ArmorMasterLightFeature.ToReference<BlueprintFeatureReference>();
                 });
             });
-            var ArmorMasterHeavyFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArmorMasterHeavyFeature", bp => {
+            var ArmorMasterHeavyFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmorMasterHeavyFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.ReapplyOnLevelUp = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.MythicAbility };
@@ -123,7 +124,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                     c.m_Feature = ArmorMasterMediumFeature.ToReference<BlueprintFeatureReference>();
                 }));
             });
-            var ArmorMasterHomebrewFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArmorMasterHomebrewFeature", bp => {
+            var ArmorMasterHomebrewFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmorMasterHomebrewFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.ReapplyOnLevelUp = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.MythicAbility };

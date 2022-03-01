@@ -3,6 +3,8 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Features {
     static class DragonDiscipleSpellbooks {
@@ -20,7 +22,7 @@ namespace TabletopTweaks.Core.NewContent.Features {
             var WitchClass = Resources.GetBlueprint<BlueprintCharacterClass>("1b9873f1e7bfe5449bc84d03e9c8e3cc");
             var AccursedWitchArchetype = Resources.GetBlueprint<BlueprintArchetype>("c5f6e53e71059fb4d802ce81a277a12d");
 
-            var DragonDiscipleSageSorcerer = Helpers.CreateBlueprint<BlueprintFeatureReplaceSpellbook>("DragonDiscipleSageSorcerer", bp => {
+            var DragonDiscipleSageSorcerer = Helpers.CreateBlueprint<BlueprintFeatureReplaceSpellbook>(modContext: TTTContext, "DragonDiscipleSageSorcerer", bp => {
                 bp.SetName("Sorcerer");
                 bp.m_Description = DragonDiscipleSpellbookSelection.m_Description;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.DragonDiscipleSpellbook };
@@ -35,7 +37,7 @@ namespace TabletopTweaks.Core.NewContent.Features {
                     c.Level = 1;
                 });
             });
-            var DragonDiscipleEmpyrealSorcerer = Helpers.CreateBlueprint<BlueprintFeatureReplaceSpellbook>("DragonDiscipleEmpyrealSorcerer", bp => {
+            var DragonDiscipleEmpyrealSorcerer = Helpers.CreateBlueprint<BlueprintFeatureReplaceSpellbook>(modContext: TTTContext, "DragonDiscipleEmpyrealSorcerer", bp => {
                 bp.SetName("Sorcerer");
                 bp.m_Description = DragonDiscipleSpellbookSelection.m_Description;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.DragonDiscipleSpellbook };
@@ -50,7 +52,7 @@ namespace TabletopTweaks.Core.NewContent.Features {
                     c.Level = 1;
                 });
             });
-            var DragonDiscipleUnletteredArcanist = Helpers.CreateBlueprint<BlueprintFeatureReplaceSpellbook>("DragonDiscipleUnletteredArcanist", bp => {
+            var DragonDiscipleUnletteredArcanist = Helpers.CreateBlueprint<BlueprintFeatureReplaceSpellbook>(modContext: TTTContext, "DragonDiscipleUnletteredArcanist", bp => {
                 bp.SetName("Arcanist");
                 bp.m_Description = DragonDiscipleSpellbookSelection.m_Description;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.DragonDiscipleSpellbook };
@@ -65,7 +67,7 @@ namespace TabletopTweaks.Core.NewContent.Features {
                     c.Level = 1;
                 });
             });
-            var DragonDiscipleNatureMage = Helpers.CreateBlueprint<BlueprintFeatureReplaceSpellbook>("DragonDiscipleNatureMage", bp => {
+            var DragonDiscipleNatureMage = Helpers.CreateBlueprint<BlueprintFeatureReplaceSpellbook>(modContext: TTTContext, "DragonDiscipleNatureMage", bp => {
                 bp.SetName("Arcanist");
                 bp.m_Description = DragonDiscipleSpellbookSelection.m_Description;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.DragonDiscipleSpellbook };
@@ -80,7 +82,7 @@ namespace TabletopTweaks.Core.NewContent.Features {
                     c.Level = 1;
                 });
             });
-            var DragonDiscipleAccursedWitch = Helpers.CreateBlueprint<BlueprintFeatureReplaceSpellbook>("DragonDiscipleAccursedWitch", bp => {
+            var DragonDiscipleAccursedWitch = Helpers.CreateBlueprint<BlueprintFeatureReplaceSpellbook>(modContext: TTTContext, "DragonDiscipleAccursedWitch", bp => {
                 bp.SetName("Witch");
                 bp.m_Description = DragonDiscipleSpellbookSelection.m_Description;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.DragonDiscipleSpellbook };

@@ -1,6 +1,7 @@
 ﻿using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -9,7 +10,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
             var SpecialisationSchoolUniversalistProgression = Resources.GetBlueprint<BlueprintProgression>("0933849149cfc9244ac05d6a5b57fd80");
             var OppositionSchoolSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("6c29030e9fea36949877c43a6f94ff31");
 
-            var HarmoniousMageFeature = Helpers.CreateBlueprint<BlueprintFeature>("HarmoniousMageFeature", bp => {
+            var HarmoniousMageFeature = Helpers.CreateBlueprint<BlueprintFeature>(TTTContext, "HarmoniousMageFeature", bp => {
                 bp.SetName("Harmonious Mage");
                 bp.SetDescription("Your wizardly studies have moved beyond the concept of opposition schools. " +
                     "Preparing spells from one of your opposition schools now only requires one spell slot " +

@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints;
 using System;
 using System.Collections.Generic;
-using static TabletopTweaks.Core.Main;
+using TabletopTweaks.Core.ModLogic;
 
 namespace TabletopTweaks.Core {
     static class Resources {
@@ -18,14 +18,14 @@ namespace TabletopTweaks.Core {
             return blueprints.Concat(ResourcesLibrary.s_LoadedBlueprints.Values).OfType<T>().Distinct();
         }
 #endif
-        public static T GetModBlueprintReference<T>(string name) where T : BlueprintReferenceBase {
-            BlueprintGuid? assetId = TTTContext.Blueprints.GetGUID(name);
+        public static T GetModBlueprintReference<T>(ModContextBase modContext, string name) where T : BlueprintReferenceBase {
+            BlueprintGuid? assetId = modContext.Blueprints.GetGUID(name);
             var reference = Activator.CreateInstance<T>();
             reference.deserializedGuid = assetId ?? BlueprintGuid.Empty;
             return reference;
         }
-        public static T GetModBlueprint<T>(string name) where T : SimpleBlueprint {
-            var assetId = TTTContext.Blueprints.GetGUID(name);
+        public static T GetModBlueprint<T>(ModContextBase modContext, string name) where T : SimpleBlueprint {
+            var assetId = modContext.Blueprints.GetGUID(name);
             ModBlueprints.TryGetValue(assetId, out var value);
             return value as T;
         }
@@ -42,26 +42,26 @@ namespace TabletopTweaks.Core {
         public static T GetBlueprint<T>(BlueprintGuid id) where T : SimpleBlueprint {
             SimpleBlueprint asset = ResourcesLibrary.TryGetBlueprint(id);
             T value = asset as T;
-            if (value == null) { TTTContext.Logger.LogError($"COULD NOT LOAD: {id} - {typeof(T)}"); }
+            if (value == null) { Main.TTTContext.Logger.LogError($"COULD NOT LOAD: {id} - {typeof(T)}"); }
             return value;
         }
-        public static void AddBlueprint([NotNull] SimpleBlueprint blueprint) {
-            AddBlueprint(blueprint, blueprint.AssetGuid);
+        public static void AddBlueprint(ModContextBase modContext, [NotNull] SimpleBlueprint blueprint) {
+            AddBlueprint(modContext, blueprint, blueprint.AssetGuid);
         }
-        public static void AddBlueprint([NotNull] SimpleBlueprint blueprint, string assetId) {
+        public static void AddBlueprint(ModContextBase modContext, [NotNull] SimpleBlueprint blueprint, string assetId) {
             var Id = BlueprintGuid.Parse(assetId);
-            AddBlueprint(blueprint, Id);
+            AddBlueprint(modContext, blueprint, Id);
         }
-        public static void AddBlueprint([NotNull] SimpleBlueprint blueprint, BlueprintGuid assetId) {
+        public static void AddBlueprint(ModContextBase modContext, [NotNull] SimpleBlueprint blueprint, BlueprintGuid assetId) {
             var loadedBlueprint = ResourcesLibrary.TryGetBlueprint(assetId);
             if (loadedBlueprint == null) {
                 ModBlueprints[assetId] = blueprint;
                 ResourcesLibrary.BlueprintsCache.AddCachedBlueprint(assetId, blueprint);
                 blueprint.OnEnable();
-                TTTContext.Logger.LogPatch("Added", blueprint);
+                modContext.Logger.LogPatch("Added", blueprint);
             } else {
-                TTTContext.Logger.Log($"Failed to Add: {blueprint.name}");
-                TTTContext.Logger.Log($"Asset ID: {assetId} already in use by: {loadedBlueprint.name}");
+                modContext.Logger.Log($"Failed to Add: {blueprint.name}");
+                modContext.Logger.Log($"Asset ID: {assetId} already in use by: {loadedBlueprint.name}");
             }
         }
     }

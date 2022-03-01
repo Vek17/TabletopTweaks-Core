@@ -1,6 +1,7 @@
 ﻿using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -10,7 +11,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
 
             var WitchHexAmelioratingFeature = Resources.GetBlueprint<BlueprintFeature>("3cdd3660fb69f3e4db0160fa97dfa85d");
 
-            var ImpossibleBlessingFeature = Helpers.CreateBlueprint<BlueprintFeatureSelection>("ImpossibleBlessingFeature", bp => {
+            var ImpossibleBlessingFeature = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "ImpossibleBlessingFeature", bp => {
                 bp.SetName("Impossible Blessing");
                 bp.SetDescription("You feel a closer connection to your deity you serve.\n" +
                     "You gain one more blessing, ignoring all blessing prerequisites.");

@@ -25,6 +25,7 @@ using System.Reflection.Emit;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.Items {
@@ -131,7 +132,7 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                     var TerrifyingTrembleItem = Resources.GetBlueprint<BlueprintItemWeapon>("8c31891423c4405393741e829aebec85");
                     var Enhancement5 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("bdba267e951851449af552aa9f9e3992");
                     var Ultrasound = Resources.GetBlueprint<BlueprintWeaponEnchantment>("582849db96824254ebcc68f0b7484e51");
-                    var TerrifyingTrembleEnchant_TTT = Resources.GetModBlueprint<BlueprintWeaponEnchantment>("TerrifyingTrembleEnchant_TTT");
+                    var TerrifyingTrembleEnchant_TTT = Resources.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TerrifyingTrembleEnchant_TTT");
 
                     TerrifyingTrembleItem.SetDescription("Whenever the wielder of this +5 ultrasound earthbreaker lands a killing blow, he deals sonic damage equal to his ranks in " +
                         "the Athletics skill to all enemies within 10 feet. Successful Reflex save (DC 30) halves the damage.");

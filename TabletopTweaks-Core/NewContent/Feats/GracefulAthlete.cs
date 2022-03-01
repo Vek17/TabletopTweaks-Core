@@ -7,13 +7,14 @@ using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
     class GracefulAthlete {
         public static void AddGracefulAthlete() {
 
-            var GracefulAthlete = Helpers.CreateBlueprint<BlueprintFeature>("GracefulAthlete", bp => {
+            var GracefulAthlete = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "GracefulAthlete", bp => {
                 bp.SetName("Graceful Athlete");
                 bp.SetDescription("Add your Dexterity modifier instead of your Strength bonus to Athletics checks. This feat grants no benefit " +
                     "to creatures that already add their Dexterity modifier to Athletics checks (such as all Tiny or smaller creatures).");

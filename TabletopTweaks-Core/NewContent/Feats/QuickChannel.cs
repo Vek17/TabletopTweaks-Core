@@ -10,6 +10,8 @@ using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.Utility;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class QuickChannel {
@@ -17,7 +19,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var SelectiveChannel = Resources.GetBlueprint<BlueprintFeature>("fd30c69417b434d47b6b03b9c1f568ff");
             var ExtraChannel = Resources.GetBlueprint<BlueprintFeature>("cd9f19775bd9d3343a31a065e93f0c47");
 
-            var QuickChannel = Helpers.CreateBlueprint<BlueprintFeature>("QuickChannel", bp => {
+            var QuickChannel = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "QuickChannel", bp => {
                 bp.SetName("Quick Channel");
                 bp.SetDescription("You may channel energy as a move action by spending 2 daily uses of that ability.");
                 bp.m_Icon = SelectiveChannel.Icon;

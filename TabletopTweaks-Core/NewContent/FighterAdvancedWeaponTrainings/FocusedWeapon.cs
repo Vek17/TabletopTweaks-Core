@@ -6,17 +6,18 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
     class FocusedWeapon {
         public static void AddFocusedWeapon() {
             var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
-            var FighterWeaponTrainingProperty = Resources.GetModBlueprintReference<BlueprintUnitPropertyReference>("FighterWeaponTrainingProperty");
+            var FighterWeaponTrainingProperty = Resources.GetModBlueprintReference<BlueprintUnitPropertyReference>(modContext: TTTContext, "FighterWeaponTrainingProperty");
             var WeaponFinesse = Resources.GetBlueprint<BlueprintFeature>("90e54424d682d104ab36436bd527af09");
             var WeaponFocus = Resources.GetBlueprint<BlueprintParametrizedFeature>("1e1f627d26ad36f43bbd26cc2bf8ac7e");
 
-            var FocusedWeaponBuff = Helpers.CreateBuff("FocusedWeaponBuff", bp => {
+            var FocusedWeaponBuff = Helpers.CreateBuff(modContext: TTTContext, "FocusedWeaponBuff", bp => {
                 bp.SetName("Focused Weapon");
                 bp.SetDescription("The fighter selects one weapon for which he has Weapon Focus and that belongs to the associated fighter weapon group. " +
                     "The fighter can deal damage with this weapon based on the damage of the warpriest’s sacred weapon class feature, treating his fighter" +
@@ -27,7 +28,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                     c.FighterWeaponTrainingProperty = FighterWeaponTrainingProperty;
                 });
             });
-            var FocusedWeaponToggleAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("FocusedWeaponToggleAbility", bp => {
+            var FocusedWeaponToggleAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "FocusedWeaponToggleAbility", bp => {
                 bp.SetName("Focused Weapon");
                 bp.SetDescription(FocusedWeaponBuff.m_Description);
                 bp.m_Buff = FocusedWeaponBuff.ToReference<BlueprintBuffReference>();
@@ -36,7 +37,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
                 bp.DoNotTurnOffOnRest = true;
                 bp.DeactivateImmediately = true;
             });
-            var FocusedWeaponFeature = Helpers.CreateBlueprint<BlueprintParametrizedFeature>("FocusedWeaponFeature", bp => {
+            var FocusedWeaponFeature = Helpers.CreateBlueprint<BlueprintParametrizedFeature>(modContext: TTTContext, "FocusedWeaponFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.WeaponTraining };

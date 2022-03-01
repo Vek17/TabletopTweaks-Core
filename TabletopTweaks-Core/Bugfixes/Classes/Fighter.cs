@@ -49,7 +49,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     var AdvancedWeaponTraining2 = Resources.GetBlueprint<BlueprintFeatureSelection>("70a139f0a4c6c534eaa34feea0d08622");
                     var AdvancedWeaponTraining3 = Resources.GetBlueprint<BlueprintFeatureSelection>("ee9ab0117ca06b84f9c66469f4428c61");
                     var AdvancedWeaponTraining4 = Resources.GetBlueprint<BlueprintFeatureSelection>("0b55d725ded1ae549bb858fba1d84114");
-                    var AdvancedWeapontrainingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("AdvancedWeaponTrainingSelection");
+                    var AdvancedWeapontrainingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "AdvancedWeaponTrainingSelection");
 
                     WeaponTrainingSelection.m_AllFeatures = WeaponTrainingSelection.m_AllFeatures.Where(feature => !AdvancedWeapontrainingSelection.m_AllFeatures.Contains(feature)).ToArray();
                     WeaponTrainingSelection.Mode = SelectionMode.Default;
@@ -84,7 +84,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     var TwoHandedFighterArchetype = Resources.GetBlueprint<BlueprintArchetype>("84643e02a764bff4a9c1aba333a53c89");
                     var TwoHandedFighterWeaponTraining = Resources.GetBlueprint<BlueprintFeature>("88da2a5dfc505054f933bb81014e864f");
                     var WeaponTrainingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b8cecf4e5e464ad41b79d5b42b76b399");
-                    var AdvancedWeapontrainingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("AdvancedWeaponTrainingSelection");
+                    var AdvancedWeapontrainingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "AdvancedWeaponTrainingSelection");
 
                     TwoHandedFighterWeaponTraining.SetComponents(
                         Helpers.Create<WeaponGroupAttackBonus>(c => {
@@ -118,7 +118,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchWeaponTrainingStacking() {
                     if (Main.TTTContext.Fixes.Fighter.Base.IsDisabled("WeaponTrainingStacking")) { return; }
                     var WeaponTrainingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b8cecf4e5e464ad41b79d5b42b76b399");
-                    var AdvancedWeapontrainingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("AdvancedWeaponTrainingSelection");
+                    var AdvancedWeapontrainingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "AdvancedWeaponTrainingSelection");
                     WeaponTrainingSelection.m_AllFeatures
                         .Where(feature => !AdvancedWeapontrainingSelection.m_AllFeatures.Contains(feature))
                         .ForEach(feature => {
@@ -149,8 +149,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void EnableAdvancedArmorTraining() {
                     if (Main.TTTContext.Fixes.Fighter.Base.IsDisabled("AdvancedArmorTraining")) { return; }
                     var ArmorTraining = Resources.GetBlueprint<BlueprintFeature>("3c380607706f209499d951b29d3c44f3");
-                    var ArmorTrainingSpeedFeature = Resources.GetModBlueprint<BlueprintFeature>("ArmorTrainingSpeedFeature");
-                    var ArmorTrainingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("ArmorTrainingSelection");
+                    var ArmorTrainingSpeedFeature = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmorTrainingSpeedFeature");
+                    var ArmorTrainingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "ArmorTrainingSelection");
                     var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
                     var BaseProgression = FighterClass.Progression;
                     BaseProgression.UIGroups

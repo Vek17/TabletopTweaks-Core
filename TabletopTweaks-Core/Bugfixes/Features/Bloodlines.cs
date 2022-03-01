@@ -11,6 +11,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.Features {
@@ -30,7 +31,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
         static void PatchBloodlineRestrictions() {
             if (TTTContext.Fixes.Bloodlines.IsDisabled("BloodlineRestrictions")) { return; }
             // Bloodline Requisite 
-            var BloodlineRequisiteFeature = Resources.GetModBlueprint<BlueprintFeature>("BloodlineRequisiteFeature");
+            var BloodlineRequisiteFeature = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "BloodlineRequisiteFeature");
             // Requisite Features
             var AbyssalBloodlineRequisiteFeature = Resources.GetBlueprint<BlueprintFeature>("b09b58c7f8efff244a33269489abeac6");
             var ArcaneBloodlineRequisiteFeature = Resources.GetBlueprint<BlueprintFeature>("60d8632e96739a74dbac23dd078d205d");
@@ -302,11 +303,11 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 BloodOfDragonsSelection.GetComponent<NoSelectionIfAlreadyHasFeature>()
                     .m_Features = new BlueprintFeatureReference[] { BloodlineRequisiteFeature.ToReference<BlueprintFeatureReference>() };
                 DragonDiscipleSpellbookSelection.AddFeatures(
-                    Resources.GetModBlueprint<BlueprintFeature>("DragonDiscipleSageSorcerer"),
-                    Resources.GetModBlueprint<BlueprintFeature>("DragonDiscipleEmpyrealSorcerer"),
-                    Resources.GetModBlueprint<BlueprintFeature>("DragonDiscipleUnletteredArcanist"),
-                    Resources.GetModBlueprint<BlueprintFeature>("DragonDiscipleNatureMage"),
-                    Resources.GetModBlueprint<BlueprintFeature>("DragonDiscipleAccursedWitch")
+                    Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "DragonDiscipleSageSorcerer"),
+                    Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "DragonDiscipleEmpyrealSorcerer"),
+                    Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "DragonDiscipleUnletteredArcanist"),
+                    Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "DragonDiscipleNatureMage"),
+                    Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "DragonDiscipleAccursedWitch")
                 ); ;
                 TTTContext.Logger.LogPatch("Patched", BloodOfDragonsSelection);
                 TTTContext.Logger.LogPatch("Patched", DragonDiscipleSpellbookSelection);

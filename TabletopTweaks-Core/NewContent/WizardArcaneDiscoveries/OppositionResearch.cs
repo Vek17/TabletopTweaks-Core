@@ -5,6 +5,7 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
@@ -21,7 +22,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
             var OppositionSchoolNecromancy = Resources.GetBlueprint<BlueprintFeature>("a9bb3dcb2e8d44a49ac36c393c114bd9");
             var OppositionSchoolTransmutation = Resources.GetBlueprint<BlueprintFeature>("fc519612a3c604446888bb345bca5234");
 
-            var OppositionResearchSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OppositionResearchSelection", bp => {
+            var OppositionResearchSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "OppositionResearchSelection", bp => {
                 bp.SetName("Opposition Research");
                 bp.SetDescription("Select one Wizard opposition school; preparing spells of this school " +
                     "now only requires one spell slot of the appropriate level instead of two.");
@@ -31,7 +32,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                 bp.Group = FeatureGroup.Feat;
                 bp.Group2 = FeatureGroup.WizardFeat;
                 bp.AddPrerequisite<PrerequisiteNoFeature>(p => {
-                    p.m_Feature = Resources.GetModBlueprintReference<BlueprintFeatureReference>("HarmoniousMageFeature");
+                    p.m_Feature = Resources.GetModBlueprintReference<BlueprintFeatureReference>(modContext: TTTContext, "HarmoniousMageFeature");
                     p.Group = Prerequisite.GroupType.All;
                 });
                 bp.AddPrerequisite<PrerequisiteClassLevel>(p => {
@@ -57,7 +58,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
 
         private static BlueprintFeature CreateOppositionResearch(BlueprintFeature OppositionSchool) {
             var School = OppositionSchool.GetComponent<AddOppositionSchool>().School;
-            var OppositionResearch = Helpers.CreateBlueprint<BlueprintFeature>($"OppositionResearch{School}", bp => {
+            var OppositionResearch = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, $"OppositionResearch{School}", bp => {
                 bp.SetName($"Opposition Research — {School}");
                 bp.SetDescription($"Preparing spells from the {School} school now only requires one spell slot of the appropriate spell level instead of two.");
                 bp.m_Icon = OppositionSchool.Icon;

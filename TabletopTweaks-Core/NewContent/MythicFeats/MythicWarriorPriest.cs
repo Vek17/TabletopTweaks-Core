@@ -7,13 +7,14 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicFeats {
     static class MythicWarriorPriest {
         public static void AddMythicWarriorPriest() {
             var WarriorPriest = Resources.GetBlueprint<BlueprintFeature>("b9bee4e4e15573546b76a8d942ce914b");
-            var WarriorPriestMythicFeature = Helpers.CreateBlueprint<BlueprintFeature>("WarriorPriestMythicFeature", bp => {
+            var WarriorPriestMythicFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "WarriorPriestMythicFeature", bp => {
                 bp.m_Icon = WarriorPriest.m_Icon;
                 bp.SetName("Warrior Priest (Mythic)");
                 bp.SetDescription("Your faith speeds you in battle and further strengthens your mind and confidence.\n" +

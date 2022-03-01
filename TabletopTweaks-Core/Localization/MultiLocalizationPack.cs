@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using TabletopTweaks.Core.Modlogic;
+using TabletopTweaks.Core.ModLogic;
 using TabletopTweaks.Core.NewEvents;
 using TabletopTweaks.Core.Utilities;
 

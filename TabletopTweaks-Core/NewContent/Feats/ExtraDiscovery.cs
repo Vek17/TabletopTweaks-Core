@@ -1,5 +1,6 @@
 ﻿using Kingmaker.Blueprints.Classes.Selection;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -8,12 +9,12 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var DiscoverySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("cd86c437488386f438dcc9ae727ea2a6");
             var VivsectionistDiscoverySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("67f499218a0e22944abab6fe1c9eaeee");
 
-            var ExtraDiscovery = FeatTools.CreateExtraSelectionFeat("ExtraDiscovery", DiscoverySelection, bp => {
+            var ExtraDiscovery = FeatTools.CreateExtraSelectionFeat(modContext: TTTContext, "ExtraDiscovery", DiscoverySelection, bp => {
                 bp.SetName("Extra Discovery");
                 bp.SetDescription("You gain one additional discovery. You must meet all of the prerequisites for this discovery." +
                     "\nYou can gain Extra Discovery multiple times.");
             });
-            var ExtraDiscoveryVivsectionist = FeatTools.CreateExtraSelectionFeat("ExtraDiscoveryVivsectionist", VivsectionistDiscoverySelection, bp => {
+            var ExtraDiscoveryVivsectionist = FeatTools.CreateExtraSelectionFeat(modContext: TTTContext, "ExtraDiscoveryVivsectionist", VivsectionistDiscoverySelection, bp => {
                 bp.SetName("Extra Medical Discovery");
                 bp.SetDescription("You gain one additional medical discovery. You must meet all of the prerequisites for this discovery." +
                     "\nYou can gain Extra Medical Discovery multiple times.");

@@ -14,6 +14,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.Features {
@@ -59,7 +60,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                         });
                 }
                 void PatchMiner() {
-                    var EarthBreakerProficiency = Resources.GetModBlueprint<BlueprintFeature>("EarthBreakerProficiency");
+                    var EarthBreakerProficiency = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "EarthBreakerProficiency");
                     var BackgroundMiner = Resources.GetBlueprint<BlueprintFeature>("e4e06f443e158e646a495fce6e024546");
 
                     BackgroundMiner.AddComponent<AddBackgroundWeaponProficiency>(c => {

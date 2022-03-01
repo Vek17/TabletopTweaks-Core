@@ -3,13 +3,15 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
     public static class ArcaneDiscoverySelection {
         public static void AddArcaneDiscoverySelection() {
             var WizardClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("ba34257984f4c41408ce1dc2004e342e");
 
-            var ArcaneDiscoverySelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("ArcaneDiscoverySelection", bp => {
+            var ArcaneDiscoverySelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(TTTContext, "ArcaneDiscoverySelection", bp => {
                 bp.SetName("Arcane Discovery");
                 bp.SetDescription("Wizards spend much of their lives seeking deeper truths, " +
                     "hunting knowledge as if it were life itself. The wizard’s power is not necessarily the spells he wields; " +
@@ -30,7 +32,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
             });
         }
         public static void AddToArcaneDiscoverySelection(params BlueprintFeature[] features) {
-            var ArcaneDiscoverySelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("ArcaneDiscoverySelection");
+            var ArcaneDiscoverySelection = Resources.GetModBlueprint<BlueprintFeatureSelection>(TTTContext, "ArcaneDiscoverySelection");
 
             ArcaneDiscoverySelection.AddFeatures(features);
             if (!AddedAsFeat) {

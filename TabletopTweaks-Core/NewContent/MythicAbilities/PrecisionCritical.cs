@@ -1,6 +1,7 @@
 ﻿using Kingmaker.Blueprints.Classes;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -8,7 +9,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
         public static void AddPrecisionCritical() {
             var ImpromptuSneakAttackFeature = Resources.GetBlueprint<BlueprintFeature>("8ec618121de114845981933a3d5c4b02");
 
-            var PrecisionCritical = Helpers.CreateBlueprint<BlueprintFeature>("PrecisionCritical", bp => {
+            var PrecisionCritical = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "PrecisionCritical", bp => {
                 bp.IsClassFeature = true;
                 bp.ReapplyOnLevelUp = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.MythicAbility };

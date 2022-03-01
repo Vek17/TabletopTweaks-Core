@@ -9,6 +9,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Spells {
@@ -17,7 +18,7 @@ namespace TabletopTweaks.Core.NewContent.Spells {
             //var icon = AssetLoader.Image2Sprite.Create($"{Context.ModEntry.Path}Assets{Path.DirectorySeparatorChar}Abilities{Path.DirectorySeparatorChar}Icon_ShadowEnchantment.png");
             var icon = AssetLoader.LoadInternal("Abilities", "Icon_ShadowEnchantment.png");
             var PowerfulShadows = Resources.GetBlueprint<BlueprintFeature>("6a9448ec047c642408af6debb8536c38");
-            var ShadowEnchantmentProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("ShadowEnchantmentProperty", bp => {
+            var ShadowEnchantmentProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "ShadowEnchantmentProperty", bp => {
                 bp.BaseValue = 20;
                 bp.AddComponent<FactRankGetter>(c => {
                     c.m_Fact = PowerfulShadows.ToReference<BlueprintUnitFactReference>();
@@ -28,7 +29,7 @@ namespace TabletopTweaks.Core.NewContent.Spells {
                     };
                 });
             });
-            var ShadowEnchantment = Helpers.CreateBlueprint<BlueprintAbility>("ShadowEnchantment", bp => {
+            var ShadowEnchantment = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "ShadowEnchantment", bp => {
                 bp.SetName("Shadow Enchantment");
                 bp.SetDescription("You use material from the Shadow Plane to cast a quasi-real, illusory version of a psychic, sorcerer, or wizard enchantment spell of 2nd level "
                     + "or lower. Spells that deal damage or have other effects work as normal unless the affected creature succeeds at a Will save. If the disbelieved enchantment "
@@ -101,7 +102,7 @@ namespace TabletopTweaks.Core.NewContent.Spells {
             //var icon = AssetLoader.Image2Sprite.Create($"{Context.ModEntry.Path}Assets{Path.DirectorySeparatorChar}Abilities{Path.DirectorySeparatorChar}Icon_ShadowEnchantmentGreater.png");
             var icon = AssetLoader.LoadInternal("Abilities", "Icon_ShadowEnchantmentGreater.png");
             var PowerfulShadows = Resources.GetBlueprint<BlueprintFeature>("6a9448ec047c642408af6debb8536c38");
-            var ShadowEnchantmentGreaterProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("ShadowEnchantmentGreaterProperty", bp => {
+            var ShadowEnchantmentGreaterProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "ShadowEnchantmentGreaterProperty", bp => {
                 bp.BaseValue = 60;
                 bp.AddComponent<FactRankGetter>(c => {
                     c.m_Fact = PowerfulShadows.ToReference<BlueprintUnitFactReference>();
@@ -112,7 +113,7 @@ namespace TabletopTweaks.Core.NewContent.Spells {
                     };
                 });
             });
-            var ShadowEnchantmentGreater = Helpers.CreateBlueprint<BlueprintAbility>("ShadowEnchantmentGreater", bp => {
+            var ShadowEnchantmentGreater = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "ShadowEnchantmentGreater", bp => {
                 bp.SetName("Shadow Enchantment, Greater");
                 bp.SetDescription("This spell functions like shadow enchantment, except that it enables you to create partially real, illusory versions of psychic, sorcerer, "
                     + "or wizard enchantment spells of 5th level or lower. If the spell is recognized as a greater shadow enchantment, it’s only three-fifths (60%) as effective.");

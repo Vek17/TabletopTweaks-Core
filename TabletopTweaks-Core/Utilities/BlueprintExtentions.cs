@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using TabletopTweaks.Core.ModLogic;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 
 namespace TabletopTweaks.Core.Utilities {
@@ -24,20 +25,21 @@ namespace TabletopTweaks.Core.Utilities {
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="original"></param>
+        /// <param name="modContext"></param>
         /// <param name="name">
         /// New unitiy name to give the copy. This also will define the GUID.
         /// </param>
+        /// <returns></returns>
         /// <param name="init">
         /// Action to run against the created blueprint.
         /// </param>
-        /// <returns></returns>
-        public static T CreateCopy<T>(this T original, string name, Action<T> init = null) where T : SimpleBlueprint {
+        public static T CreateCopy<T>(this T original, ModContextBase modContext, string name, Action<T> init = null) where T : SimpleBlueprint {
             var result = (T)Helpers.ObjectDeepCopier.Clone(original);
             result.TemporaryContext(bp => {
                 bp.name = name;
                 bp.AssetGuid = Main.TTTContext.Blueprints.GetGUID(name);
             });
-            Resources.AddBlueprint(result);
+            Resources.AddBlueprint(modContext, result);
             init?.Invoke(result);
             return result;
         }
@@ -46,21 +48,22 @@ namespace TabletopTweaks.Core.Utilities {
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="original"></param>
+        /// <param name="modContext"></param>
         /// <param name="name">
         /// New unitiy name to give the copy. This also will define the GUID.
         /// </param>
         /// <param name="masterId"></param>
+        /// <returns></returns>
         /// <param name="init">
         /// Action to run against the created blueprint.
         /// </param>
-        /// <returns></returns>
-        public static T CreateCopy<T>(this T original, string name, BlueprintGuid masterId, Action<T> init = null) where T : SimpleBlueprint {
+        public static T CreateCopy<T>(this T original, ModContextBase modContext, string name, BlueprintGuid masterId, Action<T> init = null) where T : SimpleBlueprint {
             var result = (T)Helpers.ObjectDeepCopier.Clone(original);
             result.TemporaryContext(bp => {
                 bp.name = name;
                 bp.AssetGuid = Main.TTTContext.Blueprints.GetDerivedGUID(name, masterId, original.AssetGuid);
             });
-            Resources.AddBlueprint(result);
+            Resources.AddBlueprint(modContext, result);
             init?.Invoke(result);
             return result;
         }

@@ -8,6 +8,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
@@ -19,7 +20,7 @@ namespace TabletopTweaks.Core.NewContent.BaseAbilities {
             var FightDefensivelyToggleAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("09d742e8b50b0214fb71acfc99cc00b3");
             var icon = AssetLoader.LoadInternal("Abilities", "Icon_OneHandedToggle.png");
 
-            var OneHandedBuff = Helpers.CreateBuff("OneHandedBuff", bp => {
+            var OneHandedBuff = Helpers.CreateBuff(modContext: TTTContext, "OneHandedBuff", bp => {
                 bp.m_Icon = icon;
                 bp.SetName("Use Weapon One Handed");
                 bp.SetDescription("");
@@ -27,7 +28,7 @@ namespace TabletopTweaks.Core.NewContent.BaseAbilities {
                     c.Feature = CustomMechanicsFeature.UseWeaponOneHanded;
                 });
             });
-            var OneHandedToggleAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("OneHandedToggleAbility", bp => {
+            var OneHandedToggleAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "OneHandedToggleAbility", bp => {
                 bp.m_Icon = icon;
                 bp.SetName("Use Weapon One Handed");
                 bp.SetDescription("You can choose to wield your weapon in one hand instead of two if possible.");
@@ -37,7 +38,7 @@ namespace TabletopTweaks.Core.NewContent.BaseAbilities {
                 bp.DeactivateImmediately = true;
                 bp.AddComponent(Helpers.CreateCopy(FightDefensivelyToggleAbility.GetComponent<ActionPanelLogic>()));
             });
-            var OneHandedToggleFeature = Helpers.CreateBlueprint<BlueprintFeature>("OneHandedToggleFeature", bp => {
+            var OneHandedToggleFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "OneHandedToggleFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.HideInUI = true;
                 bp.ReapplyOnLevelUp = true;

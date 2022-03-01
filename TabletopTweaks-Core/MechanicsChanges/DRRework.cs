@@ -41,6 +41,7 @@ using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
@@ -473,7 +474,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                 };
 
                 foreach (BlueprintUnitFact armorBlueprint in armorFactsWithPhysicalDR) {
-                    armorBlueprint.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                    armorBlueprint.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                         newRes.SourceIsArmor = true;
                     });
                 }
@@ -493,23 +494,23 @@ namespace TabletopTweaks.Core.MechanicsChanges {
 
                 BlueprintBuff manglingFrenzyBuff = Resources.GetBlueprint<BlueprintBuff>("1581c5ceea24418cadc9f26ce4d391a9");
 
-                barbarianDR.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                barbarianDR.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
                 });
 
-                invulnerableRagerDR.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                invulnerableRagerDR.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
                 });
 
-                madDogMasterDamageReduction.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                madDogMasterDamageReduction.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
                 });
 
-                bloodragerDR.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                bloodragerDR.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
                 });
 
-                skaldDR.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                skaldDR.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
                 });
 
@@ -530,7 +531,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                 TTTContext.Logger.Log($"Patched: ContextRankConfig on {skaldDR.AssetGuid} - {skaldDR.NameSafe()}");
 
                 // Allow Mangling Frenzy to stack with Barbarian DR's
-                manglingFrenzyBuff.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                manglingFrenzyBuff.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.StacksWithFacts = new BlueprintUnitFactReference[]
                     {
                         barbarianDR.ToReference<BlueprintUnitFactReference>(),
@@ -554,9 +555,9 @@ namespace TabletopTweaks.Core.MechanicsChanges {
 
 
                 // Fix Mad Dog's pet DR not being improved by master's Increased Damage Resistance Rage Power(s)
-                BlueprintUnitProperty madDogPetDRProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("MadDogPetDRProperty");
+                BlueprintUnitProperty madDogPetDRProperty = Resources.GetModBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "MadDogPetDRProperty");
 
-                madDogPetDamageReduction.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                madDogPetDamageReduction.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
                 });
 
@@ -583,14 +584,14 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             static void PatchStalwartDefender() {
                 BlueprintFeature stalwartDefenderDamageReductionFeature = Resources.GetBlueprint<BlueprintFeature>("4d4f48f401d5d8b408c2e7a973fba9ea");
 
-                stalwartDefenderDamageReductionFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                stalwartDefenderDamageReductionFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
                     newRes.IsIncreasedByArmor = true;
                 });
 
                 BlueprintFeature increasedDamageReductionDefensivePower = Resources.GetBlueprint<BlueprintFeature>("d10496e92d0799a40bb3930b8f4fda0d");
 
-                increasedDamageReductionDefensivePower.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                increasedDamageReductionDefensivePower.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
                     newRes.IncreasesFacts = new BlueprintUnitFactReference[]
                     {
@@ -602,7 +603,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             static void PatchLichIndestructibleBonesDR() {
                 var MythicPowersFromDLC1EffectBuff = Resources.GetBlueprint<BlueprintBuff>("08eba577806847ac9a814694013f7783");
 
-                MythicPowersFromDLC1EffectBuff.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                MythicPowersFromDLC1EffectBuff.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.AddToAllStacks = true;
                 });
             }
@@ -610,7 +611,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             static void PatchInevitableFateDR() {
                 BlueprintFeature lichIndestructibleBonesFeature = Resources.GetBlueprint<BlueprintFeature>("42274a4428cb43b40acf771a7f5ddfac");
 
-                lichIndestructibleBonesFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                lichIndestructibleBonesFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.AddToAllStacks = true;
                 });
             }
@@ -618,7 +619,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             static void PatchAngelUnbrokenDR() {
                 BlueprintBuff AngelUnbrokenEffectBuff = Resources.GetBlueprint<BlueprintBuff>("2249da3de0da48f19bc205de2d7fc97f");
 
-                AngelUnbrokenEffectBuff.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                AngelUnbrokenEffectBuff.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.AddToAllStacks = true;
                 });
             }
@@ -626,7 +627,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             static void PatchAspectOfOmoxDR() {
                 BlueprintFeature OmoxAspectFeature = Resources.GetBlueprint<BlueprintFeature>("daf030c7563b2664eb1031d91eaae7ab");
 
-                OmoxAspectFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                OmoxAspectFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.AddToAllStacks = true;
                 });
             }
@@ -634,49 +635,49 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             static void PatchBrokenDRSettings() {
                 // Fix: Winter Oracle Ice Armor revelation should be DR 5/piercing, but is DR 5/- due to missing BypassedByForm flag
                 BlueprintBuff oracleRevelationIceArmorDRBuff = Resources.GetBlueprint<BlueprintBuff>("448e35444e80e24438a5ad0a3114aee3");
-                oracleRevelationIceArmorDRBuff.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                oracleRevelationIceArmorDRBuff.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.BypassedByForm = true;
                 });
 
                 // Fix: Bruiser's Chainshirt DR should be DR 3/piercing, but is DR 3/- due to missing BypassedByForm flag
                 BlueprintFeature bruisersChainshirtFeature = Resources.GetBlueprint<BlueprintFeature>("2f08e4d39c1c568478c43aba81c42525");
-                bruisersChainshirtFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                bruisersChainshirtFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.BypassedByForm = true;
                 });
 
                 // Fix: Warden of Darkness (Tower Shield) should be DR 5/good, but was DR 5/-
                 BlueprintFeature towerShieldWardenOfDarknessShieldFeature = Resources.GetBlueprint<BlueprintFeature>("4211cdbf0bf04a540a366ba1d1c7dcc2");
-                towerShieldWardenOfDarknessShieldFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                towerShieldWardenOfDarknessShieldFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.BypassedByAlignment = true;
                 });
 
                 // Fix: Artifact_AzataCloakEnchantment should stack with existing DR
                 var Artifact_AzataCloakItem = Resources.GetBlueprint<BlueprintItemEquipmentShoulders>("78cd50deada655e4cbe49765c0bbb7e4");
-                Artifact_AzataCloakItem.m_DescriptionText = Helpers.CreateString($"{Artifact_AzataCloakItem.name}.key", "Azata shares a bond with her dragon. 50% damage is redirected to Aivu. " +
+                Artifact_AzataCloakItem.m_DescriptionText = Helpers.CreateString(modContext: TTTContext, $"{Artifact_AzataCloakItem.name}.key", "Azata shares a bond with her dragon. 50% damage is redirected to Aivu. " +
                     "In addition, Aivu gets additional DR N/Lawful where N is equal to Azata's mythic rank.");
                 BlueprintFeature Artifact_AzataCloakPetFeature = Resources.GetBlueprint<BlueprintFeature>("af6f1ca38fe54e5baf67adfb9b731ae8");
-                Artifact_AzataCloakPetFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                Artifact_AzataCloakPetFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.Alignment = DamageAlignment.Lawful;
                     newRes.BypassedByAlignment = true;
                 });
 
                 // Fix: DragonAzataFeatureTierII should be DR 5/lawful, but was DR 5/-
                 BlueprintFeature DragonAzataFeatureTierII = Resources.GetBlueprint<BlueprintFeature>("fc2aeb954e13811488d38dc1af72ef9c");
-                DragonAzataFeatureTierII.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                DragonAzataFeatureTierII.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.BypassedByAlignment = true;
                     newRes.IncreasedByFacts = new BlueprintUnitFactReference[] { Artifact_AzataCloakPetFeature.ToReference<BlueprintUnitFactReference>() };
                 });
 
                 // Fix: DragonAzataFeatureTierIII should be DR 15/lawful, but was DR 15/-
                 BlueprintFeature DragonAzataFeatureTierIII = Resources.GetBlueprint<BlueprintFeature>("fd8c12d3c29189d4c81d88ee6aaba636");
-                DragonAzataFeatureTierIII.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                DragonAzataFeatureTierIII.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.BypassedByAlignment = true;
                     newRes.IncreasedByFacts = new BlueprintUnitFactReference[] { Artifact_AzataCloakPetFeature.ToReference<BlueprintUnitFactReference>() };
                 });
 
                 // Fix: DragonAzataFeatureTierIV should be DR 20/lawful, but was DR 20/-
                 BlueprintFeature DragonAzataFeatureTierIV = Resources.GetBlueprint<BlueprintFeature>("ee1bac8c71df3f9408bad5ca3a19eb23");
-                DragonAzataFeatureTierIV.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                DragonAzataFeatureTierIV.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.BypassedByAlignment = true;
                     newRes.IncreasedByFacts = new BlueprintUnitFactReference[] { Artifact_AzataCloakPetFeature.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -684,7 +685,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
 
             static void PatchArmorMastery() {
                 BlueprintBuff armorMasteryBuff = Resources.GetBlueprint<BlueprintBuff>("0794e96a6c5da8f41979d809bb4a9a8c");
-                armorMasteryBuff.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                armorMasteryBuff.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
                 });
             }
@@ -701,7 +702,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
 
                 BlueprintUnitFactReference armorMasteryBuff = Resources.GetBlueprint<BlueprintBuff>("0794e96a6c5da8f41979d809bb4a9a8c").ToReference<BlueprintUnitFactReference>();
 
-                armoredJuggernautFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(newRes => {
+                armoredJuggernautFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
                     newRes.StacksWithFacts = adamantineArmorFeatures;
                     newRes.IncreasedByFacts = new BlueprintUnitFactReference[] { armorMasteryBuff };

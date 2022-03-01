@@ -7,12 +7,13 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Class.LevelUp;
 using System.Text;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents.Prerequisites {
     [TypeId("59c3025feecf4113bef90196f2ce4ef9")]
     public class PrerequisiteCasterLevel : Prerequisite {
         [InitializeStaticString]
-        private static readonly LocalizedString HasCasterLevelOf = Helpers.CreateString("PrerequisiteCasterLevel.UI", "Has a caster level of:");
+        private static readonly LocalizedString HasCasterLevelOf = Helpers.CreateString(modContext: TTTContext, "PrerequisiteCasterLevel.UI", "Has a caster level of:");
 
         public override bool CheckInternal([CanBeNull] FeatureSelectionState selectionState, [NotNull] UnitDescriptor unit, [CanBeNull] LevelUpState state) {
             return GetCasterLevel(unit) >= RequiredCasterLevel;

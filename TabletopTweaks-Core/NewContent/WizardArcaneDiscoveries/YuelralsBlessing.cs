@@ -4,6 +4,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Enums;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
@@ -13,7 +14,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
             var WizardSpellList = Resources.GetBlueprintReference<BlueprintSpellListReference>("ba0401fdeb4062f40a7aa95b6f07fe89");
             var DruidSpellList = Resources.GetBlueprintReference<BlueprintSpellListReference>("bad8638d40639d04fa2f80a1cac67d6b");
 
-            var YuelralsBlessing = Helpers.CreateBlueprint<BlueprintFeature>($"YuelralsBlessing", bp => {
+            var YuelralsBlessing = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, $"YuelralsBlessing", bp => {
                 bp.SetName($"Yuelral's Blessing");
                 bp.SetDescription("Whenever you cast a spell that appears on both the wizard and druid spell lists, " +
                     "you treat your caster level as 1 higher than normal and the save DC of such spells increases by 1.");

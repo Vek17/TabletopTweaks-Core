@@ -1,12 +1,13 @@
 ﻿using Kingmaker.EntitySystem.Stats;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class Scholar {
         public static void AddScholar() {
             // Icon: Spell Focus? Alertness?
-            var Scholar = FeatTools.CreateSkillFeat("Scholar", StatType.SkillKnowledgeArcana, StatType.SkillKnowledgeWorld, bp => {
+            var Scholar = FeatTools.CreateSkillFeat(modContext: TTTContext, "Scholar", StatType.SkillKnowledgeArcana, StatType.SkillKnowledgeWorld, bp => {
                 bp.SetName("Scholar");
                 bp.SetDescription("You have graduated from one of the many colleges, universities, and specialized schools of higher learning scattered throughout the Inner Sea region." +
                     "\nYou get a +2 bonus on Knowledge (Arcana) and " +

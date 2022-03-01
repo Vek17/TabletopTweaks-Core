@@ -22,6 +22,7 @@ using System.Linq;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewContent.MechanicsChanges.MetamagicExtention;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
@@ -39,7 +40,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var Icon_MetamagicRodBurningNormal = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodBurningNormal.png", 64);
             var Icon_MetamagicRodBurningGreater = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodBurningGreater.png", 64);
 
-            var BurningSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>("BurningSpellFeat", bp => {
+            var BurningSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BurningSpellFeat", bp => {
                 bp.SetName("Metamagic (Burning Spell)");
                 bp.SetDescription("You cause creatures to take extra damage when you affect them with a spell that has the acid or fire descriptor.\n" +
                     "Benefit: The acid or fire effects of the affected spell adhere to the creature, causing more " +
@@ -64,7 +65,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
                 bp.AddComponent<RecommendationRequiresSpellbook>();
             });
-            var FavoriteMetamagicBurning = Helpers.CreateBlueprint<BlueprintFeature>("FavoriteMetamagicBurning", bp => {
+            var FavoriteMetamagicBurning = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "FavoriteMetamagicBurning", bp => {
                 bp.SetName("Favorite Metamagic — Burning");
                 bp.m_Description = FavoriteMetamagicSelection.m_Description;
                 //bp.m_Icon = Icon_IntensifiedSpellFeat;
@@ -77,7 +78,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
                 bp.AddPrerequisiteFeature(BurningSpellFeat);
             });
-            var BurningSpellFireBuff = Helpers.CreateBuff("BurningSpellFireBuff", bp => {
+            var BurningSpellFireBuff = Helpers.CreateBuff(modContext: TTTContext, "BurningSpellFireBuff", bp => {
                 bp.SetName("Burning Spell");
                 bp.SetDescription("This target will take fire damage at the start of next round.");
                 bp.Stacking = StackingType.Stack;
@@ -122,7 +123,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     c.Descriptor = SpellDescriptor.Fire;
                 });
             });
-            var BurningSpellAcidBuff = Helpers.CreateBuff("BurningSpellAcidBuff", bp => {
+            var BurningSpellAcidBuff = Helpers.CreateBuff(modContext: TTTContext, "BurningSpellAcidBuff", bp => {
                 bp.SetName("Burning Spell");
                 bp.SetDescription("This target will take acid damage at the start of next round.");
                 bp.Stacking = StackingType.Stack;
@@ -177,7 +178,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 );
             }
             var MetamagicRodsRime = ItemTools.CreateAllMetamagicRods(
-                rodName: "Burning Metamagic Rod",
+                modContext: TTTContext, rodName: "Burning Metamagic Rod",
                 lesserIcon: Icon_MetamagicRodBurningLesser,
                 normalIcon: Icon_MetamagicRodBurningNormal,
                 greaterIcon: Icon_MetamagicRodBurningGreater,
@@ -220,21 +221,21 @@ namespace TabletopTweaks.Core.NewContent.Feats {
 
             WarCamp_REVendorTableMagic.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>("MetamagicRodLesserBurning"),
+                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodLesserBurning"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;
             });
             RE_Chapter3VendorTableMagic.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>("MetamagicRodNormalBurning"),
+                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodNormalBurning"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;
             });
             KrebusSlaveTraderTable.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>("MetamagicRodGreaterBurning"),
+                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodGreaterBurning"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;

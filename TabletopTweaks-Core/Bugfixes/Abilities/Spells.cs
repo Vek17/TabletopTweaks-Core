@@ -31,6 +31,7 @@ using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewContent.MechanicsChanges.MetamagicExtention;
 
@@ -419,11 +420,11 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
                 var MagicWeaponGreaterPrimary = Resources.GetBlueprint<BlueprintAbility>("a3fe23711486ee9489af1dadd6906149");
                 var MagicWeaponGreaterSecondary = Resources.GetBlueprint<BlueprintAbility>("89c13df989e5e624692134d55195121a");
                 var newEnhancements = new BlueprintItemEnchantmentReference[] {
-                    Resources.GetModBlueprint<BlueprintWeaponEnchantment>("TemporaryEnhancement1NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
-                    Resources.GetModBlueprint<BlueprintWeaponEnchantment>("TemporaryEnhancement2NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
-                    Resources.GetModBlueprint<BlueprintWeaponEnchantment>("TemporaryEnhancement3NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
-                    Resources.GetModBlueprint<BlueprintWeaponEnchantment>("TemporaryEnhancement4NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
-                    Resources.GetModBlueprint<BlueprintWeaponEnchantment>("TemporaryEnhancement5NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
+                    Resources.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TemporaryEnhancement1NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
+                    Resources.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TemporaryEnhancement2NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
+                    Resources.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TemporaryEnhancement3NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
+                    Resources.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TemporaryEnhancement4NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
+                    Resources.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TemporaryEnhancement5NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
                 };
 
                 MagicWeaponGreaterPrimary.FlattenAllActions().OfType<EnhanceWeapon>().ForEach(c => c.m_Enchantment = newEnhancements);

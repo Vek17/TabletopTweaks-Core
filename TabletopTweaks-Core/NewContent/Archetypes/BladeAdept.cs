@@ -1,15 +1,17 @@
 ﻿using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Archetypes {
     class BladeAdept {
         public static void AddBladeAdept() {
             var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
             var ArcanistExploitSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b8bf3d5023f2d8c428fdf6438cecaea7");
-            var BlackBladeProgression = Resources.GetModBlueprint<BlueprintProgression>("BlackBladeProgression");
+            var BlackBladeProgression = Resources.GetModBlueprint<BlueprintProgression>(modContext: TTTContext, "BlackBladeProgression");
 
-            var BladeAdeptArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("BladeAdeptArchetype", bp => {
+            var BladeAdeptArchetype = Helpers.CreateBlueprint<BlueprintArchetype>(modContext: TTTContext, "BladeAdeptArchetype", bp => {
                 bp.SetName("Blade Adept");
                 bp.SetDescription("A small number of arcanists learn to use blades as part of their spellcasting " +
                     "and in combat. While these blade adepts are not as capable with a sword as a true master " +

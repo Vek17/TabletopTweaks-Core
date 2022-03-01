@@ -10,6 +10,8 @@ using Kingmaker.UnitLogic.Mechanics;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Classes {
     static class Cavalier {
@@ -17,7 +19,7 @@ namespace TabletopTweaks.Core.NewContent.Classes {
             var MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
             var AnimalCompanionFeatureWolf = Resources.GetBlueprint<BlueprintFeature>("67a9dc42b15d0954ca4689b13e8dedea");
 
-            var CavalierMobilityBuff = Helpers.CreateBuff("CavalierMobilityBuff", bp => {
+            var CavalierMobilityBuff = Helpers.CreateBuff(modContext: TTTContext, "CavalierMobilityBuff", bp => {
                 bp.SetName("Cavalier Mobility");
                 bp.SetDescription("A cavalier does not take an armor check penalty on Mobility checks while riding his mount.");
                 bp.IsClassFeature = true;
@@ -28,7 +30,7 @@ namespace TabletopTweaks.Core.NewContent.Classes {
                 }));
             });
 
-            var CavalierMobilityFeature = Helpers.CreateBlueprint<BlueprintFeature>("CavalierMobilityFeature", bp => {
+            var CavalierMobilityFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "CavalierMobilityFeature", bp => {
                 bp.SetName("Cavalier Mobility");
                 bp.SetDescription("A cavalier does not take an armor check penalty on Mobility checks while riding his mount.");
                 bp.IsClassFeature = true;
@@ -39,7 +41,7 @@ namespace TabletopTweaks.Core.NewContent.Classes {
                 }));
             });
 
-            var CavalierMountFeatureWolf = Helpers.CreateBlueprint<BlueprintFeature>("CavalierMountFeatureWolf", bp => {
+            var CavalierMountFeatureWolf = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "CavalierMountFeatureWolf", bp => {
                 bp.m_DisplayName = AnimalCompanionFeatureWolf.m_DisplayName;
                 bp.m_Description = AnimalCompanionFeatureWolf.m_Description;
                 bp.m_Icon = AnimalCompanionFeatureWolf.Icon;

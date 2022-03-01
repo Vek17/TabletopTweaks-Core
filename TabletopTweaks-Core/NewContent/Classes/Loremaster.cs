@@ -9,6 +9,8 @@ using System.Text.RegularExpressions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.Prerequisites;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Classes {
     static class Loremaster {
@@ -27,7 +29,7 @@ namespace TabletopTweaks.Core.NewContent.Classes {
 
             void CreateSpellSecretSelection(BlueprintFeatureSelection secret) {
                 var name = $"{secret.name}_TTT";
-                var spellSecret = Helpers.CreateBlueprint<BlueprintFeatureSelection>(name, bp => {
+                var spellSecret = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, name, bp => {
                     bp.m_DisplayName = secret.m_DisplayName;
                     bp.m_Description = secret.m_Description;
                     bp.IsClassFeature = true;
@@ -48,7 +50,7 @@ namespace TabletopTweaks.Core.NewContent.Classes {
                     if (Regex.Matches(name, "Cleric").Count > 1 || Regex.Matches(name, "Druid").Count > 1) {
                         return null;
                     }
-                    var spellSecret = Helpers.CreateBlueprint<BlueprintFeature>(name, bp => {
+                    var spellSecret = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, name, bp => {
                         bp.SetName($"{secretSelection.Name} — {castingClass.Name}");
                         bp.SetDescription(secretSelection.m_Description);
                         bp.IsClassFeature = true;
@@ -71,7 +73,7 @@ namespace TabletopTweaks.Core.NewContent.Classes {
             }
 
             void CreateSpellbookSelection() {
-                var spellbookSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("LoremasterSpellbookSelectionTTT", bp => {
+                var spellbookSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "LoremasterSpellbookSelectionTTT", bp => {
                     bp.SetName("Spellbook Selection");
                     bp.SetDescription("When a new loremaster level is gained, the character gains new spells per day as if he had " +
                         "also gained a level in a spellcasting class he belonged to before adding the prestige class. He does not, however, gain other benefits " +
@@ -112,7 +114,7 @@ namespace TabletopTweaks.Core.NewContent.Classes {
                 return spellbooks.Select(spellbook => CreateSpellbookReplacement(spellbook, SpellTools.SpellCastingClasses.WizardClass, selection)).ToArray();
             }
             BlueprintFeatureReplaceSpellbook CreateSpellbookReplacement(BlueprintSpellbookReference spellbook, BlueprintCharacterClass characterClass, BlueprintFeatureSelection selection) {
-                return Helpers.CreateDerivedBlueprint<BlueprintFeatureReplaceSpellbook>($"LoremasterSpellbook{spellbook.Get().name.Replace("Spellbook", "")}TTT",
+                return Helpers.CreateDerivedBlueprint<BlueprintFeatureReplaceSpellbook>(modContext: TTTContext, $"LoremasterSpellbook{spellbook.Get().name.Replace("Spellbook", "")}TTT",
                     LoremasterSpellbookMasterID,
                     new SimpleBlueprint[] { spellbook },
                     bp => {

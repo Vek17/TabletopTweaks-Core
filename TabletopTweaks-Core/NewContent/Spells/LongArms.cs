@@ -12,6 +12,7 @@ using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Spells {
@@ -19,7 +20,7 @@ namespace TabletopTweaks.Core.NewContent.Spells {
         public static void AddLongArms() {
             //var icon = AssetLoader.Image2Sprite.Create($"{Context.ModEntry.Path}Assets{Path.DirectorySeparatorChar}Abilities{Path.DirectorySeparatorChar}Icon_LongArm.png");
             var icon = AssetLoader.LoadInternal("Abilities", "Icon_LongArm.png");
-            var LongArmBuff = Helpers.CreateBuff("LongArmBuff", bp => {
+            var LongArmBuff = Helpers.CreateBuff(modContext: TTTContext, "LongArmBuff", bp => {
                 bp.SetName("Long Arm");
                 bp.SetDescription("Your arms temporarily grow in length, increasing your reach with those limbs by 5 feet.");
                 bp.m_Icon = icon;
@@ -42,10 +43,10 @@ namespace TabletopTweaks.Core.NewContent.Spells {
                     DiceType = DiceType.One
                 };
             });
-            var LongArmAbility = Helpers.CreateBlueprint<BlueprintAbility>("LongArmAbility", bp => {
+            var LongArmAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, "LongArmAbility", bp => {
                 bp.SetName("Long Arm");
                 bp.SetDescription("Your arms temporarily grow in length, increasing your reach with those limbs by 5 feet.");
-                bp.LocalizedDuration = Helpers.CreateString("LongArmAbility.Duration", "1 minute/level");
+                bp.LocalizedDuration = Helpers.CreateString(modContext: TTTContext, "LongArmAbility.Duration", "1 minute/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
                 bp.AvailableMetamagic = Metamagic.Extend | Metamagic.Heighten | Metamagic.Quicken | Metamagic.CompletelyNormal;
                 bp.Range = AbilityRange.Personal;

@@ -1,11 +1,12 @@
 ﻿using Kingmaker.EntitySystem.Stats;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class ShingleRunner {
         public static void AddShingleRunner() {
-            var ShingleRunner = FeatTools.CreateSkillFeat("ShingleRunner", StatType.SkillAthletics, StatType.SkillMobility, bp => {
+            var ShingleRunner = FeatTools.CreateSkillFeat(modContext: TTTContext, "ShingleRunner", StatType.SkillAthletics, StatType.SkillMobility, bp => {
                 bp.SetName("Shingle Runner");
                 bp.SetDescription("Many of those who dwell among the rooftops become skillful at making bounding " +
                     "leaps and clambering up steep surfaces, and learn how to land more safely when they fall." +

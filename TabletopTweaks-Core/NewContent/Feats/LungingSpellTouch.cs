@@ -6,6 +6,7 @@ using Kingmaker.Enums;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewUnitParts.CustomStatTypes;
 
@@ -14,8 +15,8 @@ namespace TabletopTweaks.Core.NewContent.Feats {
         public static void AddLungingSpellTouch() {
             var Icon_LungingSpellTouch = AssetLoader.LoadInternal("Feats", "Icon_LungingSpellTouch.png");
             var MountedCombat = Resources.GetBlueprint<BlueprintFeature>("f308a03bea0d69843a8ed0af003d47a9");
-            var TrickRiding = Resources.GetModBlueprint<BlueprintFeature>("TrickRiding");
-            var LungingSpellTouchBuff = Helpers.CreateBuff("LungingSpellTouchBuff", bp => {
+            var TrickRiding = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TrickRiding");
+            var LungingSpellTouchBuff = Helpers.CreateBuff(modContext: TTTContext, "LungingSpellTouchBuff", bp => {
                 bp.SetName("Lunging Spell Touch Buff");
                 bp.SetDescription("");
                 bp.m_Icon = Icon_LungingSpellTouch;
@@ -32,7 +33,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                     c.Descriptor = ModifierDescriptor.Feat;
                 });
             });
-            var LungingSpellTouchAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("LungingSpellTouchAbility", bp => {
+            var LungingSpellTouchAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "LungingSpellTouchAbility", bp => {
                 bp.SetName("Lunging Spell Touch");
                 bp.SetDescription("You can increase the reach of your spells’ melee touch attacks by 5 feet until the end of your turn " +
                     "by taking a –2 penalty to your AC until your next turn. You must decide to use this ability before you attempt any attacks on your turn.");
@@ -41,7 +42,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.IsOnByDefault = true;
                 bp.DoNotTurnOffOnRest = true;
             });
-            var LungingSpellTouchFeature = Helpers.CreateBlueprint<BlueprintFeature>("LungingSpellTouchFeature", bp => {
+            var LungingSpellTouchFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "LungingSpellTouchFeature", bp => {
                 bp.SetName("Lunging Spell Touch");
                 bp.SetDescription("You can increase the reach of your spells’ melee touch attacks by 5 feet until the end of your turn " +
                     "by taking a –2 penalty to your AC until your next turn. You must decide to use this ability before you attempt any attacks on your turn.");

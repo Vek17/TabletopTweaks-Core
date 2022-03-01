@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using Kingmaker.EntitySystem.Persistence.Versioning;
 using TabletopTweaks.Core.ModLogic;
-using TabletopTweaks.Core.Upgraders;
+using TabletopTweaks.Core.SaveUpgrades;
 using TabletopTweaks.Core.Utilities;
 using UnityModManagerNet;
 

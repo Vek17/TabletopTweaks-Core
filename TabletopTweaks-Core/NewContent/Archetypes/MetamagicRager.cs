@@ -20,6 +20,7 @@ using System.Text.RegularExpressions;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static Kingmaker.UnitLogic.Commands.Base.UnitCommand;
 using static TabletopTweaks.Core.Main;
 
@@ -43,7 +44,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
 
         public static void AddMetamagicRager() {
 
-            var MetaRageFeature = Helpers.CreateBlueprint<BlueprintFeature>("MetaRageFeature", bp => {
+            var MetaRageFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "MetaRageFeature", bp => {
                 bp.SetName("Meta-Rage");
                 bp.SetDescription("At 5th level, a metamagic rager can sacrifice additional rounds of " +
                     "bloodrage to apply a metamagic feat he knows to a bloodrager spell. This costs a number of rounds of bloodrage equal to twice what the spell’s " +
@@ -58,9 +59,9 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     c.RequiredResource = BloodragerRageResource.ToReference<BlueprintAbilityResourceReference>();
                 });
             });
-            var MetamagicRagerArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("MetamagicRagerArchetype", bp => {
-                bp.LocalizedName = Helpers.CreateString("MetamagicRagerArchetype.Name", "Metamagic Rager");
-                bp.LocalizedDescription = Helpers.CreateString("MetamagicRagerArchetype.Description", "While metamagic is difficult for many bloodragers to utilize, " +
+            var MetamagicRagerArchetype = Helpers.CreateBlueprint<BlueprintArchetype>(modContext: TTTContext, "MetamagicRagerArchetype", bp => {
+                bp.LocalizedName = Helpers.CreateString(modContext: TTTContext, "MetamagicRagerArchetype.Name", "Metamagic Rager");
+                bp.LocalizedDescription = Helpers.CreateString(modContext: TTTContext, "MetamagicRagerArchetype.Description", "While metamagic is difficult for many bloodragers to utilize, " +
                     "a talented few are able to channel their bloodrage in ways that push their spells to impressive ends.");
                 bp.AddFeatures = new LevelEntry[] {
                     new LevelEntry() {
@@ -90,7 +91,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             TTTContext.Logger.LogPatch("Added", MetamagicRagerArchetype);
         }
         private static BlueprintBuff CreateMetamagicBuff(string name, BlueprintFeature metamagicFeat, int level, Action<BlueprintBuff> init = null) {
-            var result = Helpers.CreateBuff(name, bp => {
+            var result = Helpers.CreateBuff(modContext: TTTContext, name, bp => {
                 bp.m_Icon = metamagicFeat.Icon;
                 bp.AddComponent(Helpers.Create<AddAbilityUseTrigger>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { BloodragerSpellbook.ToReference<BlueprintSpellbookReference>() };
@@ -115,7 +116,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             return result;
         }
         private static BlueprintAbility CreateMetamagicAbility(string name, BlueprintBuff buff, int cost, BlueprintFeature metamagicFeat, BlueprintUnitFactReference[] blockedBuffs, Action<BlueprintAbility> init = null) {
-            var result = Helpers.CreateBlueprint<BlueprintAbility>(name, bp => {
+            var result = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, name, bp => {
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetSelf = true;
@@ -251,7 +252,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.SetDescription(MetaRageBolsteredBuff.m_Description);
             });
 
-            var MetaRageBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>($"MetaRageBaseAbility{level}", bp => {
+            var MetaRageBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>(modContext: TTTContext, $"MetaRageBaseAbility{level}", bp => {
                 bp.SetName("Meta-Rage");
                 bp.SetDescription("At 5th level, a metamagic rager can sacrifice additional rounds of " +
                     "bloodrage to apply a metamagic feat he knows to a bloodrager spell. This costs a number of rounds of bloodrage equal to twice what the spell’s " +
@@ -287,11 +288,11 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
         }
         private static void PatchBloodlines(BlueprintArchetype archetype) {
             var basicBloodlines = new BlueprintProgression[] {
-                BloodlineTools.Bloodline.BloodragerAberrantBloodline,
+                //BloodlineTools.Bloodline.BloodragerAberrantBloodline,
                 BloodlineTools.Bloodline.BloodragerAbyssalBloodline,
                 BloodlineTools.Bloodline.BloodragerArcaneBloodline,
                 BloodlineTools.Bloodline.BloodragerCelestialBloodline,
-                BloodlineTools.Bloodline.BloodragerDestinedBloodline,
+                //BloodlineTools.Bloodline.BloodragerDestinedBloodline,
                 BloodlineTools.Bloodline.BloodragerFeyBloodline,
                 BloodlineTools.Bloodline.BloodragerInfernalBloodline,
                 BloodlineTools.Bloodline.BloodragerSerpentineBloodline,
@@ -324,7 +325,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                         if (selection.GetComponents<PrerequisiteNoArchetype>().Any(c => c.m_Archetype.Get().AssetGuid == archetype.AssetGuid)) { continue; }
                         var featSelect = selection as BlueprintFeatureSelection;
                         if (MetamagicRagerFeatSelection == null) {
-                            MetamagicRagerFeatSelection = featSelect.CreateCopy(GenerateName(bloodline), bp => {
+                            MetamagicRagerFeatSelection = featSelect.CreateCopy(modContext: TTTContext, GenerateName(bloodline), bp => {
                                 bp.HideNotAvailibleInUI = true;
                                 bp.AddFeatures(metamagicFeats);
                                 bp.AddComponent(Helpers.Create<PrerequisiteArchetypeLevel>(c => {
@@ -352,7 +353,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                         if (selection.GetComponents<PrerequisiteNoArchetype>().Any(c => c.m_Archetype.Get().AssetGuid == archetype.AssetGuid)) { continue; }
                         var featSelect = selection as BlueprintFeatureSelection;
                         if (DraconicMetamagicRagerFeatSelection == null) {
-                            DraconicMetamagicRagerFeatSelection = featSelect.CreateCopy(GenerateName(bloodline), bp => {
+                            DraconicMetamagicRagerFeatSelection = featSelect.CreateCopy(modContext: TTTContext, GenerateName(bloodline), bp => {
                                 bp.AddFeatures(metamagicFeats);
                                 bp.AddComponent(Helpers.Create<PrerequisiteArchetypeLevel>(c => {
                                     c.HideInUI = true;
@@ -379,7 +380,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                         if (selection.GetComponents<PrerequisiteNoArchetype>().Any(c => c.m_Archetype.Get().AssetGuid == archetype.AssetGuid)) { continue; }
                         var featSelect = selection as BlueprintFeatureSelection;
                         if (ElementalMetamagicRagerFeatSelection == null) {
-                            ElementalMetamagicRagerFeatSelection = featSelect.CreateCopy(GenerateName(bloodline), bp => {
+                            ElementalMetamagicRagerFeatSelection = featSelect.CreateCopy(modContext: TTTContext, GenerateName(bloodline), bp => {
                                 bp.AddFeatures(metamagicFeats);
                                 bp.AddComponent(Helpers.Create<PrerequisiteArchetypeLevel>(c => {
                                     c.HideInUI = true;

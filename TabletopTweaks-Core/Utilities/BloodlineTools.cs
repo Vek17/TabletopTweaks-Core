@@ -19,6 +19,7 @@ using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TabletopTweaks.Core.ModLogic;
 using TabletopTweaks.Core.NewComponents;
 
 namespace TabletopTweaks.Core.Utilities {
@@ -173,11 +174,11 @@ namespace TabletopTweaks.Core.Utilities {
 
 
         }
-        public static BlueprintFeature CreateMixedBloodFeature(string name, BlueprintProgression bloodline, Action<BlueprintFeature> init = null) {
+        public static BlueprintFeature CreateMixedBloodFeature(ModContextBase modContext, string name, BlueprintProgression bloodline, Action<BlueprintFeature> init = null) {
             var BloodragerClass = Resources.GetBlueprint<BlueprintCharacterClass>("d77e67a814d686842802c9cfd8ef8499").ToReference<BlueprintCharacterClassReference>();
-            var wanderingBLoodline = Helpers.CreateBlueprint<BlueprintFeature>(name, bp => {
+            var wanderingBLoodline = Helpers.CreateBlueprint<BlueprintFeature>(modContext, name, bp => {
                 bp.m_DisplayName = bloodline.m_DisplayName;
-                bp.SetName("");
+                bp.SetName(modContext, "");
                 bp.m_Icon = bloodline.m_Icon;
                 bp.HideInUI = true;
                 bp.HideInCharacterSheetAndLevelUp = true;
@@ -244,14 +245,14 @@ namespace TabletopTweaks.Core.Utilities {
         }
 
         public static BlueprintBuff CreateArcaneBloodrageSwitchBuff(
+                ModContextBase modContext,
                 string blueprintName,
                 BlueprintAbility bloodragerArcaneSpellAbility,
                 BlueprintBuff rageBuff,
-                BlueprintBuff spellBuff,
-                Action<BlueprintBuff> init = null
+                BlueprintBuff spellBuff, Action<BlueprintBuff> init = null
                 ) {
 
-            var buff = Helpers.CreateBuff(blueprintName, bp => {
+            var buff = Helpers.CreateBuff(modContext, blueprintName, bp => {
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.m_Description = bloodragerArcaneSpellAbility.m_Description;
@@ -267,21 +268,21 @@ namespace TabletopTweaks.Core.Utilities {
         }
 
         public static BlueprintAbility CreateArcaneBloodrageToggle(
+            ModContextBase modContext,
             string blueprintName,
             BlueprintAbility abilityToImitate,
             BlueprintAbility bloodragerArcaneSpellAbility,
             BlueprintBuff switchBuff,
             string buffGroupName,
-            List<BlueprintBuff> allToggleBuffsInGroup,
-            BlueprintUnitProperty casterProperty
+            List<BlueprintBuff> allToggleBuffsInGroup, BlueprintUnitProperty casterProperty
             ) {
             var BloodragerStandartRageBuff = Resources.GetBlueprint<BlueprintBuff>("5eac31e457999334b98f98b60fc73b2f");
             var BloodragerClass = Resources.GetBlueprint<BlueprintCharacterClass>("d77e67a814d686842802c9cfd8ef8499");
-            return Helpers.CreateBlueprint<BlueprintAbility>(blueprintName, bp => {
+            return Helpers.CreateBlueprint<BlueprintAbility>(modContext, blueprintName, bp => {
                 bp.m_DisplayName = abilityToImitate.m_DisplayName;
                 bp.m_Description = abilityToImitate.m_Description;
                 bp.m_DescriptionShort = abilityToImitate.m_DescriptionShort;
-                bp.LocalizedDuration = Helpers.CreateString($"{blueprintName}.LocalizedDuration", "While Raging");
+                bp.LocalizedDuration = Helpers.CreateString(modContext, $"{blueprintName}.LocalizedDuration", "While Raging");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
                 bp.m_Icon = abilityToImitate.m_Icon;
                 bp.DisableLog = true;
@@ -317,10 +318,10 @@ namespace TabletopTweaks.Core.Utilities {
         }
 
         public static BlueprintBuff CreateBloodragerTrueArcaneSpellRagePolymorphActivationBuff(
+                ModContextBase modContext,
                 string blueprintName,
-                BlueprintBuff polymorphBuff,
-                Action<BlueprintBuff> init = null) {
-            var buff = Helpers.CreateBuff(blueprintName, bp => {
+                BlueprintBuff polymorphBuff, Action<BlueprintBuff> init = null) {
+            var buff = Helpers.CreateBuff(modContext, blueprintName, bp => {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.m_Description = polymorphBuff.m_Description;
                 bp.m_Icon = polymorphBuff.m_Icon;
@@ -349,11 +350,11 @@ namespace TabletopTweaks.Core.Utilities {
         }
 
         public static class Bloodline {
-            public static BlueprintProgression BloodragerAberrantBloodline => Resources.GetModBlueprint<BlueprintProgression>("BloodragerAberrantBloodline");
+            //public static BlueprintProgression BloodragerAberrantBloodline => Resources.GetModBlueprint<BlueprintProgression>(modContext: TTTContext, "BloodragerAberrantBloodline");
             public static BlueprintProgression BloodragerAbyssalBloodline => Resources.GetBlueprint<BlueprintProgression>("55d5bbf4b5ae1744ab26c71be98067f9");
             public static BlueprintProgression BloodragerArcaneBloodline => Resources.GetBlueprint<BlueprintProgression>("aeff0a749e20ffe4b9e2846eae29c386");
             public static BlueprintProgression BloodragerCelestialBloodline => Resources.GetBlueprint<BlueprintProgression>("05a141717bbce594a8a763c227f4ee2f");
-            public static BlueprintProgression BloodragerDestinedBloodline => Resources.GetModBlueprint<BlueprintProgression>("BloodragerDestinedBloodline");
+            //public static BlueprintProgression BloodragerDestinedBloodline => Resources.GetModBlueprint<BlueprintProgression>(modContext: TTTContext, "BloodragerDestinedBloodline");
             public static BlueprintProgression BloodragerDragonBlackBloodline => Resources.GetBlueprint<BlueprintProgression>("3d030a2fed2b5cf45919fc1e40629a9e");
             public static BlueprintProgression BloodragerDragonBlueBloodline => Resources.GetBlueprint<BlueprintProgression>("17bbb6790ca500d4190b978cab5c4dfc");
             public static BlueprintProgression BloodragerDragonBrassBloodline => Resources.GetBlueprint<BlueprintProgression>("56e22cb1dde3f5a4297d45744ca19043");
@@ -394,8 +395,8 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintProgression BloodlineInfernalProgression => Resources.GetBlueprint<BlueprintProgression>("e76a774cacfb092498177e6ca706064d");
             public static BlueprintProgression BloodlineSerpentineProgression => Resources.GetBlueprint<BlueprintProgression>("739c1e842bf77994baf963f4ad964379");
             public static BlueprintProgression BloodlineUndeadProgression => Resources.GetBlueprint<BlueprintProgression>("a1a8bf61cadaa4143b2d4966f2d1142e");
-            public static BlueprintProgression SorcererAberrantBloodline => Resources.GetModBlueprint<BlueprintProgression>("SorcererAberrantBloodline");
-            public static BlueprintProgression SorcererDestinedBloodline => Resources.GetModBlueprint<BlueprintProgression>("SorcererDestinedBloodline");
+            //public static BlueprintProgression SorcererAberrantBloodline => Resources.GetModBlueprint<BlueprintProgression>(modContext: TTTContext, "SorcererAberrantBloodline");
+            //public static BlueprintProgression SorcererDestinedBloodline => Resources.GetModBlueprint<BlueprintProgression>(modContext: TTTContext, "SorcererDestinedBloodline");
             //Seeker Bloodlines
             public static BlueprintProgression SeekerBloodlineAbyssalProgression => Resources.GetBlueprint<BlueprintProgression>("17b752be1e0f4a34e8914df52eebeb75");
             public static BlueprintProgression SeekerBloodlineArcaneProgression => Resources.GetBlueprint<BlueprintProgression>("562c5e4031d268244a39e01cc4b834bb");
@@ -418,8 +419,8 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintProgression SeekerBloodlineInfernalProgression => Resources.GetBlueprint<BlueprintProgression>("71f9b9d63f3683b4eb57e0025771932e");
             public static BlueprintProgression SeekerBloodlineSerpentineProgression => Resources.GetBlueprint<BlueprintProgression>("59904bf6cc50a52489ebc648fb35f36f");
             public static BlueprintProgression SeekerBloodlineUndeadProgression => Resources.GetBlueprint<BlueprintProgression>("5bc63fdb68b539f4fa500cfb2d0fe0f6");
-            public static BlueprintProgression SeekerAberrantBloodline => Resources.GetModBlueprint<BlueprintProgression>("SeekerAberrantBloodline");
-            public static BlueprintProgression SeekerDestinedBloodline => Resources.GetModBlueprint<BlueprintProgression>("SeekerDestinedBloodline");
+            //public static BlueprintProgression SeekerAberrantBloodline => Resources.GetModBlueprint<BlueprintProgression>(modContext: TTTContext, "SeekerAberrantBloodline");
+            //public static BlueprintProgression SeekerDestinedBloodline => Resources.GetModBlueprint<BlueprintProgression>(modContext: TTTContext, "SeekerDestinedBloodline");
             // Mutated Bloodlines
             public static BlueprintProgression EmpyrealBloodlineProgression => Resources.GetBlueprint<BlueprintProgression>("8a95d80a3162d274896d50c2f18bb6b1");
             public static BlueprintProgression SageBloodlineProgression => Resources.GetBlueprint<BlueprintProgression>("7d990675841a7354c957689a6707c6c2");

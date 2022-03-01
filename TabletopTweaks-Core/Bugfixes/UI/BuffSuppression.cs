@@ -43,7 +43,7 @@ namespace TabletopTweaks.Core.Bugfixes.UI {
         [HarmonyPatch(typeof(CharInfoFeatureView))]
         private static class CharInfoFeaturePCView_Suppression_Patchs {
             [InitializeStaticString]
-            private static LocalizedString Suppressed = Helpers.CreateString("SuppressedBuff.UIString", "Suppressed");
+            private static LocalizedString Suppressed = Helpers.CreateString(modContext: TTTContext, "SuppressedBuff.UIString", "Suppressed");
 
             [HarmonyPrepare]
             static bool ApplyPatch() {

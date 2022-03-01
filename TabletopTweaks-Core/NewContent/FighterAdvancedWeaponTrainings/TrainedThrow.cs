@@ -5,6 +5,7 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Items.Weapons;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
@@ -17,7 +18,7 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
             var AdvancedWeaponTraining3 = Resources.GetBlueprint<BlueprintFeatureSelection>("ee9ab0117ca06b84f9c66469f4428c61");
             var AdvancedWeaponTraining4 = Resources.GetBlueprint<BlueprintFeatureSelection>("0b55d725ded1ae549bb858fba1d84114");
 
-            var TrainedThrowFeature = Helpers.CreateBlueprint<BlueprintFeature>("TrainedThrowFeature", bp => {
+            var TrainedThrowFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "TrainedThrowFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.WeaponTraining };

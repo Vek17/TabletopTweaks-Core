@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using TabletopTweaks.Core.Modlogic;
+using TabletopTweaks.Core.ModLogic;
 
 namespace TabletopTweaks.Core.Utilities {
     public class PostPatchInitializeAttribute : Attribute {

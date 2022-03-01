@@ -29,6 +29,7 @@ using TabletopTweaks.Core.MechanicsChanges;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.NewComponents.Properties;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Reworks {
@@ -79,7 +80,7 @@ namespace TabletopTweaks.Core.Reworks {
                 if (Main.TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonBaneUses")) { return; }
                 var AeonClass = Resources.GetBlueprint<BlueprintCharacterClass>("15a85e67b7d69554cab9ed5830d0268e");
                 var AeonBaneFeature = Resources.GetBlueprint<BlueprintFeature>("0b25e8d8b0488c84c9b5714e9ca0a204");
-                var AeonBaneIncreaseResourceFeature = Resources.GetModBlueprint<BlueprintFeature>("AeonBaneIncreaseResourceFeature");
+                var AeonBaneIncreaseResourceFeature = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "AeonBaneIncreaseResourceFeature");
                 AeonBaneFeature.AddComponent(Helpers.Create<AddFeatureOnApply>(c => {
                     c.m_Feature = AeonBaneIncreaseResourceFeature.ToReference<BlueprintFeatureReference>();
                 }));

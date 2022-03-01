@@ -9,6 +9,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -22,7 +23,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var Longbow = Resources.GetBlueprint<BlueprintWeaponType>("7a1211c05ec2c46428f41e3c0db9423f");
             var Shortbow = Resources.GetBlueprint<BlueprintWeaponType>("99ce02fb54639b5439d07c99c55b8542");
 
-            var ErastilsBlessingFeature = Helpers.CreateBlueprint<BlueprintFeature>("ErastilsBlessingFeature", bp => {
+            var ErastilsBlessingFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ErastilsBlessingFeature", bp => {
                 bp.SetName("Erastil's Blessing");
                 bp.SetDescription("Your deity grants you prowess with a bow that far exceeds your own physical capabilities.\n" +
                     "You can use your Wisdom modifier instead of your Dexterity modifier on ranged attack rolls when using a bow.");

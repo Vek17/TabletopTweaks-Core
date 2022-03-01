@@ -5,6 +5,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Feats {
@@ -14,7 +15,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var MountedCombat = Resources.GetBlueprint<BlueprintFeature>("f308a03bea0d69843a8ed0af003d47a9");
             var MountedCombatBuff = Resources.GetBlueprint<BlueprintBuff>("5008df9965da43c593c98ed7e6cacfc6");
             var MountedCombatCooldownBuff = Resources.GetBlueprint<BlueprintBuff>("5c9ef8224acdbab4fbaf59c710d0ef23");
-            var TrickRiding = Helpers.CreateBlueprint<BlueprintFeature>("TrickRiding", bp => {
+            var TrickRiding = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "TrickRiding", bp => {
                 bp.SetName("Trick Riding");
                 bp.SetDescription("You can make a check using Mounted Combat to negate a hit on your mount twice per round instead of just once.");
                 bp.m_Icon = Icon_TrickRiding;
@@ -28,7 +29,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 });
                 bp.AddPrerequisiteFeature(MountedCombat);
             });
-            var TrickRidingCooldownBuff = Helpers.CreateBuff("TrickRidingCooldownBuff", bp => {
+            var TrickRidingCooldownBuff = Helpers.CreateBuff(modContext: TTTContext, "TrickRidingCooldownBuff", bp => {
                 bp.SetName("Trick Riding Cooldown");
                 bp.SetDescription("");
                 bp.IsClassFeature = true;

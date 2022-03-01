@@ -12,6 +12,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewContent.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewContent.MechanicsChanges.MetamagicExtention;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
@@ -24,7 +25,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var Icon_SolidShadowsFeat = AssetLoader.LoadInternal("Feats", "Icon_SolidShadowsFeat.png");
             var Icon_SolidShadowsMetamagic = AssetLoader.LoadInternal("Metamagic", "Icon_SolidShadowsMetamagic.png", 128);
 
-            var SolidShadowsSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>("SolidShadowsSpellFeat", bp => {
+            var SolidShadowsSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "SolidShadowsSpellFeat", bp => {
                 bp.SetName("Metamagic (Solid Shadows)");
                 bp.SetDescription("Your shadowy illusions are more potent.\n" +
                     "Benefit: When casting a shadow spell, that spell is 20% more real than normal.\n" +
@@ -52,7 +53,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.AddComponent<RecommendationRequiresSpellbook>();
             });
 
-            var FavoriteMetamagicSolidShadows = Helpers.CreateBlueprint<BlueprintFeature>("FavoriteMetamagicSolidShadows", bp => {
+            var FavoriteMetamagicSolidShadows = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "FavoriteMetamagicSolidShadows", bp => {
                 bp.SetName("Favorite Metamagic — Solid Shadows");
                 bp.m_Description = FavoriteMetamagicSelection.m_Description;
                 //bp.m_Icon = Icon_IntensifiedSpellFeat;

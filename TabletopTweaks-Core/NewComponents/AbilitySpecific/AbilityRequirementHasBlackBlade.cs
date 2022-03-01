@@ -5,6 +5,7 @@ using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     /// <summary>
@@ -13,7 +14,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("a0ff3623a0154448a082b1c5ea9898fc")]
     public class AbilityRequirementHasBlackBlade : BlueprintComponent, IAbilityRestriction {
         [InitializeStaticString]
-        private static readonly LocalizedString UIText = Helpers.CreateString("AbilityRequirementHasBlackBlade.UI", "You must be wielding your Black Blade");
+        private static readonly LocalizedString UIText = Helpers.CreateString(modContext: TTTContext, "AbilityRequirementHasBlackBlade.UI", "You must be wielding your Black Blade");
         public string GetAbilityRestrictionUIText() {
             return UIText;
         }

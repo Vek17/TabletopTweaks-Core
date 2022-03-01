@@ -4,6 +4,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MagusArcana {
@@ -13,7 +14,7 @@ namespace TabletopTweaks.Core.NewContent.MagusArcana {
             var MagusClass = Resources.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
             var MagusArcanaSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("e9dc4dfc73eaaf94aae27e0ed6cc9ada");
 
-            var SpellBlendingSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("SpellBlendingSelection", bp => {
+            var SpellBlendingSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "SpellBlendingSelection", bp => {
                 bp.SetName("Spell Blending");
                 bp.SetDescription("When a magus selects this arcana, he must select one spell from the wizard spell list that is of a " +
                     "magus spell level he can cast. He adds this spell to his spellbook and list of magus spells known as a magus spell" +
@@ -25,7 +26,7 @@ namespace TabletopTweaks.Core.NewContent.MagusArcana {
                 bp.IsClassFeature = true;
             });
 
-            var SpellBlending1 = Helpers.CreateBlueprint<BlueprintFeature>("SpellBlending1", bp => {
+            var SpellBlending1 = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "SpellBlending1", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 20;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Feat };
@@ -42,7 +43,7 @@ namespace TabletopTweaks.Core.NewContent.MagusArcana {
                 });
             });
 
-            var SpellBlending2 = Helpers.CreateBlueprint<BlueprintFeature>("SpellBlending2", bp => {
+            var SpellBlending2 = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "SpellBlending2", bp => {
                 bp.IsClassFeature = true;
                 bp.Ranks = 20;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Feat };

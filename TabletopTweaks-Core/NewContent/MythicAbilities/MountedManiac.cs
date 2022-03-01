@@ -18,6 +18,7 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using System.Linq;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
@@ -29,7 +30,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
             var DazzlingDisplayAction = Resources.GetBlueprint<BlueprintAbility>("5f3126d4120b2b244a95cb2ec23d69fb");
             var icon = AssetLoader.LoadInternal("Feats", "Icon_MountedManiac.png");
 
-            var MountedManiacDCBuff = Helpers.CreateBuff("MountedManiacDCBuff", bp => {
+            var MountedManiacDCBuff = Helpers.CreateBuff(modContext: TTTContext, "MountedManiacDCBuff", bp => {
                 bp.m_Icon = icon;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.SetName("Mounted Maniac");
@@ -53,7 +54,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 });
                 bp.AddComponent(Helpers.Create<RemoveBuffOnAttack>());
             });
-            var MountedManiacAbility = DazzlingDisplayAction.CreateCopy("MountedManiacAbility", bp => {
+            var MountedManiacAbility = DazzlingDisplayAction.CreateCopy(TTTContext, "MountedManiacAbility", bp => {
                 bp.m_Icon = icon;
                 bp.ActionType = Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Free;
                 bp.CanTargetEnemies = true;
@@ -63,7 +64,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                     "Intimidate check to demoralize all enemies within 30 feet of your target, adding your mythic rank to the result of the check.");
                 bp.GetComponent<AbilityEffectRunAction>().Actions.Actions.OfType<Demoralize>().First().DazzlingDisplay = false;
             });
-            var MountedManiacBuff = Helpers.CreateBuff("MountedManiacBuff", bp => {
+            var MountedManiacBuff = Helpers.CreateBuff(modContext: TTTContext, "MountedManiacBuff", bp => {
 
                 bp.m_Icon = icon;
                 bp.SetName("Mounted Maniac");
@@ -114,7 +115,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                     };
                 }));
             });
-            var MountedManiacActivatableAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("MountedManiacActivatableAbility", bp => {
+            var MountedManiacActivatableAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "MountedManiacActivatableAbility", bp => {
                 bp.m_Icon = icon;
                 bp.SetName("Mounted Maniac");
                 bp.SetDescription("Your unstoppable momentum while mounted is terrifying. Whenever you charge a creature while mounted, you can attempt an " +
@@ -122,7 +123,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
                 bp.m_Buff = MountedManiacBuff.ToReference<BlueprintBuffReference>();
                 bp.IsOnByDefault = true;
             });
-            var MountedManiacFeature = Helpers.CreateBlueprint<BlueprintFeature>("MountedManiacFeature", bp => {
+            var MountedManiacFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "MountedManiacFeature", bp => {
                 bp.IsClassFeature = true;
                 bp.ReapplyOnLevelUp = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.MythicAbility };
