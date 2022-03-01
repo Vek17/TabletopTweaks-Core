@@ -15,7 +15,7 @@ using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
-    class PolymorphStacking {
+    internal class PolymorphStacking {
 
         private static class PolymorphMechanics {
             private static bool Initialized = false;

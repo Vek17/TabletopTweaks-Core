@@ -239,7 +239,6 @@
     <Compile Include="NewComponents\ModifySavingThrowD20.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\WeaponBuffOnConfirmedCritTTT.cs" />
     <Compile Include="NewComponents\WeaponExtraDamageDice.cs" />
-    <Compile Include="NewContent\Classes\Lich.cs" />
     <Compile Include="NewContent\Domains\TricksterDomains.cs" />
     <Compile Include="NewContent\Feats\BurningSpell.cs" />
     <Compile Include="NewContent\Feats\FlaringSpell.cs" />
@@ -253,9 +252,6 @@
     <Compile Include="NewContent\WizardArcaneDiscoveries\OppositionResearch.cs" />
     <Compile Include="NewContent\WizardArcaneDiscoveries\YuelralsBlessing.cs" />
     <Compile Include="Reworks\Feats.cs" />
-    <Compile Include="Reworks\Lich.cs" />
-    <Compile Include="Reworks\MythicAbilities.cs" />
-    <Compile Include="Reworks\MythicFeats.cs" />
     <Compile Include="NewActions\ContextActionApplyWeaponEnchant.cs" />
     <Compile Include="NewActions\ContextActionDealDamageTTT.cs" />
     <Compile Include="NewActions\ContextActionTransferArcana.cs" />
@@ -383,8 +379,6 @@
     <Compile Include="NewContent\Archetypes\BladeBound.cs" />
     <Compile Include="NewContent\Archetypes\CauldronWitch.cs" />
     <Compile Include="Bugfixes\Abilities\Spells.cs" />
-    <Compile Include="Reworks\Aeon.cs" />
-    <Compile Include="Reworks\Azata.cs" />
     <Compile Include="Bugfixes\Classes\Bloodrager.cs" />
     <Compile Include="Bugfixes\Classes\Rogue.cs" />
     <Compile Include="Bugfixes\Classes\Slayer.cs" />
@@ -478,7 +472,6 @@
     <Compile Include="NewContent\Feats\SpellSpecializationGreater.cs" />
     <Compile Include="NewContent\Feats\Stalwart.cs" />
     <Compile Include="NewContent\Feats\StreetSmarts.cs" />
-    <Compile Include="NewContent\Features\AeonBaneIncreaseResourceFeature.cs" />
     <Compile Include="NewContent\Bloodlines\BloodlineRequisiteFeature.cs" />
     <Compile Include="NewContent\Features\DragonDiscipleSpellbooks.cs" />
     <Compile Include="NewContent\Features\LongspearChargeBuff.cs" />
@@ -539,7 +532,7 @@
     <Compile Include="NewUnitParts\UnitPartPseudoActivatableAbilities.cs" />
     <Compile Include="NewUnitParts\UnitPartSpellSpecialization.cs" />
     <Compile Include="NewUnitParts\UnitPartWarriorSpirit.cs" />
-    <Compile Include="Resources.cs" />
+    <Compile Include="Utilities\Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
     <Compile Include="UMMSettingsUI.cs" />
     <Compile Include="SaveUpgrades\TabletopTweaksMigration.cs" />

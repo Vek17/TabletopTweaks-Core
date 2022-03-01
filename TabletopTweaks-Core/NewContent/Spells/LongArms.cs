@@ -19,7 +19,7 @@ namespace TabletopTweaks.Core.NewContent.Spells {
     static class LongArms {
         public static void AddLongArms() {
             //var icon = AssetLoader.Image2Sprite.Create($"{Context.ModEntry.Path}Assets{Path.DirectorySeparatorChar}Abilities{Path.DirectorySeparatorChar}Icon_LongArm.png");
-            var icon = AssetLoader.LoadInternal("Abilities", "Icon_LongArm.png");
+            var icon = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_LongArm.png");
             var LongArmBuff = Helpers.CreateBuff(modContext: TTTContext, "LongArmBuff", bp => {
                 bp.SetName("Long Arm");
                 bp.SetDescription("Your arms temporarily grow in length, increasing your reach with those limbs by 5 feet.");

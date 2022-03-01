@@ -13,13 +13,13 @@ using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
+using TabletopTweaks.Core;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
-using TabletopTweaks.Core.Wrappers;
-using static TabletopTweaks.Core.Main;
+using static TabletopTweaks.MythicReworks.Main;
 
-namespace TabletopTweaks.Core.Reworks {
+namespace TabletopTweaks.MythicReworks.Reworks {
     class MythicAbilities {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {
@@ -33,14 +33,14 @@ namespace TabletopTweaks.Core.Reworks {
                 PatchDimensionalRetribution();
             }
             static void PatchElementalBarrage() {
-                if (Main.TTTContext.Homebrew.MythicAbilities.IsDisabled("ElementalBarrage")) { return; }
+                if (TTTContext.Homebrew.MythicAbilities.IsDisabled("ElementalBarrage")) { return; }
                 var ElementalBarrage = Resources.GetBlueprint<BlueprintFeature>("da56a1b21032a374783fdf46e1a92adb");
                 var ElementalBarrageAcidBuff = Resources.GetBlueprint<BlueprintBuff>("823d33bdb23e7c64d9cc1cce9b78fdea");
                 var ElementalBarrageColdBuff = Resources.GetBlueprint<BlueprintBuff>("c5e9031099d3e8d4788d3e51f7ffb8a0");
                 var ElementalBarrageElectricityBuff = Resources.GetBlueprint<BlueprintBuff>("0b8ed343b989bbb4c8d059366a7c2d01");
                 var ElementalBarrageFireBuff = Resources.GetBlueprint<BlueprintBuff>("7db8ad7b035c2f244951cbef3c9909df");
 
-                ElementalBarrage.SetDescription("You've mastered the art of raining elemental spells on your foes, " +
+                ElementalBarrage.SetDescription(TTTContext, "You've mastered the art of raining elemental spells on your foes, " +
                     "and found a way to empower them by combining different elements.\n" +
                     "Benefit: Every time you deal elemental damage to a creature with a spell, you apply an elemental mark to it. " +
                     "If during the next three rounds the marked target takes elemental damage from any source " +
@@ -90,7 +90,7 @@ namespace TabletopTweaks.Core.Reworks {
                     });
                 }
                 void UpdateBuffVisability(BlueprintBuff barrageBuff, string element) {
-                    barrageBuff.SetDescription($"If this creature takes elemental damage from a " +
+                    barrageBuff.SetDescription(TTTContext, $"If this creature takes elemental damage from a " +
                         $"type other than {element} it will take additional damage and consume the mark.");
                     barrageBuff.m_Flags = 0;
                 }
@@ -133,7 +133,7 @@ namespace TabletopTweaks.Core.Reworks {
                 var DimensionalRetribution = Resources.GetBlueprint<BlueprintFeature>("939f49ad995ee8d4fad03ad0c7f655d1");
                 var DimensionalRetributionTTTToggleAbility = Resources.GetModBlueprintReference<BlueprintUnitFactReference>(modContext: TTTContext, "DimensionalRetributionTTTToggleAbility");
 
-                DimensionalRetribution.SetDescription("You leave a mystical link with enemy spellcasters that lets you instantly move to them." +
+                DimensionalRetribution.SetDescription(TTTContext, "You leave a mystical link with enemy spellcasters that lets you instantly move to them." +
                     "Benefit: Every time you are targeted by an enemy spell, you may teleport to the " +
                     "spellcaster as an immediate action and make an attack of opportunity.");
                 DimensionalRetribution.SetComponents();

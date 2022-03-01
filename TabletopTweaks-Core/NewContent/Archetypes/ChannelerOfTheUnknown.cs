@@ -71,7 +71,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
         private static readonly BlueprintFeatureSelectMythicSpellbook AngelIncorporateSpellbook = Resources.GetBlueprint<BlueprintFeatureSelectMythicSpellbook>("e1fbb0e0e610a3a4d91e5e5284587939");
 
         public static void AddChannelerOfTheUnknown() {
-            var ChannelEntropyIcon = AssetLoader.LoadInternal("Abilities", "Icon_ChannelEntropy.png");
+            var ChannelEntropyIcon = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_ChannelEntropy.png");
             var ChannelerOfTheUnknownSpellLevels = Helpers.CreateBlueprint<BlueprintSpellsTable>(modContext: TTTContext, "ChannelerOfTheUnknownSpellLevels", bp => {
                 bp.Levels = CrusaderSpellLevels.Levels.Select(level => SpellTools.CreateSpellLevelEntry(level.Count)).ToArray();
             });

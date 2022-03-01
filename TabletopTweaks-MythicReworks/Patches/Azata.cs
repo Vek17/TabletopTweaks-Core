@@ -10,12 +10,14 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.Utility;
 using System.Linq;
+using TabletopTweaks.Core;
+using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
 using TabletopTweaks.Core.Wrappers;
-using static TabletopTweaks.Core.Main;
+using static TabletopTweaks.MythicReworks.Main;
 
-namespace TabletopTweaks.Core.Reworks {
+namespace TabletopTweaks.MythicReworks.Reworks {
     class Azata {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {
@@ -34,7 +36,7 @@ namespace TabletopTweaks.Core.Reworks {
             }
 
             static void PatchAzataPerformanceResource() {
-                if (Main.TTTContext.Homebrew.MythicReworks.Azata.IsDisabled("AzataPerformanceResource")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Azata.IsDisabled("AzataPerformanceResource")) { return; }
                 var AzataPerformanceResource = Resources.GetBlueprint<BlueprintAbilityResource>("83f8a1c45ed205a4a989b7826f5c0687");
 
                 BlueprintCharacterClassReference[] characterClasses = ResourcesLibrary
@@ -86,7 +88,7 @@ namespace TabletopTweaks.Core.Reworks {
                 var IncredibleMightFeature = Resources.GetBlueprint<BlueprintFeature>("eef8d23a7e4acfe4d834a5de844c8c7c");
                 var IncredibleMightAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("f81b4910d05399a4aaf5fcc8c4d713eb");
 
-                IncredibleMightFeature.SetDescription(IncredibleMightFeature.Description.Replace("morale ", ""));
+                IncredibleMightFeature.SetDescription(TTTContext, IncredibleMightFeature.Description.Replace("morale ", ""));
                 IncredibleMightMainBuff.m_Description = IncredibleMightFeature.m_Description;
 
                 IncredibleMightMainBuff
@@ -144,7 +146,7 @@ namespace TabletopTweaks.Core.Reworks {
                     inflictSpells.ForEach(spell => BlockSpellDuplication(spell));
                 }
                 void BlockSpellDuplication(BlueprintAbility blueprint) {
-                    blueprint.AddComponent(new NewComponents.BlockSpellDuplicationComponent());
+                    blueprint.AddComponent<BlockSpellDuplicationComponent>();
                     TTTContext.Logger.LogPatch("Blocked Duplication", blueprint);
                 }
             }

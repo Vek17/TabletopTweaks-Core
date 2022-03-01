@@ -53,7 +53,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                     "increased as normal. The metamagic rager can apply only one metamagic feat he knows in this manner with each casting.");
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
-                bp.m_Icon = AssetLoader.LoadInternal("Abilities", "Icon_MetaRage.png");
+                bp.m_Icon = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_MetaRage.png");
                 bp.AddComponent<MetaRageComponent>(c => {
                     c.ConvertSpellbook = BloodragerSpellbook.ToReference<BlueprintSpellbookReference>();
                     c.RequiredResource = BloodragerRageResource.ToReference<BlueprintAbilityResourceReference>();
@@ -265,7 +265,7 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
                 bp.Animation = Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.LocalizedDuration = new LocalizedString();
                 bp.LocalizedSavingThrow = new LocalizedString();
-                bp.m_Icon = AssetLoader.LoadInternal("Abilities", $"Icon_MetaRage{level}.png");
+                bp.m_Icon = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: $"Icon_MetaRage{level}.png");
                 bp.AddComponent(Helpers.Create<AbilityVariants>(c => {
                     c.m_Variants = new BlueprintAbilityReference[] {
                         MetaRageEmpowerAbility.ToReference<BlueprintAbilityReference>(),

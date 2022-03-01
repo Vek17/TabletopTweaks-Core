@@ -18,7 +18,7 @@ namespace TabletopTweaks.Core.NewContent.BaseAbilities {
 
             var FightDefensivelyFeature = Resources.GetBlueprint<BlueprintFeature>("ca22afeb94442b64fb8536e7a9f7dc11");
             var FightDefensivelyToggleAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("09d742e8b50b0214fb71acfc99cc00b3");
-            var icon = AssetLoader.LoadInternal("Abilities", "Icon_OneHandedToggle.png");
+            var icon = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_OneHandedToggle.png");
 
             var OneHandedBuff = Helpers.CreateBuff(modContext: TTTContext, "OneHandedBuff", bp => {
                 bp.m_Icon = icon;

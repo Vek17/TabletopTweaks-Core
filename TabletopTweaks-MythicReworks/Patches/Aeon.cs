@@ -25,14 +25,14 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using TabletopTweaks.Core;
 using TabletopTweaks.Core.MechanicsChanges;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.NewComponents.Properties;
 using TabletopTweaks.Core.Utilities;
-using TabletopTweaks.Core.Wrappers;
-using static TabletopTweaks.Core.Main;
+using static TabletopTweaks.MythicReworks.Main;
 
-namespace TabletopTweaks.Core.Reworks {
+namespace TabletopTweaks.MythicReworks.Reworks {
     static class Aeon {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {
@@ -55,8 +55,8 @@ namespace TabletopTweaks.Core.Reworks {
             }
 
             static void PatchAeonBaneIcon() {
-                if (Main.TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonBaneIcon")) { return; }
-                var Icon_AeonBane = AssetLoader.LoadInternal("Abilities", "Icon_AeonBane.png");
+                if (TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonBaneIcon")) { return; }
+                var Icon_AeonBane = AssetLoader.LoadInternal(TTTContext, "Abilities", "Icon_AeonBane.png");
                 var AeonBaneFeature = Resources.GetBlueprint<BlueprintFeature>("0b25e8d8b0488c84c9b5714e9ca0a204");
                 var AeonBaneAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("67fb31f553f2bb14bbfae0b1040169f1");
                 AeonBaneFeature.m_Icon = Icon_AeonBane;
@@ -65,7 +65,7 @@ namespace TabletopTweaks.Core.Reworks {
                 TTTContext.Logger.LogPatch("Patched", AeonBaneAbility);
             }
             static void PatchAeonBaneSpellResistance() {
-                if (Main.TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonBaneSpellResistance")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonBaneSpellResistance")) { return; }
                 var AeonBaneBuff = Resources.GetBlueprint<BlueprintBuff>("345160619fc2ddc44b8ad98c94dde448");
                 AeonBaneBuff.RemoveComponents<ModifyD20>();
                 AeonBaneBuff.AddComponent<SpellPenetrationBonus>(c => {
@@ -77,14 +77,14 @@ namespace TabletopTweaks.Core.Reworks {
                 TTTContext.Logger.LogPatch("Patched", AeonBaneBuff);
             }
             static void PatchAeonBaneUses() {
-                if (Main.TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonBaneUses")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonBaneUses")) { return; }
                 var AeonClass = Resources.GetBlueprint<BlueprintCharacterClass>("15a85e67b7d69554cab9ed5830d0268e");
                 var AeonBaneFeature = Resources.GetBlueprint<BlueprintFeature>("0b25e8d8b0488c84c9b5714e9ca0a204");
                 var AeonBaneIncreaseResourceFeature = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "AeonBaneIncreaseResourceFeature");
                 AeonBaneFeature.AddComponent(Helpers.Create<AddFeatureOnApply>(c => {
                     c.m_Feature = AeonBaneIncreaseResourceFeature.ToReference<BlueprintFeatureReference>();
                 }));
-                AeonBaneFeature.SetDescription("At 4th rank, Aeon gains an ability to make his weapons and spells especially deadly " +
+                AeonBaneFeature.SetDescription(TTTContext, "At 4th rank, Aeon gains an ability to make his weapons and spells especially deadly " +
                     "against his enemies. For a number of rounds per day equal to twice your mythic rank plus your character level, " +
                     "you can make any weapon you wield count as having Bane quality, your spells gain a bonus equal to your mythic rank " +
                     "to caster level checks to overcome spell resistance, and every hit you make with weapons or spells dispel effects " +
@@ -93,7 +93,7 @@ namespace TabletopTweaks.Core.Reworks {
                 TTTContext.Logger.LogPatch("Patched", AeonBaneFeature);
             }
             static void PatchAeonImprovedBaneDispelLimit() {
-                if (Main.TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonImprovedBaneDispelLimit")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonImprovedBaneDispelLimit")) { return; }
 
                 var AeonBaneBuff = Resources.GetBlueprint<BlueprintBuff>("345160619fc2ddc44b8ad98c94dde448");
                 AeonBaneBuff.GetComponent<AddInitiatorAttackWithWeaponTrigger>()
@@ -144,13 +144,13 @@ namespace TabletopTweaks.Core.Reworks {
                 TTTContext.Logger.LogPatch("Patched", AeonBaneBuff);
             }
             static void PatchAeonGreaterBaneDamage() {
-                if (Main.TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGreaterBaneDamage")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGreaterBaneDamage")) { return; }
                 var AeonGreaterBaneBuff = Resources.GetBlueprint<BlueprintBuff>("cdcc13884252b2c4d8dac57cb5f46555");
                 AeonGreaterBaneBuff.RemoveComponents<AddInitiatorAttackWithWeaponTrigger>(c => c.Action.Actions.OfType<ContextActionDealDamage>().Any());
                 TTTContext.Logger.LogPatch("Patched", AeonGreaterBaneBuff);
             }
             static void PatchAeonGreaterBaneDispel() {
-                if (Main.TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("PatchAeonGreaterBaneDispel")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("PatchAeonGreaterBaneDispel")) { return; }
 
                 var AeonGreaterBaneBuff = Resources.GetBlueprint<BlueprintBuff>("cdcc13884252b2c4d8dac57cb5f46555");
                 AeonGreaterBaneBuff.GetComponents<AddInitiatorAttackWithWeaponTrigger>()
@@ -162,7 +162,7 @@ namespace TabletopTweaks.Core.Reworks {
                 TTTContext.Logger.LogPatch("Patched", AeonGreaterBaneBuff);
             }
             static void PatchAeonGazeDC() {
-                if (Main.TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeDC")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeDC")) { return; }
                 var AeonGazeDCProperty = Resources.GetBlueprint<BlueprintUnitProperty>("4358468cba854a6db8f60909dacf8203");
                 var AeonAttackGazeAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("79d287eefba48424b9073a5cabba2a63");
 
@@ -190,7 +190,7 @@ namespace TabletopTweaks.Core.Reworks {
                 TTTContext.Logger.LogPatch("Patched", AeonGazeDCProperty);
             }
             static void PatchAeonGazeAction() {
-                if (Main.TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeActionSystem")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeActionSystem")) { return; }
                 var AeonGazeThirdSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("0bec49f67ecb49a5826fcfefb9408a35");
                 AeonGazeThirdSelection.AllFeatures
                     .SelectMany(feature => feature.GetComponent<AddFacts>()?.m_Facts)
@@ -211,7 +211,7 @@ namespace TabletopTweaks.Core.Reworks {
                     });
             }
             static void PatchAeonGazeIcons() {
-                if (Main.TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeIcons")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeIcons")) { return; }
                 var AeonGazeThirdSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("0bec49f67ecb49a5826fcfefb9408a35");
                 AeonGazeThirdSelection.AllFeatures
                     .SelectMany(feature => feature.GetComponent<AddFacts>()?.m_Facts)
@@ -242,7 +242,7 @@ namespace TabletopTweaks.Core.Reworks {
         static class AbilityData_GetRuntimeActionType_MythicMoveAction_Patch {
             static readonly BlueprintBuff AeonGreaterBaneBuff = Resources.GetBlueprint<BlueprintBuff>("cdcc13884252b2c4d8dac57cb5f46555");
             static void Postfix(AbilityData __instance, ref UnitCommand.CommandType __result) {
-                if (Main.TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGreaterBaneActionBoost")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGreaterBaneActionBoost")) { return; }
                 UnitCommand.CommandType commandType = __instance.ActionType;
                 if (commandType == UnitCommand.CommandType.Swift) {
                     UnitDescriptor caster = __instance.Caster;
@@ -259,7 +259,7 @@ namespace TabletopTweaks.Core.Reworks {
         [HarmonyPatch(typeof(ActivatableAbility), nameof(ActivatableAbility.IsActivateWithSameCommand), new Type[] { typeof(ActivatableAbility) })]
         static class ActivatableAbility_IsActivateWithSameCommand_Aeon_Patch {
             static void Postfix(ActivatableAbility __instance, ActivatableAbility other, ref bool __result) {
-                if (Main.TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeActionSystem")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeActionSystem")) { return; }
                 if (__instance.Blueprint.Group == ActivatableAbilityGroup.AeonGaze && __instance.Blueprint.Group == other.Blueprint.Group) {
                     __result = true;
                 }
@@ -268,7 +268,7 @@ namespace TabletopTweaks.Core.Reworks {
         [HarmonyPatch(typeof(UnitPartActivatableAbility), nameof(UnitPartActivatableAbility.OnActivatedWithCommand))]
         static class UnitPartActivatableAbility_OnActivatedWithCommand_Aeon_Patch {
             static void Postfix(UnitPartActivatableAbility __instance, ActivatableAbility ability) {
-                if (Main.TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeActionSystem")) { return; }
+                if (TTTContext.Homebrew.MythicReworks.Aeon.IsDisabled("AeonGazeActionSystem")) { return; }
                 int groupSize = __instance.GetGroupSize(ability.Blueprint.Group);
                 if (groupSize >= 2 || ability.Blueprint.Group != ActivatableAbilityGroup.Judgment) {
                     UnitPartActivatableAbility.ActivatedWithCommandData activatedWithCommandData =

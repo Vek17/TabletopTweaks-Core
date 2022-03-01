@@ -22,7 +22,7 @@ using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
-    static class NaturalArmorStacking {
+    internal static class NaturalArmorStacking {
         [HarmonyPatch(typeof(ModifierDescriptorHelper), "IsStackable", new[] { typeof(ModifierDescriptor) })]
         static class ModifierDescriptorHelper_IsStackable_Patch {
 

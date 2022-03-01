@@ -18,7 +18,7 @@ using System;
 using UnityEngine;
 
 namespace TabletopTweaks.Core.NewActions {
-    class ContextActionDealDamageTTT : ContextAction, IValidated, IDealDamageProvider {
+    public class ContextActionDealDamageTTT : ContextAction, IValidated, IDealDamageProvider {
         private bool IsSimpleDamage {
             get {
                 return m_Type == ContextActionDealDamage.Type.Damage;

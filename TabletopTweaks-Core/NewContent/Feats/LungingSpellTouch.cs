@@ -13,7 +13,7 @@ using static TabletopTweaks.Core.NewUnitParts.CustomStatTypes;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class LungingSpellTouch {
         public static void AddLungingSpellTouch() {
-            var Icon_LungingSpellTouch = AssetLoader.LoadInternal("Feats", "Icon_LungingSpellTouch.png");
+            var Icon_LungingSpellTouch = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_LungingSpellTouch.png");
             var MountedCombat = Resources.GetBlueprint<BlueprintFeature>("f308a03bea0d69843a8ed0af003d47a9");
             var TrickRiding = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TrickRiding");
             var LungingSpellTouchBuff = Helpers.CreateBuff(modContext: TTTContext, "LungingSpellTouchBuff", bp => {

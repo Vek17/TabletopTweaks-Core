@@ -9,7 +9,7 @@ using System.Linq;
 using static Kingmaker.UnitLogic.ActivatableAbilities.ActivatableAbilityResourceLogic;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
-    static class ActivatableAbilitySpendLogic {
+    public static class ActivatableAbilitySpendLogic {
 
         public enum StandardSpendType : int {
             AeonGaze = 200

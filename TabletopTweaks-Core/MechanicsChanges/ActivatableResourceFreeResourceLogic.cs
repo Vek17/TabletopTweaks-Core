@@ -6,7 +6,7 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
-    class ActivatableResourceFreeResourceLogic {
+    internal class ActivatableResourceFreeResourceLogic {
 
         [HarmonyPatch(typeof(ActivatableAbility), "HandleUnitLeaveCombat")]
         static class ActivatableAbility_HandleUnitLeaveCombat_Patch {

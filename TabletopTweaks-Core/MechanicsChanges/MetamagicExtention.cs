@@ -30,7 +30,7 @@ using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
 // This work is largly based on work by https://github.com/Stari0n/MagicTime Copyright (c) 2021 Starion
 namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
-    static class MetamagicExtention {
+    public static class MetamagicExtention {
 
         [Flags]
         public enum CustomMetamagic {

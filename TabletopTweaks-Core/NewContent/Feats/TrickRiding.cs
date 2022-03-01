@@ -11,7 +11,7 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class TrickRiding {
         public static void AddTrickRiding() {
-            var Icon_TrickRiding = AssetLoader.LoadInternal("Feats", "Icon_TrickRiding.png");
+            var Icon_TrickRiding = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_TrickRiding.png");
             var MountedCombat = Resources.GetBlueprint<BlueprintFeature>("f308a03bea0d69843a8ed0af003d47a9");
             var MountedCombatBuff = Resources.GetBlueprint<BlueprintBuff>("5008df9965da43c593c98ed7e6cacfc6");
             var MountedCombatCooldownBuff = Resources.GetBlueprint<BlueprintBuff>("5c9ef8224acdbab4fbaf59c710d0ef23");

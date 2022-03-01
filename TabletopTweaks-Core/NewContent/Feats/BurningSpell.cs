@@ -34,11 +34,11 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var FireStormBuff = Resources.GetBlueprint<BlueprintBuff>("ef7d021abb6bbfd4cad4f2f2b70bcf28");
             var FirstStage_AcidBuff = Resources.GetBlueprint<BlueprintBuff>("6afe27c9a2d64eb890673ff3649dacb3");
             var FavoriteMetamagicSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
-            var Icon_BurningSpellFeat = AssetLoader.LoadInternal("Feats", "Icon_BurningSpellFeat.png");
-            var Icon_BurningSpellMetamagic = AssetLoader.LoadInternal("Metamagic", "Icon_BurningSpellMetamagic.png", 128);
-            var Icon_MetamagicRodBurningLesser = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodBurningLesser.png", 64);
-            var Icon_MetamagicRodBurningNormal = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodBurningNormal.png", 64);
-            var Icon_MetamagicRodBurningGreater = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodBurningGreater.png", 64);
+            var Icon_BurningSpellFeat = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_BurningSpellFeat.png");
+            var Icon_BurningSpellMetamagic = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Metamagic", file: "Icon_BurningSpellMetamagic.png", size: 128);
+            var Icon_MetamagicRodBurningLesser = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodBurningLesser.png", size: 64);
+            var Icon_MetamagicRodBurningNormal = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodBurningNormal.png", size: 64);
+            var Icon_MetamagicRodBurningGreater = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodBurningGreater.png", size: 64);
 
             var BurningSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BurningSpellFeat", bp => {
                 bp.SetName("Metamagic (Burning Spell)");

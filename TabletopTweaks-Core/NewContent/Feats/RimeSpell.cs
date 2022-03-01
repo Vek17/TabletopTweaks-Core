@@ -29,11 +29,11 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             var FavoriteMetamagicSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
             var EntangleBuff = Resources.GetBlueprint<BlueprintBuff>("f7f6330726121cf4b90a6086b05d2e38");
             var IcyPrisonEntangledBuff = Resources.GetBlueprint<BlueprintBuff>("c53b286bb06a0544c85ca0f8bcc86950");
-            var Icon_RimeSpellFeat = AssetLoader.LoadInternal("Feats", "Icon_RimeSpellFeat.png");
-            var Icon_RimeSpellMetamagic = AssetLoader.LoadInternal("Metamagic", "Icon_RimeSpellMetamagic.png", 128);
-            var Icon_MetamagicRodRimeLesser = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodRimeLesser.png", 64);
-            var Icon_MetamagicRodRimeNormal = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodRimeNormal.png", 64);
-            var Icon_MetamagicRodRimeGreater = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodRimeGreater.png", 64);
+            var Icon_RimeSpellFeat = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_RimeSpellFeat.png");
+            var Icon_RimeSpellMetamagic = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Metamagic", file: "Icon_RimeSpellMetamagic.png", size: 128);
+            var Icon_MetamagicRodRimeLesser = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodRimeLesser.png", size: 64);
+            var Icon_MetamagicRodRimeNormal = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodRimeNormal.png", size: 64);
+            var Icon_MetamagicRodRimeGreater = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodRimeGreater.png", size: 64);
 
             var RimeSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "RimeSpellFeat", bp => {
                 bp.SetName("Metamagic (Rime Spell)");

@@ -10,9 +10,9 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Classes {
     static class Magus {
         public static void AddMagusFeatures() {
-            var Icon_WarriorSpirit_FlamingBurst = AssetLoader.LoadInternal("Abilities", "Icon_WarriorSpirit_FlamingBurst.png");
-            var Icon_WarriorSpirit_IcyBurst = AssetLoader.LoadInternal("Abilities", "Icon_WarriorSpirit_IcyBurst.png");
-            var Icon_WarriorSpirit_ShockingBurst = AssetLoader.LoadInternal("Abilities", "Icon_WarriorSpirit_ShockingBurst.png");
+            var Icon_WarriorSpirit_FlamingBurst = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_WarriorSpirit_FlamingBurst.png");
+            var Icon_WarriorSpirit_IcyBurst = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_WarriorSpirit_IcyBurst.png");
+            var Icon_WarriorSpirit_ShockingBurst = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_WarriorSpirit_ShockingBurst.png");
 
             var FlamingBurst = Resources.GetBlueprint<BlueprintWeaponEnchantment>("3f032a3cd54e57649a0cdad0434bf221");
             var IcyBurst = Resources.GetBlueprint<BlueprintWeaponEnchantment>("564a6924b246d254c920a7c44bf2a58b");

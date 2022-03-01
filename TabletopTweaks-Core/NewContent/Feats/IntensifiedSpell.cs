@@ -25,11 +25,11 @@ namespace TabletopTweaks.Core.NewContent.Feats {
     static class IntensifiedSpell {
         public static void AddIntensifiedSpell() {
             var FavoriteMetamagicSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
-            var Icon_IntensifiedSpellFeat = AssetLoader.LoadInternal("Feats", "Icon_IntensifiedSpellFeat.png");
-            var Icon_IntensifiedSpellMetamagic = AssetLoader.LoadInternal("Metamagic", "Icon_IntensifiedSpellMetamagic.png", 128);
-            var Icon_MetamagicRodIntensifiedLesser = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodIntensifiedLesser.png", 64);
-            var Icon_MetamagicRodIntensifiedNormal = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodIntensifiedNormal.png", 64);
-            var Icon_MetamagicRodIntensifiedGreater = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodIntensifiedGreater.png", 64);
+            var Icon_IntensifiedSpellFeat = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_IntensifiedSpellFeat.png");
+            var Icon_IntensifiedSpellMetamagic = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Metamagic", file: "Icon_IntensifiedSpellMetamagic.png", size: 128);
+            var Icon_MetamagicRodIntensifiedLesser = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodIntensifiedLesser.png", size: 64);
+            var Icon_MetamagicRodIntensifiedNormal = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodIntensifiedNormal.png", size: 64);
+            var Icon_MetamagicRodIntensifiedGreater = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodIntensifiedGreater.png", size: 64);
 
             var IntensifiedSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "IntensifiedSpellFeat", bp => {
                 bp.SetName("Metamagic (Intensified Spell)");

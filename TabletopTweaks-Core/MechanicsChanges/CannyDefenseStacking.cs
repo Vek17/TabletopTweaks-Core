@@ -12,7 +12,7 @@ using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
-    class CannyDefenseStacking {
+    internal class CannyDefenseStacking {
         [HarmonyPatch(typeof(CannyDefensePermanent), "ActivateModifier")]
         static class CannyDefensePermanent_Stacking_Patch {
             static readonly MethodInfo Modifier_AddModifierUnique = AccessTools.Method(typeof(ModifiableValue), "AddModifierUnique", new Type[] {

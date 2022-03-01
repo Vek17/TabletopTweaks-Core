@@ -13,7 +13,7 @@ using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 namespace TabletopTweaks.Core.NewContent.Feats {
     class UndersizedMount {
         public static void AddUndersizedMount() {
-            var Icon_UndersizedMount = AssetLoader.LoadInternal("Feats", "Icon_UndersizedMount.png");
+            var Icon_UndersizedMount = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_UndersizedMount.png");
             var UndersizedMount = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "UndersizedMount", bp => {
                 bp.SetName("Undersized Mount");
                 bp.SetDescription("You can ride creatures equal to your own size category instead of only creatures larger than you.");

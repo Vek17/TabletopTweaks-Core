@@ -9,7 +9,7 @@ using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class MountedSkirmisher {
         public static void AddMountedSkirmisher() {
-            var Icon_MountedSkirmisher = AssetLoader.LoadInternal("Feats", "Icon_MountedSkirmisher.png");
+            var Icon_MountedSkirmisher = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_MountedSkirmisher.png");
             var MountedCombat = Resources.GetBlueprint<BlueprintFeature>("f308a03bea0d69843a8ed0af003d47a9");
             var TrickRiding = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TrickRiding");
             var MountedSkirmisher = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "MountedSkirmisher", bp => {

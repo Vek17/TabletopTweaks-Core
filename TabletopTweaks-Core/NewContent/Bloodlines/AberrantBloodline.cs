@@ -340,7 +340,7 @@ namespace TabletopTweaks.Core.NewContent.Bloodlines {
                 };
             });
             var BloodragerAberrantBloodlineWandering = BloodlineTools.CreateMixedBloodFeature(TTTContext, "BloodragerAberrantBloodlineWandering", BloodragerAberrantBloodline, bp => {
-                bp.m_Icon = AssetLoader.LoadInternal("Abilities", "Icon_AberrantBloodline.png");
+                bp.m_Icon = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_AberrantBloodline.png");
             });
             var BloodragerAberrantBaseBuff = Helpers.CreateBuff(modContext: TTTContext, "BloodragerAberrantBaseBuff", bp => {
                 bp.SetName("Aberrant Bloodrage");

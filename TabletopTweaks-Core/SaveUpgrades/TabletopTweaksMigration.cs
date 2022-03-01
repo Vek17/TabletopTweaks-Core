@@ -36,18 +36,6 @@ namespace TabletopTweaks.Core.SaveUpgrades {
             }
         }
 
-        protected void RemoveTypeMarkers(string type) {
-            foreach (JToken jtoken in this.Root.SelectTokens("..$type").ToList<JToken>()) {
-                JValue jvalue = jtoken as JValue;
-                string text = ((jvalue != null) ? jvalue.Value : null) as string;
-                if (text != null && text.Contains(type)) {
-                    text = Regex.Replace(text, ", TabletopTweaks", ", TabletopTweaks-Core");
-                    text = Regex.Replace(text, @"TabletopTweaks\.", "TabletopTweaks.Core.");
-                    jvalue.Value = text;
-                }
-            }
-        }
-
         private JObject Root;
     }
 }

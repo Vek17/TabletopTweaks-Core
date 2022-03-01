@@ -6,7 +6,7 @@ using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
-    class InherentBonuses {
+    internal class InherentBonuses {
         [HarmonyPatch(typeof(ModifiableValueAttributeStat), "CalculatePermanentValueWithoutEnhancement")]
         static class ModifierDescriptorComparer_InherentSkillPoint_Compare_Patch {
             private static readonly Func<ModifiableValue.Modifier, bool> FilterGrantsSkillpoints = delegate (ModifiableValue.Modifier m) {

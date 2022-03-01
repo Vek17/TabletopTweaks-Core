@@ -4,18 +4,20 @@ using System.IO;
 using System.Reflection;
 using TabletopTweaks.Core.Config;
 using TabletopTweaks.Core.Localization;
-using TabletopTweaks.Core.ModLogic;
+using TabletopTweaks.Core.NewEvents;
 using static UnityModManagerNet.UnityModManager;
 
 namespace TabletopTweaks.Core.ModLogic {
-    public abstract class ModContextBase {
+    public abstract class ModContextBase : IBlueprintCacheInitHandler,
+        IGlobalSubscriber, ISubscriber {
         public readonly ModEntry ModEntry;
         public readonly ModLogger Logger;
+        public string BlueprintsFile = "Blueprints.json";
         public Blueprints Blueprints = new Blueprints();
         public MultiLocalizationPack ModLocalizationPack = new MultiLocalizationPack();
-        public virtual string userConfigFolder => ModEntry.Path + "UserSettings";
-        public virtual string localizationFolder => ModEntry.Path + "Localization";
-        public string localizationFile = "LocalizationPack.Json";
+        public virtual string UserConfigFolder => ModEntry.Path + "UserSettings";
+        public virtual string LocalizationFolder => ModEntry.Path + "Localization";
+        public string LocalizationFile = "LocalizationPack.json";
         private static JsonSerializerSettings cachedSettings;
         private static JsonSerializerSettings SerializerSettings {
             get {
@@ -41,15 +43,19 @@ namespace TabletopTweaks.Core.ModLogic {
             Blueprints = new Blueprints();
             ModEntry = modEntry;
             Logger = new ModLogger(ModEntry);
+            EventBus.Subscribe(this);
         }
 
         public abstract void LoadAllSettings();
+        public virtual void LoadBlueprints(string classPath) {
+            LoadSettings(BlueprintsFile, classPath, ref Blueprints);
+        }
         public virtual void LoadLocalization(string classPath) {
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);
             var assembly = Assembly.GetExecutingAssembly();
-            var resourcePath = $"{classPath}.{localizationFile}"; ;
-            var localizationPath = $"{localizationFolder}{Path.DirectorySeparatorChar}{localizationFile}";
-            Directory.CreateDirectory(localizationFolder);
+            var resourcePath = $"{classPath}.{LocalizationFile}"; ;
+            var localizationPath = $"{LocalizationFolder}{Path.DirectorySeparatorChar}{LocalizationFile}";
+            Directory.CreateDirectory(LocalizationFolder);
             if (File.Exists(localizationPath)) {
                 using (StreamReader streamReader = File.OpenText(localizationPath))
                 using (JsonReader jsonReader = new JsonTextReader(streamReader)) {
@@ -59,7 +65,7 @@ namespace TabletopTweaks.Core.ModLogic {
                     } catch {
                         ModLocalizationPack = new MultiLocalizationPack();
                         Logger.LogError("Failed to localization. Settings will be rebuilt.");
-                        try { File.Copy(localizationPath, ModEntry.Path + $"{Path.DirectorySeparatorChar}BROKEN_{localizationFile}", true); } catch { Logger.LogError("Failed to archive broken localization."); }
+                        try { File.Copy(localizationPath, ModEntry.Path + $"{Path.DirectorySeparatorChar}BROKEN_{LocalizationFile}", true); } catch { Logger.LogError("Failed to archive broken localization."); }
                     }
                 }
             } else {
@@ -74,8 +80,8 @@ namespace TabletopTweaks.Core.ModLogic {
         }
         public virtual void SaveLocalization(MultiLocalizationPack localizaiton) {
             localizaiton.Strings.Sort((x, y) => string.Compare(x.SimpleName, y.SimpleName));
-            Directory.CreateDirectory(userConfigFolder);
-            var localizationPath = $"{localizationFolder}{Path.DirectorySeparatorChar}{localizationFile}";
+            Directory.CreateDirectory(UserConfigFolder);
+            var localizationPath = $"{LocalizationFolder}{Path.DirectorySeparatorChar}{LocalizationFile}";
 
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);
             using (StreamWriter streamWriter = new StreamWriter(localizationPath))
@@ -86,11 +92,11 @@ namespace TabletopTweaks.Core.ModLogic {
         }
         public virtual void LoadSettings<T>(string fileName, string path, ref T setting) where T : IUpdatableSettings {
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);
-            var assembly = Assembly.GetExecutingAssembly();
+            var assembly = ModEntry.Assembly;
             var resourcePath = $"{path}.{fileName}";
-            var userPath = $"{userConfigFolder}{Path.DirectorySeparatorChar}{fileName}";
+            var userPath = $"{UserConfigFolder}{Path.DirectorySeparatorChar}{fileName}";
 
-            Directory.CreateDirectory(userConfigFolder);
+            Directory.CreateDirectory(UserConfigFolder);
             using (Stream stream = assembly.GetManifestResourceStream(resourcePath))
             using (StreamReader streamReader = new StreamReader(stream))
             using (JsonReader jsonReader = new JsonTextReader(streamReader)) {
@@ -105,22 +111,35 @@ namespace TabletopTweaks.Core.ModLogic {
                         setting.OverrideSettings(userSettings);
                     } catch {
                         Logger.LogError("Failed to load user settings. Settings will be rebuilt.");
-                        try { File.Copy(userPath, userConfigFolder + $"{Path.DirectorySeparatorChar}BROKEN_{fileName}", true); } catch { Logger.LogError("Failed to archive broken settings."); }
+                        try { File.Copy(userPath, UserConfigFolder + $"{Path.DirectorySeparatorChar}BROKEN_{fileName}", true); } catch { Logger.LogError("Failed to archive broken settings."); }
                     }
                 }
             }
             SaveSettings(fileName, setting);
         }
-
         public virtual void SaveSettings(string fileName, object setting) {
-            Directory.CreateDirectory(userConfigFolder);
-            var userPath = $"{userConfigFolder}{Path.DirectorySeparatorChar}{fileName}";
+            Directory.CreateDirectory(UserConfigFolder);
+            var userPath = $"{UserConfigFolder}{Path.DirectorySeparatorChar}{fileName}";
 
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);
             using (StreamWriter streamWriter = new StreamWriter(userPath))
             using (JsonWriter jsonWriter = new JsonTextWriter(streamWriter)) {
                 serializer.Serialize(jsonWriter, setting);
             }
+        }
+
+        public void BeforeBlueprintCachePatches() {
+        }
+
+        public void BeforeBlueprintCacheInit() {
+        }
+
+        public void AfterBlueprintCacheInit() {
+        }
+
+        public void AfterBlueprintCachePatches() {
+            Blueprints.GenerateUnused();
+            SaveSettings(BlueprintsFile, Blueprints);
         }
     }
 }

@@ -28,11 +28,11 @@ namespace TabletopTweaks.Core.NewContent.Feats {
         public static void AddFlaringSpell() {
             var DazzledBuff = Resources.GetBlueprint<BlueprintBuff>("df6d1025da07524429afbae248845ecc");
             var FavoriteMetamagicSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
-            var Icon_FlaringSpellFeat = AssetLoader.LoadInternal("Feats", "Icon_FlaringSpellFeat.png");
-            var Icon_FlaringSpellMetamagic = AssetLoader.LoadInternal("Metamagic", "Icon_FlaringSpellMetamagic.png", 128);
-            var Icon_MetamagicRodFlaringLesser = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodFlaringLesser.png", 64);
-            var Icon_MetamagicRodFlaringNormal = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodFlaringNormal.png", 64);
-            var Icon_MetamagicRodFlaringGreater = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodFlaringGreater.png", 64);
+            var Icon_FlaringSpellFeat = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_FlaringSpellFeat.png");
+            var Icon_FlaringSpellMetamagic = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Metamagic", file: "Icon_FlaringSpellMetamagic.png", size: 128);
+            var Icon_MetamagicRodFlaringLesser = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodFlaringLesser.png", size: 64);
+            var Icon_MetamagicRodFlaringNormal = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodFlaringNormal.png", size: 64);
+            var Icon_MetamagicRodFlaringGreater = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodFlaringGreater.png", size: 64);
 
             var FlaringSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "FlaringSpellFeat", bp => {
                 bp.SetName("Metamagic (Flaring Spell)");

@@ -8,8 +8,8 @@
     <ProjectGuid>{C03B79A7-F087-44A4-92E1-DD3EDFCA487B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TabletopTweaks.Homebrew</RootNamespace>
-    <AssemblyName>TabletopTweaks-Homebrew</AssemblyName>
+    <RootNamespace>TabletopTweaks.MythicReworks</RootNamespace>
+    <AssemblyName>TabletopTweaks-MythicReworks</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <LangVersion>9</LangVersion>
@@ -158,14 +158,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
+    <Compile Include="ModLogic\ModContextTTTMythicReworks.cs" />
+    <Compile Include="NewContent\Classes\Aeon.cs" />
+    <Compile Include="NewContent\ContentAdder.cs" />
+    <Compile Include="NewContent\MythicAbilities\DimensionalRetribution.cs" />
+    <Compile Include="NewContent\Classes\Lich.cs" />
+    <Compile Include="Patches\Aeon.cs" />
+    <Compile Include="Patches\Azata.cs" />
+    <Compile Include="Patches\Lich.cs" />
+    <Compile Include="Patches\MythicAbilities.cs" />
+    <Compile Include="Patches\MythicFeats.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
+    <EmbeddedResource Include="Config\AddedContent.json" />
+    <EmbeddedResource Include="Config\Blueprints.json" />
+    <EmbeddedResource Include="Config\Fixes.json" />
+    <EmbeddedResource Include="Config\Homebrew.json" />
     <None Include="Info.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <EmbeddedResource Include="Localization\LocalizationPack.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Abilities\Icon_AeonBane.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -176,6 +198,6 @@
     <Error Condition="!Exists('..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>(robocopy "$(TargetDir) " "%25WrathPath%25\Mods\TabletopTweaks-Homebrew\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
+    <PostBuildEvent>(robocopy "$(TargetDir) " "%25WrathPath%25\Mods\TabletopTweaks-MythicReworks\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
   </PropertyGroup>
 </Project>

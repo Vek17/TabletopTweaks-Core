@@ -1,0 +1,193 @@
+{
+  "NewSettingsOffByDefault": false,
+  "Feats": {
+    "DisableAll": false,
+    "Settings": {
+      "BolsterSpell": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "Increases the level increase from bolstered from +1 to +2."
+      }
+    },
+    "IsExpanded": true
+  },
+  "MythicAbilities": {
+    "DisableAll": false,
+    "Settings": {
+      "DimensionalRetribution": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "Rework of Dimensional Retribution to make it work more like dweomercat leap. This means it is an automatic action that teleports you and does an attack of opportunity."
+      },
+      "ElementalBarrage": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "Rework of Elemental barrage to turn it into a caster mythic instead of a weird martial mythic."
+      }
+    },
+    "IsExpanded": true
+  },
+  "MythicFeats": {
+    "DisableAll": false,
+    "Settings": {
+      "MythicSneakAttack": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "Rework of Mythic Sneak Attack to increase the size of the damage dice instead of adding an extra dice."
+      }
+    },
+    "IsExpanded": true
+  },
+  "MythicReworks": {
+    "IsExpanded": true,
+    "DisableAll": false,
+    "Aeon": {
+      "DisableAll": false,
+      "Settings": {
+        "AeonBaneIcon": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Updates Aeon Bane's Icon."
+        },
+        "AeonBaneSpellResistance": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Aeon Bane adds mythic rank to spell resistance checks."
+        },
+        "AeonBaneUses": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Aeon Bane usages now scale at 2x Mythic level + Character level."
+        },
+        "AeonGazeActionSystem": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Aeon Gaze now functions like Inquisitor Judgments where multiple can be activated for the same resouce usage."
+        },
+        "AeonGazeDC": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Aeon Gaze DC has been adjusted from 15 + 2x Mythic Level to 10 + 1/2 Character Level + 2x Mythic level."
+        },
+        "AeonGazeIcons": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Aeon Gaze buffs now all are visable with proper icons."
+        },
+        "AeonGreaterBaneActionBoost": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Aeon Greater Bane now allows you to cast swift action spells as a move action."
+        },
+        "AeonGreaterBaneDamage": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Aeon Greater Bane damage is now rolled into the main weapon attack instead of a separate instance."
+        },
+        "AeonImprovedBaneDispelLimit": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Aeon Improved Bane now uses greater dispel magic rules to remove 1/4 CL buffs where CL is defined as Character Level + Mythic Rank."
+        },
+        "PatchAeonGreaterBaneDispel": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Aeon Greater Bane now has the garentee'd auto dispel on first hit."
+        }
+      },
+      "IsExpanded": true
+    },
+    "Angel": {
+      "DisableAll": false,
+      "Settings": {},
+      "IsExpanded": true
+    },
+    "Azata": {
+      "DisableAll": false,
+      "Settings": {
+        "AzataPerformanceResource": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": ""
+        },
+        "AzataSongToggles": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Azata songs can now be started outside of combat."
+        },
+        "FavorableMagic": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Favorable magic now works on reoccuring saves."
+        },
+        "ZippyMagic": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Zippy magic will now ignore some harmful effects."
+        },
+        "IncredibleMight": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Incredible Might now grants a mythic bonus isntead of a morale bonus."
+        }
+      },
+      "IsExpanded": true
+    },
+    "Demon": {
+      "DisableAll": false,
+      "Settings": {},
+      "IsExpanded": true
+    },
+    "Lich": {
+      "DisableAll": false,
+      "Settings": {
+        "DeadlyMagic": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Deadly magic can now be used for a numbe of rounds equal to your mythic rank"
+        },
+        "DecayingTouch": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Decaying touch has been completly rewritten to have fewer bugs with how it applies damage"
+        },
+        "EclipseChill": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Eclipse Chill DC now scales at 10 + 1/2 character level + twice your mythic rank and can now be used for a numbe of rounds equal to your mythic rank"
+        },
+        "TainedSneakAttack": {
+          "Enabled": true,
+          "Homebrew": true,
+          "Description": "Tainted sneak attack now works with spells and the DC scales at 10 + 1/2 character level + twice your mythic rank"
+        }
+      },
+      "IsExpanded": true
+    },
+    "Trickster": {
+      "DisableAll": false,
+      "Settings": {},
+      "IsExpanded": true
+    },
+    "Devil": {
+      "DisableAll": false,
+      "Settings": {},
+      "IsExpanded": true
+    },
+    "GoldDragon": {
+      "DisableAll": false,
+      "Settings": {},
+      "IsExpanded": true
+    },
+    "Legend": {
+      "DisableAll": false,
+      "Settings": {},
+      "IsExpanded": true
+    },
+    "Swarm": {
+      "DisableAll": false,
+      "Settings": {},
+      "IsExpanded": true
+    }
+  }
+}

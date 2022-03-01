@@ -16,7 +16,7 @@ namespace TabletopTweaks.Core.NewContent.Spells {
     class ShadowEnchantment {
         public static void AddShadowEnchantment() {
             //var icon = AssetLoader.Image2Sprite.Create($"{Context.ModEntry.Path}Assets{Path.DirectorySeparatorChar}Abilities{Path.DirectorySeparatorChar}Icon_ShadowEnchantment.png");
-            var icon = AssetLoader.LoadInternal("Abilities", "Icon_ShadowEnchantment.png");
+            var icon = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_ShadowEnchantment.png");
             var PowerfulShadows = Resources.GetBlueprint<BlueprintFeature>("6a9448ec047c642408af6debb8536c38");
             var ShadowEnchantmentProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "ShadowEnchantmentProperty", bp => {
                 bp.BaseValue = 20;
@@ -100,7 +100,7 @@ namespace TabletopTweaks.Core.NewContent.Spells {
         }
         public static void AddShadowEnchantmentGreater() {
             //var icon = AssetLoader.Image2Sprite.Create($"{Context.ModEntry.Path}Assets{Path.DirectorySeparatorChar}Abilities{Path.DirectorySeparatorChar}Icon_ShadowEnchantmentGreater.png");
-            var icon = AssetLoader.LoadInternal("Abilities", "Icon_ShadowEnchantmentGreater.png");
+            var icon = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_ShadowEnchantmentGreater.png");
             var PowerfulShadows = Resources.GetBlueprint<BlueprintFeature>("6a9448ec047c642408af6debb8536c38");
             var ShadowEnchantmentGreaterProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "ShadowEnchantmentGreaterProperty", bp => {
                 bp.BaseValue = 60;

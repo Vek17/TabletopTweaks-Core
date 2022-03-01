@@ -6,7 +6,7 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicFeats {
     class MythicTwoWeaponDefense {
         public static void AddMythicTwoWeaponDefense() {
-            var Icon_TwoWeaponDefense = AssetLoader.LoadInternal("Feats", "Icon_TwoWeaponDefense.png");
+            var Icon_TwoWeaponDefense = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_TwoWeaponDefense.png");
             var TwoWeaponDefenseFeature = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TwoWeaponDefenseFeature");
 
             var TwoWeaponDefenseMythicFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "TwoWeaponDefenseMythicFeature", bp => {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using TabletopTweaks.Core.ModLogic;
 
 namespace TabletopTweaks.Core {
-    static class Resources {
+    public static class Resources {
         public static readonly Dictionary<BlueprintGuid, SimpleBlueprint> ModBlueprints = new Dictionary<BlueprintGuid, SimpleBlueprint>();
 
 #if false

@@ -1,14 +1,14 @@
 ﻿using System.IO;
+using TabletopTweaks.Core.ModLogic;
 using UnityEngine;
-using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Utilities {
-    class AssetLoader {
-        public static Sprite LoadInternal(string folder, string file) {
-            return Image2Sprite.Create($"{TTTContext.ModEntry.Path}Assets{Path.DirectorySeparatorChar}{folder}{Path.DirectorySeparatorChar}{file}");
+    public class AssetLoader {
+        public static Sprite LoadInternal(ModContextBase modContext, string folder, string file) {
+            return Image2Sprite.Create($"{modContext.ModEntry.Path}Assets{Path.DirectorySeparatorChar}{folder}{Path.DirectorySeparatorChar}{file}");
         }
-        public static Sprite LoadInternal(string folder, string file, int size) {
-            return Image2Sprite.Create($"{TTTContext.ModEntry.Path}Assets{Path.DirectorySeparatorChar}{folder}{Path.DirectorySeparatorChar}{file}", size);
+        public static Sprite LoadInternal(ModContextBase modContext, string folder, string file, int size) {
+            return Image2Sprite.Create($"{modContext.ModEntry.Path}Assets{Path.DirectorySeparatorChar}{folder}{Path.DirectorySeparatorChar}{file}", size);
         }
         // Loosely based on https://forum.unity.com/threads/generating-sprites-dynamically-from-png-or-jpeg-files-in-c.343735/
         public static class Image2Sprite {

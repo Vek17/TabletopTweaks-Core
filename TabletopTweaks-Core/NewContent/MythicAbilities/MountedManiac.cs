@@ -28,7 +28,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
             var ExtraMythicAbilityMythicFeat = Resources.GetBlueprint<BlueprintFeatureSelection>("8a6a511c55e67d04db328cc49aaad2b8");
             var MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
             var DazzlingDisplayAction = Resources.GetBlueprint<BlueprintAbility>("5f3126d4120b2b244a95cb2ec23d69fb");
-            var icon = AssetLoader.LoadInternal("Feats", "Icon_MountedManiac.png");
+            var icon = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_MountedManiac.png");
 
             var MountedManiacDCBuff = Helpers.CreateBuff(modContext: TTTContext, "MountedManiacDCBuff", bp => {
                 bp.m_Icon = icon;

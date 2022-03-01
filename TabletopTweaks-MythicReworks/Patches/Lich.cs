@@ -17,17 +17,18 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
+using TabletopTweaks.Core;
 using TabletopTweaks.Core.NewActions;
 using TabletopTweaks.Core.Utilities;
 using TabletopTweaks.Core.Wrappers;
-using static TabletopTweaks.Core.Main;
+using static TabletopTweaks.MythicReworks.Main;
 
-namespace TabletopTweaks.Core.Reworks {
+namespace TabletopTweaks.MythicReworks.Reworks {
     static class Lich {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {
             static bool Initialized;
-            static BlueprintUnitPropertyReference LichDCProperty = Resources.GetModBlueprintReference<BlueprintUnitPropertyReference>(modContext: TTTContext, "LichDCProperty");
+            static BlueprintUnitPropertyReference LichDCProperty = Resources.GetModBlueprintReference<BlueprintUnitPropertyReference>(TTTContext, "LichDCProperty");
 
             static void Postfix() {
                 if (Initialized) return;
@@ -47,7 +48,7 @@ namespace TabletopTweaks.Core.Reworks {
                 var DeadlyMagicBuff = Resources.GetBlueprint<BlueprintBuff>("27ebfae71cce46045814eb3ba4fefa6b");
                 var DeadlyMagicResource = Resources.GetBlueprint<BlueprintAbilityResource>("a3441d150c5fec54bbbc04efdefaf6aa");
 
-                DeadlyMagicFeature.SetDescription("For a number of rounds equal to 3 + half his mythic rank, " +
+                DeadlyMagicFeature.SetDescription(TTTContext, "For a number of rounds equal to 3 + half his mythic rank, " +
                     "a Lich can make all spells he casts to ignore spell resistance and spell immunity. " +
                     "Any creature affected by such spell can't cast spells for 1d3+1 rounds.");
                 DeadlyMagicToggleAbility.m_Description = DeadlyMagicFeature.m_Description;
@@ -227,7 +228,7 @@ namespace TabletopTweaks.Core.Reworks {
                 var EclipseChillResource = Resources.GetBlueprint<BlueprintAbilityResource>("b134e2d400adc4a49bd217a7953d6d6a");
                 var PlantType = Resources.GetBlueprintReference<BlueprintUnitFactReference>("706e61781d692a042b35941f14bc41c5");
 
-                EclipseChillFeature.SetDescription("For a number of rounds equal to 3 + half his mythic rank, a Lich can imbue all spells he casts with the " +
+                EclipseChillFeature.SetDescription(TTTContext, "For a number of rounds equal to 3 + half his mythic rank, a Lich can imbue all spells he casts with the " +
                     "powers of the Eclipse chill. Creatures affected by such spells must pass a Fortitude saving throw " +
                     "(DC = 10 + 1/2 character level + twice your mythic rank) or become blinded and suffer (2d8 + mythic rank) " +
                     "cold damage, becoming vulnerable to cold and negative energy until the end of the combat.");
@@ -326,7 +327,7 @@ namespace TabletopTweaks.Core.Reworks {
                 var SneakAttack = Resources.GetBlueprintReference<BlueprintUnitFactReference>("9b9eac6709e1c084cb18c3a366e0ec87");
 
                 TaintedSneakAttackFeature.TemporaryContext(bp => {
-                    bp.SetDescription("Whenever Lich lands a successful sneak attack, the enemy must pass Fortitude saving throw " +
+                    bp.SetDescription(TTTContext, "Whenever Lich lands a successful sneak attack, the enemy must pass Fortitude saving throw " +
                         "(DC = 10 + 1/2 character level + twice your mythic rank) or become tainted. The tainted creature is vulnerable to " +
                         "all weapon and elemental damage, as well as suffers a –2 penalty on all attack rolls and weapon damage " +
                         "rolls, until the end of the combat.\n" +

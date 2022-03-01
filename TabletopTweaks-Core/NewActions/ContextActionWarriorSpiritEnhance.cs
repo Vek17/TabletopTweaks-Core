@@ -14,7 +14,7 @@ using TabletopTweaks.Core.NewUnitParts;
 
 namespace TabletopTweaks.Core.NewActions {
     [TypeId("229877cc362b41de85f45b30007aee19")]
-    class ContextActionWarriorSpiritEnhance : ContextAction {
+    public class ContextActionWarriorSpiritEnhance : ContextAction {
         private BlueprintItemEnchantmentReference[] m_DefaultEnchantments = new BlueprintItemEnchantmentReference[5];
 
         public override string GetCaption() {

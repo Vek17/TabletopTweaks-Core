@@ -24,11 +24,11 @@ namespace TabletopTweaks.Core.NewContent.Feats {
     static class PiercingSpell {
         public static void AddPiercingSpell() {
             var FavoriteMetamagicSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
-            var Icon_PiercingSpellFeat = AssetLoader.LoadInternal("Feats", "Icon_PiercingSpellFeat.png");
-            var Icon_PiercingSpellMetamagic = AssetLoader.LoadInternal("Metamagic", "Icon_PiercingSpellMetamagic.png", 128);
-            var Icon_MetamagicRodPiercingLesser = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodPiercingLesser.png", 64);
-            var Icon_MetamagicRodPiercingNormal = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodPiercingNormal.png", 64);
-            var Icon_MetamagicRodPiercingGreater = AssetLoader.LoadInternal("Equipment", "Icon_MetamagicRodPiercingGreater.png", 64);
+            var Icon_PiercingSpellFeat = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_PiercingSpellFeat.png");
+            var Icon_PiercingSpellMetamagic = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Metamagic", file: "Icon_PiercingSpellMetamagic.png", size: 128);
+            var Icon_MetamagicRodPiercingLesser = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodPiercingLesser.png", size: 64);
+            var Icon_MetamagicRodPiercingNormal = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodPiercingNormal.png", size: 64);
+            var Icon_MetamagicRodPiercingGreater = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodPiercingGreater.png", size: 64);
 
             var PiercingSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "PiercingSpellFeat", bp => {
                 bp.SetName("Metamagic (Piercing Spell)");

@@ -3,7 +3,7 @@ using Kingmaker.EntitySystem.Entities;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
-    static class SelectiveMetamagic {
+    internal static class SelectiveMetamagic {
         [HarmonyPatch(typeof(AreaEffectEntityData), "CheckSelective")]
         class UnitDescriptor_FixSizeModifiers_Patch {
             static void Postfix(AreaEffectEntityData __instance) {

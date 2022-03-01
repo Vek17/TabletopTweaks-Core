@@ -62,7 +62,6 @@ namespace TabletopTweaks.Core.NewContent {
                 WizardArcaneDiscoveries.OppositionResearch.AddOppositionResearch();
                 WizardArcaneDiscoveries.YuelralsBlessing.AddYuelralsBlessing();
 
-                Features.AeonBaneIncreaseResourceFeature.AddAeonBaneIncreaseResourceFeature();
                 Features.PrimalistRagePowerSelection.AddPrimalistRagePowerSelection();
                 Features.LongspearChargeBuff.AddLongspearChargeBuff();
                 Features.PerfectStrikeZenArcherBuff.AddPerfectStrikeZenArcherBuff();
@@ -96,7 +95,6 @@ namespace TabletopTweaks.Core.NewContent {
                 Classes.Cavalier.AddCavalierFeatures();
                 Classes.Oracle.AddOracleFeatures();
                 Classes.Magus.AddMagusFeatures();
-                Classes.Lich.AddLichFeatures();
                 //Features to support existing archetypes
                 Archetypes.MadDog.AddMadDogFeatures();
                 //New archetypes

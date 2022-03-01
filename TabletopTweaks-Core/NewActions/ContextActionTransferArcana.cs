@@ -8,7 +8,7 @@ using Kingmaker.UnitLogic.Mechanics.Actions;
 
 namespace TabletopTweaks.Core.NewActions {
     [TypeId("c932d7de9d3b4c558933292395aeda38")]
-    class ContextActionTransferArcana : ContextAction {
+    public class ContextActionTransferArcana : ContextAction {
 
         public override string GetCaption() {
             return string.Format("Transfers points between arcane pools");

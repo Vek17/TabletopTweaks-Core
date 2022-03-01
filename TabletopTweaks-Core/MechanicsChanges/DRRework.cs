@@ -45,7 +45,7 @@ using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.MechanicsChanges {
-    class DRRework {
+    internal class DRRework {
 
         [HarmonyPatch(typeof(AddDamageResistancePhysical), nameof(AddDamageResistancePhysical.IsStackable), MethodType.Getter)]
         static class AddDamageResistancePhysical_IsStackable_Patch {

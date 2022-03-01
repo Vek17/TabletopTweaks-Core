@@ -10,7 +10,7 @@ using System;
 
 namespace TabletopTweaks.Core.NewActions {
     [TypeId("891df14e8a9b4f72a28dd2b7a8c2de08")]
-    class ContextActionApplyWeaponEnchant : ContextAction {
+    public class ContextActionApplyWeaponEnchant : ContextAction {
         public override string GetCaption() {
             return string.Format("Add selected enchantments");
         }

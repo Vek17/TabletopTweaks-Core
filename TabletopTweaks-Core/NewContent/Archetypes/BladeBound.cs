@@ -71,20 +71,20 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             var ShortSwordPlus5 = Resources.GetBlueprint<BlueprintItemWeapon>("b5f6e218fb193a24cb00bdec435732ff");
             var SicklePlus5 = Resources.GetBlueprint<BlueprintItemWeapon>("5733378292a9fd547aeb7eccb7e79c60");
 
-            var Icon_BlackBlade = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade.png");
-            var Icon_BlackBlade_BlackBladeStrike = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade_BlackBladeStrike.png");
-            var Icon_BlackBlade_ElementalAttunment_Base = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade_ElementalAttunment_Base.png");
-            var Icon_BlackBlade_ElementalAttunment_Cold = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade_ElementalAttunment_Cold.png");
-            var Icon_BlackBlade_ElementalAttunment_Electricity = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade_ElementalAttunment_Electricity.png");
-            var Icon_BlackBlade_ElementalAttunment_Fire = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade_ElementalAttunment_Fire.png");
-            var Icon_BlackBlade_ElementalAttunment_Sonic = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade_ElementalAttunment_Sonic.png");
-            var Icon_BlackBlade_ElementalAttunment_Force = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade_ElementalAttunment_Force.png");
-            var Icon_BlackBlade_TransferArcana = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade_TransferArcana.png");
-            var Icon_BlackBlade_SpellDefense = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade_SpellDefense.png");
-            var Icon_BlackBlade_LifeDrinkerBase = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade_LifeDrinkerBase.png");
-            var Icon_BlackBlade_LifeDrinkerBlade = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade_LifeDrinkerBlade.png");
-            var Icon_BlackBlade_LifeDrinkerSelf = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade_LifeDrinkerSelf.png");
-            var Icon_BlackBlade_LifeDrinkerShared = AssetLoader.LoadInternal("Abilities", "Icon_BlackBlade_LifeDrinkerShared.png");
+            var Icon_BlackBlade = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade.png");
+            var Icon_BlackBlade_BlackBladeStrike = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade_BlackBladeStrike.png");
+            var Icon_BlackBlade_ElementalAttunment_Base = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade_ElementalAttunment_Base.png");
+            var Icon_BlackBlade_ElementalAttunment_Cold = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade_ElementalAttunment_Cold.png");
+            var Icon_BlackBlade_ElementalAttunment_Electricity = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade_ElementalAttunment_Electricity.png");
+            var Icon_BlackBlade_ElementalAttunment_Fire = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade_ElementalAttunment_Fire.png");
+            var Icon_BlackBlade_ElementalAttunment_Sonic = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade_ElementalAttunment_Sonic.png");
+            var Icon_BlackBlade_ElementalAttunment_Force = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade_ElementalAttunment_Force.png");
+            var Icon_BlackBlade_TransferArcana = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade_TransferArcana.png");
+            var Icon_BlackBlade_SpellDefense = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade_SpellDefense.png");
+            var Icon_BlackBlade_LifeDrinkerBase = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade_LifeDrinkerBase.png");
+            var Icon_BlackBlade_LifeDrinkerBlade = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade_LifeDrinkerBlade.png");
+            var Icon_BlackBlade_LifeDrinkerSelf = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade_LifeDrinkerSelf.png");
+            var Icon_BlackBlade_LifeDrinkerShared = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade_LifeDrinkerShared.png");
 
             var BlackBladeEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, $"BlackBladeEnchantment", bp => {
                 bp.SetName("");

@@ -17,7 +17,7 @@ namespace TabletopTweaks.Core.NewContent.MythicAbilities {
         public static void AddArmorMaster() {
             var MythicAbilitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("ba0e5a900b775be4a99702f1ed08914d");
             var ExtraMythicAbilityMythicFeat = Resources.GetBlueprint<BlueprintFeatureSelection>("8a6a511c55e67d04db328cc49aaad2b8");
-            var icon = AssetLoader.LoadInternal("Feats", "Icon_ArmorMaster.png");
+            var icon = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_ArmorMaster.png");
 
             var ArmorMasterLightFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmorMasterLightFeature", bp => {
                 bp.IsClassFeature = true;

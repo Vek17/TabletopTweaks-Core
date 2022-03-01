@@ -2,12 +2,13 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.FactLogic;
+using TabletopTweaks.Core;
 using TabletopTweaks.Core.NewComponents.AbilitySpecific;
 using TabletopTweaks.Core.Utilities;
 using TabletopTweaks.Core.Wrappers;
-using static TabletopTweaks.Core.Main;
+using static TabletopTweaks.MythicReworks.Main;
 
-namespace TabletopTweaks.Core.Reworks {
+namespace TabletopTweaks.MythicReworks.Reworks {
     class MythicFeats {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {
@@ -26,7 +27,7 @@ namespace TabletopTweaks.Core.Reworks {
 
                 SneakAttackerMythicFeat.RemoveComponents<AddStatBonus>();
                 SneakAttackerMythicFeat.AddComponent<MythicSneakAttack>();
-                SneakAttackerMythicFeat.SetDescription("Your sneak attacks are especially deadly.\n" +
+                SneakAttackerMythicFeat.SetDescription(TTTContext, "Your sneak attacks are especially deadly.\n" +
                     "Benifit: Your sneak attack dice are one size larger than normal. " +
                     "For example if you would normally roll d6s for sneak attacks you would roll d8s instead.");
                 TTTContext.Logger.LogPatch("Patched", SneakAttackerMythicFeat);

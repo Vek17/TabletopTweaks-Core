@@ -22,8 +22,8 @@ namespace TabletopTweaks.Core.NewContent.Feats {
         public static void AddSolidShadows() {
             var FavoriteMetamagicSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
             var SpellFocus = Resources.GetBlueprintReference<BlueprintFeatureReference>("16fa59cc9a72a6043b566b49184f53fe");
-            var Icon_SolidShadowsFeat = AssetLoader.LoadInternal("Feats", "Icon_SolidShadowsFeat.png");
-            var Icon_SolidShadowsMetamagic = AssetLoader.LoadInternal("Metamagic", "Icon_SolidShadowsMetamagic.png", 128);
+            var Icon_SolidShadowsFeat = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_SolidShadowsFeat.png");
+            var Icon_SolidShadowsMetamagic = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Metamagic", file: "Icon_SolidShadowsMetamagic.png", size: 128);
 
             var SolidShadowsSpellFeat = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "SolidShadowsSpellFeat", bp => {
                 bp.SetName("Metamagic (Solid Shadows)");
