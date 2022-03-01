@@ -17,6 +17,7 @@ namespace TabletopTweaks.MythicReworks.NewContent {
                 MythicAbilities.DimensionalRetribution.AddDimensionalRetribution();
                 Classes.Lich.AddLichFeatures();
                 Classes.Aeon.AddAeonFeatures();
+                Classes.Trickster.AddTricksterDomains();
             }
         }
     }

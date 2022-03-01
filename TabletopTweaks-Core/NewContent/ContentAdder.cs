@@ -90,7 +90,6 @@ namespace TabletopTweaks.Core.NewContent {
                 Bloodlines.AbyssalBloodline.AddBloodragerAbyssalDemonicBulkEnlargeBuff();
                 Bloodlines.BloodragerArcaneBloodline.AddArcaneBloodrageReworkToggles();
 
-                Domains.TricksterDomains.AddTricksterDomains();
                 //Features to support existing clases
                 Classes.Cavalier.AddCavalierFeatures();
                 Classes.Oracle.AddOracleFeatures();

@@ -160,6 +160,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="ModLogic\ModContextTTTMythicReworks.cs" />
     <Compile Include="NewContent\Classes\Aeon.cs" />
+    <Compile Include="NewContent\Classes\TricksterDomains.cs" />
     <Compile Include="NewContent\ContentAdder.cs" />
     <Compile Include="NewContent\MythicAbilities\DimensionalRetribution.cs" />
     <Compile Include="NewContent\Classes\Lich.cs" />

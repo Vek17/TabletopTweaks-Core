@@ -7,24 +7,25 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
+using TabletopTweaks.Core;
 using TabletopTweaks.Core.NewComponents;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using TabletopTweaks.Core.Utilities;
-using static TabletopTweaks.Core.Main;
+using static TabletopTweaks.MythicReworks.Main;
 
-namespace TabletopTweaks.Core.NewContent.Domains {
-    static class TricksterDomains {
-        private static BlueprintGuid TricksterDomainMasterID = Main.TTTContext.Blueprints.GetDerivedMaster("TricksterDomainMasterID");
+namespace TabletopTweaks.MythicReworks.NewContent.Classes {
+    static class Trickster {
+        private static BlueprintGuid TricksterDomainMasterID = TTTContext.Blueprints.GetDerivedMaster("TricksterDomainMasterID");
         private static BlueprintGuid[] TricksterSpellResource = new BlueprintGuid[9] {
-            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource1"),
-            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource2"),
-            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource3"),
-            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource4"),
-            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource5"),
-            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource6"),
-            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource7"),
-            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource8"),
-            Main.TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource9")
+            TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource1"),
+            TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource2"),
+            TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource3"),
+            TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource4"),
+            TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource5"),
+            TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource6"),
+            TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource7"),
+            TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource8"),
+            TTTContext.Blueprints.GetDerivedMaster("TricksterSpellResource9")
         };
         public static void AddTricksterDomains() {
             var DomainsSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("48525e5da45c9c243a343fc6545dbdb9");
@@ -68,7 +69,8 @@ namespace TabletopTweaks.Core.NewContent.Domains {
         }
         private static BlueprintAbilityResourceReference CreateTricksterSpellResource(int spellLevel, BlueprintSpellList spellList) {
             return Helpers.CreateDerivedBlueprint<BlueprintAbilityResource>(
-                modContext: TTTContext, $"TricksterTTT{spellList.name}Resource{spellLevel}",
+                modContext: TTTContext, 
+                $"TricksterTTT{spellList.name}Resource{spellLevel}",
                 TricksterSpellResource[spellLevel - 1],
                 new SimpleBlueprint[] { spellList },
                 bp => {
