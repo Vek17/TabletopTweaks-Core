@@ -169,14 +169,13 @@
     <Compile Include="Patches\Lich.cs" />
     <Compile Include="Patches\MythicAbilities.cs" />
     <Compile Include="Patches\MythicFeats.cs" />
+    <Compile Include="UMMSettingsUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
-    <EmbeddedResource Include="Config\AddedContent.json" />
     <EmbeddedResource Include="Config\Blueprints.json" />
-    <EmbeddedResource Include="Config\Fixes.json" />
     <EmbeddedResource Include="Config\Homebrew.json" />
     <None Include="Info.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

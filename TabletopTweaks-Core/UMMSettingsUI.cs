@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityModManagerNet;
 
 namespace TabletopTweaks.Core {
-    public static class UMMSettingsUI {
+    internal static class UMMSettingsUI {
         private static int selectedTab;
         public static void OnGUI(UnityModManager.ModEntry modEntry) {
             UI.AutoWidth();
@@ -22,7 +22,7 @@ namespace TabletopTweaks.Core {
         }
     }
 
-    static class SettingsTabs {
+    internal static class SettingsTabs {
         public static void Fixes() {
             var TabLevel = SetttingUI.TabLevel.Zero;
             var Fixes = Main.TTTContext.Fixes;
@@ -178,7 +178,7 @@ namespace TabletopTweaks.Core {
         }
     }
 
-    static class SetttingUI {
+    public static class SetttingUI {
         public enum TabLevel : int {
             Zero,
             One,
