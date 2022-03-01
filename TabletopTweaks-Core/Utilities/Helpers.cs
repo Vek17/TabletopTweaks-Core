@@ -417,16 +417,16 @@ namespace TabletopTweaks.Core.Utilities {
                     return obj.GetHashCode();
                 }
             }
-            private static readonly MethodInfo CloneMethod = typeof(Object).GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance);
+            private static readonly MethodInfo CloneMethod = typeof(object).GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance);
 
             internal static bool IsPrimitive(Type type) {
-                if (type == typeof(String)) return true;
+                if (type == typeof(string)) return true;
                 return (type.IsValueType & type.IsPrimitive);
             }
-            internal static Object Clone(Object originalObject) {
-                return InternalCopy(originalObject, new Dictionary<Object, Object>(new ReferenceEqualityComparer()));
+            internal static object Clone(object originalObject) {
+                return InternalCopy(originalObject, new Dictionary<object, object>(new ReferenceEqualityComparer()));
             }
-            private static Object InternalCopy(Object originalObject, IDictionary<Object, Object> visited) {
+            private static object InternalCopy(object originalObject, IDictionary<object, object> visited) {
                 if (originalObject == null) return null;
                 var typeToReflect = originalObject.GetType();
                 if (IsPrimitive(typeToReflect)) return originalObject;

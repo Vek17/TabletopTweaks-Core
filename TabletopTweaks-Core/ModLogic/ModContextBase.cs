@@ -11,7 +11,7 @@ namespace TabletopTweaks.Core.Modlogic {
     public abstract class ModContextBase {
         public readonly ModEntry ModEntry;
         public readonly ModLogger Logger;
-        public Blueprints Blueprints;
+        public Blueprints Blueprints = new Blueprints();
         public MultiLocalizationPack ModLocalizationPack = new MultiLocalizationPack();
         public virtual string userConfigFolder => ModEntry.Path + "UserSettings";
         public virtual string localizationFolder => ModEntry.Path + "Localization";

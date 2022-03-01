@@ -21,7 +21,7 @@ namespace TabletopTweaks.Core {
             return true;
         }
         private static void RegisterUpgrades() {
-            JsonUpgradeSystem.Register(-117, "Migrate TabletopTweaks to TabletopTweaks-Core", new TabletopTweaksMigration());
+            JsonUpgradeSystem.Register(-117, "Migrate TabletopTweaks to TabletopTweaks-Core", new TabletopTweaksMigration(TTTContext));
         }
         private static void OnSaveGUI(UnityModManager.ModEntry modEntry) {
             TTTContext.SaveSettings("Fixes.json", TTTContext.Fixes);
