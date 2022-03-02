@@ -187,6 +187,7 @@ namespace TabletopTweaks.Core {
             Four,
             Five
         }
+
         public static void Increase(ref this TabLevel level) {
             level += 1;
         }
