@@ -564,10 +564,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Config\AddedContent.json" />
     <EmbeddedResource Include="Config\Blueprints.json" />
-    <None Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
-    </None>
     <EmbeddedResource Include="Config\Homebrew.json" />
+    <None Include=".editorconfig" />
     <None Include="Info.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
