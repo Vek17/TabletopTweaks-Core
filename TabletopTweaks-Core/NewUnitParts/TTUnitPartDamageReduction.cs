@@ -210,7 +210,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             int reductionNormal = ApplyReductionToRemainingDamage(damage, damageEventWeapon, clusteredAttack, bestDRNormal, ref remainingDamage);
             int reductionLow = ApplyReductionToRemainingDamage(damage, damageEventWeapon, clusteredAttack, bestDRLow, ref remainingDamage);
 
-            damage.Source.SetReduction(reductionHigh + reductionNormal + reductionLow);
+            damage.Source.SetReductionBecauseResistance(reductionHigh + reductionNormal + reductionLow);
         }
 
         private int ApplyReductionToRemainingDamage(

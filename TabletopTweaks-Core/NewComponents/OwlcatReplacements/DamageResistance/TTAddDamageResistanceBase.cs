@@ -67,6 +67,9 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance 
         // the character info screens that still make use of this
         public virtual bool IsStackable => IsStacksWithArmor || IsStacksWithClassFeatures || StacksWithFacts != null && StacksWithFacts.Length > 0;
 
+        // Support for Hardness
+        public virtual bool IsHardness => false;
+
         // The priority of this resistance. This is used for cases where damage might "spill over" from one (usually pool-based) resistance to another resistance
         // The *vast* majority of resistances should have a priority of Normal. Currently, only Protection From Energy has a High priority, and only the Abjuration
         // school's Energy Absorption feature has a Low priority.

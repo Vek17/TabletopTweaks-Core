@@ -113,6 +113,9 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                     case AddDamageResistanceForce:
                         result = Helpers.Create<TTAddDamageResistanceForce>();
                         break;
+                    case AddDamageResistanceHardness:
+                        result = Helpers.Create<TTAddDamageResistanceHardness>();
+                        break;
                     default:
                         TTTContext.Logger.Log("ERROR: Called CreateFromVanillaDamageResistance for unsupported type: " + vanillaResistance.GetType().ToString());
                         return null;
