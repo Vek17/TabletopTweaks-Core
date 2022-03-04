@@ -9,6 +9,9 @@ using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents.Prerequisites {
+    /// <summary>
+    /// Requires the unit have the specified base size.
+    /// </summary>
     [TypeId("e5db1c3ea30a44559f1f7542ed3b9d0d")]
     public class PrerequisiteSize : Prerequisite {
         [InitializeStaticString]
@@ -26,7 +29,9 @@ namespace TabletopTweaks.Core.NewComponents.Prerequisites {
 
             return stringBuilder.ToString();
         }
-
+        /// <summary>
+        /// Base size to require.
+        /// </summary>
         public Kingmaker.Enums.Size Size = Kingmaker.Enums.Size.Medium;
     }
 }

@@ -8,11 +8,12 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Class.LevelUp;
 using System.Text;
 using TabletopTweaks.Core.Utilities;
-using UnityEngine;
-using UnityEngine.Serialization;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents.Prerequisites {
+    /// <summary>
+    /// Alternate version of PrerequisiteNoClassLevel with a visable UI string.
+    /// </summary>
     [TypeId("cb76145587814eabbbbaed3d2a9b5d99")]
     public class PrerequisiteNoClassLevelVisible : Prerequisite {
         [InitializeStaticString]
@@ -39,10 +40,10 @@ namespace TabletopTweaks.Core.NewComponents.Prerequisites {
         public override bool CheckInternal([CanBeNull] FeatureSelectionState selectionState, [NotNull] UnitDescriptor unit, [CanBeNull] LevelUpState state) {
             return unit.Progression.GetClassLevel(CharacterClass) < 1;
         }
-
+        /// <summary>
+        /// Class that is not allowed.
+        /// </summary>
         [NotNull]
-        [SerializeField]
-        [FormerlySerializedAs("CharacterClass")]
         public BlueprintCharacterClassReference m_CharacterClass;
     }
 }

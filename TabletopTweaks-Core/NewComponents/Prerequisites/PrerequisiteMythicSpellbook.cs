@@ -10,6 +10,9 @@ using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents.Prerequisites {
+    /// <summary>
+    /// Requires that the unit have a Mythic spellbook.
+    /// </summary>
     [TypeId("08d2e61c79c64ee1afdca9fc834ffc32")]
     public class PrerequisiteMythicSpellbook : Prerequisite {
 
@@ -38,7 +41,9 @@ namespace TabletopTweaks.Core.NewComponents.Prerequisites {
             }
             return stringBuilder.ToString();
         }
-
+        /// <summary>
+        /// Minimum spell level that the mythic spell book must be able to cast.
+        /// </summary>
         public int RequiredSpellLevel;
     }
 }

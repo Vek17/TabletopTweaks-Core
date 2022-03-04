@@ -6,6 +6,9 @@ using Kingmaker.UnitLogic;
 using System.Text;
 
 namespace TabletopTweaks.Core.NewComponents.Prerequisites {
+    /// <summary>
+    /// This is an alternate PrerequisiteFeaturesFromList with enhanced formatting.
+    /// </summary>
     [TypeId("41005dacdb6742e09ae8176f55ac2f3d")]
     public class PrerequisiteFeaturesFromListFormatted : PrerequisiteFeaturesFromList {
         public override string GetUITextInternal(UnitDescriptor unit) {

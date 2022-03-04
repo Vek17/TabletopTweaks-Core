@@ -10,6 +10,9 @@ using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents.Prerequisites {
+    /// <summary>
+    /// Requires that the unit have a non mythic, non alchemist spellbook at the stated caster level or higher.
+    /// </summary>
     [TypeId("59c3025feecf4113bef90196f2ce4ef9")]
     public class PrerequisiteCasterLevel : Prerequisite {
         [InitializeStaticString]
@@ -43,7 +46,9 @@ namespace TabletopTweaks.Core.NewComponents.Prerequisites {
             }
             return result;
         }
-
+        /// <summary>
+        /// Must have caster level of this or higher to qualify.
+        /// </summary>
         public int RequiredCasterLevel;
     }
 }

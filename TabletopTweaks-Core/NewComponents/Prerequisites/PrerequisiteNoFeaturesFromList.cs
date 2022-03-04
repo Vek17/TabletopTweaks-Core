@@ -13,6 +13,9 @@ using UnityEngine.Serialization;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents.Prerequisites {
+    /// <summary>
+    /// Requires that the unit have no more than the specified amount of features in the supplied list.
+    /// </summary>
     [TypeId("33c66b9aaaa348cfa8efd39841cf255b")]
     public class PrerequisiteNoFeaturesFromList : Prerequisite {
         [InitializeStaticString]
@@ -62,10 +65,14 @@ namespace TabletopTweaks.Core.NewComponents.Prerequisites {
             }
             return true;
         }
-
+        /// <summary>
+        /// List of features to not allow.
+        /// </summary>
         [SerializeField]
-        [FormerlySerializedAs("Features")]
         public BlueprintFeatureReference[] m_Features;
+        /// <summary>
+        /// Maximum allowed amount of features from the list.
+        /// </summary>
         public int Amount = 0;
     }
 }

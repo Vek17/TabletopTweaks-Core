@@ -1,6 +1,7 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.Enums.Damage;
 using Kingmaker.Items;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic.FactLogic;
@@ -22,7 +23,8 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance 
         }
 
         protected override bool Bypassed(ComponentRuntime runtime, BaseDamage damage, ItemEntityWeapon weapon) {
-            return damage.Type > DamageType.Physical;
+            return (damage.Type > DamageType.Physical) 
+                || (damage is PhysicalDamage physicalDamage && physicalDamage.MaterialsMask.HasFlag(PhysicalDamageMaterial.Adamantite) && this.CalculateValue(runtime) <= 20);
         }
     }
 }
