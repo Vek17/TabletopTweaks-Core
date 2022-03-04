@@ -19,33 +19,33 @@ namespace TabletopTweaks.Core.NewComponents.Prerequisites {
     [TypeId("8dccf39766ed482eb9b7f2ae31e50428")]
     public class PrerequisiteStatValues : Prerequisite {
         [InitializeStaticString]
-        private static readonly LocalizedString Has = Helpers.CreateString(TTTContext, "PrerequisiteSpellKnown.UI", "Has");
+        private static readonly LocalizedString Has = Helpers.CreateString(TTTContext, "PrerequisiteStatValues.UI", "Has");
         [InitializeStaticString]
-        private static readonly LocalizedString Rank = Helpers.CreateString(TTTContext, "PrerequisiteSpellKnown.UI", "rank");
+        private static readonly LocalizedString Rank = Helpers.CreateString(TTTContext, "PrerequisiteStatValues.UI", "rank");
         [InitializeStaticString]
-        private static readonly LocalizedString Ranks = Helpers.CreateString(TTTContext, "PrerequisiteSpellKnown.UI", "ranks");
+        private static readonly LocalizedString Ranks = Helpers.CreateString(TTTContext, "PrerequisiteStatValues.UI", "ranks");
         [InitializeStaticString]
-        private static readonly LocalizedString In = Helpers.CreateString(TTTContext, "PrerequisiteSpellKnown.UI", "in");
+        private static readonly LocalizedString In = Helpers.CreateString(TTTContext, "PrerequisiteStatValues.UI", "in");
         [InitializeStaticString]
-        private static readonly LocalizedString OfTheFollowingSkills = Helpers.CreateString(TTTContext, "PrerequisiteSpellKnown.UI", "of the following skills:");
+        private static readonly LocalizedString OfTheFollowingSkills = Helpers.CreateString(TTTContext, "PrerequisiteStatValues.UI", "of the following skills:");
         [InitializeStaticString]
-        private static readonly LocalizedString One = Helpers.CreateString(TTTContext, "PrerequisiteSpellKnown.UI", "one");
+        private static readonly LocalizedString One = Helpers.CreateString(TTTContext, "PrerequisiteStatValues.UI", "one");
         [InitializeStaticString]
-        private static readonly LocalizedString Two = Helpers.CreateString(TTTContext, "PrerequisiteSpellKnown.UI", "two");
+        private static readonly LocalizedString Two = Helpers.CreateString(TTTContext, "PrerequisiteStatValues.UI", "two");
         [InitializeStaticString]
-        private static readonly LocalizedString Three = Helpers.CreateString(TTTContext, "PrerequisiteSpellKnown.UI", "three");
+        private static readonly LocalizedString Three = Helpers.CreateString(TTTContext, "PrerequisiteStatValues.UI", "three");
         [InitializeStaticString]
-        private static readonly LocalizedString Four = Helpers.CreateString(TTTContext, "PrerequisiteSpellKnown.UI", "four");
+        private static readonly LocalizedString Four = Helpers.CreateString(TTTContext, "PrerequisiteStatValues.UI", "four");
         [InitializeStaticString]
-        private static readonly LocalizedString Five = Helpers.CreateString(TTTContext, "PrerequisiteSpellKnown.UI", "five");
+        private static readonly LocalizedString Five = Helpers.CreateString(TTTContext, "PrerequisiteStatValues.UI", "five");
         [InitializeStaticString]
-        private static readonly LocalizedString Six = Helpers.CreateString(TTTContext, "PrerequisiteSpellKnown.UI", "six");
+        private static readonly LocalizedString Six = Helpers.CreateString(TTTContext, "PrerequisiteStatValues.UI", "six");
         [InitializeStaticString]
-        private static readonly LocalizedString Seven = Helpers.CreateString(TTTContext, "PrerequisiteSpellKnown.UI", "seven");
+        private static readonly LocalizedString Seven = Helpers.CreateString(TTTContext, "PrerequisiteStatValues.UI", "seven");
         [InitializeStaticString]
-        private static readonly LocalizedString Eight = Helpers.CreateString(TTTContext, "PrerequisiteSpellKnown.UI", "eight");
+        private static readonly LocalizedString Eight = Helpers.CreateString(TTTContext, "PrerequisiteStatValues.UI", "eight");
         [InitializeStaticString]
-        private static readonly LocalizedString Nine = Helpers.CreateString(TTTContext, "PrerequisiteSpellKnown.UI", "nine");
+        private static readonly LocalizedString Nine = Helpers.CreateString(TTTContext, "PrerequisiteStatValues.UI", "nine");
 
         public override bool CheckInternal(FeatureSelectionState selectionState, UnitDescriptor unit, LevelUpState state) {
             return CheckUnit(unit);
