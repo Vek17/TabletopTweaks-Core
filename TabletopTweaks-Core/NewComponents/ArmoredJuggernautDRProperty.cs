@@ -4,13 +4,14 @@ using Kingmaker.Blueprints.Items.Armors;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic.Mechanics.Properties;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewComponents {
 
     [TypeId("83b5b02d9c3f4190be0eadbd2b14b23a")]
     public class ArmoredJuggernautDRProperty : PropertyValueGetter {
 
-        private static BlueprintCharacterClass FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+        private static BlueprintCharacterClass FighterClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
 
         public override int GetBaseValue(UnitEntityData unit) {
             if (!unit.Body.Armor.HasArmor)

@@ -45,7 +45,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
 
         [HarmonyPatch(typeof(ActivatableAbilityResourceLogic),
             "Kingmaker.UnitLogic.ActivatableAbilities.IActivatableAbilitySpendResourceLogic.OnCrit")]
-        class ActivatableAbilityResourceLogic_OnCrit_PerfectCritical_Patch {
+        internal class ActivatableAbilityResourceLogic_OnCrit_PerfectCritical_Patch {
             static void Postfix(ActivatableAbilityResourceLogic __instance) {
                 if (__instance.SpendType.IsType(ValueSpendType.Crit)) {
                     __instance.SpendResource(true);
@@ -54,7 +54,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         }
 
         [HarmonyPatch(typeof(ActivatableAbilityResourceLogic), "IsAvailable")]
-        class ActivatableAbilityResourceLogic_IsAvailable_PerfectCritical_Patch {
+        internal class ActivatableAbilityResourceLogic_IsAvailable_PerfectCritical_Patch {
             static void Postfix(ActivatableAbilityResourceLogic __instance, ref bool __result, EntityFactComponent runtime) {
                 using (runtime.RequestEventContext()) {
                     if (__instance.SpendType.IsCustomSpendType()) {
@@ -65,7 +65,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         }
 
         [HarmonyPatch(typeof(ActivatableAbilityResourceLogic), "SpendResource", new Type[] { typeof(bool) })]
-        class ActivatableAbilityResourceLogic_SpendResource_PerfectCritical_Patch {
+        internal class ActivatableAbilityResourceLogic_SpendResource_PerfectCritical_Patch {
             static bool Prefix(ActivatableAbilityResourceLogic __instance) {
                 if (!__instance.SpendType.IsCustomSpendType()) { return true; }
                 if (__instance.Owner.HasFact(__instance.FreeBlueprint)) {
@@ -99,7 +99,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         }
 
         [HarmonyPatch(typeof(ActivatableAbility), "ResourceCount", MethodType.Getter)]
-        class ActivatableAbility_ResourceCount_PerfectCritical_Patch {
+        internal class ActivatableAbility_ResourceCount_PerfectCritical_Patch {
             static void Postfix(ActivatableAbility __instance, ref int? __result) {
                 __instance.m_CachedResourceLogic = __instance.m_CachedResourceLogic ??
                     __instance.SelectComponentsWithRuntime<ActivatableAbilityResourceLogic>()

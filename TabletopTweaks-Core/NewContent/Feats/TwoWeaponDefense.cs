@@ -12,9 +12,9 @@ namespace TabletopTweaks.Core.NewContent.Feats {
     static class TwoWeaponDefense {
         public static void AddTwoWeaponDefense() {
             var Icon_TwoWeaponDefense = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_TwoWeaponDefense.png");
-            var TwoWeaponFighting = Resources.GetBlueprint<BlueprintFeature>("ac8aaf29054f5b74eb18f2af950e752d");
-            var TwoWeaponDefenseMythicFeature = Resources.GetModBlueprintReference<BlueprintFeatureReference>(modContext: TTTContext, "TwoWeaponDefenseMythicFeature");
-            var FightDefensivelyBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("6ffd93355fb3bcf4592a5d976b1d32a9");
+            var TwoWeaponFighting = BlueprintTools.GetBlueprint<BlueprintFeature>("ac8aaf29054f5b74eb18f2af950e752d");
+            var TwoWeaponDefenseMythicFeature = BlueprintTools.GetModBlueprintReference<BlueprintFeatureReference>(modContext: TTTContext, "TwoWeaponDefenseMythicFeature");
+            var FightDefensivelyBuff = BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("6ffd93355fb3bcf4592a5d976b1d32a9");
 
             var TwoWeaponDefenseFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "TwoWeaponDefenseFeature", bp => {
                 bp.SetName("Two-Weapon Defense");

@@ -16,9 +16,9 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class DimensionalRetribution {
         public static void AddDimensionalRetribution() {
-            var DimensionalRetribution = Resources.GetBlueprint<BlueprintFeature>("939f49ad995ee8d4fad03ad0c7f655d1");
-            var DweomercatDweomerleap = Resources.GetBlueprint<BlueprintAbility>("cde8c0c172c9fa34cba7703ba4824d32");
-            var MidnightFane_DimensionLock_Buff = Resources.GetBlueprint<BlueprintBuff>("4b0cd08a3cea2844dba9889c1d34d667");
+            var DimensionalRetribution = BlueprintTools.GetBlueprint<BlueprintFeature>("939f49ad995ee8d4fad03ad0c7f655d1");
+            var DweomercatDweomerleap = BlueprintTools.GetBlueprint<BlueprintAbility>("cde8c0c172c9fa34cba7703ba4824d32");
+            var MidnightFane_DimensionLock_Buff = BlueprintTools.GetBlueprint<BlueprintBuff>("4b0cd08a3cea2844dba9889c1d34d667");
 
             var DimensionalRetributionTTTAbility = Helpers.CreateBlueprint<BlueprintAbility>(TTTContext, "DimensionalRetributionTTTAbility", bp => {
                 bp.SetName("Dimensional Retribution");

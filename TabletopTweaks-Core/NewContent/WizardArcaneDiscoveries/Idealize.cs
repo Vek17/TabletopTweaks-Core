@@ -25,9 +25,9 @@ using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
     static class Idealize {
         public static void AddIdealize() {
-            var WizardClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("ba34257984f4c41408ce1dc2004e342e");
-            var ThassilonianEnchantmentFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("e1ebc61a71c55054991863a5f6f6d2c2");
-            var ThassilonianIllusionFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("aa271e69902044b47a8e62c4e58a9dcb");
+            var WizardClass = BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("ba34257984f4c41408ce1dc2004e342e");
+            var ThassilonianEnchantmentFeature = BlueprintTools.GetBlueprintReference<BlueprintFeatureReference>("e1ebc61a71c55054991863a5f6f6d2c2");
+            var ThassilonianIllusionFeature = BlueprintTools.GetBlueprintReference<BlueprintFeatureReference>("aa271e69902044b47a8e62c4e58a9dcb");
 
             var IdealizeUpgrade = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, $"IdealizeUpgrade", bp => {
                 bp.SetName($"Idealize Upgrade");

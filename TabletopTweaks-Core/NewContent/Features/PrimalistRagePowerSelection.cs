@@ -6,7 +6,7 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Features {
     class PrimalistRagePowerSelection {
         public static void AddPrimalistRagePowerSelection() {
-            var RagePowerSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("28710502f46848d48b3f0d6132817c4e");
+            var RagePowerSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("28710502f46848d48b3f0d6132817c4e");
 
             var PrimalistRagePowerSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "PrimalistRagePowerSelection", bp => {
                 bp.SetName("Primalist Rage Power");

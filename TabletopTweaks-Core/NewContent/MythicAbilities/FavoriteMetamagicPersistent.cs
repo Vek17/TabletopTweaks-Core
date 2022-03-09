@@ -11,8 +11,8 @@ using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class FavoriteMetamagicPersistent {
         public static void AddFavoriteMetamagicPersistent() {
-            var PersistentSpellFeat = Resources.GetBlueprint<BlueprintFeature>("cd26b9fa3f734461a0fcedc81cafaaac");
-            var FavoriteMetamagicSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
+            var PersistentSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("cd26b9fa3f734461a0fcedc81cafaaac");
+            var FavoriteMetamagicSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
 
             var FavoriteMetamagicPersistent = Helpers.CreateBlueprint<BlueprintFeature>(TTTContext, "FavoriteMetamagicPersistent", bp => {
                 bp.SetName("Favorite Metamagic — Persistent");

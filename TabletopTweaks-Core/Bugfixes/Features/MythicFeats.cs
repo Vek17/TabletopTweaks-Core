@@ -26,10 +26,10 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             }
             static void PatchExpandedArsenal() {
                 if (TTTContext.Fixes.MythicFeats.IsDisabled("ExpandedArsenal")) { return; }
-                var ExpandedArsenalSchool = Resources.GetBlueprint<BlueprintParametrizedFeature>("f137089c48364014aa3ec3b92ccaf2e2");
-                var SpellFocus = Resources.GetBlueprint<BlueprintParametrizedFeature>("16fa59cc9a72a6043b566b49184f53fe");
-                var SpellFocusGreater = Resources.GetBlueprint<BlueprintParametrizedFeature>("5b04b45b228461c43bad768eb0f7c7bf");
-                var SchoolMasteryMythicFeat = Resources.GetBlueprint<BlueprintParametrizedFeature>("ac830015569352b458efcdfae00a948c");
+                var ExpandedArsenalSchool = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("f137089c48364014aa3ec3b92ccaf2e2");
+                var SpellFocus = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("16fa59cc9a72a6043b566b49184f53fe");
+                var SpellFocusGreater = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("5b04b45b228461c43bad768eb0f7c7bf");
+                var SchoolMasteryMythicFeat = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("ac830015569352b458efcdfae00a948c");
 
                 SpellFocus.GetComponent<SpellFocusParametrized>().Descriptor = (ModifierDescriptor)Untyped.SpellFocus;
                 SpellFocusGreater.GetComponent<SpellFocusParametrized>().Descriptor = (ModifierDescriptor)Untyped.SpellFocusGreater;

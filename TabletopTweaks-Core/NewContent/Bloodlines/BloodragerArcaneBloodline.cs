@@ -21,17 +21,17 @@ namespace TabletopTweaks.Core.NewContent.Bloodlines {
 
         public static void AddArcaneBloodrageReworkToggles() {
             // Arcane Bloodrage
-            var BloodragerClass = Resources.GetBlueprint<BlueprintCharacterClass>("d77e67a814d686842802c9cfd8ef8499");
-            var BloodragerArcaneBloodline = Resources.GetBlueprint<BlueprintProgression>("aeff0a749e20ffe4b9e2846eae29c386");
-            var BloodragerStandartRageBuff = Resources.GetBlueprint<BlueprintBuff>("5eac31e457999334b98f98b60fc73b2f");
-            var BloodragerArcaneSpellFeature = Resources.GetBlueprint<BlueprintFeature>("3584b932341ecf14fbaaa87bf337c2cf");
-            var BloodragerArcaneSpellAbility = Resources.GetBlueprint<BlueprintAbility>("3151dfeeb202e38448d1fea1e8bc237e");
+            var BloodragerClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("d77e67a814d686842802c9cfd8ef8499");
+            var BloodragerArcaneBloodline = BlueprintTools.GetBlueprint<BlueprintProgression>("aeff0a749e20ffe4b9e2846eae29c386");
+            var BloodragerStandartRageBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("5eac31e457999334b98f98b60fc73b2f");
+            var BloodragerArcaneSpellFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("3584b932341ecf14fbaaa87bf337c2cf");
+            var BloodragerArcaneSpellAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("3151dfeeb202e38448d1fea1e8bc237e");
 
-            var Blur = Resources.GetBlueprint<BlueprintAbility>("14ec7a4e52e90fa47a4c8d63c69fd5c1");
-            var BlurBuff = Resources.GetBlueprint<BlueprintBuff>("dd3ad347240624d46a11a092b4dd4674");
+            var Blur = BlueprintTools.GetBlueprint<BlueprintAbility>("14ec7a4e52e90fa47a4c8d63c69fd5c1");
+            var BlurBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("dd3ad347240624d46a11a092b4dd4674");
 
-            var ProtectionFromArrows = Resources.GetBlueprint<BlueprintAbility>("c28de1f98a3f432448e52e5d47c73208");
-            var ProtectionFromArrowsBuff = Resources.GetBlueprint<BlueprintBuff>("241ee6bd8c8767343994bce5dc1a95e0");
+            var ProtectionFromArrows = BlueprintTools.GetBlueprint<BlueprintAbility>("c28de1f98a3f432448e52e5d47c73208");
+            var ProtectionFromArrowsBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("241ee6bd8c8767343994bce5dc1a95e0");
 
             var BloodragerArcaneProgressionProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "BloodragerArcaneProgressionProperty", bp => {
                 bp.AddComponent<CompositeCustomPropertyGetter>(c => {
@@ -88,20 +88,20 @@ namespace TabletopTweaks.Core.NewContent.Bloodlines {
                 bp.AddComponent(crc);
             });
 
-            var ResistFire = Resources.GetBlueprint<BlueprintAbility>("ddfb4ac970225f34dbff98a10a4a8844");
-            var ResistFireBuff = Resources.GetBlueprint<BlueprintBuff>("468877871a8e3ba41813a9697ec4eb4e");
+            var ResistFire = BlueprintTools.GetBlueprint<BlueprintAbility>("ddfb4ac970225f34dbff98a10a4a8844");
+            var ResistFireBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("468877871a8e3ba41813a9697ec4eb4e");
 
-            var ResistCold = Resources.GetBlueprint<BlueprintAbility>("5368cecec375e1845ae07f48cdc09dd1");
-            var ResistColdBuff = Resources.GetBlueprint<BlueprintBuff>("dfedc0bf1d93f024d85546314c42b56a");
+            var ResistCold = BlueprintTools.GetBlueprint<BlueprintAbility>("5368cecec375e1845ae07f48cdc09dd1");
+            var ResistColdBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("dfedc0bf1d93f024d85546314c42b56a");
 
-            var ResistElectricity = Resources.GetBlueprint<BlueprintAbility>("90987584f54ab7a459c56c2d2f22cee2");
-            var ResistElectricityBuff = Resources.GetBlueprint<BlueprintBuff>("17aee23103aee674082ff9891c82ae2f");
+            var ResistElectricity = BlueprintTools.GetBlueprint<BlueprintAbility>("90987584f54ab7a459c56c2d2f22cee2");
+            var ResistElectricityBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("17aee23103aee674082ff9891c82ae2f");
 
-            var ResistAcid = Resources.GetBlueprint<BlueprintAbility>("fedc77de9b7aad54ebcc43b4daf8decd");
-            var ResistAcidBuff = Resources.GetBlueprint<BlueprintBuff>("8d8f20391422c0e41a1650e7a9b7a21f");
+            var ResistAcid = BlueprintTools.GetBlueprint<BlueprintAbility>("fedc77de9b7aad54ebcc43b4daf8decd");
+            var ResistAcidBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("8d8f20391422c0e41a1650e7a9b7a21f");
 
-            var ResistSonic = Resources.GetBlueprint<BlueprintAbility>("8d3b10f92387c84429ced317b06ad001");
-            var ResistSonicBuff = Resources.GetBlueprint<BlueprintBuff>("c0f3b16ff3f79b749b121905d659a2d4");
+            var ResistSonic = BlueprintTools.GetBlueprint<BlueprintAbility>("8d3b10f92387c84429ced317b06ad001");
+            var ResistSonicBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("c0f3b16ff3f79b749b121905d659a2d4");
 
             BlueprintBuff BloodragerArcaneSpellBlurSwitchBuff = BloodlineTools.CreateArcaneBloodrageSwitchBuff(
                 TTTContext, "BloodragerArcaneSpellBlurSwitchBuff",
@@ -226,14 +226,14 @@ namespace TabletopTweaks.Core.NewContent.Bloodlines {
                 BloodragerArcaneProgressionProperty);
 
             // Greater Arcane Bloodrage
-            var BloodragerArcaneGreaterSpell = Resources.GetBlueprint<BlueprintAbility>("31dbadf586920494b87e8e95452af998");
+            var BloodragerArcaneGreaterSpell = BlueprintTools.GetBlueprint<BlueprintAbility>("31dbadf586920494b87e8e95452af998");
 
-            var Displacement = Resources.GetBlueprint<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
-            var DisplacementBuff = Resources.GetBlueprint<BlueprintBuff>("00402bae4442a854081264e498e7a833");
+            var Displacement = BlueprintTools.GetBlueprint<BlueprintAbility>("903092f6488f9ce45a80943923576ab3");
+            var DisplacementBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("00402bae4442a854081264e498e7a833");
 
-            var Haste = Resources.GetBlueprint<BlueprintAbility>("486eaff58293f6441a5c2759c4872f98");
-            var HasteBuff = Resources.GetBlueprint<BlueprintBuff>("03464790f40c3c24aa684b57155f3280");
-            var SlowBuff = Resources.GetBlueprint<BlueprintBuff>("0bc608c3f2b548b44b7146b7530613ac");
+            var Haste = BlueprintTools.GetBlueprint<BlueprintAbility>("486eaff58293f6441a5c2759c4872f98");
+            var HasteBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("03464790f40c3c24aa684b57155f3280");
+            var SlowBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("0bc608c3f2b548b44b7146b7530613ac");
 
             BlueprintBuff BloodragerArcaneGreaterSpellHasteActivationBuff = Helpers.CreateBuff(modContext: TTTContext, "BloodragerArcaneGreaterSpellHasteActivationBuff", bp => {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
@@ -317,82 +317,82 @@ namespace TabletopTweaks.Core.NewContent.Bloodlines {
                 BloodragerArcaneProgressionProperty);
 
             // True Arcane Bloodrage
-            var BloodragerArcaneTrueSpellAbility = Resources.GetBlueprint<BlueprintAbility>("9d4d7f56d2d87f643b5ef990ef481094");
+            var BloodragerArcaneTrueSpellAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("9d4d7f56d2d87f643b5ef990ef481094");
 
-            var BeastShapeIVShamblingMoundAbility = Resources.GetBlueprint<BlueprintAbility>("b140c323981ba0a45a3bee5a1a57f493");
-            var BeastShapeIVShamblingMoundBuff = Resources.GetBlueprint<BlueprintBuff>("50ab9c820eb9cf94d8efba3632ad5ce2");
+            var BeastShapeIVShamblingMoundAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("b140c323981ba0a45a3bee5a1a57f493");
+            var BeastShapeIVShamblingMoundBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("50ab9c820eb9cf94d8efba3632ad5ce2");
             var BloodragerArcaneTrueSpellBeastShapIVShamblingMoundActivationBuff = BloodlineTools.CreateBloodragerTrueArcaneSpellRagePolymorphActivationBuff(
                 TTTContext, "BloodragerArcaneTrueSpellBeastShapIVShamblingMoundActivationBuff",
                 BeastShapeIVShamblingMoundBuff,
                 bp => bp.SetName("True Arcane Bloodrage: Beast Shape IV (Shambling Mound)"));
 
-            var BeastShapeIVSmilodonAbility = Resources.GetBlueprint<BlueprintAbility>("502cd7fd8953ac74bb3a3df7e84818ae");
-            var BeastShapeIVSmilodonBuff = Resources.GetBlueprint<BlueprintBuff>("c38def68f6ce13b4b8f5e5e0c6e68d08");
+            var BeastShapeIVSmilodonAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("502cd7fd8953ac74bb3a3df7e84818ae");
+            var BeastShapeIVSmilodonBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("c38def68f6ce13b4b8f5e5e0c6e68d08");
             var BloodragerArcaneTrueSpellBeastShapIVSmilodonActivationBuff = BloodlineTools.CreateBloodragerTrueArcaneSpellRagePolymorphActivationBuff(
                 TTTContext, "BloodragerArcaneTrueSpellBeastShapIVSmilodonActivationBuff",
                 BeastShapeIVSmilodonBuff,
                 bp => bp.SetName("True Arcane Bloodrage: Beast Shape IV (Smilodon)"));
 
-            var BeastShapeIVWyvernAbility = Resources.GetBlueprint<BlueprintAbility>("3fa892e5e3efa364fb3d2692738a7c15");
-            var BeastShapeIVWyvernBuff = Resources.GetBlueprint<BlueprintBuff>("dae2d173d9bd5b14dbeb4a1d9d9b0edc");
+            var BeastShapeIVWyvernAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("3fa892e5e3efa364fb3d2692738a7c15");
+            var BeastShapeIVWyvernBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("dae2d173d9bd5b14dbeb4a1d9d9b0edc");
             var BloodragerArcaneTrueSpellBeastShapIVWyvernActivationBuff = BloodlineTools.CreateBloodragerTrueArcaneSpellRagePolymorphActivationBuff(
                 TTTContext, "BloodragerArcaneTrueSpellBeastShapIVWyvernActivationBuff",
                 BeastShapeIVWyvernBuff,
                 bp => bp.SetName("True Arcane Bloodrage: Beast Shape IV (Wyvern)"));
 
-            var FormOfTheDragonIAbility = Resources.GetBlueprint<BlueprintAbility>("f767399367df54645ac620ef7b2062bb");
+            var FormOfTheDragonIAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("f767399367df54645ac620ef7b2062bb");
 
-            var FormOfTheDragonIBlackAbility = Resources.GetBlueprint<BlueprintAbility>("baeb1c45b53de864ca0c10784ce447f0");
-            var FormOfTheDragonIBlackBuff = Resources.GetBlueprint<BlueprintBuff>("268fafac0a5b78c42a58bd9c1ae78bcf");
+            var FormOfTheDragonIBlackAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("baeb1c45b53de864ca0c10784ce447f0");
+            var FormOfTheDragonIBlackBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("268fafac0a5b78c42a58bd9c1ae78bcf");
             var BloodragerArcaneTrueSpellFormOfTheDragonIBlackActivationBuff = BloodlineTools.CreateBloodragerTrueArcaneSpellRagePolymorphActivationBuff(
                 TTTContext, "BloodragerArcaneTrueSpellFormOfTheDragonIBlackActivationBuff",
                 FormOfTheDragonIBlackBuff,
                 bp => bp.SetName("True Arcane Bloodrage: Dragonkind I (Black)"));
 
-            var FormOfTheDragonIBlueAbility = Resources.GetBlueprint<BlueprintAbility>("7e889430ba65f724c81702101346e39a");
-            var FormOfTheDragonIBlueBuff = Resources.GetBlueprint<BlueprintBuff>("b117bc8b41735924dba3fb23318f39ff");
+            var FormOfTheDragonIBlueAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("7e889430ba65f724c81702101346e39a");
+            var FormOfTheDragonIBlueBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("b117bc8b41735924dba3fb23318f39ff");
             var BloodragerArcaneTrueSpellFormOfTheDragonIBlueActivationBuff = BloodlineTools.CreateBloodragerTrueArcaneSpellRagePolymorphActivationBuff(
                 TTTContext, "BloodragerArcaneTrueSpellFormOfTheDragonIBlueActivationBuff",
                 FormOfTheDragonIBlueBuff,
                 bp => bp.SetName("True Arcane Bloodrage: Dragonkind I (Blue)"));
 
-            var FormOfTheDragonIBrassAbility = Resources.GetBlueprint<BlueprintAbility>("2271bc6960317164aa61363ebe7c0228");
-            var FormOfTheDragonIBrassBuff = Resources.GetBlueprint<BlueprintBuff>("17d330af03f5b3042a4417ab1d45e484");
+            var FormOfTheDragonIBrassAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("2271bc6960317164aa61363ebe7c0228");
+            var FormOfTheDragonIBrassBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("17d330af03f5b3042a4417ab1d45e484");
             var BloodragerArcaneTrueSpellFormOfTheDragonIBrassActivationBuff = BloodlineTools.CreateBloodragerTrueArcaneSpellRagePolymorphActivationBuff(
                 TTTContext, "BloodragerArcaneTrueSpellFormOfTheDragonIBrassActivationBuff",
                 FormOfTheDragonIBrassBuff,
                 bp => bp.SetName("True Arcane Bloodrage: Dragonkind I (Brass)"));
 
-            var FormOfTheDragonIBronzeAbility = Resources.GetBlueprint<BlueprintAbility>("f1103c097be761e489ee27a8d49a373b");
-            var FormOfTheDragonIBronzeBuff = Resources.GetBlueprint<BlueprintBuff>("1032d4ffb1c56444ca5bfce2c778614d");
+            var FormOfTheDragonIBronzeAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("f1103c097be761e489ee27a8d49a373b");
+            var FormOfTheDragonIBronzeBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("1032d4ffb1c56444ca5bfce2c778614d");
             var BloodragerArcaneTrueSpellFormOfTheDragonIBronzeActivationBuff = BloodlineTools.CreateBloodragerTrueArcaneSpellRagePolymorphActivationBuff(
                 TTTContext, "BloodragerArcaneTrueSpellFormOfTheDragonIBronzeActivationBuff",
                 FormOfTheDragonIBronzeBuff,
                 bp => bp.SetName("True Arcane Bloodrage: Dragonkind I (Bronze)"));
 
-            var FormOfTheDragonICopperAbility = Resources.GetBlueprint<BlueprintAbility>("7ecab895312f8b541a712f965ee7afdb");
-            var FormOfTheDragonICopperBuff = Resources.GetBlueprint<BlueprintBuff>("a4cc7169fb7e64a4a8f53bdc774341b1");
+            var FormOfTheDragonICopperAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("7ecab895312f8b541a712f965ee7afdb");
+            var FormOfTheDragonICopperBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("a4cc7169fb7e64a4a8f53bdc774341b1");
             var BloodragerArcaneTrueSpellFormOfTheDragonICopperActivationBuff = BloodlineTools.CreateBloodragerTrueArcaneSpellRagePolymorphActivationBuff(
                 TTTContext, "BloodragerArcaneTrueSpellFormOfTheDragonICopperActivationBuff",
                 FormOfTheDragonICopperBuff,
                 bp => bp.SetName("True Arcane Bloodrage: Dragonkind I (Copper)"));
 
-            var FormOfTheDragonIGoldAbility = Resources.GetBlueprint<BlueprintAbility>("12e6785ca0f97a145a7c02a5f0fd155c");
-            var FormOfTheDragonIGoldBuff = Resources.GetBlueprint<BlueprintBuff>("89669cfba3d9c15448c23b79dd604c41");
+            var FormOfTheDragonIGoldAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("12e6785ca0f97a145a7c02a5f0fd155c");
+            var FormOfTheDragonIGoldBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("89669cfba3d9c15448c23b79dd604c41");
             var BloodragerArcaneTrueSpellFormOfTheDragonIGoldActivationBuff = BloodlineTools.CreateBloodragerTrueArcaneSpellRagePolymorphActivationBuff(
                 TTTContext, "BloodragerArcaneTrueSpellFormOfTheDragonIGoldActivationBuff",
                 FormOfTheDragonIGoldBuff,
                 bp => bp.SetName("True Arcane Bloodrage: Dragonkind I (Gold)"));
 
-            var FormOfTheDragonIGreenAbility = Resources.GetBlueprint<BlueprintAbility>("9d649b9e77bcd3d4ea0f91b8512a3744");
-            var FormOfTheDragonIGreenBuff = Resources.GetBlueprint<BlueprintBuff>("02611a12f38bed340920d1d427865917");
+            var FormOfTheDragonIGreenAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("9d649b9e77bcd3d4ea0f91b8512a3744");
+            var FormOfTheDragonIGreenBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("02611a12f38bed340920d1d427865917");
             var BloodragerArcaneTrueSpellFormOfTheDragonIGreenActivationBuff = BloodlineTools.CreateBloodragerTrueArcaneSpellRagePolymorphActivationBuff(
                 TTTContext, "BloodragerArcaneTrueSpellFormOfTheDragonIGreenActivationBuff",
                 FormOfTheDragonIGreenBuff,
                 bp => bp.SetName("True Arcane Bloodrage: Dragonkind I (Green)"));
 
-            var TransformationAbility = Resources.GetBlueprint<BlueprintAbility>("27203d62eb3d4184c9aced94f22e1806");
-            var TransformationBuff = Resources.GetBlueprint<BlueprintBuff>("287682389d2011b41b5a65195d9cbc84");
+            var TransformationAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("27203d62eb3d4184c9aced94f22e1806");
+            var TransformationBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("287682389d2011b41b5a65195d9cbc84");
 
             // SwitchBuffs
             BlueprintBuff BloodragerArcaneTrueSpellBeastShapeIVShamblingMoundSwitchBuff = BloodlineTools.CreateArcaneBloodrageSwitchBuff(

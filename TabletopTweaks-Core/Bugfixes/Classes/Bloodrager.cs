@@ -44,9 +44,9 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
 
                 void PatchAbysalBulk() {
                     if (TTTContext.Fixes.Bloodrager.Base.IsDisabled("AbysalBulk")) { return; }
-                    var BloodragerAbyssalBloodlineBaseBuff = Resources.GetBlueprint<BlueprintBuff>("2ba7b4b3b87156543b43d0686404655a");
-                    var BloodragerAbyssalDemonicBulkBuff = Resources.GetBlueprint<BlueprintBuff>("031a8053a7c02ab42ad53f50dd2e9437");
-                    var BloodragerAbyssalDemonicBulkEnlargeBuff = Resources.GetModBlueprint<BlueprintBuff>(modContext: TTTContext, "BloodragerAbyssalDemonicBulkEnlargeBuff");
+                    var BloodragerAbyssalBloodlineBaseBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("2ba7b4b3b87156543b43d0686404655a");
+                    var BloodragerAbyssalDemonicBulkBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("031a8053a7c02ab42ad53f50dd2e9437");
+                    var BloodragerAbyssalDemonicBulkEnlargeBuff = BlueprintTools.GetModBlueprint<BlueprintBuff>(modContext: TTTContext, "BloodragerAbyssalDemonicBulkEnlargeBuff");
 
                     var ApplyBuff = new ContextActionApplyBuff() {
                         m_Buff = BloodragerAbyssalDemonicBulkEnlargeBuff.ToReference<BlueprintBuffReference>(),
@@ -64,7 +64,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 }
                 void PatchSpellbook() {
                     if (TTTContext.Fixes.Bloodrager.Base.IsDisabled("Spellbook")) { return; }
-                    BlueprintSpellbook BloodragerSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("e19484252c2f80e4a9439b3681b20f00");
+                    BlueprintSpellbook BloodragerSpellbook = BlueprintTools.GetBlueprint<BlueprintSpellbook>("e19484252c2f80e4a9439b3681b20f00");
                     var BloodragerSpellKnownTable = BloodragerSpellbook.SpellsKnown;
                     var BloodragerSpellPerDayTable = BloodragerSpellbook.SpellsPerDay;
                     BloodragerSpellbook.CasterLevelModifier = 0;
@@ -118,8 +118,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 }
                 void PatchTempHP() {
                     if (TTTContext.Fixes.Bloodrager.Base.IsDisabled("TemporaryHitPoints")) { return; }
-                    var BloodragerStandartRageBuff = Resources.GetBlueprint<BlueprintBuff>("5eac31e457999334b98f98b60fc73b2f");
-                    var BloodragerRageResource = Resources.GetBlueprint<BlueprintAbilityResource>("4aec9ec9d9cd5e24a95da90e56c72e37");
+                    var BloodragerStandartRageBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("5eac31e457999334b98f98b60fc73b2f");
+                    var BloodragerRageResource = BlueprintTools.GetBlueprint<BlueprintAbilityResource>("4aec9ec9d9cd5e24a95da90e56c72e37");
 
                     var tempHP = BloodragerStandartRageBuff.GetComponent<TemporaryHitPointsPerLevel>();
                     tempHP.m_LimitlessRageResource = BloodragerRageResource.ToReference<BlueprintAbilityResourceReference>();
@@ -133,11 +133,11 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
 
                 void PatchRagePowerFeatQualifications() {
                     if (TTTContext.Fixes.Bloodrager.Archetypes["Primalist"].IsDisabled("RagePowerFeatQualifications")) { return; }
-                    var PrimalistTakeRagePowers4 = Resources.GetBlueprint<BlueprintProgression>("8eb5c34bb8471a0438e7eb3994de3b92");
-                    var PrimalistTakeRagePowers8 = Resources.GetBlueprint<BlueprintProgression>("db2710cd915bbcf4193fa54083e56b27");
-                    var PrimalistTakeRagePowers12 = Resources.GetBlueprint<BlueprintProgression>("e43a7bfd5c90a514cab1c11b41c550b1");
-                    var PrimalistTakeRagePowers16 = Resources.GetBlueprint<BlueprintProgression>("b6412ff44f3a82f499d0dd6748a123bc");
-                    var PrimalistTakeRagePowers20 = Resources.GetBlueprint<BlueprintProgression>("5905a80d5934248439e83612d9101b4b");
+                    var PrimalistTakeRagePowers4 = BlueprintTools.GetBlueprint<BlueprintProgression>("8eb5c34bb8471a0438e7eb3994de3b92");
+                    var PrimalistTakeRagePowers8 = BlueprintTools.GetBlueprint<BlueprintProgression>("db2710cd915bbcf4193fa54083e56b27");
+                    var PrimalistTakeRagePowers12 = BlueprintTools.GetBlueprint<BlueprintProgression>("e43a7bfd5c90a514cab1c11b41c550b1");
+                    var PrimalistTakeRagePowers16 = BlueprintTools.GetBlueprint<BlueprintProgression>("b6412ff44f3a82f499d0dd6748a123bc");
+                    var PrimalistTakeRagePowers20 = BlueprintTools.GetBlueprint<BlueprintProgression>("5905a80d5934248439e83612d9101b4b");
 
                     PatchPrimalistTakeRagePowers(PrimalistTakeRagePowers4, 4);
                     PatchPrimalistTakeRagePowers(PrimalistTakeRagePowers8, 8);
@@ -146,7 +146,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     PatchPrimalistTakeRagePowers(PrimalistTakeRagePowers20, 20);
 
                     void PatchPrimalistTakeRagePowers(BlueprintProgression PrimalistTakeRagePowers, int level) {
-                        var PrimalistRagePowerSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "PrimalistRagePowerSelection");
+                        var PrimalistRagePowerSelection = BlueprintTools.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "PrimalistRagePowerSelection");
                         PrimalistTakeRagePowers.LevelEntries = new LevelEntry[] {
                             new LevelEntry {
                                 Level = level,
@@ -161,7 +161,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 }
                 static void PatchPrimalistRageBuffs() {
                     if (TTTContext.Fixes.Bloodrager.Archetypes["Primalist"].IsDisabled("FixBrokenRagePowers")) { return; }
-                    var BloodragerStandartRageBuff = Resources.GetBlueprint<BlueprintBuff>("5eac31e457999334b98f98b60fc73b2f");
+                    var BloodragerStandartRageBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("5eac31e457999334b98f98b60fc73b2f");
                     PatchCelestialTotem();
                     PatchDaemonTotem();
                     PatchFiendTotem();
@@ -170,8 +170,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
 
                     void PatchCelestialTotem() {
 
-                        var CelestialTotemLesserFeature = Resources.GetBlueprint<BlueprintFeature>("aba61e0b0e66bf3439cc247ee89fddae");
-                        var CelestialTotemLesserBuff = Resources.GetBlueprint<BlueprintBuff>("fe27c0d9b9dc6a74aa88887b561ad5f3");
+                        var CelestialTotemLesserFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("aba61e0b0e66bf3439cc247ee89fddae");
+                        var CelestialTotemLesserBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("fe27c0d9b9dc6a74aa88887b561ad5f3");
 
                         CelestialTotemLesserFeature.AddComponent<BuffExtraEffects>(c => {
                             c.m_CheckedBuff = BloodragerStandartRageBuff.ToReference<BlueprintBuffReference>();
@@ -179,8 +179,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         });
                         TTTContext.Logger.LogPatch("Patched", CelestialTotemLesserFeature);
 
-                        var CelestialTotemFeature = Resources.GetBlueprint<BlueprintFeature>("5156331dc888e9347ae6fc81ad3f3cec");
-                        var CelestialTotemAreaBuff = Resources.GetBlueprint<BlueprintBuff>("7bf740b33eaa2534e91def3cef142e00");
+                        var CelestialTotemFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("5156331dc888e9347ae6fc81ad3f3cec");
+                        var CelestialTotemAreaBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("7bf740b33eaa2534e91def3cef142e00");
 
                         CelestialTotemFeature.AddComponent<BuffExtraEffects>(c => {
                             c.m_CheckedBuff = BloodragerStandartRageBuff.ToReference<BlueprintBuffReference>();
@@ -188,8 +188,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         });
                         TTTContext.Logger.LogPatch("Patched", CelestialTotemFeature);
 
-                        var CelestialTotemGreaterFeature = Resources.GetBlueprint<BlueprintFeature>("774f79845d1683a43aa42ebd2a549497");
-                        var CelestialTotemGreaterBuff = Resources.GetBlueprint<BlueprintBuff>("e31276241f875254cb102329c0b55ba7");
+                        var CelestialTotemGreaterFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("774f79845d1683a43aa42ebd2a549497");
+                        var CelestialTotemGreaterBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("e31276241f875254cb102329c0b55ba7");
 
                         CelestialTotemGreaterFeature.GetComponent<PrerequisiteArchetypeLevel>().Group = Prerequisite.GroupType.Any;
 
@@ -201,8 +201,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     }
 
                     void PatchDaemonTotem() {
-                        var DaemonTotemLesserFeature = Resources.GetBlueprint<BlueprintFeature>("45102fd7aab96f94d81ec80768549e12");
-                        var DaemonTotemLesserBaseBuff = Resources.GetBlueprint<BlueprintBuff>("a8957a1c6f212244d969645bc2fa7c25");
+                        var DaemonTotemLesserFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("45102fd7aab96f94d81ec80768549e12");
+                        var DaemonTotemLesserBaseBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("a8957a1c6f212244d969645bc2fa7c25");
 
                         DaemonTotemLesserFeature.AddComponent<BuffExtraEffects>(c => {
                             c.m_CheckedBuff = BloodragerStandartRageBuff.ToReference<BlueprintBuffReference>();
@@ -210,8 +210,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         });
                         TTTContext.Logger.LogPatch("Patched", DaemonTotemLesserFeature);
 
-                        var DaemonTotemFeature = Resources.GetBlueprint<BlueprintFeature>("d673c30720e8e7c4bb0903dc3c9ab649");
-                        var DaemonTotemBuff = Resources.GetBlueprint<BlueprintBuff>("a4195deeb13eb9c4b93b6987839b60c7");
+                        var DaemonTotemFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("d673c30720e8e7c4bb0903dc3c9ab649");
+                        var DaemonTotemBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("a4195deeb13eb9c4b93b6987839b60c7");
 
                         DaemonTotemFeature.AddComponent<BuffExtraEffects>(c => {
                             c.m_CheckedBuff = BloodragerStandartRageBuff.ToReference<BlueprintBuffReference>();
@@ -219,8 +219,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         });
                         TTTContext.Logger.LogPatch("Patched", DaemonTotemFeature);
 
-                        var DaemonTotemGreaterFeature = Resources.GetBlueprint<BlueprintFeature>("9a2f0ffe517d221459640a4ad85710d7");
-                        var DaemonTotemGreaterBuff = Resources.GetBlueprint<BlueprintBuff>("2cf21dce5ecc791449f3106fcd0b60c3");
+                        var DaemonTotemGreaterFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("9a2f0ffe517d221459640a4ad85710d7");
+                        var DaemonTotemGreaterBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("2cf21dce5ecc791449f3106fcd0b60c3");
 
                         DaemonTotemGreaterFeature.AddComponent<BuffExtraEffects>(c => {
                             c.m_CheckedBuff = BloodragerStandartRageBuff.ToReference<BlueprintBuffReference>();
@@ -230,27 +230,27 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     }
 
                     void PatchFiendTotem() {
-                        var PrimalistRagePowersBuff = Resources.GetBlueprint<BlueprintBuff>("ecc22ca1eea1bf6488a0d7c6ee2527d8");
+                        var PrimalistRagePowersBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("ecc22ca1eea1bf6488a0d7c6ee2527d8");
 
-                        var FiendTotemLesserFeature = Resources.GetBlueprint<BlueprintFeature>("76437492f801f054ba536473ad2fde79");
-                        var FiendTotemLesserRageBuff = Resources.GetBlueprint<BlueprintBuff>("d0649010d93907745a44034ad6eeeb5e");
+                        var FiendTotemLesserFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("76437492f801f054ba536473ad2fde79");
+                        var FiendTotemLesserRageBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("d0649010d93907745a44034ad6eeeb5e");
                         PrimalistRagePowersBuff.AddConditionalBuff(FiendTotemLesserFeature, FiendTotemLesserRageBuff);
                         TTTContext.Logger.LogPatch("Patched", FiendTotemLesserFeature);
 
-                        var FiendTotemFeature = Resources.GetBlueprint<BlueprintFeature>("ce449404eeb4a7c499fbe0248056174f");
-                        var FiendTotemRageBuff = Resources.GetBlueprint<BlueprintBuff>("4f524a75bb13f7c40806b0c19dc06fe4");
+                        var FiendTotemFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("ce449404eeb4a7c499fbe0248056174f");
+                        var FiendTotemRageBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("4f524a75bb13f7c40806b0c19dc06fe4");
                         PrimalistRagePowersBuff.AddConditionalBuff(FiendTotemFeature, FiendTotemRageBuff);
                         TTTContext.Logger.LogPatch("Patched", FiendTotemFeature);
 
-                        var FiendTotemGreaterFeature = Resources.GetBlueprint<BlueprintFeature>("1105632657d94d940a43707a3a57b006");
-                        var FiendTotemGreaterRageBuff = Resources.GetBlueprint<BlueprintBuff>("c84ca8f21f63c8249a192f34195f8787");
+                        var FiendTotemGreaterFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("1105632657d94d940a43707a3a57b006");
+                        var FiendTotemGreaterRageBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("c84ca8f21f63c8249a192f34195f8787");
                         PrimalistRagePowersBuff.AddConditionalBuff(FiendTotemGreaterFeature, FiendTotemGreaterRageBuff);
                         TTTContext.Logger.LogPatch("Patched", FiendTotemGreaterFeature);
                     }
 
                     void PatchPowerfulStance() {
-                        var PowerfulStanceSwitchBuff = Resources.GetBlueprint<BlueprintBuff>("539e480bcfe6d6f48bdd90418240b50f");
-                        var PowerfulStanceEffectBuff = Resources.GetBlueprint<BlueprintBuff>("aabad91034e5c7943986fe3e83bfc78e");
+                        var PowerfulStanceSwitchBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("539e480bcfe6d6f48bdd90418240b50f");
+                        var PowerfulStanceEffectBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("aabad91034e5c7943986fe3e83bfc78e");
 
                         PowerfulStanceSwitchBuff.AddComponent<BuffExtraEffects>(c => {
                             c.m_CheckedBuff = BloodragerStandartRageBuff.ToReference<BlueprintBuffReference>();
@@ -260,10 +260,10 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                     }
 
                     void PatchScentRagePower() {
-                        var PrimalistRagePowersBuff = Resources.GetBlueprint<BlueprintBuff>("ecc22ca1eea1bf6488a0d7c6ee2527d8");
+                        var PrimalistRagePowersBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("ecc22ca1eea1bf6488a0d7c6ee2527d8");
 
-                        var ScentFeature = Resources.GetBlueprint<BlueprintFeature>("6e5d57a733d1eea46a9022a304f2c728");
-                        var ScentRageBuff = Resources.GetBlueprint<BlueprintBuff>("879e6a7ed8101404d8e4f1bc25c0d34f");
+                        var ScentFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("6e5d57a733d1eea46a9022a304f2c728");
+                        var ScentRageBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("879e6a7ed8101404d8e4f1bc25c0d34f");
                         PrimalistRagePowersBuff.AddConditionalBuff(ScentFeature, ScentRageBuff);
                         TTTContext.Logger.LogPatch("Patched", ScentFeature);
                     }
@@ -275,8 +275,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
 
                 void PatchHatredAgainstEvil() {
                     if (TTTContext.Fixes.Bloodrager.Archetypes["ReformedFiend"].IsDisabled("HatredAgainstEvil")) { return; }
-                    var BloodragerClass = Resources.GetBlueprint<BlueprintCharacterClass>("d77e67a814d686842802c9cfd8ef8499");
-                    var ReformedFiendBloodrageBuff = Resources.GetBlueprint<BlueprintBuff>("72a679f712bd4f69a07bf03d5800900b");
+                    var BloodragerClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("d77e67a814d686842802c9cfd8ef8499");
+                    var ReformedFiendBloodrageBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("72a679f712bd4f69a07bf03d5800900b");
                     var rankConfig = ReformedFiendBloodrageBuff.GetComponent<ContextRankConfig>();
 
                     rankConfig.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
@@ -285,22 +285,22 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 }
                 void PatchDamageReduction() {
                     if (TTTContext.Fixes.Bloodrager.Archetypes["ReformedFiend"].IsDisabled("DamageReduction")) { return; }
-                    var ReformedFiendDamageReductionFeature = Resources.GetBlueprint<BlueprintFeature>("2a3243ad1ccf43d5a5d69de3f9d0420e");
+                    var ReformedFiendDamageReductionFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("2a3243ad1ccf43d5a5d69de3f9d0420e");
                     ReformedFiendDamageReductionFeature.GetComponent<AddDamageResistancePhysical>().BypassedByAlignment = true;
                 }
             }
 
             static void PatchArcaneBloodrage() {
                 if (TTTContext.Fixes.Bloodrager.Base.IsDisabled("ArcaneBloodrage")) { return; }
-                var BloodragerArcaneSpellAbility = Resources.GetBlueprint<BlueprintAbility>("3151dfeeb202e38448d1fea1e8bc237e");
+                var BloodragerArcaneSpellAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("3151dfeeb202e38448d1fea1e8bc237e");
                 BloodragerArcaneSpellAbility.GetComponent<AbilityVariants>().m_Variants = new BlueprintAbilityReference[] {
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellBlurToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellProtectionFromArrowsToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellResistFireToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellResistColdToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellResistElectricityToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellResistAcidToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellResistSonicToggle").ToReference<BlueprintAbilityReference>()
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellBlurToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellProtectionFromArrowsToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellResistFireToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellResistColdToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellResistElectricityToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellResistAcidToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellResistSonicToggle").ToReference<BlueprintAbilityReference>()
                 };
                 BloodragerArcaneSpellAbility.AddComponent<PseudoActivatable>(c => {
                     c.m_Type = PseudoActivatable.PseudoActivatableType.VariantsBase;
@@ -311,10 +311,10 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
 
             static void PatchGreaterArcaneBloodrage() {
                 if (TTTContext.Fixes.Bloodrager.Base.IsDisabled("ArcaneBloodrage")) { return; }
-                var BloodragerArcaneGreaterSpell = Resources.GetBlueprint<BlueprintAbility>("31dbadf586920494b87e8e95452af998");
+                var BloodragerArcaneGreaterSpell = BlueprintTools.GetBlueprint<BlueprintAbility>("31dbadf586920494b87e8e95452af998");
                 BloodragerArcaneGreaterSpell.GetComponent<AbilityVariants>().m_Variants = new BlueprintAbilityReference[] {
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellGreaterDisplacementToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellGreaterHasteToggle").ToReference<BlueprintAbilityReference>()
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellGreaterDisplacementToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellGreaterHasteToggle").ToReference<BlueprintAbilityReference>()
                 };
                 BloodragerArcaneGreaterSpell.AddComponent<PseudoActivatable>(c => {
                     c.m_Type = PseudoActivatable.PseudoActivatableType.VariantsBase;
@@ -325,19 +325,19 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
 
             static void PatchTrueArcaneBloodrage() {
                 if (TTTContext.Fixes.Bloodrager.Base.IsDisabled("ArcaneBloodrage")) { return; }
-                var BloodragerArcaneTrueSpellAbility = Resources.GetBlueprint<BlueprintAbility>("9d4d7f56d2d87f643b5ef990ef481094");
+                var BloodragerArcaneTrueSpellAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("9d4d7f56d2d87f643b5ef990ef481094");
                 BloodragerArcaneTrueSpellAbility.GetComponent<AbilityVariants>().m_Variants = new BlueprintAbilityReference[] {
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueBeastShapeIVShamblingMoundToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueBeastShapeIVSmilodonToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueBeastShapeIVWyvernToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIBlackToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIBlueToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIBrassToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIBronzeToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonICopperToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIGoldToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIGreenToggle").ToReference<BlueprintAbilityReference>(),
-                    Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueTransformationToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueBeastShapeIVShamblingMoundToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueBeastShapeIVSmilodonToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueBeastShapeIVWyvernToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIBlackToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIBlueToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIBrassToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIBronzeToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonICopperToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIGoldToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueFormOfTheDragonIGreenToggle").ToReference<BlueprintAbilityReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "BloodragerArcaneSpellTrueTransformationToggle").ToReference<BlueprintAbilityReference>(),
                 };
                 BloodragerArcaneTrueSpellAbility.AddComponent<PseudoActivatable>(c => {
                     c.m_Type = PseudoActivatable.PseudoActivatableType.VariantsBase;

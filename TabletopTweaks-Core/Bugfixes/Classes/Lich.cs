@@ -29,7 +29,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchDeathRush() {
                     if (TTTContext.Fixes.Lich.IsDisabled("DeathRush")) { return; }
 
-                    var DeathRushFeature = Resources.GetBlueprint<BlueprintFeature>("ef847913c29a3cf44825eb30ae6f7c38");
+                    var DeathRushFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("ef847913c29a3cf44825eb30ae6f7c38");
                     DeathRushFeature.RemoveComponents<AddInitiatorAttackWithWeaponTrigger>();
                     DeathRushFeature.AddComponent<AdditionalDiceOnAttack>(c => {
                         c.OnHit = true;
@@ -54,8 +54,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
 
                     if (TTTContext.Fixes.Lich.IsDisabled("SpellbookMerging")) { return; }
 
-                    var LichIncorporateSpellbookFeature = Resources.GetBlueprint<BlueprintFeatureSelectMythicSpellbook>("3f16e9caf7c683c40884c7c455ed26af");
-                    var NatureMageSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("3ed7e38dc8134af28e1a2b105f74fb7b");
+                    var LichIncorporateSpellbookFeature = BlueprintTools.GetBlueprint<BlueprintFeatureSelectMythicSpellbook>("3f16e9caf7c683c40884c7c455ed26af");
+                    var NatureMageSpellbook = BlueprintTools.GetBlueprint<BlueprintSpellbook>("3ed7e38dc8134af28e1a2b105f74fb7b");
 
                     LichIncorporateSpellbookFeature.m_AllowedSpellbooks = LichIncorporateSpellbookFeature.m_AllowedSpellbooks
                         .AddItem(NatureMageSpellbook.ToReference<BlueprintSpellbookReference>())

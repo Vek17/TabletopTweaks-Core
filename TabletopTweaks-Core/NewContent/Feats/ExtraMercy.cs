@@ -8,7 +8,7 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class ExtraMercy {
         public static void AddExtraMercy() {
-            var SelectionMercy = Resources.GetBlueprint<BlueprintFeatureSelection>("02b187038a8dce545bb34bbfb346428d");
+            var SelectionMercy = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("02b187038a8dce545bb34bbfb346428d");
 
             var ExtraMercy = FeatTools.CreateExtraSelectionFeat(modContext: TTTContext, "ExtraMercy", SelectionMercy, bp => {
                 bp.SetName("Extra Mercy");

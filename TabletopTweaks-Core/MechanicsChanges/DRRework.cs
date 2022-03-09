@@ -463,17 +463,17 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             static void PatchArmorDR() {
                 BlueprintUnitFact[] armorFactsWithPhysicalDR = new BlueprintUnitFact[]
                 {
-                    Resources.GetBlueprint<BlueprintFeature>("e93a376547629e2478d6f50e5f162efb"), // AdamantineArmorLightFeature
-                    Resources.GetBlueprint<BlueprintFeature>("74a80c42774045f4d916dc0d990b7738"), // AdamantineArmorMediumFeature
-                    Resources.GetBlueprint<BlueprintFeature>("dbbf704bfcc78854ab149597ef9aae7c"), // AdamantineArmorHeavyFeature
-                    Resources.GetBlueprint<BlueprintFeature>("b99c50dd771a36d4f913bf1f56ba77a2"), // ArmorOfWealthFeature
-                    Resources.GetBlueprint<BlueprintFeature>("a8ea2027afa333246a86b8085c23fbfd"), // BeaconOfCarnageFeature
-                    Resources.GetBlueprint<BlueprintBuff>("42ab909d597f1734cb9bf65a74db7424"),    // BeaconOfCarnageEffectBuff
-                    Resources.GetBlueprint<BlueprintFeature>("06d2f00616ad40c3b136d06dffc8f0b5"), // ColorlessRemainsBreastplate_SolidFeature
-                    Resources.GetBlueprint<BlueprintFeature>("ff2d26e87b5f2bc4ba1823e242f10890"), // ForMounted_HalfplateOfSynergyFeature
-                    Resources.GetBlueprint<BlueprintFeature>("e19008b823a221043b9184ef3c271db1"), // RealmProtectorFeature
-                    Resources.GetBlueprint<BlueprintFeature>("79babe38a7306ba4c81f2fa3c88d1bae"), // StuddedArmorOfTrinityFeature
-                    Resources.GetBlueprint<BlueprintFeature>("8c7de3b7d51a4b49a46990d8dbc84853")  // ThroneKeeperFeature
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("e93a376547629e2478d6f50e5f162efb"), // AdamantineArmorLightFeature
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("74a80c42774045f4d916dc0d990b7738"), // AdamantineArmorMediumFeature
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("dbbf704bfcc78854ab149597ef9aae7c"), // AdamantineArmorHeavyFeature
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("b99c50dd771a36d4f913bf1f56ba77a2"), // ArmorOfWealthFeature
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("a8ea2027afa333246a86b8085c23fbfd"), // BeaconOfCarnageFeature
+                    BlueprintTools.GetBlueprint<BlueprintBuff>("42ab909d597f1734cb9bf65a74db7424"),    // BeaconOfCarnageEffectBuff
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("06d2f00616ad40c3b136d06dffc8f0b5"), // ColorlessRemainsBreastplate_SolidFeature
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("ff2d26e87b5f2bc4ba1823e242f10890"), // ForMounted_HalfplateOfSynergyFeature
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("e19008b823a221043b9184ef3c271db1"), // RealmProtectorFeature
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("79babe38a7306ba4c81f2fa3c88d1bae"), // StuddedArmorOfTrinityFeature
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("8c7de3b7d51a4b49a46990d8dbc84853")  // ThroneKeeperFeature
                 };
 
                 foreach (BlueprintUnitFact armorBlueprint in armorFactsWithPhysicalDR) {
@@ -484,18 +484,18 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             }
 
             static void PatchBarbariansDR() {
-                BlueprintFeature barbarianDR = Resources.GetBlueprint<BlueprintFeature>("cffb5cddefab30140ac133699d52a8f8");
-                BlueprintFeature invulnerableRagerDR = Resources.GetBlueprint<BlueprintFeature>("e71bd204a2579b1438ebdfbf75aeefae");
-                BlueprintFeature madDogMasterDamageReduction = Resources.GetBlueprint<BlueprintFeature>("a0d4a3295224b8f4387464a4447c31d5");
-                BlueprintFeature madDogPetDamageReduction = Resources.GetBlueprint<BlueprintFeature>("2edbf059fd033974bbff67960f15974d");
+                BlueprintFeature barbarianDR = BlueprintTools.GetBlueprint<BlueprintFeature>("cffb5cddefab30140ac133699d52a8f8");
+                BlueprintFeature invulnerableRagerDR = BlueprintTools.GetBlueprint<BlueprintFeature>("e71bd204a2579b1438ebdfbf75aeefae");
+                BlueprintFeature madDogMasterDamageReduction = BlueprintTools.GetBlueprint<BlueprintFeature>("a0d4a3295224b8f4387464a4447c31d5");
+                BlueprintFeature madDogPetDamageReduction = BlueprintTools.GetBlueprint<BlueprintFeature>("2edbf059fd033974bbff67960f15974d");
 
-                BlueprintFeature bloodragerDR = Resources.GetBlueprint<BlueprintFeature>("07eba4bb72c2e3845bb442dce85d3b58");
+                BlueprintFeature bloodragerDR = BlueprintTools.GetBlueprint<BlueprintFeature>("07eba4bb72c2e3845bb442dce85d3b58");
 
-                BlueprintFeature skaldDR = Resources.GetBlueprint<BlueprintFeature>("d9446a35d1401cf418bb9b5e0e199d57");
+                BlueprintFeature skaldDR = BlueprintTools.GetBlueprint<BlueprintFeature>("d9446a35d1401cf418bb9b5e0e199d57");
 
-                BlueprintFeature increasedDamageReductionRagePower = Resources.GetBlueprint<BlueprintFeature>("ddaee203ee4dcb24c880d633fbd77db6");
+                BlueprintFeature increasedDamageReductionRagePower = BlueprintTools.GetBlueprint<BlueprintFeature>("ddaee203ee4dcb24c880d633fbd77db6");
 
-                BlueprintBuff manglingFrenzyBuff = Resources.GetBlueprint<BlueprintBuff>("1581c5ceea24418cadc9f26ce4d391a9");
+                BlueprintBuff manglingFrenzyBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("1581c5ceea24418cadc9f26ce4d391a9");
 
                 barbarianDR.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
@@ -558,7 +558,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
 
 
                 // Fix Mad Dog's pet DR not being improved by master's Increased Damage Resistance Rage Power(s)
-                BlueprintUnitProperty madDogPetDRProperty = Resources.GetModBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "MadDogPetDRProperty");
+                BlueprintUnitProperty madDogPetDRProperty = BlueprintTools.GetModBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "MadDogPetDRProperty");
 
                 madDogPetDamageReduction.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
@@ -585,14 +585,14 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             }
 
             static void PatchStalwartDefender() {
-                BlueprintFeature stalwartDefenderDamageReductionFeature = Resources.GetBlueprint<BlueprintFeature>("4d4f48f401d5d8b408c2e7a973fba9ea");
+                BlueprintFeature stalwartDefenderDamageReductionFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("4d4f48f401d5d8b408c2e7a973fba9ea");
 
                 stalwartDefenderDamageReductionFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
                     newRes.IsIncreasedByArmor = true;
                 });
 
-                BlueprintFeature increasedDamageReductionDefensivePower = Resources.GetBlueprint<BlueprintFeature>("d10496e92d0799a40bb3930b8f4fda0d");
+                BlueprintFeature increasedDamageReductionDefensivePower = BlueprintTools.GetBlueprint<BlueprintFeature>("d10496e92d0799a40bb3930b8f4fda0d");
 
                 increasedDamageReductionDefensivePower.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
@@ -604,7 +604,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             }
 
             static void PatchLichIndestructibleBonesDR() {
-                var MythicPowersFromDLC1EffectBuff = Resources.GetBlueprint<BlueprintBuff>("08eba577806847ac9a814694013f7783");
+                var MythicPowersFromDLC1EffectBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("08eba577806847ac9a814694013f7783");
 
                 MythicPowersFromDLC1EffectBuff.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.AddToAllStacks = true;
@@ -612,7 +612,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             }
 
             static void PatchInevitableFateDR() {
-                BlueprintFeature lichIndestructibleBonesFeature = Resources.GetBlueprint<BlueprintFeature>("42274a4428cb43b40acf771a7f5ddfac");
+                BlueprintFeature lichIndestructibleBonesFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("42274a4428cb43b40acf771a7f5ddfac");
 
                 lichIndestructibleBonesFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.AddToAllStacks = true;
@@ -620,7 +620,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             }
 
             static void PatchAngelUnbrokenDR() {
-                BlueprintBuff AngelUnbrokenEffectBuff = Resources.GetBlueprint<BlueprintBuff>("2249da3de0da48f19bc205de2d7fc97f");
+                BlueprintBuff AngelUnbrokenEffectBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("2249da3de0da48f19bc205de2d7fc97f");
 
                 AngelUnbrokenEffectBuff.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.AddToAllStacks = true;
@@ -628,7 +628,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             }
 
             static void PatchAspectOfOmoxDR() {
-                BlueprintFeature OmoxAspectFeature = Resources.GetBlueprint<BlueprintFeature>("daf030c7563b2664eb1031d91eaae7ab");
+                BlueprintFeature OmoxAspectFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("daf030c7563b2664eb1031d91eaae7ab");
 
                 OmoxAspectFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.AddToAllStacks = true;
@@ -637,49 +637,49 @@ namespace TabletopTweaks.Core.MechanicsChanges {
 
             static void PatchBrokenDRSettings() {
                 // Fix: Winter Oracle Ice Armor revelation should be DR 5/piercing, but is DR 5/- due to missing BypassedByForm flag
-                BlueprintBuff oracleRevelationIceArmorDRBuff = Resources.GetBlueprint<BlueprintBuff>("448e35444e80e24438a5ad0a3114aee3");
+                BlueprintBuff oracleRevelationIceArmorDRBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("448e35444e80e24438a5ad0a3114aee3");
                 oracleRevelationIceArmorDRBuff.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.BypassedByForm = true;
                 });
 
                 // Fix: Bruiser's Chainshirt DR should be DR 3/piercing, but is DR 3/- due to missing BypassedByForm flag
-                BlueprintFeature bruisersChainshirtFeature = Resources.GetBlueprint<BlueprintFeature>("2f08e4d39c1c568478c43aba81c42525");
+                BlueprintFeature bruisersChainshirtFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("2f08e4d39c1c568478c43aba81c42525");
                 bruisersChainshirtFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.BypassedByForm = true;
                 });
 
                 // Fix: Warden of Darkness (Tower Shield) should be DR 5/good, but was DR 5/-
-                BlueprintFeature towerShieldWardenOfDarknessShieldFeature = Resources.GetBlueprint<BlueprintFeature>("4211cdbf0bf04a540a366ba1d1c7dcc2");
+                BlueprintFeature towerShieldWardenOfDarknessShieldFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("4211cdbf0bf04a540a366ba1d1c7dcc2");
                 towerShieldWardenOfDarknessShieldFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.BypassedByAlignment = true;
                 });
 
                 // Fix: Artifact_AzataCloakEnchantment should stack with existing DR
-                var Artifact_AzataCloakItem = Resources.GetBlueprint<BlueprintItemEquipmentShoulders>("78cd50deada655e4cbe49765c0bbb7e4");
+                var Artifact_AzataCloakItem = BlueprintTools.GetBlueprint<BlueprintItemEquipmentShoulders>("78cd50deada655e4cbe49765c0bbb7e4");
                 Artifact_AzataCloakItem.m_DescriptionText = Helpers.CreateString(modContext: TTTContext, $"{Artifact_AzataCloakItem.name}.key", "Azata shares a bond with her dragon. 50% damage is redirected to Aivu. " +
                     "In addition, Aivu gets additional DR N/Lawful where N is equal to Azata's mythic rank.");
-                BlueprintFeature Artifact_AzataCloakPetFeature = Resources.GetBlueprint<BlueprintFeature>("af6f1ca38fe54e5baf67adfb9b731ae8");
+                BlueprintFeature Artifact_AzataCloakPetFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("af6f1ca38fe54e5baf67adfb9b731ae8");
                 Artifact_AzataCloakPetFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.Alignment = DamageAlignment.Lawful;
                     newRes.BypassedByAlignment = true;
                 });
 
                 // Fix: DragonAzataFeatureTierII should be DR 5/lawful, but was DR 5/-
-                BlueprintFeature DragonAzataFeatureTierII = Resources.GetBlueprint<BlueprintFeature>("fc2aeb954e13811488d38dc1af72ef9c");
+                BlueprintFeature DragonAzataFeatureTierII = BlueprintTools.GetBlueprint<BlueprintFeature>("fc2aeb954e13811488d38dc1af72ef9c");
                 DragonAzataFeatureTierII.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.BypassedByAlignment = true;
                     newRes.IncreasedByFacts = new BlueprintUnitFactReference[] { Artifact_AzataCloakPetFeature.ToReference<BlueprintUnitFactReference>() };
                 });
 
                 // Fix: DragonAzataFeatureTierIII should be DR 15/lawful, but was DR 15/-
-                BlueprintFeature DragonAzataFeatureTierIII = Resources.GetBlueprint<BlueprintFeature>("fd8c12d3c29189d4c81d88ee6aaba636");
+                BlueprintFeature DragonAzataFeatureTierIII = BlueprintTools.GetBlueprint<BlueprintFeature>("fd8c12d3c29189d4c81d88ee6aaba636");
                 DragonAzataFeatureTierIII.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.BypassedByAlignment = true;
                     newRes.IncreasedByFacts = new BlueprintUnitFactReference[] { Artifact_AzataCloakPetFeature.ToReference<BlueprintUnitFactReference>() };
                 });
 
                 // Fix: DragonAzataFeatureTierIV should be DR 20/lawful, but was DR 20/-
-                BlueprintFeature DragonAzataFeatureTierIV = Resources.GetBlueprint<BlueprintFeature>("ee1bac8c71df3f9408bad5ca3a19eb23");
+                BlueprintFeature DragonAzataFeatureTierIV = BlueprintTools.GetBlueprint<BlueprintFeature>("ee1bac8c71df3f9408bad5ca3a19eb23");
                 DragonAzataFeatureTierIV.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.BypassedByAlignment = true;
                     newRes.IncreasedByFacts = new BlueprintUnitFactReference[] { Artifact_AzataCloakPetFeature.ToReference<BlueprintUnitFactReference>() };
@@ -687,7 +687,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             }
 
             static void PatchArmorMastery() {
-                BlueprintBuff armorMasteryBuff = Resources.GetBlueprint<BlueprintBuff>("0794e96a6c5da8f41979d809bb4a9a8c");
+                BlueprintBuff armorMasteryBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("0794e96a6c5da8f41979d809bb4a9a8c");
                 armorMasteryBuff.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
                 });
@@ -695,15 +695,15 @@ namespace TabletopTweaks.Core.MechanicsChanges {
 
             static void PatchArmoredJuggernaut() {
 
-                BlueprintFeature armoredJuggernautFeature = Resources.GetBlueprint<BlueprintFeature>(Main.TTTContext.Blueprints.GetGUID("ArmoredJuggernautFeature"));
+                BlueprintFeature armoredJuggernautFeature = BlueprintTools.GetBlueprint<BlueprintFeature>(Main.TTTContext.Blueprints.GetGUID("ArmoredJuggernautFeature"));
 
                 BlueprintUnitFactReference[] adamantineArmorFeatures = new BlueprintUnitFactReference[] {
-                    Resources.GetBlueprint<BlueprintFeature>("e93a376547629e2478d6f50e5f162efb").ToReference<BlueprintUnitFactReference>(), // AdamantineArmorLightFeature
-                    Resources.GetBlueprint<BlueprintFeature>("74a80c42774045f4d916dc0d990b7738").ToReference<BlueprintUnitFactReference>(), // AdamantineArmorMediumFeature
-                    Resources.GetBlueprint<BlueprintFeature>("dbbf704bfcc78854ab149597ef9aae7c").ToReference<BlueprintUnitFactReference>(), // AdamantineArmorHeavyFeature
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("e93a376547629e2478d6f50e5f162efb").ToReference<BlueprintUnitFactReference>(), // AdamantineArmorLightFeature
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("74a80c42774045f4d916dc0d990b7738").ToReference<BlueprintUnitFactReference>(), // AdamantineArmorMediumFeature
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("dbbf704bfcc78854ab149597ef9aae7c").ToReference<BlueprintUnitFactReference>(), // AdamantineArmorHeavyFeature
                 };
 
-                BlueprintUnitFactReference armorMasteryBuff = Resources.GetBlueprint<BlueprintBuff>("0794e96a6c5da8f41979d809bb4a9a8c").ToReference<BlueprintUnitFactReference>();
+                BlueprintUnitFactReference armorMasteryBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("0794e96a6c5da8f41979d809bb4a9a8c").ToReference<BlueprintUnitFactReference>();
 
                 armoredJuggernautFeature.ConvertVanillaDamageResistanceToRework<AddDamageResistancePhysical, TTAddDamageResistancePhysical>(modContext: TTTContext, newRes => {
                     newRes.SourceIsClassFeature = true;
@@ -719,15 +719,15 @@ namespace TabletopTweaks.Core.MechanicsChanges {
 
             static void PatchThroneKeeper() {
 
-                var ThroneKeeperFeature = Resources.GetBlueprintReference<BlueprintUnitFactReference>("8c7de3b7d51a4b49a46990d8dbc84853");  // ThroneKeeperFeature
+                var ThroneKeeperFeature = BlueprintTools.GetBlueprintReference<BlueprintUnitFactReference>("8c7de3b7d51a4b49a46990d8dbc84853");  // ThroneKeeperFeature
 
                 BlueprintUnitFactReference[] adamantineArmorFeatures = new BlueprintUnitFactReference[] {
-                    Resources.GetBlueprint<BlueprintFeature>("e93a376547629e2478d6f50e5f162efb").ToReference<BlueprintUnitFactReference>(), // AdamantineArmorLightFeature
-                    Resources.GetBlueprint<BlueprintFeature>("74a80c42774045f4d916dc0d990b7738").ToReference<BlueprintUnitFactReference>(), // AdamantineArmorMediumFeature
-                    Resources.GetBlueprint<BlueprintFeature>("dbbf704bfcc78854ab149597ef9aae7c").ToReference<BlueprintUnitFactReference>(), // AdamantineArmorHeavyFeature
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("e93a376547629e2478d6f50e5f162efb").ToReference<BlueprintUnitFactReference>(), // AdamantineArmorLightFeature
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("74a80c42774045f4d916dc0d990b7738").ToReference<BlueprintUnitFactReference>(), // AdamantineArmorMediumFeature
+                    BlueprintTools.GetBlueprint<BlueprintFeature>("dbbf704bfcc78854ab149597ef9aae7c").ToReference<BlueprintUnitFactReference>(), // AdamantineArmorHeavyFeature
                 };
 
-                BlueprintUnitFactReference armorMasteryBuff = Resources.GetBlueprint<BlueprintBuff>("0794e96a6c5da8f41979d809bb4a9a8c").ToReference<BlueprintUnitFactReference>();
+                BlueprintUnitFactReference armorMasteryBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("0794e96a6c5da8f41979d809bb4a9a8c").ToReference<BlueprintUnitFactReference>();
 
                 adamantineArmorFeatures.ForEach(feature => {
                     var component = feature.Get().GetComponent<TTAddDamageResistancePhysical>();

@@ -33,42 +33,42 @@ using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Archetypes {
     static class ChannelerOfTheUnknown {
-        private static readonly BlueprintFeatureSelection DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
-        private static readonly BlueprintFeatureSelection MartialWeaponProficencySelection = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "MartialWeaponProficencySelection");
-        private static readonly BlueprintFeatureSelection ExoticWeaponProficiencySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("9a01b6815d6c3684cb25f30b8bf20932");
-        private static readonly BlueprintFeature LightArmorProficiency = Resources.GetBlueprint<BlueprintFeature>("6d3728d4e9c9898458fe5e9532951132");
-        private static readonly BlueprintFeature MediumArmorProficiency = Resources.GetBlueprint<BlueprintFeature>("46f4fb320f35704488ba3d513397789d");
-        private static readonly BlueprintFeature SimpleWeaponProficiency = Resources.GetBlueprint<BlueprintFeature>("e70ecf1ed95ca2f40b754f1adb22bbdd");
-        private static readonly BlueprintFeature ShieldsProficiency = Resources.GetBlueprint<BlueprintFeature>("cb8686e7357a68c42bdd9d4e65334633");
+        private static readonly BlueprintFeatureSelection DeitySelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+        private static readonly BlueprintFeatureSelection MartialWeaponProficencySelection = BlueprintTools.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "MartialWeaponProficencySelection");
+        private static readonly BlueprintFeatureSelection ExoticWeaponProficiencySelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("9a01b6815d6c3684cb25f30b8bf20932");
+        private static readonly BlueprintFeature LightArmorProficiency = BlueprintTools.GetBlueprint<BlueprintFeature>("6d3728d4e9c9898458fe5e9532951132");
+        private static readonly BlueprintFeature MediumArmorProficiency = BlueprintTools.GetBlueprint<BlueprintFeature>("46f4fb320f35704488ba3d513397789d");
+        private static readonly BlueprintFeature SimpleWeaponProficiency = BlueprintTools.GetBlueprint<BlueprintFeature>("e70ecf1ed95ca2f40b754f1adb22bbdd");
+        private static readonly BlueprintFeature ShieldsProficiency = BlueprintTools.GetBlueprint<BlueprintFeature>("cb8686e7357a68c42bdd9d4e65334633");
 
-        private static readonly BlueprintCharacterClass ClericClass = Resources.GetBlueprint<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
-        private static readonly BlueprintSpellsTable CrusaderSpellLevels = Resources.GetBlueprint<BlueprintSpellsTable>("799265ebe0ed27641b6d415251943d03");
-        private static readonly BlueprintFeature ClericProficiencies = Resources.GetBlueprint<BlueprintFeature>("8c971173613282844888dc20d572cfc9");
-        private static readonly BlueprintFeatureSelection ChannelEnergySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("d332c1748445e8f4f9e92763123e31bd");
-        private static readonly BlueprintFeatureSelection DomainsSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("48525e5da45c9c243a343fc6545dbdb9");
-        private static readonly BlueprintFeatureSelection SecondDomainsSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("43281c3d7fe18cc4d91928395837cd1e");
+        private static readonly BlueprintCharacterClass ClericClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
+        private static readonly BlueprintSpellsTable CrusaderSpellLevels = BlueprintTools.GetBlueprint<BlueprintSpellsTable>("799265ebe0ed27641b6d415251943d03");
+        private static readonly BlueprintFeature ClericProficiencies = BlueprintTools.GetBlueprint<BlueprintFeature>("8c971173613282844888dc20d572cfc9");
+        private static readonly BlueprintFeatureSelection ChannelEnergySelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("d332c1748445e8f4f9e92763123e31bd");
+        private static readonly BlueprintFeatureSelection DomainsSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("48525e5da45c9c243a343fc6545dbdb9");
+        private static readonly BlueprintFeatureSelection SecondDomainsSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("43281c3d7fe18cc4d91928395837cd1e");
 
-        private static readonly BlueprintFeature DarknessDomainProgression = Resources.GetBlueprint<BlueprintFeature>("1e1b4128290b11a41ba55280ede90d7d");
-        private static readonly BlueprintFeature DestructionDomainProgression = Resources.GetBlueprint<BlueprintFeature>("269ff0bf4596f5248864bc2653a2f0e0");
-        private static readonly BlueprintFeature LuckDomainProgression = Resources.GetBlueprint<BlueprintFeature>("8bd8cfad69085654b9118534e4aa215e");
-        private static readonly BlueprintFeature MadnessDomainProgression = Resources.GetBlueprint<BlueprintFeature>("9ebe166b9b901c746b1858029f13a2c5");
+        private static readonly BlueprintFeature DarknessDomainProgression = BlueprintTools.GetBlueprint<BlueprintFeature>("1e1b4128290b11a41ba55280ede90d7d");
+        private static readonly BlueprintFeature DestructionDomainProgression = BlueprintTools.GetBlueprint<BlueprintFeature>("269ff0bf4596f5248864bc2653a2f0e0");
+        private static readonly BlueprintFeature LuckDomainProgression = BlueprintTools.GetBlueprint<BlueprintFeature>("8bd8cfad69085654b9118534e4aa215e");
+        private static readonly BlueprintFeature MadnessDomainProgression = BlueprintTools.GetBlueprint<BlueprintFeature>("9ebe166b9b901c746b1858029f13a2c5");
 
-        private static readonly BlueprintUnitFact ChannelEnergyFact = Resources.GetBlueprint<BlueprintUnitFact>("93f062bc0bf70e84ebae436e325e30e8");
-        private static readonly BlueprintAbility ChannelNegativeEnergy = Resources.GetBlueprint<BlueprintAbility>("89df18039ef22174b81052e2e419c728");
-        private static readonly BlueprintAbilityResource ChannelEnergyResource = Resources.GetBlueprint<BlueprintAbilityResource>("5e2bba3e07c37be42909a12945c27de7");
-        private static readonly BlueprintUnitProperty MythicChannelProperty = Resources.GetBlueprint<BlueprintUnitProperty>("152e61de154108d489ff34b98066c25c");
-        private static readonly BlueprintFeature SelectiveChannel = Resources.GetBlueprint<BlueprintFeature>("fd30c69417b434d47b6b03b9c1f568ff");
-        private static readonly BlueprintFeature ExtraChannel = Resources.GetBlueprint<BlueprintFeature>("cd9f19775bd9d3343a31a065e93f0c47");
+        private static readonly BlueprintUnitFact ChannelEnergyFact = BlueprintTools.GetBlueprint<BlueprintUnitFact>("93f062bc0bf70e84ebae436e325e30e8");
+        private static readonly BlueprintAbility ChannelNegativeEnergy = BlueprintTools.GetBlueprint<BlueprintAbility>("89df18039ef22174b81052e2e419c728");
+        private static readonly BlueprintAbilityResource ChannelEnergyResource = BlueprintTools.GetBlueprint<BlueprintAbilityResource>("5e2bba3e07c37be42909a12945c27de7");
+        private static readonly BlueprintUnitProperty MythicChannelProperty = BlueprintTools.GetBlueprint<BlueprintUnitProperty>("152e61de154108d489ff34b98066c25c");
+        private static readonly BlueprintFeature SelectiveChannel = BlueprintTools.GetBlueprint<BlueprintFeature>("fd30c69417b434d47b6b03b9c1f568ff");
+        private static readonly BlueprintFeature ExtraChannel = BlueprintTools.GetBlueprint<BlueprintFeature>("cd9f19775bd9d3343a31a065e93f0c47");
 
-        private static readonly BlueprintCharacterClass MysticTheurgeClass = Resources.GetBlueprint<BlueprintCharacterClass>("0920ea7e4fd7a404282e3d8b0ac41838");
-        private static readonly BlueprintFeatureSelection MysticTheurgeDivineSpellbookSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("7cd057944ce7896479717778330a4933");
-        private static readonly BlueprintProgression MysticTheurgeClericProgression = Resources.GetBlueprint<BlueprintProgression>("8bac42667e6f67047acbcbd668cf2029");
+        private static readonly BlueprintCharacterClass MysticTheurgeClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("0920ea7e4fd7a404282e3d8b0ac41838");
+        private static readonly BlueprintFeatureSelection MysticTheurgeDivineSpellbookSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("7cd057944ce7896479717778330a4933");
+        private static readonly BlueprintProgression MysticTheurgeClericProgression = BlueprintTools.GetBlueprint<BlueprintProgression>("8bac42667e6f67047acbcbd668cf2029");
 
-        private static readonly BlueprintCharacterClass HellknightSigniferClass = Resources.GetBlueprint<BlueprintCharacterClass>("ee6425d6392101843af35f756ce7fefd");
-        private static readonly BlueprintFeatureSelection HellknightSigniferSpellbook = Resources.GetBlueprint<BlueprintFeatureSelection>("68782aa7a302b6d43a42a71c6e9b5277");
-        private static readonly BlueprintProgression HellknightSigniferClericProgression = Resources.GetBlueprint<BlueprintProgression>("e673d91c731469549b8962016f48410e");
+        private static readonly BlueprintCharacterClass HellknightSigniferClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("ee6425d6392101843af35f756ce7fefd");
+        private static readonly BlueprintFeatureSelection HellknightSigniferSpellbook = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("68782aa7a302b6d43a42a71c6e9b5277");
+        private static readonly BlueprintProgression HellknightSigniferClericProgression = BlueprintTools.GetBlueprint<BlueprintProgression>("e673d91c731469549b8962016f48410e");
 
-        private static readonly BlueprintFeatureSelectMythicSpellbook AngelIncorporateSpellbook = Resources.GetBlueprint<BlueprintFeatureSelectMythicSpellbook>("e1fbb0e0e610a3a4d91e5e5284587939");
+        private static readonly BlueprintFeatureSelectMythicSpellbook AngelIncorporateSpellbook = BlueprintTools.GetBlueprint<BlueprintFeatureSelectMythicSpellbook>("e1fbb0e0e610a3a4d91e5e5284587939");
 
         public static void AddChannelerOfTheUnknown() {
             var ChannelEntropyIcon = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_ChannelEntropy.png");

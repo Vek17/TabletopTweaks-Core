@@ -11,8 +11,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     class AbundantBlessing {
         public static void AddAbundantBlessing() {
-            var BlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("6d9dcc2a59210a14891aeedb09d406aa");
-            var BlessingResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("d128a6332e4ea7c4a9862b9fdb358cca");
+            var BlessingSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("6d9dcc2a59210a14891aeedb09d406aa");
+            var BlessingResource = BlueprintTools.GetBlueprintReference<BlueprintAbilityResourceReference>("d128a6332e4ea7c4a9862b9fdb358cca");
 
             var AbundantBlessingFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "AbundantBlessingFeature", bp => {
                 bp.SetName("Abundant Blessing");

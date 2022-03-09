@@ -29,13 +29,13 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchPrerequisites() {
                     if (TTTContext.Fixes.Loremaster.IsDisabled("Prerequisites")) { return; }
 
-                    var LoremasterClass = Resources.GetBlueprint<BlueprintCharacterClass>("4a7c05adfbaf05446a6bf664d28fb103");
+                    var LoremasterClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("4a7c05adfbaf05446a6bf664d28fb103");
 
-                    var SkillFocusSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("c9629ef9eebb88b479b2fbc5e836656a");
-                    var SkillFocusKnowledgeArcana = Resources.GetBlueprint<BlueprintFeature>("cad1b9175e8c0e64583432a22134d33c");
-                    var SkillFocusKnowledgeWorld = Resources.GetBlueprint<BlueprintFeature>("611e863120c0f9a4cab2d099f1eb20b4");
-                    var SkillFocusLoreNature = Resources.GetBlueprint<BlueprintFeature>("6507d2da389ed55448e0e1e5b871c013");
-                    var SkillFocusLoreReligion = Resources.GetBlueprint<BlueprintFeature>("c541f80af8d0af4498e1abb6025780c7");
+                    var SkillFocusSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("c9629ef9eebb88b479b2fbc5e836656a");
+                    var SkillFocusKnowledgeArcana = BlueprintTools.GetBlueprint<BlueprintFeature>("cad1b9175e8c0e64583432a22134d33c");
+                    var SkillFocusKnowledgeWorld = BlueprintTools.GetBlueprint<BlueprintFeature>("611e863120c0f9a4cab2d099f1eb20b4");
+                    var SkillFocusLoreNature = BlueprintTools.GetBlueprint<BlueprintFeature>("6507d2da389ed55448e0e1e5b871c013");
+                    var SkillFocusLoreReligion = BlueprintTools.GetBlueprint<BlueprintFeature>("c541f80af8d0af4498e1abb6025780c7");
                     /*
                         var EmpowerSpellFeat = Resources.GetBlueprint<BlueprintFeature>("a1de1e4f92195b442adb946f0e2b9d4e");
                         var ExtendSpellFeat = Resources.GetBlueprint<BlueprintFeature>("f180e72e4a9cbaa4da8be9bc958132ef");
@@ -48,8 +48,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                         var SelectiveSpellFeat = Resources.GetBlueprint<BlueprintFeature>("85f3340093d144dd944fff9a9adfd2f2");
                         var CompletelyNormalSpellFeat = Resources.GetBlueprint<BlueprintFeature>("094b6278f7b570f42aeaa98379f07cf2");
                     */
-                    var ScribingScrolls = Resources.GetBlueprintReference<BlueprintFeatureReference>("a8a385bf53ee3454593ce9054375a2ec");
-                    var BrewPotions = Resources.GetBlueprintReference<BlueprintFeatureReference>("c0f8c4e513eb493408b8070a1de93fc0");
+                    var ScribingScrolls = BlueprintTools.GetBlueprintReference<BlueprintFeatureReference>("a8a385bf53ee3454593ce9054375a2ec");
+                    var BrewPotions = BlueprintTools.GetBlueprintReference<BlueprintFeatureReference>("c0f8c4e513eb493408b8070a1de93fc0");
 
                     LoremasterClass.RemoveComponents<Prerequisite>();
                     LoremasterClass.AddComponent<PrerequisiteCasterTypeSpellLevel>(c => {
@@ -94,10 +94,10 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
 
                 void PatchSpellProgression() {
                     if (TTTContext.Fixes.Loremaster.IsDisabled("SpellProgression")) { return; }
-                    var LoremasterProgression = Resources.GetBlueprint<BlueprintProgression>("2bcd2330cc2c5a747968a8c782d4fa0a");
-                    var LoremasterSecretSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("beeb25d7a7732e14f9986cdb79acecfc");
-                    var LoremasterSpellbookSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("7a28ab4dfc010834eabc770152997e87");
-                    var LoremasterSpellbookSelectionTTT = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "LoremasterSpellbookSelectionTTT");
+                    var LoremasterProgression = BlueprintTools.GetBlueprint<BlueprintProgression>("2bcd2330cc2c5a747968a8c782d4fa0a");
+                    var LoremasterSecretSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("beeb25d7a7732e14f9986cdb79acecfc");
+                    var LoremasterSpellbookSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("7a28ab4dfc010834eabc770152997e87");
+                    var LoremasterSpellbookSelectionTTT = BlueprintTools.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "LoremasterSpellbookSelectionTTT");
 
                     LoremasterProgression.LevelEntries = LoremasterProgression.LevelEntries
                         .Where(entry => entry.Level != 1)
@@ -108,14 +108,14 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchSpellSecrets() {
                     if (TTTContext.Fixes.Loremaster.IsDisabled("SpellSecrets")) { return; }
 
-                    var LoremasterSecretSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("beeb25d7a7732e14f9986cdb79acecfc");
-                    var LoremasterClericSpellSecret = Resources.GetBlueprint<BlueprintFeatureSelection>("904ce918c85c9f947910340b956fb877");
-                    var LoremasterDruidSpellSecret = Resources.GetBlueprint<BlueprintFeatureSelection>("6b73ba9d8a718fb419a484c6e1b92c6d");
-                    var LoremasterWizardSpellSecret = Resources.GetBlueprint<BlueprintFeatureSelection>("f97986f19a595e2409cfe5d92bcf697c");
+                    var LoremasterSecretSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("beeb25d7a7732e14f9986cdb79acecfc");
+                    var LoremasterClericSpellSecret = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("904ce918c85c9f947910340b956fb877");
+                    var LoremasterDruidSpellSecret = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("6b73ba9d8a718fb419a484c6e1b92c6d");
+                    var LoremasterWizardSpellSecret = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("f97986f19a595e2409cfe5d92bcf697c");
 
-                    var LoremasterClericSpellSecret_TTT = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "LoremasterClericSpellSecret_TTT");
-                    var LoremasterDruidSpellSecret_TTT = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "LoremasterDruidSpellSecret_TTT");
-                    var LoremasterWizardSpellSecret_TTT = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "LoremasterWizardSpellSecret_TTT");
+                    var LoremasterClericSpellSecret_TTT = BlueprintTools.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "LoremasterClericSpellSecret_TTT");
+                    var LoremasterDruidSpellSecret_TTT = BlueprintTools.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "LoremasterDruidSpellSecret_TTT");
+                    var LoremasterWizardSpellSecret_TTT = BlueprintTools.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "LoremasterWizardSpellSecret_TTT");
 
                     LoremasterSecretSelection.RemoveFeatures(
                         LoremasterClericSpellSecret,
@@ -133,11 +133,11 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchTricksterTricks() {
                     if (TTTContext.Fixes.Loremaster.IsDisabled("TricksterTricks")) { return; }
 
-                    var LoremasterCombatFeatSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("90f105c8e31a6224ea319e6a810e4af8");
+                    var LoremasterCombatFeatSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("90f105c8e31a6224ea319e6a810e4af8");
 
-                    var TricksterImprovedImprovedCritical = Resources.GetBlueprint<BlueprintFeature>("56f94badbba018b4b8277ce6e2e79e72");
-                    var TricksterImprovedImprovedImprovedCritical = Resources.GetBlueprint<BlueprintFeature>("006a966007802a0478c9e21007207aac");
-                    var TricksterImprovedImprovedImprovedCriticalImproved = Resources.GetBlueprint<BlueprintFeature>("319c882ab3cc51544ad2f3f43633d5b1");
+                    var TricksterImprovedImprovedCritical = BlueprintTools.GetBlueprint<BlueprintFeature>("56f94badbba018b4b8277ce6e2e79e72");
+                    var TricksterImprovedImprovedImprovedCritical = BlueprintTools.GetBlueprint<BlueprintFeature>("006a966007802a0478c9e21007207aac");
+                    var TricksterImprovedImprovedImprovedCriticalImproved = BlueprintTools.GetBlueprint<BlueprintFeature>("319c882ab3cc51544ad2f3f43633d5b1");
 
                     LoremasterCombatFeatSelection.RemoveFeatures(
                         TricksterImprovedImprovedCritical,

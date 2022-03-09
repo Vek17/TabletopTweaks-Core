@@ -8,11 +8,11 @@ namespace TabletopTweaks.Core.NewContent.Spells {
     class MagicalTailSpells {
         public static void AddNewMagicalTailSpells() {
 
-            BlueprintAbility sleepKitsune = Resources.GetBlueprint<BlueprintAbility>("f8a32c60ae1f878408b525bb967ef48c");
-            BlueprintAbility hideousLaughter = Resources.GetBlueprint<BlueprintAbility>("fd4d9fd7f87575d47aafe2a64a6e2d8d");
+            BlueprintAbility sleepKitsune = BlueprintTools.GetBlueprint<BlueprintAbility>("f8a32c60ae1f878408b525bb967ef48c");
+            BlueprintAbility hideousLaughter = BlueprintTools.GetBlueprint<BlueprintAbility>("fd4d9fd7f87575d47aafe2a64a6e2d8d");
 
-            BlueprintAbility deepSlumberKitsune = Resources.GetBlueprint<BlueprintAbility>("2bc8d4bb8baa23a4b84ef34945d13733");
-            BlueprintAbility heroism = Resources.GetBlueprint<BlueprintAbility>("5ab0d42fb68c9e34abae4921822b9d63");
+            BlueprintAbility deepSlumberKitsune = BlueprintTools.GetBlueprint<BlueprintAbility>("2bc8d4bb8baa23a4b84ef34945d13733");
+            BlueprintAbility heroism = BlueprintTools.GetBlueprint<BlueprintAbility>("5ab0d42fb68c9e34abae4921822b9d63");
 
             var hideousLaughterKitsune = hideousLaughter.CreateCopy(TTTContext, "HideousLaughterKitsune", bp => {
                 bp.RemoveComponents<AbilityResourceLogic>();

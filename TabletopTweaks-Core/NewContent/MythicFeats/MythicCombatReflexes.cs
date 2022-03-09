@@ -9,7 +9,7 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicFeats {
     static class MythicCombatReflexes {
         public static void AddMythicCombatReflexes() {
-            var CombatReflexes = Resources.GetBlueprint<BlueprintFeature>("0f8939ae6f220984e8fb568abbdfba95");
+            var CombatReflexes = BlueprintTools.GetBlueprint<BlueprintFeature>("0f8939ae6f220984e8fb568abbdfba95");
             var CombatReflexesMythicFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "CombatReflexesMythicFeature", bp => {
                 bp.m_Icon = CombatReflexes.m_Icon;
                 bp.SetName("Combat Reflexes (Mythic)");

@@ -26,8 +26,8 @@ using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class FlaringSpell {
         public static void AddFlaringSpell() {
-            var DazzledBuff = Resources.GetBlueprint<BlueprintBuff>("df6d1025da07524429afbae248845ecc");
-            var FavoriteMetamagicSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
+            var DazzledBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("df6d1025da07524429afbae248845ecc");
+            var FavoriteMetamagicSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
             var Icon_FlaringSpellFeat = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_FlaringSpellFeat.png");
             var Icon_FlaringSpellMetamagic = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Metamagic", file: "Icon_FlaringSpellMetamagic.png", size: 128);
             var Icon_MetamagicRodFlaringLesser = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodFlaringLesser.png", size: 64);
@@ -139,19 +139,19 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             }
         }
         private static void AddRodsToVenders() {
-            var Scroll_Chapter3VendorTable = Resources.GetBlueprint<BlueprintSharedVendorTable>("d33d4c7396fc1d74c9569bc38e887e86");
-            var Scroll_Chapter5VendorTable = Resources.GetBlueprint<BlueprintSharedVendorTable>("5b73c93dccd743668734070160dfb82f");
+            var Scroll_Chapter3VendorTable = BlueprintTools.GetBlueprint<BlueprintSharedVendorTable>("d33d4c7396fc1d74c9569bc38e887e86");
+            var Scroll_Chapter5VendorTable = BlueprintTools.GetBlueprint<BlueprintSharedVendorTable>("5b73c93dccd743668734070160dfb82f");
 
             Scroll_Chapter3VendorTable.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodNormalFlaring"),
+                    m_Item = BlueprintTools.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodNormalFlaring"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;
             });
             Scroll_Chapter5VendorTable.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodGreaterFlaring"),
+                    m_Item = BlueprintTools.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodGreaterFlaring"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;

@@ -14,20 +14,20 @@ namespace TabletopTweaks.Core.NewContent.Feats {
     static class AnimalAlly {
 
         public static void AddAnimalAlly() {
-            var MountTargetFeature = Resources.GetBlueprint<BlueprintFeature>("cb06f0e72ffb5c640a156bd9f8000c1d");
-            var AnimalCompanionArchetypeSelection = Resources.GetBlueprint<BlueprintFeature>("65af7290b4efd5f418132141aaa36c1b");
-            var NatureSoul = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "NatureSoul");
-            var AnimalCompanionSelectionRanger = Resources.GetBlueprint<BlueprintFeatureSelection>("ee63330662126374e8785cc901941ac7");
+            var MountTargetFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("cb06f0e72ffb5c640a156bd9f8000c1d");
+            var AnimalCompanionArchetypeSelection = BlueprintTools.GetBlueprint<BlueprintFeature>("65af7290b4efd5f418132141aaa36c1b");
+            var NatureSoul = BlueprintTools.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "NatureSoul");
+            var AnimalCompanionSelectionRanger = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("ee63330662126374e8785cc901941ac7");
 
-            var AnimalCompanionFeatureDog = Resources.GetBlueprint<BlueprintFeature>("f894e003d31461f48a02f5caec4e3359");
-            var AnimalCompanionFeatureElk = Resources.GetBlueprint<BlueprintFeature>("aa92fea676be33d4dafd176d699d7996");
-            var AnimalCompanionFeatureHorse = Resources.GetBlueprint<BlueprintFeature>("9dc58b5901677c942854019d1dd98374");
-            var AnimalCompanionFeatureLeopard = Resources.GetBlueprint<BlueprintFeature>("2ee2ba60850dd064e8b98bf5c2c946ba");
-            var AnimalCompanionFeatureMonitor = Resources.GetBlueprint<BlueprintFeature>("ece6bde3dfc76ba4791376428e70621a");
-            var AnimalCompanionFeatureWolf = Resources.GetBlueprint<BlueprintFeature>("67a9dc42b15d0954ca4689b13e8dedea");
-            var AnimalCompanionFeatureHorse_PreorderBonus = Resources.GetBlueprint<BlueprintFeature>("bfeb9be0a3c9420b8b2beecc8171029c");
+            var AnimalCompanionFeatureDog = BlueprintTools.GetBlueprint<BlueprintFeature>("f894e003d31461f48a02f5caec4e3359");
+            var AnimalCompanionFeatureElk = BlueprintTools.GetBlueprint<BlueprintFeature>("aa92fea676be33d4dafd176d699d7996");
+            var AnimalCompanionFeatureHorse = BlueprintTools.GetBlueprint<BlueprintFeature>("9dc58b5901677c942854019d1dd98374");
+            var AnimalCompanionFeatureLeopard = BlueprintTools.GetBlueprint<BlueprintFeature>("2ee2ba60850dd064e8b98bf5c2c946ba");
+            var AnimalCompanionFeatureMonitor = BlueprintTools.GetBlueprint<BlueprintFeature>("ece6bde3dfc76ba4791376428e70621a");
+            var AnimalCompanionFeatureWolf = BlueprintTools.GetBlueprint<BlueprintFeature>("67a9dc42b15d0954ca4689b13e8dedea");
+            var AnimalCompanionFeatureHorse_PreorderBonus = BlueprintTools.GetBlueprint<BlueprintFeature>("bfeb9be0a3c9420b8b2beecc8171029c");
 
-            var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
+            var AnimalCompanionRank = BlueprintTools.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
             var AnimalAllyRank = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "AnimalAllyRank", bp => {
                 bp.IsClassFeature = true;
                 bp.HideInUI = true;
@@ -105,7 +105,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
 
             if (TTTContext.AddedContent.Feats.IsDisabled("NatureSoul")) { return; }
             if (TTTContext.AddedContent.Feats.IsDisabled("AnimalAlly")) { return; }
-            var CompanionBoon = Resources.GetBlueprint<BlueprintFeature>("8fc01f06eab4dd946baa5bc658cac556");
+            var CompanionBoon = BlueprintTools.GetBlueprint<BlueprintFeature>("8fc01f06eab4dd946baa5bc658cac556");
             CompanionBoon.AddComponent<CompanionBoon>(c => {
                 c.m_RankFeature = AnimalAllyRank.ToReference<BlueprintFeatureReference>();
                 c.Bonus = 4;

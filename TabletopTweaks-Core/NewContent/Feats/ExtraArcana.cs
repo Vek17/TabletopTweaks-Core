@@ -6,9 +6,9 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class ExtraArcana {
         public static void AddExtraArcana() {
-            var MagusArcanaSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("e9dc4dfc73eaaf94aae27e0ed6cc9ada");
-            var HexcrafterMagusHexArcanaSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("ad6b9cecb5286d841a66e23cea3ef7bf");
-            var EldritchMagusArcanaSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("d4b54d9db4932454ab2899f931c2042c");
+            var MagusArcanaSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("e9dc4dfc73eaaf94aae27e0ed6cc9ada");
+            var HexcrafterMagusHexArcanaSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("ad6b9cecb5286d841a66e23cea3ef7bf");
+            var EldritchMagusArcanaSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("d4b54d9db4932454ab2899f931c2042c");
 
             var ExtraArcana = FeatTools.CreateExtraSelectionFeat(modContext: TTTContext, "ExtraArcana", MagusArcanaSelection, bp => {
                 bp.SetName("Extra Arcana");

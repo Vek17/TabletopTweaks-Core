@@ -11,16 +11,16 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
     static class OppositionResearch {
         public static void AddOppositionResearch() {
-            var WizardClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("ba34257984f4c41408ce1dc2004e342e");
+            var WizardClass = BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("ba34257984f4c41408ce1dc2004e342e");
 
-            var OppositionSchoolAbjuration = Resources.GetBlueprint<BlueprintFeature>("7f8c1b838ff2d2e4f971b42ccdfa0bfd");
-            var OppositionSchoolConjuration = Resources.GetBlueprint<BlueprintFeature>("ca4a0d68c0408d74bb83ade784ebeb0d");
-            var OppositionSchoolDivination = Resources.GetBlueprint<BlueprintFeature>("09595544116fe5349953f939aeba7611");
-            var OppositionSchoolEnchantment = Resources.GetBlueprint<BlueprintFeature>("875fff6feb84f5240bf4375cb497e395");
-            var OppositionSchoolEvocation = Resources.GetBlueprint<BlueprintFeature>("c3724cfbe98875f4a9f6d1aabd4011a6");
-            var OppositionSchoolIllusion = Resources.GetBlueprint<BlueprintFeature>("6750ead44c0c034428c6509c68110375");
-            var OppositionSchoolNecromancy = Resources.GetBlueprint<BlueprintFeature>("a9bb3dcb2e8d44a49ac36c393c114bd9");
-            var OppositionSchoolTransmutation = Resources.GetBlueprint<BlueprintFeature>("fc519612a3c604446888bb345bca5234");
+            var OppositionSchoolAbjuration = BlueprintTools.GetBlueprint<BlueprintFeature>("7f8c1b838ff2d2e4f971b42ccdfa0bfd");
+            var OppositionSchoolConjuration = BlueprintTools.GetBlueprint<BlueprintFeature>("ca4a0d68c0408d74bb83ade784ebeb0d");
+            var OppositionSchoolDivination = BlueprintTools.GetBlueprint<BlueprintFeature>("09595544116fe5349953f939aeba7611");
+            var OppositionSchoolEnchantment = BlueprintTools.GetBlueprint<BlueprintFeature>("875fff6feb84f5240bf4375cb497e395");
+            var OppositionSchoolEvocation = BlueprintTools.GetBlueprint<BlueprintFeature>("c3724cfbe98875f4a9f6d1aabd4011a6");
+            var OppositionSchoolIllusion = BlueprintTools.GetBlueprint<BlueprintFeature>("6750ead44c0c034428c6509c68110375");
+            var OppositionSchoolNecromancy = BlueprintTools.GetBlueprint<BlueprintFeature>("a9bb3dcb2e8d44a49ac36c393c114bd9");
+            var OppositionSchoolTransmutation = BlueprintTools.GetBlueprint<BlueprintFeature>("fc519612a3c604446888bb345bca5234");
 
             var OppositionResearchSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "OppositionResearchSelection", bp => {
                 bp.SetName("Opposition Research");
@@ -32,7 +32,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
                 bp.Group = FeatureGroup.Feat;
                 bp.Group2 = FeatureGroup.WizardFeat;
                 bp.AddPrerequisite<PrerequisiteNoFeature>(p => {
-                    p.m_Feature = Resources.GetModBlueprintReference<BlueprintFeatureReference>(modContext: TTTContext, "HarmoniousMageFeature");
+                    p.m_Feature = BlueprintTools.GetModBlueprintReference<BlueprintFeatureReference>(modContext: TTTContext, "HarmoniousMageFeature");
                     p.Group = Prerequisite.GroupType.All;
                 });
                 bp.AddPrerequisite<PrerequisiteClassLevel>(p => {

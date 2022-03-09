@@ -7,7 +7,7 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class PrecisionCritical {
         public static void AddPrecisionCritical() {
-            var ImpromptuSneakAttackFeature = Resources.GetBlueprint<BlueprintFeature>("8ec618121de114845981933a3d5c4b02");
+            var ImpromptuSneakAttackFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("8ec618121de114845981933a3d5c4b02");
 
             var PrecisionCritical = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "PrecisionCritical", bp => {
                 bp.IsClassFeature = true;

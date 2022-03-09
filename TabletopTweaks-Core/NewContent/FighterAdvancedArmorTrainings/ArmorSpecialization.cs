@@ -15,9 +15,9 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
     class ArmorSpecialization {
         public static void AddArmorSpecialization() {
-            var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
-            var FighterArmorTrainingProperty = Resources.GetModBlueprintReference<BlueprintUnitPropertyReference>(modContext: TTTContext, "FighterArmorTrainingProperty");
-            var ArmorFocusLight = Resources.GetBlueprint<BlueprintFeature>("3bc6e1d2b44b5bb4d92e6ba59577cf62");
+            var FighterClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+            var FighterArmorTrainingProperty = BlueprintTools.GetModBlueprintReference<BlueprintUnitPropertyReference>(modContext: TTTContext, "FighterArmorTrainingProperty");
+            var ArmorFocusLight = BlueprintTools.GetBlueprint<BlueprintFeature>("3bc6e1d2b44b5bb4d92e6ba59577cf62");
 
             var ArmorSpecializationSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "ArmorSpecializationSelection", bp => {
                 bp.SetName("Armor Specialization");

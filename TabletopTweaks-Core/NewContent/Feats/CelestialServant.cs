@@ -9,8 +9,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class CelestialServant {
         public static void AddCelestialServant() {
-            var TemplateCelestial = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TemplateCelestial");
-            var AasimarRace = Resources.GetBlueprint<BlueprintRace>("b7f02ba92b363064fb873963bec275ee");
+            var TemplateCelestial = BlueprintTools.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TemplateCelestial");
+            var AasimarRace = BlueprintTools.GetBlueprint<BlueprintRace>("b7f02ba92b363064fb873963bec275ee");
 
             var CelestialServant = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "CelestialServant", bp => {
                 bp.SetName("Celestial Servant");

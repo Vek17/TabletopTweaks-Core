@@ -24,10 +24,10 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     class MountedManiac {
         public static void AddMountedManiac() {
-            var MythicAbilitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("ba0e5a900b775be4a99702f1ed08914d");
-            var ExtraMythicAbilityMythicFeat = Resources.GetBlueprint<BlueprintFeatureSelection>("8a6a511c55e67d04db328cc49aaad2b8");
-            var MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
-            var DazzlingDisplayAction = Resources.GetBlueprint<BlueprintAbility>("5f3126d4120b2b244a95cb2ec23d69fb");
+            var MythicAbilitySelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("ba0e5a900b775be4a99702f1ed08914d");
+            var ExtraMythicAbilityMythicFeat = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("8a6a511c55e67d04db328cc49aaad2b8");
+            var MountedBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
+            var DazzlingDisplayAction = BlueprintTools.GetBlueprint<BlueprintAbility>("5f3126d4120b2b244a95cb2ec23d69fb");
             var icon = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_MountedManiac.png");
 
             var MountedManiacDCBuff = Helpers.CreateBuff(modContext: TTTContext, "MountedManiacDCBuff", bp => {

@@ -10,9 +10,9 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicFeats {
     static class MythicCombatExpertise {
         public static void AddMythicCombatExpertise() {
-            var CombatExpertiseFeature = Resources.GetBlueprint<BlueprintFeature>("4c44724ffa8844f4d9bedb5bb27d144a");
-            var CombatExpertiseBuff = Resources.GetBlueprintReference<BlueprintUnitFactReference>("e81cd772a7311554090e413ea28ceea1");
-            var StalwartBuff = Resources.GetModBlueprintReference<BlueprintUnitFactReference>(modContext: TTTContext, "StalwartBuff");
+            var CombatExpertiseFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("4c44724ffa8844f4d9bedb5bb27d144a");
+            var CombatExpertiseBuff = BlueprintTools.GetBlueprintReference<BlueprintUnitFactReference>("e81cd772a7311554090e413ea28ceea1");
+            var StalwartBuff = BlueprintTools.GetModBlueprintReference<BlueprintUnitFactReference>(modContext: TTTContext, "StalwartBuff");
 
             var CombatExpertiseMythicFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "CombatExpertiseMythicFeature", bp => {
                 bp.m_Icon = CombatExpertiseFeature.m_Icon;

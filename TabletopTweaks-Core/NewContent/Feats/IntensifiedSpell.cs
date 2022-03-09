@@ -24,7 +24,7 @@ using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class IntensifiedSpell {
         public static void AddIntensifiedSpell() {
-            var FavoriteMetamagicSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
+            var FavoriteMetamagicSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
             var Icon_IntensifiedSpellFeat = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_IntensifiedSpellFeat.png");
             var Icon_IntensifiedSpellMetamagic = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Metamagic", file: "Icon_IntensifiedSpellMetamagic.png", size: 128);
             var Icon_MetamagicRodIntensifiedLesser = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodIntensifiedLesser.png", size: 64);
@@ -119,27 +119,27 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             }
         }
         private static void AddRodsToVenders() {
-            var WarCamp_REVendorTableMagic = Resources.GetBlueprint<BlueprintSharedVendorTable>("f02cf582e915ae343aa489f11dba42aa");
-            var RE_Chapter3VendorTableMagic = Resources.GetBlueprint<BlueprintSharedVendorTable>("e8e384f0e411fab42a69f16991cac161");
-            var RE_Chapter5VendorTableMagic = Resources.GetBlueprint<BlueprintSharedVendorTable>("e1d21a0e6c9177d42a1b0fac1d6f8b21");
+            var WarCamp_REVendorTableMagic = BlueprintTools.GetBlueprint<BlueprintSharedVendorTable>("f02cf582e915ae343aa489f11dba42aa");
+            var RE_Chapter3VendorTableMagic = BlueprintTools.GetBlueprint<BlueprintSharedVendorTable>("e8e384f0e411fab42a69f16991cac161");
+            var RE_Chapter5VendorTableMagic = BlueprintTools.GetBlueprint<BlueprintSharedVendorTable>("e1d21a0e6c9177d42a1b0fac1d6f8b21");
 
             WarCamp_REVendorTableMagic.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodLesserIntensified"),
+                    m_Item = BlueprintTools.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodLesserIntensified"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;
             });
             RE_Chapter3VendorTableMagic.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodNormalIntensified"),
+                    m_Item = BlueprintTools.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodNormalIntensified"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;
             });
             RE_Chapter5VendorTableMagic.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodGreaterIntensified"),
+                    m_Item = BlueprintTools.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodGreaterIntensified"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;

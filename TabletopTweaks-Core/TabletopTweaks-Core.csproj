@@ -533,7 +533,7 @@
     <Compile Include="NewUnitParts\UnitPartPseudoActivatableAbilities.cs" />
     <Compile Include="NewUnitParts\UnitPartSpellSpecialization.cs" />
     <Compile Include="NewUnitParts\UnitPartWarriorSpirit.cs" />
-    <Compile Include="Utilities\Resources.cs" />
+    <Compile Include="Utilities\BlueprintTools.cs" />
     <Compile Include="SaveGamePatch.cs" />
     <Compile Include="UMMSettingsUI.cs" />
     <Compile Include="SaveUpgrades\TabletopTweaksMigration.cs" />

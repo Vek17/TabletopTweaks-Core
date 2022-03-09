@@ -11,8 +11,8 @@ namespace TabletopTweaks.Core.NewContent.MagusArcana {
     static class SpellBlending {
 
         public static void AddSpellBlending() {
-            var MagusClass = Resources.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
-            var MagusArcanaSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("e9dc4dfc73eaaf94aae27e0ed6cc9ada");
+            var MagusClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
+            var MagusArcanaSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("e9dc4dfc73eaaf94aae27e0ed6cc9ada");
 
             var SpellBlendingSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "SpellBlendingSelection", bp => {
                 bp.SetName("Spell Blending");

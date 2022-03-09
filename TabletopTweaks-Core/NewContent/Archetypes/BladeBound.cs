@@ -43,33 +43,33 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
     static class BladeBound {
         public static void AddBlackBlade() {
             //var MagusClass = Resources.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
-            var MagusClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("45a4607686d96a1498891b3286121780");
-            var BladeBoundArchetype = Resources.GetModBlueprintReference<BlueprintArchetypeReference>(modContext: TTTContext, "BladeBoundArchetype");
-            var ArcanistClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("52dbfd8505e22f84fad8d702611f60b7");
-            var BladeAdeptArchetype = Resources.GetModBlueprintReference<BlueprintArchetypeReference>(modContext: TTTContext, "BladeAdeptArchetype");
+            var MagusClass = BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("45a4607686d96a1498891b3286121780");
+            var BladeBoundArchetype = BlueprintTools.GetModBlueprintReference<BlueprintArchetypeReference>(modContext: TTTContext, "BladeBoundArchetype");
+            var ArcanistClass = BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("52dbfd8505e22f84fad8d702611f60b7");
+            var BladeAdeptArchetype = BlueprintTools.GetModBlueprintReference<BlueprintArchetypeReference>(modContext: TTTContext, "BladeAdeptArchetype");
 
-            var ArcanePoolFeature = Resources.GetBlueprint<BlueprintFeature>("3ce9bb90749c21249adc639031d5eed1");
-            var ArcanePoolResourse = Resources.GetBlueprint<BlueprintAbilityResource>("effc3e386331f864e9e06d19dc218b37");
-            var ArcanistArcaneReservoirResource = Resources.GetBlueprint<BlueprintAbilityResource>("cac948cbbe79b55459459dd6a8fe44ce");
-            var Alertness = Resources.GetBlueprint<BlueprintFeature>("1c04fe9a13a22bc499ffac03e6f79153");
-            var Unholy = Resources.GetBlueprint<BlueprintWeaponEnchantment>("d05753b8df780fc4bb55b318f06af453");
-            var SpellResistanceBuff = Resources.GetBlueprint<BlueprintBuff>("50a77710a7c4914499d0254e76a808e5");
-            var Fatigued = Resources.GetBlueprint<BlueprintBuff>("e6f2fc5d73d88064583cb828801212f4");
-            var Exhausted = Resources.GetBlueprint<BlueprintBuff>("46d1b9cc3d0fd36469a471b047d773a2");
+            var ArcanePoolFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("3ce9bb90749c21249adc639031d5eed1");
+            var ArcanePoolResourse = BlueprintTools.GetBlueprint<BlueprintAbilityResource>("effc3e386331f864e9e06d19dc218b37");
+            var ArcanistArcaneReservoirResource = BlueprintTools.GetBlueprint<BlueprintAbilityResource>("cac948cbbe79b55459459dd6a8fe44ce");
+            var Alertness = BlueprintTools.GetBlueprint<BlueprintFeature>("1c04fe9a13a22bc499ffac03e6f79153");
+            var Unholy = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("d05753b8df780fc4bb55b318f06af453");
+            var SpellResistanceBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("50a77710a7c4914499d0254e76a808e5");
+            var Fatigued = BlueprintTools.GetBlueprint<BlueprintBuff>("e6f2fc5d73d88064583cb828801212f4");
+            var Exhausted = BlueprintTools.GetBlueprint<BlueprintBuff>("46d1b9cc3d0fd36469a471b047d773a2");
 
-            var BastardSwordPlus5 = Resources.GetBlueprint<BlueprintItemWeapon>("91a4b3f6b4b53ae4fb3095cba86a38ca");
-            var BattleAxPlus5 = Resources.GetBlueprint<BlueprintItemWeapon>("bf20773f9c880144d989e4a6f41071c7");
-            var DuelingSwordPlus5 = Resources.GetBlueprint<BlueprintItemWeapon>("c23265c7960b5c144a200eafda0e7cf1");
-            var DwarvenWarAx = Resources.GetBlueprint<BlueprintItemWeapon>("c3b25150bbf1bea42887176bbe2306b2");
-            var FalcataPlus5 = Resources.GetBlueprint<BlueprintItemWeapon>("3e14db6284db73d40b4a4b99943e2018");
-            var HandAxePlus5 = Resources.GetBlueprint<BlueprintItemWeapon>("506a2d43fbbbe7041ad57f05900478db");
-            var KamaPlus5 = Resources.GetBlueprint<BlueprintItemWeapon>("5b8394d717f0789418146692d561cd36");
-            var kukriPlus5 = Resources.GetBlueprint<BlueprintItemWeapon>("86cae2531ed5df641aa57e5fb24a88c0");
-            var LongSwordPlus5 = Resources.GetBlueprint<BlueprintItemWeapon>("7453fb8aa1cd7f3428a14eeadc2022d7");
-            var RapierPlus5 = Resources.GetBlueprint<BlueprintItemWeapon>("0e2b2a13f286c10499921633a557388c");
-            var ScimitarPlus5 = Resources.GetBlueprint<BlueprintItemWeapon>("af2a9b2b3a6905f49a44e4676a39cea8");
-            var ShortSwordPlus5 = Resources.GetBlueprint<BlueprintItemWeapon>("b5f6e218fb193a24cb00bdec435732ff");
-            var SicklePlus5 = Resources.GetBlueprint<BlueprintItemWeapon>("5733378292a9fd547aeb7eccb7e79c60");
+            var BastardSwordPlus5 = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("91a4b3f6b4b53ae4fb3095cba86a38ca");
+            var BattleAxPlus5 = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("bf20773f9c880144d989e4a6f41071c7");
+            var DuelingSwordPlus5 = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("c23265c7960b5c144a200eafda0e7cf1");
+            var DwarvenWarAx = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("c3b25150bbf1bea42887176bbe2306b2");
+            var FalcataPlus5 = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("3e14db6284db73d40b4a4b99943e2018");
+            var HandAxePlus5 = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("506a2d43fbbbe7041ad57f05900478db");
+            var KamaPlus5 = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("5b8394d717f0789418146692d561cd36");
+            var kukriPlus5 = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("86cae2531ed5df641aa57e5fb24a88c0");
+            var LongSwordPlus5 = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("7453fb8aa1cd7f3428a14eeadc2022d7");
+            var RapierPlus5 = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("0e2b2a13f286c10499921633a557388c");
+            var ScimitarPlus5 = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("af2a9b2b3a6905f49a44e4676a39cea8");
+            var ShortSwordPlus5 = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("b5f6e218fb193a24cb00bdec435732ff");
+            var SicklePlus5 = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("5733378292a9fd547aeb7eccb7e79c60");
 
             var Icon_BlackBlade = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade.png");
             var Icon_BlackBlade_BlackBladeStrike = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_BlackBlade_BlackBladeStrike.png");
@@ -1164,11 +1164,11 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
             };
         }
         public static void AddBladeBound() {
-            var MagusClass = Resources.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
-            var MagusArcanaSelection = Resources.GetBlueprint<BlueprintFeature>("e9dc4dfc73eaaf94aae27e0ed6cc9ada");
-            var ArcanePoolFeature = Resources.GetBlueprint<BlueprintFeature>("3ce9bb90749c21249adc639031d5eed1");
-            var ArcanePoolResourse = Resources.GetBlueprint<BlueprintAbilityResource>("effc3e386331f864e9e06d19dc218b37");
-            var BlackBladeProgression = Resources.GetModBlueprint<BlueprintProgression>(modContext: TTTContext, "BlackBladeProgression");
+            var MagusClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
+            var MagusArcanaSelection = BlueprintTools.GetBlueprint<BlueprintFeature>("e9dc4dfc73eaaf94aae27e0ed6cc9ada");
+            var ArcanePoolFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("3ce9bb90749c21249adc639031d5eed1");
+            var ArcanePoolResourse = BlueprintTools.GetBlueprint<BlueprintAbilityResource>("effc3e386331f864e9e06d19dc218b37");
+            var BlackBladeProgression = BlueprintTools.GetModBlueprint<BlueprintProgression>(modContext: TTTContext, "BlackBladeProgression");
 
             var BladeBoundArchetype = Helpers.CreateBlueprint<BlueprintArchetype>(modContext: TTTContext, "BladeBoundArchetype", bp => {
                 bp.SetName("Bladebound");

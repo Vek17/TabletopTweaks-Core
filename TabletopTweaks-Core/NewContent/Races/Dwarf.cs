@@ -14,20 +14,20 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Races {
     static class Dwarf {
 
-        private static readonly BlueprintRace DwarfRace = Resources.GetBlueprint<BlueprintRace>("c4faf439f0e70bd40b5e36ee80d06be7");
-        private static readonly BlueprintFeatureSelection DwarfHeritageSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("fd6e1f53589049cbbbc6a8e058d83b74");
-        private static readonly BlueprintFeature DwarvenWeaponFamiliarity = Resources.GetBlueprint<BlueprintFeature>("a1619e8d27fe97c40ba443f6f8ab1763");
-        private static readonly BlueprintFeature KeenSenses = Resources.GetBlueprint<BlueprintFeature>("9c747d24f6321f744aa1bb4bd343880d");
-        private static readonly BlueprintFeature HatredGoblinoidOrc = Resources.GetBlueprint<BlueprintFeature>("6cde66a7da5a2024c906d887db735223");
-        private static readonly BlueprintFeature DwarfDefensiveTrainingGiants = Resources.GetBlueprint<BlueprintFeature>("f268a00e42618144e86c9db76af7f3e9");
-        private static readonly BlueprintFeature Hardy = Resources.GetBlueprint<BlueprintFeature>("f75d3b6110f04d1409564b9d7647db60");
-        private static readonly BlueprintFeature Stability = Resources.GetBlueprint<BlueprintFeature>("2f254c6068d58b643b8de2fc7ec32dbb");
-        private static readonly BlueprintFeature SlowAndSteady = Resources.GetBlueprint<BlueprintFeature>("786588ad1694e61498e77321d4b07157");
+        private static readonly BlueprintRace DwarfRace = BlueprintTools.GetBlueprint<BlueprintRace>("c4faf439f0e70bd40b5e36ee80d06be7");
+        private static readonly BlueprintFeatureSelection DwarfHeritageSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("fd6e1f53589049cbbbc6a8e058d83b74");
+        private static readonly BlueprintFeature DwarvenWeaponFamiliarity = BlueprintTools.GetBlueprint<BlueprintFeature>("a1619e8d27fe97c40ba443f6f8ab1763");
+        private static readonly BlueprintFeature KeenSenses = BlueprintTools.GetBlueprint<BlueprintFeature>("9c747d24f6321f744aa1bb4bd343880d");
+        private static readonly BlueprintFeature HatredGoblinoidOrc = BlueprintTools.GetBlueprint<BlueprintFeature>("6cde66a7da5a2024c906d887db735223");
+        private static readonly BlueprintFeature DwarfDefensiveTrainingGiants = BlueprintTools.GetBlueprint<BlueprintFeature>("f268a00e42618144e86c9db76af7f3e9");
+        private static readonly BlueprintFeature Hardy = BlueprintTools.GetBlueprint<BlueprintFeature>("f75d3b6110f04d1409564b9d7647db60");
+        private static readonly BlueprintFeature Stability = BlueprintTools.GetBlueprint<BlueprintFeature>("2f254c6068d58b643b8de2fc7ec32dbb");
+        private static readonly BlueprintFeature SlowAndSteady = BlueprintTools.GetBlueprint<BlueprintFeature>("786588ad1694e61498e77321d4b07157");
 
-        private static readonly BlueprintFeature BarrowDwarf = Resources.GetBlueprint<BlueprintFeature>("8a1a0f9f397144ce9445efe86b7af722");
-        private static readonly BlueprintFeature UnstoppableDwarf = Resources.GetBlueprint<BlueprintFeature>("109dca82e31a4b1093c501f8914ca1a8");
+        private static readonly BlueprintFeature BarrowDwarf = BlueprintTools.GetBlueprint<BlueprintFeature>("8a1a0f9f397144ce9445efe86b7af722");
+        private static readonly BlueprintFeature UnstoppableDwarf = BlueprintTools.GetBlueprint<BlueprintFeature>("109dca82e31a4b1093c501f8914ca1a8");
 
-        private static readonly BlueprintFeature DestinyBeyondBirthMythicFeat = Resources.GetBlueprint<BlueprintFeature>("325f078c584318849bfe3da9ea245b9d");
+        private static readonly BlueprintFeature DestinyBeyondBirthMythicFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("325f078c584318849bfe3da9ea245b9d");
 
         public static void AddDwarfHeritage() {
 

@@ -25,9 +25,9 @@ namespace TabletopTweaks.Core.Bugfixes.Units {
         static void PatchBalors() {
             if (TTTContext.Fixes.Units.Enemies.IsDisabled("Balors")) { return; }
 
-            var BalorVorpalStrikeFeature = Resources.GetBlueprint<BlueprintFeature>("acc4a16c4088f2546b4237dcbb774f14");
-            var BalorVorpalStrikeBuff = Resources.GetBlueprint<BlueprintBuff>("5220bc4386bf3e147b1beb93b0b8b5e7");
-            var Vorpal = Resources.GetBlueprintReference<BlueprintItemEnchantmentReference>("2f60bfcba52e48a479e4a69868e24ebc");
+            var BalorVorpalStrikeFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("acc4a16c4088f2546b4237dcbb774f14");
+            var BalorVorpalStrikeBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("5220bc4386bf3e147b1beb93b0b8b5e7");
+            var Vorpal = BlueprintTools.GetBlueprintReference<BlueprintItemEnchantmentReference>("2f60bfcba52e48a479e4a69868e24ebc");
 
             BalorVorpalStrikeBuff.SetComponents();
             BalorVorpalStrikeBuff.AddComponent<BuffEnchantWornItem>(c => {

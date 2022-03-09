@@ -13,7 +13,7 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicFeats {
     static class MythicWarriorPriest {
         public static void AddMythicWarriorPriest() {
-            var WarriorPriest = Resources.GetBlueprint<BlueprintFeature>("b9bee4e4e15573546b76a8d942ce914b");
+            var WarriorPriest = BlueprintTools.GetBlueprint<BlueprintFeature>("b9bee4e4e15573546b76a8d942ce914b");
             var WarriorPriestMythicFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "WarriorPriestMythicFeature", bp => {
                 bp.m_Icon = WarriorPriest.m_Icon;
                 bp.SetName("Warrior Priest (Mythic)");

@@ -26,21 +26,21 @@ using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Archetypes {
     static class MetamagicRager {
-        private static readonly BlueprintCharacterClass BloodragerClass = Resources.GetBlueprint<BlueprintCharacterClass>("d77e67a814d686842802c9cfd8ef8499");
-        private static readonly BlueprintSpellbook BloodragerSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("e19484252c2f80e4a9439b3681b20f00");
-        private static readonly BlueprintAbilityResource BloodragerRageResource = Resources.GetBlueprint<BlueprintAbilityResource>("4aec9ec9d9cd5e24a95da90e56c72e37");
-        private static readonly BlueprintFeature ImprovedUncannyDodge = Resources.GetBlueprint<BlueprintFeature>("485a18c05792521459c7d06c63128c79");
+        private static readonly BlueprintCharacterClass BloodragerClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("d77e67a814d686842802c9cfd8ef8499");
+        private static readonly BlueprintSpellbook BloodragerSpellbook = BlueprintTools.GetBlueprint<BlueprintSpellbook>("e19484252c2f80e4a9439b3681b20f00");
+        private static readonly BlueprintAbilityResource BloodragerRageResource = BlueprintTools.GetBlueprint<BlueprintAbilityResource>("4aec9ec9d9cd5e24a95da90e56c72e37");
+        private static readonly BlueprintFeature ImprovedUncannyDodge = BlueprintTools.GetBlueprint<BlueprintFeature>("485a18c05792521459c7d06c63128c79");
 
-        private static readonly BlueprintFeature EmpowerSpellFeat = Resources.GetBlueprint<BlueprintFeature>("a1de1e4f92195b442adb946f0e2b9d4e");
-        private static readonly BlueprintFeature ExtendSpellFeat = Resources.GetBlueprint<BlueprintFeature>("f180e72e4a9cbaa4da8be9bc958132ef");
-        private static readonly BlueprintFeature HeightenSpellFeat = Resources.GetBlueprint<BlueprintFeature>("2f5d1e705c7967546b72ad8218ccf99c");
-        private static readonly BlueprintFeature MaximizeSpellFeat = Resources.GetBlueprint<BlueprintFeature>("7f2b282626862e345935bbea5e66424b");
-        private static readonly BlueprintFeature PersistentSpellFeat = Resources.GetBlueprint<BlueprintFeature>("cd26b9fa3f734461a0fcedc81cafaaac");
-        private static readonly BlueprintFeature QuickenSpellFeat = Resources.GetBlueprint<BlueprintFeature>("ef7ece7bb5bb66a41b256976b27f424e");
-        private static readonly BlueprintFeature ReachSpellFeat = Resources.GetBlueprint<BlueprintFeature>("46fad72f54a33dc4692d3b62eca7bb78");
-        private static readonly BlueprintFeature SelectiveSpellFeat = Resources.GetBlueprint<BlueprintFeature>("85f3340093d144dd944fff9a9adfd2f2");
-        private static readonly BlueprintFeature BolsteredSpellFeat = Resources.GetBlueprint<BlueprintFeature>("fbf5d9ce931f47f3a0c818b3f8ef8414");
-        private static readonly BlueprintFeature CompletelyNormalSpellFeat = Resources.GetBlueprint<BlueprintFeature>("094b6278f7b570f42aeaa98379f07cf2");
+        private static readonly BlueprintFeature EmpowerSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("a1de1e4f92195b442adb946f0e2b9d4e");
+        private static readonly BlueprintFeature ExtendSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("f180e72e4a9cbaa4da8be9bc958132ef");
+        private static readonly BlueprintFeature HeightenSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("2f5d1e705c7967546b72ad8218ccf99c");
+        private static readonly BlueprintFeature MaximizeSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("7f2b282626862e345935bbea5e66424b");
+        private static readonly BlueprintFeature PersistentSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("cd26b9fa3f734461a0fcedc81cafaaac");
+        private static readonly BlueprintFeature QuickenSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("ef7ece7bb5bb66a41b256976b27f424e");
+        private static readonly BlueprintFeature ReachSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("46fad72f54a33dc4692d3b62eca7bb78");
+        private static readonly BlueprintFeature SelectiveSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("85f3340093d144dd944fff9a9adfd2f2");
+        private static readonly BlueprintFeature BolsteredSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("fbf5d9ce931f47f3a0c818b3f8ef8414");
+        private static readonly BlueprintFeature CompletelyNormalSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("094b6278f7b570f42aeaa98379f07cf2");
 
         public static void AddMetamagicRager() {
 

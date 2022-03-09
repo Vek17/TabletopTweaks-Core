@@ -15,13 +15,13 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Feats {
     class ErastilsBlessing {
         public static void AddErastilsBlessing() {
-            var ErastilFeature = Resources.GetBlueprint<BlueprintFeature>("afc775188deb7a44aa4cbde03512c671");
-            var WeaponFocus = Resources.GetBlueprint<BlueprintFeature>("1e1f627d26ad36f43bbd26cc2bf8ac7e");
-            var ZenArcherZenArcheryFeature = Resources.GetBlueprint<BlueprintFeature>("379c0da9f384e7547a70c259445377f5");
-            var CompositeLongbow = Resources.GetBlueprint<BlueprintWeaponType>("1ac79088a7e5dde46966636a3ac71c35");
-            var CompositeShortbow = Resources.GetBlueprint<BlueprintWeaponType>("011f6f86a0b16df4bbf7f40878c3e80b");
-            var Longbow = Resources.GetBlueprint<BlueprintWeaponType>("7a1211c05ec2c46428f41e3c0db9423f");
-            var Shortbow = Resources.GetBlueprint<BlueprintWeaponType>("99ce02fb54639b5439d07c99c55b8542");
+            var ErastilFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("afc775188deb7a44aa4cbde03512c671");
+            var WeaponFocus = BlueprintTools.GetBlueprint<BlueprintFeature>("1e1f627d26ad36f43bbd26cc2bf8ac7e");
+            var ZenArcherZenArcheryFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("379c0da9f384e7547a70c259445377f5");
+            var CompositeLongbow = BlueprintTools.GetBlueprint<BlueprintWeaponType>("1ac79088a7e5dde46966636a3ac71c35");
+            var CompositeShortbow = BlueprintTools.GetBlueprint<BlueprintWeaponType>("011f6f86a0b16df4bbf7f40878c3e80b");
+            var Longbow = BlueprintTools.GetBlueprint<BlueprintWeaponType>("7a1211c05ec2c46428f41e3c0db9423f");
+            var Shortbow = BlueprintTools.GetBlueprint<BlueprintWeaponType>("99ce02fb54639b5439d07c99c55b8542");
 
             var ErastilsBlessingFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ErastilsBlessingFeature", bp => {
                 bp.SetName("Erastil's Blessing");

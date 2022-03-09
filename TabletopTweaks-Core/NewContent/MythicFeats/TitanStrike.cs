@@ -7,7 +7,7 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicFeats {
     static class TitanStrike {
         public static void AddTitanStrike() {
-            var ImprovedUnarmedStrikeMythicFeat = Resources.GetBlueprint<BlueprintFeature>("e086a07dae105244291fb11e05d0715f");
+            var ImprovedUnarmedStrikeMythicFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("e086a07dae105244291fb11e05d0715f");
             var TitanStrikeFeature = Helpers.CreateBlueprint<BlueprintFeature>(TTTContext, "TitanStrikeFeature", bp => {
                 bp.m_Icon = ImprovedUnarmedStrikeMythicFeat.m_Icon;
                 bp.SetName("Titan Strike");

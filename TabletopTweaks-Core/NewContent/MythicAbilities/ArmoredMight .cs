@@ -8,8 +8,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class ArmoredMight {
         public static void AddArmoredMight() {
-            var MythicAbilitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("ba0e5a900b775be4a99702f1ed08914d");
-            var ExtraMythicAbilityMythicFeat = Resources.GetBlueprint<BlueprintFeatureSelection>("8a6a511c55e67d04db328cc49aaad2b8");
+            var MythicAbilitySelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("ba0e5a900b775be4a99702f1ed08914d");
+            var ExtraMythicAbilityMythicFeat = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("8a6a511c55e67d04db328cc49aaad2b8");
             var icon = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_ArmoredMight.png");
 
             var ArmoredMightFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ArmoredMightFeature", bp => {

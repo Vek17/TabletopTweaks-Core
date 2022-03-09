@@ -39,7 +39,7 @@ namespace TabletopTweaks.Core.Utilities {
                 bp.name = name;
                 bp.AssetGuid = Main.TTTContext.Blueprints.GetGUID(name);
             });
-            Resources.AddBlueprint(modContext, result);
+            BlueprintTools.AddBlueprint(modContext, result);
             init?.Invoke(result);
             return result;
         }
@@ -63,7 +63,7 @@ namespace TabletopTweaks.Core.Utilities {
                 bp.name = name;
                 bp.AssetGuid = Main.TTTContext.Blueprints.GetDerivedGUID(name, masterId, original.AssetGuid);
             });
-            Resources.AddBlueprint(modContext, result);
+            BlueprintTools.AddBlueprint(modContext, result);
             init?.Invoke(result);
             return result;
         }

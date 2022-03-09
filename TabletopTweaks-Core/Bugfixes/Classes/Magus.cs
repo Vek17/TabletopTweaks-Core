@@ -38,8 +38,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchSpellCombatDisableImmediatly() {
                     if (TTTContext.Fixes.Magus.Base.IsDisabled("SpellCombatDisableImmediatly")) { return; }
 
-                    var SpellCombatAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("8898a573e8a8a184b8186dbc3a26da74");
-                    var SpellStrikeAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("e958891ef90f7e142a941c06c811181e");
+                    var SpellCombatAbility = BlueprintTools.GetBlueprint<BlueprintActivatableAbility>("8898a573e8a8a184b8186dbc3a26da74");
+                    var SpellStrikeAbility = BlueprintTools.GetBlueprint<BlueprintActivatableAbility>("e958891ef90f7e142a941c06c811181e");
 
                     SpellCombatAbility.DeactivateImmediately = true;
                     SpellStrikeAbility.DeactivateImmediately = true;
@@ -50,10 +50,10 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchArcaneWeaponProperties() {
                     if (TTTContext.Fixes.Magus.Base.IsDisabled("AddMissingArcaneWeaponEffects")) { return; }
 
-                    var ArcaneWeaponFlamingBurstChoice_TTT = Resources.GetModBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "ArcaneWeaponFlamingBurstChoice_TTT");
-                    var ArcaneWeaponIcyBurstChoice_TTT = Resources.GetModBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "ArcaneWeaponIcyBurstChoice_TTT");
-                    var ArcaneWeaponShockingBurstChoice_TTT = Resources.GetModBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "ArcaneWeaponShockingBurstChoice_TTT");
-                    var ArcaneWeaponPlus3 = Resources.GetBlueprint<BlueprintFeature>("70be888059f99a245a79d6d61b90edc5");
+                    var ArcaneWeaponFlamingBurstChoice_TTT = BlueprintTools.GetModBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "ArcaneWeaponFlamingBurstChoice_TTT");
+                    var ArcaneWeaponIcyBurstChoice_TTT = BlueprintTools.GetModBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "ArcaneWeaponIcyBurstChoice_TTT");
+                    var ArcaneWeaponShockingBurstChoice_TTT = BlueprintTools.GetModBlueprint<BlueprintActivatableAbility>(modContext: TTTContext, "ArcaneWeaponShockingBurstChoice_TTT");
+                    var ArcaneWeaponPlus3 = BlueprintTools.GetBlueprint<BlueprintFeature>("70be888059f99a245a79d6d61b90edc5");
 
                     var AddFacts = ArcaneWeaponPlus3.GetComponent<AddFacts>();
                     AddFacts.m_Facts = AddFacts.m_Facts.AppendToArray(
@@ -70,7 +70,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchPerfectCritical() {
                     if (TTTContext.Fixes.Magus.Archetypes["SwordSaint"].IsDisabled("PerfectCritical")) { return; }
 
-                    var SwordSaintPerfectStrikeCritAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("c6559839738a7fc479aadc263ff9ffff");
+                    var SwordSaintPerfectStrikeCritAbility = BlueprintTools.GetBlueprint<BlueprintActivatableAbility>("c6559839738a7fc479aadc263ff9ffff");
 
                     SwordSaintPerfectStrikeCritAbility.SetDescription("At 4th level, when a sword saint confirms a critical hit, " +
                         "he can spend 2 points from his arcane pool to increase his weapon's critical multiplier by 1.");

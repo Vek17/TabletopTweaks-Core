@@ -52,7 +52,7 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                 void PatchBladeOfTheMerciful() {
                     if (Main.TTTContext.Fixes.Items.Weapons.IsDisabled("BladeOfTheMerciful")) { return; }
 
-                    var BladeOfTheMercifulEnchant = Resources.GetBlueprint<BlueprintWeaponEnchantment>("a5e3fe4a71e331e4aa41f9a07cfd3729");
+                    var BladeOfTheMercifulEnchant = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("a5e3fe4a71e331e4aa41f9a07cfd3729");
                     BladeOfTheMercifulEnchant.RemoveComponents<AddInitiatorAttackWithWeaponTrigger>();
                     BladeOfTheMercifulEnchant.AddComponent<WeaponConditionalDamageDice>(c => {
                         c.Damage = new DamageDescription() {
@@ -79,10 +79,10 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                 void PatchHonorableJudgement() {
                     if (Main.TTTContext.Fixes.Items.Weapons.IsDisabled("HonorableJudgement")) { return; }
 
-                    var JudgementOfRuleItem = Resources.GetBlueprint<BlueprintItemWeapon>("f40895a7dfab41c40b42657fc3f5bdfe");
-                    var JudgementOfRuleSecondItem = Resources.GetBlueprint<BlueprintItemWeapon>("ca0e81e14d675c34b862aad509be573d");
-                    var JudgementOfRuleEnchantment = Resources.GetBlueprint<BlueprintWeaponEnchantment>("74a8dc2f9ce6ced4fa211c20fa4def32");
-                    var BaneOutsiderEvil = Resources.GetBlueprint<BlueprintWeaponEnchantment>("20ba9055c6ae1e44ca270c03feacc53b");
+                    var JudgementOfRuleItem = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("f40895a7dfab41c40b42657fc3f5bdfe");
+                    var JudgementOfRuleSecondItem = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("ca0e81e14d675c34b862aad509be573d");
+                    var JudgementOfRuleEnchantment = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("74a8dc2f9ce6ced4fa211c20fa4def32");
+                    var BaneOutsiderEvil = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("20ba9055c6ae1e44ca270c03feacc53b");
                     JudgementOfRuleEnchantment.RemoveComponents<AddInitiatorAttackWithWeaponTrigger>();
                     JudgementOfRuleEnchantment.AddComponent<WeaponConditionalDamageDice>(c => {
                         c.Damage = new DamageDescription() {
@@ -112,9 +112,9 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                 void PatchFinnean() {
                     if (Main.TTTContext.Fixes.Items.Weapons.IsDisabled("Finnean")) { return; }
 
-                    var FinneanChapter3Enchantment = Resources.GetBlueprint<BlueprintWeaponEnchantment>("b183bd491793d194c9e4c96cd11769b1");
-                    var FinneanChapter5EnchantmentBase = Resources.GetBlueprint<BlueprintWeaponEnchantment>("6b66e949f348ccd4989a5fd9254f8958");
-                    var FinneanChapter5EnchantmentLich = Resources.GetBlueprint<BlueprintWeaponEnchantment>("9aa9af4b654662945a410644d3db8d99");
+                    var FinneanChapter3Enchantment = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("b183bd491793d194c9e4c96cd11769b1");
+                    var FinneanChapter5EnchantmentBase = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("6b66e949f348ccd4989a5fd9254f8958");
+                    var FinneanChapter5EnchantmentLich = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("9aa9af4b654662945a410644d3db8d99");
 
                     FinneanChapter3Enchantment.RemoveComponents<AdditionalDiceOnAttack>();
                     FinneanChapter3Enchantment.AddComponent<WeaponExtraDamageDice>(c => {
@@ -129,10 +129,10 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                 void PatchTerribleTremble() {
                     if (Main.TTTContext.Fixes.Items.Weapons.IsDisabled("TerrifyingTremble")) { return; }
 
-                    var TerrifyingTrembleItem = Resources.GetBlueprint<BlueprintItemWeapon>("8c31891423c4405393741e829aebec85");
-                    var Enhancement5 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("bdba267e951851449af552aa9f9e3992");
-                    var Ultrasound = Resources.GetBlueprint<BlueprintWeaponEnchantment>("582849db96824254ebcc68f0b7484e51");
-                    var TerrifyingTrembleEnchant_TTT = Resources.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TerrifyingTrembleEnchant_TTT");
+                    var TerrifyingTrembleItem = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("8c31891423c4405393741e829aebec85");
+                    var Enhancement5 = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("bdba267e951851449af552aa9f9e3992");
+                    var Ultrasound = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("582849db96824254ebcc68f0b7484e51");
+                    var TerrifyingTrembleEnchant_TTT = BlueprintTools.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TerrifyingTrembleEnchant_TTT");
 
                     TerrifyingTrembleItem.SetDescription("Whenever the wielder of this +5 ultrasound earthbreaker lands a killing blow, he deals sonic damage equal to his ranks in " +
                         "the Athletics skill to all enemies within 10 feet. Successful Reflex save (DC 30) halves the damage.");
@@ -148,7 +148,7 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                 void PatchRadiance() {
                     if (Main.TTTContext.Fixes.Items.Weapons.IsDisabled("Radiance")) { return; }
 
-                    var RadianceEffectBuff = Resources.GetBlueprint<BlueprintBuff>("0c03ba5e0c3fd304eb0a221e83f4ce1d");
+                    var RadianceEffectBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("0c03ba5e0c3fd304eb0a221e83f4ce1d");
                     RadianceEffectBuff.RemoveComponents<SpellPenetrationBonus>();
                     RadianceEffectBuff.AddComponent<AddSpellResistance>(c => {
                         c.Value = new ContextValue() {
@@ -161,7 +161,7 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                 void PatchThunderingBurst() {
                     if (Main.TTTContext.Fixes.Items.Weapons.IsDisabled("ThunderingBurst")) { return; }
 
-                    var ThunderingBurst = Resources.GetBlueprint<BlueprintWeaponEnchantment>("83bd616525288b34a8f34976b2759ea1");
+                    var ThunderingBurst = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("83bd616525288b34a8f34976b2759ea1");
                     ThunderingBurst.GetComponent<WeaponEnergyBurst>().Dice = DiceType.D10;
 
                     TTTContext.Logger.LogPatch("Patched", ThunderingBurst);
@@ -169,8 +169,8 @@ namespace TabletopTweaks.Core.Bugfixes.Items {
                 void PatchVorpal() {
                     if (Main.TTTContext.Fixes.Items.Weapons.IsDisabled("Vorpal")) { return; }
 
-                    var Vorpal = Resources.GetBlueprint<BlueprintWeaponEnchantment>("2f60bfcba52e48a479e4a69868e24ebc");
-                    var VorpalBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("4c02715a54a497a408a93a5d80e91a24");
+                    var Vorpal = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("2f60bfcba52e48a479e4a69868e24ebc");
+                    var VorpalBuff = BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("4c02715a54a497a408a93a5d80e91a24");
                     Vorpal.SetComponents();
                     Vorpal.AddComponent<WeaponBuffOnConfirmedCritTTT>(c => {
                         c.m_Buff = VorpalBuff;

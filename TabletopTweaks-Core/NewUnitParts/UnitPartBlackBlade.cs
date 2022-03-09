@@ -9,6 +9,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Newtonsoft.Json;
 using System.Linq;
+using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewUnitParts {
@@ -85,13 +86,13 @@ namespace TabletopTweaks.Core.NewUnitParts {
         [JsonProperty]
         private string EnhancementBonus;
 
-        private static readonly BlueprintUnitProperty ProgressionProperty = Resources.GetModBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "BlackBladeProgressionProperty");
+        private static readonly BlueprintUnitProperty ProgressionProperty = BlueprintTools.GetModBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "BlackBladeProgressionProperty");
         private static readonly BlueprintWeaponEnchantment[] Enhancements = new BlueprintWeaponEnchantment[] {
-            Resources.GetBlueprint<BlueprintWeaponEnchantment>("d42fc23b92c640846ac137dc26e000d4"), //+1
-            Resources.GetBlueprint<BlueprintWeaponEnchantment>("eb2faccc4c9487d43b3575d7e77ff3f5"), //+2
-            Resources.GetBlueprint<BlueprintWeaponEnchantment>("80bb8a737579e35498177e1e3c75899b"), //+3
-            Resources.GetBlueprint<BlueprintWeaponEnchantment>("783d7d496da6ac44f9511011fc5f1979"), //+4
-            Resources.GetBlueprint<BlueprintWeaponEnchantment>("bdba267e951851449af552aa9f9e3992")  //+5
+            BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("d42fc23b92c640846ac137dc26e000d4"), //+1
+            BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("eb2faccc4c9487d43b3575d7e77ff3f5"), //+2
+            BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("80bb8a737579e35498177e1e3c75899b"), //+3
+            BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("783d7d496da6ac44f9511011fc5f1979"), //+4
+            BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("bdba267e951851449af552aa9f9e3992")  //+5
         };
     }
 }

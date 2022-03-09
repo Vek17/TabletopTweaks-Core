@@ -9,18 +9,18 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Features {
     static class DragonDiscipleSpellbooks {
         public static void AddDragonDiscipleSpellbooks() {
-            var DragonDiscipleSpellbookSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("8c1ba14c0b6dcdb439c56341385ee474");
+            var DragonDiscipleSpellbookSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("8c1ba14c0b6dcdb439c56341385ee474");
 
-            var SorcererClass = Resources.GetBlueprint<BlueprintCharacterClass>("b3a505fb61437dc4097f43c3f8f9a4cf");
-            var SageSorcererArchetype = Resources.GetBlueprint<BlueprintArchetype>("00b990c8be2117e45ae6514ee4ef561c");
-            var EmpyrealSorcererArchetype = Resources.GetBlueprint<BlueprintArchetype>("aa00d945f7cf6c34c909a29a25f2df38");
+            var SorcererClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("b3a505fb61437dc4097f43c3f8f9a4cf");
+            var SageSorcererArchetype = BlueprintTools.GetBlueprint<BlueprintArchetype>("00b990c8be2117e45ae6514ee4ef561c");
+            var EmpyrealSorcererArchetype = BlueprintTools.GetBlueprint<BlueprintArchetype>("aa00d945f7cf6c34c909a29a25f2df38");
 
-            var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
-            var UnletteredArcanistArchetype = Resources.GetBlueprint<BlueprintArchetype>("44f3ba33839a87f48a66b2b9b2f7c69b");
-            var NatureMageArchetype = Resources.GetBlueprint<BlueprintArchetype>("26185cfb81b34e778ad370407300de9a");
+            var ArcanistClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
+            var UnletteredArcanistArchetype = BlueprintTools.GetBlueprint<BlueprintArchetype>("44f3ba33839a87f48a66b2b9b2f7c69b");
+            var NatureMageArchetype = BlueprintTools.GetBlueprint<BlueprintArchetype>("26185cfb81b34e778ad370407300de9a");
 
-            var WitchClass = Resources.GetBlueprint<BlueprintCharacterClass>("1b9873f1e7bfe5449bc84d03e9c8e3cc");
-            var AccursedWitchArchetype = Resources.GetBlueprint<BlueprintArchetype>("c5f6e53e71059fb4d802ce81a277a12d");
+            var WitchClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("1b9873f1e7bfe5449bc84d03e9c8e3cc");
+            var AccursedWitchArchetype = BlueprintTools.GetBlueprint<BlueprintArchetype>("c5f6e53e71059fb4d802ce81a277a12d");
 
             var DragonDiscipleSageSorcerer = Helpers.CreateBlueprint<BlueprintFeatureReplaceSpellbook>(modContext: TTTContext, "DragonDiscipleSageSorcerer", bp => {
                 bp.SetName("Sorcerer");

@@ -10,7 +10,7 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Features {
     class PerfectStrikeZenArcherBuff {
         public static void AddPerfectStrikeZenArcherBuff() {
-            var PerfectStrikeOwnerBuff = Resources.GetBlueprint<BlueprintBuff>("9a41e6d073b42564b9f00ad83b7d3b52");
+            var PerfectStrikeOwnerBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("9a41e6d073b42564b9f00ad83b7d3b52");
             var PerfectStrikeZenArcherBuff = Helpers.CreateBuff(modContext: TTTContext, "PerfectStrikeZenArcherBuff", bp => {
                 bp.SetName(PerfectStrikeOwnerBuff.m_DisplayName);
                 bp.SetDescription($"{PerfectStrikeOwnerBuff.Description}\n" +

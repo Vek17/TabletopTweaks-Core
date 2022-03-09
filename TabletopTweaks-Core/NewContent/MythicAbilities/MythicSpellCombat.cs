@@ -11,8 +11,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class MythicSpellCombat {
         public static void AddMythicSpellCombat() {
-            var TricksterWizardSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("bbe483b903854104a11606412803f214");
-            var SpellCombatFeature = Resources.GetBlueprint<BlueprintFeature>("2464ba53317c7fc4d88f383fac2b45f9");
+            var TricksterWizardSpellbook = BlueprintTools.GetBlueprint<BlueprintSpellbook>("bbe483b903854104a11606412803f214");
+            var SpellCombatFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("2464ba53317c7fc4d88f383fac2b45f9");
 
             var MythicSpellCombat = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "MythicSpellCombat", bp => {
                 bp.IsClassFeature = true;

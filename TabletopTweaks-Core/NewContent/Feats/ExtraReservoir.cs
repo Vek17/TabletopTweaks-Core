@@ -8,9 +8,9 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class ExtraReservoir {
         public static void AddExtraReservoir() {
-            var ArcanistArcaneReservoirResource = Resources.GetBlueprint<BlueprintAbilityResource>("cac948cbbe79b55459459dd6a8fe44ce");
-            var ArcanistArcaneReservoirFeature = Resources.GetBlueprint<BlueprintFeature>("55db1859bd72fd04f9bd3fe1f10e4cbb");
-            var ArcaneEnforcerArcaneReservoirFeature = Resources.GetBlueprint<BlueprintFeature>("9d1e2212594cf47438fff2fa3477b954");
+            var ArcanistArcaneReservoirResource = BlueprintTools.GetBlueprint<BlueprintAbilityResource>("cac948cbbe79b55459459dd6a8fe44ce");
+            var ArcanistArcaneReservoirFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("55db1859bd72fd04f9bd3fe1f10e4cbb");
+            var ArcaneEnforcerArcaneReservoirFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("9d1e2212594cf47438fff2fa3477b954");
 
             var ExtraReservoir = FeatTools.CreateExtraResourceFeat(modContext: TTTContext, "ExtraReservoir", ArcanistArcaneReservoirResource, 3, bp => {
                 bp.SetName("Extra Reservoir");

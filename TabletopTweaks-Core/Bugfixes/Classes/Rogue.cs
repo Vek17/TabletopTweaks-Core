@@ -37,7 +37,7 @@ namespace TabletopTweaks.Core.Bugfixes.Clases {
 
                 void PatchTrapfinding() {
                     if (Main.TTTContext.Fixes.Rogue.Base.IsDisabled("Trapfinding")) { return; }
-                    var Trapfinding = Resources.GetBlueprint<BlueprintFeature>("dbb6b3bffe6db3547b31c3711653838e");
+                    var Trapfinding = BlueprintTools.GetBlueprint<BlueprintFeature>("dbb6b3bffe6db3547b31c3711653838e");
                     Trapfinding.AddComponent(Helpers.Create<AddContextStatBonus>(c => {
                         c.Stat = StatType.SkillThievery;
                         c.Multiplier = 1;
@@ -50,7 +50,7 @@ namespace TabletopTweaks.Core.Bugfixes.Clases {
                 }
                 void PatchRogueTalentSelection() {
                     if (Main.TTTContext.Fixes.Rogue.Base.IsDisabled("RogueTalentSelection")) { return; }
-                    var RogueTalentSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("c074a5d615200494b8f2a9c845799d93");
+                    var RogueTalentSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("c074a5d615200494b8f2a9c845799d93");
                     RogueTalentSelection.AllFeatures.ForEach(feature => {
                         if (!feature.HasGroup(FeatureGroup.Feat) && feature.HasGroup(FeatureGroup.RogueTalent)) {
                             feature.AddPrerequisite<PrerequisiteNoFeature>(p => {
@@ -64,8 +64,8 @@ namespace TabletopTweaks.Core.Bugfixes.Clases {
                 }
                 void PatchSlipperyMind() {
                     if (Main.TTTContext.Fixes.Rogue.Base.IsDisabled("SlipperyMind")) { return; }
-                    var AdvanceTalents = Resources.GetBlueprint<BlueprintFeature>("a33b99f95322d6741af83e9381b2391c");
-                    var SlipperyMind = Resources.GetBlueprint<BlueprintFeature>("a14e8c1801911334f96d410f10eab7bf");
+                    var AdvanceTalents = BlueprintTools.GetBlueprint<BlueprintFeature>("a33b99f95322d6741af83e9381b2391c");
+                    var SlipperyMind = BlueprintTools.GetBlueprint<BlueprintFeature>("a14e8c1801911334f96d410f10eab7bf");
                     SlipperyMind.AddComponent(Helpers.Create<RecalculateOnStatChange>(c => {
                         c.Stat = StatType.Dexterity;
                     }));
@@ -79,18 +79,18 @@ namespace TabletopTweaks.Core.Bugfixes.Clases {
 
                 void PatchSneakAttackProgression() {
                     if (Main.TTTContext.Fixes.Rogue.Archetypes["EldritchScoundrel"].IsDisabled("SneakAttackProgression")) { return; }
-                    var EldritchScoundrelArchetype = Resources.GetBlueprint<BlueprintArchetype>("57f93dd8423c97c49989501281296c4a");
-                    var SneakAttack = Resources.GetBlueprint<BlueprintFeature>("9b9eac6709e1c084cb18c3a366e0ec87");
+                    var EldritchScoundrelArchetype = BlueprintTools.GetBlueprint<BlueprintArchetype>("57f93dd8423c97c49989501281296c4a");
+                    var SneakAttack = BlueprintTools.GetBlueprint<BlueprintFeature>("9b9eac6709e1c084cb18c3a366e0ec87");
                     EldritchScoundrelArchetype.RemoveFeatures = EldritchScoundrelArchetype.RemoveFeatures.AppendToArray(Helpers.CreateLevelEntry(1, SneakAttack));
 
                     TTTContext.Logger.LogPatch("Patched", EldritchScoundrelArchetype);
                 }
                 void PatchRogueTalentProgression() {
                     if (Main.TTTContext.Fixes.Rogue.Archetypes["EldritchScoundrel"].IsDisabled("RogueTalentProgression")) { return; }
-                    var EldritchScoundrelArchetype = Resources.GetBlueprint<BlueprintArchetype>("57f93dd8423c97c49989501281296c4a");
-                    var SneakAttack = Resources.GetBlueprint<BlueprintFeature>("9b9eac6709e1c084cb18c3a366e0ec87");
-                    var RogueTalentSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("c074a5d615200494b8f2a9c845799d93");
-                    var UncannyDodgeChecker = Resources.GetBlueprint<BlueprintFeature>("8f800ed6ce8c42e8a01fd8f3e990c459");
+                    var EldritchScoundrelArchetype = BlueprintTools.GetBlueprint<BlueprintArchetype>("57f93dd8423c97c49989501281296c4a");
+                    var SneakAttack = BlueprintTools.GetBlueprint<BlueprintFeature>("9b9eac6709e1c084cb18c3a366e0ec87");
+                    var RogueTalentSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("c074a5d615200494b8f2a9c845799d93");
+                    var UncannyDodgeChecker = BlueprintTools.GetBlueprint<BlueprintFeature>("8f800ed6ce8c42e8a01fd8f3e990c459");
 
                     EldritchScoundrelArchetype.RemoveFeatures = EldritchScoundrelArchetype.RemoveFeatures
                         .Where(entry => entry.Level != 4)
@@ -110,8 +110,8 @@ namespace TabletopTweaks.Core.Bugfixes.Clases {
 
                 void PatchRogueTalentSelection() {
                     if (Main.TTTContext.Fixes.Rogue.Archetypes["SylvanTrickster"].IsDisabled("FeyTricks")) { return; }
-                    var RogueTalentSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("c074a5d615200494b8f2a9c845799d93");
-                    var SylvanTricksterTalentSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("290bbcc3c3bb92144b853fd8fb8ff452");
+                    var RogueTalentSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("c074a5d615200494b8f2a9c845799d93");
+                    var SylvanTricksterTalentSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("290bbcc3c3bb92144b853fd8fb8ff452");
                     SylvanTricksterTalentSelection.AddFeatures(RogueTalentSelection.m_AllFeatures);
 
                     TTTContext.Logger.LogPatch("Patched", SylvanTricksterTalentSelection);

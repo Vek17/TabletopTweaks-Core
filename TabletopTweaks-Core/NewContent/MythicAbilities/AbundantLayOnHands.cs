@@ -10,8 +10,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class AbundantLayOnHands {
         public static void AddAbundantLayOnHands() {
-            var LayOnHandsFeature = Resources.GetBlueprint<BlueprintFeature>("858a3689c285c844d9e6ce278e686491");
-            var LayOnHandsResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("9dedf41d995ff4446a181f143c3db98c");
+            var LayOnHandsFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("858a3689c285c844d9e6ce278e686491");
+            var LayOnHandsResource = BlueprintTools.GetBlueprintReference<BlueprintAbilityResourceReference>("9dedf41d995ff4446a181f143c3db98c");
 
             var AbundantLayOnHandsFeature = Helpers.CreateBlueprint<BlueprintFeature>(TTTContext, "AbundantLayOnHandsFeature", bp => {
                 bp.SetName("Abundant Lay On Hands");

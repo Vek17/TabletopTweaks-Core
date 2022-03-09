@@ -32,14 +32,14 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
 
                 void PatchFavoredEnemy() {
                     if (TTTContext.Fixes.Ranger.Base.IsDisabled("FavoredEnemy")) { return; }
-                    var FavoriteEnemySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("16cc2c937ea8d714193017780e7d4fc6");
-                    var FavoriteEnemyOutsider = Resources.GetBlueprint<BlueprintFeature>("f643b38acc23e8e42a3ed577daeb6949");
-                    var FavoriteEnemyDemonOfMagic = Resources.GetBlueprint<BlueprintFeature>("21328361091fd2c44a3909fcae0dd598");
-                    var FavoriteEnemyDemonOfSlaughter = Resources.GetBlueprint<BlueprintFeature>("6c450765555b1554294b5556f50d304e");
-                    var FavoriteEnemyDemonOfStrength = Resources.GetBlueprint<BlueprintFeature>("48e9e7ecca39c4a438d9262a20ab5066");
-                    var OutsiderType = Resources.GetBlueprint<BlueprintFeature>("9054d3988d491d944ac144e27b6bc318");
-                    var AasimarRace = Resources.GetBlueprint<BlueprintRace>("b7f02ba92b363064fb873963bec275ee");
-                    var InstantEnemyBuff = Resources.GetBlueprint<BlueprintBuff>("82574f7d14a28e64fab8867fbaa17715");
+                    var FavoriteEnemySelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("16cc2c937ea8d714193017780e7d4fc6");
+                    var FavoriteEnemyOutsider = BlueprintTools.GetBlueprint<BlueprintFeature>("f643b38acc23e8e42a3ed577daeb6949");
+                    var FavoriteEnemyDemonOfMagic = BlueprintTools.GetBlueprint<BlueprintFeature>("21328361091fd2c44a3909fcae0dd598");
+                    var FavoriteEnemyDemonOfSlaughter = BlueprintTools.GetBlueprint<BlueprintFeature>("6c450765555b1554294b5556f50d304e");
+                    var FavoriteEnemyDemonOfStrength = BlueprintTools.GetBlueprint<BlueprintFeature>("48e9e7ecca39c4a438d9262a20ab5066");
+                    var OutsiderType = BlueprintTools.GetBlueprint<BlueprintFeature>("9054d3988d491d944ac144e27b6bc318");
+                    var AasimarRace = BlueprintTools.GetBlueprint<BlueprintRace>("b7f02ba92b363064fb873963bec275ee");
+                    var InstantEnemyBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("82574f7d14a28e64fab8867fbaa17715");
 
                     PatchCheckedFacts(FavoriteEnemyOutsider);
                     PatchCheckedFacts(FavoriteEnemyDemonOfMagic);
@@ -73,7 +73,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
 
                 void PatchTrapfinding() {
                     if (TTTContext.Fixes.Ranger.Archetypes["EspionageExpert"].IsDisabled("Trapfinding")) { return; }
-                    var MasterSpyTrapfindingFeature = Resources.GetBlueprint<BlueprintFeature>("d55acf213bf709c40b2bc72b997fb345");
+                    var MasterSpyTrapfindingFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("d55acf213bf709c40b2bc72b997fb345");
                     MasterSpyTrapfindingFeature.AddComponent(Helpers.Create<AddContextStatBonus>(c => {
                         c.Stat = StatType.SkillThievery;
                         c.Multiplier = 1;

@@ -9,7 +9,7 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
     public static class ArcaneDiscoverySelection {
         public static void AddArcaneDiscoverySelection() {
-            var WizardClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("ba34257984f4c41408ce1dc2004e342e");
+            var WizardClass = BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("ba34257984f4c41408ce1dc2004e342e");
 
             var ArcaneDiscoverySelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(TTTContext, "ArcaneDiscoverySelection", bp => {
                 bp.SetName("Arcane Discovery");
@@ -32,7 +32,7 @@ namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
             });
         }
         public static void AddToArcaneDiscoverySelection(params BlueprintFeature[] features) {
-            var ArcaneDiscoverySelection = Resources.GetModBlueprint<BlueprintFeatureSelection>(TTTContext, "ArcaneDiscoverySelection");
+            var ArcaneDiscoverySelection = BlueprintTools.GetModBlueprint<BlueprintFeatureSelection>(TTTContext, "ArcaneDiscoverySelection");
 
             ArcaneDiscoverySelection.AddFeatures(features);
             if (!AddedAsFeat) {

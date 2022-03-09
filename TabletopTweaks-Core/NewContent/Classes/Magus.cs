@@ -14,9 +14,9 @@ namespace TabletopTweaks.Core.NewContent.Classes {
             var Icon_WarriorSpirit_IcyBurst = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_WarriorSpirit_IcyBurst.png");
             var Icon_WarriorSpirit_ShockingBurst = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_WarriorSpirit_ShockingBurst.png");
 
-            var FlamingBurst = Resources.GetBlueprint<BlueprintWeaponEnchantment>("3f032a3cd54e57649a0cdad0434bf221");
-            var IcyBurst = Resources.GetBlueprint<BlueprintWeaponEnchantment>("564a6924b246d254c920a7c44bf2a58b");
-            var ShockingBurst = Resources.GetBlueprint<BlueprintWeaponEnchantment>("914d7ee77fb09d846924ca08bccee0ff");
+            var FlamingBurst = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("3f032a3cd54e57649a0cdad0434bf221");
+            var IcyBurst = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("564a6924b246d254c920a7c44bf2a58b");
+            var ShockingBurst = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("914d7ee77fb09d846924ca08bccee0ff");
 
             var FlamingBurst_ArcaneWeapon_TTT = FlamingBurst.CreateCopy(TTTContext, "FlamingBurst_ArcaneWeapon_TTT", bp => {
                 bp.m_EnchantmentCost = 1;

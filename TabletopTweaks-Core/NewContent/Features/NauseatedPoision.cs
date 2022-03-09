@@ -1,9 +1,10 @@
 ﻿using Kingmaker.Blueprints;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewContent.Features {
     class NauseatedPoision {
         public static void AddNauseatedPoision() {
-            var Nauseated = Resources.GetBlueprintReference<BlueprintBuffReference>("956331dba5125ef48afe41875a00ca0e");
+            var Nauseated = BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("956331dba5125ef48afe41875a00ca0e");
             /*
             var NauseatedPoisionTTT = Helpers.CreateBuff("NauseatedPoisionTTT", bp => {
                 bp.SetName("");

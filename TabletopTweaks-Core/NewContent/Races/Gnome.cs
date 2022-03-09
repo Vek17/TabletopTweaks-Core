@@ -16,19 +16,19 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Races {
     static class Gnome {
 
-        private static readonly BlueprintRace GnomeRace = Resources.GetBlueprint<BlueprintRace>("ef35a22c9a27da345a4528f0d5889157");
-        private static readonly BlueprintFeatureSelection GnomeHeritageSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("584d8b50817b49b2bb7aab3d6add8d3a");
-        private static readonly BlueprintFeature KeenSenses = Resources.GetBlueprint<BlueprintFeature>("9c747d24f6321f744aa1bb4bd343880d");
-        private static readonly BlueprintFeature HatredReptilian = Resources.GetBlueprint<BlueprintFeature>("020bd2ae61de90341b7f874b788c160a");
-        private static readonly BlueprintFeature DwarfDefensiveTrainingGiants = Resources.GetBlueprint<BlueprintFeature>("f268a00e42618144e86c9db76af7f3e9");
-        private static readonly BlueprintFeature IllusionResistance = Resources.GetBlueprint<BlueprintFeature>("d030df93ea56d2b468650c4acf608f00");
-        private static readonly BlueprintFeature GnomeMagic = Resources.GetBlueprint<BlueprintFeature>("deaf46650a9d2dd4f85736ca552f9fb1");
-        private static readonly BlueprintFeature Obsessive = Resources.GetBlueprint<BlueprintFeature>("428899c30699b9c44a6c5ee4f74b5f57");
-        private static readonly BlueprintFeature SlowSpeedGnome = Resources.GetBlueprint<BlueprintFeature>("09bc9ccb8ee0ffe4b8827066b1ed7e11");
-        private static readonly BlueprintFeature PyromaniacGnome = Resources.GetBlueprint<BlueprintFeature>("fc74a68e18a8479a9e8af34e761a70b3");
-        private static readonly BlueprintFeature TravellerGnome = Resources.GetBlueprint<BlueprintFeature>("67bf059158b94f8383f21c148489dfb6");
+        private static readonly BlueprintRace GnomeRace = BlueprintTools.GetBlueprint<BlueprintRace>("ef35a22c9a27da345a4528f0d5889157");
+        private static readonly BlueprintFeatureSelection GnomeHeritageSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("584d8b50817b49b2bb7aab3d6add8d3a");
+        private static readonly BlueprintFeature KeenSenses = BlueprintTools.GetBlueprint<BlueprintFeature>("9c747d24f6321f744aa1bb4bd343880d");
+        private static readonly BlueprintFeature HatredReptilian = BlueprintTools.GetBlueprint<BlueprintFeature>("020bd2ae61de90341b7f874b788c160a");
+        private static readonly BlueprintFeature DwarfDefensiveTrainingGiants = BlueprintTools.GetBlueprint<BlueprintFeature>("f268a00e42618144e86c9db76af7f3e9");
+        private static readonly BlueprintFeature IllusionResistance = BlueprintTools.GetBlueprint<BlueprintFeature>("d030df93ea56d2b468650c4acf608f00");
+        private static readonly BlueprintFeature GnomeMagic = BlueprintTools.GetBlueprint<BlueprintFeature>("deaf46650a9d2dd4f85736ca552f9fb1");
+        private static readonly BlueprintFeature Obsessive = BlueprintTools.GetBlueprint<BlueprintFeature>("428899c30699b9c44a6c5ee4f74b5f57");
+        private static readonly BlueprintFeature SlowSpeedGnome = BlueprintTools.GetBlueprint<BlueprintFeature>("09bc9ccb8ee0ffe4b8827066b1ed7e11");
+        private static readonly BlueprintFeature PyromaniacGnome = BlueprintTools.GetBlueprint<BlueprintFeature>("fc74a68e18a8479a9e8af34e761a70b3");
+        private static readonly BlueprintFeature TravellerGnome = BlueprintTools.GetBlueprint<BlueprintFeature>("67bf059158b94f8383f21c148489dfb6");
 
-        private static readonly BlueprintFeature DestinyBeyondBirthMythicFeat = Resources.GetBlueprint<BlueprintFeature>("325f078c584318849bfe3da9ea245b9d");
+        private static readonly BlueprintFeature DestinyBeyondBirthMythicFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("325f078c584318849bfe3da9ea245b9d");
 
         public static void AddGnomeHeritage() {
 

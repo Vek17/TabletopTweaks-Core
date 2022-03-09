@@ -30,10 +30,10 @@ using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class BurningSpell {
         public static void AddBurningSpell() {
-            var CausticEruption = Resources.GetBlueprint<BlueprintAbility>("8c29e953190cc67429dc9c701b16b7c2");
-            var FireStormBuff = Resources.GetBlueprint<BlueprintBuff>("ef7d021abb6bbfd4cad4f2f2b70bcf28");
-            var FirstStage_AcidBuff = Resources.GetBlueprint<BlueprintBuff>("6afe27c9a2d64eb890673ff3649dacb3");
-            var FavoriteMetamagicSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
+            var CausticEruption = BlueprintTools.GetBlueprint<BlueprintAbility>("8c29e953190cc67429dc9c701b16b7c2");
+            var FireStormBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("ef7d021abb6bbfd4cad4f2f2b70bcf28");
+            var FirstStage_AcidBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("6afe27c9a2d64eb890673ff3649dacb3");
+            var FavoriteMetamagicSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
             var Icon_BurningSpellFeat = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_BurningSpellFeat.png");
             var Icon_BurningSpellMetamagic = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Metamagic", file: "Icon_BurningSpellMetamagic.png", size: 128);
             var Icon_MetamagicRodBurningLesser = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodBurningLesser.png", size: 64);
@@ -215,27 +215,27 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             }
         }
         private static void AddRodsToVenders() {
-            var WarCamp_REVendorTableMagic = Resources.GetBlueprint<BlueprintSharedVendorTable>("f02cf582e915ae343aa489f11dba42aa");
-            var RE_Chapter3VendorTableMagic = Resources.GetBlueprint<BlueprintSharedVendorTable>("e8e384f0e411fab42a69f16991cac161");
-            var KrebusSlaveTraderTable = Resources.GetBlueprint<BlueprintSharedVendorTable>("d43baa8b603f4604f8e36b048072e759");
+            var WarCamp_REVendorTableMagic = BlueprintTools.GetBlueprint<BlueprintSharedVendorTable>("f02cf582e915ae343aa489f11dba42aa");
+            var RE_Chapter3VendorTableMagic = BlueprintTools.GetBlueprint<BlueprintSharedVendorTable>("e8e384f0e411fab42a69f16991cac161");
+            var KrebusSlaveTraderTable = BlueprintTools.GetBlueprint<BlueprintSharedVendorTable>("d43baa8b603f4604f8e36b048072e759");
 
             WarCamp_REVendorTableMagic.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodLesserBurning"),
+                    m_Item = BlueprintTools.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodLesserBurning"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;
             });
             RE_Chapter3VendorTableMagic.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodNormalBurning"),
+                    m_Item = BlueprintTools.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodNormalBurning"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;
             });
             KrebusSlaveTraderTable.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodGreaterBurning"),
+                    m_Item = BlueprintTools.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodGreaterBurning"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;

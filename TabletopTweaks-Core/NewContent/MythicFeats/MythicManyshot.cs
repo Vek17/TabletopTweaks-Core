@@ -14,7 +14,7 @@ using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 namespace TabletopTweaks.Core.NewContent.MythicFeats {
     static class MythicManyshot {
         public static void AddMythicManyshot() {
-            var Manyshot = Resources.GetBlueprint<BlueprintFeature>("adf54af2a681792489826f7fd1b62889");
+            var Manyshot = BlueprintTools.GetBlueprint<BlueprintFeature>("adf54af2a681792489826f7fd1b62889");
             var ManyshotMythicFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ManyshotMythicFeature", bp => {
                 bp.m_Icon = Manyshot.m_Icon;
                 bp.SetName("Manyshot (Mythic)");

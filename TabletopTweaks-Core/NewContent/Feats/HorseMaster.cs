@@ -15,13 +15,13 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class HorseMaster {
         public static void AddHorseMaster() {
-            var AnimalCompanionSelectionRanger = Resources.GetBlueprint<BlueprintFeatureSelection>("ee63330662126374e8785cc901941ac7");
-            var CavalierMountSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("0605927df6e2fdd42af6ee2424eb89f2");
-            var CavalierClass = Resources.GetBlueprint<BlueprintCharacterClass>("3adc3439f98cb534ba98df59838f02c7");
-            var CavalierProgression = Resources.GetBlueprint<BlueprintProgression>("aa70326bdaa7015438df585cf2ab93b9");
-            var BeastRiderArchetype = Resources.GetBlueprint<BlueprintArchetype>("d287fbf2495ff2e4d88d5c49217bf173");
-            var DiscipleOfThePikeArchetype = Resources.GetBlueprint<BlueprintArchetype>("4c4c3f9df00a5e04680d172a290111c4");
-            var KnightOfTheWallArchetype = Resources.GetBlueprint<BlueprintArchetype>("112dd0e61f95c3a459ac0a565472e685");
+            var AnimalCompanionSelectionRanger = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("ee63330662126374e8785cc901941ac7");
+            var CavalierMountSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("0605927df6e2fdd42af6ee2424eb89f2");
+            var CavalierClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("3adc3439f98cb534ba98df59838f02c7");
+            var CavalierProgression = BlueprintTools.GetBlueprint<BlueprintProgression>("aa70326bdaa7015438df585cf2ab93b9");
+            var BeastRiderArchetype = BlueprintTools.GetBlueprint<BlueprintArchetype>("d287fbf2495ff2e4d88d5c49217bf173");
+            var DiscipleOfThePikeArchetype = BlueprintTools.GetBlueprint<BlueprintArchetype>("4c4c3f9df00a5e04680d172a290111c4");
+            var KnightOfTheWallArchetype = BlueprintTools.GetBlueprint<BlueprintArchetype>("112dd0e61f95c3a459ac0a565472e685");
 
             var ExpertTrainer = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "ExpertTrainer", bp => {
                 bp.SetName("Expert Trainer");
@@ -30,7 +30,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
                 bp.IsClassFeature = true;
             });
 
-            var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
+            var AnimalCompanionRank = BlueprintTools.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
             var HorseMasterRank = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "HorseMasterRank", bp => {
                 bp.IsClassFeature = true;
                 bp.HideInUI = true;

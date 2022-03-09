@@ -53,7 +53,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             IdealizeDiscoveryUpgrade
         }
     }
-    static class CustomMechanicsFeaturesExtentions {
+    public static class CustomMechanicsFeaturesExtentions {
         public static CountableFlag CustomMechanicsFeature(this UnitDescriptor unit, CustomMechanicsFeature type) {
             var mechanicsFeatures = unit.Ensure<UnitPartCustomMechanicsFeatures>();
             return mechanicsFeatures.GetMechanicsFeature(type);

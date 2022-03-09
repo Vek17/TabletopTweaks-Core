@@ -6,8 +6,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class ExtraHex {
         public static void AddExtraHex() {
-            var ShamanHexSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("4223fe18c75d4d14787af196a04e14e7");
-            var WitchHexSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("9846043cf51251a4897728ed6e24e76f");
+            var ShamanHexSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("4223fe18c75d4d14787af196a04e14e7");
+            var WitchHexSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("9846043cf51251a4897728ed6e24e76f");
 
             var ExtraHexWitch = FeatTools.CreateExtraSelectionFeat(modContext: TTTContext, "ExtraHexWitch", WitchHexSelection, bp => {
                 bp.SetName("Extra Hex (Witch)");

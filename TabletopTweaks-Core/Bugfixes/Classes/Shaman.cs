@@ -23,10 +23,10 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchAmelioratingHex() {
                     if (TTTContext.Fixes.Shaman.Base.IsDisabled("AmelioratingHex")) { return; }
 
-                    var ShamanHexAmelioratingDazzleSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("ea8525d5efb6870418065c14d599c297");
-                    var ShamanHexAmelioratingFatuguedSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("84660c99b75e6384b8a6b8fe34b57728");
-                    var ShamanHexAmelioratingShakenSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("90295b0de24b3d2469edad595528eb08");
-                    var ShamanHexAmelioratingSickenedSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("1ee56c72f388a4c40bf19a53ae66b6fe");
+                    var ShamanHexAmelioratingDazzleSuppressBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("ea8525d5efb6870418065c14d599c297");
+                    var ShamanHexAmelioratingFatuguedSuppressBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("84660c99b75e6384b8a6b8fe34b57728");
+                    var ShamanHexAmelioratingShakenSuppressBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("90295b0de24b3d2469edad595528eb08");
+                    var ShamanHexAmelioratingSickenedSuppressBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("1ee56c72f388a4c40bf19a53ae66b6fe");
 
                     QuickFixTools.ReplaceSuppression(ShamanHexAmelioratingDazzleSuppressBuff, TTTContext);
                     QuickFixTools.ReplaceSuppression(ShamanHexAmelioratingFatuguedSuppressBuff, TTTContext);

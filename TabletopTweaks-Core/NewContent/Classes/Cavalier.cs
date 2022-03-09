@@ -16,8 +16,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Classes {
     static class Cavalier {
         public static void AddCavalierFeatures() {
-            var MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
-            var AnimalCompanionFeatureWolf = Resources.GetBlueprint<BlueprintFeature>("67a9dc42b15d0954ca4689b13e8dedea");
+            var MountedBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
+            var AnimalCompanionFeatureWolf = BlueprintTools.GetBlueprint<BlueprintFeature>("67a9dc42b15d0954ca4689b13e8dedea");
 
             var CavalierMobilityBuff = Helpers.CreateBuff(modContext: TTTContext, "CavalierMobilityBuff", bp => {
                 bp.SetName("Cavalier Mobility");

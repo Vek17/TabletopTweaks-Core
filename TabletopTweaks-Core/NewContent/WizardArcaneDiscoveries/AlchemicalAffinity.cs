@@ -10,9 +10,9 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.WizardArcaneDiscoveries {
     static class AlchemicalAffinity {
         public static void AddAlchemicalAffinity() {
-            var WizardClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("ba34257984f4c41408ce1dc2004e342e");
-            var WizardSpellList = Resources.GetBlueprintReference<BlueprintSpellListReference>("ba0401fdeb4062f40a7aa95b6f07fe89");
-            var AlchemistSpellList = Resources.GetBlueprintReference<BlueprintSpellListReference>("f60d0cd93edc65c42ad31e34a905fb2f");
+            var WizardClass = BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("ba34257984f4c41408ce1dc2004e342e");
+            var WizardSpellList = BlueprintTools.GetBlueprintReference<BlueprintSpellListReference>("ba0401fdeb4062f40a7aa95b6f07fe89");
+            var AlchemistSpellList = BlueprintTools.GetBlueprintReference<BlueprintSpellListReference>("f60d0cd93edc65c42ad31e34a905fb2f");
 
             var AlchemicalAffinity = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, $"AlchemicalAffinity", bp => {
                 bp.SetName($"Alchemical Affinity");

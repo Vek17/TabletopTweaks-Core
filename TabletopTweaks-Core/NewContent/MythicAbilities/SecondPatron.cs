@@ -13,11 +13,11 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class SecondPatron {
         public static void AddSecondPatron() {
-            var ElementalWitchPatronSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("3172b6960c774e19ad029c5e4a96d3e4");
-            var HagboundWitchPatronSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("0b9af221d99a91842b3a2afbc6a68a1e");
-            var WitchPatronSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("381cf4c890815d049a4420c6f31d063f");
+            var ElementalWitchPatronSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("3172b6960c774e19ad029c5e4a96d3e4");
+            var HagboundWitchPatronSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("0b9af221d99a91842b3a2afbc6a68a1e");
+            var WitchPatronSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("381cf4c890815d049a4420c6f31d063f");
 
-            var WitchHexAmelioratingFeature = Resources.GetBlueprint<BlueprintFeature>("3cdd3660fb69f3e4db0160fa97dfa85d");
+            var WitchHexAmelioratingFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("3cdd3660fb69f3e4db0160fa97dfa85d");
 
             var SecondPatronRequisiteFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "SecondPatronRequisiteFeature", bp => {
                 bp.IsClassFeature = true;

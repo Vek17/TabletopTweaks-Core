@@ -29,12 +29,12 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
 
                 void PatchAeonDemythication() {
                     if (TTTContext.Fixes.Aeon.IsDisabled("AeonDemythication")) { return; }
-                    var AeonDemythicationBuff = Resources.GetBlueprint<BlueprintBuff>("3c8a543e5b4e7154bb2cbe4d102a1604");
+                    var AeonDemythicationBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("3c8a543e5b4e7154bb2cbe4d102a1604");
                     QuickFixTools.ReplaceSuppression(AeonDemythicationBuff, TTTContext, true);
                 }
                 void PatchAeonTenthLevelImmunities() {
                     if (TTTContext.Fixes.Aeon.IsDisabled("AeonTenthLevelImmunities")) { return; }
-                    var AeonTenthLevelImmunities = Resources.GetBlueprint<BlueprintFeature>("711f6abfab877d342af9743a11c8f3aa");
+                    var AeonTenthLevelImmunities = BlueprintTools.GetBlueprint<BlueprintFeature>("711f6abfab877d342af9743a11c8f3aa");
                     AeonTenthLevelImmunities.RemoveComponents<ModifyD20>(c => c.Rule == RuleType.SavingThrow);
                     AeonTenthLevelImmunities.AddComponent<ModifySavingThrowD20>(c => {
                         c.AgainstAlignment = true;
@@ -51,8 +51,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 }
                 void PatchPowerOfLaw() {
                     if (TTTContext.Fixes.Aeon.IsDisabled("PowerOfLaw")) { return; }
-                    var AeonPowerOfLawGazeAllyBuff = Resources.GetBlueprint<BlueprintBuff>("1bf6049b6068400e8ac4e98e2e07b4f2");
-                    var AeonPowerOfLawGazeEnemyBuff = Resources.GetBlueprint<BlueprintBuff>("648edba195d548f496c9367ddb4e2719");
+                    var AeonPowerOfLawGazeAllyBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("1bf6049b6068400e8ac4e98e2e07b4f2");
+                    var AeonPowerOfLawGazeEnemyBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("648edba195d548f496c9367ddb4e2719");
 
                     AeonPowerOfLawGazeAllyBuff.RemoveComponents<ModifyD20>();
                     AeonPowerOfLawGazeAllyBuff.AddComponent<AeonPowerOfLaw>(c => {

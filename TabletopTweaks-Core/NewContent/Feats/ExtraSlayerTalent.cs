@@ -7,10 +7,10 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class ExtraSlayerTalent {
         public static void AddExtraSlayerTalent() {
-            var SlayerTalentSelection2 = Resources.GetBlueprint<BlueprintFeatureSelection>("04430ad24988baa4daa0bcd4f1c7d118");
-            var SlayerTalentSelection6 = Resources.GetBlueprint<BlueprintFeatureSelection>("43d1b15873e926848be2abf0ea3ad9a8");
-            var SlayerTalentSelection10 = Resources.GetBlueprint<BlueprintFeatureSelection>("913b9cf25c9536949b43a2651b7ffb66");
-            var RangerStyleSelection2 = Resources.GetBlueprint<BlueprintFeatureSelection>("c6d0da9124735a44f93ac31df803b9a9");
+            var SlayerTalentSelection2 = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("04430ad24988baa4daa0bcd4f1c7d118");
+            var SlayerTalentSelection6 = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("43d1b15873e926848be2abf0ea3ad9a8");
+            var SlayerTalentSelection10 = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("913b9cf25c9536949b43a2651b7ffb66");
+            var RangerStyleSelection2 = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("c6d0da9124735a44f93ac31df803b9a9");
 
             var ExtraSlayerTalent = FeatTools.CreateExtraSelectionFeat(modContext: TTTContext, "ExtraSlayerTalent", SlayerTalentSelection2, bp => {
                 bp.SetName("Extra Slayer Talent");

@@ -12,10 +12,10 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
     class FocusedWeapon {
         public static void AddFocusedWeapon() {
-            var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
-            var FighterWeaponTrainingProperty = Resources.GetModBlueprintReference<BlueprintUnitPropertyReference>(modContext: TTTContext, "FighterWeaponTrainingProperty");
-            var WeaponFinesse = Resources.GetBlueprint<BlueprintFeature>("90e54424d682d104ab36436bd527af09");
-            var WeaponFocus = Resources.GetBlueprint<BlueprintParametrizedFeature>("1e1f627d26ad36f43bbd26cc2bf8ac7e");
+            var FighterClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+            var FighterWeaponTrainingProperty = BlueprintTools.GetModBlueprintReference<BlueprintUnitPropertyReference>(modContext: TTTContext, "FighterWeaponTrainingProperty");
+            var WeaponFinesse = BlueprintTools.GetBlueprint<BlueprintFeature>("90e54424d682d104ab36436bd527af09");
+            var WeaponFocus = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("1e1f627d26ad36f43bbd26cc2bf8ac7e");
 
             var FocusedWeaponBuff = Helpers.CreateBuff(modContext: TTTContext, "FocusedWeaponBuff", bp => {
                 bp.SetName("Focused Weapon");

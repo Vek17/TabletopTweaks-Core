@@ -22,8 +22,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.WeaponEnchantments {
     static class TerrifyingTremble {
         public static void AddTerrifyingTrembleEnchant() {
-            var TerrifyingTrembleItem = Resources.GetBlueprint<BlueprintItemWeapon>("8c31891423c4405393741e829aebec85");
-            var ThunderingBlowsAbility = Resources.GetBlueprint<BlueprintAbility>("a9c0ab0293b0c3245881b27ea4e8f95d");
+            var TerrifyingTrembleItem = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("8c31891423c4405393741e829aebec85");
+            var ThunderingBlowsAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("a9c0ab0293b0c3245881b27ea4e8f95d");
 
             var TerrifyingTrembleAbility_TTT = Helpers.CreateBlueprint<BlueprintAbility>(TTTContext, $"TerrifyingTrembleAbility_TTT", bp => {
                 var effects = ThunderingBlowsAbility.GetComponent<AbilitySpawnFx>();

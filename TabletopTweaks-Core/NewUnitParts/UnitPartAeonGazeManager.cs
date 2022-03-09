@@ -7,6 +7,7 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using System.Collections.Generic;
 using System.Linq;
 using TabletopTweaks.Core.MechanicsChanges;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartAeonGazeManager : OldStyleUnitPart {
@@ -36,9 +37,9 @@ namespace TabletopTweaks.Core.NewUnitParts {
         }
 
         private readonly BlueprintAbilityResourceReference spendResource =
-            Resources.GetBlueprint<BlueprintAbilityResource>("905722fe39d87474aa6d41bffa327ff3").ToReference<BlueprintAbilityResourceReference>();
+            BlueprintTools.GetBlueprint<BlueprintAbilityResource>("905722fe39d87474aa6d41bffa327ff3").ToReference<BlueprintAbilityResourceReference>();
         private readonly BlueprintFeatureReference limitlessFeature =
-            Resources.GetBlueprint<BlueprintFeature>("a2f5852d76a165f4d8d6fe670e8013fb").ToReference<BlueprintFeatureReference>();
+            BlueprintTools.GetBlueprint<BlueprintFeature>("a2f5852d76a165f4d8d6fe670e8013fb").ToReference<BlueprintFeatureReference>();
         private bool HasSpent = false;
         private readonly List<GazeEntry> ActiveGazes = new();
         public class GazeEntry {

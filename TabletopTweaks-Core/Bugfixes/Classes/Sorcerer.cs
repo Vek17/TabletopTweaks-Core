@@ -30,19 +30,19 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchDraconicBloodlineDescriptions() {
                     if (TTTContext.Fixes.Sorcerer.Base.IsDisabled("DraconicBloodlineDescriptions")) { return; }
 
-                    var BloodlineDraconicBrassArcana = Resources.GetBlueprint<BlueprintFeature>("153e9b6b5b0f34d45ae8e815838aca80");
-                    var BloodlineDraconicRedArcana = Resources.GetBlueprint<BlueprintFeature>("a8baee8eb681d53438cc17bd1d125890");
-                    var BloodlineDraconicGoldArcana = Resources.GetBlueprint<BlueprintFeature>("ac04aa27a6fd8b4409b024a6544c4928");
+                    var BloodlineDraconicBrassArcana = BlueprintTools.GetBlueprint<BlueprintFeature>("153e9b6b5b0f34d45ae8e815838aca80");
+                    var BloodlineDraconicRedArcana = BlueprintTools.GetBlueprint<BlueprintFeature>("a8baee8eb681d53438cc17bd1d125890");
+                    var BloodlineDraconicGoldArcana = BlueprintTools.GetBlueprint<BlueprintFeature>("ac04aa27a6fd8b4409b024a6544c4928");
 
-                    var BloodlineDraconicBlackArcana = Resources.GetBlueprint<BlueprintFeature>("5515ae09c952ae2449410ab3680462ed");
-                    var BloodlineDraconicCopperArcana = Resources.GetBlueprint<BlueprintFeature>("2a8ed839d57f31a4983041645f5832e2");
-                    var BloodlineDraconicGreenArcana = Resources.GetBlueprint<BlueprintFeature>("caebe2fa3b5a94d4bbc19ccca86d1d6f");
+                    var BloodlineDraconicBlackArcana = BlueprintTools.GetBlueprint<BlueprintFeature>("5515ae09c952ae2449410ab3680462ed");
+                    var BloodlineDraconicCopperArcana = BlueprintTools.GetBlueprint<BlueprintFeature>("2a8ed839d57f31a4983041645f5832e2");
+                    var BloodlineDraconicGreenArcana = BlueprintTools.GetBlueprint<BlueprintFeature>("caebe2fa3b5a94d4bbc19ccca86d1d6f");
 
-                    var BloodlineDraconicSilverArcana = Resources.GetBlueprint<BlueprintFeature>("1af96d3ab792e3048b5e0ca47f3a524b");
-                    var BloodlineDraconicWhiteArcana = Resources.GetBlueprint<BlueprintFeature>("456e305ebfec3204683b72a45467d87c");
+                    var BloodlineDraconicSilverArcana = BlueprintTools.GetBlueprint<BlueprintFeature>("1af96d3ab792e3048b5e0ca47f3a524b");
+                    var BloodlineDraconicWhiteArcana = BlueprintTools.GetBlueprint<BlueprintFeature>("456e305ebfec3204683b72a45467d87c");
 
-                    var BloodlineDraconicBlueArcana = Resources.GetBlueprint<BlueprintFeature>("0f0cb88a2ccc0814aa64c41fd251e84e");
-                    var BloodlineDraconicBronzeArcana = Resources.GetBlueprint<BlueprintFeature>("677ae97f60d26474bbc24a50520f9424");
+                    var BloodlineDraconicBlueArcana = BlueprintTools.GetBlueprint<BlueprintFeature>("0f0cb88a2ccc0814aa64c41fd251e84e");
+                    var BloodlineDraconicBronzeArcana = BlueprintTools.GetBlueprint<BlueprintFeature>("677ae97f60d26474bbc24a50520f9424");
 
                     PatchDescription(BloodlineDraconicBrassArcana, "fire");
                     PatchDescription(BloodlineDraconicRedArcana, "fire");
@@ -65,21 +65,21 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchElementalBloodlineDescriptions() {
                     if (TTTContext.Fixes.Sorcerer.Base.IsDisabled("PatchElementalBloodlineDescriptions")) { return; }
 
-                    var BloodlineElementalAirArcana = Resources.GetBlueprint<BlueprintFeature>("54ae8876bb5d78242beec0752592a018");
-                    var BloodlineElementalAirArcanaAbilily = Resources.GetBlueprint<BlueprintActivatableAbility>("5f6315dfeb74a564f96f460d72f7206c");
-                    var BloodlineElementalAirArcanaBuff = Resources.GetBlueprint<BlueprintBuff>("3f5763ac8b4e080469f9a41adf3a16c3");
+                    var BloodlineElementalAirArcana = BlueprintTools.GetBlueprint<BlueprintFeature>("54ae8876bb5d78242beec0752592a018");
+                    var BloodlineElementalAirArcanaAbilily = BlueprintTools.GetBlueprint<BlueprintActivatableAbility>("5f6315dfeb74a564f96f460d72f7206c");
+                    var BloodlineElementalAirArcanaBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("3f5763ac8b4e080469f9a41adf3a16c3");
 
-                    var BloodlineElementalEarthArcana = Resources.GetBlueprint<BlueprintFeature>("5282afee8f3dfda49a34e36c3cee9d2c");
-                    var BloodlineElementalEarthArcanaAbilily = Resources.GetBlueprint<BlueprintActivatableAbility>("94ce51ed666fc8d42830aa9fe48897f9");
-                    var BloodlineElementalEarthArcanaBuff = Resources.GetBlueprint<BlueprintBuff>("3d700f97e681b014e894d9ff9c972a83");
+                    var BloodlineElementalEarthArcana = BlueprintTools.GetBlueprint<BlueprintFeature>("5282afee8f3dfda49a34e36c3cee9d2c");
+                    var BloodlineElementalEarthArcanaAbilily = BlueprintTools.GetBlueprint<BlueprintActivatableAbility>("94ce51ed666fc8d42830aa9fe48897f9");
+                    var BloodlineElementalEarthArcanaBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("3d700f97e681b014e894d9ff9c972a83");
 
-                    var BloodlineElementalFireArcana = Resources.GetBlueprint<BlueprintFeature>("c33b319082a7edc468d3eda248a527f3");
-                    var BloodlineElementalFireArcanaAbilily = Resources.GetBlueprint<BlueprintActivatableAbility>("924dfcd481c0be54c959c2846b3fb7da");
-                    var BloodlineElementalFireArcanaBuff = Resources.GetBlueprint<BlueprintBuff>("b3e3882ab6829e34983f31e989c00dfc");
+                    var BloodlineElementalFireArcana = BlueprintTools.GetBlueprint<BlueprintFeature>("c33b319082a7edc468d3eda248a527f3");
+                    var BloodlineElementalFireArcanaAbilily = BlueprintTools.GetBlueprint<BlueprintActivatableAbility>("924dfcd481c0be54c959c2846b3fb7da");
+                    var BloodlineElementalFireArcanaBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("b3e3882ab6829e34983f31e989c00dfc");
 
-                    var BloodlineElementalWaterArcana = Resources.GetBlueprint<BlueprintFeature>("68d7772fa2f03e247ad1676ddd5eb4e2");
-                    var BloodlineElementalWaterArcanaAbilily = Resources.GetBlueprint<BlueprintActivatableAbility>("dd484f0706325de40aee5dba15fbce45");
-                    var BloodlineElementalWaterArcanaBuff = Resources.GetBlueprint<BlueprintBuff>("912fbab5b3579e9409fcb0f750bb6f2b");
+                    var BloodlineElementalWaterArcana = BlueprintTools.GetBlueprint<BlueprintFeature>("68d7772fa2f03e247ad1676ddd5eb4e2");
+                    var BloodlineElementalWaterArcanaAbilily = BlueprintTools.GetBlueprint<BlueprintActivatableAbility>("dd484f0706325de40aee5dba15fbce45");
+                    var BloodlineElementalWaterArcanaBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("912fbab5b3579e9409fcb0f750bb6f2b");
 
                     PatchArcana(BloodlineElementalAirArcana, BloodlineElementalAirArcanaAbilily, BloodlineElementalAirArcanaBuff);
                     PatchArcana(BloodlineElementalEarthArcana, BloodlineElementalEarthArcanaAbilily, BloodlineElementalEarthArcanaBuff);
@@ -110,7 +110,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchDrawbacks() {
                     if (TTTContext.Fixes.Sorcerer.Archetypes["Crossblooded"].IsDisabled("Drawbacks")) { return; }
 
-                    var CrossbloodedDrawbacks = Resources.GetBlueprint<BlueprintFeature>("f02fd748fecb4cc2a4d7d282c6b3de46");
+                    var CrossbloodedDrawbacks = BlueprintTools.GetBlueprint<BlueprintFeature>("f02fd748fecb4cc2a4d7d282c6b3de46");
                     CrossbloodedDrawbacks.SetName("Crossblooded Drawbacks");
                     CrossbloodedDrawbacks.SetDescription("A crossblooded sorcerer has one fewer spell known at each level than regular sorcerer.\n" +
                         "Furthermore, the conflicting urges created by the divergent nature of the crossblooded sorcerer’s dual heritage forces " +

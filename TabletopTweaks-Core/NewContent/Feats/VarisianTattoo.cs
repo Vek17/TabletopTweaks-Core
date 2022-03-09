@@ -12,8 +12,8 @@ using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class VarisianTattoo {
         public static void AddVarisianTattoo() {
-            var SchoolMasteryMythicFeat = Resources.GetBlueprint<BlueprintParametrizedFeature>("ac830015569352b458efcdfae00a948c");
-            var SpellFocus = Resources.GetBlueprint<BlueprintParametrizedFeature>("16fa59cc9a72a6043b566b49184f53fe");
+            var SchoolMasteryMythicFeat = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("ac830015569352b458efcdfae00a948c");
+            var SpellFocus = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("16fa59cc9a72a6043b566b49184f53fe");
 
             var VarisianTattooFeature = Helpers.CreateBlueprint<BlueprintParametrizedFeature>(modContext: TTTContext, "VarisianTattooFeature", bp => {
                 bp.SetName("Varisian Tattoo");

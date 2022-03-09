@@ -30,7 +30,7 @@ namespace TabletopTweaks.Core.NewContent.Feats {
         [HarmonyPatch(typeof(FightingDefensivelyACBonusProperty), nameof(FightingDefensivelyACBonusProperty.GetBaseValue))]
         static class FightingDefensivelyACBonusProperty_GetBaseValue_Patch {
 
-            static BlueprintBuff StalwartBuff = Resources.GetModBlueprint<BlueprintBuff>(modContext: TTTContext, "StalwartBuff");
+            static BlueprintBuff StalwartBuff = BlueprintTools.GetModBlueprint<BlueprintBuff>(modContext: TTTContext, "StalwartBuff");
 
             static bool Prefix(UnitEntityData unit, ref int __result) {
                 if (TTTContext.AddedContent.Feats.IsDisabled("Stalwart")) { return true; }
@@ -58,16 +58,16 @@ namespace TabletopTweaks.Core.NewContent.Feats {
         }
 
         public static void AddStalwart() {
-            var Diehard = Resources.GetBlueprint<BlueprintFeature>("86669ce8759f9d7478565db69b8c19ad");
+            var Diehard = BlueprintTools.GetBlueprint<BlueprintFeature>("86669ce8759f9d7478565db69b8c19ad");
 
-            var CombatExpertiseMythicFeature = Resources.GetModBlueprintReference<BlueprintUnitFactReference>(modContext: TTTContext, "CombatExpertiseMythicFeature");
-            var CombatExpertiseBuff = Resources.GetBlueprint<BlueprintBuff>("e81cd772a7311554090e413ea28ceea1");
-            var FightDefensivelyBuff = Resources.GetBlueprint<BlueprintBuff>("6ffd93355fb3bcf4592a5d976b1d32a9");
-            var CraneStyleBuff = Resources.GetBlueprint<BlueprintBuff>("e8ea7bd10136195478d8a5fc5a44c7da");
-            var CautiousFighter = Resources.GetBlueprint<BlueprintFeature>("4a6fbe77a4a2ce24db0cd0b1e4d93db1");
-            var SwordLordSteelNetFeature = Resources.GetBlueprint<BlueprintFeature>("b4202533d1748f84484658491d2ff766");
+            var CombatExpertiseMythicFeature = BlueprintTools.GetModBlueprintReference<BlueprintUnitFactReference>(modContext: TTTContext, "CombatExpertiseMythicFeature");
+            var CombatExpertiseBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("e81cd772a7311554090e413ea28ceea1");
+            var FightDefensivelyBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("6ffd93355fb3bcf4592a5d976b1d32a9");
+            var CraneStyleBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("e8ea7bd10136195478d8a5fc5a44c7da");
+            var CautiousFighter = BlueprintTools.GetBlueprint<BlueprintFeature>("4a6fbe77a4a2ce24db0cd0b1e4d93db1");
+            var SwordLordSteelNetFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("b4202533d1748f84484658491d2ff766");
 
-            var DefensiveStanceActivatableAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("be68c660b41bc9247bcab727b10d2cd1");
+            var DefensiveStanceActivatableAbility = BlueprintTools.GetBlueprint<BlueprintActivatableAbility>("be68c660b41bc9247bcab727b10d2cd1");
 
 
             var StalwartImprovedFeature = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "StalwartImprovedFeature", bp => {

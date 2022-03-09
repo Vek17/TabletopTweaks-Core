@@ -16,11 +16,11 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Feats {
     class SpellSpecializationGreater {
         public static void AddSpellSpecializationGreater() {
-            var SpellFocus = Resources.GetBlueprint<BlueprintParametrizedFeature>("16fa59cc9a72a6043b566b49184f53fe");
-            var SpellSpecializationFirst = Resources.GetBlueprint<BlueprintParametrizedFeature>("f327a765a4353d04f872482ef3e48c35");
-            var SpellSpecializationProgression = Resources.GetBlueprint<BlueprintProgression>("fe9220cdc16e5f444a84d85d5fa8e3d5");
-            var SpellSpecializationSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("fe67bc3b04f1cd542b4df6e28b6e0ff5");
-            var GreaterElementalFocusSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("1c17446a3eb744f438488711b792ca4d");
+            var SpellFocus = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("16fa59cc9a72a6043b566b49184f53fe");
+            var SpellSpecializationFirst = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("f327a765a4353d04f872482ef3e48c35");
+            var SpellSpecializationProgression = BlueprintTools.GetBlueprint<BlueprintProgression>("fe9220cdc16e5f444a84d85d5fa8e3d5");
+            var SpellSpecializationSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("fe67bc3b04f1cd542b4df6e28b6e0ff5");
+            var GreaterElementalFocusSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("1c17446a3eb744f438488711b792ca4d");
 
             var SpellSpecializationGreater = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "SpellSpecializationGreater", bp => {
                 bp.SetName("Greater Spell Specialization");

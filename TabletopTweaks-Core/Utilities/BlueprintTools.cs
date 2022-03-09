@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using TabletopTweaks.Core.ModLogic;
 
-namespace TabletopTweaks.Core {
-    public static class Resources {
+namespace TabletopTweaks.Core.Utilities {
+    public static class BlueprintTools {
         public static readonly Dictionary<BlueprintGuid, SimpleBlueprint> ModBlueprints = new Dictionary<BlueprintGuid, SimpleBlueprint>();
 
 #if false

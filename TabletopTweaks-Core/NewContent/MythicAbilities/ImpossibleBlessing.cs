@@ -7,9 +7,9 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class ImpossibleBlessing {
         public static void AddImpossibleBlessing() {
-            var BlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("6d9dcc2a59210a14891aeedb09d406aa");
+            var BlessingSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("6d9dcc2a59210a14891aeedb09d406aa");
 
-            var WitchHexAmelioratingFeature = Resources.GetBlueprint<BlueprintFeature>("3cdd3660fb69f3e4db0160fa97dfa85d");
+            var WitchHexAmelioratingFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("3cdd3660fb69f3e4db0160fa97dfa85d");
 
             var ImpossibleBlessingFeature = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "ImpossibleBlessingFeature", bp => {
                 bp.SetName("Impossible Blessing");

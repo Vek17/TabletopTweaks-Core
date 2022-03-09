@@ -12,7 +12,7 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class ShatterDefenses {
         public static void AddNewShatterDefenseBlueprints() {
-            var ShatterDefenses = Resources.GetBlueprint<BlueprintFeature>("61a17ccbbb3d79445b0926347ec07577");
+            var ShatterDefenses = BlueprintTools.GetBlueprint<BlueprintFeature>("61a17ccbbb3d79445b0926347ec07577");
 
             var ShatterDefensesDisplayBuff = Helpers.CreateBuff(modContext: TTTContext, "ShatterDefensesDisplayBuff", bp => {
                 bp.m_Icon = ShatterDefenses.m_Icon;

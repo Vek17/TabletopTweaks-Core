@@ -9,7 +9,7 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Backgrounds {
     static class Lecturer {
         public static void AddLecturer() {
-            var BackgroundsScholarSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("273fab44409035f42a7e2af0858a463d");
+            var BackgroundsScholarSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("273fab44409035f42a7e2af0858a463d");
 
             var BackgroundScholarLecturer = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "BackgroundScholarLecturer", bp => {
                 bp.SetName("Lecturer");

@@ -23,7 +23,7 @@ using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class PiercingSpell {
         public static void AddPiercingSpell() {
-            var FavoriteMetamagicSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
+            var FavoriteMetamagicSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
             var Icon_PiercingSpellFeat = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_PiercingSpellFeat.png");
             var Icon_PiercingSpellMetamagic = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Metamagic", file: "Icon_PiercingSpellMetamagic.png", size: 128);
             var Icon_MetamagicRodPiercingLesser = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodPiercingLesser.png", size: 64);
@@ -111,19 +111,19 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             }
         }
         private static void AddRodsToVenders() {
-            var Scrolls_DefendersHeartVendorTable = Resources.GetBlueprint<BlueprintSharedVendorTable>("79b995e5fc910f34ab9dfec3c6b16c8f");
-            var WarCamp_ScrollVendorClericTable = Resources.GetBlueprint<BlueprintSharedVendorTable>("cdd7aa16e900b9146bc6963ca53b8e71");
+            var Scrolls_DefendersHeartVendorTable = BlueprintTools.GetBlueprint<BlueprintSharedVendorTable>("79b995e5fc910f34ab9dfec3c6b16c8f");
+            var WarCamp_ScrollVendorClericTable = BlueprintTools.GetBlueprint<BlueprintSharedVendorTable>("cdd7aa16e900b9146bc6963ca53b8e71");
 
             Scrolls_DefendersHeartVendorTable.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodLesserPiercing"),
+                    m_Item = BlueprintTools.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodLesserPiercing"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;
             });
             WarCamp_ScrollVendorClericTable.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodNormalPiercing"),
+                    m_Item = BlueprintTools.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodNormalPiercing"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;

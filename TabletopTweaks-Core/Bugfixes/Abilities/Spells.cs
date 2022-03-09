@@ -81,7 +81,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchAbyssalStorm() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("AbyssalStorm")) { return; }
 
-                var AbyssalStorm = Resources.GetBlueprint<BlueprintAbility>("58e9e2883bca1574e9c932e72fd361f9");
+                var AbyssalStorm = BlueprintTools.GetBlueprint<BlueprintAbility>("58e9e2883bca1574e9c932e72fd361f9");
                 AbyssalStorm.GetComponent<AbilityEffectRunAction>().SavingThrowType = SavingThrowType.Unknown;
                 AbyssalStorm.FlattenAllActions().OfType<ContextActionDealDamage>().ForEach(a => {
                     if (a.WriteResultToSharedValue) {
@@ -112,7 +112,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchAcidMaw() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("AcidMaw")) { return; }
 
-                var AcidMawBuff = Resources.GetBlueprint<BlueprintBuff>("f1a6799b05a40144d9acdbdca1d7c228");
+                var AcidMawBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("f1a6799b05a40144d9acdbdca1d7c228");
 
                 var EnergyType = AcidMawBuff.FlattenAllActions().OfType<ContextActionDealDamage>().First().DamageType.Energy;
                 var AttackWithWeaponTrigger = AcidMawBuff.GetComponent<AddInitiatorAttackWithWeaponTrigger>();
@@ -136,7 +136,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchBelieveInYourself() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("BelieveInYourself")) { return; }
 
-                BlueprintAbility BelieveInYourself = Resources.GetBlueprint<BlueprintAbility>("3ed3cef7c267cb847bfd44ed4708b726");
+                BlueprintAbility BelieveInYourself = BlueprintTools.GetBlueprint<BlueprintAbility>("3ed3cef7c267cb847bfd44ed4708b726");
                 BlueprintAbilityReference[] BelieveInYourselfVariants = BelieveInYourself
                     .GetComponent<AbilityVariants>()
                     .Variants;
@@ -156,20 +156,20 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchBestowCurseGreater() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("BestowCurseGreater")) { return; }
 
-                var BestowCurseGreaterDeterioration = Resources.GetBlueprint<BlueprintAbility>("71196d7e6d6645247a058a3c3c9bb5fd");
-                var BestowCurseGreaterFeebleBody = Resources.GetBlueprint<BlueprintAbility>("c74a7dfebd7b1004a80f7e59689dfadd");
-                var BestowCurseGreaterIdiocy = Resources.GetBlueprint<BlueprintAbility>("f7739a453e2138b46978e9098a29b3fb");
-                var BestowCurseGreaterWeakness = Resources.GetBlueprint<BlueprintAbility>("abb2d42dd9219eb41848ec56a8726d58");
+                var BestowCurseGreaterDeterioration = BlueprintTools.GetBlueprint<BlueprintAbility>("71196d7e6d6645247a058a3c3c9bb5fd");
+                var BestowCurseGreaterFeebleBody = BlueprintTools.GetBlueprint<BlueprintAbility>("c74a7dfebd7b1004a80f7e59689dfadd");
+                var BestowCurseGreaterIdiocy = BlueprintTools.GetBlueprint<BlueprintAbility>("f7739a453e2138b46978e9098a29b3fb");
+                var BestowCurseGreaterWeakness = BlueprintTools.GetBlueprint<BlueprintAbility>("abb2d42dd9219eb41848ec56a8726d58");
 
-                var BestowCurseGreaterDeteriorationCast = Resources.GetBlueprint<BlueprintAbility>("54606d540f5d3684d9f7d6e2e2be9b63");
-                var BestowCurseGreaterFeebleBodyCast = Resources.GetBlueprint<BlueprintAbility>("292d630a5abae64499bb18057aaa24b4");
-                var BestowCurseGreaterIdiocyCast = Resources.GetBlueprint<BlueprintAbility>("e0212142d2a426f43926edd4202996bb");
-                var BestowCurseGreaterWeaknessCast = Resources.GetBlueprint<BlueprintAbility>("1168f36fac0bad64f965928206df7b86");
+                var BestowCurseGreaterDeteriorationCast = BlueprintTools.GetBlueprint<BlueprintAbility>("54606d540f5d3684d9f7d6e2e2be9b63");
+                var BestowCurseGreaterFeebleBodyCast = BlueprintTools.GetBlueprint<BlueprintAbility>("292d630a5abae64499bb18057aaa24b4");
+                var BestowCurseGreaterIdiocyCast = BlueprintTools.GetBlueprint<BlueprintAbility>("e0212142d2a426f43926edd4202996bb");
+                var BestowCurseGreaterWeaknessCast = BlueprintTools.GetBlueprint<BlueprintAbility>("1168f36fac0bad64f965928206df7b86");
 
-                var BestowCurseGreaterDeteriorationBuff = Resources.GetBlueprint<BlueprintBuff>("8f8835d083f31c547a39ebc26ae42159");
-                var BestowCurseGreaterFeebleBodyBuff = Resources.GetBlueprint<BlueprintBuff>("28c9db77dfb1aa54a94e8a7413b1840a");
-                var BestowCurseGreaterIdiocyBuff = Resources.GetBlueprint<BlueprintBuff>("493dcc29a21abd94d9adb579e1f40318");
-                var BestowCurseGreaterWeaknessBuff = Resources.GetBlueprint<BlueprintBuff>("0493a9d25687d7e4682e250ae3ccb187");
+                var BestowCurseGreaterDeteriorationBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("8f8835d083f31c547a39ebc26ae42159");
+                var BestowCurseGreaterFeebleBodyBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("28c9db77dfb1aa54a94e8a7413b1840a");
+                var BestowCurseGreaterIdiocyBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("493dcc29a21abd94d9adb579e1f40318");
+                var BestowCurseGreaterWeaknessBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("0493a9d25687d7e4682e250ae3ccb187");
 
                 RebuildCurse(
                     BestowCurseGreaterDeterioration,
@@ -204,7 +204,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchBreakEnchantment() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("BreakEnchantment")) { return; }
 
-                var BreakEnchantment = Resources.GetBlueprint<BlueprintAbility>("7792da00c85b9e042a0fdfc2b66ec9a8");
+                var BreakEnchantment = BlueprintTools.GetBlueprint<BlueprintAbility>("7792da00c85b9e042a0fdfc2b66ec9a8");
                 BreakEnchantment
                     .FlattenAllActions()
                     .OfType<ContextActionDispelMagic>()
@@ -218,7 +218,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchChainLightning() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("ChainLightning")) { return; }
 
-                var ChainLightning = Resources.GetBlueprint<BlueprintAbility>("645558d63604747428d55f0dd3a4cb58");
+                var ChainLightning = BlueprintTools.GetBlueprint<BlueprintAbility>("645558d63604747428d55f0dd3a4cb58");
                 ChainLightning
                     .FlattenAllActions()
                     .OfType<ContextActionDealDamage>()
@@ -231,7 +231,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchCrusadersEdge() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("CrusadersEdge")) { return; }
 
-                BlueprintBuff CrusadersEdgeBuff = Resources.GetBlueprint<BlueprintBuff>("7ca348639a91ae042967f796098e3bc3");
+                BlueprintBuff CrusadersEdgeBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("7ca348639a91ae042967f796098e3bc3");
                 CrusadersEdgeBuff.GetComponent<AddInitiatorAttackWithWeaponTrigger>().CriticalHit = true;
                 TTTContext.Logger.LogPatch("Patched", CrusadersEdgeBuff);
             }
@@ -239,7 +239,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchDispelMagicGreater() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("DispelMagicGreater")) { return; }
 
-                var DispelMagicGreaterTarget = Resources.GetBlueprint<BlueprintAbility>("6d490c80598f1d34bb277735b52d52c1");
+                var DispelMagicGreaterTarget = BlueprintTools.GetBlueprint<BlueprintAbility>("6d490c80598f1d34bb277735b52d52c1");
                 DispelMagicGreaterTarget.SetDescription("This functions as a targeted dispel magic, but it can dispel one spell for every four caster " +
                     "levels you possess, starting with the highest level spells and proceeding to lower level spells.\n" +
                     "Targeted Dispel: One object, creature, or spell is the target of the dispel magic spell. You make one dispel check (1d20 + your caster level)" +
@@ -252,7 +252,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchEyeOfTheSun() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("EyeOfTheSun")) { return; }
 
-                var AngelEyeOfTheSun = Resources.GetBlueprint<BlueprintAbility>("a948e10ecf1fa674dbae5eaae7f25a7f");
+                var AngelEyeOfTheSun = BlueprintTools.GetBlueprint<BlueprintAbility>("a948e10ecf1fa674dbae5eaae7f25a7f");
                 AngelEyeOfTheSun.FlattenAllActions().OfType<ContextActionDealDamage>().ForEach(a => {
                     if (a.WriteResultToSharedValue) {
                         a.WriteRawResultToSharedValue = true;
@@ -268,7 +268,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchFirebrand() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("Firebrand")) { return; }
 
-                var FirebrandBuff = Resources.GetBlueprint<BlueprintBuff>("c6cc1c5356db4674dbd2be20ea205c86");
+                var FirebrandBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("c6cc1c5356db4674dbd2be20ea205c86");
 
                 FirebrandBuff.RemoveComponents<AddInitiatorAttackWithWeaponTrigger>();
                 FirebrandBuff.AddComponent<AddAdditionalWeaponDamage>(c => {
@@ -288,7 +288,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchFlamestrike() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("FlameStrike")) { return; }
 
-                var FlameStrike = Resources.GetBlueprint<BlueprintAbility>("f9910c76efc34af41b6e43d5d8752f0f");
+                var FlameStrike = BlueprintTools.GetBlueprint<BlueprintAbility>("f9910c76efc34af41b6e43d5d8752f0f");
                 FlameStrike.FlattenAllActions().OfType<ContextActionDealDamage>().ForEach(a => {
                     a.Half = true;
                     a.HalfIfSaved = true;
@@ -299,8 +299,8 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchFrightfulAspect() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("FrightfulAspect")) { return; }
 
-                var FrightfulAspectArea = Resources.GetBlueprint<BlueprintAbilityAreaEffect>("b69066531acd0b94184d03e010c92e94");
-                var FrightfulAspectShakenBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("522164167a56d804bb4fa5abf36b4fbc");
+                var FrightfulAspectArea = BlueprintTools.GetBlueprint<BlueprintAbilityAreaEffect>("b69066531acd0b94184d03e010c92e94");
+                var FrightfulAspectShakenBuff = BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("522164167a56d804bb4fa5abf36b4fbc");
                 FrightfulAspectArea.GetComponent<AbilityAreaEffectBuff>().m_Buff = FrightfulAspectShakenBuff;
                 TTTContext.Logger.LogPatch(FrightfulAspectArea);
             }
@@ -308,10 +308,10 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchGeniekind() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("Geniekind")) { return; }
 
-                var GeniekindDjinniBuff = Resources.GetBlueprint<BlueprintBuff>("082caf8c1005f114ba6375a867f638cf");
-                var GeniekindEfreetiBuff = Resources.GetBlueprint<BlueprintBuff>("d47f45f29c4cfc0469f3734d02545e0b");
-                var GeniekindMaridBuff = Resources.GetBlueprint<BlueprintBuff>("4f37fc07fe2cf7f4f8076e79a0a3bfe9");
-                var GeniekindShaitanBuff = Resources.GetBlueprint<BlueprintBuff>("1d498104f8e35e246b5d8180b0faed43");
+                var GeniekindDjinniBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("082caf8c1005f114ba6375a867f638cf");
+                var GeniekindEfreetiBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("d47f45f29c4cfc0469f3734d02545e0b");
+                var GeniekindMaridBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("4f37fc07fe2cf7f4f8076e79a0a3bfe9");
+                var GeniekindShaitanBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("1d498104f8e35e246b5d8180b0faed43");
 
                 ReplaceComponents(GeniekindDjinniBuff);
                 ReplaceComponents(GeniekindEfreetiBuff);
@@ -341,7 +341,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchHellfireRay() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("HellfireRay")) { return; }
 
-                var HellfireRay = Resources.GetBlueprint<BlueprintAbility>("700cfcbd0cb2975419bcab7dbb8c6210");
+                var HellfireRay = BlueprintTools.GetBlueprint<BlueprintAbility>("700cfcbd0cb2975419bcab7dbb8c6210");
                 HellfireRay.GetComponent<SpellDescriptorComponent>().Descriptor = SpellDescriptor.Evil;
                 HellfireRay.AvailableMetamagic &= (Metamagic)~(CustomMetamagic.Flaring | CustomMetamagic.Burning);
                 HellfireRay.FlattenAllActions().OfType<ContextActionDealDamage>().ForEach(a => {
@@ -360,8 +360,8 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
                 PatchMagicalVestmentShield();
 
                 void PatchMagicalVestmentShield() {
-                    var MagicalVestmentShield = Resources.GetBlueprint<BlueprintAbility>("adcda176d1756eb45bd5ec9592073b09");
-                    var MagicalVestmentShieldBuff = Resources.GetBlueprint<BlueprintBuff>("2e8446f820936a44f951b50d70a82b16");
+                    var MagicalVestmentShield = BlueprintTools.GetBlueprint<BlueprintAbility>("adcda176d1756eb45bd5ec9592073b09");
+                    var MagicalVestmentShieldBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("2e8446f820936a44f951b50d70a82b16");
 
                     MagicalVestmentShieldBuff.SetComponents();
                     MagicalVestmentShieldBuff.AddComponent<MagicalVestmentComponent>(c => {
@@ -370,11 +370,11 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
                             ValueType = ContextValueType.Rank
                         };
                         c.m_EnchantmentBlueprints = new BlueprintItemEnchantmentReference[] {
-                            Resources.GetBlueprintReference<BlueprintItemEnchantmentReference>("1d9b60d57afb45c4f9bb0a3c21bb3b98"), // TemporaryArmorEnhancementBonus1
-                            Resources.GetBlueprintReference<BlueprintItemEnchantmentReference>("d45bfd838c541bb40bde7b0bf0e1b684"), // TemporaryArmorEnhancementBonus2
-                            Resources.GetBlueprintReference<BlueprintItemEnchantmentReference>("51c51d841e9f16046a169729c13c4d4f"), // TemporaryArmorEnhancementBonus3
-                            Resources.GetBlueprintReference<BlueprintItemEnchantmentReference>("a23bcee56c9fcf64d863dafedb369387"), // TemporaryArmorEnhancementBonus4
-                            Resources.GetBlueprintReference<BlueprintItemEnchantmentReference>("15d7d6cbbf56bd744b37bbf9225ea83b")  // TemporaryArmorEnhancementBonus5
+                            BlueprintTools.GetBlueprintReference<BlueprintItemEnchantmentReference>("1d9b60d57afb45c4f9bb0a3c21bb3b98"), // TemporaryArmorEnhancementBonus1
+                            BlueprintTools.GetBlueprintReference<BlueprintItemEnchantmentReference>("d45bfd838c541bb40bde7b0bf0e1b684"), // TemporaryArmorEnhancementBonus2
+                            BlueprintTools.GetBlueprintReference<BlueprintItemEnchantmentReference>("51c51d841e9f16046a169729c13c4d4f"), // TemporaryArmorEnhancementBonus3
+                            BlueprintTools.GetBlueprintReference<BlueprintItemEnchantmentReference>("a23bcee56c9fcf64d863dafedb369387"), // TemporaryArmorEnhancementBonus4
+                            BlueprintTools.GetBlueprintReference<BlueprintItemEnchantmentReference>("15d7d6cbbf56bd744b37bbf9225ea83b")  // TemporaryArmorEnhancementBonus5
                         };
                     });
                     MagicalVestmentShieldBuff.AddContextRankConfig(c => {
@@ -387,8 +387,8 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
                     TTTContext.Logger.LogPatch("Patched", MagicalVestmentShieldBuff);
                 }
                 void PatchMagicalVestmentArmor() {
-                    var MagicalVestmentArmor = Resources.GetBlueprint<BlueprintAbility>("956309af83352714aa7ee89fb4ecf201");
-                    var MagicalVestmentArmorBuff = Resources.GetBlueprint<BlueprintBuff>("9e265139cf6c07c4fb8298cb8b646de9");
+                    var MagicalVestmentArmor = BlueprintTools.GetBlueprint<BlueprintAbility>("956309af83352714aa7ee89fb4ecf201");
+                    var MagicalVestmentArmorBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("9e265139cf6c07c4fb8298cb8b646de9");
 
                     MagicalVestmentArmorBuff.SetComponents();
                     MagicalVestmentArmorBuff.AddComponent<MagicalVestmentComponent>(c => {
@@ -396,11 +396,11 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
                             ValueType = ContextValueType.Rank
                         };
                         c.m_EnchantmentBlueprints = new BlueprintItemEnchantmentReference[] {
-                            Resources.GetBlueprintReference<BlueprintItemEnchantmentReference>("1d9b60d57afb45c4f9bb0a3c21bb3b98"), // TemporaryArmorEnhancementBonus1
-                            Resources.GetBlueprintReference<BlueprintItemEnchantmentReference>("d45bfd838c541bb40bde7b0bf0e1b684"), // TemporaryArmorEnhancementBonus2
-                            Resources.GetBlueprintReference<BlueprintItemEnchantmentReference>("51c51d841e9f16046a169729c13c4d4f"), // TemporaryArmorEnhancementBonus3
-                            Resources.GetBlueprintReference<BlueprintItemEnchantmentReference>("a23bcee56c9fcf64d863dafedb369387"), // TemporaryArmorEnhancementBonus4
-                            Resources.GetBlueprintReference<BlueprintItemEnchantmentReference>("15d7d6cbbf56bd744b37bbf9225ea83b")  // TemporaryArmorEnhancementBonus5
+                            BlueprintTools.GetBlueprintReference<BlueprintItemEnchantmentReference>("1d9b60d57afb45c4f9bb0a3c21bb3b98"), // TemporaryArmorEnhancementBonus1
+                            BlueprintTools.GetBlueprintReference<BlueprintItemEnchantmentReference>("d45bfd838c541bb40bde7b0bf0e1b684"), // TemporaryArmorEnhancementBonus2
+                            BlueprintTools.GetBlueprintReference<BlueprintItemEnchantmentReference>("51c51d841e9f16046a169729c13c4d4f"), // TemporaryArmorEnhancementBonus3
+                            BlueprintTools.GetBlueprintReference<BlueprintItemEnchantmentReference>("a23bcee56c9fcf64d863dafedb369387"), // TemporaryArmorEnhancementBonus4
+                            BlueprintTools.GetBlueprintReference<BlueprintItemEnchantmentReference>("15d7d6cbbf56bd744b37bbf9225ea83b")  // TemporaryArmorEnhancementBonus5
                         };
                     });
                     MagicalVestmentArmorBuff.AddContextRankConfig(c => {
@@ -417,14 +417,14 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchMagicWeaponGreater() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("GreaterMagicWeapon")) { return; }
 
-                var MagicWeaponGreaterPrimary = Resources.GetBlueprint<BlueprintAbility>("a3fe23711486ee9489af1dadd6906149");
-                var MagicWeaponGreaterSecondary = Resources.GetBlueprint<BlueprintAbility>("89c13df989e5e624692134d55195121a");
+                var MagicWeaponGreaterPrimary = BlueprintTools.GetBlueprint<BlueprintAbility>("a3fe23711486ee9489af1dadd6906149");
+                var MagicWeaponGreaterSecondary = BlueprintTools.GetBlueprint<BlueprintAbility>("89c13df989e5e624692134d55195121a");
                 var newEnhancements = new BlueprintItemEnchantmentReference[] {
-                    Resources.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TemporaryEnhancement1NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
-                    Resources.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TemporaryEnhancement2NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
-                    Resources.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TemporaryEnhancement3NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
-                    Resources.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TemporaryEnhancement4NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
-                    Resources.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TemporaryEnhancement5NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TemporaryEnhancement1NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TemporaryEnhancement2NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TemporaryEnhancement3NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TemporaryEnhancement4NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
+                    BlueprintTools.GetModBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, "TemporaryEnhancement5NonStacking").ToReference<BlueprintItemEnchantmentReference>(),
                 };
 
                 MagicWeaponGreaterPrimary.FlattenAllActions().OfType<EnhanceWeapon>().ForEach(c => c.m_Enchantment = newEnhancements);
@@ -436,7 +436,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchMicroscopicProportions() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("MicroscopicProportions")) { return; }
 
-                var TricksterMicroscopicProportionsBuff = Resources.GetBlueprint<BlueprintBuff>("1dfc2f933e7833f41922411962e1d58a");
+                var TricksterMicroscopicProportionsBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("1dfc2f933e7833f41922411962e1d58a");
                 TricksterMicroscopicProportionsBuff
                     .GetComponents<AddContextStatBonus>()
                     .ForEach(c => c.Descriptor = ModifierDescriptor.Size);
@@ -446,14 +446,14 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchPerfectForm() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("PerfectForm")) { return; }
 
-                var PerfectForm = Resources.GetBlueprint<BlueprintAbility>("91d04f9180e94065ac768959323d2002");
+                var PerfectForm = BlueprintTools.GetBlueprint<BlueprintAbility>("91d04f9180e94065ac768959323d2002");
                 var perfectFormBuffs = new BlueprintBuffReference[] {
-                        Resources.GetBlueprintReference<BlueprintBuffReference>("ccd363424d954c668a81b0024012a66a"),    // PerfectFormEqualToCharismaBuff
-                        Resources.GetBlueprintReference<BlueprintBuffReference>("774567a0bcf54a83807f7387d5dd9c23"),    // PerfectFormEqualToConstitutionBuff
-                        Resources.GetBlueprintReference<BlueprintBuffReference>("23b87498fac14465bc9c22cc3366e6e7"),    // PerfectFormEqualToDexterityBuff
-                        Resources.GetBlueprintReference<BlueprintBuffReference>("3bc3d8660ddc467aabea43b070fcd10b"),    // PerfectFormEqualToIntelligenceBuff
-                        Resources.GetBlueprintReference<BlueprintBuffReference>("149e7d34927146a8804404087bf9703f"),    // PerfectFormEqualToStrengthBuff
-                        Resources.GetBlueprintReference<BlueprintBuffReference>("06785b5665264ad1b257fa3e724ed68f")     // PerfectFormEqualToWisdomBuff
+                        BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("ccd363424d954c668a81b0024012a66a"),    // PerfectFormEqualToCharismaBuff
+                        BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("774567a0bcf54a83807f7387d5dd9c23"),    // PerfectFormEqualToConstitutionBuff
+                        BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("23b87498fac14465bc9c22cc3366e6e7"),    // PerfectFormEqualToDexterityBuff
+                        BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("3bc3d8660ddc467aabea43b070fcd10b"),    // PerfectFormEqualToIntelligenceBuff
+                        BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("149e7d34927146a8804404087bf9703f"),    // PerfectFormEqualToStrengthBuff
+                        BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("06785b5665264ad1b257fa3e724ed68f")     // PerfectFormEqualToWisdomBuff
   
                     };
                 PerfectForm
@@ -489,7 +489,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchRemoveFear() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("RemoveFear")) { return; }
 
-                var RemoveFearBuff = Resources.GetBlueprint<BlueprintBuff>("c5c86809a1c834e42a2eb33133e90a28");
+                var RemoveFearBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("c5c86809a1c834e42a2eb33133e90a28");
                 RemoveFearBuff.RemoveComponents<AddConditionImmunity>();
                 QuickFixTools.ReplaceSuppression(RemoveFearBuff, TTTContext);
             }
@@ -497,7 +497,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchRemoveSickness() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("RemoveSickness")) { return; }
 
-                var RemoveSicknessBuff = Resources.GetBlueprint<BlueprintBuff>("91e09b2d99bb71243a97565af8b282e9");
+                var RemoveSicknessBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("91e09b2d99bb71243a97565af8b282e9");
                 RemoveSicknessBuff.RemoveComponents<AddConditionImmunity>();
                 RemoveSicknessBuff.AddComponent<SuppressBuffsTTT>(c => {
                     c.Descriptor = SpellDescriptor.Sickened | SpellDescriptor.Nauseated;
@@ -508,7 +508,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchShadowConjuration() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("ShadowConjuration")) { return; }
 
-                var ShadowConjuration = Resources.GetBlueprint<BlueprintAbility>("caac251ca7601324bbe000372a0a1005");
+                var ShadowConjuration = BlueprintTools.GetBlueprint<BlueprintAbility>("caac251ca7601324bbe000372a0a1005");
                 ShadowConjuration.AddToSpellList(SpellTools.SpellList.WizardSpellList, 4);
                 TTTContext.Logger.LogPatch("Patched", ShadowConjuration);
             }
@@ -516,7 +516,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchShadowEvocation() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("ShadowEvocation")) { return; }
 
-                var ShadowEvocation = Resources.GetBlueprint<BlueprintAbility>("237427308e48c3341b3d532b9d3a001f");
+                var ShadowEvocation = BlueprintTools.GetBlueprint<BlueprintAbility>("237427308e48c3341b3d532b9d3a001f");
                 ShadowEvocation.AvailableMetamagic |= Metamagic.Empower
                     | Metamagic.Maximize
                     | Metamagic.Quicken
@@ -532,8 +532,8 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchShadowEvocationGreater() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("ShadowEvocationGreater")) { return; }
 
-                var ShadowEvocationGreaterProperty = Resources.GetBlueprint<BlueprintUnitProperty>("0f813eb338594c5bb840c5583fd29c3d");
-                var ShadowEvocationGreater = Resources.GetBlueprint<BlueprintAbility>("3c4a2d4181482e84d9cd752ef8edc3b6");
+                var ShadowEvocationGreaterProperty = BlueprintTools.GetBlueprint<BlueprintUnitProperty>("0f813eb338594c5bb840c5583fd29c3d");
+                var ShadowEvocationGreater = BlueprintTools.GetBlueprint<BlueprintAbility>("3c4a2d4181482e84d9cd752ef8edc3b6");
                 ShadowEvocationGreater.AvailableMetamagic |= Metamagic.Empower
                     | Metamagic.Maximize
                     | Metamagic.Quicken
@@ -550,7 +550,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchStarlight() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("Starlight")) { return; }
 
-                var StarlightAllyBuff = Resources.GetBlueprint<BlueprintBuff>("f4ead47adc2ca2744a00efd4e088ecb2");
+                var StarlightAllyBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("f4ead47adc2ca2744a00efd4e088ecb2");
                 StarlightAllyBuff.GetComponent<AddConcealment>().Descriptor = ConcealmentDescriptor.InitiatorIsBlind;
                 TTTContext.Logger.LogPatch("Patched", StarlightAllyBuff);
             }
@@ -558,7 +558,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchSunForm() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("SunForm")) { return; }
 
-                var AngelSunFormRay = Resources.GetBlueprint<BlueprintAbility>("d0d8811bf5a8e2942b6b7d77d9691eb9");
+                var AngelSunFormRay = BlueprintTools.GetBlueprint<BlueprintAbility>("d0d8811bf5a8e2942b6b7d77d9691eb9");
                 AngelSunFormRay.FlattenAllActions().OfType<ContextActionDealDamage>().ForEach(a => {
                     if (a.WriteResultToSharedValue) {
                         a.WriteRawResultToSharedValue = true;
@@ -579,9 +579,9 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
 
             static void PatchSupernova() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("Supernova")) { return; }
-                var Supernova = Resources.GetBlueprint<BlueprintAbility>("1325e698f4a3f224b880e3b83a551228");
-                var SupernovaArea = Resources.GetBlueprint<BlueprintAbilityAreaEffect>("165a01a3597c0bf44a8b333ac6dd631a");
-                var BlindnessBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("187f88d96a0ef464280706b63635f2af");
+                var Supernova = BlueprintTools.GetBlueprint<BlueprintAbility>("1325e698f4a3f224b880e3b83a551228");
+                var SupernovaArea = BlueprintTools.GetBlueprint<BlueprintAbilityAreaEffect>("165a01a3597c0bf44a8b333ac6dd631a");
+                var BlindnessBuff = BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("187f88d96a0ef464280706b63635f2af");
 
                 Supernova.AvailableMetamagic |= Metamagic.Empower | Metamagic.Maximize | Metamagic.Bolstered;
                 SupernovaArea.RemoveComponents<AbilityAreaEffectRunAction>();
@@ -679,15 +679,15 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchUnbreakableHeart() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("UnbreakableHeart")) { return; }
 
-                var UnbreakableHeartBuff = Resources.GetBlueprint<BlueprintBuff>("6603b27034f694e44a407a9cdf77c67e");
+                var UnbreakableHeartBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("6603b27034f694e44a407a9cdf77c67e");
                 QuickFixTools.ReplaceSuppression(UnbreakableHeartBuff, TTTContext);
             }
 
             static void PatchWindsOfFall() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("WindsOfFall")) { return; }
 
-                var WindsOfTheFall = Resources.GetBlueprint<BlueprintAbility>("af2ed41c7894b934c9a9ca5048af3f58");
-                var WindsOfTheFallBuff = Resources.GetBlueprint<BlueprintBuff>("b90339c580288eb48b7fea4abba0507e");
+                var WindsOfTheFall = BlueprintTools.GetBlueprint<BlueprintAbility>("af2ed41c7894b934c9a9ca5048af3f58");
+                var WindsOfTheFallBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("b90339c580288eb48b7fea4abba0507e");
 
                 WindsOfTheFall.TemporaryContext(bp => {
                     bp.Range = AbilityRange.Projectile;
@@ -718,7 +718,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchWrachingRay() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("WrackingRay")) { return; }
 
-                var WrackingRay = Resources.GetBlueprint<BlueprintAbility>("1cde0691195feae45bab5b83ea3f221e");
+                var WrackingRay = BlueprintTools.GetBlueprint<BlueprintAbility>("1cde0691195feae45bab5b83ea3f221e");
                 foreach (AbilityEffectRunAction component in WrackingRay.GetComponents<AbilityEffectRunAction>()) {
                     foreach (ContextActionDealDamage action in component.Actions.Actions.OfType<ContextActionDealDamage>()) {
                         action.Value.DiceType = Kingmaker.RuleSystem.DiceType.D4;
@@ -730,7 +730,7 @@ namespace TabletopTweaks.Core.Bugfixes.Abilities {
             static void PatchVampiricBlade() {
                 if (Main.TTTContext.Fixes.Spells.IsDisabled("VampiricBlade")) { return; }
 
-                var VampiricBladeBuff = Resources.GetBlueprint<BlueprintBuff>("f6007b38909c3b248a8a77b316f5bc2d");
+                var VampiricBladeBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("f6007b38909c3b248a8a77b316f5bc2d");
 
                 VampiricBladeBuff.GetComponents<AddInitiatorAttackWithWeaponTrigger>()
                     .Where(c => c.ActionsOnInitiator == false)

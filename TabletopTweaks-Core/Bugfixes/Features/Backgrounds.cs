@@ -34,7 +34,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 PatchBackgrounds();
 
                 void PatchBackgrounds() {
-                    var BackgroundsBaseSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("f926dabeee7f8a54db8f2010b323383c");
+                    var BackgroundsBaseSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("f926dabeee7f8a54db8f2010b323383c");
                     BackgroundsBaseSelection.m_AllFeatures
                         .Where(f => f.Get() is BlueprintFeatureSelection)
                         .SelectMany(f => ((BlueprintFeatureSelection)f.Get()).m_AllFeatures)
@@ -60,8 +60,8 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                         });
                 }
                 void PatchMiner() {
-                    var EarthBreakerProficiency = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "EarthBreakerProficiency");
-                    var BackgroundMiner = Resources.GetBlueprint<BlueprintFeature>("e4e06f443e158e646a495fce6e024546");
+                    var EarthBreakerProficiency = BlueprintTools.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "EarthBreakerProficiency");
+                    var BackgroundMiner = BlueprintTools.GetBlueprint<BlueprintFeature>("e4e06f443e158e646a495fce6e024546");
 
                     BackgroundMiner.AddComponent<AddBackgroundWeaponProficiency>(c => {
                         c.Proficiency = WeaponCategory.EarthBreaker;
@@ -73,8 +73,8 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                     TTTContext.Logger.LogPatch("Patched", BackgroundMiner);
                 }
                 void PatchFarmhand() {
-                    var KamaProficiency = Resources.GetBlueprint<BlueprintFeature>("403740e8112651141a12f0d73d793dbc");
-                    var BackgroundFarmhand = Resources.GetBlueprint<BlueprintFeature>("25b35e09665310d4faac3020f8198cfb");
+                    var KamaProficiency = BlueprintTools.GetBlueprint<BlueprintFeature>("403740e8112651141a12f0d73d793dbc");
+                    var BackgroundFarmhand = BlueprintTools.GetBlueprint<BlueprintFeature>("25b35e09665310d4faac3020f8198cfb");
 
                     BackgroundFarmhand.AddComponent<AddBackgroundWeaponProficiency>(c => {
                         c.Proficiency = WeaponCategory.Kama;

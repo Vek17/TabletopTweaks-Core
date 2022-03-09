@@ -25,7 +25,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
 
                 void PatchSlayerTrapfinding() {
                     if (TTTContext.Fixes.Slayer.Base.IsDisabled("Trapfinding")) { return; }
-                    var SlayerTrapfinding = Resources.GetBlueprint<BlueprintFeature>("e3c12938c2f93544da89824fbe0933a5");
+                    var SlayerTrapfinding = BlueprintTools.GetBlueprint<BlueprintFeature>("e3c12938c2f93544da89824fbe0933a5");
                     SlayerTrapfinding.AddComponent(Helpers.Create<AddContextStatBonus>(c => {
                         c.Stat = StatType.SkillThievery;
                         c.Multiplier = 1;

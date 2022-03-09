@@ -1,5 +1,7 @@
 ﻿using HarmonyLib;
+using Kingmaker.Blueprints.Items;
 using Kingmaker.Blueprints.JsonSystem;
+using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent {
@@ -10,6 +12,11 @@ namespace TabletopTweaks.Core.NewContent {
 
             [HarmonyPriority(Priority.First)]
             static void Postfix() {
+                var test = BlueprintTools.GetBlueprint<BlueprintSharedVendorTable>("c773973cd73d4cd7aa4ccf3868dfeba9");
+                test.TemporaryContext(bp => {
+                    bp.SetComponents();
+                    TTTContext.Logger.LogPatch(bp);
+                });
                 if (Initialized) return;
                 Initialized = true;
                 TTTContext.Logger.LogHeader("Loading New Content");

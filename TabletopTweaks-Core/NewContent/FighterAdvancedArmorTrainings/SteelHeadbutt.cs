@@ -14,8 +14,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
     class SteelHeadbutt {
         public static void AddSteelHeadbutt() {
-            var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
-            var Gore1d6 = Resources.GetBlueprint<BlueprintItemWeapon>("daf4ab765feba8548b244e174e7af5be");
+            var FighterClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+            var Gore1d6 = BlueprintTools.GetBlueprint<BlueprintItemWeapon>("daf4ab765feba8548b244e174e7af5be");
 
             var SteelHeadbuttEnchant = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>(modContext: TTTContext, $"SteelHeadbuttEnchant", bp => {
                 bp.SetName("Steel Headbutt");

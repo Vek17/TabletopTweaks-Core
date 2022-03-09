@@ -80,7 +80,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchAlliedSpellcaster() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("AlliedSpellcaster")) { return; }
 
-                var AlliedSpellcaster = Resources.GetBlueprint<BlueprintFeature>("9093ceeefe9b84746a5993d619d7c86f");
+                var AlliedSpellcaster = BlueprintTools.GetBlueprint<BlueprintFeature>("9093ceeefe9b84746a5993d619d7c86f");
                 AlliedSpellcaster.RemoveComponents<AlliedSpellcaster>();
                 AlliedSpellcaster.AddComponent<AlliedSpellcasterTTT>(c => {
                     c.m_AlliedSpellcasterFact = AlliedSpellcaster.ToReference<BlueprintUnitFactReference>();
@@ -93,11 +93,11 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchArcaneStrike() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("ArcaneStrike")) { return; }
 
-                var ArcaneStrikeBuff = Resources.GetBlueprint<BlueprintBuff>("98ac795afd1b2014eb9fdf2b9820808f");
-                var DragonicStrikeAcid = Resources.GetBlueprintReference<BlueprintUnitFactReference>("b7d0c5d733a06e543b35d4e1c88d04f7");
-                var DragonicStrikeCold = Resources.GetBlueprintReference<BlueprintUnitFactReference>("3ff9333e578d7c2448ba18b6ffacb885");
-                var DragonicStrikeElectricity = Resources.GetBlueprintReference<BlueprintUnitFactReference>("db64de9cdbad45b4cbc8b369cd7a007c");
-                var DragonicStrikeFire = Resources.GetBlueprintReference<BlueprintUnitFactReference>("42aee53be1b64334caa5c73d34d10fad");
+                var ArcaneStrikeBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("98ac795afd1b2014eb9fdf2b9820808f");
+                var DragonicStrikeAcid = BlueprintTools.GetBlueprintReference<BlueprintUnitFactReference>("b7d0c5d733a06e543b35d4e1c88d04f7");
+                var DragonicStrikeCold = BlueprintTools.GetBlueprintReference<BlueprintUnitFactReference>("3ff9333e578d7c2448ba18b6ffacb885");
+                var DragonicStrikeElectricity = BlueprintTools.GetBlueprintReference<BlueprintUnitFactReference>("db64de9cdbad45b4cbc8b369cd7a007c");
+                var DragonicStrikeFire = BlueprintTools.GetBlueprintReference<BlueprintUnitFactReference>("42aee53be1b64334caa5c73d34d10fad");
 
                 ArcaneStrikeBuff.RemoveComponents<AddInitiatorAttackWithWeaponTrigger>();
                 AddDraconicTrigger(ArcaneStrikeBuff, DragonicStrikeAcid, DamageEnergyType.Acid);
@@ -134,7 +134,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchBrewPotions() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("BrewPotions")) { return; }
 
-                var BrewPotions = Resources.GetBlueprint<BlueprintFeature>("c0f8c4e513eb493408b8070a1de93fc0");
+                var BrewPotions = BlueprintTools.GetBlueprint<BlueprintFeature>("c0f8c4e513eb493408b8070a1de93fc0");
                 BrewPotions.Groups = new FeatureGroup[] { FeatureGroup.Feat };
 
                 TTTContext.Logger.LogPatch("Patched", BrewPotions);
@@ -143,9 +143,9 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchDestructiveDispel() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("DestructiveDispel")) { return; }
 
-                var DestructiveDispel = Resources.GetBlueprint<BlueprintFeature>("d298e64e14398e848a54db5a2619ba42");
-                var Sickened = Resources.GetBlueprintReference<BlueprintBuffReference>("4e42460798665fd4cb9173ffa7ada323");
-                var Stunned = Resources.GetBlueprintReference<BlueprintBuffReference>("09d39b38bb7c6014394b6daced9bacd3");
+                var DestructiveDispel = BlueprintTools.GetBlueprint<BlueprintFeature>("d298e64e14398e848a54db5a2619ba42");
+                var Sickened = BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("4e42460798665fd4cb9173ffa7ada323");
+                var Stunned = BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("09d39b38bb7c6014394b6daced9bacd3");
 
                 DestructiveDispel.SetComponents();
                 DestructiveDispel.AddComponent<DestructiveDispelComponent>(c => {
@@ -175,9 +175,9 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchDestructiveDispelPrerequisites() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("DestructiveDispelPrerequisites")) { return; }
 
-                var DestructiveDispel = Resources.GetBlueprint<BlueprintFeature>("d298e64e14398e848a54db5a2619ba42");
-                var DispelMagic = Resources.GetBlueprintReference<BlueprintAbilityReference>("92681f181b507b34ea87018e8f7a528a");
-                var DispelMagicGreater = Resources.GetBlueprintReference<BlueprintAbilityReference>("f0f761b808dc4b149b08eaf44b99f633");
+                var DestructiveDispel = BlueprintTools.GetBlueprint<BlueprintFeature>("d298e64e14398e848a54db5a2619ba42");
+                var DispelMagic = BlueprintTools.GetBlueprintReference<BlueprintAbilityReference>("92681f181b507b34ea87018e8f7a528a");
+                var DispelMagicGreater = BlueprintTools.GetBlueprintReference<BlueprintAbilityReference>("f0f761b808dc4b149b08eaf44b99f633");
 
                 DestructiveDispel.RemoveComponents<Prerequisite>();
                 DestructiveDispel.TemporaryContext(bp => {
@@ -199,7 +199,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchDispelSynergy() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("DispelSynergy")) { return; }
 
-                var DispelSynergy = Resources.GetBlueprint<BlueprintFeature>("f3e3e29608ba07844ab3cafc4c8e4343");
+                var DispelSynergy = BlueprintTools.GetBlueprint<BlueprintFeature>("f3e3e29608ba07844ab3cafc4c8e4343");
 
                 DispelSynergy.RemoveComponents<Prerequisite>();
                 DispelSynergy.AddPrerequisite<PrerequisiteStatValue>(p => {
@@ -211,17 +211,17 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchMagicalTail() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("MagicalTail")) { return; }
 
-                BlueprintFeature magicalTail1 = Resources.GetBlueprint<BlueprintFeature>("5114829572da5a04f896a8c5b67be413");
-                BlueprintFeature magicalTail2 = Resources.GetBlueprint<BlueprintFeature>("c032f65c0bd9f6048a927fb07fc0195d"); // Abilities change for this one
-                BlueprintFeature magicalTail3 = Resources.GetBlueprint<BlueprintFeature>("d5050e13742d9b64da20921aaf7c2b2a");
-                BlueprintFeature magicalTail4 = Resources.GetBlueprint<BlueprintFeature>("342b6aed6b2eaab4786de243f0bcbcb8");
-                BlueprintFeature magicalTail5 = Resources.GetBlueprint<BlueprintFeature>("044cd84818c36854abf61064ade542a1"); // Abilites change for this one
-                BlueprintFeature magicalTail6 = Resources.GetBlueprint<BlueprintFeature>("053e37697a0d20547b06c3dbd8b71702");
-                BlueprintFeature magicalTail7 = Resources.GetBlueprint<BlueprintFeature>("041f91c25586d48469dce6b4575053f6");
-                BlueprintFeature magicalTail8 = Resources.GetBlueprint<BlueprintFeature>("df186ef345849d149bdbf4ddb45aee35");
+                BlueprintFeature magicalTail1 = BlueprintTools.GetBlueprint<BlueprintFeature>("5114829572da5a04f896a8c5b67be413");
+                BlueprintFeature magicalTail2 = BlueprintTools.GetBlueprint<BlueprintFeature>("c032f65c0bd9f6048a927fb07fc0195d"); // Abilities change for this one
+                BlueprintFeature magicalTail3 = BlueprintTools.GetBlueprint<BlueprintFeature>("d5050e13742d9b64da20921aaf7c2b2a");
+                BlueprintFeature magicalTail4 = BlueprintTools.GetBlueprint<BlueprintFeature>("342b6aed6b2eaab4786de243f0bcbcb8");
+                BlueprintFeature magicalTail5 = BlueprintTools.GetBlueprint<BlueprintFeature>("044cd84818c36854abf61064ade542a1"); // Abilites change for this one
+                BlueprintFeature magicalTail6 = BlueprintTools.GetBlueprint<BlueprintFeature>("053e37697a0d20547b06c3dbd8b71702");
+                BlueprintFeature magicalTail7 = BlueprintTools.GetBlueprint<BlueprintFeature>("041f91c25586d48469dce6b4575053f6");
+                BlueprintFeature magicalTail8 = BlueprintTools.GetBlueprint<BlueprintFeature>("df186ef345849d149bdbf4ddb45aee35");
 
-                var hideousLaughterKitsune = Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "HideousLaughterKitsune");
-                var heroismKitsune = Resources.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "HeroismKitsune");
+                var hideousLaughterKitsune = BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "HideousLaughterKitsune");
+                var heroismKitsune = BlueprintTools.GetModBlueprint<BlueprintAbility>(modContext: TTTContext, "HeroismKitsune");
 
                 var magicalTailDescription = "You gain a new {g|Encyclopedia:Special_Abilities}spell-like ability{/g}, each usable twice per day," +
                                              " from the following list, in order:\n1. vanish\n2. hideous laughter\n3. blur\n4. invisibility\n5. heroism\n6." +
@@ -270,7 +270,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchCraneWing() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("CraneWing")) { return; }
 
-                BlueprintBuff CraneStyleBuff = Resources.GetBlueprint<BlueprintBuff>("e8ea7bd10136195478d8a5fc5a44c7da");
+                BlueprintBuff CraneStyleBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("e8ea7bd10136195478d8a5fc5a44c7da");
                 var FightingDefensivlyTrigger = CraneStyleBuff.GetComponent<AddInitiatorAttackWithWeaponTrigger>();
                 var Conditionals = FightingDefensivlyTrigger.Action.Actions.OfType<Conditional>();
 
@@ -282,20 +282,20 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchFencingGrace() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("FencingGrace")) { return; }
 
-                var FencingGrace = Resources.GetBlueprint<BlueprintParametrizedFeature>("47b352ea0f73c354aba777945760b441");
+                var FencingGrace = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("47b352ea0f73c354aba777945760b441");
                 FencingGrace.ReplaceComponents<DamageGrace>(Helpers.Create<DamageGraceTTT>());
                 TTTContext.Logger.LogPatch("Patched", FencingGrace);
             }
             static void PatchSlashingGrace() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("SlashingGrace")) { return; }
 
-                var SlashingGrace = Resources.GetBlueprint<BlueprintParametrizedFeature>("697d64669eb2c0543abb9c9b07998a38");
+                var SlashingGrace = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("697d64669eb2c0543abb9c9b07998a38");
                 SlashingGrace.ReplaceComponents<DamageGrace>(Helpers.Create<DamageGraceTTT>());
                 TTTContext.Logger.LogPatch("Patched", SlashingGrace);
             }
             static void PatchEndurance() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("Endurance")) { return; }
-                var Endurance = Resources.GetBlueprint<BlueprintFeature>("54ee847996c25cd4ba8773d7b8555174");
+                var Endurance = BlueprintTools.GetBlueprint<BlueprintFeature>("54ee847996c25cd4ba8773d7b8555174");
                 Endurance.SetDescription("Harsh conditions or long exertions do not easily tire you.\nBenefit: You gain +4 bonus on Fortitude " +
                     "saves against fatigue and exhaustion and +2 " +
                     "bonus on Athletics checks. If you have 10 or more ranks in Athletics, the bonus increases to +4 for that skill." +
@@ -334,10 +334,10 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchMountedCombat() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("MountedCombat")) { return; }
 
-                var MountedCombatBuff = Resources.GetBlueprint<BlueprintBuff>("5008df9965da43c593c98ed7e6cacfc6");
-                var MountedCombatCooldownBuff = Resources.GetBlueprint<BlueprintBuff>("5c9ef8224acdbab4fbaf59c710d0ef23");
-                var TrickRiding = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TrickRiding");
-                var TrickRidingCooldownBuff = Resources.GetBlueprint<BlueprintBuff>("5c9ef8224acdbab4fbaf59c710d0ef23");
+                var MountedCombatBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("5008df9965da43c593c98ed7e6cacfc6");
+                var MountedCombatCooldownBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("5c9ef8224acdbab4fbaf59c710d0ef23");
+                var TrickRiding = BlueprintTools.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TrickRiding");
+                var TrickRidingCooldownBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("5c9ef8224acdbab4fbaf59c710d0ef23");
                 MountedCombatBuff.RemoveComponents<MountedCombat>();
                 MountedCombatBuff.RemoveComponents<MountedCombatTTT>();
                 MountedCombatBuff.AddComponent<MountedCombatTTT>(c => {
@@ -350,8 +350,8 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchIndomitableMount() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("IndomitableMount")) { return; }
 
-                var IndomitableMount = Resources.GetBlueprint<BlueprintFeature>("68e814f1f3ce55942a52c1dd536eaa5b");
-                var IndomitableMountCooldownBuff = Resources.GetBlueprint<BlueprintBuff>("34762bab68ec86c45a15884b9a9929fc");
+                var IndomitableMount = BlueprintTools.GetBlueprint<BlueprintFeature>("68e814f1f3ce55942a52c1dd536eaa5b");
+                var IndomitableMountCooldownBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("34762bab68ec86c45a15884b9a9929fc");
                 IndomitableMount.RemoveComponents<IndomitableMount>();
                 IndomitableMount.AddComponent<IndomitableMountTTT>(c => {
                     c.m_CooldownBuff = IndomitableMountCooldownBuff.ToReference<BlueprintBuffReference>();
@@ -361,7 +361,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchPersistantMetamagic() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("PersistantMetamagic")) { return; }
 
-                var PersistentSpellFeat = Resources.GetBlueprint<BlueprintFeature>("cd26b9fa3f734461a0fcedc81cafaaac");
+                var PersistentSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("cd26b9fa3f734461a0fcedc81cafaaac");
                 var spells = SpellTools.GetAllSpells();
                 TTTContext.Logger.LogPatch("Enabling", PersistentSpellFeat);
                 foreach (var spell in spells) {
@@ -387,7 +387,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchBolsteredMetamagic() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("BolsteredMetamagic")) { return; }
 
-                var BolsteredSpellFeat = Resources.GetBlueprint<BlueprintFeature>("fbf5d9ce931f47f3a0c818b3f8ef8414");
+                var BolsteredSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("fbf5d9ce931f47f3a0c818b3f8ef8414");
                 var spells = SpellTools.GetAllSpells();
                 TTTContext.Logger.LogPatch("Enabling", BolsteredSpellFeat);
                 foreach (var spell in spells) {
@@ -409,7 +409,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchEmpowerMetamagic() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("EmpowerMetamagic")) { return; }
 
-                var EmpowerSpellFeat = Resources.GetBlueprint<BlueprintFeature>("a1de1e4f92195b442adb946f0e2b9d4e");
+                var EmpowerSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("a1de1e4f92195b442adb946f0e2b9d4e");
                 var spells = SpellTools.GetAllSpells();
                 TTTContext.Logger.LogPatch("Enabling", EmpowerSpellFeat);
                 foreach (var spell in spells) {
@@ -431,7 +431,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchMaximizeMetamagic() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("MaximizeMetamagic")) { return; }
 
-                var MaximizeSpellFeat = Resources.GetBlueprint<BlueprintFeature>("7f2b282626862e345935bbea5e66424b");
+                var MaximizeSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("7f2b282626862e345935bbea5e66424b");
                 var spells = SpellTools.GetAllSpells();
                 TTTContext.Logger.LogPatch("Enabling", MaximizeSpellFeat);
                 foreach (var spell in spells) {
@@ -453,7 +453,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchSelectiveMetamagic() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("SelectiveMetamagic")) { return; }
 
-                var SelectiveSpellFeat = Resources.GetBlueprint<BlueprintFeature>("85f3340093d144dd944fff9a9adfd2f2");
+                var SelectiveSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("85f3340093d144dd944fff9a9adfd2f2");
                 var spells = SpellTools.GetAllSpells();
                 TTTContext.Logger.LogPatch("Updating", SelectiveSpellFeat);
                 foreach (var spell in spells) {
@@ -476,10 +476,10 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchShatterDefenses() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("ShatterDefenses")) { return; }
 
-                var ShatterDefenses = Resources.GetBlueprint<BlueprintFeature>("61a17ccbbb3d79445b0926347ec07577");
-                var ShatterDefensesBuff = Resources.GetModBlueprint<BlueprintBuff>(modContext: TTTContext, "ShatterDefensesBuff");
-                var ShatterDefensesMythicFeat = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "ShatterDefensesMythicFeat");
-                var ShatterDefensesMythicBuff = Resources.GetModBlueprint<BlueprintBuff>(modContext: TTTContext, "ShatterDefensesMythicBuff");
+                var ShatterDefenses = BlueprintTools.GetBlueprint<BlueprintFeature>("61a17ccbbb3d79445b0926347ec07577");
+                var ShatterDefensesBuff = BlueprintTools.GetModBlueprint<BlueprintBuff>(modContext: TTTContext, "ShatterDefensesBuff");
+                var ShatterDefensesMythicFeat = BlueprintTools.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "ShatterDefensesMythicFeat");
+                var ShatterDefensesMythicBuff = BlueprintTools.GetModBlueprint<BlueprintBuff>(modContext: TTTContext, "ShatterDefensesMythicBuff");
 
                 ShatterDefenses.RemoveComponents<AddMechanicsFeature>();
                 ShatterDefenses.RemoveComponents<AddFacts>();
@@ -538,7 +538,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchSpellSpecialization() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("SpellSpecialization")) { return; }
 
-                var SpellSpecializationProgression = Resources.GetBlueprint<BlueprintProgression>("fe9220cdc16e5f444a84d85d5fa8e3d5");
+                var SpellSpecializationProgression = BlueprintTools.GetBlueprint<BlueprintProgression>("fe9220cdc16e5f444a84d85d5fa8e3d5");
 
                 Game.Instance.BlueprintRoot.Progression.CharacterClasses.ForEach(characterClass => {
                     SpellSpecializationProgression.AddClass(characterClass);
@@ -549,10 +549,10 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchSpiritedCharge() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("SpiritedCharge")) { return; }
 
-                var ChargeBuff = Resources.GetBlueprint<BlueprintBuff>("f36da144a379d534cad8e21667079066");
-                var MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
-                var SpiritedCharge = Resources.GetBlueprint<BlueprintFeature>("95ef0ff14771f2549897f300ce62c95c");
-                var SpiritedChargeBuff = Resources.GetBlueprint<BlueprintBuff>("5a191fc6731bd4845bbbcc8ff3ff4c1d");
+                var ChargeBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("f36da144a379d534cad8e21667079066");
+                var MountedBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
+                var SpiritedCharge = BlueprintTools.GetBlueprint<BlueprintFeature>("95ef0ff14771f2549897f300ce62c95c");
+                var SpiritedChargeBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("5a191fc6731bd4845bbbcc8ff3ff4c1d");
 
                 SpiritedCharge.RemoveComponents<BuffExtraEffects>();
                 SpiritedCharge.AddComponent(Helpers.Create<BuffExtraEffectsRequirements>(c => {
@@ -572,7 +572,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchWeaponFinesse() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("WeaponFinesse")) { return; }
 
-                var WeaponFinesse = Resources.GetBlueprint<BlueprintFeature>("90e54424d682d104ab36436bd527af09");
+                var WeaponFinesse = BlueprintTools.GetBlueprint<BlueprintFeature>("90e54424d682d104ab36436bd527af09");
 
                 WeaponFinesse.ReplaceComponents<AttackStatReplacement>(Helpers.Create<AttackStatReplacementTTT>(c => {
                     c.ReplacementStat = StatType.Dexterity;
@@ -583,7 +583,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchLunge() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("Lunge")) { return; }
 
-                var LungeFeature = Resources.GetBlueprint<BlueprintFeature>("d41d5bd9a775d7245929256d58a3e03e");
+                var LungeFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("d41d5bd9a775d7245929256d58a3e03e");
 
                 LungeFeature.Groups = new FeatureGroup[] { FeatureGroup.Feat, FeatureGroup.CombatFeat };
                 FeatTools.AddAsFeat(LungeFeature);
@@ -592,7 +592,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
             static void PatchSelectiveMetamagicPrerequisites() {
                 if (Main.TTTContext.Fixes.Feats.IsDisabled("SelectivePrerequisites")) { return; }
 
-                var SelectiveSpellFeat = Resources.GetBlueprint<BlueprintFeature>("85f3340093d144dd944fff9a9adfd2f2");
+                var SelectiveSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("85f3340093d144dd944fff9a9adfd2f2");
                 SelectiveSpellFeat.AddPrerequisite<PrerequisiteStatValue>(c => {
                     c.Stat = StatType.SkillKnowledgeArcana;
                     c.Value = 10;

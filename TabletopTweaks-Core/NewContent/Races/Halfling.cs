@@ -16,18 +16,18 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Races {
     static class Halfling {
 
-        private static readonly BlueprintRace HalflingRace = Resources.GetBlueprint<BlueprintRace>("b0c3ef2729c498f47970bb50fa1acd30");
-        private static readonly BlueprintFeatureSelection HalflingHeritageSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b3bebe76e6c64e2ca11585f9e3e2554a");
-        private static readonly BlueprintFeature HalflingLuck = Resources.GetBlueprint<BlueprintFeature>("84ffa66048d26b14c800a425199f9886");
-        private static readonly BlueprintFeature KeenSenses = Resources.GetBlueprint<BlueprintFeature>("9c747d24f6321f744aa1bb4bd343880d");
-        private static readonly BlueprintFeature SureFooted = Resources.GetBlueprint<BlueprintFeature>("0fe5db70b50cd894c849fc764c80bbb9");
-        private static readonly BlueprintFeature SlowSpeedHalfling = Resources.GetBlueprint<BlueprintFeature>("b8926aeaac17dc7408a5059788255819");
-        private static readonly BlueprintFeature Fearless = Resources.GetBlueprint<BlueprintFeature>("39144c817b70467499cc32e3cff59d81");
+        private static readonly BlueprintRace HalflingRace = BlueprintTools.GetBlueprint<BlueprintRace>("b0c3ef2729c498f47970bb50fa1acd30");
+        private static readonly BlueprintFeatureSelection HalflingHeritageSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("b3bebe76e6c64e2ca11585f9e3e2554a");
+        private static readonly BlueprintFeature HalflingLuck = BlueprintTools.GetBlueprint<BlueprintFeature>("84ffa66048d26b14c800a425199f9886");
+        private static readonly BlueprintFeature KeenSenses = BlueprintTools.GetBlueprint<BlueprintFeature>("9c747d24f6321f744aa1bb4bd343880d");
+        private static readonly BlueprintFeature SureFooted = BlueprintTools.GetBlueprint<BlueprintFeature>("0fe5db70b50cd894c849fc764c80bbb9");
+        private static readonly BlueprintFeature SlowSpeedHalfling = BlueprintTools.GetBlueprint<BlueprintFeature>("b8926aeaac17dc7408a5059788255819");
+        private static readonly BlueprintFeature Fearless = BlueprintTools.GetBlueprint<BlueprintFeature>("39144c817b70467499cc32e3cff59d81");
 
-        private static readonly BlueprintFeature CravenHalfling = Resources.GetBlueprint<BlueprintFeature>("889fa46af27148f9b9aefa27b7a29a2e");
-        private static readonly BlueprintFeature HastyHalfling = Resources.GetBlueprint<BlueprintFeature>("f2570b5becc54d659ca786488d107e69");
+        private static readonly BlueprintFeature CravenHalfling = BlueprintTools.GetBlueprint<BlueprintFeature>("889fa46af27148f9b9aefa27b7a29a2e");
+        private static readonly BlueprintFeature HastyHalfling = BlueprintTools.GetBlueprint<BlueprintFeature>("f2570b5becc54d659ca786488d107e69");
 
-        private static readonly BlueprintFeature DestinyBeyondBirthMythicFeat = Resources.GetBlueprint<BlueprintFeature>("325f078c584318849bfe3da9ea245b9d");
+        private static readonly BlueprintFeature DestinyBeyondBirthMythicFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("325f078c584318849bfe3da9ea245b9d");
 
         public static void AddHalflingHeritage() {
 

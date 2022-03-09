@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.ActivatableAbilities;
+using TabletopTweaks.Core.Utilities;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Bugfixes.Features {
@@ -16,7 +17,7 @@ namespace TabletopTweaks.Core.Bugfixes.Features {
                 PatchMobilityUseAbility();
 
                 void PatchMobilityUseAbility() {
-                    var MobilityUseAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("4be5757b85af47545a5789f1d03abda9");
+                    var MobilityUseAbility = BlueprintTools.GetBlueprint<BlueprintActivatableAbility>("4be5757b85af47545a5789f1d03abda9");
                     MobilityUseAbility.DeactivateIfCombatEnded = false;
 
                     TTTContext.Logger.LogPatch("Patched", MobilityUseAbility);

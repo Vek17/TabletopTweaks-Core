@@ -23,8 +23,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
     static class WarriorSpirit {
         public static void AddWarriorSpirit() {
-            var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
-            var WeaponBondSwitchAbility = Resources.GetBlueprint<BlueprintAbility>("7ff088ab58c69854b82ea95c2b0e35b4"); //For fx
+            var FighterClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+            var WeaponBondSwitchAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("7ff088ab58c69854b82ea95c2b0e35b4"); //For fx
 
             var Icon_WarriorSpirit_Activation = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_WarriorSpirit_Activation.png");
             var Icon_WarriorSpirit_Anarchic = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_WarriorSpirit_Anarchic.png");
@@ -48,35 +48,35 @@ namespace TabletopTweaks.Core.NewContent.FighterAdvancedWeaponTrainings {
             var Icon_WarriorSpirit_Keen = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_WarriorSpirit_Keen.png");
             var Icon_WarriorSpirit_Cruel = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Abilities", file: "Icon_WarriorSpirit_Cruel.png");
 
-            var Anarchic = Resources.GetBlueprint<BlueprintWeaponEnchantment>("57315bc1e1f62a741be0efde688087e9");
-            var Axiomatic = Resources.GetBlueprint<BlueprintWeaponEnchantment>("0ca43051edefcad4b9b2240aa36dc8d4");
-            var Holy = Resources.GetBlueprint<BlueprintWeaponEnchantment>("28a9964d81fedae44bae3ca45710c140");
-            var Unholy = Resources.GetBlueprint<BlueprintWeaponEnchantment>("d05753b8df780fc4bb55b318f06af453");
+            var Anarchic = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("57315bc1e1f62a741be0efde688087e9");
+            var Axiomatic = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("0ca43051edefcad4b9b2240aa36dc8d4");
+            var Holy = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("28a9964d81fedae44bae3ca45710c140");
+            var Unholy = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("d05753b8df780fc4bb55b318f06af453");
 
-            var Corrosive = Resources.GetBlueprint<BlueprintWeaponEnchantment>("633b38ff1d11de64a91d490c683ab1c8");
-            var CorrosiveBurst = Resources.GetBlueprint<BlueprintWeaponEnchantment>("0cf34703e67e37b40905845ca14b1380");
-            var Flaming = Resources.GetBlueprint<BlueprintWeaponEnchantment>("30f90becaaac51f41bf56641966c4121");
-            var FlamingBurst = Resources.GetBlueprint<BlueprintWeaponEnchantment>("3f032a3cd54e57649a0cdad0434bf221");
-            var Frost = Resources.GetBlueprint<BlueprintWeaponEnchantment>("421e54078b7719d40915ce0672511d0b");
-            var IcyBurst = Resources.GetBlueprint<BlueprintWeaponEnchantment>("564a6924b246d254c920a7c44bf2a58b");
-            var Shock = Resources.GetBlueprint<BlueprintWeaponEnchantment>("7bda5277d36ad114f9f9fd21d0dab658");
-            var ShockingBurst = Resources.GetBlueprint<BlueprintWeaponEnchantment>("914d7ee77fb09d846924ca08bccee0ff");
-            var Thundering = Resources.GetBlueprint<BlueprintWeaponEnchantment>("690e762f7704e1f4aa1ac69ef0ce6a96");
-            var ThunderingBurst = Resources.GetBlueprint<BlueprintWeaponEnchantment>("83bd616525288b34a8f34976b2759ea1");
+            var Corrosive = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("633b38ff1d11de64a91d490c683ab1c8");
+            var CorrosiveBurst = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("0cf34703e67e37b40905845ca14b1380");
+            var Flaming = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("30f90becaaac51f41bf56641966c4121");
+            var FlamingBurst = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("3f032a3cd54e57649a0cdad0434bf221");
+            var Frost = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("421e54078b7719d40915ce0672511d0b");
+            var IcyBurst = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("564a6924b246d254c920a7c44bf2a58b");
+            var Shock = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("7bda5277d36ad114f9f9fd21d0dab658");
+            var ShockingBurst = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("914d7ee77fb09d846924ca08bccee0ff");
+            var Thundering = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("690e762f7704e1f4aa1ac69ef0ce6a96");
+            var ThunderingBurst = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("83bd616525288b34a8f34976b2759ea1");
 
-            var CruelEnchantment = Resources.GetBlueprint<BlueprintWeaponEnchantment>("629c383ffb407224398bb71d1bd95d14");
-            var Keen = Resources.GetBlueprint<BlueprintWeaponEnchantment>("102a9c8c9b7a75e4fb5844e79deaf4c0");
-            var GhostTouch = Resources.GetBlueprint<BlueprintWeaponEnchantment>("47857e1a5a3ec1a46adf6491b1423b4f");
-            var BaneEverything = Resources.GetBlueprint<BlueprintWeaponEnchantment>("1a93ab9c46e48f3488178733be29342a");
+            var CruelEnchantment = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("629c383ffb407224398bb71d1bd95d14");
+            var Keen = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("102a9c8c9b7a75e4fb5844e79deaf4c0");
+            var GhostTouch = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("47857e1a5a3ec1a46adf6491b1423b4f");
+            var BaneEverything = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("1a93ab9c46e48f3488178733be29342a");
 
-            var BrilliantEnergy = Resources.GetBlueprint<BlueprintWeaponEnchantment>("66e9e299c9002ea4bb65b6f300e43770");
-            var Speed = Resources.GetBlueprint<BlueprintWeaponEnchantment>("f1c0c50108025d546b2554674ea1c006");
+            var BrilliantEnergy = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("66e9e299c9002ea4bb65b6f300e43770");
+            var Speed = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("f1c0c50108025d546b2554674ea1c006");
 
-            var TemporaryEnhancement1 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("d704f90f54f813043a525f304f6c0050");
-            var TemporaryEnhancement2 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("9e9bab3020ec5f64499e007880b37e52");
-            var TemporaryEnhancement3 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("d072b841ba0668846adeb007f623bd6c");
-            var TemporaryEnhancement4 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("6a6a0901d799ceb49b33d4851ff72132");
-            var TemporaryEnhancement5 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("746ee366e50611146821d61e391edf16");
+            var TemporaryEnhancement1 = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("d704f90f54f813043a525f304f6c0050");
+            var TemporaryEnhancement2 = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("9e9bab3020ec5f64499e007880b37e52");
+            var TemporaryEnhancement3 = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("d072b841ba0668846adeb007f623bd6c");
+            var TemporaryEnhancement4 = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("6a6a0901d799ceb49b33d4851ff72132");
+            var TemporaryEnhancement5 = BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("746ee366e50611146821d61e391edf16");
 
             var WarriorSpiritResource = Helpers.CreateBlueprint<BlueprintAbilityResource>(modContext: TTTContext, "WarriorSpiritResource", bp => {
                 bp.m_Icon = Icon_WarriorSpirit_Activation;

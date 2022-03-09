@@ -26,9 +26,9 @@ using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class RimeSpell {
         public static void AddRimeSpell() {
-            var FavoriteMetamagicSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
-            var EntangleBuff = Resources.GetBlueprint<BlueprintBuff>("f7f6330726121cf4b90a6086b05d2e38");
-            var IcyPrisonEntangledBuff = Resources.GetBlueprint<BlueprintBuff>("c53b286bb06a0544c85ca0f8bcc86950");
+            var FavoriteMetamagicSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
+            var EntangleBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("f7f6330726121cf4b90a6086b05d2e38");
+            var IcyPrisonEntangledBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("c53b286bb06a0544c85ca0f8bcc86950");
             var Icon_RimeSpellFeat = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Feats", file: "Icon_RimeSpellFeat.png");
             var Icon_RimeSpellMetamagic = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Metamagic", file: "Icon_RimeSpellMetamagic.png", size: 128);
             var Icon_MetamagicRodRimeLesser = AssetLoader.LoadInternal(modContext: TTTContext, folder: "Equipment", file: "Icon_MetamagicRodRimeLesser.png", size: 64);
@@ -136,19 +136,19 @@ namespace TabletopTweaks.Core.NewContent.Feats {
             }
         }
         private static void AddRodsToVenders() {
-            var RE_Chapter3VendorTableMagic = Resources.GetBlueprint<BlueprintSharedVendorTable>("e8e384f0e411fab42a69f16991cac161");
-            var KrebusSlaveTraderTable = Resources.GetBlueprint<BlueprintSharedVendorTable>("d43baa8b603f4604f8e36b048072e759");
+            var RE_Chapter3VendorTableMagic = BlueprintTools.GetBlueprint<BlueprintSharedVendorTable>("e8e384f0e411fab42a69f16991cac161");
+            var KrebusSlaveTraderTable = BlueprintTools.GetBlueprint<BlueprintSharedVendorTable>("d43baa8b603f4604f8e36b048072e759");
 
             RE_Chapter3VendorTableMagic.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodNormalRime"),
+                    m_Item = BlueprintTools.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodNormalRime"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;
             });
             KrebusSlaveTraderTable.AddComponent<LootItemsPackFixed>(c => {
                 c.m_Item = new LootItem() {
-                    m_Item = Resources.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodGreaterRime"),
+                    m_Item = BlueprintTools.GetModBlueprintReference<BlueprintItemReference>(modContext: TTTContext, "MetamagicRodGreaterRime"),
                     m_Loot = new BlueprintUnitLootReference()
                 };
                 c.m_Count = 1;

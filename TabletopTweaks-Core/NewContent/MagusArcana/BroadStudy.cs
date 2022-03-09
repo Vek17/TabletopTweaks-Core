@@ -13,8 +13,8 @@ namespace TabletopTweaks.Core.NewContent.MagusArcana {
         private static readonly BlueprintGuid BroadStudyMasterID = TTTContext.Blueprints.GetDerivedMaster("BroadStudyMasterID");
 
         public static void AddBroadStudy() {
-            var MagusClass = Resources.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
-            var MagusArcanaSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("e9dc4dfc73eaaf94aae27e0ed6cc9ada");
+            var MagusClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
+            var MagusArcanaSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("e9dc4dfc73eaaf94aae27e0ed6cc9ada");
 
             var BroadStudySelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "BroadStudySelection", bp => {
                 bp.SetName("Broad Study");

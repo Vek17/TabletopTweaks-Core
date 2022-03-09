@@ -87,9 +87,9 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                 PatchFeats();
 
                 void PatchAnimalCompanionFeatures() {
-                    var AnimalCompanionSelectionBase = Resources.GetBlueprint<BlueprintFeatureSelection>("90406c575576aee40a34917a1b429254");
-                    var AnimalCompanionNaturalArmor = Resources.GetBlueprint<BlueprintFeature>("0d20d88abb7c33a47902bd99019f2ed1");
-                    var AnimalCompanionStatFeature = Resources.GetBlueprint<BlueprintFeature>("1e570d5407a942b478e79297e0885101");
+                    var AnimalCompanionSelectionBase = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("90406c575576aee40a34917a1b429254");
+                    var AnimalCompanionNaturalArmor = BlueprintTools.GetBlueprint<BlueprintFeature>("0d20d88abb7c33a47902bd99019f2ed1");
+                    var AnimalCompanionStatFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("1e570d5407a942b478e79297e0885101");
                     IEnumerable<BlueprintFeature> AnimalCompanionUpgrades = AnimalCompanionSelectionBase.m_AllFeatures.Concat(AnimalCompanionSelectionBase.m_Features)
                         .Select(feature => feature.Get())
                         .Where(feature => feature.GetComponent<AddPet>())
@@ -112,18 +112,18 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                     });
                 }
                 void PatchClassFeatures() {
-                    BlueprintFeature DragonDiscipleNaturalArmor = Resources.GetBlueprint<BlueprintFeature>("aa4f9fd22a07ddb49982500deaed88f9");
+                    BlueprintFeature DragonDiscipleNaturalArmor = BlueprintTools.GetBlueprint<BlueprintFeature>("aa4f9fd22a07ddb49982500deaed88f9");
                     DragonDiscipleNaturalArmor.GetComponent<AddStatBonus>().Descriptor = (ModifierDescriptor)NaturalArmor.Stackable;
                     TTTContext.Logger.LogPatch("Patched", DragonDiscipleNaturalArmor);
                 }
                 void PatchFeats() {
-                    BlueprintFeature ImprovedNaturalArmor = Resources.GetBlueprint<BlueprintFeature>("fe9482aad88e5a54682d47d1df910ce8");
+                    BlueprintFeature ImprovedNaturalArmor = BlueprintTools.GetBlueprint<BlueprintFeature>("fe9482aad88e5a54682d47d1df910ce8");
                     ImprovedNaturalArmor.GetComponent<AddStatBonus>().Descriptor = (ModifierDescriptor)NaturalArmor.Stackable;
                     TTTContext.Logger.LogPatch("Patched", ImprovedNaturalArmor);
                 }
                 void PatchItemBuffs() {
                     //Icy Protector
-                    BlueprintBuff ProtectionOfColdBuff = Resources.GetBlueprint<BlueprintBuff>("f592ecdb8045d7047a21b20ffee72afd");
+                    BlueprintBuff ProtectionOfColdBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("f592ecdb8045d7047a21b20ffee72afd");
                     ProtectionOfColdBuff.SetName("Iceplant");
                     ProtectionOfColdBuff.GetComponent<AddStatBonus>().Value = 4;
                     TTTContext.Logger.LogPatch("Patched", ProtectionOfColdBuff);
@@ -153,8 +153,8 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                             component.Descriptor = (ModifierDescriptor)NaturalArmor.Bonus;
                             TTTContext.Logger.LogPatch($"Patched", component.OwnerBlueprint);
                         });
-                    var AnimalGrowthBuff = Resources.GetBlueprint<BlueprintBuff>("3fca5d38053677044a7ffd9a872d3a0a");
-                    var LegendaryProportionsBuff = Resources.GetBlueprint<BlueprintBuff>("4ce640f9800d444418779a214598d0a3");
+                    var AnimalGrowthBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("3fca5d38053677044a7ffd9a872d3a0a");
+                    var LegendaryProportionsBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("4ce640f9800d444418779a214598d0a3");
                     LegendaryProportionsBuff.GetComponents<AddContextStatBonus>()
                         .Where(c => c.Descriptor == (ModifierDescriptor)NaturalArmor.Bonus)
                         .ForEach(c => c.Descriptor = (ModifierDescriptor)NaturalArmor.Size);

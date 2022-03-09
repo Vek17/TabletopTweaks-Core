@@ -8,8 +8,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class FavoriteMetamagicSelective {
         public static void AddFavoriteMetamagicSelective() {
-            var SelectiveSpellFeat = Resources.GetBlueprint<BlueprintFeature>("85f3340093d144dd944fff9a9adfd2f2");
-            var FavoriteMetamagicSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
+            var SelectiveSpellFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("85f3340093d144dd944fff9a9adfd2f2");
+            var FavoriteMetamagicSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("503fb196aa222b24cb6cfdc9a284e838");
 
             var FavoriteMetamagicSelective = Helpers.CreateBlueprint<BlueprintFeature>(TTTContext, "FavoriteMetamagicSelective", bp => {
                 bp.SetName("Favorite Metamagic — Selective");

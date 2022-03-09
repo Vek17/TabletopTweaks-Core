@@ -7,7 +7,7 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicFeats {
     static class MythicShatterDefenses {
         public static void AddMythicShatterDefenses() {
-            var ShatterDefenses = Resources.GetBlueprint<BlueprintFeature>("61a17ccbbb3d79445b0926347ec07577");
+            var ShatterDefenses = BlueprintTools.GetBlueprint<BlueprintFeature>("61a17ccbbb3d79445b0926347ec07577");
             var ShatterDefensesMythicBuff = Helpers.CreateBuff(modContext: TTTContext, "ShatterDefensesMythicBuff", bp => {
                 bp.m_Icon = ShatterDefenses.m_Icon;
                 bp.SetName("Shattered Defenses (Mythic)");

@@ -84,7 +84,7 @@ namespace TabletopTweaks.Core.Utilities {
                 bp.m_Cost = GetRodCost(metamagic, type);
                 bp.m_Weight = 1;
                 bp.m_Destructible = true;
-                bp.m_ShardItem = Resources.GetBlueprintReference<BlueprintItemReference>("e6820e62423d4c81a2ba20d236251b67"); //MetalShardItem
+                bp.m_ShardItem = BlueprintTools.GetBlueprintReference<BlueprintItemReference>("e6820e62423d4c81a2ba20d236251b67"); //MetalShardItem
                 bp.m_InventoryPutSound = "WandPut";
                 bp.m_InventoryTakeSound = "WandTake";
                 bp.TrashLootTypes = new Kingmaker.Enums.TrashLootType[0];

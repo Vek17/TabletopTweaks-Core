@@ -11,9 +11,9 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class AbundantIncense {
         public static void AddAbundantIncense() {
-            var IncenseFogFeature = Resources.GetBlueprint<BlueprintFeature>("7614401346b64a8409f7b8c367db488f");
-            var IncenseFogToggleAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("b62231e54e07068419a420f2988157b3");
-            var IncenseFogResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("d03d97aac38e798479b81dfa9eda55c6");
+            var IncenseFogFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("7614401346b64a8409f7b8c367db488f");
+            var IncenseFogToggleAbility = BlueprintTools.GetBlueprint<BlueprintActivatableAbility>("b62231e54e07068419a420f2988157b3");
+            var IncenseFogResource = BlueprintTools.GetBlueprintReference<BlueprintAbilityResourceReference>("d03d97aac38e798479b81dfa9eda55c6");
 
             var AbundantIncenseFeature = Helpers.CreateBlueprint<BlueprintFeature>(TTTContext, "AbundantIncenseFeature", bp => {
                 bp.SetName("Abundant Incense");

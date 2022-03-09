@@ -10,8 +10,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class AbundantFervor {
         public static void AddAbundantFervor() {
-            var WarpriestFervorBase = Resources.GetBlueprint<BlueprintFeature>("2d5140fd9f19a8e41be32d300eea2e18");
-            var WarpriestFervorResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("da0fb35828917f344b1cd72c98b70498");
+            var WarpriestFervorBase = BlueprintTools.GetBlueprint<BlueprintFeature>("2d5140fd9f19a8e41be32d300eea2e18");
+            var WarpriestFervorResource = BlueprintTools.GetBlueprintReference<BlueprintAbilityResourceReference>("da0fb35828917f344b1cd72c98b70498");
 
             var AbundantFervorFeature = Helpers.CreateBlueprint<BlueprintFeature>(TTTContext, "AbundantFervorFeature", bp => {
                 bp.SetName("Abundant Fervor");

@@ -24,8 +24,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchBrimorakAspect() {
                     if (TTTContext.Fixes.Demon.IsDisabled("BrimorakAspect")) { return; }
 
-                    var BrimorakAspectEffectBuff = Resources.GetBlueprint<BlueprintBuff>("f154542e0b97908479a578dd7bf6d3f7");
-                    var BrimorakAspectEffectProperty = Resources.GetBlueprintReference<BlueprintUnitPropertyReference>("d6a524d190f04a7ca3f920d2f96fa21b");
+                    var BrimorakAspectEffectBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("f154542e0b97908479a578dd7bf6d3f7");
+                    var BrimorakAspectEffectProperty = BlueprintTools.GetBlueprintReference<BlueprintUnitPropertyReference>("d6a524d190f04a7ca3f920d2f96fa21b");
 
                     BrimorakAspectEffectBuff.TemporaryContext(bp => {
                         bp.RemoveComponents<DraconicBloodlineArcana>();

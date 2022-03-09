@@ -28,12 +28,12 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchAgilityPatron() {
                     if (TTTContext.Fixes.Witch.Base.IsDisabled("AgilityPatron")) { return; }
 
-                    var WitchAgilityPatronProgression = Resources.GetBlueprint<BlueprintProgression>("08518b2a62446c74b9ae08ee73664047");
-                    var WitchAgilityPatronSpellLevel8 = Resources.GetBlueprint<BlueprintFeature>("6164c2aa71247bd4d91274ebe93a6c0f");
-                    var WitchAgilityPatronSpellLevel9 = Resources.GetBlueprint<BlueprintFeature>("1e418c5f030347542ad47dd752cdea05");
+                    var WitchAgilityPatronProgression = BlueprintTools.GetBlueprint<BlueprintProgression>("08518b2a62446c74b9ae08ee73664047");
+                    var WitchAgilityPatronSpellLevel8 = BlueprintTools.GetBlueprint<BlueprintFeature>("6164c2aa71247bd4d91274ebe93a6c0f");
+                    var WitchAgilityPatronSpellLevel9 = BlueprintTools.GetBlueprint<BlueprintFeature>("1e418c5f030347542ad47dd752cdea05");
 
-                    var AnimalShapes = Resources.GetBlueprintReference<BlueprintAbilityReference>("cf689244b2c7e904eb85f26fd6e81552");
-                    var Shapechange = Resources.GetBlueprintReference<BlueprintAbilityReference>("22b9044aa229815429d57d0a30e4b739");
+                    var AnimalShapes = BlueprintTools.GetBlueprintReference<BlueprintAbilityReference>("cf689244b2c7e904eb85f26fd6e81552");
+                    var Shapechange = BlueprintTools.GetBlueprintReference<BlueprintAbilityReference>("22b9044aa229815429d57d0a30e4b739");
 
                     PatchPatronSpell(WitchAgilityPatronProgression, WitchAgilityPatronSpellLevel8, AnimalShapes);
                     PatchPatronSpell(WitchAgilityPatronProgression, WitchAgilityPatronSpellLevel9, Shapechange);
@@ -51,10 +51,10 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchAmelioratingHex() {
                     if (TTTContext.Fixes.Witch.Base.IsDisabled("AmelioratingHex")) { return; }
 
-                    var WitchHexAmelioratingDazzleSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("c1a5e2bb65fbc6d479f957fd54b2f313");
-                    var WitchHexAmelioratingFatuguedSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("32b27dd734277464c954f22b35338a62");
-                    var WitchHexAmelioratingShakenSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("d98e8e525c0f5c746b4d8f1ea24b865a");
-                    var WitchHexAmelioratingSickenedSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("ddee5f689ef42274ca5d5731cb96b075");
+                    var WitchHexAmelioratingDazzleSuppressBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("c1a5e2bb65fbc6d479f957fd54b2f313");
+                    var WitchHexAmelioratingFatuguedSuppressBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("32b27dd734277464c954f22b35338a62");
+                    var WitchHexAmelioratingShakenSuppressBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("d98e8e525c0f5c746b4d8f1ea24b865a");
+                    var WitchHexAmelioratingSickenedSuppressBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("ddee5f689ef42274ca5d5731cb96b075");
 
                     QuickFixTools.ReplaceSuppression(WitchHexAmelioratingDazzleSuppressBuff, TTTContext);
                     QuickFixTools.ReplaceSuppression(WitchHexAmelioratingFatuguedSuppressBuff, TTTContext);
@@ -65,10 +65,10 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchMajorAmelioratingHex() {
                     if (TTTContext.Fixes.Witch.Base.IsDisabled("MajorAmelioratingHex")) { return; }
 
-                    var WitchHexMajorAmelioratingBlindedSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("66700a810f380c5419dc13f03bb76f45");
-                    var WitchHexMajorAmelioratingCurseSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("ee471eead8a069c449710ac5073322c0");
-                    var WitchHexMajorAmelioratingDiseaseSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("0870624a0fa21cf418d4c922da4205d4");
-                    var WitchHexMajorAmelioratingPoisonSuppressBuff = Resources.GetBlueprint<BlueprintBuff>("2cf1962ef4cd4b5468c09bf4959d1bf7");
+                    var WitchHexMajorAmelioratingBlindedSuppressBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("66700a810f380c5419dc13f03bb76f45");
+                    var WitchHexMajorAmelioratingCurseSuppressBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("ee471eead8a069c449710ac5073322c0");
+                    var WitchHexMajorAmelioratingDiseaseSuppressBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("0870624a0fa21cf418d4c922da4205d4");
+                    var WitchHexMajorAmelioratingPoisonSuppressBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("2cf1962ef4cd4b5468c09bf4959d1bf7");
 
                     QuickFixTools.ReplaceSuppression(WitchHexMajorAmelioratingBlindedSuppressBuff, TTTContext);
                     QuickFixTools.ReplaceSuppression(WitchHexMajorAmelioratingCurseSuppressBuff, TTTContext);

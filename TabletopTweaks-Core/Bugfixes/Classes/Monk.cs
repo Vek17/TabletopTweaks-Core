@@ -40,14 +40,14 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
 
                 void PatchPerfectStrike() {
                     if (TTTContext.Fixes.Monk.Archetypes["ZenArcher"].IsDisabled("PerfectStrike")) { return; }
-                    var PerfectStrikeAbility = Resources.GetBlueprint<BlueprintAbility>("bc656f51e407aad40bc8d974f3d5b04a");
-                    var PerfectStrikeOwnerBuff = Resources.GetBlueprint<BlueprintBuff>("9a41e6d073b42564b9f00ad83b7d3b52");
-                    var PerfectStrikeZenArcherBuff = Resources.GetModBlueprint<BlueprintBuff>(modContext: TTTContext, "PerfectStrikeZenArcherBuff");
-                    var PerfectStrikeFeature = Resources.GetBlueprint<BlueprintFeature>("7477e2e0b72f4ce4fb674f4b21d5e81d");
-                    var PerfectStrikeZenArcherUpgrade = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "PerfectStrikeZenArcherUpgrade");
-                    var ZenArcherArchetype = Resources.GetBlueprint<BlueprintArchetype>("2b1a58a7917084f49b097e86271df21c");
-                    var MonkProgression = Resources.GetBlueprint<BlueprintProgression>("8a91753b978e3b34b9425419179aafd6");
-                    var MonkClass = Resources.GetBlueprint<BlueprintCharacterClass>("e8f21e5b58e0569468e420ebea456124");
+                    var PerfectStrikeAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("bc656f51e407aad40bc8d974f3d5b04a");
+                    var PerfectStrikeOwnerBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("9a41e6d073b42564b9f00ad83b7d3b52");
+                    var PerfectStrikeZenArcherBuff = BlueprintTools.GetModBlueprint<BlueprintBuff>(modContext: TTTContext, "PerfectStrikeZenArcherBuff");
+                    var PerfectStrikeFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("7477e2e0b72f4ce4fb674f4b21d5e81d");
+                    var PerfectStrikeZenArcherUpgrade = BlueprintTools.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "PerfectStrikeZenArcherUpgrade");
+                    var ZenArcherArchetype = BlueprintTools.GetBlueprint<BlueprintArchetype>("2b1a58a7917084f49b097e86271df21c");
+                    var MonkProgression = BlueprintTools.GetBlueprint<BlueprintProgression>("8a91753b978e3b34b9425419179aafd6");
+                    var MonkClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("e8f21e5b58e0569468e420ebea456124");
 
                     PerfectStrikeAbility.RemoveComponents<AbilityEffectRunAction>();
                     PerfectStrikeAbility.AddComponent<AbilityEffectRunAction>();

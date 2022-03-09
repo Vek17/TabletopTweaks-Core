@@ -27,32 +27,32 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Archetypes {
     static class DivineCommander {
 
-        private static readonly BlueprintCharacterClass WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
+        private static readonly BlueprintCharacterClass WarpriestClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
 
-        private static readonly BlueprintFeature BlessingSelection1 = Resources.GetBlueprint<BlueprintFeature>("6d9dcc2a59210a14891aeedb09d406aa");
-        private static readonly BlueprintFeature BlessingSelection2 = Resources.GetBlueprint<BlueprintFeature>("b7ce4a67287cda746a59b31c042305cf");
+        private static readonly BlueprintFeature BlessingSelection1 = BlueprintTools.GetBlueprint<BlueprintFeature>("6d9dcc2a59210a14891aeedb09d406aa");
+        private static readonly BlueprintFeature BlessingSelection2 = BlueprintTools.GetBlueprint<BlueprintFeature>("b7ce4a67287cda746a59b31c042305cf");
 
-        private static readonly BlueprintFeature BonusFeatSelection = Resources.GetBlueprint<BlueprintFeature>("303fd456ddb14437946e344bad9a893b");
+        private static readonly BlueprintFeature BonusFeatSelection = BlueprintTools.GetBlueprint<BlueprintFeature>("303fd456ddb14437946e344bad9a893b");
 
-        private static readonly BlueprintFeatureSelection CavalierMountSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("0605927df6e2fdd42af6ee2424eb89f2");
-        private static readonly BlueprintAbility CavalierTacticianAbility = Resources.GetBlueprint<BlueprintAbility>("3ff8ef7ba7b5be0429cf32cd4ddf637c");
-        private static readonly BlueprintFeature CavalierTacticianSupportFeature = Resources.GetBlueprint<BlueprintFeature>("37c496c0c2f04544b83a8d013409fd47");
-        private static readonly BlueprintFeatureSelection CavalierTacticianFeatSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("7bc55b5e381358c45b42153b8b2603a6");
+        private static readonly BlueprintFeatureSelection CavalierMountSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("0605927df6e2fdd42af6ee2424eb89f2");
+        private static readonly BlueprintAbility CavalierTacticianAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("3ff8ef7ba7b5be0429cf32cd4ddf637c");
+        private static readonly BlueprintFeature CavalierTacticianSupportFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("37c496c0c2f04544b83a8d013409fd47");
+        private static readonly BlueprintFeatureSelection CavalierTacticianFeatSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("7bc55b5e381358c45b42153b8b2603a6");
 
-        private static readonly BlueprintFeature AnimalCompanionFeatureHorse = Resources.GetBlueprint<BlueprintFeature>("9dc58b5901677c942854019d1dd98374");
-        private static readonly BlueprintFeature AnimalCompanionFeatureHorse_PreorderBonus = Resources.GetBlueprint<BlueprintFeature>("bfeb9be0a3c9420b8b2beecc8171029c");
-        private static readonly BlueprintFeature CavalierMountFeatureWolf = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "CavalierMountFeatureWolf");
-        private static readonly BlueprintFeature AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
+        private static readonly BlueprintFeature AnimalCompanionFeatureHorse = BlueprintTools.GetBlueprint<BlueprintFeature>("9dc58b5901677c942854019d1dd98374");
+        private static readonly BlueprintFeature AnimalCompanionFeatureHorse_PreorderBonus = BlueprintTools.GetBlueprint<BlueprintFeature>("bfeb9be0a3c9420b8b2beecc8171029c");
+        private static readonly BlueprintFeature CavalierMountFeatureWolf = BlueprintTools.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "CavalierMountFeatureWolf");
+        private static readonly BlueprintFeature AnimalCompanionRank = BlueprintTools.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
 
-        private static readonly BlueprintBuff MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
-        private static readonly BlueprintFeature MountTargetFeature = Resources.GetBlueprint<BlueprintFeature>("cb06f0e72ffb5c640a156bd9f8000c1d");
-        private static readonly BlueprintFeature AnimalCompanionArchetypeSelection = Resources.GetBlueprint<BlueprintFeature>("65af7290b4efd5f418132141aaa36c1b");
-        private static readonly BlueprintFeature OtherworldlyCompanionFiendish = Resources.GetBlueprint<BlueprintFeature>("4d7607a0155af7d43b49b785f2051e21");
+        private static readonly BlueprintBuff MountedBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
+        private static readonly BlueprintFeature MountTargetFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("cb06f0e72ffb5c640a156bd9f8000c1d");
+        private static readonly BlueprintFeature AnimalCompanionArchetypeSelection = BlueprintTools.GetBlueprint<BlueprintFeature>("65af7290b4efd5f418132141aaa36c1b");
+        private static readonly BlueprintFeature OtherworldlyCompanionFiendish = BlueprintTools.GetBlueprint<BlueprintFeature>("4d7607a0155af7d43b49b785f2051e21");
 
-        private static readonly BlueprintFeature TemplateCelestial = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TemplateCelestial");
-        private static readonly BlueprintFeature TemplateEntropic = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TemplateEntropic");
-        private static readonly BlueprintFeature TemplateFiendish = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TemplateFiendish");
-        private static readonly BlueprintFeature TemplateResolute = Resources.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TemplateResolute");
+        private static readonly BlueprintFeature TemplateCelestial = BlueprintTools.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TemplateCelestial");
+        private static readonly BlueprintFeature TemplateEntropic = BlueprintTools.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TemplateEntropic");
+        private static readonly BlueprintFeature TemplateFiendish = BlueprintTools.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TemplateFiendish");
+        private static readonly BlueprintFeature TemplateResolute = BlueprintTools.GetModBlueprint<BlueprintFeature>(modContext: TTTContext, "TemplateResolute");
 
         public static void AddDivineCommander() {
 

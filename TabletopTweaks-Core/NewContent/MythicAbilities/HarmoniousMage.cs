@@ -7,8 +7,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class HarmoniousMage {
         public static void AddHarmoniousMage() {
-            var SpecialisationSchoolUniversalistProgression = Resources.GetBlueprint<BlueprintProgression>("0933849149cfc9244ac05d6a5b57fd80");
-            var OppositionSchoolSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("6c29030e9fea36949877c43a6f94ff31");
+            var SpecialisationSchoolUniversalistProgression = BlueprintTools.GetBlueprint<BlueprintProgression>("0933849149cfc9244ac05d6a5b57fd80");
+            var OppositionSchoolSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("6c29030e9fea36949877c43a6f94ff31");
 
             var HarmoniousMageFeature = Helpers.CreateBlueprint<BlueprintFeature>(TTTContext, "HarmoniousMageFeature", bp => {
                 bp.SetName("Harmonious Mage");

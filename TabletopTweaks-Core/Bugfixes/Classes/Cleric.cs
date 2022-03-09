@@ -25,7 +25,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchGloryDomain() {
                     if (TTTContext.Fixes.Cleric.Base.IsDisabled("GloryDomain")) { return; }
 
-                    var GloryDomainBaseBuff = Resources.GetBlueprint<BlueprintBuff>("55edcfff497a1e04a963f72c485da5cb");
+                    var GloryDomainBaseBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("55edcfff497a1e04a963f72c485da5cb");
                     GloryDomainBaseBuff.RemoveComponents<AddContextStatBonus>(component => component.Stat == StatType.Charisma);
                     TTTContext.Logger.LogPatch("Patched", GloryDomainBaseBuff);
                 }

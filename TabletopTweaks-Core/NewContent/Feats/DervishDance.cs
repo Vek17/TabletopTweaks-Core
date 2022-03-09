@@ -16,14 +16,14 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class DervishDance {
         public static void AddDervishDance() {
-            var WeaponFinesse = Resources.GetBlueprint<BlueprintFeature>("90e54424d682d104ab36436bd527af09");
-            var PointBlankShot = Resources.GetBlueprint<BlueprintFeature>("0da0c194d6e1d43419eb8d990b28e0ab");
-            var PreciseShot = Resources.GetBlueprint<BlueprintFeature>("8f3d1e6b4be006f4d896081f2f889665");
-            var SlashingGrace = Resources.GetBlueprint<BlueprintFeature>("697d64669eb2c0543abb9c9b07998a38");
-            var FencingGrace = Resources.GetBlueprint<BlueprintFeature>("47b352ea0f73c354aba777945760b441");
-            var DeftStrike = Resources.GetBlueprint<BlueprintFeature>("b63a316cb172c7b4e906a318a0621c2c");
-            var FinesseTrainingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b78d146cea711a84598f0acef69462ea");
-            var Scimitar = Resources.GetBlueprint<BlueprintWeaponType>("d9fbec4637d71bd4ebc977628de3daf3");
+            var WeaponFinesse = BlueprintTools.GetBlueprint<BlueprintFeature>("90e54424d682d104ab36436bd527af09");
+            var PointBlankShot = BlueprintTools.GetBlueprint<BlueprintFeature>("0da0c194d6e1d43419eb8d990b28e0ab");
+            var PreciseShot = BlueprintTools.GetBlueprint<BlueprintFeature>("8f3d1e6b4be006f4d896081f2f889665");
+            var SlashingGrace = BlueprintTools.GetBlueprint<BlueprintFeature>("697d64669eb2c0543abb9c9b07998a38");
+            var FencingGrace = BlueprintTools.GetBlueprint<BlueprintFeature>("47b352ea0f73c354aba777945760b441");
+            var DeftStrike = BlueprintTools.GetBlueprint<BlueprintFeature>("b63a316cb172c7b4e906a318a0621c2c");
+            var FinesseTrainingSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("b78d146cea711a84598f0acef69462ea");
+            var Scimitar = BlueprintTools.GetBlueprint<BlueprintWeaponType>("d9fbec4637d71bd4ebc977628de3daf3");
 
             var DervishDance = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "DervishDance", bp => {
                 bp.SetName("Dervish Dance");

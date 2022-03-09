@@ -15,17 +15,17 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Races {
     static class Elf {
 
-        private static readonly BlueprintRace ElfRace = Resources.GetBlueprint<BlueprintRace>("25a5878d125338244896ebd3238226c8");
-        private static readonly BlueprintFeatureSelection ElvenHeritageSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("5482f879dcfd40f9a3168fdb48bc938c");
-        private static readonly BlueprintFeature ElvenWeaponFamiliarity = Resources.GetBlueprint<BlueprintFeature>("03fd1e043fc678a4baf73fe67c3780ce");
-        private static readonly BlueprintFeature ElvenImmunities = Resources.GetBlueprint<BlueprintFeature>("2483a523984f44944a7cf157b21bf79c");
-        private static readonly BlueprintFeature ElvenMagic = Resources.GetBlueprint<BlueprintFeature>("55edf82380a1c8540af6c6037d34f322");
-        private static readonly BlueprintFeature KeenSenses = Resources.GetBlueprint<BlueprintFeature>("9c747d24f6321f744aa1bb4bd343880d");
+        private static readonly BlueprintRace ElfRace = BlueprintTools.GetBlueprint<BlueprintRace>("25a5878d125338244896ebd3238226c8");
+        private static readonly BlueprintFeatureSelection ElvenHeritageSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("5482f879dcfd40f9a3168fdb48bc938c");
+        private static readonly BlueprintFeature ElvenWeaponFamiliarity = BlueprintTools.GetBlueprint<BlueprintFeature>("03fd1e043fc678a4baf73fe67c3780ce");
+        private static readonly BlueprintFeature ElvenImmunities = BlueprintTools.GetBlueprint<BlueprintFeature>("2483a523984f44944a7cf157b21bf79c");
+        private static readonly BlueprintFeature ElvenMagic = BlueprintTools.GetBlueprint<BlueprintFeature>("55edf82380a1c8540af6c6037d34f322");
+        private static readonly BlueprintFeature KeenSenses = BlueprintTools.GetBlueprint<BlueprintFeature>("9c747d24f6321f744aa1bb4bd343880d");
 
-        private static readonly BlueprintFeature BlightbornElf = Resources.GetBlueprint<BlueprintFeature>("2a300f4e0c13495bbde59160809fce7f");
-        private static readonly BlueprintFeature LoremasterElf = Resources.GetBlueprint<BlueprintFeature>("fb69a451e7064015b5dbe512c9122ef8");
+        private static readonly BlueprintFeature BlightbornElf = BlueprintTools.GetBlueprint<BlueprintFeature>("2a300f4e0c13495bbde59160809fce7f");
+        private static readonly BlueprintFeature LoremasterElf = BlueprintTools.GetBlueprint<BlueprintFeature>("fb69a451e7064015b5dbe512c9122ef8");
 
-        private static readonly BlueprintFeature DestinyBeyondBirthMythicFeat = Resources.GetBlueprint<BlueprintFeature>("325f078c584318849bfe3da9ea245b9d");
+        private static readonly BlueprintFeature DestinyBeyondBirthMythicFeat = BlueprintTools.GetBlueprint<BlueprintFeature>("325f078c584318849bfe3da9ea245b9d");
 
         public static void AddElfHeritage() {
 

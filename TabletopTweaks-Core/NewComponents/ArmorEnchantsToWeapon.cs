@@ -6,6 +6,7 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
 using System.Linq;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewComponents {
     [TypeId("1c41e810627b489bbdc47138903dbc86")]
@@ -18,9 +19,9 @@ namespace TabletopTweaks.Core.NewComponents {
         IInitiatorRulebookHandler<RulePrepareDamage>,
         IRulebookHandler<RulePrepareDamage> {
 
-        static readonly BlueprintArmorEnchantment AdamantineHeavy = Resources.GetBlueprint<BlueprintArmorEnchantment>("933456ff83c454146a8bf434e39b1f93");
-        static readonly BlueprintArmorEnchantment AdamantineMedium = Resources.GetBlueprint<BlueprintArmorEnchantment>("aa25531ab5bb58941945662aa47b73e7");
-        static readonly BlueprintArmorEnchantment Mithril = Resources.GetBlueprint<BlueprintArmorEnchantment>("7b95a819181574a4799d93939aa99aff");
+        static readonly BlueprintArmorEnchantment AdamantineHeavy = BlueprintTools.GetBlueprint<BlueprintArmorEnchantment>("933456ff83c454146a8bf434e39b1f93");
+        static readonly BlueprintArmorEnchantment AdamantineMedium = BlueprintTools.GetBlueprint<BlueprintArmorEnchantment>("aa25531ab5bb58941945662aa47b73e7");
+        static readonly BlueprintArmorEnchantment Mithril = BlueprintTools.GetBlueprint<BlueprintArmorEnchantment>("7b95a819181574a4799d93939aa99aff");
 
         public void OnEventAboutToTrigger(RuleCalculateWeaponStats evt) {
             if (evt.Weapon == base.Owner) {

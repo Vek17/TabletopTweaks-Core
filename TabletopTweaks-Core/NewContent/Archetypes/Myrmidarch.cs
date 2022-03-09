@@ -13,27 +13,27 @@ namespace TabletopTweaks.Core.NewContent.Archetypes {
     static class Myrmidarch {
 
         public static void AddMyrmidarch() {
-            var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
-            var MagusClass = Resources.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
-            var SwordSaintSpellLevels = Resources.GetBlueprint<BlueprintSpellsTable>("b9fdc0b2d37eb9e4298f9163edf5ca82");
-            var MagusArcanaSelection = Resources.GetBlueprint<BlueprintFeature>("e9dc4dfc73eaaf94aae27e0ed6cc9ada");
-            var MagusSpellRecallFeature = Resources.GetBlueprint<BlueprintFeature>("61fc0521e9992624e9c518060bf89c0f");
-            var FighterTraining = Resources.GetBlueprint<BlueprintFeature>("2b636b9e8dd7df94cbd372c52237eebf");
-            var MagusImprovedSpellRecallFeature = Resources.GetBlueprint<BlueprintFeature>("0ef6ec1c2fdfc204fbd3bff9f1609490");
-            var ImprovedSpellCombat = Resources.GetBlueprint<BlueprintFeature>("836879fcd5b29754eb664a090bd6c22f");
-            var GreaterSpellCombat = Resources.GetBlueprint<BlueprintFeature>("379887a82a7248946bbf6d0158663b5e");
-            var TrueMagusFeature = Resources.GetBlueprint<BlueprintFeature>("789c7539ba659174db702e18d7c2d330");
+            var FighterClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+            var MagusClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
+            var SwordSaintSpellLevels = BlueprintTools.GetBlueprint<BlueprintSpellsTable>("b9fdc0b2d37eb9e4298f9163edf5ca82");
+            var MagusArcanaSelection = BlueprintTools.GetBlueprint<BlueprintFeature>("e9dc4dfc73eaaf94aae27e0ed6cc9ada");
+            var MagusSpellRecallFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("61fc0521e9992624e9c518060bf89c0f");
+            var FighterTraining = BlueprintTools.GetBlueprint<BlueprintFeature>("2b636b9e8dd7df94cbd372c52237eebf");
+            var MagusImprovedSpellRecallFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("0ef6ec1c2fdfc204fbd3bff9f1609490");
+            var ImprovedSpellCombat = BlueprintTools.GetBlueprint<BlueprintFeature>("836879fcd5b29754eb664a090bd6c22f");
+            var GreaterSpellCombat = BlueprintTools.GetBlueprint<BlueprintFeature>("379887a82a7248946bbf6d0158663b5e");
+            var TrueMagusFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("789c7539ba659174db702e18d7c2d330");
 
-            var EldritchArcherRangedSpellStrike = Resources.GetBlueprint<BlueprintFeature>("6aa84ca8918ac604685a3d39a13faecc");
-            var WeaponTrainingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b8cecf4e5e464ad41b79d5b42b76b399");
-            var WeaponTrainingRankUpSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("5f3cc7b9a46b880448275763fe70c0b0");
-            var ArmorTraining = Resources.GetBlueprint<BlueprintFeature>("3c380607706f209499d951b29d3c44f3");
-            var ArmorMastery = Resources.GetBlueprint<BlueprintFeature>("ae177f17cfb45264291d4d7c2cb64671");
-            var ArmorTrainingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "ArmorTrainingSelection");
-            var FighterTrainingFakeLevel = Resources.GetModBlueprintReference<BlueprintFeatureBaseReference>(modContext: TTTContext, "FighterTrainingFakeLevel");
+            var EldritchArcherRangedSpellStrike = BlueprintTools.GetBlueprint<BlueprintFeature>("6aa84ca8918ac604685a3d39a13faecc");
+            var WeaponTrainingSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("b8cecf4e5e464ad41b79d5b42b76b399");
+            var WeaponTrainingRankUpSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("5f3cc7b9a46b880448275763fe70c0b0");
+            var ArmorTraining = BlueprintTools.GetBlueprint<BlueprintFeature>("3c380607706f209499d951b29d3c44f3");
+            var ArmorMastery = BlueprintTools.GetBlueprint<BlueprintFeature>("ae177f17cfb45264291d4d7c2cb64671");
+            var ArmorTrainingSelection = BlueprintTools.GetModBlueprint<BlueprintFeatureSelection>(modContext: TTTContext, "ArmorTrainingSelection");
+            var FighterTrainingFakeLevel = BlueprintTools.GetModBlueprintReference<BlueprintFeatureBaseReference>(modContext: TTTContext, "FighterTrainingFakeLevel");
 
-            var ArcaneMediumArmor = Resources.GetBlueprintReference<BlueprintFeatureBaseReference>("b24897e082896654c8dd64c8fb677363");
-            var ArcaneHeavyArmor = Resources.GetBlueprintReference<BlueprintFeatureBaseReference>("447ca91389e5c9246acb2c640d63f4da");
+            var ArcaneMediumArmor = BlueprintTools.GetBlueprintReference<BlueprintFeatureBaseReference>("b24897e082896654c8dd64c8fb677363");
+            var ArcaneHeavyArmor = BlueprintTools.GetBlueprintReference<BlueprintFeatureBaseReference>("447ca91389e5c9246acb2c640d63f4da");
 
             var MyrmidarchSpellLevels = Helpers.CreateBlueprint<BlueprintSpellsTable>(modContext: TTTContext, "MyrmidarchSpellLevels", bp => {
                 bp.Levels = SwordSaintSpellLevels.Levels.Select(level => SpellTools.CreateSpellLevelEntry(level.Count)).ToArray();

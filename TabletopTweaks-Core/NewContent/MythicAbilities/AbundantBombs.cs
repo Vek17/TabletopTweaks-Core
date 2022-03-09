@@ -10,8 +10,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.MythicAbilities {
     static class AbundantBombs {
         public static void AddAbundantBombs() {
-            var AlchemistBombsFeature = Resources.GetBlueprint<BlueprintFeature>("c59b2f256f5a70a4d896568658315b7d");
-            var AlchemistBombsResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("1633025edc9d53f4691481b48248edd7");
+            var AlchemistBombsFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("c59b2f256f5a70a4d896568658315b7d");
+            var AlchemistBombsResource = BlueprintTools.GetBlueprintReference<BlueprintAbilityResourceReference>("1633025edc9d53f4691481b48248edd7");
 
             var AbundantBombsFeature = Helpers.CreateBlueprint<BlueprintFeature>(TTTContext, "AbundantBombsFeature", bp => {
                 bp.SetName("Abundant Bombs");

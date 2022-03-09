@@ -6,8 +6,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.Feats {
     static class ExtraDiscovery {
         public static void AddExtraDiscovery() {
-            var DiscoverySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("cd86c437488386f438dcc9ae727ea2a6");
-            var VivsectionistDiscoverySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("67f499218a0e22944abab6fe1c9eaeee");
+            var DiscoverySelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("cd86c437488386f438dcc9ae727ea2a6");
+            var VivsectionistDiscoverySelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("67f499218a0e22944abab6fe1c9eaeee");
 
             var ExtraDiscovery = FeatTools.CreateExtraSelectionFeat(modContext: TTTContext, "ExtraDiscovery", DiscoverySelection, bp => {
                 bp.SetName("Extra Discovery");

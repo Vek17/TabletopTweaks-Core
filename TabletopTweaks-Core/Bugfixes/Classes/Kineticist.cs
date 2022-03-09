@@ -17,7 +17,7 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 PatchBase();
             }
             static void PatchBase() {
-                var ElementalOverflowProgression = Resources.GetBlueprint<BlueprintFeatureBase>("86beb0391653faf43aec60d5ec05b538");
+                var ElementalOverflowProgression = BlueprintTools.GetBlueprint<BlueprintFeatureBase>("86beb0391653faf43aec60d5ec05b538");
                 ElementalOverflowProgression.HideInUI = false;
             }
         }

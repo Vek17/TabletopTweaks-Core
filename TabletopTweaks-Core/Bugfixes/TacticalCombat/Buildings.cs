@@ -23,7 +23,7 @@ namespace TabletopTweaks.Core.Bugfixes.TacticalCombat {
 
                 void PatchTrainingGrounds() {
                     if (TTTContext.Fixes.Crusade.Buildings.IsDisabled("TrainingGrounds")) { return; }
-                    var ArmyBuildingTrainingGrounds = Resources.GetBlueprint<BlueprintFeature>("b1ab3085e85243e8a13f6acf78023920");
+                    var ArmyBuildingTrainingGrounds = BlueprintTools.GetBlueprint<BlueprintFeature>("b1ab3085e85243e8a13f6acf78023920");
                     ArmyBuildingTrainingGrounds.RemoveComponents<OutcomingDamageAndHealingModifier>();
                     ArmyBuildingTrainingGrounds.SetComponents(
                         Helpers.Create<OutcomingAdditionalDamageAndHealingModifier>(c => {

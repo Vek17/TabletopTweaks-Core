@@ -5,7 +5,7 @@ using TabletopTweaks.Core.ModLogic;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 
 namespace TabletopTweaks.Core.Utilities {
-    static class QuickFixTools {
+    public static class QuickFixTools {
         public static void ReplaceSuppression(BlueprintBuff buff, ModContextBase context, bool continuous = false) {
             var suppressBuffComponent = buff.GetComponent<SuppressBuffs>();
             if (suppressBuffComponent == null) { return; }

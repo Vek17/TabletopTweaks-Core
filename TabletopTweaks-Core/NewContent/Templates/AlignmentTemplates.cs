@@ -31,10 +31,10 @@ using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewContent.Templates {
     static class AlignmentTemplates {
-        private static readonly BlueprintAbility SmiteEvilAbility = Resources.GetBlueprint<BlueprintAbility>("7bb9eb2042e67bf489ccd1374423cdec");
-        private static readonly BlueprintBuff SmiteEvilBuff = Resources.GetBlueprint<BlueprintBuff>("b6570b8cbb32eaf4ca8255d0ec3310b0");
-        private static readonly BlueprintAbility FiendishSmiteGoodAbility = Resources.GetBlueprint<BlueprintAbility>("478cf0e6c5f3a4142835faeae3bd3e04");
-        private static readonly BlueprintBuff FiendishSmiteGoodBuff = Resources.GetBlueprint<BlueprintBuff>("a9035e49d6d79a64eaec321f2cb629a8");
+        private static readonly BlueprintAbility SmiteEvilAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("7bb9eb2042e67bf489ccd1374423cdec");
+        private static readonly BlueprintBuff SmiteEvilBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("b6570b8cbb32eaf4ca8255d0ec3310b0");
+        private static readonly BlueprintAbility FiendishSmiteGoodAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("478cf0e6c5f3a4142835faeae3bd3e04");
+        private static readonly BlueprintBuff FiendishSmiteGoodBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("a9035e49d6d79a64eaec321f2cb629a8");
 
         public static void AddCelestialTemplate() {
             var CelestialTemplate = CreateAlignmentTemplate("TemplateCelestial", DamageAlignment.Evil, DamageEnergyType.Cold, DamageEnergyType.Acid, DamageEnergyType.Electricity);

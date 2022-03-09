@@ -13,8 +13,8 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewContent.FighterAdvancedArmorTrainings {
     class CriticalDeflection {
         public static void AddCriticalDeflection() {
-            var FighterClass = Resources.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
-            var FighterArmorTrainingProperty = Resources.GetModBlueprintReference<BlueprintUnitPropertyReference>(modContext: TTTContext, "FighterArmorTrainingProperty");
+            var FighterClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("48ac8db94d5de7645906c7d0ad3bcfbd");
+            var FighterArmorTrainingProperty = BlueprintTools.GetModBlueprintReference<BlueprintUnitPropertyReference>(modContext: TTTContext, "FighterArmorTrainingProperty");
 
             var CriticalDeflectionEffect = Helpers.CreateBlueprint<BlueprintFeature>(modContext: TTTContext, "CriticalDeflectionEffect", bp => {
                 bp.SetName("Critical Deflection");

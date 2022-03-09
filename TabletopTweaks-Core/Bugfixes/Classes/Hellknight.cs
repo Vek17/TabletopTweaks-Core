@@ -22,8 +22,8 @@ namespace TabletopTweaks.Core.Bugfixes.Classes {
                 void PatchPentamicFaith() {
                     if (TTTContext.Fixes.Hellknight.IsDisabled("PentamicFaith")) { return; }
 
-                    var HellKnightOrderOfTheGodclaw = Resources.GetBlueprint<BlueprintFeature>("5636564c278583342aec54eb2b409029");
-                    var HellknightDisciplinePentamicFaith = Resources.GetBlueprint<BlueprintFeatureSelection>("b9750875e9d7454e85347d739a1bc894");
+                    var HellKnightOrderOfTheGodclaw = BlueprintTools.GetBlueprint<BlueprintFeature>("5636564c278583342aec54eb2b409029");
+                    var HellknightDisciplinePentamicFaith = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("b9750875e9d7454e85347d739a1bc894");
 
                     HellknightDisciplinePentamicFaith.RemovePrerequisites<PrerequisiteFeature>();
                     HellknightDisciplinePentamicFaith.AddPrerequisiteFeature(HellKnightOrderOfTheGodclaw);
