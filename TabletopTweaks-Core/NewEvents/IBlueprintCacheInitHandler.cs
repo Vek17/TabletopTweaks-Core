@@ -3,7 +3,7 @@ using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.PubSubSystem;
 
 namespace TabletopTweaks.Core.NewEvents {
-    interface IBlueprintCacheInitHandler : IGlobalSubscriber {
+    public interface IBlueprintCacheInitHandler : IGlobalSubscriber {
         void BeforeBlueprintCachePatches();
         void BeforeBlueprintCacheInit();
         void AfterBlueprintCacheInit();

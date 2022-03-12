@@ -3,7 +3,7 @@ using Kingmaker.Localization;
 using Kingmaker.PubSubSystem;
 
 namespace TabletopTweaks.Core.NewEvents {
-    interface ILocaleChangedHandler : IGlobalSubscriber {
+    public interface ILocaleChangedHandler : IGlobalSubscriber {
         void HandleLocaleChanged();
 
         [HarmonyPatch(typeof(LocalizationManager), nameof(LocalizationManager.OnLocaleChanged))]

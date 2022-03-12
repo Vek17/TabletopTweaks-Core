@@ -47,6 +47,9 @@ namespace TabletopTweaks.Core.ModLogic {
         }
 
         public abstract void LoadAllSettings();
+        public virtual void SaveAllSettings() {
+            SaveSettings(BlueprintsFile, Blueprints);
+        }
         public virtual void LoadBlueprints(string classPath) {
             LoadSettings(BlueprintsFile, classPath, ref Blueprints);
         }
@@ -128,16 +131,16 @@ namespace TabletopTweaks.Core.ModLogic {
             }
         }
 
-        public void BeforeBlueprintCachePatches() {
+        public virtual void BeforeBlueprintCachePatches() {
         }
 
-        public void BeforeBlueprintCacheInit() {
+        public virtual void BeforeBlueprintCacheInit() {
         }
 
-        public void AfterBlueprintCacheInit() {
+        public virtual void AfterBlueprintCacheInit() {
         }
 
-        public void AfterBlueprintCachePatches() {
+        public virtual void AfterBlueprintCachePatches() {
             Blueprints.GenerateUnused();
             SaveSettings(BlueprintsFile, Blueprints);
         }

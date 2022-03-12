@@ -50,7 +50,8 @@ namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
             string name,
             Sprite icon,
             int defaultCost,
-            CustomMechanicsFeature? favoriteMetamagic) {
+            CustomMechanicsFeature? favoriteMetamagic,
+            ISubscriber metamagicMechanics = null) {
             var metamagicData = new CustomMetamagicData() {
                 Name = name == null ? null : Helpers.CreateString(modContext: TTTContext, $"{name}SpellMetamagic", name),
                 Icon = icon,
@@ -58,6 +59,9 @@ namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
                 FavoriteMetamagic = favoriteMetamagic
             };
             RegisteredMetamagic.Add(metamagic, metamagicData);
+            if (metamagicMechanics != null) {
+                EventBus.Subscribe(metamagicMechanics);
+            }
         }
 
         public static string GetMetamagicName(Metamagic metamagic) {
@@ -240,193 +244,6 @@ namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
                 if (__instance.CurrentTemporarySpell.Value.SpellLevel < __instance.m_MetamagicBuilder.Value.BaseSpellLevel - CompletlyNormalCorrection) {
                     __instance.CurrentTemporarySpell.Value.SpellLevel = __instance.m_MetamagicBuilder.Value.BaseSpellLevel - CompletlyNormalCorrection;
                     __instance.m_MetamagicBuilder.Value.ResultSpellLevel = __instance.m_MetamagicBuilder.Value.BaseSpellLevel - CompletlyNormalCorrection;
-                }
-            }
-        }
-
-        [HarmonyPatch(typeof(BlueprintsCache), "Init")]
-        private static class MetamagicMechanics {
-            private static bool MetamagicInitialized = false;
-            [HarmonyPriority(Priority.Last)]
-            [HarmonyPostfix]
-            public static void InitalizeMetamagic() {
-                if (MetamagicInitialized) { return; }
-                if (MetamagicExtention.IsRegisistered((Metamagic)CustomMetamagic.Piercing)) {
-                    EventBus.Subscribe(PiercingSpellMechanics.Instance);
-                }
-                if (MetamagicExtention.IsRegisistered((Metamagic)CustomMetamagic.Flaring)) {
-                    EventBus.Subscribe(FlaringSpellMechanics.Instance);
-                }
-                if (MetamagicExtention.IsRegisistered((Metamagic)CustomMetamagic.Burning)) {
-                    EventBus.Subscribe(BurningSpellMechanics.Instance);
-                }
-                if (MetamagicExtention.IsRegisistered((Metamagic)CustomMetamagic.Rime)) {
-                    EventBus.Subscribe(RimeSpellMechanics.Instance);
-                }
-                if (MetamagicExtention.IsRegisistered((Metamagic)CustomMetamagic.SolidShadows)) {
-                    EventBus.Subscribe(SolidShadowsMechanics.Instance);
-                }
-                MetamagicInitialized = true;
-            }
-            //Intensified Spell Metamagic
-            [HarmonyPatch(typeof(ContextActionDealDamage), nameof(ContextActionDealDamage.GetDamageInfo))]
-            static class ContextActionDealDamage_IntensifyMetamagic_Patch {
-                static void Postfix(ContextActionDealDamage __instance, ref ContextActionDealDamage.DamageInfo __result) {
-                    if (!MetamagicExtention.IsRegisistered((Metamagic)CustomMetamagic.Intensified)) { return; }
-
-                    var context = __instance.Context;
-                    if (!context.HasMetamagic((Metamagic)CustomMetamagic.Intensified)) { return; }
-
-                    var Sources = context.m_RankSources ?? context.AssociatedBlueprint?.GetComponents<ContextRankConfig>();
-                    if (__instance.Value.DiceCountValue.ValueType == ContextValueType.Rank) {
-                        var rankConfig = Sources.Where(crc => crc.m_Type == __instance.Value.DiceCountValue.ValueRank).FirstOrDefault();
-                        if (rankConfig && rankConfig.m_BaseValueType == ContextRankBaseValueType.CasterLevel) {
-                            var baseValue = rankConfig.ApplyProgression(rankConfig.GetBaseValue(__instance.Context));
-                            var FinalCount = Math.Min(baseValue, rankConfig.m_Max + GetMultiplierIncrease(rankConfig));
-                            __result.Dices = new DiceFormula(FinalCount, __instance.Value.DiceType);
-                        }
-                    }
-
-                    int GetMultiplierIncrease(ContextRankConfig rankConfig) {
-                        switch (rankConfig.m_Progression) {
-                            case ContextRankProgression.Div2:
-                                return 2;
-                            case ContextRankProgression.Div2PlusStep:
-                                return 5 / 2;
-                            case ContextRankProgression.DivStep:
-                                return 5 / rankConfig.m_StepLevel;
-                            case ContextRankProgression.OnePlusDivStep:
-                                return 5 / rankConfig.m_StepLevel;
-                            case ContextRankProgression.StartPlusDivStep:
-                                return 5 / rankConfig.m_StepLevel;
-                            case ContextRankProgression.DelayedStartPlusDivStep:
-                                return 5 / rankConfig.m_StepLevel;
-                            case ContextRankProgression.DoublePlusBonusValue:
-                                return 5 * 2;
-                            case ContextRankProgression.MultiplyByModifier:
-                                return 5 * rankConfig.m_StepLevel;
-                        }
-                        return 5;
-                    }
-                }
-            }
-            private class RimeSpellMechanics : IAfterRulebookEventTriggerHandler<RuleDealDamage>, IGlobalSubscriber {
-
-                private RimeSpellMechanics() { }
-                public static RimeSpellMechanics Instance = new();
-
-                static BlueprintBuffReference RimeEntagledBuff = Utilities.BlueprintTools.GetModBlueprintReference<BlueprintBuffReference>(modContext: TTTContext, "RimeEntagledBuff");
-                public void OnAfterRulebookEventTrigger(RuleDealDamage evt) {
-                    var context = evt.Reason.Context;
-                    if (context == null) { return; }
-                    if (!context.HasMetamagic((Metamagic)CustomMetamagic.Rime)) { return; }
-                    if (!context.SpellDescriptor.HasAnyFlag(SpellDescriptor.Cold)) { return; }
-                    if (!evt.DamageBundle
-                        .OfType<EnergyDamage>()
-                        .Where(damage => damage.EnergyType == DamageEnergyType.Cold)
-                        .Any(damage => !damage.Immune)) { return; }
-                    var rounds = Math.Max(1, context.Params?.SpellLevel ?? context.SpellLevel).Rounds();
-                    var buff = evt.Target?.Descriptor?.AddBuff(RimeEntagledBuff, context, rounds.Seconds);
-                    if (buff != null) {
-                        buff.IsFromSpell = true;
-                    }
-                }
-            }
-            private class BurningSpellMechanics : IAfterRulebookEventTriggerHandler<RuleDealDamage>, IGlobalSubscriber {
-
-                private BurningSpellMechanics() { }
-                public static BurningSpellMechanics Instance = new();
-
-                private static BlueprintBuffReference BurningSpellAcidBuff = Utilities.BlueprintTools.GetModBlueprintReference<BlueprintBuffReference>(modContext: TTTContext, "BurningSpellAcidBuff");
-                private static BlueprintBuffReference BurningSpellFireBuff = Utilities.BlueprintTools.GetModBlueprintReference<BlueprintBuffReference>(modContext: TTTContext, "BurningSpellFireBuff");
-                public void OnAfterRulebookEventTrigger(RuleDealDamage evt) {
-                    var context = evt.Reason.Context;
-                    if (context == null) { return; }
-                    if (!context.HasMetamagic((Metamagic)CustomMetamagic.Burning)) { return; }
-                    if (!context.SpellDescriptor.HasAnyFlag(SpellDescriptor.Fire | SpellDescriptor.Acid)) { return; }
-                    if (!evt.DamageBundle
-                        .OfType<EnergyDamage>()
-                        .Where(damage => damage.EnergyType == DamageEnergyType.Fire || damage.EnergyType == DamageEnergyType.Acid)
-                        .Any(damage => !damage.Immune)) { return; }
-                    var casterLevel = context.Params?.SpellLevel ?? context.SpellLevel;
-                    if (context.SpellDescriptor.HasAnyFlag(SpellDescriptor.Fire)) {
-                        TTTContext.Logger.Log("Burning FIRE");
-                        var fakeContext = new MechanicsContext(
-                            caster: evt.Initiator,
-                            owner: evt.Target,
-                            blueprint: context.SourceAbility
-                        );
-                        fakeContext.RecalculateAbilityParams();
-                        fakeContext.Params.CasterLevel = casterLevel * 2;
-                        fakeContext.Params.Metamagic = 0;
-                        var buff = evt.Target?.Descriptor?.AddBuff(BurningSpellFireBuff, fakeContext, 1.Rounds().Seconds);
-                        if (buff != null) {
-                            buff.IsFromSpell = true;
-                            buff.IsNotDispelable = true;
-                        } else {
-                            TTTContext.Logger.Log("Buff was null?");
-                        }
-                    }
-                    if (context.SpellDescriptor.HasAnyFlag(SpellDescriptor.Acid)) {
-                        var fakeContext = new MechanicsContext(
-                            caster: evt.Initiator,
-                            owner: evt.Target,
-                            blueprint: context.SourceAbility
-                        );
-                        fakeContext.RecalculateAbilityParams();
-                        fakeContext.Params.CasterLevel = casterLevel * 2;
-                        fakeContext.Params.Metamagic = 0;
-                        var buff = evt.Target?.Descriptor?.AddBuff(BurningSpellAcidBuff, fakeContext, 1.Rounds().Seconds);
-                        if (buff != null) {
-                            buff.IsFromSpell = true;
-                            buff.IsNotDispelable = true;
-                        }
-                    }
-                }
-            }
-            private class FlaringSpellMechanics : IAfterRulebookEventTriggerHandler<RuleDealDamage>, IGlobalSubscriber {
-
-                private FlaringSpellMechanics() { }
-                public static FlaringSpellMechanics Instance = new();
-
-                private static BlueprintBuffReference FlaringDazzledBuff = Utilities.BlueprintTools.GetModBlueprintReference<BlueprintBuffReference>(modContext: TTTContext, "FlaringDazzledBuff");
-                public void OnAfterRulebookEventTrigger(RuleDealDamage evt) {
-                    var context = evt.Reason.Context;
-                    if (context == null) { return; }
-                    if (!context.HasMetamagic((Metamagic)CustomMetamagic.Flaring)) { return; }
-                    if (!context.SpellDescriptor.HasAnyFlag(SpellDescriptor.Fire | SpellDescriptor.Electricity)) { return; }
-                    if (!evt.DamageBundle
-                        .OfType<EnergyDamage>()
-                        .Where(damage => damage.EnergyType == DamageEnergyType.Fire || damage.EnergyType == DamageEnergyType.Electricity)
-                        .Any(damage => !damage.Immune)) { return; }
-
-                    var rounds = Math.Max(1, context.Params?.SpellLevel ?? context.SpellLevel).Rounds();
-                    var buff = evt.Target?.Descriptor?.AddBuff(FlaringDazzledBuff, context, rounds.Seconds);
-                    if (buff != null) {
-                        buff.IsFromSpell = true;
-                    }
-                }
-            }
-            private class PiercingSpellMechanics : IAfterRulebookEventTriggerHandler<RuleSpellResistanceCheck>, IGlobalSubscriber {
-
-                private PiercingSpellMechanics() { }
-                public static PiercingSpellMechanics Instance = new();
-
-                public void OnAfterRulebookEventTrigger(RuleSpellResistanceCheck evt) {
-                    var isPiercing = evt.Context?.HasMetamagic((Metamagic)CustomMetamagic.Piercing) ?? false;
-                    if (!isPiercing) { return; }
-                    evt.SpellResistance -= 5;
-                }
-            }
-            private class SolidShadowsMechanics : IAfterRulebookEventTriggerHandler<RuleCastSpell>, IGlobalSubscriber {
-
-                private SolidShadowsMechanics() { }
-                public static SolidShadowsMechanics Instance = new();
-
-                public void OnAfterRulebookEventTrigger(RuleCastSpell evt) {
-                    var isSolidShadows = evt.Context?.HasMetamagic((Metamagic)CustomMetamagic.SolidShadows) ?? false;
-                    if (!isSolidShadows || !evt.Context.IsShadow) { return; }
-                    evt.Context.ShadowFactorPercents += 20;
                 }
             }
         }

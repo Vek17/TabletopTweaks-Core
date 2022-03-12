@@ -4,7 +4,7 @@ using Kingmaker.UnitLogic.Abilities;
 using System.Collections.Generic;
 
 namespace TabletopTweaks.Core.NewEvents {
-    interface ISpontaneousConversionHandler : IUnitSubscriber {
+    public interface ISpontaneousConversionHandler : IUnitSubscriber {
         void HandleGetConversions(AbilityData ability, ref IEnumerable<AbilityData> conversions);
 
         [HarmonyPatch(typeof(AbilityData), nameof(AbilityData.GetConversions))]

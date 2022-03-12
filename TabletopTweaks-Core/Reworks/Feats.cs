@@ -35,7 +35,8 @@ namespace TabletopTweaks.Core.Reworks {
                     name: "",
                     icon: null,
                     defaultCost: 2,
-                    favoriteMetamagic: null
+                    favoriteMetamagic: null,
+                    null
                 );
                 TTTContext.Logger.LogPatch("Patched", BolsteredSpellFeat);
             }

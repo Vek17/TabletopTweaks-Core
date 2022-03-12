@@ -12,7 +12,7 @@ using System.Linq;
 namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("2e06e1dac73940c3b46ca0db611856a3")]
-    class SharedSpellListCLIncrease : UnitFactComponentDelegate,
+    public class SharedSpellListCLIncrease : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RuleCalculateAbilityParams>,
         IRulebookHandler<RuleCalculateAbilityParams>,
         ISubscriber, IInitiatorRulebookSubscriber {
