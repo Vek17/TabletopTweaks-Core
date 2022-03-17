@@ -14,13 +14,8 @@ using Kingmaker.UI.MVVM._VM.ServiceWindows.Spellbook.Metamagic;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.UnitLogic.Mechanics.Components;
-using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
@@ -29,7 +24,7 @@ using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
 // This work is largly based on work by https://github.com/Stari0n/MagicTime Copyright (c) 2021 Starion
-namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
+namespace TabletopTweaks.Core.MechanicsChanges {
     public static class MetamagicExtention {
 
         [Flags]
@@ -43,6 +38,7 @@ namespace TabletopTweaks.Core.NewContent.MechanicsChanges {
             Flaring = 1 << 18,
             Piercing = 1 << 19,
             SolidShadows = 1 << 20,
+            Encouraging = 1 << 21,
         }
 
         public static void RegisterMetamagic(

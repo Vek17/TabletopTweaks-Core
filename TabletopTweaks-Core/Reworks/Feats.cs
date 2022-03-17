@@ -2,7 +2,7 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.Abilities;
-using TabletopTweaks.Core.NewContent.MechanicsChanges;
+using TabletopTweaks.Core.MechanicsChanges;
 using TabletopTweaks.Core.Utilities;
 using TabletopTweaks.Core.Wrappers;
 using static TabletopTweaks.Core.Main;

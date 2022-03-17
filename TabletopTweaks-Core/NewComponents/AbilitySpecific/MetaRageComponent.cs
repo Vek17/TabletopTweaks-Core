@@ -19,7 +19,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Core.NewContent.MechanicsChanges;
+using TabletopTweaks.Core.MechanicsChanges;
 using TabletopTweaks.Core.NewEvents;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {

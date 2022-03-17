@@ -2,6 +2,8 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +56,7 @@ namespace TabletopTweaks.Core.Utilities {
                 .Where(spellList => spellList.SpellLevel != 0)
                 .SelectMany(level => level.Spells)
                 .Concat(SpellTools.ElementalBloodlineSpells.AllSpells)
+                .Concat(AzataBonusSpells.AllSpells)
                 .Distinct()
                 .OrderBy(spell => spell.Name)
                 .ToList();
@@ -455,6 +458,31 @@ namespace TabletopTweaks.Core.Utilities {
                 BurningHandsElecricity,
                 ScorchingRayElecricity,
             };
+        }
+
+        public static class AzataBonusSpells {
+            private static BlueprintAbility[] ChaoticSpells {
+                get {
+                    var AzataForSpellsCollateralFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("a7a4ae18dc57b8c4791221323812899a");
+                    return AzataForSpellsCollateralFeature.GetComponent<AddFacts>()?
+                        .Facts.Select(f => f.GetComponent<AddKnownSpell>().Spell).ToArray() ?? new BlueprintAbility[0];
+                }
+            }
+            private static BlueprintAbility[] EvilSpells {
+                get {
+                    var AzataForSpellsDevilFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("6d330ba4e39fdb647bd34df9810d0a4c");
+                    return AzataForSpellsDevilFeature.GetComponent<AddFacts>()?
+                        .Facts.Select(f => f.GetComponent<AddKnownSpell>().Spell).ToArray() ?? new BlueprintAbility[0];
+                }
+            }
+            private static BlueprintAbility[] GoodSpells {
+                get {
+                    var AzataForSpellsGoodFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("8155b3b3692a2b04089a19349579f8af");
+                    return AzataForSpellsGoodFeature.GetComponent<AddFacts>()?
+                        .Facts.Select(f => f.GetComponent<AddKnownSpell>().Spell).ToArray() ?? new BlueprintAbility[0];
+                }
+            }
+            public static BlueprintAbility[] AllSpells => ChaoticSpells.Concat(EvilSpells).Concat(GoodSpells).ToArray();
         }
     }
 }

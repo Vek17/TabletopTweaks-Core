@@ -49,6 +49,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             FavoriteMetamagicFlaring,
             FavoriteMetamagicPiercing,
             FavoriteMetamagicSolidShadows,
+            FavoriteMetamagicEncouraging,
             IdealizeDiscovery,
             IdealizeDiscoveryUpgrade
         }

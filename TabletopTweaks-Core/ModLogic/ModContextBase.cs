@@ -18,6 +18,7 @@ namespace TabletopTweaks.Core.ModLogic {
         public virtual string UserConfigFolder => ModEntry.Path + "UserSettings";
         public virtual string LocalizationFolder => ModEntry.Path + "Localization";
         public string LocalizationFile = "LocalizationPack.json";
+        public bool Debug;
         private static JsonSerializerSettings cachedSettings;
         private static JsonSerializerSettings SerializerSettings {
             get {
@@ -50,8 +51,9 @@ namespace TabletopTweaks.Core.ModLogic {
         public virtual void SaveAllSettings() {
             SaveSettings(BlueprintsFile, Blueprints);
         }
-        public virtual void LoadBlueprints(string classPath) {
+        public virtual void LoadBlueprints(string classPath, ModContextBase context) {
             LoadSettings(BlueprintsFile, classPath, ref Blueprints);
+            Blueprints.Context = context;
         }
         public virtual void LoadLocalization(string classPath) {
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);
