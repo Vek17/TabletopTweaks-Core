@@ -55,7 +55,6 @@ namespace TabletopTweaks.Core.Config {
             });
         }
         public BlueprintGuid GetGUID(string name) {
-            Context?.Logger.Log($"Debug: {Context.Debug}");
             Guid Id;
             if (!NewBlueprints.TryGetValue(name, out Id)) {
                 if (!DerivedBlueprints.TryGetValue(name, out Id)) {

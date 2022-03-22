@@ -14,7 +14,7 @@ namespace TabletopTweaks.Core {
             TTTContext = new ModContextTTTCore(modEntry);
             TTTContext.LoadAllSettings();
             TTTContext.ModEntry.OnSaveGUI = OnSaveGUI;
-            TTTContext.ModEntry.OnGUI = UMMSettingsUI.OnGUI;
+            //TTTContext.ModEntry.OnGUI = UMMSettingsUI.OnGUI;
             harmony.PatchAll();
             PostPatchInitializer.Initialize(TTTContext);
             RegisterUpgrades();
@@ -24,9 +24,6 @@ namespace TabletopTweaks.Core {
             JsonUpgradeSystem.Register(-117, "Migrate TabletopTweaks to TabletopTweaks-Core", new TabletopTweaksMigration(TTTContext));
         }
         private static void OnSaveGUI(UnityModManager.ModEntry modEntry) {
-            TTTContext.SaveSettings("Fixes.json", TTTContext.Fixes);
-            TTTContext.SaveSettings("AddedContent.json", TTTContext.AddedContent);
-            TTTContext.SaveSettings("Homebrew.json", TTTContext.Homebrew);
         }
     }
 }

@@ -74,7 +74,6 @@ namespace TabletopTweaks.Core.NewUnitParts {
         [HarmonyPatch(typeof(UnitPartMagus), "IsSpellFromMagusSpellList", new Type[] { typeof(AbilityData) })]
         public class UnitDescriptor_IsSpellFromMagusSpellList_BroadStudy_Patch {
             static void Postfix(UnitPartMagus __instance, ref bool __result, AbilityData spell) {
-                if (TTTContext.AddedContent.MagusArcana.IsDisabled("BroadStudy")) { return; }
                 __result |= spell.Caster?.Get<UnitPartBroadStudy>()?.IsBroadStudy(spell) ?? false;
             }
         }
@@ -82,7 +81,6 @@ namespace TabletopTweaks.Core.NewUnitParts {
         [HarmonyPatch(typeof(UnitPartMagus), "IsSpellFromMagusSpellList", new Type[] { typeof(AbilityData) })]
         public class UnitDescriptor_IsSpellFromMagusSpellList_MythicBroadStudy_Patch {
             static void Postfix(UnitPartMagus __instance, ref bool __result, AbilityData spell) {
-                if (TTTContext.AddedContent.MythicAbilities.IsDisabled("MythicSpellCombat")) { return; }
                 __result |= spell.Caster?.Get<UnitPartBroadStudy>()?.IsMythicBroadStudy(spell) ?? false;
             }
         }

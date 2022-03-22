@@ -175,7 +175,6 @@
     <Compile Include="Localization\MultiLocalizationPack.cs" />
     <Compile Include="MechanicsChanges\ActivatableAbilitySpendLogic.cs" />
     <Compile Include="MechanicsChanges\ArchetypePrerequisites .cs" />
-    <Compile Include="MechanicsChanges\ActivatableResourceFreeResourceLogic.cs" />
     <Compile Include="Bugfixes\General\BlueprintProgressionFix.cs" />
     <Compile Include="NewComponents\AbilitySpecific\AbilityCustomDimensionalRetribution.cs" />
     <Compile Include="NewComponents\AbilitySpecific\DimensionalRetributionLogic.cs" />
@@ -191,7 +190,6 @@
     <Compile Include="NewComponents\ModifySavingThrowD20.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\WeaponBuffOnConfirmedCritTTT.cs" />
     <Compile Include="NewComponents\WeaponExtraDamageDice.cs" />
-    <Compile Include="Reworks\Feats.cs" />
     <Compile Include="NewActions\ContextActionApplyWeaponEnchant.cs" />
     <Compile Include="NewActions\ContextActionDealDamageTTT.cs" />
     <Compile Include="NewActions\ContextActionTransferArcana.cs" />

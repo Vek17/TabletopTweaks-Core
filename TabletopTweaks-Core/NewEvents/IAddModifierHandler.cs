@@ -9,7 +9,8 @@ using System;
 
 namespace TabletopTweaks.Core.NewEvents {
     public interface IAddModifierHandler : IGlobalSubscriber {
-        void BeforeAddHandler(ref int value, [NotNull] EntityFact sourceFact, ModifierDescriptor descriptor);
+        void OnBeforeStatModifierAdded(ModifiableValue instance, ref int value, [NotNull] EntityFact sourceFact, ModifierDescriptor descriptor);
+        void OnBeforeRuleModifierAdded(RulebookEvent instance, ref int value, [NotNull] EntityFact sourceFact, ModifierDescriptor descriptor);
 
         private class EventTriggers {
 
@@ -20,9 +21,9 @@ namespace TabletopTweaks.Core.NewEvents {
             })]
             static class ModifiableValue_AddModifier_Patch {
                 
-                static void Prefix(ref int value, [NotNull] EntityFactComponent source, ModifierDescriptor desc) {
+                static void Prefix(ModifiableValue __instance, ref int value, [NotNull] EntityFactComponent source, ModifierDescriptor desc) {
                     var temp = value;
-                    EventBus.RaiseEvent<IAddModifierHandler>(h => h.BeforeAddHandler(ref temp, source.Fact, desc));
+                    EventBus.RaiseEvent<IAddModifierHandler>(h => h.OnBeforeStatModifierAdded(__instance, ref temp, source.Fact, desc));
                     value = temp;
                 }
             }
@@ -33,9 +34,9 @@ namespace TabletopTweaks.Core.NewEvents {
             })]
             static class ModifiableValue_AddModifier_Patch2 {
 
-                static void Prefix(ref int value, [NotNull] EntityFact sourceFact, ModifierDescriptor desc) {
+                static void Prefix(ModifiableValue __instance, ref int value, [NotNull] EntityFact sourceFact, ModifierDescriptor desc) {
                     var temp = value;
-                    EventBus.RaiseEvent<IAddModifierHandler>(h => h.BeforeAddHandler(ref temp, sourceFact, desc));
+                    EventBus.RaiseEvent<IAddModifierHandler>(h => h.OnBeforeStatModifierAdded(__instance, ref temp, sourceFact, desc));
                     value = temp;
                 }
             }
@@ -46,9 +47,9 @@ namespace TabletopTweaks.Core.NewEvents {
             })]
             static class RulebookEvent_AddModifier_Patch {
 
-                static void Prefix(ref int bonus, [NotNull] EntityFact source, ModifierDescriptor descriptor) {
+                static void Prefix(RulebookEvent __instance, ref int bonus, [NotNull] EntityFact source, ModifierDescriptor descriptor) {
                     var temp = bonus;
-                    EventBus.RaiseEvent<IAddModifierHandler>(h => h.BeforeAddHandler(ref temp, source, descriptor));
+                    EventBus.RaiseEvent<IAddModifierHandler>(h => h.OnBeforeRuleModifierAdded(__instance, ref temp, source, descriptor));
                     bonus = temp;
                 }
             }

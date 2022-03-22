@@ -1,14 +1,8 @@
 ﻿using HarmonyLib;
-using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Enums.Damage;
 using Kingmaker.Localization;
 using Kingmaker.PubSubSystem;
-using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
-using Kingmaker.RuleSystem.Rules.Abilities;
-using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UI.Common;
 using Kingmaker.UI.MVVM._VM.ServiceWindows.Spellbook.Metamagic;
 using Kingmaker.UnitLogic;
@@ -17,10 +11,10 @@ using Kingmaker.UnitLogic.FactLogic;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TabletopTweaks.Core.ModLogic;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
 using UnityEngine;
-using static TabletopTweaks.Core.Main;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
 // This work is largly based on work by https://github.com/Stari0n/MagicTime Copyright (c) 2021 Starion
@@ -42,6 +36,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         }
 
         public static void RegisterMetamagic(
+            ModContextBase context,
             Metamagic metamagic,
             string name,
             Sprite icon,
@@ -49,7 +44,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             CustomMechanicsFeature? favoriteMetamagic,
             ISubscriber metamagicMechanics = null) {
             var metamagicData = new CustomMetamagicData() {
-                Name = name == null ? null : Helpers.CreateString(modContext: TTTContext, $"{name}SpellMetamagic", name),
+                Name = name == null ? null : Helpers.CreateString(context, $"{name}SpellMetamagic", name),
                 Icon = icon,
                 DefaultCost = defaultCost,
                 FavoriteMetamagic = favoriteMetamagic

@@ -27,21 +27,20 @@ namespace TabletopTweaks.Core.NewEvents {
                 typeof(EntityFactComponent),
                 typeof(ModifierDescriptor)
             });
-                static readonly MethodInfo Idealize_AddIdealizeBonus = AccessTools.Method(
+                static readonly MethodInfo EventTriggers_AddEvent = AccessTools.Method(
                     typeof(EventTriggers),
-                    nameof(EventTriggers.AddIdealizeBonus),
+                    nameof(EventTriggers.CallEvent),
                     new Type[] { typeof(int), typeof(AddStatBonus) }
                 );
                 //Add Idealize calculations
                 static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                    if (TTTContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return instructions; }
 
                     var codes = new List<CodeInstruction>(instructions);
                     int target = FindInsertionTarget(codes);
                     //Utilities.ILUtils.LogIL(codes);
                     codes.InsertRange(target, new CodeInstruction[] {
                     new CodeInstruction(OpCodes.Ldarg_0),
-                    new CodeInstruction(OpCodes.Call, Idealize_AddIdealizeBonus)
+                    new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
                 });
                     //Utilities.ILUtils.LogIL(codes);
                     return codes.AsEnumerable();
@@ -66,26 +65,25 @@ namespace TabletopTweaks.Core.NewEvents {
                 typeof(EntityFactComponent),
                 typeof(ModifierDescriptor)
             });
-                static readonly MethodInfo Idealize_AddIdealizeBonus = AccessTools.Method(
+                static readonly MethodInfo EventTriggers_AddEvent = AccessTools.Method(
                     typeof(EventTriggers),
-                    nameof(EventTriggers.AddIdealizeBonus),
+                    nameof(EventTriggers.CallEvent),
                     new Type[] { typeof(int), typeof(AddContextStatBonus) }
                 );
                 //Add Idealize calculations
                 static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                    if (TTTContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return instructions; }
 
                     var codes = new List<CodeInstruction>(instructions);
                     int target = FindInsertionTarget(codes);
                     //Utilities.ILUtils.LogIL(codes);
                     codes.InsertRange(target, new CodeInstruction[] {
                     new CodeInstruction(OpCodes.Ldarg_0),
-                    new CodeInstruction(OpCodes.Call, Idealize_AddIdealizeBonus)
+                    new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
                 });
                     target = FindInsertionTarget(codes, target);
                     codes.InsertRange(target, new CodeInstruction[] {
                     new CodeInstruction(OpCodes.Ldarg_0),
-                    new CodeInstruction(OpCodes.Call, Idealize_AddIdealizeBonus)
+                    new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
                 });
                     //Utilities.ILUtils.LogIL(codes);
                     return codes.AsEnumerable();
@@ -110,21 +108,20 @@ namespace TabletopTweaks.Core.NewEvents {
                 typeof(EntityFactComponent),
                 typeof(ModifierDescriptor)
             });
-                static readonly MethodInfo Idealize_AddIdealizeBonus = AccessTools.Method(
+                static readonly MethodInfo EventTriggers_AddEvent = AccessTools.Method(
                     typeof(EventTriggers),
-                    nameof(EventTriggers.AddIdealizeBonus),
+                    nameof(EventTriggers.CallEvent),
                     new Type[] { typeof(int), typeof(AddGenericStatBonus) }
                 );
                 //Add Idealize calculations
                 static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                    if (TTTContext.AddedContent.WizardArcaneDiscoveries.IsDisabled("Idealize")) { return instructions; }
 
                     var codes = new List<CodeInstruction>(instructions);
                     int target = FindInsertionTarget(codes);
                     //Utilities.ILUtils.LogIL(codes);
                     codes.InsertRange(target, new CodeInstruction[] {
                     new CodeInstruction(OpCodes.Ldarg_0),
-                    new CodeInstruction(OpCodes.Call, Idealize_AddIdealizeBonus)
+                    new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
                 });
                     //Utilities.ILUtils.LogIL(codes);
                     return codes.AsEnumerable();
@@ -143,13 +140,13 @@ namespace TabletopTweaks.Core.NewEvents {
                 }
             }
 
-            private static int AddIdealizeBonus(int value, AddStatBonus component) {
+            private static int CallEvent(int value, AddStatBonus component) {
                 return CallEvent(value, component.Stat, component.Descriptor, component.Context);
             }
-            private static int AddIdealizeBonus(int value, AddContextStatBonus component) {
+            private static int CallEvent(int value, AddContextStatBonus component) {
                 return CallEvent(value, component.Stat, component.Descriptor, component.Context);
             }
-            private static int AddIdealizeBonus(int value, AddGenericStatBonus component) {
+            private static int CallEvent(int value, AddGenericStatBonus component) {
                 return CallEvent(value, component.Stat, component.Descriptor, component.Context);
             }
             private static int CallEvent(int value, StatType stat, ModifierDescriptor descriptor, MechanicsContext context) {
