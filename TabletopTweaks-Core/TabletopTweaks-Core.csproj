@@ -156,7 +156,6 @@
   <ItemGroup>
     <Compile Include="Bugfixes\General\ContextRankConfigFix.cs" />
     <Compile Include="Config\Blueprints.cs" />
-    <Compile Include="Config\Homebrew.cs" />
     <Compile Include="Config\ICollapseableGroup.cs" />
     <Compile Include="Config\IDisableableGroup.cs" />
     <Compile Include="Config\IUpdatableSettings.cs" />
@@ -166,10 +165,12 @@
     <Compile Include="Config\NestedSettingGroup.cs" />
     <Compile Include="Config\SettingGroup.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTAddDamageResistanceHardness.cs" />
+    <Compile Include="NewComponents\RerollFortification.cs" />
     <Compile Include="NewEvents\IAddModifierHandler.cs" />
     <Compile Include="NewEvents\IStatBonusCalculatedHandler.cs" />
     <Compile Include="NewEvents\IBlueprintCacheInitHandler.cs" />
     <Compile Include="NewEvents\ILocaleChangedHandler.cs" />
+    <Compile Include="NewRules\RuleFortificationCheck.cs" />
     <Compile Include="Utilities\BlueprintExtentions.cs" />
     <Compile Include="Utilities\CollectionExtentions.cs" />
     <Compile Include="Localization\MultiLocalizationPack.cs" />
@@ -309,7 +310,6 @@
     <Compile Include="NewComponents\UpdateSlotsOnEquipmentChange.cs" />
     <Compile Include="NewComponents\AbilitySpecific\WeaponBlackBladeStrike.cs" />
     <Compile Include="NewComponents\WeaponDamageMultiplierReplacement.cs" />
-    <Compile Include="Config\AddedContent.cs" />
     <Compile Include="MechanicsChanges\AdditionalModifierDescriptors.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\AzataFavorableMagicTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\AzataZippyMagicTTT.cs" />
@@ -355,10 +355,8 @@
     <Compile Include="NewComponents\BuffDescriptorImmunityAgainstAlignment.cs" />
     <Compile Include="NewComponents\SpellImmunityToSpellDescriptorAgainstAlignment.cs" />
     <Compile Include="NewComponents\Prerequisites\PrerequisiteNoFeaturesFromList.cs" />
-    <Compile Include="Config\ModSettings.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Config\Fixes.cs" />
     <Compile Include="Utilities\ILUtils.cs" />
     <Compile Include="Utilities\ItemTools.cs" />
     <Compile Include="Utilities\LocalizationExtensions.cs" />
