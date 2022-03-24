@@ -15,8 +15,9 @@ namespace TabletopTweaks.Core.NewRules {
         public RuleFortificationCheck([NotNull]RuleAttackRoll evt) : base(evt.Initiator, evt.Target) {
             this.Roll = new RuleRollD100(Initiator);
             this.ForCritical = evt.IsCriticalConfirmed;
-            this.ForSneak = evt.IsSneakAttack;
+            this.ForSneakAttack = evt.IsSneakAttack;
             this.ForPreciseStrike = evt.PreciseStrike > 0;
+            this.AttackRoll = evt;
         }
 
         public readonly RuleRollD100 Roll;
@@ -32,8 +33,9 @@ namespace TabletopTweaks.Core.NewRules {
                 return true;
             }
         }
+        public RuleAttackRoll AttackRoll { get; }
         public bool ForCritical { get; }
-        public bool ForSneak { get; }
+        public bool ForSneakAttack { get; }
         public bool ForPreciseStrike { get; }
 
         public override void OnTrigger(RulebookEventContext context) {
@@ -50,7 +52,7 @@ namespace TabletopTweaks.Core.NewRules {
         private readonly List<int> Bonuses = new List<int>();
         private readonly List<int> Penalties = new List<int>();
 
-        
+        // Replace all fortification logic with new rule based logic
         [HarmonyPatch(typeof(RuleAttackRoll), "OnTrigger", new Type[] { typeof(RulebookEventContext) })]
         private class RuleFortificationRoll_Implementation {
             static readonly MethodInfo get_TargetUseFortification = AccessTools.PropertyGetter(typeof(RuleAttackRoll), "TargetUseFortification");
@@ -72,7 +74,7 @@ namespace TabletopTweaks.Core.NewRules {
                     new CodeInstruction(OpCodes.Call, method_CheckFortification),
                 });
                 codes[target.Start].labels = labels;
-                //Utilities.ILUtils.LogIL(Main.TTTContext, codes);
+                Utilities.ILUtils.LogIL(Main.TTTContext, codes);
                 return codes.AsEnumerable();
             }
             private static TargetInfo FindInsertionTarget(List<CodeInstruction> codes) {

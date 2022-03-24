@@ -164,6 +164,7 @@
     <Compile Include="ModLogic\ModContextBase.cs" />
     <Compile Include="Config\NestedSettingGroup.cs" />
     <Compile Include="Config\SettingGroup.cs" />
+    <Compile Include="NewComponents\CritAutoconfirmAgainstClass.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTAddDamageResistanceHardness.cs" />
     <Compile Include="NewComponents\RerollFortification.cs" />
     <Compile Include="NewEvents\IAddModifierHandler.cs" />
