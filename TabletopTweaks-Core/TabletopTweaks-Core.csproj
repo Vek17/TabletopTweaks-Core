@@ -155,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bugfixes\General\ContextRankConfigFix.cs" />
+    <Compile Include="Bugfixes\General\RuleCalculateCMDFix.cs" />
     <Compile Include="Config\Blueprints.cs" />
     <Compile Include="Config\ICollapseableGroup.cs" />
     <Compile Include="Config\IDisableableGroup.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="Config\NestedSettingGroup.cs" />
     <Compile Include="Config\SettingGroup.cs" />
     <Compile Include="NewComponents\AddArmorEnhancementBonusToStat.cs" />
+    <Compile Include="NewComponents\ContextConditionSizeDifferneceFromCaster.cs" />
     <Compile Include="NewComponents\CritAutoconfirmAgainstClass.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTAddDamageResistanceHardness.cs" />
     <Compile Include="NewComponents\RerollFortification.cs" />
