@@ -166,6 +166,7 @@
     <Compile Include="Config\NestedSettingGroup.cs" />
     <Compile Include="Config\SettingGroup.cs" />
     <Compile Include="NewComponents\AddArmorEnhancementBonusToStat.cs" />
+    <Compile Include="NewComponents\ContextArmorCheckPenaltyIncrease.cs" />
     <Compile Include="NewComponents\ContextConditionSizeDifferneceFromCaster.cs" />
     <Compile Include="NewComponents\CritAutoconfirmAgainstClass.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTAddDamageResistanceHardness.cs" />
@@ -234,8 +235,7 @@
     <Compile Include="NewComponents\ArmorEnchantsToWeapon.cs" />
     <Compile Include="NewComponents\AbilitySpecific\MagicalVestmentComponent.cs" />
     <Compile Include="NewComponents\ContextArcaneSpellFailureIncrease.cs" />
-    <Compile Include="NewComponents\ContextArmorCheckPenaltyIncrease.cs" />
-    <Compile Include="NewComponents\ContextMaxDexBonusIncrease.cs" />
+    <Compile Include="NewComponents\ContextArmorMaxDexBonusIncrease.cs" />
     <Compile Include="NewComponents\CustomSpecialSlotAmount.cs" />
     <Compile Include="NewComponents\ContextDispelBonusOnType.cs" />
     <Compile Include="NewComponents\ForceACUpdate.cs" />
