@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+// Copyright < 2021 > Narria (github user Cabarius) - License: MIT
 namespace TabletopTweaks.Core.UMMTools.Utility {
     public class DoubleDictionary<TKey1, TKey2, TValue> {
         private readonly Dictionary<TKey1, Dictionary<TKey2, TValue>> _dictionary

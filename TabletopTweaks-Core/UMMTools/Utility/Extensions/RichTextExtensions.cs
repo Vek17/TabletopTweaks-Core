@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
+// Copyright < 2021 > Narria (github user Cabarius) - License: MIT
 namespace TabletopTweaks.Core.UMMTools.Utility {
     public static class StringExtensions {
         public static bool Matches(string source, string other) {

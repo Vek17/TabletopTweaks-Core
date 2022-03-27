@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using GL = UnityEngine.GUILayout;
 
+// Copyright < 2021 > Narria (github user Cabarius) - License: MIT
 namespace TabletopTweaks.Core.UMMTools {
     public static partial class UI {
         private static GUIStyle linkStyle = null;

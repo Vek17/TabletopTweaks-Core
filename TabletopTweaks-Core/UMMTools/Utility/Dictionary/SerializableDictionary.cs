@@ -4,6 +4,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
+// Copyright < 2021 > Narria (github user Cabarius) - License: MIT
 namespace TabletopTweaks.Core.UMMTools.Utility {
     [XmlRoot("SerializableDictionary")]
     public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IXmlSerializable, IUpdatableSettings {

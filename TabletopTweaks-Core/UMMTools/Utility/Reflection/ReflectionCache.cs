@@ -9,6 +9,7 @@ using System.Collections;
 using System.Reflection;
 using System.Reflection.Emit;
 
+// Copyright < 2021 > Narria (github user Cabarius) - License: MIT
 namespace TabletopTweaks.Core.UMMTools.Utility {
     public static partial class ReflectionCache {
         private const BindingFlags ALL_FLAGS = BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic /*| BindingFlags.FlattenHierarchy*/;

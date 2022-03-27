@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using static UnityModManagerNet.UnityModManager;
 
+// Copyright < 2021 > Narria (github user Cabarius) - License: MIT
 namespace TabletopTweaks.Core.UMMTools {
     public interface IUpdatableSettings {
         void AddMissingKeys(IUpdatableSettings from);

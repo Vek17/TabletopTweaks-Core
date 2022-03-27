@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// Copyright < 2021 > Narria (github user Cabarius) - License: MIT
 namespace TabletopTweaks.Core.UMMTools {
     // https://docs.unity3d.com/Manual/StyledText.html
     public enum RGBA : uint {

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// Copyright < 2021 > Narria (github user Cabarius) - License: MIT
 namespace TabletopTweaks.Core.UMMTools.Private {
     public static partial class UI {
 

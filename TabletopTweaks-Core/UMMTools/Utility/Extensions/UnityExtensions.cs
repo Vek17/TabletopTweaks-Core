@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// Copyright < 2021 > Narria (github user Cabarius) - License: MIT
 namespace TabletopTweaks.Core.UMMTools.Utility {
     public static class UnityExtensions {
         private static void SafeDestroyInternal(GameObject obj) {

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 
+// Copyright < 2021 > Narria (github user Cabarius) - License: MIT
 namespace TabletopTweaks.Core.UMMTools.Utility {
     public static partial class ReflectionCache {
         private static readonly DoubleDictionary<Type, string, WeakReference> _fieldCache = new();

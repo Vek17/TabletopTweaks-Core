@@ -1,6 +1,7 @@
 ﻿// Copyright < 2021 > Narria (github user Cabarius) - License: MIT
 using System;
 
+// Copyright < 2021 > Narria (github user Cabarius) - License: MIT
 namespace TabletopTweaks.Core.UMMTools {
     public class NamedAction {
         public string name { get; }

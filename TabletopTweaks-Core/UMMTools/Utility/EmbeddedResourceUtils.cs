@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
+// Copyright < 2021 > Narria (github user Cabarius) - License: MIT
 namespace TabletopTweaks.Core.UMMTools {
     public static class EmbeddedResourceUtils {
         public static Stream StreamForResourceFile(string endingFileName) {

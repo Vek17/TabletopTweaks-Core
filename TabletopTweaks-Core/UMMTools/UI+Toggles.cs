@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 
+// Copyright < 2021 > Narria (github user Cabarius) - License: MIT
 namespace TabletopTweaks.Core.UMMTools {
     public enum ToggleState {
         Off = 0,

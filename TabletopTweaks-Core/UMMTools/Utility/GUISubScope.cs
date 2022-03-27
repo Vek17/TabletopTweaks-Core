@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+// Copyright < 2021 > Narria (github user Cabarius) - License: MIT
 namespace TabletopTweaks.Core.UMMTools.Utility {
     public class GUISubScope : IDisposable {
         public GUISubScope() : this(null) { }
