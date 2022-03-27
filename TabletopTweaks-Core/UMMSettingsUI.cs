@@ -1,5 +1,5 @@
 ﻿using Kingmaker.Utility;
-using ModKit;
+using TabletopTweaks.Core.UMMTools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -107,7 +107,7 @@ namespace TabletopTweaks.Core {
 
         public static bool Toggle(string title, bool value, Action<bool> action, params GUILayoutOption[] options) {
             options = options.AddDefaults();
-            var changed = ModKit.Private.UI.CheckBox(title, value, UI.toggleStyle, options);
+            var changed = TabletopTweaks.Core.UMMTools.Private.UI.CheckBox(title, value, UI.toggleStyle, options);
             if (changed) {
                 action.Invoke(!value);
             }

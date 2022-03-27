@@ -114,6 +114,9 @@
       <HintPath>$(WrathPath)\Wrath_Data\Managed\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.AnimationModule">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
@@ -177,6 +180,35 @@
     <Compile Include="NewEvents\IBlueprintCacheInitHandler.cs" />
     <Compile Include="NewEvents\ILocaleChangedHandler.cs" />
     <Compile Include="NewRules\RuleFortificationCheck.cs" />
+    <Compile Include="UMMTools\ColorUtils.cs" />
+    <Compile Include="UMMTools\GUIHelper.cs" />
+    <Compile Include="UMMTools\Private\Toggle.cs" />
+    <Compile Include="UMMTools\RichText.cs" />
+    <Compile Include="UMMTools\Styles.cs" />
+    <Compile Include="UMMTools\UI+Builders.cs" />
+    <Compile Include="UMMTools\UI+Controls.cs" />
+    <Compile Include="UMMTools\UI+Elements.cs" />
+    <Compile Include="UMMTools\UI+HTML.cs" />
+    <Compile Include="UMMTools\UI+Pickers.cs" />
+    <Compile Include="UMMTools\UI+Toggles.cs" />
+    <Compile Include="UMMTools\UI+Wrappers.cs" />
+    <Compile Include="UMMTools\Utility\Dictionary\DoubleDictionary.cs" />
+    <Compile Include="UMMTools\Utility\Dictionary\SerializableDictionary.cs" />
+    <Compile Include="UMMTools\Utility\Dictionary\TripleDictionary.cs" />
+    <Compile Include="UMMTools\Utility\EmbeddedResourceUtils.cs" />
+    <Compile Include="UMMTools\Utility\Extensions\CodeInstructionExtensions.cs" />
+    <Compile Include="UMMTools\Utility\Extensions\RichTextExtensions.cs" />
+    <Compile Include="UMMTools\Utility\Extensions\UnityExtensions.cs" />
+    <Compile Include="UMMTools\Utility\GUISubScope.cs" />
+    <Compile Include="UMMTools\Utility\Logging.cs" />
+    <Compile Include="UMMTools\Utility\ModSettings.cs" />
+    <Compile Include="UMMTools\Utility\NamedTypes.cs" />
+    <Compile Include="UMMTools\Utility\Reflection\ReflectionCache.cs" />
+    <Compile Include="UMMTools\Utility\Reflection\ReflectionFieldCache.cs" />
+    <Compile Include="UMMTools\Utility\Reflection\ReflectionMethodCache.cs" />
+    <Compile Include="UMMTools\Utility\Reflection\ReflectionPropertyCache.cs" />
+    <Compile Include="UMMTools\Utility\Translator.cs" />
+    <Compile Include="UMMTools\Utility\Utilities.cs" />
     <Compile Include="Utilities\BlueprintExtentions.cs" />
     <Compile Include="Utilities\CollectionExtentions.cs" />
     <Compile Include="Localization\MultiLocalizationPack.cs" />
