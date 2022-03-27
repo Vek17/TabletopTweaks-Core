@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using TabletopTweaks.Core.ModLogic;
 using TabletopTweaks.Core.NewEvents;
 using TabletopTweaks.Core.Utilities;
@@ -64,6 +65,13 @@ namespace TabletopTweaks.Core.Localization {
         public void ResetCache() {
             ids = null;
             text = null;
+        }
+        /// <summary>
+        /// Clears unsued strings from the localization pack.
+        /// </summary>
+        public void RemoveUnused() {
+            Strings = Strings.Where(s => s.IsUsed).ToList();
+            ResetCache();
         }
         /// <summary>
         /// Gets the MultiLocaleString assosiated with the entered text.
@@ -164,11 +172,6 @@ namespace TabletopTweaks.Core.Localization {
             /// </summary>
             [JsonProperty]
             public bool ProcessTemplates;
-#if DEBUG
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-            [DefaultValue(true)]
-            private bool IsUsed = false;
-#endif
             /// <summary>
             /// English Text.
             /// </summary>
@@ -200,6 +203,8 @@ namespace TabletopTweaks.Core.Localization {
             [JsonProperty]
             public string esES;
             private LocalizedString m_LocalizedString;
+            [JsonIgnore]
+            public bool IsUsed = false;
             /// <summary>
             /// The LocalizedString representation of the the MultiLocaleString.
             /// </summary>
@@ -209,9 +214,7 @@ namespace TabletopTweaks.Core.Localization {
                         m_Key = Key,
                         m_ShouldProcess = ProcessTemplates
                     };
-#if DEBUG
                     IsUsed = true;
-#endif
                     return m_LocalizedString;
                 }
             }
