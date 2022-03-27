@@ -157,6 +157,7 @@
     <Compile Include="Bugfixes\General\ContextRankConfigFix.cs" />
     <Compile Include="Bugfixes\General\RuleCalculateCMDFix.cs" />
     <Compile Include="Config\Blueprints.cs" />
+    <EmbeddedResource Include="Config\Blueprints.json" />
     <Compile Include="Config\ICollapseableGroup.cs" />
     <Compile Include="Config\IDisableableGroup.cs" />
     <Compile Include="Config\IUpdatableSettings.cs" />
@@ -370,14 +371,10 @@
     <Compile Include="Wrappers\LocalizationWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Config\AddedContent.json" />
-    <EmbeddedResource Include="Config\Blueprints.json" />
-    <EmbeddedResource Include="Config\Homebrew.json" />
     <None Include=".editorconfig" />
     <None Include="Info.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <EmbeddedResource Include="Config\Fixes.json" />
     <EmbeddedResource Include="Localization\LocalizationPack.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>

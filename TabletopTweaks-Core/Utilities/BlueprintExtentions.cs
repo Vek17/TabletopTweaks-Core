@@ -37,7 +37,7 @@ namespace TabletopTweaks.Core.Utilities {
             var result = (T)Helpers.ObjectDeepCopier.Clone(original);
             result.TemporaryContext(bp => {
                 bp.name = name;
-                bp.AssetGuid = Main.TTTContext.Blueprints.GetGUID(name);
+                bp.AssetGuid = modContext.Blueprints.GetGUID(name);
             });
             BlueprintTools.AddBlueprint(modContext, result);
             init?.Invoke(result);

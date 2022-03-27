@@ -74,7 +74,7 @@ namespace TabletopTweaks.Core.NewRules {
                     new CodeInstruction(OpCodes.Call, method_CheckFortification),
                 });
                 codes[target.Start].labels = labels;
-                Utilities.ILUtils.LogIL(Main.TTTContext, codes);
+                //Utilities.ILUtils.LogIL(Main.TTTContext, codes);
                 return codes.AsEnumerable();
             }
             private static TargetInfo FindInsertionTarget(List<CodeInstruction> codes) {
