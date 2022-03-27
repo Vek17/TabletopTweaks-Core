@@ -17,7 +17,7 @@ using TabletopTweaks.Core.Utilities;
 using UnityEngine;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
-// This work is largly based on work by https://github.com/Stari0n/MagicTime Copyright (c) 2021 Starion
+// This work is largly based on work by https://github.com/Stari0n/MagicTime Copyright (c) 2021 Starion MIT
 namespace TabletopTweaks.Core.MechanicsChanges {
     public static class MetamagicExtention {
 
