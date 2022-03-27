@@ -42,7 +42,6 @@ namespace TabletopTweaks.Core.NewComponents {
         public void OnEventDidTrigger(RuleCalculateArmorCheckPenalty evt) {
         }
 
-        public bool Reduce;
         public ContextValue Value;
         public bool CheckCategory;
         public ArmorProficiencyGroup[] Categorys;
