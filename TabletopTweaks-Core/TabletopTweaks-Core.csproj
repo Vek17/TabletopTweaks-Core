@@ -76,9 +76,6 @@
     </Reference>
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.Build.Utilities.v4.0" />
-    <Reference Include="ModKit, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ModKit.1.0.8\lib\net472\ModKit.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(WrathPath)\Wrath_Data\Managed\Newtonsoft.Json.dll</HintPath>
@@ -115,7 +112,8 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.AnimationModule">
       <SpecificVersion>False</SpecificVersion>
@@ -380,7 +378,7 @@
     <Compile Include="NewUnitParts\UnitPartWarriorSpirit.cs" />
     <Compile Include="Utilities\BlueprintTools.cs" />
     <Compile Include="SaveGamePatch.cs" />
-    <Compile Include="UMMSettingsUI.cs" />
+    <Compile Include="UMMTools\UMMSettingsUI.cs" />
     <Compile Include="SaveUpgrades\TabletopTweaksMigration.cs" />
     <Compile Include="Utilities\AssetLoader.cs" />
     <Compile Include="Utilities\Attributes.cs" />

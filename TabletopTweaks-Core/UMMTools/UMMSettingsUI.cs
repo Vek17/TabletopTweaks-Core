@@ -1,26 +1,12 @@
 ﻿using Kingmaker.Utility;
-using TabletopTweaks.Core.UMMTools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TabletopTweaks.Core.Config;
 using UnityEngine;
-using UnityModManagerNet;
 
-namespace TabletopTweaks.Core {
-    internal static class UMMSettingsUI {
-        private static int selectedTab;
-        public static void OnGUI(UnityModManager.ModEntry modEntry) {
-            UI.AutoWidth();
-            /*
-            UI.TabBar(ref selectedTab,
-                    () => UI.Label("SETTINGS WILL NOT BE UPDATED UNTIL YOU RESTART YOUR GAME.".yellow().bold())
-            );
-            */
-        }
-    }
-
+namespace TabletopTweaks.Core.UMMTools {
     public static class SetttingUI {
         public enum TabLevel : int {
             Zero,
