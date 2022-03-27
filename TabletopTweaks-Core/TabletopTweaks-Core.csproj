@@ -398,7 +398,6 @@
     <Compile Include="Utilities\QuickFixTools.cs" />
     <Compile Include="Utilities\SpellTools.cs" />
     <Compile Include="Utilities\TypeReplaceTranspiler.cs" />
-    <Compile Include="Wrappers\LocalizationWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
