@@ -86,7 +86,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
         [JsonProperty]
         private string EnhancementBonus;
 
-        private static readonly BlueprintUnitProperty ProgressionProperty = BlueprintTools.GetModBlueprint<BlueprintUnitProperty>(modContext: TTTContext, "BlackBladeProgressionProperty");
+        private static readonly BlueprintUnitProperty ProgressionProperty = BlueprintTools.GetBlueprint<BlueprintUnitProperty>("100a63da46bd49e2a53392566a45ca41"); // Black Blade Property hard coded to maintain save compatability
         private static readonly BlueprintWeaponEnchantment[] Enhancements = new BlueprintWeaponEnchantment[] {
             BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("d42fc23b92c640846ac137dc26e000d4"), //+1
             BlueprintTools.GetBlueprint<BlueprintWeaponEnchantment>("eb2faccc4c9487d43b3575d7e77ff3f5"), //+2

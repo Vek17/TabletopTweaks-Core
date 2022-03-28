@@ -21,7 +21,8 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         }
 
         public void HandleUnitAfterLevelUp(UnitEntityData unit, LevelUpController controller) {
-            //TTTContext.Logger.Log($"Mode: {controller.State.Mode}");
+            Main.TTTContext.Logger.Log($"Owner: {base.Owner.UniqueId}");
+            Main.TTTContext.Logger.Log($"Blade: {BlackBlade.deserializedGuid.m_Guid}");
             var part = base.Owner.Ensure<UnitPartBlackBlade>();
             part.AddBlackBlade(BlackBlade, base.Context, base.Fact);
         }
