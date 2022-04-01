@@ -237,6 +237,16 @@ namespace TabletopTweaks.Core.Utilities {
         /// Removes the specified features from the BlueprintFeatureSelection.
         /// </summary>
         /// <param name="selection"></param>
+        /// <param name="predicate">
+        /// Predicate to determine what features to remove.
+        /// </param>
+        public static void RemoveFeatures(this BlueprintFeatureSelection selection, Func<BlueprintFeature, bool> predicate) {
+            selection.RemoveFeatures(selection.Features.Concat(selection.AllFeatures).Where(predicate).Distinct().ToArray());
+        }
+        /// <summary>
+        /// Removes the specified features from the BlueprintFeatureSelection.
+        /// </summary>
+        /// <param name="selection"></param>
         /// <param name="features">
         /// Features to remove.
         /// </param>
@@ -259,8 +269,8 @@ namespace TabletopTweaks.Core.Utilities {
                     selection.m_Features = selection.m_Features.Where(f => !f.Equals(feature)).ToArray();
                 }
             }
-            selection.m_AllFeatures = selection.m_AllFeatures.OrderBy(feature => feature.Get().Name).ToArray();
-            selection.m_Features = selection.m_Features.OrderBy(feature => feature.Get().Name).ToArray();
+            //selection.m_AllFeatures = selection.m_AllFeatures.OrderBy(feature => feature.Get().Name).ToArray();
+            //selection.m_Features = selection.m_Features.OrderBy(feature => feature.Get().Name).ToArray();
         }
         /// <summary>
         /// Adds the specified features to the BlueprintFeatureSelection.
@@ -288,8 +298,8 @@ namespace TabletopTweaks.Core.Utilities {
                     selection.m_Features = selection.m_Features.AppendToArray(feature);
                 }
             }
-            selection.m_AllFeatures = selection.m_AllFeatures.OrderBy(feature => feature.Get().Name).ToArray();
-            selection.m_Features = selection.m_Features.OrderBy(feature => feature.Get().Name).ToArray();
+            selection.m_AllFeatures = selection.m_AllFeatures.OrderBy(feature => feature.Get().Name ?? feature.Get().name).ToArray();
+            selection.m_Features = selection.m_Features.OrderBy(feature => feature.Get().Name ?? feature.Get().name).ToArray();
         }
         /// <summary>
         /// Adds feature as a PrerequisiteFeature and updates that feature's IsPrerequisiteFor list to correctly reflect that.

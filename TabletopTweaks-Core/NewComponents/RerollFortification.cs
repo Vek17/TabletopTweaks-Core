@@ -14,6 +14,10 @@ namespace TabletopTweaks.Core.NewComponents {
         IRulebookHandler<RuleFortificationCheck>, ISubscriber, IInitiatorRulebookSubscriber {
 
         public void OnEventAboutToTrigger(RuleFortificationCheck evt) {
+            if (!CheckReason) {
+                evt.Roll.AddReroll(RerollCount, TakeBest, base.Fact);
+                return;
+            }
             if (ConfirmedCriticals && evt.ForCritical) {
                 evt.Roll.AddReroll(RerollCount, TakeBest, base.Fact);
                 return;
@@ -23,10 +27,6 @@ namespace TabletopTweaks.Core.NewComponents {
                 return;
             }
             if (PreciseStrike && evt.ForPreciseStrike) {
-                evt.Roll.AddReroll(RerollCount, TakeBest, base.Fact);
-                return;
-            }
-            if (AllEvents) {
                 evt.Roll.AddReroll(RerollCount, TakeBest, base.Fact);
                 return;
             }
@@ -40,6 +40,6 @@ namespace TabletopTweaks.Core.NewComponents {
         public bool ConfirmedCriticals = true;
         public bool SneakAttacks = true;
         public bool PreciseStrike = true;
-        public bool AllEvents;
+        public bool CheckReason;
     }
 }

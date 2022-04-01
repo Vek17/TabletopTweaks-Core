@@ -1,5 +1,10 @@
-﻿using Kingmaker.EntitySystem.Entities;
+﻿using HarmonyLib;
+using Kingmaker.EntitySystem.Entities;
+using Kingmaker.Enums.Damage;
+using Kingmaker.RuleSystem.Rules;
+using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
@@ -51,7 +56,8 @@ namespace TabletopTweaks.Core.NewUnitParts {
             FavoriteMetamagicSolidShadows,
             FavoriteMetamagicEncouraging,
             IdealizeDiscovery,
-            IdealizeDiscoveryUpgrade
+            IdealizeDiscoveryUpgrade,
+            BypassSneakAttackImmunity
         }
     }
     public static class CustomMechanicsFeaturesExtentions {
@@ -62,6 +68,37 @@ namespace TabletopTweaks.Core.NewUnitParts {
 
         public static CountableFlag CustomMechanicsFeature(this UnitEntityData unit, CustomMechanicsFeature type) {
             return unit.Descriptor.CustomMechanicsFeature(type);
+        }
+    }
+
+    [HarmonyPatch(typeof(RuleAttackRoll), nameof(RuleAttackRoll.ImmuneToSneakAttack), MethodType.Getter)]
+    static class RuleAttackRoll_SneakImmunity_Fix {
+        static void Postfix(RuleAttackRoll __instance, ref bool __result) {
+            if (__instance.Initiator.CustomMechanicsFeature(CustomMechanicsFeature.BypassSneakAttackImmunity)) {
+                __result = false;
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(GhostCriticalAndPrecisionImmunity), nameof(GhostCriticalAndPrecisionImmunity.OnEventAboutToTrigger))]
+    static class GhostCriticalAndPrecisionImmunity_SneakImmunity_Fix {
+        static bool Prefix(GhostCriticalAndPrecisionImmunity __instance, RuleCalculateDamage evt) {
+            if (evt.DamageBundle.WeaponDamage != null && (evt.DamageBundle.WeaponDamage.Reality & DamageRealityType.Ghost) != (DamageRealityType)0) {
+                return false;
+            }
+            foreach (BaseDamage baseDamage in evt.DamageBundle) {
+                EnergyDamage energyDamage = baseDamage as EnergyDamage;
+                PhysicalDamage physicalDamage = baseDamage as PhysicalDamage;
+                if (baseDamage.Type != DamageType.Force && baseDamage.Type != DamageType.Direct && (energyDamage == null || energyDamage.EnergyType != DamageEnergyType.PositiveEnergy) && (energyDamage == null || energyDamage.EnergyType != DamageEnergyType.Holy) && (energyDamage == null || energyDamage.EnergyType != DamageEnergyType.Unholy) && (energyDamage == null || energyDamage.EnergyType != DamageEnergyType.Divine)) {
+                    evt.CritImmunity = true;
+                    if ((baseDamage.Precision && !evt.Initiator.CustomMechanicsFeature(CustomMechanicsFeature.BypassSneakAttackImmunity)) || (physicalDamage != null && physicalDamage.EnchantmentTotal < 1)) {
+                        baseDamage.AddDecline(new DamageDecline(DamageDeclineType.Total, __instance));
+                    } else {
+                        baseDamage.AddDecline(new DamageDecline(DamageDeclineType.ByHalf, __instance));
+                    }
+                }
+            }
+            return false;
         }
     }
 }
