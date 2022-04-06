@@ -21,12 +21,14 @@ namespace TabletopTweaks.Core.Utilities {
         public static T GetModBlueprintReference<T>(ModContextBase modContext, string name) where T : BlueprintReferenceBase {
             BlueprintGuid? assetId = modContext.Blueprints.GetGUID(name);
             var reference = Activator.CreateInstance<T>();
+            if (assetId == null) { Main.TTTContext.Logger.LogError($"COULD NOT LOAD MOD BLUEPRINT REFERENCE: {name} - {typeof(T)}"); }
             reference.deserializedGuid = assetId ?? BlueprintGuid.Empty;
             return reference;
         }
         public static T GetModBlueprint<T>(ModContextBase modContext, string name) where T : SimpleBlueprint {
             var assetId = modContext.Blueprints.GetGUID(name);
             ModBlueprints.TryGetValue(assetId, out var value);
+            if (value == null) { Main.TTTContext.Logger.LogError($"COULD NOT LOAD MOD BLUEPRINT: {name} - {typeof(T)}"); }
             return value as T;
         }
         public static T GetBlueprintReference<T>(string id) where T : BlueprintReferenceBase {
@@ -42,7 +44,7 @@ namespace TabletopTweaks.Core.Utilities {
         public static T GetBlueprint<T>(BlueprintGuid id) where T : SimpleBlueprint {
             SimpleBlueprint asset = ResourcesLibrary.TryGetBlueprint(id);
             T value = asset as T;
-            if (value == null) { Main.TTTContext.Logger.LogError($"COULD NOT LOAD: {id} - {typeof(T)}"); }
+            if (value == null) { Main.TTTContext.Logger.LogError($"COULD NOT LOAD BLUEPRINT: {id} - {typeof(T)}"); }
             return value;
         }
         public static void AddBlueprint(ModContextBase modContext, [NotNull] SimpleBlueprint blueprint) {

@@ -1,6 +1,6 @@
 ﻿using Kingmaker.UI.Common;
-using Kingmaker.UI.MVVM._VM.Tooltip.Templates;
 using Kingmaker.UI.UnitSettings;
+using Owlcat.Runtime.UI.Tooltips;
 using UnityEngine;
 using static TabletopTweaks.Core.NewComponents.AbilitySpecific.QuickStudyComponent;
 

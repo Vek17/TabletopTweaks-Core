@@ -6,6 +6,10 @@
 * [TabletopTweaks-Reworks](https://github.com/Vek17/TabletopTweaks-Reworks/releases).
 	* Smaller side mod to provide homebrew changes to Owlcat's new creations that I personally feel missed the mark slightly.
 
+## Third Party Tabletop Tweaks Mods
+* [Microscopic Content Expansion](https://github.com/alterasc/MicroscopicContentExpansion)
+	* Add microscopic amount of new features. May or may not grow further in scope. The latter is more likely.
+
 **How to install**
 
 1. Download and install [Unity Mod Manager](https://github.com/newman55/unity-mod-manager), make sure it is at least version 0.23.0
