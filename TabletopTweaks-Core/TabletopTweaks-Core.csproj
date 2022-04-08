@@ -167,6 +167,7 @@
     <Compile Include="ModLogic\ModContextBase.cs" />
     <Compile Include="Config\NestedSettingGroup.cs" />
     <Compile Include="Config\SettingGroup.cs" />
+    <Compile Include="NewActions\AbilityCustomCleaveTTT.cs" />
     <Compile Include="NewComponents\AddArmorEnhancementBonusToStat.cs" />
     <Compile Include="NewComponents\ContextArmorCheckPenaltyIncrease.cs" />
     <Compile Include="NewComponents\ContextConditionSizeDifferneceFromCaster.cs" />
