@@ -175,6 +175,7 @@
     <Compile Include="NewComponents\IncreaseCriticalRange.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTAddDamageResistanceHardness.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\EnduringSpellsTTT.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\TricksterParryTTT.cs" />
     <Compile Include="NewComponents\RerollFortification.cs" />
     <Compile Include="NewEvents\IAddModifierHandler.cs" />
     <Compile Include="NewEvents\IStatBonusCalculatedHandler.cs" />
