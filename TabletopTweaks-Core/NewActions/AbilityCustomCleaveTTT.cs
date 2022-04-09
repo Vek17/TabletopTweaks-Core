@@ -28,8 +28,8 @@ namespace TabletopTweaks.Core.NewActions {
                 PFLog.Default.Error(this, "Caster is missing", Array.Empty<object>());
                 yield break;
             }
-            bool isGreater = GreaterFeature != null && caster.Descriptor.Progression.Features.HasFact(GreaterFeature);
-            bool isMythic = MythicFeature != null && caster.Descriptor.Progression.Features.HasFact(MythicFeature);
+            bool isGreater = GreaterFeature != null && caster.HasFact(GreaterFeature);
+            bool isMythic = MythicFeature != null && caster.HasFact(MythicFeature);
             var threatHand = caster.GetThreatHandMelee();
             if (threatHand == null) {
                 PFLog.Default.Error("Caster can't attack", Array.Empty<object>());
@@ -60,15 +60,15 @@ namespace TabletopTweaks.Core.NewActions {
                     validTargets
                         .Sort((UnitEntityData u1, UnitEntityData u2) => u1.DistanceTo(previousTarget).CompareTo(u2.DistanceTo(previousTarget)));
                     validTargets.ForEach(t => {
-                        Main.TTTContext.Logger.Log($"Distance from Previous Target: {t.DistanceTo(previousTarget)} - {t.View.Corpulence + previousTarget.View.Corpulence + 5.Feet().Meters}");
+                        Main.TTTContext.Logger.Log($"Distance from Previous Target: {t.DistanceTo(previousTarget)} - {t.View.Corpulence + previousTarget.View.Corpulence + CleaveRadius.Meters}");
                     });
                     validTargets = validTargets
-                        .Where(t => t.DistanceTo(previousTarget) <= t.View.Corpulence + previousTarget.View.Corpulence + 5.Feet().Meters)
+                        .Where(t => t.DistanceTo(previousTarget) <= (t.View.Corpulence + previousTarget.View.Corpulence + CleaveRadius.Meters))
                         .ToList();
                 }
                 var currentTarget = validTargets.FirstOrDefault();
                 if (currentTarget == null) { break; }
-                Main.TTTContext.Logger.Log($"Active Target: {currentTarget.DistanceTo(previousTarget)} - {currentTarget.View.Corpulence + previousTarget.View.Corpulence + 5.Feet().Meters}");
+                Main.TTTContext.Logger.Log($"Active Target: {currentTarget.DistanceTo(previousTarget)} - {currentTarget.View.Corpulence + previousTarget.View.Corpulence + CleaveRadius.Meters}");
                 if (!context.TriggerRule(new RuleAttackWithWeapon(caster, currentTarget, threatHand.Weapon, 0) {
                     IsFirstAttack = hitTargets.Any()
                 }).AttackRoll.IsHit) {
@@ -92,5 +92,6 @@ namespace TabletopTweaks.Core.NewActions {
         public BlueprintFeatureReference m_GreaterFeature;
         [SerializeField]
         public BlueprintFeatureReference m_MythicFeature;
+        public Feet CleaveRadius = 5.Feet();
     }
 }
