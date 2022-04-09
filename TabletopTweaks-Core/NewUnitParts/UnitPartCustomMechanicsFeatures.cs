@@ -57,7 +57,9 @@ namespace TabletopTweaks.Core.NewUnitParts {
             FavoriteMetamagicEncouraging,
             IdealizeDiscovery,
             IdealizeDiscoveryUpgrade,
-            BypassSneakAttackImmunity
+            BypassSneakAttackImmunity,
+            TricksterReworkPersuasion2,
+            TricksterReworkPersuasion3
         }
     }
     public static class CustomMechanicsFeaturesExtentions {
