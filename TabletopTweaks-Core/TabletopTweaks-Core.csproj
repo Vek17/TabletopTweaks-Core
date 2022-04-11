@@ -171,6 +171,7 @@
     <Compile Include="NewActions\ContextActionCleaveAttack.cs" />
     <Compile Include="NewComponents\AddArmorEnhancementBonusToStat.cs" />
     <Compile Include="NewComponents\AddMythicSpellbook.cs" />
+    <Compile Include="NewComponents\ChangeUnitBaseSize.cs" />
     <Compile Include="NewComponents\ContextArmorCheckPenaltyIncrease.cs" />
     <Compile Include="NewComponents\ContextConditionSizeDifferneceFromCaster.cs" />
     <Compile Include="NewComponents\CritAutoconfirmAgainstClass.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="NewEvents\IBlueprintCacheInitHandler.cs" />
     <Compile Include="NewEvents\ILocaleChangedHandler.cs" />
     <Compile Include="NewRules\RuleFortificationCheck.cs" />
+    <Compile Include="NewUnitParts\UnitPartBaseSizeAdjustment.cs" />
     <Compile Include="UMMTools\ColorUtils.cs" />
     <Compile Include="UMMTools\GUIHelper.cs" />
     <Compile Include="UMMTools\Private\Toggle.cs" />
