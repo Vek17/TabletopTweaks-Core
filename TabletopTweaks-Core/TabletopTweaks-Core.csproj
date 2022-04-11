@@ -170,6 +170,7 @@
     <Compile Include="NewActions\AbilityCustomCleaveTTT.cs" />
     <Compile Include="NewActions\ContextActionCleaveAttack.cs" />
     <Compile Include="NewComponents\AddArmorEnhancementBonusToStat.cs" />
+    <Compile Include="NewComponents\AddMythicSpellbook.cs" />
     <Compile Include="NewComponents\ContextArmorCheckPenaltyIncrease.cs" />
     <Compile Include="NewComponents\ContextConditionSizeDifferneceFromCaster.cs" />
     <Compile Include="NewComponents\CritAutoconfirmAgainstClass.cs" />
