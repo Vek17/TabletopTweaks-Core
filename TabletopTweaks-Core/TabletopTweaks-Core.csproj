@@ -169,6 +169,7 @@
     <Compile Include="Config\SettingGroup.cs" />
     <Compile Include="NewActions\AbilityCustomCleaveTTT.cs" />
     <Compile Include="NewActions\ContextActionCleaveAttack.cs" />
+    <Compile Include="NewComponents\IncreaseActivatableAbilitySpeed.cs" />
     <Compile Include="NewComponents\AddArmorEnhancementBonusToStat.cs" />
     <Compile Include="NewComponents\AddMythicSpellbook.cs" />
     <Compile Include="NewComponents\ChangeUnitBaseSize.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="NewComponents\OwlcatReplacements\EnduringSpellsTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\TricksterParryTTT.cs" />
     <Compile Include="NewComponents\RerollFortification.cs" />
+    <Compile Include="NewEvents\IActivatableAbilityGetCommandTypeHandler.cs" />
     <Compile Include="NewEvents\IAddModifierHandler.cs" />
     <Compile Include="NewEvents\IStatBonusCalculatedHandler.cs" />
     <Compile Include="NewEvents\IBlueprintCacheInitHandler.cs" />
