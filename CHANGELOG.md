@@ -8,6 +8,8 @@
 		* Supports altering command speed of activatable abiltiies.
 	* ContextConditionCasterHasResource
 		* Supports checking a resource on the caster.
+	* AddIncomingDamageBonus
+		* Supports adding a damage bonus to incoming attacks with a specific modifier.
 * New Events
 	* IActivatableAbilityGetCommandTypeHandler
 		* Allows the altering of activatable ability command types at run time arbitrarily.
