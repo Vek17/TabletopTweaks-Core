@@ -82,6 +82,7 @@ namespace TabletopTweaks.Core.Utilities {
                 bp.m_NonIdentifiedDescriptionText = Helpers.CreateString(modContext, $"{bp.name}.Unidentified_Description", "");
                 bp.m_Icon = icon;
                 bp.m_Cost = GetRodCost(metamagic, type);
+                bp.CR = GetRodCR(metamagic, type);
                 bp.m_Weight = 1;
                 bp.m_Destructible = true;
                 bp.m_ShardItem = BlueprintTools.GetBlueprintReference<BlueprintItemReference>("e6820e62423d4c81a2ba20d236251b67"); //MetalShardItem
@@ -151,6 +152,57 @@ namespace TabletopTweaks.Core.Utilities {
                                 return 170000;
                             default:
                                 return 300000;
+                        }
+                    default:
+                        return 0;
+                }
+            }
+            int GetRodCR(Metamagic metamagic, MetamagicRodType type) {
+                switch (type) {
+                    case MetamagicRodType.Lesser:
+                        switch (metamagic.DefaultCost()) {
+                            case 0:
+                                return 2;
+                            case 1:
+                                return 5;
+                            case 2:
+                                return 7;
+                            case 3:
+                                return 10;
+                            case 4:
+                                return 11;
+                            default:
+                                return 12;
+                        }
+                    case MetamagicRodType.Normal:
+                        switch (metamagic.DefaultCost()) {
+                            case 0:
+                                return 12;
+                            case 1:
+                                return 13;
+                            case 2:
+                                return 14;
+                            case 3:
+                                return 15;
+                            case 4:
+                                return 16;
+                            default:
+                                return 17;
+                        }
+                    case MetamagicRodType.Greater:
+                        switch (metamagic.DefaultCost()) {
+                            case 0:
+                                return 17;
+                            case 1:
+                                return 18;
+                            case 2:
+                                return 20;
+                            case 3:
+                                return 22;
+                            case 4:
+                                return 24;
+                            default:
+                                return 25;
                         }
                     default:
                         return 0;

@@ -169,6 +169,7 @@
     <Compile Include="Config\SettingGroup.cs" />
     <Compile Include="NewActions\AbilityCustomCleaveTTT.cs" />
     <Compile Include="NewActions\ContextActionCleaveAttack.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\TricksterLoreNatureRestLootTriggerTTT.cs" />
     <Compile Include="NewComponents\AddIncomingDamageBonus.cs" />
     <Compile Include="NewComponents\ContextConditionCasterHasResource.cs" />
     <Compile Include="NewComponents\IncreaseActivatableAbilitySpeed.cs" />

@@ -37,6 +37,11 @@ namespace TabletopTweaks.Core.Utilities {
             reference.deserializedGuid = assetId;
             return reference;
         }
+        public static T GetBlueprintReference<T>(BlueprintGuid id) where T : BlueprintReferenceBase {
+            var reference = Activator.CreateInstance<T>();
+            reference.deserializedGuid = id;
+            return reference;
+        }
         public static T GetBlueprint<T>(string id) where T : SimpleBlueprint {
             var assetId = BlueprintGuid.Parse(id);
             return GetBlueprint<T>(assetId);
