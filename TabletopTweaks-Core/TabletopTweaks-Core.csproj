@@ -170,6 +170,7 @@
     <Compile Include="NewActions\AbilityCustomCleaveTTT.cs" />
     <Compile Include="NewActions\ContextActionCleaveAttack.cs" />
     <Compile Include="NewComponents\AbilitySpecific\TricksterLoreNatureRestLootTriggerTTT.cs" />
+    <Compile Include="NewComponents\AddFlatCriticalRangeIncrease.cs" />
     <Compile Include="NewComponents\AddIncomingDamageBonus.cs" />
     <Compile Include="NewComponents\ContextConditionCasterHasResource.cs" />
     <Compile Include="NewComponents\IncreaseActivatableAbilitySpeed.cs" />
@@ -179,13 +180,13 @@
     <Compile Include="NewComponents\ContextArmorCheckPenaltyIncrease.cs" />
     <Compile Include="NewComponents\ContextConditionSizeDifferneceFromCaster.cs" />
     <Compile Include="NewComponents\CritAutoconfirmAgainstClass.cs" />
-    <Compile Include="NewComponents\IncreaseCriticalRange.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTAddDamageResistanceHardness.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\EnduringSpellsTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\TricksterParryTTT.cs" />
     <Compile Include="NewComponents\RerollFortification.cs" />
     <Compile Include="NewEvents\IActivatableAbilityGetCommandTypeHandler.cs" />
     <Compile Include="NewEvents\IAddModifierHandler.cs" />
+    <Compile Include="NewEvents\ICriticalRangeCalculatedHandler.cs" />
     <Compile Include="NewEvents\IStatBonusCalculatedHandler.cs" />
     <Compile Include="NewEvents\IBlueprintCacheInitHandler.cs" />
     <Compile Include="NewEvents\ILocaleChangedHandler.cs" />

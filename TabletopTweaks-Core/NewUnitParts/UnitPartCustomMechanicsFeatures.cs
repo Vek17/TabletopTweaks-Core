@@ -6,6 +6,7 @@ using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Utility;
+using System;
 using System.Collections.Generic;
 using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 
@@ -79,6 +80,17 @@ namespace TabletopTweaks.Core.NewUnitParts {
             if (__instance.Initiator.CustomMechanicsFeature(CustomMechanicsFeature.BypassSneakAttackImmunity)) {
                 __result = false;
             }
+        }
+    }
+
+    [HarmonyPatch(typeof(AddImmunityToPrecisionDamage), nameof(AddImmunityToPrecisionDamage.OnEventAboutToTrigger), new Type[] { typeof(RuleCalculateDamage) })]
+    static class AddImmunityToPrecisionDamage_SneakImmunity_Fix {
+        static bool Prefix(RuleCalculateDamage evt) {
+            if (evt.Initiator == null) { return true; }
+            if (evt.Initiator.CustomMechanicsFeature(CustomMechanicsFeature.BypassSneakAttackImmunity)) {
+                return false;
+            }
+            return true;
         }
     }
 

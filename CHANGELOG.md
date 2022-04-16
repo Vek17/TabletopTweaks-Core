@@ -10,6 +10,8 @@
 		* Supports checking a resource on the caster.
 	* AddIncomingDamageBonus
 		* Supports adding a damage bonus to incoming attacks with a specific modifier.
+	* AddFlatCriticalRangeIncrease
+		* Supports critical range increases that are not multiplied by improved critical.
 * New Events
 	* IActivatableAbilityGetCommandTypeHandler
 		* Allows the altering of activatable ability command types at run time arbitrarily.
