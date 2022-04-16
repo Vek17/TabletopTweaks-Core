@@ -24,7 +24,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
                 return;
             }
             var targetItem = LootList
-                .Where(item => item.CR >= (CROffset + Owner.Progression.MythicLevel) && item.CR <= (CROffset + 10 + Owner.Progression.MythicLevel))
+                .Where(item => item.CR >= (CROffset + Owner.Progression.MythicLevel) && item.CR <= (CROffset + CRRange + Owner.Progression.MythicLevel))
                 .Where(item => item.Cost >= CostFloor)
                 .Random();
             base.Owner.Inventory.Add(targetItem);
@@ -32,6 +32,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         public BlueprintItemEquipmentReference[] m_LootList = new BlueprintItemEquipmentReference[0];
         public int CROffset = 5;
+        public int CRRange = 15;
         public int CostFloor = 20000;
     }
 }
