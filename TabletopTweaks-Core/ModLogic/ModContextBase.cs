@@ -93,7 +93,6 @@ namespace TabletopTweaks.Core.ModLogic {
             using (JsonWriter jsonWriter = new JsonTextWriter(streamWriter)) {
                 serializer.Serialize(jsonWriter, localizaiton);
             }
-            Logger.Log($"Localization: {ModLocalizationPack.Strings.Count}");
         }
         public virtual void LoadSettings<T>(string fileName, string path, ref T setting) where T : IUpdatableSettings {
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);

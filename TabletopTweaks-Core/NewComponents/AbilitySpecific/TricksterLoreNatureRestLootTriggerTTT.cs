@@ -24,7 +24,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
                 return;
             }
             var targetItem = LootList
-                .Where(item => item.CR >= (CROffset + Owner.Progression.MythicLevel) && item.CR <= (CROffset + 15 + Owner.Progression.MythicLevel))
+                .Where(item => item.CR >= (CROffset + Owner.Progression.MythicLevel) && item.CR <= (CROffset + 10 + Owner.Progression.MythicLevel))
                 .Where(item => item.Cost >= CostFloor)
                 .Random();
             base.Owner.Inventory.Add(targetItem);
