@@ -204,7 +204,6 @@
     <Compile Include="UMMTools\UI+Toggles.cs" />
     <Compile Include="UMMTools\UI+Wrappers.cs" />
     <Compile Include="UMMTools\Utility\Dictionary\DoubleDictionary.cs" />
-    <Compile Include="UMMTools\Utility\Dictionary\SerializableDictionary.cs" />
     <Compile Include="UMMTools\Utility\Dictionary\TripleDictionary.cs" />
     <Compile Include="UMMTools\Utility\EmbeddedResourceUtils.cs" />
     <Compile Include="UMMTools\Utility\Extensions\CodeInstructionExtensions.cs" />
@@ -212,7 +211,6 @@
     <Compile Include="UMMTools\Utility\Extensions\UnityExtensions.cs" />
     <Compile Include="UMMTools\Utility\GUISubScope.cs" />
     <Compile Include="UMMTools\Utility\Logging.cs" />
-    <Compile Include="UMMTools\Utility\ModSettings.cs" />
     <Compile Include="UMMTools\Utility\NamedTypes.cs" />
     <Compile Include="UMMTools\Utility\Reflection\ReflectionCache.cs" />
     <Compile Include="UMMTools\Utility\Reflection\ReflectionFieldCache.cs" />

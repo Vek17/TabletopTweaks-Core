@@ -109,7 +109,7 @@ namespace TabletopTweaks.Core.UMMTools {
         }
 
         public static IEnumerable<string> SplitOnCapitals(this string text) {
-            Regex regex = new Regex(@"\p{Lu}\p{Ll}*");
+            Regex regex = new Regex(@"[\p{Lu}\d-/]+[^\p{Lu}\s\d]*");
             foreach (Match match in regex.Matches(text)) {
                 yield return match.Value;
             }
