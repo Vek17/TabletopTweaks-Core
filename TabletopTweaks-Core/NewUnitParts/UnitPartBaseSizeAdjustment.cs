@@ -92,14 +92,5 @@ namespace TabletopTweaks.Core.NewUnitParts {
             Delta,
             Value
         }
-
-        [HarmonyPatch(typeof(UnitDescriptor), nameof(UnitDescriptor.OriginalSize), MethodType.Getter)]
-        static class UnitDescriptor_UnitPartBaseSizeAdjustment_Patch {
-            static void Postfix(ref Size __result, UnitDescriptor __instance) {
-                var unitPart = __instance.Get<UnitPartBaseSizeAdjustment>();
-                if (unitPart == null) { return; }
-                __result = unitPart.GetAdjustedSize(__result);
-            }
-        }
     }
 }
