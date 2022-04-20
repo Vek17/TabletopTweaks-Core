@@ -7,7 +7,6 @@ using UnityModManagerNet;
 
 namespace TabletopTweaks.Core {
     internal static class Main {
-        private static bool Enabled;
         public static ModContextTTTCore TTTContext;
         static bool Load(UnityModManager.ModEntry modEntry) {
             var harmony = new Harmony(modEntry.Info.Id);

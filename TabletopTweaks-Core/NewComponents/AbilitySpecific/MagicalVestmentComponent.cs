@@ -33,7 +33,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             }
         }
 
-        private int EnhancementBonus => Math.Max(5, EnchantLevel.Calculate(base.Context));
+        private int EnhancementBonus => Math.Min(m_EnchantmentBlueprints.Length, EnchantLevel.Calculate(base.Context));
 
         public override void OnActivate() {
             if (!base.Data.Enchantments.Empty()) { return; }
@@ -72,7 +72,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         [FormerlySerializedAs("Enchantment")]
         public BlueprintItemEnchantmentReference[] m_EnchantmentBlueprints = new BlueprintItemEnchantmentReference[5];
         /// <summary>
-        /// Enhancment bonus to apply. Is internally limited to +5.
+        /// Enhancment bonus to apply. This is capped at the number of provided m_EnchantmentBlueprints.
         /// </summary>
         public ContextValue EnchantLevel;
         /// <summary>

@@ -38,6 +38,9 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             SchoolMastery = 3132,
             VarisianTattoo = 3133,
         }
+        public enum Enhancement : int {
+            Weapon = 4121
+        }
 
         private static class FilterAdjustments {
             private static readonly Func<ModifiableValue.Modifier, bool> FilterIsDodgeOriginal = ModifiableValueArmorClass.FilterIsDodge;
@@ -127,7 +130,8 @@ namespace TabletopTweaks.Core.MechanicsChanges {
 
         [HarmonyPatch(typeof(AbilityModifiersStrings), "GetName", new Type[] { typeof(ModifierDescriptor) })]
         static class AbilityModifierStrings_GetName_Patch {
-            static void Postfix(ModifierDescriptor descriptor, ref string __result) {
+            static void Postfix(AbilityModifiersStrings __instance, ModifierDescriptor descriptor, ref string __result) {
+                if (__result != __instance.DefaultName) { return; }
                 switch (descriptor) {
                     case (ModifierDescriptor)NaturalArmor.Bonus:
                         __result = "Natural armor bonus";
@@ -145,6 +149,9 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                     case (ModifierDescriptor)Dodge.Wisdom:
                     case (ModifierDescriptor)Dodge.Charisma:
                         __result = "Dodge";
+                        break;
+                    case (ModifierDescriptor)Enhancement.Weapon:
+                        __result = "Enhancement";
                         break;
                     case (ModifierDescriptor)Untyped.Strength:
                     case (ModifierDescriptor)Untyped.Dexterity:

@@ -1,4 +1,7 @@
 ## Versions 0.2.0
+* Bugfixes
+	* MagicalVestmentComponent
+		* Should now calculate values correctly using the correct enhancement cap.
 * New Components
 	* ChangeUnitBaseSize
 		* Support for base size changes that stack with existing size changes.

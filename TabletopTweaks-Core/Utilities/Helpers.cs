@@ -22,12 +22,26 @@ using System.Reflection;
 using TabletopTweaks.Core.Localization;
 using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
 using TabletopTweaks.Core.ModLogic;
+using System.Text.RegularExpressions;
 
 namespace TabletopTweaks.Core.Utilities {
     /// <summary>
     /// Collection of miscellaneous utilities
     /// </summary>
     public static class Helpers {
+        /// <summary>
+        /// Splits a string on capital letters.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns>
+        /// Array of split strings.
+        /// </returns>
+        public static IEnumerable<string> SplitCamelCase(this string text) {
+            Regex regex = new Regex(@"[\p{Lu}][\p{Ll}]*");
+            foreach (Match match in regex.Matches(text)) {
+                yield return match.Value;
+            }
+        }
         /// <summary>
         /// Executes an action on the called object.
         /// </summary>
