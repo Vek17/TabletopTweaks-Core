@@ -55,8 +55,18 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
                     owner.RemoveEnchantment(itemEnchantment);
                 }
             }
-            base.Owner.Stats.GetStat(StatType.AC).RemoveModifiersFrom(base.Runtime);
             base.Data.Enchantments.Clear();
+            base.Owner?.Stats?.GetStat(StatType.AC)?.RemoveModifiersFrom(base.Runtime);
+        }
+
+        public override void OnTurnOff() {
+            base.OnTurnOff();
+            OnDeactivate();
+        }
+
+        public override void OnRemoved() {
+            base.OnRemoved();
+            OnDeactivate();
         }
 
         public void HandleEquipmentSlotUpdated(ItemSlot slot, ItemEntity previousItem) {

@@ -1,8 +1,8 @@
 ﻿{
     "Releases": [
-        {
-            "Id": "TabletopTweaks-Core",
-            "Version": "0.1.1"
-        }
+      {
+        "Id": "TabletopTweaks-Core",
+        "Version": "0.2.0"
+      }
     ]
 }

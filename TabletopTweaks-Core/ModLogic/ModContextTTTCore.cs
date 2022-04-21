@@ -13,5 +13,14 @@ namespace TabletopTweaks.Core.ModLogic {
             LoadSettings("Blueprints.json", "TabletopTweaks.Core.Config", ref Blueprints);
             LoadLocalization("TabletopTweaks.Core.Localization");
         }
+        public override void AfterBlueprintCachePatches() {
+            base.AfterBlueprintCachePatches();
+            if (Debug) {
+                //Blueprints.RemoveUnused();
+                //SaveSettings(BlueprintsFile, Blueprints);
+                ModLocalizationPack.RemoveUnused();
+                SaveLocalization(ModLocalizationPack);
+            }
+        }
     }
 }
