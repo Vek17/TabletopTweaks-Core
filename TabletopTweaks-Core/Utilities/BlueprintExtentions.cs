@@ -312,10 +312,34 @@ namespace TabletopTweaks.Core.Utilities {
         /// Group to put the Prerequisite in. Defaults to All.
         /// </param>
         public static void AddPrerequisiteFeature(this BlueprintFeature obj, BlueprintFeature feature, GroupType group = GroupType.All) {
-            obj.AddComponent(Helpers.Create<PrerequisiteFeature>(c => {
+            obj.AddComponent<PrerequisiteFeature>(c => {
                 c.m_Feature = feature.ToReference<BlueprintFeatureReference>();
                 c.Group = group;
-            }));
+            });
+            if (feature.IsPrerequisiteFor == null) { feature.IsPrerequisiteFor = new List<BlueprintFeatureReference>(); }
+            if (!feature.IsPrerequisiteFor.Contains(obj.ToReference<BlueprintFeatureReference>())) {
+                feature.IsPrerequisiteFor.Add(obj.ToReference<BlueprintFeatureReference>());
+            }
+        }
+        /// <summary>
+        /// Adds feature as a PrerequisiteFeature and updates that feature's IsPrerequisiteFor list to correctly reflect that.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="feature">
+        /// Feature to be added as a prerequisite.
+        /// </param>
+        /// <param name="checkInProgression">
+        /// Check in progression when giving feature.
+        /// </param>
+        /// <param name="group">
+        /// Group to put the Prerequisite in. Defaults to All.
+        /// </param>
+        public static void AddPrerequisiteFeature(this BlueprintFeature obj, BlueprintFeature feature, bool checkInProgression, GroupType group = GroupType.All) {
+            obj.AddComponent<PrerequisiteFeature>(c => {
+                c.m_Feature = feature.ToReference<BlueprintFeatureReference>();
+                c.Group = group;
+                c.CheckInProgression = checkInProgression;
+            });
             if (feature.IsPrerequisiteFor == null) { feature.IsPrerequisiteFor = new List<BlueprintFeatureReference>(); }
             if (!feature.IsPrerequisiteFor.Contains(obj.ToReference<BlueprintFeatureReference>())) {
                 feature.IsPrerequisiteFor.Add(obj.ToReference<BlueprintFeatureReference>());

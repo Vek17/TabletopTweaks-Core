@@ -183,6 +183,7 @@
     <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTAddDamageResistanceHardness.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\EnduringSpellsTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\TricksterParryTTT.cs" />
+    <Compile Include="NewComponents\Prerequisites\PrerequisiteInPlayerParty.cs" />
     <Compile Include="NewComponents\RerollFortification.cs" />
     <Compile Include="NewEvents\IActivatableAbilityGetCommandTypeHandler.cs" />
     <Compile Include="NewEvents\IAddModifierHandler.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="UMMTools\Utility\Translator.cs" />
     <Compile Include="UMMTools\Utility\Utilities.cs" />
     <Compile Include="Utilities\BlueprintExtentions.cs" />
+    <Compile Include="Utilities\ClassTools.cs" />
     <Compile Include="Utilities\CollectionExtentions.cs" />
     <Compile Include="Localization\MultiLocalizationPack.cs" />
     <Compile Include="MechanicsChanges\ActivatableAbilitySpendLogic.cs" />

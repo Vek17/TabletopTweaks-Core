@@ -1,3 +1,8 @@
+## Versions 0.3.0
+* New Prerequisites
+	* PrerequisiteInPlayerParty
+		* Checks if unit is the player or a companion.
+
 ## Versions 0.2.0
 * Bugfixes
 	* MagicalVestmentComponent
