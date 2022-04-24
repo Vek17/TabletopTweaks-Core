@@ -1,9 +1,14 @@
-## Versions 0.3.0
+## Verson 0.3.0
+* New Components
+	* SavingThrowBonusAgainstFavoredEnemy
+		* Adds a saving throw bonus to all saves based on owners favored enemy rank.
+
+## Version 0.2.1
 * New Prerequisites
 	* PrerequisiteInPlayerParty
 		* Checks if unit is the player or a companion.
 
-## Versions 0.2.0
+## Version 0.2.0
 * Bugfixes
 	* MagicalVestmentComponent
 		* Should now calculate values correctly using the correct enhancement cap.

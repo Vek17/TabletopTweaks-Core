@@ -185,6 +185,7 @@
     <Compile Include="NewComponents\OwlcatReplacements\TricksterParryTTT.cs" />
     <Compile Include="NewComponents\Prerequisites\PrerequisiteInPlayerParty.cs" />
     <Compile Include="NewComponents\RerollFortification.cs" />
+    <Compile Include="NewComponents\SavingThrowBonusAgainstFavoredEnemy.cs" />
     <Compile Include="NewEvents\IActivatableAbilityGetCommandTypeHandler.cs" />
     <Compile Include="NewEvents\IAddModifierHandler.cs" />
     <Compile Include="NewEvents\ICriticalRangeCalculatedHandler.cs" />
