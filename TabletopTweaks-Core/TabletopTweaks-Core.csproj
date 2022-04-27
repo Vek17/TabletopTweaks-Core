@@ -169,9 +169,12 @@
     <Compile Include="Config\SettingGroup.cs" />
     <Compile Include="NewActions\AbilityCustomCleaveTTT.cs" />
     <Compile Include="NewActions\ContextActionCleaveAttack.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\OutflankProvokeAttackTTT.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\SiezeTheMomentTTT.cs" />
     <Compile Include="NewComponents\AbilitySpecific\TricksterLoreNatureRestLootTriggerTTT.cs" />
     <Compile Include="NewComponents\AddFlatCriticalRangeIncrease.cs" />
     <Compile Include="NewComponents\AddIncomingDamageBonus.cs" />
+    <Compile Include="NewComponents\AddSpellResistancePenaltyTTT.cs" />
     <Compile Include="NewComponents\ContextConditionCasterHasResource.cs" />
     <Compile Include="NewComponents\IncreaseActivatableAbilitySpeed.cs" />
     <Compile Include="NewComponents\AddArmorEnhancementBonusToStat.cs" />
@@ -183,9 +186,11 @@
     <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTAddDamageResistanceHardness.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\EnduringSpellsTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\TricksterParryTTT.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\WeaponConditionalDamageDiceTTT.cs" />
     <Compile Include="NewComponents\Prerequisites\PrerequisiteInPlayerParty.cs" />
     <Compile Include="NewComponents\RerollFortification.cs" />
     <Compile Include="NewComponents\SavingThrowBonusAgainstFavoredEnemy.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\WeaponAttackTrigger.cs" />
     <Compile Include="NewEvents\IActivatableAbilityGetCommandTypeHandler.cs" />
     <Compile Include="NewEvents\IAddModifierHandler.cs" />
     <Compile Include="NewEvents\ICriticalRangeCalculatedHandler.cs" />
@@ -194,6 +199,7 @@
     <Compile Include="NewEvents\ILocaleChangedHandler.cs" />
     <Compile Include="NewRules\RuleFortificationCheck.cs" />
     <Compile Include="NewUnitParts\UnitPartBaseSizeAdjustment.cs" />
+    <Compile Include="NewUnitParts\UnitPartSpellResistanceTTT.cs" />
     <Compile Include="UMMTools\ColorUtils.cs" />
     <Compile Include="UMMTools\GUIHelper.cs" />
     <Compile Include="UMMTools\Private\Toggle.cs" />
