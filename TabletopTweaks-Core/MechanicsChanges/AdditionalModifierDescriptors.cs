@@ -100,6 +100,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             InsertAfter((ModifierDescriptor)Untyped.WeaponFocusGreater, ModifierDescriptor.UntypedStackable);
             InsertAfter((ModifierDescriptor)Untyped.SpellFocus, ModifierDescriptor.UntypedStackable);
             InsertAfter((ModifierDescriptor)Untyped.SpellFocusGreater, ModifierDescriptor.UntypedStackable);
+            InsertBefore((ModifierDescriptor)Enhancement.Weapon, ModifierDescriptor.Enhancement);
 
             void InsertBefore(ModifierDescriptor value, ModifierDescriptor before) {
                 ModifierDescriptorComparer.SortedValues = ModifierDescriptorComparer
