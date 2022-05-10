@@ -25,6 +25,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         }
 
         public void OnEventAboutToTrigger(RuleCalculateWeaponStats evt) {
+            if (evt.Weapon != this.Owner) { return; }
             evt.AddDamageModifier(CalculateModifier(), base.Fact);
         }
 
