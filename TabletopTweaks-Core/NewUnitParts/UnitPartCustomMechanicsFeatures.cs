@@ -59,6 +59,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             IdealizeDiscovery,
             IdealizeDiscoveryUpgrade,
             BypassSneakAttackImmunity,
+            BypassCriticalHitImmunity,
             TricksterReworkPersuasion2,
             TricksterReworkPersuasion3
         }
@@ -75,11 +76,31 @@ namespace TabletopTweaks.Core.NewUnitParts {
     }
 
     [HarmonyPatch(typeof(RuleAttackRoll), nameof(RuleAttackRoll.ImmuneToSneakAttack), MethodType.Getter)]
-    static class RuleAttackRoll_SneakImmunity_Fix {
+    static class RuleAttackRoll_SneakImmunity_MechanicsFeature {
         static void Postfix(RuleAttackRoll __instance, ref bool __result) {
             if (__instance.Initiator.CustomMechanicsFeature(CustomMechanicsFeature.BypassSneakAttackImmunity)) {
                 __result = false;
             }
+        }
+    }
+
+    [HarmonyPatch(typeof(RuleAttackRoll), nameof(RuleAttackRoll.ImmuneToCriticalHit), MethodType.Getter)]
+    static class RuleAttackRoll_Critical_MechanicsFeature {
+        static void Postfix(RuleAttackRoll __instance, ref bool __result) {
+            if (__instance.Initiator.CustomMechanicsFeature(CustomMechanicsFeature.BypassCriticalHitImmunity)) {
+                __result = false;
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(AddImmunityToCriticalHits), "OnEventAboutToTrigger", new Type[] { typeof(RuleDealStatDamage) })]
+    static class AddImmunityToCriticalHits_StatDamage_Fix {
+        static bool Prefix(RuleCalculateDamage evt) {
+            if (evt.Initiator == null) { return true; }
+            if (evt.Initiator.CustomMechanicsFeature(CustomMechanicsFeature.BypassCriticalHitImmunity)) {
+                return false;
+            }
+            return true;
         }
     }
 
