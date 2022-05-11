@@ -252,7 +252,7 @@ namespace TabletopTweaks.Core.Utilities {
                 BlueprintBuff spellBuff, Action<BlueprintBuff> init = null
                 ) {
 
-            var buff = Helpers.CreateBuff(modContext, blueprintName, bp => {
+            var buff = Helpers.CreateBlueprint<BlueprintBuff>(modContext, blueprintName, bp => {
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.m_Description = bloodragerArcaneSpellAbility.m_Description;
@@ -321,25 +321,25 @@ namespace TabletopTweaks.Core.Utilities {
                 ModContextBase modContext,
                 string blueprintName,
                 BlueprintBuff polymorphBuff, Action<BlueprintBuff> init = null) {
-            var buff = Helpers.CreateBuff(modContext, blueprintName, bp => {
+            var buff = Helpers.CreateBlueprint<BlueprintBuff>(modContext, blueprintName, bp => {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.m_Description = polymorphBuff.m_Description;
                 bp.m_Icon = polymorphBuff.m_Icon;
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = new ActionList() {
                         Actions = new GameAction[] {
-                                new ContextActionRemoveBuffsByDescriptor() {
-                                    NotSelf = true,
-                                    SpellDescriptor = SpellDescriptor.Polymorph
-                                },
-                                new ContextActionApplyBuff() {
-                                    m_Buff = polymorphBuff.ToReference<BlueprintBuffReference>(),
-                                    Permanent = true,
-                                    AsChild = true,
-                                    DurationValue = new ContextDurationValue(),
-                                    IsFromSpell = false
-                                }
+                            new ContextActionRemoveBuffsByDescriptor() {
+                                NotSelf = true,
+                                SpellDescriptor = SpellDescriptor.Polymorph
+                            },
+                            new ContextActionApplyBuff() {
+                                m_Buff = polymorphBuff.ToReference<BlueprintBuffReference>(),
+                                Permanent = true,
+                                AsChild = true,
+                                DurationValue = new ContextDurationValue(),
+                                IsFromSpell = false
                             }
+                        }
                     };
                     c.Deactivated = Helpers.CreateActionList();
                     c.NewRound = Helpers.CreateActionList();

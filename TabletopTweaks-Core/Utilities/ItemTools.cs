@@ -33,7 +33,7 @@ namespace TabletopTweaks.Core.Utilities {
         ) {
             var description = $"{rodDescriptionStart}\n{GetRodString(type)}\n{metamagicDescription}";
 
-            var Buff = Helpers.CreateBuff(modContext, $"MetamagicRod{type}{metamagicName}Buff", bp => {
+            var Buff = Helpers.CreateBlueprint<BlueprintBuff>(modContext, $"MetamagicRod{type}{metamagicName}Buff", bp => {
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
                 bp.ResourceAssetIds = new string[0];
                 bp.SetName(modContext, rodName);

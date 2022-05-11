@@ -2,6 +2,8 @@
 * New Components
 	* SavingThrowBonusAgainstFavoredEnemy
 		* Adds a saving throw bonus to all saves based on owners favored enemy rank.
+* Deprecated Methods
+	* Helpers.CreateBuff has been deprecated. Use Helpers.CreateBlueprint<BlueprintBuff>
 
 ## Version 0.2.1
 * New Prerequisites

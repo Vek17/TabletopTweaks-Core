@@ -90,6 +90,7 @@ namespace TabletopTweaks.Core.Utilities {
                 AssetGuid = modContext.Blueprints.GetGUID(name)
             };
             BlueprintTools.AddBlueprint(modContext, result);
+            SetRequiredBlueprintFields(result);
             init?.Invoke(result);
             return result;
         }
@@ -122,8 +123,17 @@ namespace TabletopTweaks.Core.Utilities {
                 AssetGuid = modContext.Blueprints.GetDerivedGUID(name, masterId, componentBlueprints.Select(bp => bp.AssetGuid).ToArray())
             };
             BlueprintTools.AddBlueprint(modContext, result);
+            SetRequiredBlueprintFields(result);
             init?.Invoke(result);
             return result;
+        }
+        private static void SetRequiredBlueprintFields(SimpleBlueprint blueprint) {
+            switch (blueprint) {
+                case BlueprintBuff buff:
+                    buff.FxOnStart = new PrefabLink();
+                    buff.FxOnRemove = new PrefabLink();
+                    break;
+            }
         }
         /// <summary>
         /// Creates a new BlueprintBuff with the supplied unity name and initializes it with the supplied action.
@@ -142,6 +152,7 @@ namespace TabletopTweaks.Core.Utilities {
         /// <param name="init">
         /// Action to initialize the new BlueprintBuff with.
         /// </param>
+        [Obsolete("CreateBuff is deprecated, please use CreateBlueprint<BlueprintBuff>")]
         public static BlueprintBuff CreateBuff(ModContextBase modContext, string name, Action<BlueprintBuff> init = null) {
             var result = Helpers.CreateBlueprint<BlueprintBuff>(modContext, name, bp => {
                 bp.FxOnStart = new PrefabLink();
