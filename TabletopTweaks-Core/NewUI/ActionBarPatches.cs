@@ -54,6 +54,17 @@ namespace TabletopTweaks.Core.NewUI {
                     };
                     __instance.MechanicSlot.SetSlot(__instance);
                     return false;
+                } else if (spell is UnitPartSpellKenning.SpellKenningAbilityData) {
+                    __instance.Selected = selected;
+                    if (selected == null) {
+                        return true;
+                    }
+                    __instance.MechanicSlot = new MechanicActionBarSlotSpellKenning {
+                        Spell = spell,
+                        Unit = selected
+                    };
+                    __instance.MechanicSlot.SetSlot(__instance);
+                    return false;
                 }
                 return true;
             }
@@ -86,6 +97,11 @@ namespace TabletopTweaks.Core.NewUI {
                         };
                     } else if (abilityData.Blueprint.GetComponent<QuickStudyComponent>()) {
                         return new MechanicActionBarSlotQuickStudy {
+                            Spell = abilityData,
+                            Unit = __instance.MechanicActionBarSlot.Unit
+                        };
+                    } else if (abilityData is UnitPartSpellKenning.SpellKenningAbilityData) {
+                        return new MechanicActionBarSlotSpellKenning {
                             Spell = abilityData,
                             Unit = __instance.MechanicActionBarSlot.Unit
                         };
