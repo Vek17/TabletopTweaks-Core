@@ -32,6 +32,7 @@ namespace TabletopTweaks.Core.Utilities {
                 Selections.SkaldFeatSelection,
                 Selections.SorcererBonusFeat
             };
+            AddAsFeat(feature);
             MetamagicSelections.ForEach(selection => selection.AddFeatures(feature));
         }
         public static void AddAsRogueTalent(BlueprintFeature feature) {

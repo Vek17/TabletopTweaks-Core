@@ -5,7 +5,9 @@ using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Mechanics;
+using System.Linq;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     /// <summary>
@@ -21,14 +23,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         IRulebookHandler<RuleSavingThrow>,
         ISubscriber, IInitiatorRulebookSubscriber, IGlobalSubscriber {
 
-        public BlueprintFact StunningFist {
-            get {
-                if (m_StunningFist == null) {
-                    return null;
-                }
-                return m_StunningFist.Get();
-            }
-        }
+        public ReferenceArrayProxy<BlueprintBuff, BlueprintBuffReference> StunningFistBuffs => m_StunningFistBuffs;
 
         public void OnEventAboutToTrigger(RuleCalculateWeaponStats evt) {
             if (evt.Weapon.Blueprint.Type.IsUnarmed) {
@@ -51,9 +46,9 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         }
 
         public void OnEventAboutToTrigger(RuleSavingThrow evt) {
-            MechanicsContext context = evt.Reason.Context;
-            if (context?.MaybeCaster != base.Owner && evt.Reason?.Fact?.Blueprint != StunningFist) { return; }
-            int bonus = (int)evt.Initiator?.State?.Size - (int)evt.Reason?.Caster?.State?.Size;
+            var context = evt.Reason.Context;
+            if (context.MaybeCaster != base.Owner || !StunningFistBuffs.Any(b => b == context.AssociatedBlueprint)) { return; }
+            int bonus = (int)evt.Initiator?.State?.Size - (int)context.MaybeCaster?.State?.Size;
             if (bonus > 0) {
                 evt.AddBonusDC(bonus);
             }
@@ -70,6 +65,6 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         /// <summary>
         /// Stunning fist buff to increase DC of.
         /// </summary>
-        public BlueprintBuffReference m_StunningFist;
+        public BlueprintBuffReference[] m_StunningFistBuffs;
     }
 }

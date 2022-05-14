@@ -368,11 +368,11 @@ namespace TabletopTweaks.Core.Utilities {
         /// Group to put the Prerequisite in. Defaults to All.
         /// </param>
         public static void AddPrerequisiteFeaturesFromList(this BlueprintFeature obj, int amount, GroupType group = GroupType.All, params BlueprintFeature[] features) {
-            obj.AddComponent(Helpers.Create<PrerequisiteFeaturesFromList>(c => {
+            obj.AddComponent<PrerequisiteFeaturesFromList>(c => {
                 c.m_Features = features.Select(f => f.ToReference<BlueprintFeatureReference>()).ToArray();
                 c.Amount = amount;
                 c.Group = group;
-            }));
+            });
             features.ForEach(feature => {
                 if (feature.IsPrerequisiteFor == null) { feature.IsPrerequisiteFor = new List<BlueprintFeatureReference>(); }
                 if (!feature.IsPrerequisiteFor.Contains(obj.ToReference<BlueprintFeatureReference>())) {
@@ -699,7 +699,7 @@ namespace TabletopTweaks.Core.Utilities {
                     c.name = $"${c.GetType().Name}";
                 }
                 if (!names.Add(c.name)) {
-                    String name;
+                    string name;
                     for (int i = 0; !names.Add(name = $"{c.name}${i}"); i++) ;
                     c.name = name;
                 }

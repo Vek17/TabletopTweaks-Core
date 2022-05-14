@@ -152,7 +152,7 @@ namespace TabletopTweaks.Core.Utilities {
         /// <param name="init">
         /// Action to initialize the new BlueprintBuff with.
         /// </param>
-        [Obsolete("CreateBuff is deprecated, please use CreateBlueprint<BlueprintBuff>")]
+        [Obsolete("Please use CreateBlueprint<BlueprintBuff>")]
         public static BlueprintBuff CreateBuff(ModContextBase modContext, string name, Action<BlueprintBuff> init = null) {
             var result = Helpers.CreateBlueprint<BlueprintBuff>(modContext, name, bp => {
                 bp.FxOnStart = new PrefabLink();
