@@ -27,11 +27,13 @@ namespace TabletopTweaks.Core.NewUnitParts {
         }
 
         public void AddKenningSpellList(BlueprintSpellListReference spellList, EntityFact source) {
+            if (SpellLists.Any(r => r.Source == source)) { return; }
             SpellLists.Add(new SpellKenningSpellLists(spellList, source));
             UpdateConversions();
         }
 
         public void AddKenningSpellbook(BlueprintSpellbookReference spellbook, EntityFact source) {
+            if (Spellbooks.Any(r => r.Source == source)) { return; }
             Spellbooks.Add(new SpellKenningSpellListsBooks(spellbook, source));
         }
 
@@ -57,18 +59,6 @@ namespace TabletopTweaks.Core.NewUnitParts {
             var conversionList = conversions.ToList();
             if (!Spellbooks.Any(r => r.Spellbook.deserializedGuid == ability.SpellbookBlueprint?.AssetGuid)) { return; }
             foreach (var spell in GetConversionSpells(ability.SpellLevel)) {
-                AbilityVariants variantComponent = spell.GetComponent<AbilityVariants>();
-                if (variantComponent != null) {
-                    foreach (var variant in variantComponent.Variants) {
-                        AbilityData.AddAbilityUnique(ref conversionList, new SpellKenningAbilityData(ability, variant) {
-                            OverridenResourceLogic = new SpellKenningResourceOverride() {
-                                m_RequiredResource = m_Resource,
-                                cost = 1
-                            }
-                        });
-                    }
-                    continue;
-                }
                 AbilityData.AddAbilityUnique(ref conversionList, new SpellKenningAbilityData(ability, spell) {
                     OverridenResourceLogic = new SpellKenningResourceOverride() {
                         m_RequiredResource = m_Resource,
@@ -82,36 +72,39 @@ namespace TabletopTweaks.Core.NewUnitParts {
         public void UpdateConversions() {
             for (int level = 0; level < cachedConversions.Length; level++) {
                 cachedConversions[level] = SpellLists
-                   .Select(list => list.SpellList.Get())
-                   .SelectMany(list => list.SpellsByLevel)
-                   .Where(spellList => spellList.SpellLevel != 0)
-                   .Where(spellList => spellList.SpellLevel == level)
-                   .SelectMany(level => level.Spells)
-                   .Where(spell => !Spellbooks.Any(r => this.Owner.DemandSpellbook(r.Spellbook).IsKnownOnLevel(spell, level)))
-                   .Distinct()
-                   .Where(spell => !spell.GetComponent<AbilityShadowSpell>())
-                   .Select(spell => spell.ToReference<BlueprintAbilityReference>())
-                   .ToList();
+                    .Select(list => list.SpellList.Get())
+                    .SelectMany(list => list.SpellsByLevel)
+                    .Where(spellList => spellList.SpellLevel != 0)
+                    .Where(spellList => spellList.SpellLevel == level)
+                    .SelectMany(level => level.Spells)
+                    .Where(spell => !Spellbooks.Any(r => this.Owner.DemandSpellbook(r.Spellbook).IsKnownOnLevel(spell, level)))
+                    .SelectMany(spell => {
+                        AbilityVariants variantComponent = spell.GetComponent<AbilityVariants>();
+                        if (variantComponent != null) {
+                            return variantComponent.Variants.AsEnumerable();
+                        }
+                        return new BlueprintAbility[] { spell };
+                    })
+                    .Distinct()
+                    .Where(spell => !spell.GetComponent<AbilityShadowSpell>())
+                    .Select(spell => spell.ToReference<BlueprintAbilityReference>())
+                    .ToList();
             }
         }
 
         public IEnumerable<BlueprintAbility> GetConversionSpells(int level) {
             return cachedConversions[Math.Max(0, Math.Min(cachedConversions.Length - 1, level))].Select(spell => spell.Get());
         }
-        [JsonProperty]
         private readonly List<BlueprintAbilityReference>[] cachedConversions = new List<BlueprintAbilityReference>[10];
-        [JsonProperty]
         private readonly List<SpellKenningSpellLists> SpellLists = new ();
-        [JsonProperty]
         private readonly List<SpellKenningSpellListsBooks> Spellbooks = new();
-        [JsonProperty]
         private BlueprintAbilityResourceReference m_Resource;
 
         public class SpellKenningSpellLists {
             [JsonProperty]
             public BlueprintSpellListReference SpellList;
             [JsonProperty]
-            public EntityFactRef Source;
+            public EntityFact Source;
 
             public SpellKenningSpellLists(BlueprintSpellListReference spellList, EntityFact source) {
                 SpellList = spellList;
@@ -122,7 +115,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             [JsonProperty]
             public BlueprintSpellbookReference Spellbook;
             [JsonProperty]
-            public EntityFactRef Source;
+            public EntityFact Source;
 
             public SpellKenningSpellListsBooks(BlueprintSpellbookReference spellbook, EntityFact source) {
                 Spellbook = spellbook;
