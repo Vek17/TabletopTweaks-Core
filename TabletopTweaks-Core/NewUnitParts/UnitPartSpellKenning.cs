@@ -54,14 +54,8 @@ namespace TabletopTweaks.Core.NewUnitParts {
         }
 
         public void HandleGetConversions(AbilityData ability, ref IEnumerable<AbilityData> conversions) {
-            Main.TTTContext.Logger.Log("Spell Kenning Conversion Check");
             var conversionList = conversions.ToList();
-            Main.TTTContext.Logger.Log($"Spell's Spellbook: {ability.SpellbookBlueprint?.name} - {ability.SpellbookBlueprint?.AssetGuid.m_Guid.ToString()}");
-            Spellbooks.Select(r => r.Spellbook.deserializedGuid.m_Guid).ForEach(g => {
-                Main.TTTContext.Logger.Log(g.ToString());
-            });
             if (!Spellbooks.Any(r => r.Spellbook.deserializedGuid == ability.SpellbookBlueprint?.AssetGuid)) { return; }
-            Main.TTTContext.Logger.Log("Processing Conversions");
             foreach (var spell in GetConversionSpells(ability.SpellLevel)) {
                 AbilityVariants variantComponent = spell.GetComponent<AbilityVariants>();
                 if (variantComponent != null) {
