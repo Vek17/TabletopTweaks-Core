@@ -61,19 +61,21 @@ namespace TabletopTweaks.Core.NewActions {
 
         private UnitEntityData SelectTarget(UnitEntityData caster, UnitEntityData initialTarget) {
             var isMythic = MythicFeature != null && caster.HasFact(MythicFeature);
-            UnitEntityData newTarget = null;
+            UnitEntityData finalTarget = null;
             foreach (UnitGroupMemory.UnitInfo unitInfo in caster.Memory.Enemies) {
                 UnitEntityData unit = unitInfo.Unit;
                 if (unit != null && !(unit.View == null) && (unit != initialTarget)
                     && caster.IsReach(unit, caster.GetThreatHandMelee())
+                    && !unit.Descriptor.State.MarkedForDeath
                     && unit.Descriptor.State.IsConscious
+                    && unit.Descriptor.HPLeft > 0
                     && (isMythic || initialTarget.DistanceTo(unit) <= (initialTarget.View.Corpulence + TargetRadius.Meters + unit.View.Corpulence))
-                    && (newTarget == null || unit.DistanceTo(initialTarget.Position) < newTarget.DistanceTo(initialTarget.Position))) 
+                    && (finalTarget == null || unit.DistanceTo(initialTarget.Position) < finalTarget.DistanceTo(initialTarget.Position))) 
                 {
-                    newTarget = unit;
+                    finalTarget = unit;
                 }
             }
-            return newTarget;
+            return finalTarget;
         }
         public BlueprintFeatureReference m_MythicFeature;
         public Feet TargetRadius = 5.Feet();

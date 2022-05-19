@@ -203,6 +203,7 @@
     <Compile Include="NewRules\RuleFortificationCheck.cs" />
     <Compile Include="NewUI\MechanicActionBarSlotSpellKenning.cs" />
     <Compile Include="NewUnitParts\UnitPartBaseSizeAdjustment.cs" />
+    <Compile Include="NewUnitParts\UnitPartBuffMetadata.cs" />
     <Compile Include="NewUnitParts\UnitPartSpellKenning.cs" />
     <Compile Include="NewUnitParts\UnitPartSpellResistanceTTT.cs" />
     <Compile Include="UMMTools\ColorUtils.cs" />

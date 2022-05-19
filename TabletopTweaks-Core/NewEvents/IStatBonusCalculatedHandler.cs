@@ -3,9 +3,9 @@ using Kingmaker.EntitySystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
+using Kingmaker.UnitLogic.Buffs;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.UnitLogic.Mechanics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ using static TabletopTweaks.Core.Main;
 namespace TabletopTweaks.Core.NewEvents {
     public interface IStatBonusCalculatedHandler : IGlobalSubscriber {
 
-        void StatBonusCalculated(ref int value, StatType stat, ModifierDescriptor descriptor, MechanicsContext context);
+        void StatBonusCalculated(ref int value, StatType stat, ModifierDescriptor descriptor, Buff source);
 
         private class EventTriggers{
 
@@ -141,16 +141,17 @@ namespace TabletopTweaks.Core.NewEvents {
             }
 
             private static int CallEvent(int value, AddStatBonus component) {
-                return CallEvent(value, component.Stat, component.Descriptor, component.Context);
+                return CallEvent(value, component.Stat, component.Descriptor, component.Fact as Buff);
             }
             private static int CallEvent(int value, AddContextStatBonus component) {
-                return CallEvent(value, component.Stat, component.Descriptor, component.Context);
+                return CallEvent(value, component.Stat, component.Descriptor, component.Fact as Buff);
             }
             private static int CallEvent(int value, AddGenericStatBonus component) {
-                return CallEvent(value, component.Stat, component.Descriptor, component.Context);
+                return CallEvent(value, component.Stat, component.Descriptor, component.Fact as Buff);
             }
-            private static int CallEvent(int value, StatType stat, ModifierDescriptor descriptor, MechanicsContext context) {
-                EventBus.RaiseEvent<IStatBonusCalculatedHandler>(h => h.StatBonusCalculated(ref value, stat, descriptor, context));
+            private static int CallEvent(int value, StatType stat, ModifierDescriptor descriptor, Buff source) {
+                if (source == null) { return 0; }
+                EventBus.RaiseEvent<IStatBonusCalculatedHandler>(h => h.StatBonusCalculated(ref value, stat, descriptor, source));
                 return value;
             }
         }

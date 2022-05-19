@@ -19,7 +19,7 @@ using System.Linq;
 using TabletopTweaks.Core.NewEvents;
 
 namespace TabletopTweaks.Core.NewUnitParts {
-    public class UnitPartSpellKenning : OldStyleUnitPart, ISpontaneousConversionHandler, ILearnSpellHandler {
+    public class UnitPartSpellKenning : UnitPart, ISpontaneousConversionHandler, ILearnSpellHandler {
 
         public override void OnPostLoad() {
             base.OnPostLoad();
@@ -100,7 +100,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
         private readonly List<SpellKenningSpellListsBooks> Spellbooks = new();
         private BlueprintAbilityResourceReference m_Resource;
 
-        public class SpellKenningSpellLists {
+        private class SpellKenningSpellLists {
             [JsonProperty]
             public BlueprintSpellListReference SpellList;
             [JsonProperty]
@@ -111,7 +111,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
                 Source = source;
             }
         }
-        public class SpellKenningSpellListsBooks {
+        private class SpellKenningSpellListsBooks {
             [JsonProperty]
             public BlueprintSpellbookReference Spellbook;
             [JsonProperty]
@@ -124,7 +124,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
         }
 
         [HarmonyPatch(typeof(AbilityData), nameof(AbilityData.RequireFullRoundAction), MethodType.Getter)]
-        static class AbilityData_RuntimeActionType_QuickChannel_Patch {
+        private static class AbilityData_RuntimeActionType_QuickChannel_Patch {
             static void Postfix(AbilityData __instance, ref bool __result) {
                 switch (__instance) {
                     case SpellKenningAbilityData abilityData:
