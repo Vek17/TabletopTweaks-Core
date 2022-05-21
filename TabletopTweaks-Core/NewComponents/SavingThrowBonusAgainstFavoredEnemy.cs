@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Kingmaker.Blueprints;
+﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem;
@@ -8,13 +7,14 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Parts;
+using System.Linq;
 
 namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("d7a54fb55c154e618a3aff5d40cb7e6f")]
-    public class SavingThrowBonusAgainstFavoredEnemy : UnitFactComponentDelegate, 
-        IInitiatorRulebookHandler<RuleSavingThrow>, 
-        IRulebookHandler<RuleSavingThrow>, 
+    public class SavingThrowBonusAgainstFavoredEnemy : UnitFactComponentDelegate,
+        IInitiatorRulebookHandler<RuleSavingThrow>,
+        IRulebookHandler<RuleSavingThrow>,
         ISubscriber, IInitiatorRulebookSubscriber {
 
         public void OnEventAboutToTrigger(RuleSavingThrow evt) {

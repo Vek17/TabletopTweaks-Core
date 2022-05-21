@@ -7,10 +7,10 @@ namespace TabletopTweaks.Core.NewComponents.Prerequisites {
     [TypeId("cb189aeff170432c856d0f3f837ddf4f")]
     public class PrerequisiteInPlayerParty : Prerequisite {
         public override bool CheckInternal(FeatureSelectionState selectionState, UnitDescriptor unit, LevelUpState state) {
-            var result = unit.Unit.IsMainCharacter 
-                || unit.Unit.IsCloneOfMainCharacter 
-                || unit.Unit.IsStoryCompanion() 
-                || unit.Unit.IsCustomCompanion() 
+            var result = unit.Unit.IsMainCharacter
+                || unit.Unit.IsCloneOfMainCharacter
+                || unit.Unit.IsStoryCompanion()
+                || unit.Unit.IsCustomCompanion()
                 || (unit.Blueprint?.IsCompanion ?? false);
             return Not ? !result : result;
         }

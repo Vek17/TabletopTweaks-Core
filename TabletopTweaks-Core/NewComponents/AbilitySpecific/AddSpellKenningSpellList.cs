@@ -6,7 +6,7 @@ using TabletopTweaks.Core.NewUnitParts;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("bcb34c0bffd94a8b85b97c0865a30e23")]
-    public  class AddSpellKenningSpellList : UnitFactComponentDelegate {
+    public class AddSpellKenningSpellList : UnitFactComponentDelegate {
         public override void OnTurnOn() {
             var spellKenning = Owner.Ensure<UnitPartSpellKenning>();
             m_SpellLists.ForEach(list => {

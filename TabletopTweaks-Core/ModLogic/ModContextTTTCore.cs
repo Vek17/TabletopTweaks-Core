@@ -1,5 +1,4 @@
-﻿using TabletopTweaks.Core.Config;
-using static TabletopTweaks.Core.Main;
+﻿using static TabletopTweaks.Core.Main;
 using static UnityModManagerNet.UnityModManager;
 
 namespace TabletopTweaks.Core.ModLogic {

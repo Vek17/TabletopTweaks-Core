@@ -12,7 +12,7 @@ using System.Reflection.Emit;
 namespace TabletopTweaks.Core.NewRules {
     public class RuleFortificationCheck : RulebookTargetEvent {
 
-        public RuleFortificationCheck([NotNull]RuleAttackRoll evt) : base(evt.Initiator, evt.Target) {
+        public RuleFortificationCheck([NotNull] RuleAttackRoll evt) : base(evt.Initiator, evt.Target) {
             this.Roll = new RuleRollD100(Initiator);
             this.ForCritical = evt.IsCriticalConfirmed;
             this.ForSneakAttack = evt.IsSneakAttack;
@@ -84,7 +84,7 @@ namespace TabletopTweaks.Core.NewRules {
                     }
                 }
                 Main.TTTContext.Logger.Log("RuleFortificationCheck: COULD NOT FIND TARGET");
-                return new TargetInfo(-1,-1,-1);
+                return new TargetInfo(-1, -1, -1);
             }
             private struct TargetInfo {
                 public int Index;

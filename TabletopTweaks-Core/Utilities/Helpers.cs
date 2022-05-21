@@ -19,10 +19,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using TabletopTweaks.Core.Localization;
-using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
-using TabletopTweaks.Core.ModLogic;
 using System.Text.RegularExpressions;
+using TabletopTweaks.Core.Localization;
+using TabletopTweaks.Core.ModLogic;
+using TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance;
 
 namespace TabletopTweaks.Core.Utilities {
     /// <summary>

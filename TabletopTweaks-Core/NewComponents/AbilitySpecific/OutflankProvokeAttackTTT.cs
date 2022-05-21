@@ -18,12 +18,11 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         }
 
         public void OnEventDidTrigger(RuleAttackRoll evt) {
-            if (evt.IsFake 
-                || !evt.IsHit 
-                || !evt.IsCriticalConfirmed  
-                || evt.FortificationNegatesCriticalHit 
-                || (!evt.Target.CombatState.IsFlanked && !evt.Weapon.Blueprint.IsMelee)) 
-            {
+            if (evt.IsFake
+                || !evt.IsHit
+                || !evt.IsCriticalConfirmed
+                || evt.FortificationNegatesCriticalHit
+                || (!evt.Target.CombatState.IsFlanked && !evt.Weapon.Blueprint.IsMelee)) {
                 return;
             }
             foreach (UnitEntityData unitEntityData in evt.Target.CombatState.EngagedBy) {

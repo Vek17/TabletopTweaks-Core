@@ -5,7 +5,6 @@ using Kingmaker.PubSubSystem;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using TabletopTweaks.Core.ModLogic;
 using TabletopTweaks.Core.NewEvents;

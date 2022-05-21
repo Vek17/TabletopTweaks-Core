@@ -177,8 +177,7 @@ namespace TabletopTweaks.Core.UMMTools.Utility {
             if (digits < 0) {
                 var num = (float)Math.Pow(10d, -digits);
                 return (float)Math.Round(GUILayout.HorizontalSlider(value, leftValue, rightValue, options) / num, 0) * num;
-            }
-            else {
+            } else {
                 return (float)Math.Round(GUILayout.HorizontalSlider(value, leftValue, rightValue, options), digits);
             }
         }

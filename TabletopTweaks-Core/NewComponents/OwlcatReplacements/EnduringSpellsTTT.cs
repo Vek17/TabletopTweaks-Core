@@ -1,11 +1,11 @@
-﻿using System;
-using Kingmaker.Blueprints;
+﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Controllers;
 using Kingmaker.PubSubSystem;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Buffs;
+using System;
 
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
@@ -19,9 +19,9 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
                 return;
             }
             var caster = buff.MaybeContext?.MaybeCaster;
-            if (caster == base.Owner 
-                && (buff.TimeLeft >= EnduringTime 
-                    || (buff.TimeLeft >= GreaterTime && base.Owner.HasFact(this.Greater))) 
+            if (caster == base.Owner
+                && (buff.TimeLeft >= EnduringTime
+                    || (buff.TimeLeft >= GreaterTime && base.Owner.HasFact(this.Greater)))
                 && buff.TimeLeft <= 24.Hours()) {
                 buff.SetEndTime(24.Hours() + buff.AttachTime);
             }

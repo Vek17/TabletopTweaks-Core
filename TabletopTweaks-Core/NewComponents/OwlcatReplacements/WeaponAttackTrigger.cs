@@ -1,5 +1,4 @@
-﻿using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.Items.Ecnchantments;
+﻿using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Entities;
@@ -30,8 +29,8 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
         }
 
         private bool IsSuitable(RuleAttackWithWeapon evt) {
-            if (evt.Weapon != base.Owner) { 
-                return false; 
+            if (evt.Weapon != base.Owner) {
+                return false;
             }
             if (this.OnlyHit && !evt.AttackRoll.IsHit) {
                 return false;

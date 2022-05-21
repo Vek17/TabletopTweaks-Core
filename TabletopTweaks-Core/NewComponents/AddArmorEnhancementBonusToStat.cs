@@ -1,5 +1,4 @@
-﻿using System;
-using Kingmaker.Blueprints;
+﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Designers;
@@ -18,9 +17,9 @@ namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintBuff), false)]
     [AllowMultipleComponents]
     [TypeId("5a17b3c967e746a6a9071a3c397de217")]
-    public class AddArmorEnhancementBonusToStat : UnitFactComponentDelegate<AddWeaponEnhancementBonusToStat.ComponentData>, 
-        IUnitActiveEquipmentSetHandler, 
-        IGlobalSubscriber, ISubscriber, 
+    public class AddArmorEnhancementBonusToStat : UnitFactComponentDelegate<AddWeaponEnhancementBonusToStat.ComponentData>,
+        IUnitActiveEquipmentSetHandler,
+        IGlobalSubscriber, ISubscriber,
         IUnitBuffHandler,
         IUnitEquipmentHandler {
         public override void OnTurnOn() {

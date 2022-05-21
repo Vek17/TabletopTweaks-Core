@@ -9,7 +9,6 @@ using Kingmaker.UnitLogic.Class.LevelUp;
 using System.Text;
 using TabletopTweaks.Core.Utilities;
 using UnityEngine;
-using UnityEngine.Serialization;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents.Prerequisites {

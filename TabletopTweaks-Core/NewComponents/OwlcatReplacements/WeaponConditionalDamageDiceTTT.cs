@@ -7,7 +7,7 @@ using Kingmaker.RuleSystem.Rules.Damage;
 
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [TypeId("4d34be1ec1c24ed4aeff48da776720ac")]
-    public  class WeaponConditionalDamageDiceTTT : WeaponEnchantmentLogic,
+    public class WeaponConditionalDamageDiceTTT : WeaponEnchantmentLogic,
         IInitiatorRulebookHandler<RulePrepareDamage>,
         IRulebookHandler<RulePrepareDamage>,
         ISubscriber, IInitiatorRulebookSubscriber, IResourcesHolder {
@@ -17,7 +17,7 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
             AddBonusDamage(evt);
         }
 
-        public void OnEventDidTrigger(RulePrepareDamage evt) {   
+        public void OnEventDidTrigger(RulePrepareDamage evt) {
         }
 
         private void AddBonusDamage(RulePrepareDamage evt) {

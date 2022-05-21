@@ -7,7 +7,6 @@ using Kingmaker.UnitLogic.Parts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartBroadStudy : OldStyleUnitPart {

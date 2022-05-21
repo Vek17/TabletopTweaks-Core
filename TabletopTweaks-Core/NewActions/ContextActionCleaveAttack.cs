@@ -1,5 +1,4 @@
-﻿using System;
-using Kingmaker;
+﻿using Kingmaker;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
@@ -9,6 +8,7 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.Utility;
+using System;
 
 namespace TabletopTweaks.Core.NewActions {
     [TypeId("d083a4cefb794764ba79eb921e322fd9")]
@@ -70,8 +70,7 @@ namespace TabletopTweaks.Core.NewActions {
                     && unit.Descriptor.State.IsConscious
                     && unit.Descriptor.HPLeft > 0
                     && (isMythic || initialTarget.DistanceTo(unit) <= (initialTarget.View.Corpulence + TargetRadius.Meters + unit.View.Corpulence))
-                    && (finalTarget == null || unit.DistanceTo(initialTarget.Position) < finalTarget.DistanceTo(initialTarget.Position))) 
-                {
+                    && (finalTarget == null || unit.DistanceTo(initialTarget.Position) < finalTarget.DistanceTo(initialTarget.Position))) {
                     finalTarget = unit;
                 }
             }

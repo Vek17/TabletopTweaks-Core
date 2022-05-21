@@ -14,13 +14,13 @@ namespace TabletopTweaks.Core.NewEvents {
 
         private class EventTriggers {
 
-            [HarmonyPatch(typeof(ModifiableValue), nameof(ModifiableValue.AddModifier), new Type[] { 
+            [HarmonyPatch(typeof(ModifiableValue), nameof(ModifiableValue.AddModifier), new Type[] {
                 typeof(int),
                 typeof(EntityFactComponent),
                 typeof(ModifierDescriptor)
             })]
             static class ModifiableValue_AddModifier_Patch {
-                
+
                 static void Prefix(ModifiableValue __instance, ref int value, [NotNull] EntityFactComponent source, ModifierDescriptor desc) {
                     var temp = value;
                     EventBus.RaiseEvent<IAddModifierHandler>(h => h.OnBeforeStatModifierAdded(__instance, ref temp, source.Fact, desc));

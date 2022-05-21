@@ -11,8 +11,8 @@ using Kingmaker.UnitLogic;
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("30b36119dec242d19273366e0baebbb7")]
-    public class TricksterParryTTT : UnitFactComponentDelegate, 
-        ITargetRulebookHandler<RuleAttackRoll>, 
+    public class TricksterParryTTT : UnitFactComponentDelegate,
+        ITargetRulebookHandler<RuleAttackRoll>,
         ISubscriber, ITargetRulebookSubscriber {
         public void OnEventAboutToTrigger(RuleAttackRoll evt) {
         }

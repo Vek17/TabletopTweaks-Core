@@ -14,7 +14,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TabletopTweaks.Core.NewEvents;
 using UnityEngine;
-using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartSpellSpecialization : OldStyleUnitPart, ISpontaneousConversionHandler, IUnitSubscriber {

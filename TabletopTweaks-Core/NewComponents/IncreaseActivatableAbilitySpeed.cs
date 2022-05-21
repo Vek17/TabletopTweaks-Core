@@ -9,7 +9,7 @@ using TabletopTweaks.Core.NewEvents;
 namespace TabletopTweaks.Core.NewComponents {
     [AllowMultipleComponents]
     [TypeId("6615ed84b34245629adf3da8e5ef1c47")]
-   
+
     public class IncreaseActivatableAbilitySpeed : UnitFactComponentDelegate, IActivatableAbilityGetCommandTypeHandler {
 
         public ReferenceArrayProxy<BlueprintActivatableAbility, BlueprintActivatableAbilityReference> Abilities => this.m_Abilities;

@@ -96,7 +96,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             return cachedConversions[Math.Max(0, Math.Min(cachedConversions.Length - 1, level))].Select(spell => spell.Get());
         }
         private readonly List<BlueprintAbilityReference>[] cachedConversions = new List<BlueprintAbilityReference>[10];
-        private readonly List<SpellKenningSpellLists> SpellLists = new ();
+        private readonly List<SpellKenningSpellLists> SpellLists = new();
         private readonly List<SpellKenningSpellListsBooks> Spellbooks = new();
         private BlueprintAbilityResourceReference m_Resource;
 

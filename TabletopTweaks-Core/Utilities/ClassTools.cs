@@ -34,7 +34,7 @@ namespace TabletopTweaks.Core.Utilities {
 
             public static BlueprintCharacterClass[] AllClasses => Game.Instance.BlueprintRoot.Progression.m_CharacterClasses.Select(c => c.Get()).ToArray();
         }
-        public static class ClassReferences{
+        public static class ClassReferences {
             public static BlueprintCharacterClassReference AlchemistClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("0937bec61c0dabc468428f496580c721");
             public static BlueprintCharacterClassReference ArcanistClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("52dbfd8505e22f84fad8d702611f60b7");
             public static BlueprintCharacterClassReference BarbarianClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("f7d7eb166b3dd594fb330d085df41853");

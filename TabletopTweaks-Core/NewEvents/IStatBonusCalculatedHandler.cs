@@ -18,7 +18,7 @@ namespace TabletopTweaks.Core.NewEvents {
 
         void StatBonusCalculated(ref int value, StatType stat, ModifierDescriptor descriptor, Buff source);
 
-        private class EventTriggers{
+        private class EventTriggers {
 
             [HarmonyPatch(typeof(AddStatBonus), nameof(AddStatBonus.OnTurnOn))]
             static class AddStatBonus_Idealize_Patch {

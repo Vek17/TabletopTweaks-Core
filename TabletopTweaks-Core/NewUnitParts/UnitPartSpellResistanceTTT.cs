@@ -28,7 +28,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
         public class SpellResistancePenalty {
             public int Penalty;
             public EntityFactRef Source;
-            public SpellResistancePenalty(int penalty, EntityFactRef source) { 
+            public SpellResistancePenalty(int penalty, EntityFactRef source) {
                 Penalty = penalty;
                 Source = source;
             }

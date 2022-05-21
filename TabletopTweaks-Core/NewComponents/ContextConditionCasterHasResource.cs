@@ -1,8 +1,8 @@
-﻿using System;
-using Kingmaker;
+﻿using Kingmaker;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
+using System;
 
 namespace TabletopTweaks.Core.NewComponents {
     [TypeId("a364529376b34037b59a71b9306e1365")]

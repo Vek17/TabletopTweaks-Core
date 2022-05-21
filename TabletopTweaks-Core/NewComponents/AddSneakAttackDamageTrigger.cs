@@ -4,15 +4,14 @@ using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Damage;
-using Kingmaker.UnitLogic.Abilities;
 using System.Linq;
 
 namespace TabletopTweaks.Core.NewComponents {
     [AllowMultipleComponents]
     [TypeId("ab899b2357d14767bb091548f9cee543")]
-    public class AddSneakAttackDamageTrigger : EntityFactComponentDelegate, 
-        IInitiatorRulebookHandler<RulePrepareDamage>, 
-        IRulebookHandler<RulePrepareDamage>, 
+    public class AddSneakAttackDamageTrigger : EntityFactComponentDelegate,
+        IInitiatorRulebookHandler<RulePrepareDamage>,
+        IRulebookHandler<RulePrepareDamage>,
         ISubscriber, IInitiatorRulebookSubscriber {
 
         public void OnEventAboutToTrigger(RulePrepareDamage evt) {

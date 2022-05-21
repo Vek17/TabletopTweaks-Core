@@ -1,11 +1,11 @@
-﻿using System.Linq;
-using Kingmaker;
+﻿using Kingmaker;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
+using System.Linq;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
@@ -18,14 +18,13 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         }
 
         public void OnEventDidTrigger(RuleAttackRoll evt) {
-            if (evt.IsFake 
-                || !evt.IsHit 
-                || !evt.IsCriticalConfirmed 
-                || evt.FortificationNegatesCriticalHit 
-                || evt.Initiator.IsPlayersEnemy 
-                || !evt.Target.CombatState.EngagedBy.Contains(base.Owner) 
-                || evt.Initiator == base.Owner) 
-            {
+            if (evt.IsFake
+                || !evt.IsHit
+                || !evt.IsCriticalConfirmed
+                || evt.FortificationNegatesCriticalHit
+                || evt.Initiator.IsPlayersEnemy
+                || !evt.Target.CombatState.EngagedBy.Contains(base.Owner)
+                || evt.Initiator == base.Owner) {
                 return;
             }
             if (evt.Initiator.Descriptor.HasFact(this.SiezeTheMomentFact) || base.Owner.State.Features.SoloTactics) {

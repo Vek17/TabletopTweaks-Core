@@ -11,9 +11,9 @@ using Kingmaker.UnitLogic.Mechanics;
 namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("da89a30a249443eebaa1cefe10dabf32")]
-    public class AddIncomingDamageBonus : UnitBuffComponentDelegate, 
-        ITargetRulebookHandler<RuleCalculateDamage>, 
-        IRulebookHandler<RuleCalculateDamage>, 
+    public class AddIncomingDamageBonus : UnitBuffComponentDelegate,
+        ITargetRulebookHandler<RuleCalculateDamage>,
+        IRulebookHandler<RuleCalculateDamage>,
         ISubscriber, ITargetRulebookSubscriber {
 
         public void OnEventAboutToTrigger(RuleCalculateDamage evt) {
