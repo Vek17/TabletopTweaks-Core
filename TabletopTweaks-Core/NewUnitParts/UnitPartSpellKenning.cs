@@ -104,8 +104,9 @@ namespace TabletopTweaks.Core.NewUnitParts {
             [JsonProperty]
             public BlueprintSpellListReference SpellList;
             [JsonProperty]
-            public EntityFact Source;
+            public EntityFactRef Source;
 
+            public SpellKenningSpellLists() { }
             public SpellKenningSpellLists(BlueprintSpellListReference spellList, EntityFact source) {
                 SpellList = spellList;
                 Source = source;
@@ -115,8 +116,9 @@ namespace TabletopTweaks.Core.NewUnitParts {
             [JsonProperty]
             public BlueprintSpellbookReference Spellbook;
             [JsonProperty]
-            public EntityFact Source;
+            public EntityFactRef Source;
 
+            public SpellKenningSpellListsBooks() { }
             public SpellKenningSpellListsBooks(BlueprintSpellbookReference spellbook, EntityFact source) {
                 Spellbook = spellbook;
                 Source = source;

@@ -150,7 +150,7 @@ namespace TabletopTweaks.Core.NewEvents {
                 return CallEvent(value, component.Stat, component.Descriptor, component.Fact as Buff);
             }
             private static int CallEvent(int value, StatType stat, ModifierDescriptor descriptor, Buff source) {
-                if (source == null) { return 0; }
+                if (source == null) { return value; }
                 EventBus.RaiseEvent<IStatBonusCalculatedHandler>(h => h.StatBonusCalculated(ref value, stat, descriptor, source));
                 return value;
             }

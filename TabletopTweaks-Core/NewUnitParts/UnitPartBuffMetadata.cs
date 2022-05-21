@@ -11,6 +11,10 @@ using static TabletopTweaks.Core.NewUnitParts.UnitPartCustomMechanicsFeatures;
 namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartBuffMetadata : UnitPart, IUnitBuffHandler {
 
+        public override void OnTurnOn() {
+            AffectedBuffs.Remove(entry => entry.Source.IsNull);
+        }
+
         public void AddBuffEntry(Buff source, params CustomMechanicsFeature[] features) {
             if (AffectedBuffs.Any(b => b.Source == source)) {
                 AffectedBuffs.First(b => b.Source == source).Features.UnionWith(features);
