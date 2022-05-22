@@ -42,17 +42,19 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
                     return false;
                 }
             }
+            bool foundFact = false;
             bool allFacts = this.RequireAllFacts || this.m_CheckedFacts.Length == 1;
             foreach (BlueprintUnitFact blueprint in this.CheckedFacts) {
                 bool hasFact = base.Owner.HasFact(blueprint);
+                if (hasFact) { foundFact = true; }
                 if (hasFact && !allFacts) {
-                    return !this.InvertCondition;
+                    return this.InvertCondition ? !foundFact : foundFact;
                 }
                 if (!hasFact && allFacts) {
-                    return this.InvertCondition;
+                    return this.InvertCondition ? !foundFact : foundFact;
                 }
             }
-            return !this.InvertCondition;
+            return this.InvertCondition ? !foundFact : foundFact;
         }
 
         private void Update() {
@@ -96,6 +98,6 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
         [SerializeField]
         [ValidateNotEmpty]
         public BlueprintUnitFactReference[] m_CheckedFacts;
-        public BlueprintUnitFactReference[] m_BlockedFacts;
+        public BlueprintUnitFactReference[] m_BlockedFacts = new BlueprintUnitFactReference[0];
     }
 }
