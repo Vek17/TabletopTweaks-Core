@@ -169,6 +169,7 @@
     <Compile Include="Config\SettingGroup.cs" />
     <Compile Include="NewActions\AbilityCustomCleaveTTT.cs" />
     <Compile Include="NewActions\ContextActionCleaveAttack.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\AddFeatureOnClassLevelToPlayers.cs" />
     <Compile Include="NewComponents\AbilitySpecific\AddSpellKenningSpellList.cs" />
     <Compile Include="NewComponents\AbilitySpecific\OutflankProvokeAttackTTT.cs" />
     <Compile Include="NewComponents\AbilitySpecific\SiezeTheMomentTTT.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="NewComponents\OwlcatReplacements\EnduringSpellsTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\TricksterParryTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\WeaponConditionalDamageDiceTTT.cs" />
+    <Compile Include="NewComponents\Prerequisites\PrerequisiteOracleMystery.cs" />
     <Compile Include="NewComponents\Prerequisites\PrerequisiteInPlayerParty.cs" />
     <Compile Include="NewComponents\RerollFortification.cs" />
     <Compile Include="NewComponents\SavingThrowBonusAgainstFavoredEnemy.cs" />
