@@ -1,10 +1,12 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
+using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Blueprints.Root.Strings;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Class.LevelUp;
+using System.Linq;
 using System.Text;
 
 namespace TabletopTweaks.Core.NewComponents.Prerequisites {
@@ -12,11 +14,11 @@ namespace TabletopTweaks.Core.NewComponents.Prerequisites {
     public class PrerequisiteOracleMystery : Prerequisite {
 
         public ReferenceArrayProxy<BlueprintFeature, BlueprintFeatureReference> Features => m_Features;
-        public BlueprintFeature Bypass => m_BypassFeature?.Get();
+        public ReferenceArrayProxy<BlueprintFeatureSelection, BlueprintFeatureSelectionReference> BypassSelections => m_BypassSelections;
 
         public override bool ConsiderFulfilled(FeatureSelectionState selectionState, UnitDescriptor unit, LevelUpState state) {
             //Handles alternate capstone
-            return Bypass != null && unit.Progression.CharacterLevel == 20 && unit.Progression.Features.HasFact(Bypass);
+            return BypassSelections.Length > 0 ? BypassSelections.Any(s => s.AssetGuid == (selectionState?.Selection as BlueprintFeatureSelection)?.AssetGuid) : false;
         }
 
         public override bool CheckInternal(FeatureSelectionState selectionState, UnitDescriptor unit, LevelUpState state) {
@@ -50,7 +52,7 @@ namespace TabletopTweaks.Core.NewComponents.Prerequisites {
         }
 
         public BlueprintFeatureReference[] m_Features;
-        public BlueprintFeatureReference m_BypassFeature;
+        public BlueprintFeatureSelectionReference[] m_BypassSelections;
         public int Amount = 1;
     }
 }

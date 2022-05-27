@@ -5,11 +5,12 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Class.LevelUp;
+using System.Linq;
 
 namespace TabletopTweaks.Core.NewComponents.Prerequisites {
     [TypeId("cb189aeff170432c856d0f3f837ddf4f")]
     public class PrerequisiteInPlayerParty : Prerequisite {
-        private BlueprintFeature BypassInSelection => m_BypassInSelection?.Get();
+        public ReferenceArrayProxy<BlueprintFeatureSelection, BlueprintFeatureSelectionReference> BypassSelections => m_BypassSelections;
 
         public override bool CheckInternal(FeatureSelectionState selectionState, UnitDescriptor unit, LevelUpState state) {
             var result = unit.Unit.IsMainCharacter
@@ -18,7 +19,7 @@ namespace TabletopTweaks.Core.NewComponents.Prerequisites {
                 || unit.Unit.IsCustomCompanion()
                 || (unit.Blueprint?.IsCompanion ?? false);
             var ignore = (unit.Progression.CharacterLevel < IgnoreLevelsBelow)
-                || BypassInSelection is not null ? (selectionState?.Selection as BlueprintFeatureSelection)?.AssetGuid == BypassInSelection.AssetGuid : false;
+                || BypassSelections.Length > 0 ? BypassSelections.Any(s => s.AssetGuid == (selectionState?.Selection as BlueprintFeatureSelection)?.AssetGuid) : false;
             return ignore || (Not ? !result : result);
         }
 
@@ -28,6 +29,6 @@ namespace TabletopTweaks.Core.NewComponents.Prerequisites {
 
         public bool Not = false;
         public int IgnoreLevelsBelow = 0;
-        public BlueprintFeatureSelectionReference m_BypassInSelection;
+        public BlueprintFeatureSelectionReference[] m_BypassSelections;
     }
 }
