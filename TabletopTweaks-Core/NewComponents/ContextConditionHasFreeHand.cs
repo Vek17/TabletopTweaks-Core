@@ -15,12 +15,12 @@ namespace TabletopTweaks.Core.NewComponents {
             bool hasFreeHand = true;
             if (secondaryHand.HasShield) {
                 var maybeShield = secondaryHand.MaybeShield;
-                hasFreeHand = maybeShield.Blueprint.Type.ProficiencyGroup == ArmorProficiencyGroup.Buckler ? true : false;
+                hasFreeHand &= maybeShield.Blueprint.Type.ProficiencyGroup == ArmorProficiencyGroup.Buckler;
+            } else if (secondaryHand.HasWeapon && secondaryHand.MaybeWeapon != Target.Unit.Body.EmptyHandWeapon) {
+                hasFreeHand = false;
             }
-            if (!secondaryHand.HasWeapon || secondaryHand.MaybeWeapon == Target.Unit.Body.EmptyHandWeapon) {
-                if (primaryHand.HasWeapon) {
-                    hasFreeHand = primaryHand.MaybeWeapon.HoldInTwoHands ? false : hasFreeHand;
-                }
+            if (primaryHand.HasWeapon) {
+                hasFreeHand &= !primaryHand.MaybeWeapon.HoldInTwoHands;
             }
             return hasFreeHand;
         }

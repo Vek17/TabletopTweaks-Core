@@ -129,9 +129,13 @@ namespace TabletopTweaks.Core.Utilities {
         }
         private static void SetRequiredBlueprintFields(SimpleBlueprint blueprint) {
             switch (blueprint) {
-                case BlueprintBuff buff:
-                    buff.FxOnStart = new PrefabLink();
-                    buff.FxOnRemove = new PrefabLink();
+                case BlueprintBuff bp:
+                    bp.FxOnStart = new PrefabLink();
+                    bp.FxOnRemove = new PrefabLink();
+                    bp.IsClassFeature = true;
+                    break;
+                case BlueprintFeature bp:
+                    bp.IsClassFeature = true;
                     break;
             }
         }
