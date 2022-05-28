@@ -182,8 +182,8 @@ namespace TabletopTweaks.Core.Utilities {
         }
 
         public static BlueprintFeature[] GetMetamagicFeats() {
-            return FeatTools.Selections.BasicFeatSelection.m_AllFeatures
-                    .Select(reference => reference.Get())
+            return FeatTools.Selections.BasicFeatSelection.AllFeatures
+                    .Select(reference => reference)
                     .Where(feature => feature.GetComponent<AddMetamagicFeat>())
                     .ToArray();
         }
@@ -994,6 +994,7 @@ namespace TabletopTweaks.Core.Utilities {
                 CavalierBonusFeatSelection,
                 CavalierMountedMasteryFeatSelection,
                 CavalierTacticianFeatSelection,
+                CombatTrick,
                 DragonLevel2FeatSelection,
                 EldritchKnightFeatSelection,
                 ExtraFeatMythicFeat,
