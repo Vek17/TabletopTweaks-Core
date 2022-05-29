@@ -171,6 +171,7 @@
     <Compile Include="NewActions\ContextActionCleaveAttack.cs" />
     <Compile Include="NewComponents\AbilitySpecific\AddFeatureOnClassLevelToPlayers.cs" />
     <Compile Include="NewComponents\AbilitySpecific\AddSpellKenningSpellList.cs" />
+    <Compile Include="NewComponents\DuplicateAbilityComponent.cs" />
     <Compile Include="NewComponents\AbilitySpecific\OutflankProvokeAttackTTT.cs" />
     <Compile Include="NewComponents\AbilitySpecific\SiezeTheMomentTTT.cs" />
     <Compile Include="NewComponents\AbilitySpecific\SpellKenningComponent.cs" />
