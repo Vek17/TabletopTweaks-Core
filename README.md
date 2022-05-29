@@ -9,6 +9,8 @@
 ## Third Party Tabletop Tweaks Mods
 * [Microscopic Content Expansion](https://github.com/alterasc/MicroscopicContentExpansion)
 	* Add microscopic amount of new features. May or may not grow further in scope. The latter is more likely.
+* [SparsSorcerousSundries](https://github.com/TheSparhawk/SparsSorcerousSundries)
+	* This module provides tabletop based fixes and new content to Wrath of the Righteous.
 
 **How to install**
 
