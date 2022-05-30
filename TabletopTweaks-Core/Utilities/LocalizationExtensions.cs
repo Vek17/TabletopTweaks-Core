@@ -3,6 +3,7 @@ using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.Localization;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
 using TabletopTweaks.Core.ModLogic;
 
 namespace TabletopTweaks.Core.Utilities {
@@ -198,6 +199,52 @@ namespace TabletopTweaks.Core.Utilities {
         /// </param>
         public static void SetDescription(this BlueprintUnitFact feature, ModContextBase modContext, string description) {
             feature.m_Description = Helpers.CreateString(modContext, $"{feature.name}.Description", description, shouldProcess: true);
+        }
+        /// <summary>
+        /// Updates the description of the feature to the supplied string.
+        /// </summary>
+        /// <param name="ability"></param>
+        /// <param name="modContext">
+        /// Mod to create the localized string in.
+        /// </param>
+        /// <param name="duration">
+        /// Text to use as the duration.
+        /// </param>
+        public static void SetLocalizedDuration(this BlueprintAbility ability, ModContextBase modContext, string duration) {
+            ability.LocalizedDuration = Helpers.CreateString(modContext, $"{ability.name}.Duration", duration, shouldProcess: false);
+        }
+        /// <summary>
+        /// Updates the description of the feature to the supplied localized string.
+        /// </summary>
+        /// <param name="ability"></param>
+        /// <param name="duration">
+        /// String to use as the duration.
+        /// </param>
+        public static void SetLocalizedDuration(this BlueprintAbility ability, LocalizedString duration) {
+            ability.LocalizedDuration = duration;
+        }
+        /// <summary>
+        /// Updates the description of the feature to the supplied string.
+        /// </summary>
+        /// <param name="ability"></param>
+        /// <param name="modContext">
+        /// Mod to create the localized string in.
+        /// </param>
+        /// <param name="savingThrow">
+        /// Text to use as the saving throw.
+        /// </param>
+        public static void SetLocalizedSavingThrow(this BlueprintAbility ability, ModContextBase modContext, string savingThrow) {
+            ability.LocalizedSavingThrow = Helpers.CreateString(modContext, $"{ability.name}.SavingThrow", savingThrow, shouldProcess: false);
+        }
+        /// <summary>
+        /// Updates the description of the feature to the supplied localized string.
+        /// </summary>
+        /// <param name="ability"></param>
+        /// <param name="savingThrow">
+        /// String to use as the saving throw.
+        /// </param>
+        public static void SetLocalizedSavingThrow(this BlueprintAbility ability, LocalizedString savingThrow) {
+            ability.LocalizedSavingThrow = savingThrow;
         }
     }
 }
