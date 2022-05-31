@@ -9,8 +9,10 @@
 ## Third Party Tabletop Tweaks Mods
 * [Microscopic Content Expansion](https://github.com/alterasc/MicroscopicContentExpansion)
 	* Add microscopic amount of new features. May or may not grow further in scope. The latter is more likely.
-* [SparsSorcerousSundries](https://github.com/TheSparhawk/SparsSorcerousSundries)
+* [SparsSorcerousSundries](https://github.com/TheSparhawk/SparsSorcerousSundries/releases)
 	* This module provides tabletop based fixes and new content to Wrath of the Righteous.
+* [Tome of the Firebrand](https://github.com/pheonix99/TomeOfTheFirebird/releases)
+	* A package of spells, feats, other abilities and some fixes.
 
 **How to install**
 
