@@ -27,7 +27,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
         }
 
         public void AddKenningSpellList(BlueprintSpellListReference spellList, EntityFact source) {
-            if (SpellLists.Any(r => r.Source == source)) { return; }
+            if (SpellLists.Any(r => r.Source == source && r.SpellList.deserializedGuid == spellList.deserializedGuid)) { return; }
             SpellLists.Add(new SpellKenningSpellLists(spellList, source));
             UpdateConversions();
         }

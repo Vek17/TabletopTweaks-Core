@@ -1,3 +1,7 @@
+## Verson 0.3.1
+* New localization extensions for BlueprintAbiltiies
+* Fixed issue with spell kenning unit part not handling multiple lists being added by the same feature correctly
+
 ## Verson 0.3.0
 * New Components
 	* SavingThrowBonusAgainstFavoredEnemy
