@@ -1,8 +1,12 @@
-## Verson 0.3.1
+## Version 0.3.2
+* Added additional null guards
+* Fixed issue with Trickster Mobility 3 blocking allied spells in some cases
+
+## Version 0.3.1
 * New localization extensions for BlueprintAbiltiies
 * Fixed issue with spell kenning unit part not handling multiple lists being added by the same feature correctly
 
-## Verson 0.3.0
+## Version 0.3.0
 * New Components
 	* SavingThrowBonusAgainstFavoredEnemy
 		* Adds a saving throw bonus to all saves based on owners favored enemy rank.
