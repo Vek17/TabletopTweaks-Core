@@ -18,7 +18,7 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
         }
 
         public void OnEventDidTrigger(RuleAttackRoll evt) {
-            if (!evt.IsHit || evt.IsFake) {
+            if (!evt.IsHit || evt.IsFake || evt.Initiator.IsAlly(evt.Target)) {
                 return;
             }
             int dc = evt.D20 + evt.AttackBonus;
