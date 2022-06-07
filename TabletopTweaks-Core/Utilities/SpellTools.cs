@@ -79,7 +79,8 @@ namespace TabletopTweaks.Core.Utilities {
                 .Concat(SpellTools.ElementalBloodlineSpells.AllSpells)
                 .Concat(AzataBonusSpells.AllSpells)
                 .Distinct()
-                .OrderBy(spell => spell.Name)
+                .Where(spell => spell is not null)
+                .OrderBy(spell => spell.name)
                 .ToList();
         }
 
