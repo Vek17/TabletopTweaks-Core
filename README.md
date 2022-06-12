@@ -1,7 +1,6 @@
 ﻿This module provides a shared core system for all TabletopTweaks mods, and and any third party mods wishing to use TabletopTweaks systems and utilities.
-
 ## First Party Tabletop Tweaks Mods
-* [TabletopTweaks-Base](https://github.com/Vek17/TabletopTweaks-Base/releases).
+* [TabletopTweaks-Base](https://github.com/Vek17/TabletopTweaks-Base/releases). [![Download zip](https://custom-icon-badges.herokuapp.com/badge/-Download-blue?style=for-the-badge&logo=download&logoColor=white "Download zip")](https://github.com/Vek17/TabletopTweaks-Base/releases/latest/download/TabletopTweaks-Base.zip)
 	* Main content mod that provides numerous fixes and new content based on tabletop pathfinder.
 * [TabletopTweaks-Reworks](https://github.com/Vek17/TabletopTweaks-Reworks/releases).
 	* Smaller side mod to provide homebrew changes to Owlcat's new creations that I personally feel missed the mark slightly.
