@@ -298,8 +298,8 @@ namespace TabletopTweaks.Core.Utilities {
                     selection.m_Features = selection.m_Features.AppendToArray(feature);
                 }
             }
-            selection.m_AllFeatures = selection.m_AllFeatures.OrderBy(feature => feature.Get().Name ?? feature.Get().name).ToArray();
-            selection.m_Features = selection.m_Features.OrderBy(feature => feature.Get().Name ?? feature.Get().name).ToArray();
+            selection.m_AllFeatures = selection.m_AllFeatures.OrderBy(feature => feature?.Get()?.Name ?? feature?.Get()?.name).ToArray();
+            selection.m_Features = selection.m_Features.OrderBy(feature => feature?.Get()?.Name ?? feature?.Get()?.name).ToArray();
         }
         /// <summary>
         /// Adds feature as a PrerequisiteFeature and updates that feature's IsPrerequisiteFor list to correctly reflect that.
