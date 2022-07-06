@@ -169,8 +169,10 @@
     <Compile Include="Config\SettingGroup.cs" />
     <Compile Include="NewActions\AbilityCustomCleaveTTT.cs" />
     <Compile Include="NewActions\ContextActionCleaveAttack.cs" />
+    <Compile Include="NewActions\ContextActionDisjointEnchantments.cs" />
     <Compile Include="NewComponents\AbilitySpecific\AddFeatureOnClassLevelToPlayers.cs" />
     <Compile Include="NewComponents\AbilitySpecific\AddSpellKenningSpellList.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\DisjointedEffect.cs" />
     <Compile Include="NewComponents\DuplicateAbilityComponent.cs" />
     <Compile Include="NewComponents\AbilitySpecific\OutflankProvokeAttackTTT.cs" />
     <Compile Include="NewComponents\AbilitySpecific\SiezeTheMomentTTT.cs" />

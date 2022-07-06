@@ -9,6 +9,7 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
+using static Kingmaker.RuleSystem.Rules.RuleDispelMagic;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     /// <summary>
@@ -30,7 +31,10 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             if (maybeContext != null && evt.Success) {
                 var abilityParams = base.Context.TriggerRule(new RuleCalculateAbilityParams(evt.Initiator, base.OwnerBlueprint, null));
                 using (maybeContext.GetDataScope(evt.Target)) {
-                    int dc = 10 + ((evt.CasterLevel + evt.Bonus) / 2) + abilityParams.m_BonusDC + getHighestStatBonus(evt.Initiator, StatType.Intelligence, StatType.Wisdom, StatType.Charisma);
+                    int dc = evt.Check switch {
+                        CheckType.None => dc = evt?.Context?.Params?.DC ?? 10,
+                        _ => 10 + ((evt.CasterLevel + evt.Bonus) / 2) + abilityParams.m_BonusDC + getHighestStatBonus(evt.Initiator, StatType.Intelligence, StatType.Wisdom, StatType.Charisma)
+                    };
                     RuleSavingThrow ruleSavingThrow = base.Context.TriggerRule(new RuleSavingThrow(evt.Target, SavingThrowType.Fortitude, dc));
                     if (ruleSavingThrow.IsPassed) {
                         SaveSuccees.Run();
