@@ -1,7 +1,12 @@
-﻿using Kingmaker.Blueprints;
+﻿using Kingmaker;
+using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Items.Components;
 using Kingmaker.Blueprints.Items.Equipment;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
+using Kingmaker.ResourceLinks;
 using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using System;
@@ -274,6 +279,65 @@ namespace TabletopTweaks.Core.Utilities {
                     metamagicDescription: metamagicDescription
                 )
             };
+        }
+        public static BlueprintItemEquipmentUsable CreateScroll(ModContextBase modContext, string name, Sprite icon, BlueprintAbility spell, int spellLevel, int casterLevel) {
+            var scrollItemPrefab = new PrefabLink() {
+                AssetId = "d711efe72d029364a9ad378d5f0955c0"
+            };
+            var Scroll = Helpers.CreateBlueprint<BlueprintItemEquipmentUsable>(modContext, name, bp => {
+                bp.m_InventoryEquipSound = "ScrollPut";
+                bp.m_BeltItemPrefab = scrollItemPrefab;
+                bp.m_Enchantments = new BlueprintEquipmentEnchantmentReference[0];
+                bp.Type = UsableItemType.Scroll;
+                bp.m_Ability = spell.ToReference<BlueprintAbilityReference>();
+                bp.m_ActivatableAbility = new BlueprintActivatableAbilityReference();
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.CasterLevel = casterLevel;
+                bp.SpellLevel = spellLevel;
+                bp.m_DisplayNameText = Helpers.CreateString(modContext, $"{bp.name}.Name", "");
+                bp.m_DescriptionText = Helpers.CreateString(modContext, $"{bp.name}.Description", "");
+                bp.m_FlavorText = Helpers.CreateString(modContext, $"{bp.name}.Flavor", "");
+                bp.m_NonIdentifiedNameText = Helpers.CreateString(modContext, $"{bp.name}.Unidentified_Name", "");
+                bp.m_NonIdentifiedDescriptionText = Helpers.CreateString(modContext, $"{bp.name}.Unidentified_Description", "");
+                bp.m_Icon = icon;
+                bp.m_Cost = GetScrollCost(spellLevel);
+                bp.m_Weight = 0.2f;
+                bp.m_Destructible = true;
+                bp.m_ShardItem = BlueprintTools.GetBlueprintReference<BlueprintItemReference>("08133117418642fb9d1d2adba9785f43"); //PaperShardItem
+                bp.m_InventoryPutSound = "ScrollPut";
+                bp.m_InventoryTakeSound = "ScrollTake";
+                bp.TrashLootTypes = new TrashLootType[] { TrashLootType.Scrolls_RE };
+                bp.m_Overrides = new List<string>();
+                bp.AddComponent<CopyScroll>(c => { 
+                    c.m_CustomSpell = spell.ToReference<BlueprintAbilityReference>();
+                });
+            });
+            AddScrollToCraftRoot(Scroll);
+            return Scroll;
+        }
+        private static int GetScrollCost(int spellLevel) {
+            return spellLevel switch {
+                0 => 13,
+                1 => 25,
+                2 => 150,
+                3 => 375,
+                4 => 700,
+                5 => 1125,
+                6 => 1650,
+                7 => 2275,
+                8 => 3000,
+                9 => 3825,
+                10 => 5000,
+                _ => 0
+            };
+        }
+        private static void AddScrollToCraftRoot(BlueprintItemEquipmentUsable scroll) {
+            if (scroll.Type != UsableItemType.Scroll) { return; }
+
+            Game.Instance.BlueprintRoot.CraftRoot.m_ScrollsItems.Add(scroll.ToReference<BlueprintItemEquipmentUsableReference>());
         }
     }
 }
