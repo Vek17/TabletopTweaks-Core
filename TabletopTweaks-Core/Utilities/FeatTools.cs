@@ -10,6 +10,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Utility;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using TabletopTweaks.Core.ModLogic;
 
@@ -587,7 +588,18 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintFeatureSelection ZenArcherPointBlankMasterSelection => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("50e6aa55653bc014aafe556aad79e5c0");
             public static BlueprintFeatureSelection ZenArcherWayOfTheBowSelection => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("53420038fdc76944695bf927f7bcd51c");
 
-            public static BlueprintFeatureSelection[] AllSelections = new BlueprintFeatureSelection[] {
+            
+
+            public static void AddModFeatureSelection(BlueprintFeatureSelection selection) {
+                FeatureSelectionSet.Add(selection);
+                AllSelections = FeatureSelectionSet.ToArray();
+            }
+            public static void AddModFeatSelection(BlueprintFeatureSelection selection) {
+                FeatSelectionSet.Add(selection);
+                FeatSelections = FeatSelectionSet.ToArray();
+                AddModFeatureSelection(selection);
+            }
+            private static readonly HashSet<BlueprintFeatureSelection> FeatureSelectionSet = new HashSet<BlueprintFeatureSelection>() {
                 AasimarHeritageSelection,
                 Adaptability,
                 AdvancedWeaponTraining1,
@@ -985,9 +997,9 @@ namespace TabletopTweaks.Core.Utilities {
                 ZenArcherBonusFeatSelectionLevel10,
                 ZenArcherBonusFeatSelectionLevel6,
                 ZenArcherPointBlankMasterSelection,
-                ZenArcherWayOfTheBowSelection,
+                ZenArcherWayOfTheBowSelection
             };
-            public static BlueprintFeatureSelection[] FeatSelections = new BlueprintFeatureSelection[] {
+            private static readonly HashSet<BlueprintFeatureSelection> FeatSelectionSet = new HashSet<BlueprintFeatureSelection>() {
                 ArcaneRiderFeatSelection,
                 BasicFeatSelection,
                 BattleScionTeamworkFeat,
@@ -1014,8 +1026,10 @@ namespace TabletopTweaks.Core.Utilities {
                 InquisitorTeamworkFeat,
                 WarDomainGreaterFeatSelection,
                 WarpriestFeatSelection,
-                WizardFeatSelection,
+                WizardFeatSelection
             };
+            public static BlueprintFeatureSelection[] AllSelections = FeatureSelectionSet.ToArray();
+            public static BlueprintFeatureSelection[] FeatSelections = FeatSelectionSet.ToArray();
         }
     }
 }

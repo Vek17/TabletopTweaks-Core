@@ -4,6 +4,7 @@
 using JetBrains.Annotations;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
@@ -92,7 +93,18 @@ namespace TabletopTweaks.Core.Utilities {
             BlueprintTools.AddBlueprint(modContext, result);
             SetRequiredBlueprintFields(result);
             init?.Invoke(result);
+            RecordMetaBlueprintInfo(result);
             return result;
+        }
+        public static void RecordMetaBlueprintInfo(SimpleBlueprint blueprint) {
+            switch (blueprint) {
+                case BlueprintFeatureSelection bp:
+                    if (bp.Group == FeatureGroup.Feat || bp.Group2 == FeatureGroup.Feat) {
+                        FeatTools.Selections.AddModFeatSelection(bp);
+                    }
+                    FeatTools.Selections.AddModFeatureSelection(bp);
+                    break;
+            }
         }
         /// <summary>
         /// Creates a new Blueprint with the supplied unity name and initializes it with the supplied action.
@@ -125,6 +137,7 @@ namespace TabletopTweaks.Core.Utilities {
             BlueprintTools.AddBlueprint(modContext, result);
             SetRequiredBlueprintFields(result);
             init?.Invoke(result);
+            RecordMetaBlueprintInfo(result);
             return result;
         }
         private static void SetRequiredBlueprintFields(SimpleBlueprint blueprint) {

@@ -1,10 +1,17 @@
+## Version 0.4.3
+This is a breaking patch, you will need to recompile.
+
+* Added support for effect disjoint.
+* Added support for scroll creation.
+* Support for modded selections to show up correctly in feat tools.
+
 ## Version 0.3.2
 * Added additional null guards
-* Fixed issue with Trickster Mobility 3 blocking allied spells in some cases
+* Fixed issue with Trickster Mobility 3 blocking allied spells in some cases.
 
 ## Version 0.3.1
-* New localization extensions for BlueprintAbiltiies
-* Fixed issue with spell kenning unit part not handling multiple lists being added by the same feature correctly
+* New localization extensions for BlueprintAbiltiies.
+* Fixed issue with spell kenning unit part not handling multiple lists being added by the same feature correctly.
 
 ## Version 0.3.0
 * New Components

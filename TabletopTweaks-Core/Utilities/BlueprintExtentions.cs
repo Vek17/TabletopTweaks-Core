@@ -41,6 +41,7 @@ namespace TabletopTweaks.Core.Utilities {
             });
             BlueprintTools.AddBlueprint(modContext, result);
             init?.Invoke(result);
+            Helpers.RecordMetaBlueprintInfo(result);
             return result;
         }
         /// <summary>
