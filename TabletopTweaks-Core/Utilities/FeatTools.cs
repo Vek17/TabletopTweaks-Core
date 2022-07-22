@@ -41,14 +41,19 @@ namespace TabletopTweaks.Core.Utilities {
                 Selections.SylvanTricksterTalentSelection,
                 Selections.SlayerTalentSelection10,
                 Selections.SlayerTalentSelection6,
-                Selections.SlayerTalentSelection2,
-                Selections.SkaldTalentSelection,
+                Selections.SlayerTalentSelection2,       
                 Selections.RogueTalentSelection,
-                Selections.LoremasterRogueTalentSelection,
-                Selections.BardTalentSelection,
-                Selections.BardTalentSelection2
+                Selections.LoremasterRogueTalentSelection
             };
             TalentSelections.ForEach(selection => selection.AddFeatures(feature));
+        }
+        public static void AddAsBardTalent(BlueprintFeature feature) {
+            var BardSelections = new BlueprintFeatureSelection[] {
+                Selections.BardTalentSelection,
+                Selections.BardTalentSelection2,
+                Selections.SkaldTalentSelection
+            };
+            BardSelections.ForEach(selection => selection.AddFeatures(feature));
         }
         public static void AddAsArcanistExploit(BlueprintFeature feature) {
             var TalentSelections = new BlueprintFeatureSelection[] {
