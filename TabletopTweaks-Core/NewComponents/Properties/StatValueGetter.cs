@@ -3,10 +3,12 @@ using Kingmaker.EntitySystem.Entities;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Owlcat.QA.Validation;
+using System;
 
 namespace TabletopTweaks.Core.NewComponents.Properties {
     [TypeId("5f193022788a43d28c0bdaa913a21117")]
-    public class StatValueGetter : PropertyValueGetter {
+    [Obsolete("Use Kingmaker.UnitLogic.Mechanics.Properties.StatValueGetter")]
+    internal class StatValueGetterTTT : PropertyValueGetter {
         public override int GetBaseValue(UnitEntityData unit) {
             return unit.Stats.GetStat(this.Stat).ModifiedValue;
         }

@@ -1,5 +1,5 @@
 ## Version 0.4.3
-This is a breaking patch, you will need to recompile.
+This is a breaking patch, you will may need to recompile.
 
 * Added support for effect disjoint.
 * Added support for scroll creation.

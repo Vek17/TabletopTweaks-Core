@@ -5,11 +5,10 @@ namespace TabletopTweaks.Core.ModLogic {
     internal class ModContextTTTCore : ModContextBase {
 
         public ModContextTTTCore(ModEntry ModEntry) : base(ModEntry) {
-            LoadBlueprints("TabletopTweaks.Core.Config", TTTContext);
             LoadAllSettings();
         }
         public override void LoadAllSettings() {
-            LoadSettings("Blueprints.json", "TabletopTweaks.Core.Config", ref Blueprints);
+            LoadBlueprints("TabletopTweaks.Core.Config", TTTContext);
             LoadLocalization("TabletopTweaks.Core.Localization");
         }
         public override void AfterBlueprintCachePatches() {

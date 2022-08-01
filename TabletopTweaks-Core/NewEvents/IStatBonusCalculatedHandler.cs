@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.EntitySystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
@@ -6,6 +7,7 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.UnitLogic.Buffs;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UnitLogic.Mechanics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -140,6 +142,50 @@ namespace TabletopTweaks.Core.NewEvents {
                 }
             }
 
+            [HarmonyPatch(typeof(AddStatBonusAbilityValue), nameof(AddStatBonusAbilityValue.OnTurnOn))]
+            static class AddStatBonusAbilityValue_Idealize_Patch {
+                static readonly MethodInfo Modifier_AddModifierUnique = AccessTools.Method(typeof(ModifiableValue), "AddModifierUnique", new Type[] {
+                typeof(int),
+                typeof(EntityFactComponent),
+                typeof(ModifierDescriptor)
+            });
+                static readonly MethodInfo EventTriggers_AddEvent = AccessTools.Method(
+                    typeof(EventTriggers),
+                    nameof(EventTriggers.CallEvent),
+                    new Type[] { typeof(int), typeof(AddStatBonusAbilityValue) }
+                );
+                static readonly MethodInfo ContextValue_Calculate = AccessTools.Method(
+                    typeof(ContextValue),
+                    nameof(ContextValue.Calculate),
+                    new Type[] { typeof(MechanicsContext) }
+                );
+                //Add Idealize calculations
+                static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
+
+                    var codes = new List<CodeInstruction>(instructions);
+                    int target = FindInsertionTarget(codes);
+                    //Utilities.ILUtils.LogIL(TTTContext, codes);
+                    codes.InsertRange(target, new CodeInstruction[] {
+                    new CodeInstruction(OpCodes.Ldarg_0),
+                    new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
+                });
+                    //Utilities.ILUtils.LogIL(TTTContext, codes);
+                    return codes.AsEnumerable();
+                }
+                private static int FindInsertionTarget(List<CodeInstruction> codes) {
+                    int target = 0;
+                    for (int i = 0; i < codes.Count; i++) {
+                        //Find where the modifier is added and grab the load of the value varriable
+                        if (codes[i].Calls(ContextValue_Calculate)) { target = i + 1; }
+                        if (codes[i].Calls(Modifier_AddModifierUnique)) {
+                            return target;
+                        }
+                    }
+                    TTTContext.Logger.Log("ADD STAT IDEALIZE PATCH - AddGenericStatBonus: COULD NOT FIND TARGET");
+                    return -1;
+                }
+            }
+
             private static int CallEvent(int value, AddStatBonus component) {
                 return CallEvent(value, component.Stat, component.Descriptor, component.Fact as Buff);
             }
@@ -147,6 +193,9 @@ namespace TabletopTweaks.Core.NewEvents {
                 return CallEvent(value, component.Stat, component.Descriptor, component.Fact as Buff);
             }
             private static int CallEvent(int value, AddGenericStatBonus component) {
+                return CallEvent(value, component.Stat, component.Descriptor, component.Fact as Buff);
+            }
+            private static int CallEvent(int value, AddStatBonusAbilityValue component) {
                 return CallEvent(value, component.Stat, component.Descriptor, component.Fact as Buff);
             }
             private static int CallEvent(int value, StatType stat, ModifierDescriptor descriptor, Buff source) {
