@@ -1,4 +1,8 @@
 ## Version 0.4.3
+
+* IStatBonusCalculatedHandler handles more component types.
+
+## Version 0.4.3
 This is a breaking patch, you will may need to recompile.
 
 * Added support for effect disjoint.

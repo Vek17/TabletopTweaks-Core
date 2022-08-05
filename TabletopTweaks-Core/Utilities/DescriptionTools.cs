@@ -102,7 +102,7 @@ namespace TabletopTweaks.Core.Utilities {
             new EncyclopediaEntry {
                 Entry = "Saving_Throw",
                 Patterns = {
-                    "Saving Throw",
+                    "Saving Throws?",
                     "Reflex Save",
                     "Will Save",
                     "Fortitude Save"

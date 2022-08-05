@@ -1,5 +1,6 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
@@ -26,6 +27,7 @@ namespace TabletopTweaks.Core.Utilities {
         public static void AddToSpellList(this BlueprintAbility spell, BlueprintSpellList spellList, int level) {
             AddComponentIfMissing(spellList);
             AddToListIfMissing(spellList);
+            AddToSpellSpecializationIfMissing(spell);
             if (spellList == SpellList.WizardSpellList) {
                 var school = spell.School;
                 AddComponentIfMissing(specialistSchoolList.Value[(int)school]);
@@ -58,6 +60,14 @@ namespace TabletopTweaks.Core.Utilities {
                 if (!list.SpellsByLevel[level].Spells.Contains(spell)) {
                     list.SpellsByLevel[level].Spells.Add(spell);
                     list.SpellsByLevel[level].m_Spells.Sort((x, y) => x.Get().Name.CompareTo(y.Get().Name));
+                }
+            }
+            void AddToSpellSpecializationIfMissing(BlueprintAbility spell) {
+                foreach (var specialization in SpellSpecializations) {
+                    if (specialization.BlueprintParameterVariants.Any(bp => bp.deserializedGuid == spell.AssetGuid)) {
+                        continue;
+                    }
+                    specialization.BlueprintParameterVariants = specialization.BlueprintParameterVariants.AppendToArray(spell.ToReference<AnyBlueprintReference>());
                 }
             }
         }
@@ -119,6 +129,14 @@ namespace TabletopTweaks.Core.Utilities {
             result[(int)SpellSchool.Transmutation] = new SpellSchool[] { SpellSchool.Enchantment, SpellSchool.Illusion };
             return result;
         });
+        private static readonly BlueprintFeatureSelection SpellSpecializationSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("fe67bc3b04f1cd542b4df6e28b6e0ff5");
+        private static readonly BlueprintParametrizedFeature[] SpellSpecializations = SpellSpecializationSelection.AllFeatures
+            .Concat(SpellSpecializationSelection.Features)
+            .Append(BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("f327a765a4353d04f872482ef3e48c35") /*SpellSpecializationFirst*/)
+            .Distinct()
+            .OfType<BlueprintParametrizedFeature>()
+            .ToArray();
+
         /// <summary>
         /// Generates a new spell level entry with the speicified quantity.
         /// </summary>
