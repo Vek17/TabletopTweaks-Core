@@ -17,7 +17,7 @@ namespace TabletopTweaks.Core.NewEvents {
     /// <summary>
     /// Event handler for the Demoralize action.
     /// </summary>
-    public interface IDemoralizeHandler : IGlobalSubscriber {
+    public interface IInitiatorDemoralizeHandler : IUnitSubscriber {
         /// <summary>
         /// Fires at the end of Demoralize.RunAction() if the intimidate check is successful.
         /// </summary>
@@ -42,7 +42,8 @@ namespace TabletopTweaks.Core.NewEvents {
         internal static class Demoralize_RunAction {
             private static void NotifyIntimidateSuccess(
                 Demoralize action, RuleSkillCheck intimidateCheck, Buff appliedBuff) {
-                EventBus.RaiseEvent<IDemoralizeHandler>(
+                EventBus.RaiseEvent<IInitiatorDemoralizeHandler>(
+                    action.Context?.MaybeCaster,
                     h => h.AfterIntimidateSuccess(action, intimidateCheck, appliedBuff));
             }
 
