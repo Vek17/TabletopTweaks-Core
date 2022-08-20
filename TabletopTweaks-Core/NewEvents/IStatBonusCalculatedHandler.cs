@@ -39,12 +39,12 @@ namespace TabletopTweaks.Core.NewEvents {
 
                     var codes = new List<CodeInstruction>(instructions);
                     int target = FindInsertionTarget(codes);
-                    //Utilities.ILUtils.LogIL(codes);
+                    //Utilities.ILUtils.LogIL(TTTContext, codes);
                     codes.InsertRange(target, new CodeInstruction[] {
-                    new CodeInstruction(OpCodes.Ldarg_0),
-                    new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
-                });
-                    //Utilities.ILUtils.LogIL(codes);
+                        new CodeInstruction(OpCodes.Ldarg_0),
+                        new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
+                    });
+                    //Utilities.ILUtils.LogIL(TTTContext, codes);
                     return codes.AsEnumerable();
                 }
                 private static int FindInsertionTarget(List<CodeInstruction> codes) {
@@ -77,24 +77,24 @@ namespace TabletopTweaks.Core.NewEvents {
 
                     var codes = new List<CodeInstruction>(instructions);
                     int target = FindInsertionTarget(codes);
-                    //Utilities.ILUtils.LogIL(codes);
+                    //Utilities.ILUtils.LogIL(TTTContext, codes);
                     codes.InsertRange(target, new CodeInstruction[] {
-                    new CodeInstruction(OpCodes.Ldarg_0),
-                    new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
-                });
+                        new CodeInstruction(OpCodes.Ldarg_0),
+                        new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
+                    });
                     target = FindInsertionTarget(codes, target);
                     codes.InsertRange(target, new CodeInstruction[] {
-                    new CodeInstruction(OpCodes.Ldarg_0),
-                    new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
-                });
-                    //Utilities.ILUtils.LogIL(codes);
+                        new CodeInstruction(OpCodes.Ldarg_0),
+                        new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
+                    });
+                    //Utilities.ILUtils.LogIL(TTTContext, codes);
                     return codes.AsEnumerable();
                 }
                 private static int FindInsertionTarget(List<CodeInstruction> codes, int startingIndex = 0) {
                     int target = startingIndex;
                     for (int i = startingIndex; i < codes.Count; i++) {
                         //Find where the modifier is added and grab the load of the value varriable
-                        if (codes[i].opcode == OpCodes.Ldloc_1) { target = i + 1; }
+                        if (codes[i].opcode == OpCodes.Ldloc_1) { target = i + 2; }
                         if (codes[i].Calls(Modifier_AddModifier) && target != startingIndex) {
                             return target;
                         }
@@ -122,9 +122,9 @@ namespace TabletopTweaks.Core.NewEvents {
                     int target = FindInsertionTarget(codes);
                     //Utilities.ILUtils.LogIL(codes);
                     codes.InsertRange(target, new CodeInstruction[] {
-                    new CodeInstruction(OpCodes.Ldarg_0),
-                    new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
-                });
+                        new CodeInstruction(OpCodes.Ldarg_0),
+                        new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
+                    });
                     //Utilities.ILUtils.LogIL(codes);
                     return codes.AsEnumerable();
                 }
@@ -132,7 +132,7 @@ namespace TabletopTweaks.Core.NewEvents {
                     int target = 0;
                     for (int i = 0; i < codes.Count; i++) {
                         //Find where the modifier is added and grab the load of the value varriable
-                        if (codes[i].opcode == OpCodes.Ldloc_1) { target = i + 1; }
+                        if (codes[i].opcode == OpCodes.Ldloc_1) { target = i + 2; }
                         if (codes[i].Calls(Modifier_AddModifierUnique)) {
                             return target;
                         }
@@ -166,9 +166,9 @@ namespace TabletopTweaks.Core.NewEvents {
                     int target = FindInsertionTarget(codes);
                     //Utilities.ILUtils.LogIL(TTTContext, codes);
                     codes.InsertRange(target, new CodeInstruction[] {
-                    new CodeInstruction(OpCodes.Ldarg_0),
-                    new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
-                });
+                        new CodeInstruction(OpCodes.Ldarg_0),
+                        new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
+                    });
                     //Utilities.ILUtils.LogIL(TTTContext, codes);
                     return codes.AsEnumerable();
                 }

@@ -80,12 +80,7 @@ namespace TabletopTweaks.Core.NewComponents {
             int num = GetMaxBonus(base.Owner.Body.Armor);
             ModifiableValue stat = base.Owner.Stats.GetStat(Stat);
             int num2 = num * Multiplier;
-            AddWeaponEnhancementBonusToStat.ComponentData maybeData = base.MaybeData;
-            PowerfulChangeType? powerfulChangeType = (maybeData != null) ? new PowerfulChangeType?(maybeData.PowerfulChange) : null;
-            num2 = Kingmaker.UnitLogic.FactLogic.AddStatBonus.TryApplyArcanistPowerfulChange(base.Fact, Stat, num2, ref powerfulChangeType);
-            if (powerfulChangeType != null) {
-                base.Data.PowerfulChange = powerfulChangeType.Value;
-            }
+            num2 += Kingmaker.UnitLogic.FactLogic.AddStatBonus.CalculatePowerfulChangeBonus(base.Fact, Stat);
             if (num2 != 0) {
                 stat.RemoveModifiersFrom(base.Runtime);
                 stat.AddModifier(num2, base.Runtime, Descriptor);
