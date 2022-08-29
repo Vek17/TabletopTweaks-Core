@@ -9,5 +9,6 @@
   "ManagerVersion": "0.23.0",
   "Repository": "https://raw.githubusercontent.com/Vek17/TabletopTweaks-Core/master/Repository.json",
   "Requirements": [],
+  "LoadAfter": ["MewsiferConsole.Mod"],
   "Version": "0.4.3"
 }

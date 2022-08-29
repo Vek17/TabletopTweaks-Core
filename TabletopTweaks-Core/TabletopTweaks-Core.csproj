@@ -203,6 +203,7 @@
     <Compile Include="NewEvents\IActivatableAbilityGetCommandTypeHandler.cs" />
     <Compile Include="NewEvents\IAddModifierHandler.cs" />
     <Compile Include="NewEvents\ICriticalRangeCalculatedHandler.cs" />
+    <Compile Include="NewEvents\IDemoralizeHandler.cs" />
     <Compile Include="NewEvents\IStatBonusCalculatedHandler.cs" />
     <Compile Include="NewEvents\IBlueprintCacheInitHandler.cs" />
     <Compile Include="NewEvents\ILocaleChangedHandler.cs" />
