@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bugfixes\General\ContextRankConfigFix.cs" />
+    <Compile Include="Bugfixes\General\PropertyFixes.cs" />
     <Compile Include="Bugfixes\General\RuleCalculateCMDFix.cs" />
     <Compile Include="Config\Blueprints.cs" />
     <EmbeddedResource Include="Config\Blueprints.json" />
