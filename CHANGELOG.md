@@ -1,4 +1,8 @@
-## Version 0.4.3
+## Version 0.4.5
+* Release for 1.4.0
+* IInitiatorDemoralizeHandler added.
+
+## Version 0.4.4
 
 * IStatBonusCalculatedHandler handles more component types.
 
