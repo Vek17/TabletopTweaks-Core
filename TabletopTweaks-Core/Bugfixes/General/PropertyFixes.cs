@@ -5,7 +5,7 @@ using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace TabletopTweaks.Core.Bugfixes.General {
     internal class PropertyFixes {
-        [HarmonyPatch(typeof(ClassLevelGetter), nameof(ClassLevelGetter.GetBaseValue))]
+        //[HarmonyPatch(typeof(ClassLevelGetter), nameof(ClassLevelGetter.GetBaseValue))]
         static class AbilityData_RequireFullRoundAction_QuickStudy_Patch {
             static void Postfix(ClassLevelGetter __instance, UnitEntityData unit, ref int __result) {
                 if (__instance.Archetype != null) {

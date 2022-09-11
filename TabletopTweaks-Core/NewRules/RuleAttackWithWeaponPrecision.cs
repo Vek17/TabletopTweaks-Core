@@ -6,6 +6,10 @@ using Kingmaker.Items;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.UI.Models.Log.Events;
+using Kingmaker.UI.Models.Log;
+using TabletopTweaks.Core.Utilities;
+using System;
 
 namespace TabletopTweaks.Core.NewRules {
     class RuleAttackWithWeaponPrecision : RuleAttackWithWeapon {
@@ -36,6 +40,21 @@ namespace TabletopTweaks.Core.NewRules {
             this.MeleeDamage = ruleAttackWithWeaponResolve.Damage;
             this.ResolveRules.Add(ruleAttackWithWeaponResolve);
             context.Trigger<RuleAttackWithWeaponResolve>(ruleAttackWithWeaponResolve);
+        }
+
+        [PostPatchInitialize]
+        private static void SetupGameLogEvents() {
+            Type RuleType = typeof(RuleAttackWithWeaponPrecision);
+            if (!GameLogEventsFactory.Creators.ContainsKey(RuleType)) {
+                Type gameLogEventType = typeof(GameLogRuleEvent<>).MakeGenericType(new Type[]
+                {
+                    RuleType
+                });
+                GameLogEventsFactory.Creators.Add(RuleType, (RulebookEvent rule) => (GameLogEvent)Activator.CreateInstance(gameLogEventType, new object[]
+                {
+                    rule
+                }));
+            }
         }
     }
 }
