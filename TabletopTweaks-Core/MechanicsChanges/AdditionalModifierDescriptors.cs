@@ -104,11 +104,11 @@ namespace TabletopTweaks.Core.MechanicsChanges {
 
             void InsertBefore(ModifierDescriptor value, ModifierDescriptor before) {
                 ModifierDescriptorComparer.SortedValues = ModifierDescriptorComparer
-                .SortedValues.InsertBeforeElement(value, before);
+                    .SortedValues.InsertBeforeElement(value, before);
             };
             void InsertAfter(ModifierDescriptor value, ModifierDescriptor after) {
                 ModifierDescriptorComparer.SortedValues = ModifierDescriptorComparer
-                .SortedValues.InsertAfterElement(value, after);
+                    .SortedValues.InsertAfterElement(value, after);
             };
         }
 
@@ -117,15 +117,25 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             static SortedDictionary<ModifierDescriptor, int> order;
 
             static bool Prefix(ModifierDescriptorComparer __instance, ModifierDescriptor x, ModifierDescriptor y, ref int __result) {
-                if (order == null) {
-                    order = new SortedDictionary<ModifierDescriptor, int>();
-                    int i = 0;
-                    for (i = 0; i < ModifierDescriptorComparer.SortedValues.Length; i++) {
-                        order[ModifierDescriptorComparer.SortedValues[i]] = i;
+                if (IsTTTDescriptor(x) || IsTTTDescriptor(y)) { 
+                    if (order == null) {
+                        order = new SortedDictionary<ModifierDescriptor, int>();
+                        int i = 0;
+                        for (i = 0; i < ModifierDescriptorComparer.SortedValues.Length; i++) {
+                            order[ModifierDescriptorComparer.SortedValues[i]] = i;
+                        }
                     }
+                    __result = order.Get(x).CompareTo(order.Get(y));
+                    return false;
                 }
-                __result = order.Get(x).CompareTo(order.Get(y));
-                return false;
+                return true;
+            }
+
+            private static bool IsTTTDescriptor(ModifierDescriptor desc) {
+                return Enum.IsDefined(typeof(NaturalArmor), desc) 
+                    || Enum.IsDefined(typeof(Dodge), desc)
+                    || Enum.IsDefined(typeof(Untyped), desc)
+                    || Enum.IsDefined(typeof(Enhancement), desc);
             }
         }
 
