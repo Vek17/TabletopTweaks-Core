@@ -5,6 +5,7 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
+using System;
 
 namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintUnitFact))]
@@ -29,7 +30,7 @@ namespace TabletopTweaks.Core.NewComponents {
             if (Type == OutcomingAdditionalDamageAndHealingModifier.ModifyingType.OnlyDamage) {
                 return;
             }
-            evt.ModifierBonus = (ModifierPercents.Calculate(base.Fact.MaybeContext) / 100f) + (evt.ModifierBonus ?? 1f);
+            evt.AddModifierBonus(ModifierPercents.Calculate(base.Fact.MaybeContext) / 100f, this.Fact);
         }
 
         public void OnEventDidTrigger(RuleHealDamage evt) {

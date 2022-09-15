@@ -127,9 +127,9 @@ namespace TabletopTweaks.Core.NewUnitParts {
                 if (baseDamage.Type != DamageType.Force && baseDamage.Type != DamageType.Direct && (energyDamage == null || energyDamage.EnergyType != DamageEnergyType.PositiveEnergy) && (energyDamage == null || energyDamage.EnergyType != DamageEnergyType.Holy) && (energyDamage == null || energyDamage.EnergyType != DamageEnergyType.Unholy) && (energyDamage == null || energyDamage.EnergyType != DamageEnergyType.Divine)) {
                     evt.CritImmunity = true;
                     if ((baseDamage.Precision && !evt.Initiator.CustomMechanicsFeature(CustomMechanicsFeature.BypassSneakAttackImmunity)) || (physicalDamage != null && physicalDamage.EnchantmentTotal < 1)) {
-                        baseDamage.AddDecline(new DamageDecline(DamageDeclineType.Total, __instance));
+                        baseDamage.AddDecline(new DamageDecline(DamageDeclineType.Total, __instance.Fact));
                     } else {
-                        baseDamage.AddDecline(new DamageDecline(DamageDeclineType.ByHalf, __instance));
+                        baseDamage.AddDecline(new DamageDecline(DamageDeclineType.ByHalf, __instance.Fact));
                     }
                 }
             }

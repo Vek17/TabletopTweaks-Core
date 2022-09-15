@@ -20,12 +20,12 @@ namespace TabletopTweaks.Core.NewComponents {
             DamageTypeDescription description = GenerateTypeDescriptiron(WeaponDamage);
 
             BaseDamage additionalDamage = description.CreateDamage(
-                dice: new DiceFormula(WeaponDamage.Dice.Rolls * BonusDamageMultiplier, WeaponDamage.Dice.Dice),
+                dice: new DiceFormula(WeaponDamage.Dice.ModifiedValue.Rolls * BonusDamageMultiplier, WeaponDamage.Dice.ModifiedValue.Dice),
                 bonus: WeaponDamage.Bonus * BonusDamageMultiplier
             );
             additionalDamage.SourceFact = base.Fact;
             var DamageBonus = base.Owner.Ensure<OutgoingWeaponDamageBonus>();
-            DamageBonus.AddBonus(evt, additionalDamage);
+            DamageBonus.AddBonus(evt, additionalDamage, this.Fact);
         }
 
         public void OnEventDidTrigger(RuleCalculateDamage evt) {

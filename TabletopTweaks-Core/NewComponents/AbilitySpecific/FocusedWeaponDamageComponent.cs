@@ -32,7 +32,9 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
                     >= 20 => new DiceFormula(2, DiceType.D8),
                     _ => null
                 };
-                evt.WeaponDamageDiceOverride = formula;
+                if (formula is not null) {
+                    evt.WeaponDamageDice.Modify(formula.Value, base.Fact);
+                }
             }
         }
 

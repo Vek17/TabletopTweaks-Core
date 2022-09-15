@@ -30,7 +30,7 @@ namespace TabletopTweaks.Core.NewComponents {
             }
             foreach (BaseDamage baseDamage in evt.DamageBundle) {
                 if (!baseDamage.Precision) {
-                    int bonus = UseContextBonus ? (Value.Calculate(context) * baseDamage.Dice.Rolls) : baseDamage.Dice.Rolls;
+                    int bonus = UseContextBonus ? (Value.Calculate(context) * baseDamage.Dice.ModifiedValue.Rolls) : baseDamage.Dice.ModifiedValue.Rolls;
                     baseDamage.AddModifier(bonus, base.Fact);
                 }
             }

@@ -67,12 +67,12 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                     ModifierDescriptor modDescriptor = m.ModDescriptor;
                     return
                         FilterIsDodgeOriginal(m)
-                        || modDescriptor == (ModifierDescriptor)Dodge.Strength
-                        || modDescriptor == (ModifierDescriptor)Dodge.Dexterity
-                        || modDescriptor == (ModifierDescriptor)Dodge.Constitution
-                        || modDescriptor == (ModifierDescriptor)Dodge.Intelligence
-                        || modDescriptor == (ModifierDescriptor)Dodge.Wisdom
-                        || modDescriptor == (ModifierDescriptor)Dodge.Charisma;
+                            || modDescriptor == (ModifierDescriptor)Dodge.Strength
+                            || modDescriptor == (ModifierDescriptor)Dodge.Dexterity
+                            || modDescriptor == (ModifierDescriptor)Dodge.Constitution
+                            || modDescriptor == (ModifierDescriptor)Dodge.Intelligence
+                            || modDescriptor == (ModifierDescriptor)Dodge.Wisdom
+                            || modDescriptor == (ModifierDescriptor)Dodge.Charisma;
                 };
                 var FilterIsDodge = AccessTools.Field(typeof(ModifiableValueArmorClass), "FilterIsDodge");
                 FilterIsDodge.SetValue(null, newFilterIsDodge);
@@ -81,34 +81,34 @@ namespace TabletopTweaks.Core.MechanicsChanges {
 
         [PostPatchInitialize]
         static void Update_ModifierDescriptorComparer_SortedValues() {
-            InsertAfter((ModifierDescriptor)NaturalArmor.Size, (ModifierDescriptor)NaturalArmor.Bonus);
-            InsertBefore((ModifierDescriptor)NaturalArmor.Stackable, (ModifierDescriptor)NaturalArmor.Bonus);
-            InsertBefore((ModifierDescriptor)Dodge.Strength, ModifierDescriptor.Dodge);
-            InsertBefore((ModifierDescriptor)Dodge.Dexterity, ModifierDescriptor.Dodge);
-            InsertBefore((ModifierDescriptor)Dodge.Constitution, ModifierDescriptor.Dodge);
-            InsertBefore((ModifierDescriptor)Dodge.Intelligence, ModifierDescriptor.Dodge);
-            InsertBefore((ModifierDescriptor)Dodge.Wisdom, ModifierDescriptor.Dodge);
-            InsertBefore((ModifierDescriptor)Dodge.Charisma, ModifierDescriptor.Dodge);
-            InsertAfter((ModifierDescriptor)Untyped.Strength, ModifierDescriptor.UntypedStackable);
-            InsertAfter((ModifierDescriptor)Untyped.Dexterity, ModifierDescriptor.UntypedStackable);
-            InsertAfter((ModifierDescriptor)Untyped.Constitution, ModifierDescriptor.UntypedStackable);
-            InsertAfter((ModifierDescriptor)Untyped.Intelligence, ModifierDescriptor.UntypedStackable);
-            InsertAfter((ModifierDescriptor)Untyped.Wisdom, ModifierDescriptor.UntypedStackable);
-            InsertAfter((ModifierDescriptor)Untyped.Charisma, ModifierDescriptor.UntypedStackable);
-            InsertAfter((ModifierDescriptor)Untyped.WeaponTraining, ModifierDescriptor.UntypedStackable);
-            InsertAfter((ModifierDescriptor)Untyped.WeaponFocus, ModifierDescriptor.UntypedStackable);
-            InsertAfter((ModifierDescriptor)Untyped.WeaponFocusGreater, ModifierDescriptor.UntypedStackable);
-            InsertAfter((ModifierDescriptor)Untyped.SpellFocus, ModifierDescriptor.UntypedStackable);
-            InsertAfter((ModifierDescriptor)Untyped.SpellFocusGreater, ModifierDescriptor.UntypedStackable);
-            InsertBefore((ModifierDescriptor)Enhancement.Weapon, ModifierDescriptor.Enhancement);
+            InsertAfter(NaturalArmor.Size, (ModifierDescriptor)NaturalArmor.Bonus);
+            InsertBefore(NaturalArmor.Stackable, (ModifierDescriptor)NaturalArmor.Bonus);
+            InsertBefore(Dodge.Strength, ModifierDescriptor.Dodge);
+            InsertBefore(Dodge.Dexterity, ModifierDescriptor.Dodge);
+            InsertBefore(Dodge.Constitution, ModifierDescriptor.Dodge);
+            InsertBefore(Dodge.Intelligence, ModifierDescriptor.Dodge);
+            InsertBefore(Dodge.Wisdom, ModifierDescriptor.Dodge);
+            InsertBefore(Dodge.Charisma, ModifierDescriptor.Dodge);
+            InsertAfter(Untyped.Strength, ModifierDescriptor.UntypedStackable);
+            InsertAfter(Untyped.Dexterity, ModifierDescriptor.UntypedStackable);
+            InsertAfter(Untyped.Constitution, ModifierDescriptor.UntypedStackable);
+            InsertAfter(Untyped.Intelligence, ModifierDescriptor.UntypedStackable);
+            InsertAfter(Untyped.Wisdom, ModifierDescriptor.UntypedStackable);
+            InsertAfter(Untyped.Charisma, ModifierDescriptor.UntypedStackable);
+            InsertAfter(Untyped.WeaponTraining, ModifierDescriptor.UntypedStackable);
+            InsertAfter(Untyped.WeaponFocus, ModifierDescriptor.UntypedStackable);
+            InsertAfter(Untyped.WeaponFocusGreater, ModifierDescriptor.UntypedStackable);
+            InsertAfter(Untyped.SpellFocus, ModifierDescriptor.UntypedStackable);
+            InsertAfter(Untyped.SpellFocusGreater, ModifierDescriptor.UntypedStackable);
+            InsertBefore(Enhancement.Weapon, ModifierDescriptor.Enhancement);
 
-            void InsertBefore(ModifierDescriptor value, ModifierDescriptor before) {
+            void InsertBefore(Enum value, ModifierDescriptor before) {
                 ModifierDescriptorComparer.SortedValues = ModifierDescriptorComparer
-                    .SortedValues.InsertBeforeElement(value, before);
+                    .SortedValues.InsertBeforeElement((ModifierDescriptor)value, before);
             };
-            void InsertAfter(ModifierDescriptor value, ModifierDescriptor after) {
+            void InsertAfter(Enum value, ModifierDescriptor after) {
                 ModifierDescriptorComparer.SortedValues = ModifierDescriptorComparer
-                    .SortedValues.InsertAfterElement(value, after);
+                    .SortedValues.InsertAfterElement((ModifierDescriptor)value, after);
             };
         }
 
@@ -132,10 +132,10 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             }
 
             private static bool IsTTTDescriptor(ModifierDescriptor desc) {
-                return Enum.IsDefined(typeof(NaturalArmor), desc) 
-                    || Enum.IsDefined(typeof(Dodge), desc)
-                    || Enum.IsDefined(typeof(Untyped), desc)
-                    || Enum.IsDefined(typeof(Enhancement), desc);
+                return Enum.IsDefined(typeof(NaturalArmor), (int)desc) 
+                    || Enum.IsDefined(typeof(Dodge), (int)desc)
+                    || Enum.IsDefined(typeof(Untyped), (int)desc)
+                    || Enum.IsDefined(typeof(Enhancement), (int)desc);
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using Kingmaker.RuleSystem;
+﻿using Kingmaker.EntitySystem;
+using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
@@ -6,7 +7,7 @@ using Kingmaker.UnitLogic;
 namespace TabletopTweaks.Core.NewUnitParts {
     public class OutgoingWeaponDamageBonus : UnitPart {
 
-        public void AddBonus(RuleCalculateDamage evt, BaseDamage additionalDamage) {
+        public void AddBonus(RuleCalculateDamage evt, BaseDamage additionalDamage, EntityFact source) {
             if (this.evt != evt) {
                 if (lastAttack == evt.ParentRule?.AttackRoll) { return; }
                 this.evt = evt;
@@ -17,7 +18,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
                 baseDamage = additionalDamage;
                 evt.ParentRule.m_DamageBundle.m_Chunks.Insert(1, baseDamage);
             } else {
-                baseDamage.Dice = new DiceFormula(baseDamage.Dice.Rolls + additionalDamage.Dice.Rolls, baseDamage.Dice.Dice);
+                baseDamage.Dice.Modify(new DiceFormula(baseDamage.Dice.ModifiedValue.Rolls + additionalDamage.Dice.ModifiedValue.Rolls, baseDamage.Dice.ModifiedValue.Dice), source);
                 baseDamage.Bonus += additionalDamage.Bonus;
             }
         }

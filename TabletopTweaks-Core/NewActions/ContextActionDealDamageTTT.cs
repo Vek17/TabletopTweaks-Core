@@ -219,9 +219,11 @@ namespace TabletopTweaks.Core.NewActions {
         private RuleDealDamage GetDamageRule(ContextActionDealDamage.DamageInfo info, out int bolsteredBonus) {
             bolsteredBonus = MetamagicHelper.GetBolsteredDamageBonus(base.Context, info.Dices);
             BaseDamage baseDamage = DamageType.GetDamageDescriptor(info.Dices, info.Bonus + bolsteredBonus).CreateDamage();
-            baseDamage.EmpowerBonus = (info.Empower ? 1.5f : baseDamage.EmpowerBonus);
+            if (info.Empower) {
+                baseDamage.EmpowerBonus.Set(1.5f, Metamagic.Empower);
+            }
             if (info.Maximize) {
-                baseDamage.CalculationType = DamageCalculationType.Maximized;
+                baseDamage.CalculationType.Set(DamageCalculationType.Maximized, Metamagic.Maximize);
             }
             baseDamage.CriticalModifier = ((info.CriticalModifier != null) ? new int?(info.CriticalModifier.GetValueOrDefault().IntValue()) : null);
             bool flag = info.PreRolledValue != null && Half && AlreadyHalved;
