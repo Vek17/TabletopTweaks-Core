@@ -1,9 +1,16 @@
 ﻿using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem;
+using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Abilities.Components;
+using System;
 using TabletopTweaks.Core.NewUnitParts;
+using TabletopTweaks.Core.Utilities;
+using static Kingmaker.Blueprints.Area.FactHolder;
+using static LayoutRedirectElement;
 
 namespace TabletopTweaks.Core.NewComponents {
     [TypeId("03f55b5c7cb0445ab32ce2c8d44704ec")]
@@ -18,24 +25,24 @@ namespace TabletopTweaks.Core.NewComponents {
 
             var WeaponDamage = evt.DamageBundle.First;
             DamageTypeDescription description = GenerateTypeDescriptiron(WeaponDamage);
-
-            BaseDamage additionalDamage = description.CreateDamage(
-                dice: new DiceFormula(WeaponDamage.Dice.ModifiedValue.Rolls * BonusDamageMultiplier, WeaponDamage.Dice.ModifiedValue.Dice),
-                bonus: WeaponDamage.Bonus * BonusDamageMultiplier
-            );
-            additionalDamage.SourceFact = base.Fact;
-            var DamageBonus = base.Owner.Ensure<OutgoingWeaponDamageBonus>();
-            DamageBonus.AddBonus(evt, additionalDamage, this.Fact);
+            DamageDescription damageDescriptor = description.GetDamageDescriptor(Helpers.CreateCopy(WeaponDamage.Dice.ModifiedValue), 0);
+            damageDescriptor.TemporaryContext(dd => {
+                dd.TypeDescription.Physical.Enhancement = description.Physical.Enhancement;
+                dd.TypeDescription.Physical.EnhancementTotal = description.Physical.EnhancementTotal;
+                dd.TypeDescription.Common.Alignment = WeaponDamage.AlignmentsMask;
+                dd.SourceFact = this.Fact;
+                if (BonusDamageMultiplier > 1) {
+                    dd.ModifyDice(new DiceFormula(damageDescriptor.m_DiceModifiers.ModifiedValue.Rolls * 2, damageDescriptor.m_DiceModifiers.ModifiedValue.Dice), this.Fact);
+                }
+                dd.AddModifier(new Modifier(WeaponDamage.Bonus * Math.Max(1, BonusDamageMultiplier), this.Fact, ModifierDescriptor.UntypedStackable));
+            });
+            evt.ParentRule.m_DamageBundle.m_Chunks.Insert(1, damageDescriptor.CreateDamage());
         }
 
         public void OnEventDidTrigger(RuleCalculateDamage evt) {
-#if false
-            OutgoingWeaponDamageBonus unitOutgoingWeaponDamageBonus = Owner.Get<OutgoingWeaponDamageBonus>();
-            if (!unitOutgoingWeaponDamageBonus) {
-                return;
+            if (RemoveAfterTrigger) {
+                base.Owner.RemoveFact(base.Fact);
             }
-            Owner.Remove<OutgoingWeaponDamageBonus>();
-#endif
         }
 
         private static DamageTypeDescription GenerateTypeDescriptiron(BaseDamage WeaponDamage) {
@@ -69,5 +76,6 @@ namespace TabletopTweaks.Core.NewComponents {
         }
 
         public int BonusDamageMultiplier = 1;
+        public bool RemoveAfterTrigger = false;
     }
 }
