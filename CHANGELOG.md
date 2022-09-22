@@ -1,6 +1,7 @@
 ## Version 0.5.0
 * Release for 2.0.0
 * Increased compatability with other mods that add ModifierDescriptors
+* Updated logic for AddOutgoingWeaponDamageBonus
 
 ## Version 0.4.5
 * Release for 1.4.0

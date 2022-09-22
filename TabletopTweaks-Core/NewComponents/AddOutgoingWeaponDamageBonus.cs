@@ -32,7 +32,7 @@ namespace TabletopTweaks.Core.NewComponents {
                 dd.TypeDescription.Common.Alignment = WeaponDamage.AlignmentsMask;
                 dd.SourceFact = this.Fact;
                 if (BonusDamageMultiplier > 1) {
-                    dd.ModifyDice(new DiceFormula(damageDescriptor.m_DiceModifiers.ModifiedValue.Rolls * 2, damageDescriptor.m_DiceModifiers.ModifiedValue.Dice), this.Fact);
+                    dd.ModifyDice(new DiceFormula(damageDescriptor.Dice.Rolls * BonusDamageMultiplier, damageDescriptor.Dice.Dice), this.Fact);
                 }
                 dd.AddModifier(new Modifier(WeaponDamage.Bonus * Math.Max(1, BonusDamageMultiplier), this.Fact, ModifierDescriptor.UntypedStackable));
             });

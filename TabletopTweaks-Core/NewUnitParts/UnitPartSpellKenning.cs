@@ -100,7 +100,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
         private readonly List<SpellKenningSpellListsBooks> Spellbooks = new();
         private BlueprintAbilityResourceReference m_Resource;
 
-        private class SpellKenningSpellLists {
+        internal class SpellKenningSpellLists {
             [JsonProperty]
             public BlueprintSpellListReference SpellList;
             [JsonProperty]
@@ -112,7 +112,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
                 Source = source;
             }
         }
-        private class SpellKenningSpellListsBooks {
+        internal class SpellKenningSpellListsBooks {
             [JsonProperty]
             public BlueprintSpellbookReference Spellbook;
             [JsonProperty]
@@ -157,7 +157,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
                 }
             }
         }
-        private class SpellKenningResourceOverride : IAbilityResourceLogic {
+        internal class SpellKenningResourceOverride : IAbilityResourceLogic {
             public SpellKenningResourceOverride() : base() { }
 
             public BlueprintAbilityResource RequiredResource => m_RequiredResource.Get();
