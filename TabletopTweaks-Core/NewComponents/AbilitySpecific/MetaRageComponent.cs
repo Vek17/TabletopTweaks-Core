@@ -111,7 +111,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
                     break;
             }
             if (MetamagicExtention.HasFavoriteMetamagic(unit, metamagic)) {
-                return metamagic.DefaultCost() - 1;
+                return metamagic.DefaultCost() - MetamagicExtention.GetFavoriteMetamagicAdjustment(unit, metamagic); ;
             }
             return metamagic.DefaultCost();
         }

@@ -11,6 +11,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Web;
 using TabletopTweaks.Core.ModLogic;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
@@ -23,16 +24,31 @@ namespace TabletopTweaks.Core.MechanicsChanges {
 
         [Flags]
         public enum CustomMetamagic {
-            // Owlcat stops at 1 << 9
+            // Owlcat Enums
+            Empower = 1 << 0,
+            Maximize = 1 << 1,
+            Quicken = 1 << 2,
+            Extend = 1 << 3,
+            Heighten = 1 << 4,
+            Reach = 1 << 5,
+            CompletelyNormal = 1 << 6,
+            Persistent = 1 << 7,
+            Selective = 1 << 8,
+            Bolstered = 1 << 9,
+            // Unused Buffer Space
             Intensified = 1 << 12,
             Dazing = 1 << 13,
-            //Unused Space
+            //Unused Buffer Space
             Rime = 1 << 16,
             Burning = 1 << 17,
             Flaring = 1 << 18,
             Piercing = 1 << 19,
             SolidShadows = 1 << 20,
             Encouraging = 1 << 21,
+            ElementalAcid = 1 << 22,
+            ElementalCold = 1 << 23,
+            ElementalElectricity = 1 << 24,
+            ElementalFire = 1 << 25,
         }
 
         public static void RegisterMetamagic(
@@ -43,15 +59,39 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             int defaultCost,
             CustomMechanicsFeature? favoriteMetamagic,
             ISubscriber metamagicMechanics = null) {
+            RegisterMetamagic(
+                context: context,
+                metamagic: metamagic,
+                name: name,
+                icon: icon,
+                defaultCost: defaultCost,
+                favoriteMetamagic: favoriteMetamagic,
+                favoriteMetamaticAdjustment: 1,
+                metamagicMechanics: metamagicMechanics
+            );
+        }
+
+        public static void RegisterMetamagic(
+            ModContextBase context,
+            Metamagic metamagic,
+            string name,
+            Sprite icon,
+            int defaultCost,
+            CustomMechanicsFeature? favoriteMetamagic,
+            int favoriteMetamaticAdjustment,
+            ISubscriber metamagicMechanics = null) {
             var metamagicData = new CustomMetamagicData() {
                 Name = name == null ? null : Helpers.CreateString(context, $"{name}SpellMetamagic", name),
                 Icon = icon,
                 DefaultCost = defaultCost,
-                FavoriteMetamagic = favoriteMetamagic
+                FavoriteMetamagic = favoriteMetamagic,
+                FavoriteMetamaticAdjustment = favoriteMetamaticAdjustment
             };
-            RegisteredMetamagic.Add(metamagic, metamagicData);
-            if (metamagicMechanics != null) {
-                EventBus.Subscribe(metamagicMechanics);
+            if (!RegisteredMetamagic.ContainsKey(metamagic)) {
+                RegisteredMetamagic.Add(metamagic, metamagicData);
+                if (metamagicMechanics != null) {
+                    EventBus.Subscribe(metamagicMechanics);
+                }
             }
         }
 
@@ -73,6 +113,12 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             return result?.DefaultCost ?? 0;
         }
 
+        public static int GetFavoriteMetamagicAdjustment(UnitDescriptor unit, Metamagic metamagic) {
+            CustomMetamagicData result;
+            RegisteredMetamagic.TryGetValue(metamagic, out result);
+            return result?.FavoriteMetamaticAdjustment ?? 1;
+        }
+
         public static bool HasFavoriteMetamagic(UnitDescriptor unit, Metamagic metamagic) {
             CustomMetamagicData result;
             RegisteredMetamagic.TryGetValue(metamagic, out result);
@@ -90,6 +136,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             public Sprite Icon;
             public int DefaultCost;
             public CustomMechanicsFeature? FavoriteMetamagic;
+            public int FavoriteMetamaticAdjustment = 1;
         }
 
         public static bool IsNewMetamagic(this Metamagic metamagic) {
@@ -102,7 +149,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                 var lv_adjustment = 0;
                 foreach (var metamagic in __instance.AppliedMetamagics) {
                     if (MetamagicExtention.HasFavoriteMetamagic(__instance.Initiator, metamagic)) {
-                        lv_adjustment++;
+                        lv_adjustment += MetamagicExtention.GetFavoriteMetamagicAdjustment(__instance.Initiator, metamagic);
                     }
                 }
                 __instance.Result.SpellLevelCost -= lv_adjustment;
@@ -206,7 +253,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         static class SpellbookMetamagicSelectorVM_GetCost_NewMetamagic_Patch {
             private static void Postfix(SpellbookMetamagicSelectorVM __instance, ref int __result, Metamagic metamagic) {
                 if (MetamagicExtention.HasFavoriteMetamagic(__instance.m_Unit.Value, metamagic)) {
-                    __result--;
+                    __result -= MetamagicExtention.GetFavoriteMetamagicAdjustment(__instance.m_Unit.Value, metamagic);
                 }
             }
         }

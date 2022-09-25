@@ -56,12 +56,14 @@ namespace TabletopTweaks.Core.NewUnitParts {
             FavoriteMetamagicPiercing,
             FavoriteMetamagicSolidShadows,
             FavoriteMetamagicEncouraging,
+            FavoriteMetamagicElemental,
             IdealizeDiscovery,
             IdealizeDiscoveryUpgrade,
             BypassSneakAttackImmunity,
             BypassCriticalHitImmunity,
             TricksterReworkPersuasion2,
-            TricksterReworkPersuasion3
+            TricksterReworkPersuasion3,
+            ElementalSpellSplitDamage
         }
     }
     public static class CustomMechanicsFeaturesExtentions {
