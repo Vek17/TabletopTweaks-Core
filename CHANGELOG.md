@@ -2,6 +2,7 @@
 * Release for 2.0.0
 * Increased compatability with other mods that add ModifierDescriptors
 * Updated logic for AddOutgoingWeaponDamageBonus
+* Fixed issue with ApendToArray's null handling
 
 ## Version 0.4.5
 * Release for 1.4.0

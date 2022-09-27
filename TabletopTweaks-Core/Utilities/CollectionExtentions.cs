@@ -93,6 +93,7 @@ namespace TabletopTweaks.Core.Utilities {
         /// New array with the additional values appended to the end of it.
         /// </returns>
         public static T[] AppendToArray<T>(this T[] array, params T[] values) {
+            if (values is null) { return array; }
             var len = array.Length;
             var valueLen = values.Length;
             var result = new T[len + valueLen];
