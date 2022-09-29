@@ -19,6 +19,7 @@ using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using TabletopTweaks.Core.ModLogic;
 using TabletopTweaks.Core.NewComponents;
 
@@ -125,15 +126,15 @@ namespace TabletopTweaks.Core.Utilities {
                     m_CheckedFact = bloodline.ToReference<BlueprintUnitFactReference>()
                 }
             );
-            power.AddComponent(new PrerequisiteNoFeature() {
-                CheckInProgression = true,
-                Group = Prerequisite.GroupType.Any,
-                m_Feature = PrimalistProgression.ToReference<BlueprintFeatureReference>()
+            power.AddPrerequisite<PrerequisiteNoFeature>(p => {
+                p.CheckInProgression = true;
+                p.Group = Prerequisite.GroupType.Any;
+                p.m_Feature = PrimalistProgression.ToReference<BlueprintFeatureReference>();
             });
-            power.AddComponent(new PrerequisiteFeature() {
-                CheckInProgression = true,
-                Group = Prerequisite.GroupType.Any,
-                m_Feature = power.ToReference<BlueprintFeatureReference>()
+            power.AddPrerequisite<PrerequisiteNoFeature>(p => {
+                p.CheckInProgression = true;
+                p.Group = Prerequisite.GroupType.Any;
+                p.m_Feature = power.ToReference<BlueprintFeatureReference>();
             });
             BlueprintFeature SelectedPrimalistLevel() {
                 switch (level) {
@@ -203,11 +204,13 @@ namespace TabletopTweaks.Core.Utilities {
         public static void RegisterSorcererBloodline(BlueprintProgression bloodline) {
             BlueprintFeatureSelection SorcererBloodlineSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("24bef8d1bee12274686f6da6ccbc8914");
             BlueprintFeatureSelection EldritchScionBloodlineSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("94c29f69cdc34594a6a4677441ed7375");
+            BlueprintFeatureSelection NineTailedHeirBloodlineSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("7c813fb495d74246918a690ba86f9c86");
             BlueprintFeatureSelection SecondBloodline = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("3cf2ab2c320b73347a7c21cf0d0995bd");
             BlueprintFeatureSelection BloodlineAscendance = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("ce85aee1726900641ab53ede61ac5c19");
 
             EldritchScionBloodlineSelection.AddFeatures(bloodline);
             SorcererBloodlineSelection.AddFeatures(bloodline);
+            NineTailedHeirBloodlineSelection.AddFeatures(bloodline);
             SecondBloodline.m_AllFeatures = SecondBloodline.m_AllFeatures.AppendToArray(bloodline.ToReference<BlueprintFeatureReference>());
 
             var capstone = bloodline.LevelEntries.Where(entry => entry.Level == 20).First().Features[0];

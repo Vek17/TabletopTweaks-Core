@@ -1,3 +1,6 @@
+## Version 0.5.1
+* BloodlineTools now properly handles Nine Tailed Heir
+
 ## Version 0.5.0
 * Release for 2.0.0
 * Increased compatability with other mods that add ModifierDescriptors
