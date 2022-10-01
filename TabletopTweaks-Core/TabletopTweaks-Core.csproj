@@ -159,6 +159,7 @@
     <Compile Include="Bugfixes\General\PropertyFixes.cs" />
     <Compile Include="Bugfixes\General\RuleCalculateCMDFix.cs" />
     <Compile Include="Config\Blueprints.cs" />
+    <Compile Include="Utilities\VenderTools.cs" />
     <EmbeddedResource Include="Config\Blueprints.json" />
     <Compile Include="Config\ICollapseableGroup.cs" />
     <Compile Include="Config\IDisableableGroup.cs" />
@@ -169,6 +170,7 @@
     <Compile Include="Config\NestedSettingGroup.cs" />
     <Compile Include="Config\SettingGroup.cs" />
     <Compile Include="NewActions\AbilityCustomCleaveTTT.cs" />
+    <Compile Include="NewActions\ContextActionApplyBuffRanks.cs" />
     <Compile Include="NewActions\ContextActionCleaveAttack.cs" />
     <Compile Include="NewActions\ContextActionDisjointEnchantments.cs" />
     <Compile Include="NewComponents\AbilitySpecific\AddFeatureOnClassLevelToPlayers.cs" />

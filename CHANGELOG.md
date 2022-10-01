@@ -1,5 +1,11 @@
 ## Version 0.5.1
 * BloodlineTools now properly handles Nine Tailed Heir
+* New Components
+	* ContextActionApplyBuffRanks
+		* Adds buffs like ContextActionApplyBuff but with the ability to apply multiple ranks of a buff.
+* New Utilities
+	* VenderTools
+		* Adds methods for adding some types of Items to vender lists dynamicly.
 
 ## Version 0.5.0
 * Release for 2.0.0
