@@ -4,7 +4,7 @@
   "DisplayName": "Tabletop Tweaks Core",
   "EntryMethod": "TabletopTweaks.Core.Main.Load",
   "GameVersion": "2.0.0",
-  "HomePage": "https://github.com/Vek17/TabletopTweaks-Core/releases",
+  "HomePage": "https://github.com/Vek17/TabletopTweaks-Core",
   "Id": "TabletopTweaks-Core",
   "ManagerVersion": "0.23.0",
   "Repository": "https://raw.githubusercontent.com/Vek17/TabletopTweaks-Core/master/Repository.json",
