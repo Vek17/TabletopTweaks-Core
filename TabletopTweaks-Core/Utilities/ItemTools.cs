@@ -339,6 +339,7 @@ namespace TabletopTweaks.Core.Utilities {
                 bp.Charges = 1;
                 bp.CasterLevel = casterLevel;
                 bp.SpellLevel = spellLevel;
+                bp.DC = 10 + spellLevel + (spellLevel / 2);
                 bp.m_DisplayNameText = Helpers.CreateString(modContext, $"{bp.name}.Name", "");
                 bp.m_DescriptionText = Helpers.CreateString(modContext, $"{bp.name}.Description", "");
                 bp.m_FlavorText = Helpers.CreateString(modContext, $"{bp.name}.Flavor", "");
@@ -374,6 +375,7 @@ namespace TabletopTweaks.Core.Utilities {
                 bp.Charges = 1;
                 bp.CasterLevel = casterLevel;
                 bp.SpellLevel = spellLevel;
+                bp.DC = 10 + spellLevel + (spellLevel / 2);
                 bp.m_DisplayNameText = Helpers.CreateString(modContext, $"{bp.name}.Name", "");
                 bp.m_DescriptionText = Helpers.CreateString(modContext, $"{bp.name}.Description", "");
                 bp.m_FlavorText = Helpers.CreateString(modContext, $"{bp.name}.Flavor", "");

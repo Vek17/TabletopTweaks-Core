@@ -47,6 +47,7 @@ namespace TabletopTweaks.Core.Utilities {
                     scrolls += c.Count;
                     return true;
                 });
+                if (count == 0) { return; }
                 var quantity = scrolls / count;
                 table.AddComponent<LootItemsPackFixed>(c => {
                     c.m_Item = CreateLootItem(scroll);
@@ -86,15 +87,15 @@ namespace TabletopTweaks.Core.Utilities {
                     return maybePotion.SpellLevel == potion.SpellLevel;
                 })).ToArray();
             filteredList.ForEach(table => {
-                var scrolls = 0;
+                var potions = 0;
                 var count = table.GetComponents<LootItemsPackFixed>().Count(c => {
-                    var maybeScroll = c.Item.Item as BlueprintItemEquipmentUsable;
-                    if (maybeScroll == null || maybeScroll.Type != UsableItemType.Scroll || maybeScroll.SpellLevel != potion.SpellLevel) { return false; }
-                    scrolls += c.Count;
+                    var maybePotion = c.Item.Item as BlueprintItemEquipmentUsable;
+                    if (maybePotion == null || maybePotion.Type != UsableItemType.Potion || maybePotion.SpellLevel != potion.SpellLevel) { return false; }
+                    potions += c.Count;
                     return true;
                 });
                 if (count == 0) { return; }
-                var quantity = scrolls / count;
+                var quantity = potions / count;
                 table.AddComponent<LootItemsPackFixed>(c => {
                     c.m_Item = CreateLootItem(potion);
                     c.m_Count = quantity;
