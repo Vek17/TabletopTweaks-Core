@@ -6,7 +6,6 @@ using Kingmaker.Blueprints.Loot;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace TabletopTweaks.Core.Utilities {
     public static class VenderTools {
@@ -19,7 +18,7 @@ namespace TabletopTweaks.Core.Utilities {
                 .Where(bp => bp.GetComponents<LootItemsPackFixed>().Any(c => {
                     var maybeScroll = c.Item.Item as BlueprintItemEquipmentUsable;
                     if (maybeScroll == null || maybeScroll.Type != UsableItemType.Scroll) { return false; }
-                    return maybeScroll.SpellLevel >= scroll.SpellLevel;
+                    return maybeScroll.SpellLevel == scroll.SpellLevel;
                 }))
                 .ForEach(table => {
                     table.AddComponent<LootItemsPackFixed>(c => {
@@ -28,6 +27,80 @@ namespace TabletopTweaks.Core.Utilities {
                     });
                     Main.TTTContext.Logger.Log($"Added {count} {scroll.name} to Vender {table.name}");
                 });
+        }
+
+        public static void AddScrollToLeveledVenders(BlueprintItemEquipmentUsable scroll) {
+            if (scroll == null) { return; }
+            if (scroll.Type != UsableItemType.Scroll) { return; }
+
+            var filteredList = SharedVenderLists.ScrollVenderTables
+                .Where(bp => bp.GetComponents<LootItemsPackFixed>().Any(c => {
+                    var maybeScroll = c.Item.Item as BlueprintItemEquipmentUsable;
+                    if (maybeScroll == null || maybeScroll.Type != UsableItemType.Scroll) { return false; }
+                    return maybeScroll.SpellLevel == scroll.SpellLevel;
+                })).ToArray();
+            filteredList.ForEach(table => {
+                var scrolls = 0;
+                var count = table.GetComponents<LootItemsPackFixed>().Count(c => {
+                    var maybeScroll = c.Item.Item as BlueprintItemEquipmentUsable;
+                    if (maybeScroll == null || maybeScroll.Type != UsableItemType.Scroll || maybeScroll.SpellLevel != scroll.SpellLevel) { return false; }
+                    scrolls += c.Count;
+                    return true;
+                });
+                var quantity = scrolls / count;
+                table.AddComponent<LootItemsPackFixed>(c => {
+                    c.m_Item = CreateLootItem(scroll);
+                    c.m_Count = quantity;
+                });
+                Main.TTTContext.Logger.Log($"Added {quantity} {scroll.name} to Vender {table.name}");
+            });
+        }
+
+        public static void AddPotionToLeveledVenders(BlueprintItemEquipmentUsable potion, int count) {
+            if (potion == null) { return; }
+            if (potion.Type != UsableItemType.Potion) { return; }
+
+            SharedVenderLists.PotionVenderTables
+                .Where(bp => bp.GetComponents<LootItemsPackFixed>().Any(c => {
+                    var maybePotion = c.Item.Item as BlueprintItemEquipmentUsable;
+                    if (maybePotion == null || maybePotion.Type != UsableItemType.Potion) { return false; }
+                    return maybePotion.SpellLevel == potion.SpellLevel;
+                }))
+                .ForEach(table => {
+                    table.AddComponent<LootItemsPackFixed>(c => {
+                        c.m_Item = CreateLootItem(potion);
+                        c.m_Count = count;
+                    });
+                    Main.TTTContext.Logger.Log($"Added {count} {potion.name} to Vender {table.name}");
+                });
+        }
+
+        public static void AddPotionToLeveledVenders(BlueprintItemEquipmentUsable potion) {
+            if (potion == null) { return; }
+            if (potion.Type != UsableItemType.Potion) { return; }
+
+            var filteredList = SharedVenderLists.PotionVenderTables
+                .Where(bp => bp.GetComponents<LootItemsPackFixed>().Any(c => {
+                    var maybePotion = c.Item.Item as BlueprintItemEquipmentUsable;
+                    if (maybePotion == null || maybePotion.Type != UsableItemType.Potion) { return false; }
+                    return maybePotion.SpellLevel == potion.SpellLevel;
+                })).ToArray();
+            filteredList.ForEach(table => {
+                var scrolls = 0;
+                var count = table.GetComponents<LootItemsPackFixed>().Count(c => {
+                    var maybeScroll = c.Item.Item as BlueprintItemEquipmentUsable;
+                    if (maybeScroll == null || maybeScroll.Type != UsableItemType.Scroll || maybeScroll.SpellLevel != potion.SpellLevel) { return false; }
+                    scrolls += c.Count;
+                    return true;
+                });
+                if (count == 0) { return; }
+                var quantity = scrolls / count;
+                table.AddComponent<LootItemsPackFixed>(c => {
+                    c.m_Item = CreateLootItem(potion);
+                    c.m_Count = quantity;
+                });
+                Main.TTTContext.Logger.Log($"Added {quantity} {potion.name} to Vender {table.name}");
+            });
         }
 
         public static LootItem CreateLootItem([NotNull]BlueprintItem item) {
@@ -276,33 +349,131 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintSharedVendorTable Weapon_DefendersHeartVendorTable => BlueprintTools.GetBlueprint<BlueprintSharedVendorTable>("5f17d3b47752fb94abe8c98534af8920");
 
             private static List<BlueprintSharedVendorTable> m_ScrollVenderTables = new List<BlueprintSharedVendorTable>() {
+                Anoriel_MVP_VendorTable,
+                AzataTwins_Chapter5VendorTable,
+                Azata_Chapter3VendorTable,
+                Barbarian_Chapter3VendorTable,
+                Demon_Chapter3VendorTable,
+                DLC2_QuartermasterBaseTable,
+                DLC2_QuartermasterImprovedTable,
                 DLC2_TavernScrolls_Vendor,
+                DLC3_RewardsTier1_VendorTableArmor,
+                DLC3_RewardsTier1_VendorTableExotic,
+                DLC3_RewardsTier1_VendorTableMagic,
+                DLC3_RewardsTier1_VendorTableRanged,
                 DLC3_Tier1ArcaneScrollsVendorTableI,
                 DLC3_Tier1ArcaneScrollsVendorTableII,
                 DLC3_Tier1ArcaneScrollsVendorTableIII,
+                DLC3_Tier1VendorTableMagic,
                 DLC3_Tier2ArcaneScrollsVendorTableIV,
                 DLC3_Tier2ArcaneScrollsVendorTableIX,
                 DLC3_Tier2ArcaneScrollsVendorTableV,
                 DLC3_Tier2ArcaneScrollsVendorTableVI,
                 DLC3_Tier2ArcaneScrollsVendorTableVII,
+                DLC3_Tier2VendorTableMagic,
+                DLC3_Tier2VendorTablePotions,
                 DLC3_Tier3ArcaneScrollsVendorTableVIII,
                 DLC3_Tier3ArcaneScrollsVendorTableX,
                 DLC3_Tier3ArcaneScrollsVendorTableXI,
                 DLC3_Tier3ScrollVendorTable,
                 GesmerhaScroll_DLC1VendorTable,
+                InquisitorEquipment_Vendor_DLC2,
+                Jeweler_Chapter3VendorTable,
+                KrebusSlaveTraderTable,
+                Lich_Chapter3VendorTable,
+                Lich_Chapter5VendorTable,
+                MarauderEquipment_Vendor_DLC2,
+                PrologueVendorTable,
+                Pulura_Chapter3VendorTable,
+                Ramley_Chapter3VendorTable,
+                RE_Chapter3VendorTableArmor,
+                RE_Chapter3VendorTableExotic,
+                RE_Chapter3VendorTableMagic,
+                RE_Chapter3VendorTableRanged,
+                RE_Chapter5VendorTableArmor,
+                RE_Chapter5VendorTableArmor1,
+                RE_Chapter5VendorTableExotic,
+                RE_Chapter5VendorTableExotic1,
+                RE_Chapter5VendorTableMagic,
+                RE_Chapter5VendorTableMagic1,
+                RE_Chapter5VendorTableRanged,
+                RE_Chapter5VendorTableRanged1,
                 Scrolls_DefendersHeartVendorTable,
                 Scroll_Chapter3VendorTable,
                 Scroll_Chapter3VendorTable1,
                 Scroll_Chapter5VendorTable,
                 Scroll_Chapter5VendorTable1,
-                WarCamp_ScrollVendorClericTable,
-                RE_Chapter3VendorTableMagic,
-                RE_Chapter5VendorTableMagic,
-                RE_Chapter5VendorTableMagic1,
                 StorytellerVendorTable_Ch4,
-                StorytellerVendorTable_Ch5
+                StorytellerVendorTable_Ch5,
+                StreetRat_Chapter3VendorTable,
+                StreetRat_Chapter3VendorTable1,
+                StreetRat_Chapter5VendorTable,
+                StreetRat_Chapter5VendorTable1,
+                StreetRat_DefendersHeartVendorTable,
+                TownEquipment_Vendor_DLC2,
+                VendorTiefling_Chapter3VendorTable,
+                VendorTiefling_Chapter5VendorTable,
+                WarCamp_REVendorTableArmor,
+                WarCamp_REVendorTableExotic,
+                WarCamp_REVendorTableMagic,
+                WarCamp_REVendorTableRanged,
+                WarCamp_ScrollVendorClericTable,
+                WarCamp_StreetRatVendorTable,
             };
             public static BlueprintSharedVendorTable[] ScrollVenderTables => m_ScrollVenderTables.ToArray();
+            private static List<BlueprintSharedVendorTable> m_PotionVenderTables = new List<BlueprintSharedVendorTable>() {
+                AzataTwins_Chapter5VendorTable,
+                Azata_Chapter3VendorTable,
+                DLC3_RewardsTier1_VendorTableArmor,
+                DLC3_RewardsTier1_VendorTableExotic,
+                DLC3_RewardsTier1_VendorTableMagic,
+                DLC3_RewardsTier1_VendorTableRanged,
+                DLC3_Tier1VendorTableMagic,
+                DLC3_Tier1VendorTablePotions,
+                DLC3_Tier2VendorTableMagic,
+                DLC3_Tier2VendorTablePotions,
+                DLC3_Tier3ScrollVendorTable,
+                Equipment_Vendor_DLC2,
+                GesmerhaScroll_DLC1VendorTable,
+                InnkeeperVendorTable,
+                InquisitorEquipment_Vendor_DLC2,
+                KrebusSlaveTraderTable,
+                LannMother_Chapter3VendorTable,
+                Lich_Chapter3VendorTable,
+                Lich_Chapter5VendorTable,
+                MarauderEquipment_Vendor_DLC2,
+                Potions_DefendersHeartVendorTable,
+                PrologueVendorTable,
+                Pulura_Chapter3VendorTable,
+                Ramley_Chapter3VendorTable,
+                RE_Chapter3VendorTableArmor,
+                RE_Chapter3VendorTableExotic,
+                RE_Chapter3VendorTableMagic,
+                RE_Chapter3VendorTableRanged,
+                RE_Chapter5VendorTableArmor,
+                RE_Chapter5VendorTableArmor1,
+                RE_Chapter5VendorTableExotic,
+                RE_Chapter5VendorTableExotic1,
+                RE_Chapter5VendorTableMagic,
+                RE_Chapter5VendorTableMagic1,
+                RE_Chapter5VendorTableRanged,
+                RE_Chapter5VendorTableRanged1,
+                StorytellerVendorTable_Ch4,
+                StorytellerVendorTable_Ch5,
+                Tavern_Chapter3VendorTable,
+                Tavern_Chapter3VendorTable1,
+                Tavern_Chapter5VendorTable,
+                Tavern_Chapter5VendorTable1,
+                TownEquipment_Vendor_DLC2,
+                Unused_vendortable,
+                WarCamp_REVendorTableArmor,
+                WarCamp_REVendorTableExotic,
+                WarCamp_REVendorTableMagic,
+                WarCamp_REVendorTableRanged,
+                WarCamp_ScrollVendorClericTable,
+                WarCamp_StreetRatVendorTable,
+            };
+            public static BlueprintSharedVendorTable[] PotionVenderTables => m_PotionVenderTables.ToArray();
         }
     }
 }
