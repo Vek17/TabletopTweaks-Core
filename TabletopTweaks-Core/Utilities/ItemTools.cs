@@ -11,9 +11,11 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using System;
 using System.Collections.Generic;
+using System.Web;
 using TabletopTweaks.Core.MechanicsChanges;
 using TabletopTweaks.Core.ModLogic;
 using UnityEngine;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.Utilities {
     public static class ItemTools {
@@ -23,9 +25,49 @@ namespace TabletopTweaks.Core.Utilities {
             Normal = 6,
             Greater = 9
         }
+        public enum PotionColor : int {
+            Blue,
+            Cyan,
+            Green,
+            Red,
+            Yellow,
+        }
+
         private static readonly string LesserMetamagicRodString = "Lesser rods can be used with spells of 3rd level or lower.";
         private static readonly string NormalMetamagicRodString = "Regular rods can be used with spells of 6th level or lower.";
         private static readonly string GreaterMetamagicRodString = "Greater rods can be used with spells of 9th level or lower.";
+
+        private static Sprite Form01_Blue_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form01_Blue_Simple.png");
+        private static Sprite Form03_Blue_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form03_Blue_Simple.png");
+        private static Sprite Form04_Blue_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form04_Blue_Simple.png");
+        private static Sprite Form05_Blue_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form05_Blue_Simple.png");
+        private static Sprite Form06_Blue_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form06_Blue_Simple.png");
+
+        private static Sprite Form01_Cyan_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form01_Cyan_Simple.png");
+        private static Sprite Form03_Cyan_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form03_Cyan_Simple.png");
+        private static Sprite Form04_Cyan_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form04_Cyan_Simple.png");
+        private static Sprite Form05_Cyan_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form05_Cyan_Simple.png");
+        private static Sprite Form06_Cyan_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form06_Cyan_Simple.png");
+
+        private static Sprite Form01_Green_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form01_Green_Simple.png");
+        private static Sprite Form03_Green_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form03_Green_Simple.png");
+        private static Sprite Form04_Green_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form04_Green_Simple.png");
+        private static Sprite Form05_Green_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form05_Green_Simple.png");
+        private static Sprite Form06_Green_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form06_Green_Simple.png");
+
+        private static Sprite Form01_Red_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form01_Red_Simple.png");
+        private static Sprite Form03_Red_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form03_Red_Simple.png");
+        private static Sprite Form04_Red_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form04_Red_Simple.png");
+        private static Sprite Form05_Red_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form05_Red_Simple.png");
+        private static Sprite Form06_Red_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form06_Red_Simple.png");
+
+        private static Sprite Form01_Yellow_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form01_Yellow_Simple.png");
+        private static Sprite Form03_Yellow_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form03_Yellow_Simple.png");
+        private static Sprite Form04_Yellow_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form04_Yellow_Simple.png");
+        private static Sprite Form05_Yellow_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form05_Yellow_Simple.png");
+        private static Sprite Form06_Yellow_Simple = AssetLoader.LoadInternal(TTTContext, folder: "Potions", file: "Form06_Yellow_Simple.png");
+
+
         private static BlueprintItemEquipmentUsable CreateMetamagicRod(
             ModContextBase modContext,
             string rodName,
@@ -318,6 +360,38 @@ namespace TabletopTweaks.Core.Utilities {
             AddScrollToCraftRoot(Scroll);
             return Scroll;
         }
+        public static BlueprintItemEquipmentUsable CreatePotion(ModContextBase modContext, string name, PotionColor color, BlueprintAbility spell, int spellLevel, int casterLevel) {
+            var Potion = Helpers.CreateBlueprint<BlueprintItemEquipmentUsable>(modContext, name, bp => {
+                bp.m_InventoryEquipSound = "ScrollPut";
+                bp.m_BeltItemPrefab = GetPotionPrefab(color);
+                bp.m_Enchantments = new BlueprintEquipmentEnchantmentReference[0];
+                bp.Type = UsableItemType.Potion;
+                bp.m_Ability = spell.ToReference<BlueprintAbilityReference>();
+                bp.m_ActivatableAbility = new BlueprintActivatableAbilityReference();
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.CasterLevel = casterLevel;
+                bp.SpellLevel = spellLevel;
+                bp.m_DisplayNameText = Helpers.CreateString(modContext, $"{bp.name}.Name", "");
+                bp.m_DescriptionText = Helpers.CreateString(modContext, $"{bp.name}.Description", "");
+                bp.m_FlavorText = Helpers.CreateString(modContext, $"{bp.name}.Flavor", "");
+                bp.m_NonIdentifiedNameText = Helpers.CreateString(modContext, $"{bp.name}.Unidentified_Name", "");
+                bp.m_NonIdentifiedDescriptionText = Helpers.CreateString(modContext, $"{bp.name}.Unidentified_Description", "");
+                bp.m_Icon = GetPotionIcon(color, spellLevel);
+                bp.m_Cost = GetPotionCost(spellLevel);
+                bp.m_Weight = 0.5f;
+                bp.m_Destructible = true;
+                bp.m_ShardItem = BlueprintTools.GetBlueprintReference<BlueprintItemReference>("2b2107f98002425bb1309d31ff531f37"); //GlassShardItem
+                bp.m_InventoryPutSound = "BottlePut";
+                bp.m_InventoryTakeSound = "BottleTake";
+                bp.TrashLootTypes = new TrashLootType[] { TrashLootType.Potions };
+                bp.m_Overrides = new List<string>();
+            });
+            AddPotionToCraftRoot(Potion);
+            return Potion;
+        }
         private static int GetScrollCost(int spellLevel) {
             return spellLevel switch {
                 0 => 13,
@@ -338,6 +412,81 @@ namespace TabletopTweaks.Core.Utilities {
             if (scroll.Type != UsableItemType.Scroll) { return; }
 
             Game.Instance.BlueprintRoot.CraftRoot.m_ScrollsItems.Add(scroll.ToReference<BlueprintItemEquipmentUsableReference>());
+        }
+        private static PrefabLink GetPotionPrefab(PotionColor color) {
+            var AssetID = color switch {
+                PotionColor.Blue => "7b2a2ed1f3284224c804038a713c391f",
+                PotionColor.Cyan => "e805c0e867b583b4f8c24b2b045b5be3",
+                PotionColor.Green => "51097fd1d322c0d41b33dac27da51bf4",
+                PotionColor.Red => "8de60d0edae1a1a47ba9fee1e1d97e32",
+                PotionColor.Yellow => "9b57d6e56c83fc14d9580c6f766fbe20",
+                _ => "9b57d6e56c83fc14d9580c6f766fbe20"
+            };
+            return new PrefabLink() {
+                AssetId = AssetID
+            };
+        }
+        private static Sprite GetPotionIcon(PotionColor color, int spellLevel) {
+            return color switch {
+                PotionColor.Blue => spellLevel switch { 
+                    1 => Form01_Blue_Simple,
+                    2 => Form03_Blue_Simple,
+                    3 => Form04_Blue_Simple,
+                    4 => Form05_Blue_Simple,
+                    5 => Form06_Blue_Simple,
+                    _ => Form06_Blue_Simple
+                },
+                PotionColor.Cyan => spellLevel switch {
+                    1 => Form01_Cyan_Simple,
+                    2 => Form03_Cyan_Simple,
+                    3 => Form04_Cyan_Simple,
+                    4 => Form05_Cyan_Simple,
+                    5 => Form06_Cyan_Simple,
+                    _ => Form06_Cyan_Simple
+                },
+                PotionColor.Green => spellLevel switch {
+                    1 => Form01_Green_Simple,
+                    2 => Form03_Green_Simple,
+                    3 => Form04_Green_Simple,
+                    4 => Form05_Green_Simple,
+                    5 => Form06_Green_Simple,
+                    _ => Form06_Green_Simple
+                },
+                PotionColor.Red => spellLevel switch {
+                    1 => Form01_Red_Simple,
+                    2 => Form03_Red_Simple,
+                    3 => Form04_Red_Simple,
+                    4 => Form05_Red_Simple,
+                    5 => Form06_Red_Simple,
+                    _ => Form06_Red_Simple
+                },
+                PotionColor.Yellow => spellLevel switch {
+                    1 => Form01_Yellow_Simple,
+                    2 => Form03_Yellow_Simple,
+                    3 => Form04_Yellow_Simple,
+                    4 => Form05_Yellow_Simple,
+                    5 => Form06_Yellow_Simple,
+                    _ => Form06_Yellow_Simple
+                },
+                _ => Form01_Blue_Simple
+            };
+        }
+        private static int GetPotionCost(int spellLevel) {
+            return spellLevel switch {
+                0 => 25,
+                1 => 50,
+                2 => 300,
+                3 => 750,
+                4 => 1400,
+                5 => 2250,
+                6 => 3300,
+                _ => 25
+            };
+        }
+        private static void AddPotionToCraftRoot(BlueprintItemEquipmentUsable potion) {
+            if (potion.Type != UsableItemType.Potion) { return; }
+
+            Game.Instance.BlueprintRoot.CraftRoot.m_PotionsItems.Add(potion.ToReference<BlueprintItemEquipmentUsableReference>());
         }
     }
 }
