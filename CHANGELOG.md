@@ -1,3 +1,8 @@
+## Version 0.5.2
+* New Components
+	* AddAdditionalWeaponDamageOnHit
+		* Triggers additional damage on conditions similiar to AddInitiatorAttackWithWeaponTrigger but packaged into a weapon damage bundle.
+
 ## Version 0.5.1
 * BloodlineTools now properly handles Nine Tailed Hier
 * CompositeProperties now support multiplication
