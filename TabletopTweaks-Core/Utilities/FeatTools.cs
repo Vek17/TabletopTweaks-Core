@@ -41,7 +41,7 @@ namespace TabletopTweaks.Core.Utilities {
                 Selections.SylvanTricksterTalentSelection,
                 Selections.SlayerTalentSelection10,
                 Selections.SlayerTalentSelection6,
-                Selections.SlayerTalentSelection2,       
+                Selections.SlayerTalentSelection2,
                 Selections.RogueTalentSelection,
                 Selections.LoremasterRogueTalentSelection
             };
@@ -593,7 +593,7 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintFeatureSelection ZenArcherPointBlankMasterSelection => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("50e6aa55653bc014aafe556aad79e5c0");
             public static BlueprintFeatureSelection ZenArcherWayOfTheBowSelection => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("53420038fdc76944695bf927f7bcd51c");
 
-            
+
 
             public static void AddModFeatureSelection(BlueprintFeatureSelection selection) {
                 FeatureSelectionSet.Add(selection);

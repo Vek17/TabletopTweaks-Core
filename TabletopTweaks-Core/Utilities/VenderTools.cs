@@ -104,7 +104,7 @@ namespace TabletopTweaks.Core.Utilities {
             });
         }
 
-        public static LootItem CreateLootItem([NotNull]BlueprintItem item) {
+        public static LootItem CreateLootItem([NotNull] BlueprintItem item) {
             return new LootItem() {
                 m_Item = item.ToReference<BlueprintItemReference>(),
                 m_Loot = new BlueprintUnitLootReference()

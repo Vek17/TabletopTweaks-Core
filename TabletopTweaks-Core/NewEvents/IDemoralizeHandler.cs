@@ -1,12 +1,8 @@
 ﻿using HarmonyLib;
-using Kingmaker.Controllers.Dialog;
-using Kingmaker.Designers;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic.Buffs;
-using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Reflection;

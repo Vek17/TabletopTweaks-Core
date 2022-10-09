@@ -6,10 +6,10 @@ using Kingmaker.Items;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
-using Kingmaker.UI.Models.Log.Events;
 using Kingmaker.UI.Models.Log;
-using TabletopTweaks.Core.Utilities;
+using Kingmaker.UI.Models.Log.Events;
 using System;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewRules {
     class RuleAttackWithWeaponPrecision : RuleAttackWithWeapon {

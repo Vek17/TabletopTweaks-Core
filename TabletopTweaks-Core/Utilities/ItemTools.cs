@@ -11,7 +11,6 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using System;
 using System.Collections.Generic;
-using System.Web;
 using TabletopTweaks.Core.MechanicsChanges;
 using TabletopTweaks.Core.ModLogic;
 using UnityEngine;
@@ -354,7 +353,7 @@ namespace TabletopTweaks.Core.Utilities {
                 bp.m_InventoryTakeSound = "ScrollTake";
                 bp.TrashLootTypes = new TrashLootType[] { TrashLootType.Scrolls_RE };
                 bp.m_Overrides = new List<string>();
-                bp.AddComponent<CopyScroll>(c => { 
+                bp.AddComponent<CopyScroll>(c => {
                     c.m_CustomSpell = spell.ToReference<BlueprintAbilityReference>();
                 });
             });
@@ -430,7 +429,7 @@ namespace TabletopTweaks.Core.Utilities {
         }
         private static Sprite GetPotionIcon(PotionColor color, int spellLevel) {
             return color switch {
-                PotionColor.Blue => spellLevel switch { 
+                PotionColor.Blue => spellLevel switch {
                     1 => Form01_Blue_Simple,
                     2 => Form03_Blue_Simple,
                     3 => Form04_Blue_Simple,

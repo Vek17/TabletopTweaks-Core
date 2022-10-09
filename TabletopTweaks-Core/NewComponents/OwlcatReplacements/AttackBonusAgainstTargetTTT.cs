@@ -16,9 +16,9 @@ using UnityEngine;
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [AllowedOn(typeof(BlueprintBuff), false)]
     [TypeId("2a55c3471cbf44409a6193a7a8b8655f")]
-    public class AttackBonusAgainstTargetTTT : UnitBuffComponentDelegate, 
-        ITargetRulebookHandler<RuleCalculateAttackBonus>, 
-        IRulebookHandler<RuleCalculateAttackBonus>, 
+    public class AttackBonusAgainstTargetTTT : UnitBuffComponentDelegate,
+        ITargetRulebookHandler<RuleCalculateAttackBonus>,
+        IRulebookHandler<RuleCalculateAttackBonus>,
         ISubscriber, ITargetRulebookSubscriber {
 
         public void OnEventAboutToTrigger(RuleCalculateAttackBonus evt) {

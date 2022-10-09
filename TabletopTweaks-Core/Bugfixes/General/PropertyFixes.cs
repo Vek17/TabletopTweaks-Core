@@ -1,5 +1,4 @@
-﻿using HarmonyLib;
-using Kingmaker.EntitySystem.Entities;
+﻿using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 

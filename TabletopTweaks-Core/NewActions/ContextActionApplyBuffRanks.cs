@@ -1,19 +1,19 @@
-﻿using Kingmaker.Blueprints;
-using Kingmaker;
+﻿using Kingmaker;
+using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Controllers;
 using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Entities;
+using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.Utility;
 using System;
-using UnityEngine.Serialization;
 using UnityEngine;
-using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.UnitLogic;
+using UnityEngine.Serialization;
 
 namespace TabletopTweaks.Core.NewActions {
     [TypeId("4b0dd1fb0abf4bd9865214ebbba6bb02")]

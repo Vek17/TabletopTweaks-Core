@@ -1,18 +1,11 @@
-﻿using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
-using Kingmaker.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem;
+using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
-using Kingmaker.RuleSystem.Rules.Damage;
-using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.ElementsSystem;
 
 namespace TabletopTweaks.Core.NewComponents {
     [AllowMultipleComponents]
@@ -22,7 +15,7 @@ namespace TabletopTweaks.Core.NewComponents {
         IRulebookHandler<RuleCalculateWeaponStats>,
         ISubscriber, IInitiatorRulebookSubscriber {
 
-        
+
 
         public void OnEventAboutToTrigger(RuleCalculateWeaponStats evt) {
             RuleAttackWithWeapon attackWithWeapon = evt.AttackWithWeapon;

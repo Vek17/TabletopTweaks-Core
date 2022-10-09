@@ -10,7 +10,6 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
-using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Parts;
 using Kingmaker.Utility;

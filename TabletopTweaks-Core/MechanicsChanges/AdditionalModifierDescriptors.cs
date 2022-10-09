@@ -117,7 +117,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             static SortedDictionary<ModifierDescriptor, int> order;
 
             static bool Prefix(ModifierDescriptorComparer __instance, ModifierDescriptor x, ModifierDescriptor y, ref int __result) {
-                if (IsTTTDescriptor(x) || IsTTTDescriptor(y)) { 
+                if (IsTTTDescriptor(x) || IsTTTDescriptor(y)) {
                     if (order == null) {
                         order = new SortedDictionary<ModifierDescriptor, int>();
                         int i = 0;
@@ -132,7 +132,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             }
 
             private static bool IsTTTDescriptor(ModifierDescriptor desc) {
-                return Enum.IsDefined(typeof(NaturalArmor), (int)desc) 
+                return Enum.IsDefined(typeof(NaturalArmor), (int)desc)
                     || Enum.IsDefined(typeof(Dodge), (int)desc)
                     || Enum.IsDefined(typeof(Untyped), (int)desc)
                     || Enum.IsDefined(typeof(Enhancement), (int)desc);

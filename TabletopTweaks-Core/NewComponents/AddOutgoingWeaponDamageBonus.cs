@@ -5,12 +5,8 @@ using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.Abilities.Components;
 using System;
-using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
-using static Kingmaker.Blueprints.Area.FactHolder;
-using static LayoutRedirectElement;
 
 namespace TabletopTweaks.Core.NewComponents {
     [TypeId("03f55b5c7cb0445ab32ce2c8d44704ec")]

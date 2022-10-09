@@ -19,7 +19,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         public override void OnTurnOn() {
             if (base.Data.HasDisjointed) {
                 UpdateDisjoints();
-                return; 
+                return;
             }
 
             base.Owner.Enchantments
@@ -57,7 +57,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         public class DisjointedEffectData {
             public List<EntityFactRef<ItemEnchantment>> Enchantments = new List<EntityFactRef<ItemEnchantment>>();
             public bool HasDisjointed = false;
-            public DisjointedEffectData() {}
+            public DisjointedEffectData() { }
         }
     }
 }

@@ -16,7 +16,7 @@ namespace TabletopTweaks.Core.NewComponents.Properties {
                 case Mode.Lowest:
                     return Properties.Select(property => property.Calculate(unit)).Min();
                 case Mode.Multiply:
-                    return Properties.Select(property => property.Calculate(unit)).Aggregate(1, (int a , int b) => a * b);
+                    return Properties.Select(property => property.Calculate(unit)).Aggregate(1, (int a, int b) => a * b);
                 default:
                     return 0;
             }

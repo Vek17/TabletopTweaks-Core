@@ -22,7 +22,7 @@ namespace TabletopTweaks.Core.NewActions {
             if (base.Target == null) { return; }
 
             Target.Unit.Descriptor.Body.AllSlots
-                
+
                 .Where(slot => slot.HasItem)
                 .Select(slot => slot.Item)
                 .Append(Target.Unit.Body.PrimaryHand?.MaybeWeapon?.Second)
@@ -41,7 +41,7 @@ namespace TabletopTweaks.Core.NewActions {
                 });
         }
 
-        public BlueprintEquipmentEnchantmentReference m_DisjointEnchantment; 
+        public BlueprintEquipmentEnchantmentReference m_DisjointEnchantment;
         public ContextDurationValue Duration;
     }
 }

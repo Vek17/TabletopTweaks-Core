@@ -5,7 +5,6 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using System;
 
 namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintUnitFact))]

@@ -2,7 +2,6 @@
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules.Damage;
-using Kingmaker.UI.ServiceWindow.CharacterScreen;
 using Kingmaker.UnitLogic;
 using Kingmaker.Utility;
 using System.Linq;

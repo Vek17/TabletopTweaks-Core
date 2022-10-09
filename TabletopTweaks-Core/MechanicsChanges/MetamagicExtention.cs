@@ -11,7 +11,6 @@ using Kingmaker.UnitLogic.FactLogic;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Web;
 using TabletopTweaks.Core.ModLogic;
 using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
