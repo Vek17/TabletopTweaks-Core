@@ -1,5 +1,6 @@
 ## Version 0.5.1
-* BloodlineTools now properly handles Nine Tailed Heir
+* BloodlineTools now properly handles Nine Tailed Hier
+* CompositeProperties now support multiplication
 * New Components
 	* ContextActionApplyBuffRanks
 		* Adds buffs like ContextActionApplyBuff but with the ability to apply multiple ranks of a buff.

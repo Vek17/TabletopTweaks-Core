@@ -1,7 +1,9 @@
 ﻿using JetBrains.Annotations;
 using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.JsonSystem;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using TabletopTweaks.Core.ModLogic;
 
 namespace TabletopTweaks.Core.Utilities {
@@ -69,6 +71,15 @@ namespace TabletopTweaks.Core.Utilities {
             } else {
                 modContext.Logger.Log($"Failed to Add: {blueprint.name}");
                 modContext.Logger.Log($"Asset ID: {assetId} already in use by: {loadedBlueprint.name}");
+            }
+        }
+        public static void TryExportBlueprint(SimpleBlueprint bp, string path) {
+            var Export = new BlueprintJsonWrapper(bp);
+            try {
+                //Export.Save($"{path}{Path.DirectorySeparatorChar}{bp.name}.jbp");
+                Export.Save($"{path}{Path.DirectorySeparatorChar}{bp.name}.{bp.AssetGuid.m_Guid.ToString("N")}.jbp");
+            } catch {
+                Main.TTTContext.Logger.LogError($"Failed to export {bp.AssetGuid}-{bp.name}");
             }
         }
     }

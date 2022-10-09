@@ -255,6 +255,18 @@ namespace TabletopTweaks.Core.Utilities {
             if (actions == null || actions.Length == 1 && actions[0] == null) actions = Array.Empty<GameAction>();
             return new ActionList() { Actions = actions };
         }
+        public static void AddAction(this ActionList actionList, params GameAction[] actions) {
+            if (actions == null || actions.Length == 1 && actions[0] == null) { return; }
+            actionList.Actions = actionList.Actions.AppendToArray(actions);
+        }
+        public static void RemoveActions<T>(this ActionList actionList, Predicate<T> predicate) where T : GameAction {
+            var actionsToRemove = actionList.Actions.OfType<T>().ToArray();
+            foreach (var action in actionsToRemove) {
+                if (predicate(action)) {
+                    actionList.Actions = actionList.Actions.RemoveFromArray(action);
+                }
+            }
+        }
         /// <summary>
         /// Creates a new localized string.
         /// </summary>

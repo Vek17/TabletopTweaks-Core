@@ -15,6 +15,8 @@ namespace TabletopTweaks.Core.NewComponents.Properties {
                     return Properties.Select(property => property.Calculate(unit)).Max();
                 case Mode.Lowest:
                     return Properties.Select(property => property.Calculate(unit)).Min();
+                case Mode.Multiply:
+                    return Properties.Select(property => property.Calculate(unit)).Aggregate(1, (int a, int b) => a * b);
                 default:
                     return 0;
             }
@@ -26,7 +28,8 @@ namespace TabletopTweaks.Core.NewComponents.Properties {
         public enum Mode : int {
             Sum,
             Highest,
-            Lowest
+            Lowest,
+            Multiply
         }
 
         public class ComplexCustomProperty {

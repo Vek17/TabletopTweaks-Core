@@ -698,6 +698,7 @@ namespace TabletopTweaks.Core.Utilities {
             foreach (var c in components) {
                 if (string.IsNullOrEmpty(c.name)) {
                     c.name = $"${c.GetType().Name}";
+                    //c.name = $"${c.GetType().Name}${Guid.NewGuid()}";
                 }
                 if (!names.Add(c.name)) {
                     string name;
