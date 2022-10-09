@@ -240,6 +240,14 @@ namespace TabletopTweaks.Core.Utilities {
                 Patterns = { "Checks?" }
             },
             new EncyclopediaEntry {
+                Entry = "Injury_Death",
+                Patterns = { "unconscious" }
+            },
+            new EncyclopediaEntry {
+                Entry = "Spell_Target",
+                Patterns = { "Spells? Aimed" }
+            },
+            new EncyclopediaEntry {
                 Entry = "Spells",
                 Patterns = { "Spells?" }
             },

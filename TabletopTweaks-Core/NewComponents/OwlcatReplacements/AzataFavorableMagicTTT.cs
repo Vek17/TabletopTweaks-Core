@@ -4,6 +4,7 @@ using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
 
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [TypeId("e3b2dcf430cb449684c76fd854e732ea")]
@@ -36,6 +37,12 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
 
         private void CheckReroll(RuleSavingThrow ruleEvent, RuleRollD20 ruleRoll) {
             if (ruleRoll.Reason.Caster == Owner) {
+                if (OnlySpells) {
+                    AbilityType? abilityType = ruleEvent.Reason.Ability?.Blueprint?.Type ?? ruleEvent.Reason.Context?.SourceAbility?.Type;
+                    if (abilityType != AbilityType.Spell) {
+                        return;
+                    }
+                }
                 ruleRoll.Reroll(Fact, false);
             }
         }
@@ -45,5 +52,7 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
                 ruleRoll.Reroll(Fact, true);
             }
         }
+
+        public bool OnlySpells;
     }
 }
