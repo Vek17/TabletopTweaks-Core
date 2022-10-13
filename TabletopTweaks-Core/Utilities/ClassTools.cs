@@ -31,6 +31,19 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintCharacterClass WarpriestClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
             public static BlueprintCharacterClass WitchClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("1b9873f1e7bfe5449bc84d03e9c8e3cc");
             public static BlueprintCharacterClass WizardClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("ba34257984f4c41408ce1dc2004e342e");
+            public static BlueprintCharacterClass ArcaneTricksterClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("9c935a076d4fe4d4999fd48d853e3cf3");
+            public static BlueprintCharacterClass AssassinClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("eb284ea8d40a2d045911f525eb96c43d");
+            public static BlueprintCharacterClass StalwartDefenderClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("d5917881586ff1d4d96d5b7cebda9464");
+            public static BlueprintCharacterClass EldritchKnightClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("de52b73972f0ed74c87f8f6a8e20b542");
+            public static BlueprintCharacterClass DragonDiscipleClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("72051275b1dbb2d42ba9118237794f7c");
+            public static BlueprintCharacterClass HellknightClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("ed246f1680e667b47b7427d51e651059");
+            public static BlueprintCharacterClass HellknightSigniferClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("ee6425d6392101843af35f756ce7fefd");
+            public static BlueprintCharacterClass MysticTheurgeClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("0920ea7e4fd7a404282e3d8b0ac41838");
+            public static BlueprintCharacterClass DuelistClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("4e0ea99612ae87a499c7fb0588e31828");
+            public static BlueprintCharacterClass StudentOfWarClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("46b1fe9759ea01f4d883b23d8f0aecbb");
+            public static BlueprintCharacterClass SwordlordClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("90e4d7da3ccd1a8478411e07e91d5750");
+            public static BlueprintCharacterClass LoremasterClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("4a7c05adfbaf05446a6bf664d28fb103");
+            public static BlueprintCharacterClass WinterWitchClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("eb24ca44debf6714aabe1af1fd905a07");
 
             public static BlueprintCharacterClass[] AllClasses => Game.Instance.BlueprintRoot.Progression.m_CharacterClasses.Select(c => c.Get()).ToArray();
         }
@@ -60,6 +73,19 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintCharacterClassReference WarpriestClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("30b5e47d47a0e37438cc5a80c96cfb99");
             public static BlueprintCharacterClassReference WitchClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("1b9873f1e7bfe5449bc84d03e9c8e3cc");
             public static BlueprintCharacterClassReference WizardClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("ba34257984f4c41408ce1dc2004e342e");
+            public static BlueprintCharacterClassReference ArcaneTricksterClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("9c935a076d4fe4d4999fd48d853e3cf3");
+            public static BlueprintCharacterClassReference AssassinClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("eb284ea8d40a2d045911f525eb96c43d");
+            public static BlueprintCharacterClassReference StalwartDefenderClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("d5917881586ff1d4d96d5b7cebda9464");
+            public static BlueprintCharacterClassReference EldritchKnightClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("de52b73972f0ed74c87f8f6a8e20b542");
+            public static BlueprintCharacterClassReference DragonDiscipleClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("72051275b1dbb2d42ba9118237794f7c");
+            public static BlueprintCharacterClassReference HellknightClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("ed246f1680e667b47b7427d51e651059");
+            public static BlueprintCharacterClassReference HellknightSigniferClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("ee6425d6392101843af35f756ce7fefd");
+            public static BlueprintCharacterClassReference MysticTheurgeClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("0920ea7e4fd7a404282e3d8b0ac41838");
+            public static BlueprintCharacterClassReference DuelistClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("4e0ea99612ae87a499c7fb0588e31828");
+            public static BlueprintCharacterClassReference StudentOfWarClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("46b1fe9759ea01f4d883b23d8f0aecbb");
+            public static BlueprintCharacterClassReference SwordlordClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("90e4d7da3ccd1a8478411e07e91d5750");
+            public static BlueprintCharacterClassReference LoremasterClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("4a7c05adfbaf05446a6bf664d28fb103");
+            public static BlueprintCharacterClassReference WinterWitchClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("eb24ca44debf6714aabe1af1fd905a07");
 
             public static BlueprintCharacterClassReference[] AllClasses => Game.Instance.BlueprintRoot.Progression.m_CharacterClasses;
         }
