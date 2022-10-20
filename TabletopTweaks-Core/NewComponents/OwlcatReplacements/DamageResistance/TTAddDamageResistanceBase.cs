@@ -112,6 +112,7 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance 
             Value = vanillaResistance.Value;
             UsePool = vanillaResistance.UsePool;
             Pool = vanillaResistance.Pool;
+            //AddToAllStacks = vanillaResistance.IsStackable;
 
             AdditionalInitFromVanillaDamageResistance(vanillaResistance);
         }

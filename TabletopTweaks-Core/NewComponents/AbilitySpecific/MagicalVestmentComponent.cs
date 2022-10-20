@@ -6,6 +6,8 @@ using Kingmaker.Enums;
 using Kingmaker.Items;
 using Kingmaker.Items.Slots;
 using Kingmaker.PubSubSystem;
+using Kingmaker.RuleSystem.Rules;
+using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
@@ -20,7 +22,9 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     /// </summary>
     [AllowMultipleComponents]
     [TypeId("4db6644b48ed43a69e16d8c9b60dd775")]
-    public class MagicalVestmentComponent : UnitBuffComponentDelegate<BuffEnchantWornItemData>, IUnitEquipmentHandler {
+    public class MagicalVestmentComponent : UnitBuffComponentDelegate<BuffEnchantWornItemData>,
+        IAreaLoadingStagesHandler,
+        IUnitEquipmentHandler {
         private BlueprintItemEnchantment Enchantment {
             get {
                 return Enchantments[EnhancementBonus - 1];
@@ -35,7 +39,8 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         private int EnhancementBonus => Math.Min(m_EnchantmentBlueprints.Length, EnchantLevel.Calculate(base.Context));
 
-        public override void OnActivate() {
+        private void UpdateEffect() {
+            base.Owner?.Stats?.GetStat(StatType.AC)?.RemoveModifiersFrom(base.Runtime);
             if (!base.Data.Enchantments.Empty()) { return; }
             base.Owner.Stats.GetStat(StatType.AC).RemoveModifiersFrom(base.Runtime);
             ItemEntity itemEntity = Shield ? base.Owner.Body.SecondaryHand.MaybeShield?.ArmorComponent : base.Owner.Body.Armor.MaybeArmor;
@@ -46,6 +51,10 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
                     base.Owner.Stats.GetStat(StatType.AC).AddModifierUnique(EnhancementBonus, base.Runtime, ModifierDescriptor.Armor);
                 }
             }
+        }
+
+        public override void OnActivate() {
+            UpdateEffect();
         }
 
         public override void OnDeactivate() {
@@ -75,6 +84,14 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             }
             OnActivate();
         }
+
+        public void OnAreaScenesLoaded() {}
+
+        public void OnAreaLoadingComplete() {
+            UpdateEffect();
+        }
+
+
         /// <summary>
         /// List of Enchantments to apply to equipment. Index corresponds to EnchantLevel - 1.
         /// </summary>

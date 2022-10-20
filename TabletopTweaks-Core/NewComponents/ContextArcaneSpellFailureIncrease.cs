@@ -17,10 +17,10 @@ namespace TabletopTweaks.Core.NewComponents {
         ISubscriber, IInitiatorRulebookSubscriber {
 
         public void OnEventAboutToTrigger(RuleCalculateArcaneSpellFailureChance evt) {
-            if (!evt.Armor.Blueprint.IsShield && (!CheckCategory || Categorys.Contains(evt.Armor.ArmorType()))) {
+            if (evt.Armor != null && (!evt.Armor.Blueprint.IsShield && (!CheckCategory || Categorys.Contains(evt.Armor.ArmorType())))) {
                 evt.AddArmorBonus(Reduce ? -Value.Calculate(base.Context) : Value.Calculate(base.Context));
             }
-            if (evt.Armor.Blueprint.IsShield && (!CheckCategory || Categorys.Contains(evt.Armor.Blueprint.ProficiencyGroup))) {
+            if (evt.Shield != null && (evt.Shield.Blueprint.IsShield && (!CheckCategory || Categorys.Contains(evt.Shield.Blueprint.ProficiencyGroup)))) {
                 evt.AddShieldBonus(Reduce ? -Value.Calculate(base.Context) : Value.Calculate(base.Context));
             }
         }

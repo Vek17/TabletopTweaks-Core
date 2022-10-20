@@ -1,3 +1,7 @@
+## Version 0.5.3
+* Removed old GetComponent method as it has been replaced by owlcat tooling.
+* ContextArcaneSpellFailureIncrease now handles shields more correctly.
+
 ## Version 0.5.2
 * New Components
 	* AddAdditionalWeaponDamageOnHit

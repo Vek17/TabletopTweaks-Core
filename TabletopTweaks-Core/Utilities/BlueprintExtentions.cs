@@ -603,7 +603,8 @@ namespace TabletopTweaks.Core.Utilities {
         /// <returns>
         /// First BlueprintComponent that matches the supplied predicate.
         /// </returns>
-        public static T GetComponent<T>(this BlueprintScriptableObject obj, Predicate<T> predicate) where T : BlueprintComponent {
+        [Obsolete("Replaced in Kingmaker.Blueprints.BlueprintExtenstions")]
+        private static T GetComponent<T>(this BlueprintScriptableObject obj, Predicate<T> predicate) where T : BlueprintComponent {
             return obj.GetComponents<T>().Where(c => predicate(c)).FirstOrDefault();
         }
         /// <summary>

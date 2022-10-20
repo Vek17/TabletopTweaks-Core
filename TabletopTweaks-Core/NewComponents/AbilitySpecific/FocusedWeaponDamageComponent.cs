@@ -25,8 +25,8 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             if (IsValidWeapon(evt.Weapon)) {
                 var classLevel = FighterWeaponTrainingProperty.Get().GetInt(this.Owner);
                 DiceFormula? formula = classLevel switch {
-                    >= 1 and < 6 => new DiceFormula(1, DiceType.D6),
-                    >= 6 and < 10 => new DiceFormula(1, DiceType.D8),
+                    >= 1 and < 5 => new DiceFormula(1, DiceType.D6),
+                    >= 5 and < 10 => new DiceFormula(1, DiceType.D8),
                     >= 10 and < 15 => new DiceFormula(1, DiceType.D10),
                     >= 15 and < 20 => new DiceFormula(2, DiceType.D6),
                     >= 20 => new DiceFormula(2, DiceType.D8),
