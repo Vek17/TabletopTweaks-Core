@@ -1,4 +1,5 @@
 ﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
@@ -25,7 +26,9 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         public void OnEventAboutToTrigger(RuleCalculateWeaponStats evt) {
             if (evt.Weapon.Blueprint.Type.IsUnarmed) {
-                evt.IncreaseWeaponSize(1);
+                evt.WeaponDamageDice.Modify(
+                    WeaponDamageScaleTable.Scale(evt.WeaponDamageDice.ModifiedValue, Size.Large, Size.Medium), base.Fact
+                );
             }
         }
 

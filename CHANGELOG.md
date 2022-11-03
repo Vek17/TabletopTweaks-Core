@@ -1,3 +1,6 @@
+## Version 0.5.4
+* Contains fix for broken IAfterRulebookEventTriggerHandler, and IBeforeRulebookEventTriggerHandler events
+
 ## Version 0.5.3
 * Removed old GetComponent method as it has been replaced by owlcat tooling.
 * ContextArcaneSpellFailureIncrease now handles shields more correctly.
