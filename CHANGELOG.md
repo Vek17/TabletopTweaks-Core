@@ -1,3 +1,6 @@
+## Version 0.5.5
+* Fix for 2.0.4j
+
 ## Version 0.5.4
 * Contains fix for broken IAfterRulebookEventTriggerHandler, and IBeforeRulebookEventTriggerHandler events
 

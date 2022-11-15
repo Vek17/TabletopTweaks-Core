@@ -80,7 +80,7 @@ namespace TabletopTweaks.Core.NewUI {
                 if (__instance.m_Conversion.Count == 0) {
                     return false;
                 }
-                __instance.ConvertedVm.Value = new ActionBarConvertedVM(__instance.m_Conversion.Select(abilityData => {
+                __instance.ConvertedVm.Value = new ActionBarConvertedVM(__instance.m_Conversion.m_AbilityData.Select(abilityData => {
                     var pseudoActivatable = abilityData.Blueprint.GetComponent<PseudoActivatable>();
                     if (pseudoActivatable != null) {
                         var slot = new MechanicActionBarSlotPseudoActivatableAbilityVariant {
@@ -112,7 +112,7 @@ namespace TabletopTweaks.Core.NewUI {
                         };
                     }
 
-                }).ToList(), new Action(__instance.CloseConvert));
+                }).ToList<MechanicActionBarSlot>(), new Action(__instance.CloseConvert));
                 return false;
             }
         }
