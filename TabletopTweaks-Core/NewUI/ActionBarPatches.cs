@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using Kingmaker;
 using Kingmaker.Blueprints;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UI.ActionBar;
@@ -6,6 +7,7 @@ using Kingmaker.UI.MVVM._VM.ActionBar;
 using Kingmaker.UI.UnitSettings;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.ActivatableAbilities;
+using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,50 +72,45 @@ namespace TabletopTweaks.Core.NewUI {
             }
         }
 
-        [HarmonyPatch(typeof(ActionBarSlotVM), "OnShowConvertRequest")]
-        static class ActionBarSlotVM_OnShowConvertRequest_Patch {
-            static bool Prefix(ActionBarSlotVM __instance) {
-                if (__instance.ConvertedVm.Value != null && !__instance.ConvertedVm.Value.IsDisposed) {
-                    __instance.CloseConvert();
-                    return false;
-                }
-                if (__instance.m_Conversion.Count == 0) {
-                    return false;
-                }
-                __instance.ConvertedVm.Value = new ActionBarConvertedVM(__instance.m_Conversion.m_AbilityData.Select(abilityData => {
-                    var pseudoActivatable = abilityData.Blueprint.GetComponent<PseudoActivatable>();
-                    if (pseudoActivatable != null) {
-                        var slot = new MechanicActionBarSlotPseudoActivatableAbilityVariant {
-                            Spell = abilityData,
-                            Unit = __instance.MechanicActionBarSlot.Unit,
-                            BuffToWatch = pseudoActivatable.Buff
-                        };
-                        __instance.MechanicActionBarSlot.Unit.Ensure<UnitPartPseudoActivatableAbilities>().RegisterPseudoActivatableAbilitySlot(slot);
-                        return slot;
-                    } else if (abilityData is MetaRageComponent.MetaRageAbilityData) {
-                        return new MechanicActionBarSlotMetaRage {
-                            Spell = abilityData,
-                            Unit = __instance.MechanicActionBarSlot.Unit
-                        };
-                    } else if (abilityData.Blueprint.GetComponent<QuickStudyComponent>()) {
-                        return new MechanicActionBarSlotQuickStudy {
-                            Spell = abilityData,
-                            Unit = __instance.MechanicActionBarSlot.Unit
-                        };
-                    } else if (abilityData is UnitPartSpellKenning.SpellKenningAbilityData) {
-                        return new MechanicActionBarSlotSpellKenning {
-                            Spell = abilityData,
-                            Unit = __instance.MechanicActionBarSlot.Unit
-                        };
-                    } else {
-                        return new MechanicActionBarSlotSpontaneusConvertedSpell {
-                            Spell = abilityData,
-                            Unit = __instance.MechanicActionBarSlot.Unit
-                        };
+        [HarmonyPatch(typeof(SlotConversion), "GetMechanicSlots")]
+        static class SlotConversion_GetMechanicSlots_Patch {
+            static void Postfix(SlotConversion __instance, UnitEntityData unit, ref IEnumerable<MechanicActionBarSlot> __result) {
+                var newResult = __result.Select(slot => {
+                    switch (slot) {
+                        case MechanicActionBarSlotSpontaneusConvertedSpell spontaneusConvertedSpell: {
+                                var abilityData = spontaneusConvertedSpell.Spell;
+                                var pseudoActivatable = abilityData.Blueprint.GetComponent<PseudoActivatable>();
+                                if (pseudoActivatable != null) {
+                                    var pseudoActivatableSlot = new MechanicActionBarSlotPseudoActivatableAbilityVariant {
+                                        Spell = abilityData,
+                                        Unit = unit,
+                                        BuffToWatch = pseudoActivatable.Buff
+                                    };
+                                    unit.Ensure<UnitPartPseudoActivatableAbilities>().RegisterPseudoActivatableAbilitySlot(slot);
+                                    return pseudoActivatableSlot;
+                                } else if (abilityData is MetaRageComponent.MetaRageAbilityData) {
+                                    return new MechanicActionBarSlotMetaRage {
+                                        Spell = abilityData,
+                                        Unit = unit
+                                    };
+                                } else if (abilityData.Blueprint.GetComponent<QuickStudyComponent>()) {
+                                    return new MechanicActionBarSlotQuickStudy {
+                                        Spell = abilityData,
+                                        Unit = unit
+                                    };
+                                } else if (abilityData is UnitPartSpellKenning.SpellKenningAbilityData) {
+                                    return new MechanicActionBarSlotSpellKenning {
+                                        Spell = abilityData,
+                                        Unit = unit
+                                    };
+                                }
+                                return spontaneusConvertedSpell;
+                            };
+                        case MechanicActionBarSlotActivableAbility activatableSlot: return activatableSlot;
+                        default: return slot;
                     }
-
-                }).ToList<MechanicActionBarSlot>(), new Action(__instance.CloseConvert));
-                return false;
+                }).ToList<MechanicActionBarSlot>();
+                __result = newResult;
             }
         }
 

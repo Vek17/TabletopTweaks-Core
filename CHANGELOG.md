@@ -1,3 +1,6 @@
+## Version 0.5.6
+* Fix for MechanicActionBarSlotActivableAbility
+
 ## Version 0.5.5
 * Fix for 2.0.4j
 
