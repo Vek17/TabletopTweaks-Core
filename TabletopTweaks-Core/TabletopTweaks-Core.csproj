@@ -162,7 +162,10 @@
     <Compile Include="Config\Blueprints.cs" />
     <Compile Include="NewComponents\AddAdditionalWeaponDamageOnHit.cs" />
     <Compile Include="NewComponents\AddConditionalWeaponDamageBonus.cs" />
+    <Compile Include="NewComponents\BuffDescriptorImmunityIgnore.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\AttackBonusAgainstTargetTTT.cs" />
+    <Compile Include="NewComponents\SpellDescriptorImmunityIgnore.cs" />
+    <Compile Include="NewUnitParts\UnitPartIgnoreBuffDescriptorImmunity.cs" />
     <Compile Include="Utilities\VenderTools.cs" />
     <EmbeddedResource Include="Config\Blueprints.json" />
     <Compile Include="Config\ICollapseableGroup.cs" />

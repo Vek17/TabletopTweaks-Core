@@ -9,6 +9,7 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.Utility;
+using TabletopTweaks.Core.NewUnitParts;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -49,13 +50,22 @@ namespace TabletopTweaks.Core.NewComponents {
             if ((maybeCaster != null) ? maybeCaster.State.Features.MythicReduceResistances : null) {
                 return false;
             }
-            bool buffHasDescriptor = this.Descriptor.HasAnyFlag(context.SpellDescriptor);
+            bool buffHasDescriptor = GetWorkingImmunities().HasAnyFlag(context.SpellDescriptor);
             bool noCaster = context.MaybeCaster == null;
             bool noImmunityBypassFeature = this.IgnoreFeature == null || noCaster || !context.MaybeCaster.Descriptor.HasFact(this.IgnoreFeature);
             bool noImmunityFact = !this.CheckFact || (!noCaster && context.MaybeCaster.Descriptor.HasFact(this.FactToCheck));
             bool casterHasAlignment = !noCaster && context.MaybeCaster.Descriptor.Alignment.ValueRaw.HasComponent(this.Alignment);
             bool spellHasAlignment = context.SpellDescriptor.HasAnyFlag(this.Alignment.GetAlignmentDescriptor());
             return buffHasDescriptor && noImmunityBypassFeature && noImmunityFact && (casterHasAlignment || spellHasAlignment);
+        }
+
+        private SpellDescriptor GetWorkingImmunities() {
+            var rr = this.Owner.Ensure<UnitPartIgnoreBuffDescriptorImmunity>().Entries();
+            if (rr != SpellDescriptor.None) {
+                return this.Descriptor.Value & ~this.Owner.Ensure<UnitPartIgnoreBuffDescriptorImmunity>().Entries();
+            } else {
+                return this.Descriptor.Value;
+            }
         }
 
         public void OnEventAboutToTrigger(RuleCanApplyBuff evt) {
