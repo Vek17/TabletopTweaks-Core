@@ -1,3 +1,6 @@
+## Version 0.5.7
+* Support for descriptor immunities
+
 ## Version 0.5.6
 * Fix for MechanicActionBarSlotActivableAbility
 
