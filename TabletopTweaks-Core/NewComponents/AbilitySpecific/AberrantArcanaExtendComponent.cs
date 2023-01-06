@@ -18,9 +18,11 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         public void HandleBuffDidAdded(Buff buff) {
             MechanicsContext maybeContext = buff.MaybeContext;
-            if (((maybeContext != null) ? maybeContext.MaybeCaster : null) == Owner &&
-                buff.Blueprint.GetComponents<SpellDescriptorComponent>().Any(c => c.Descriptor.HasAnyFlag(SpellDescriptor.Polymorph)) &&
-                !buff.MaybeContext.HasMetamagic(Metamagic.Extend)) {
+            if (((maybeContext != null) ? maybeContext.MaybeCaster : null) == Owner 
+                && buff.Blueprint.GetComponents<SpellDescriptorComponent>().Any(c => c.Descriptor.HasAnyFlag(SpellDescriptor.Polymorph)) 
+                && !buff.IsPermanent
+                && !buff.MaybeContext.HasMetamagic(Metamagic.Extend)) 
+            {
                 buff.SetDuration(new TimeSpan((long)(buff.TimeLeft.Ticks * 1.5)));
             }
         }

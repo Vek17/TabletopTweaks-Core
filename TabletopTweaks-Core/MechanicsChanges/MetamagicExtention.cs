@@ -48,6 +48,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             ElementalCold = 1 << 23,
             ElementalElectricity = 1 << 24,
             ElementalFire = 1 << 25,
+            Twin = 1 << 26,
         }
 
         public static void RegisterMetamagic(
