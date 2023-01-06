@@ -1,5 +1,7 @@
-## Version 0.5.7
+## Version 0.5.8
 * Support for twin spell metamagic
+* Fixed issue with aberrant bloodline and permanant polymorph durations
+
 ## Version 0.5.7
 * Support for descriptor immunities
 
