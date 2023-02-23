@@ -26,9 +26,10 @@ namespace TabletopTweaks.Core.NewComponents {
         public void OnNewRound() {
             if (conditionsChecker.Check()) {
                 UnitPartBuffSuppress unitPartBuffSuppress = base.Owner.Ensure<UnitPartBuffSuppress>();
-                foreach (BlueprintBuff buff in m_SuppressedBuffs) {
-                    unitPartBuffSuppress.Suppress(buff);
-                }
+                unitPartBuffSuppress.ApplyChanges();
+                //foreach (BlueprintBuff buff in m_SuppressedBuffs) {
+                //    unitPartBuffSuppress.PrepareForSuppression(buff);
+                //}
             }
         }
 
@@ -38,22 +39,23 @@ namespace TabletopTweaks.Core.NewComponents {
 
             foreach (Buff buff in Owner.Buffs) {
                 if (IsSuppressed(buff)) {
-                    unitPartBuffSuppress.Suppress(buff.Blueprint);
+                    unitPartBuffSuppress.PrepareForSuppression(buff.Blueprint);
                     suppressedBuffs.Add(buff.Blueprint);
                 }
             }
 
 
             if (Descriptor != SpellDescriptor.None) {
-                unitPartBuffSuppress.Suppress(Descriptor);
+                unitPartBuffSuppress.PrepareForSuppression(Descriptor);
             }
             if (Schools != null && Schools.Length > 0) {
-                unitPartBuffSuppress.Suppress(Schools);
+                unitPartBuffSuppress.PrepareForSuppression(Schools);
             }
             foreach (BlueprintBuff buff in Buffs) {
-                unitPartBuffSuppress.Suppress(buff);
+                unitPartBuffSuppress.PrepareForSuppression(buff);
             }
             m_SuppressedBuffs = suppressedBuffs.Select(bp => bp.ToReference<BlueprintBuffReference>()).ToArray();
+            unitPartBuffSuppress.ApplyChanges();
         }
 
         public override void OnDeactivate() {
@@ -63,14 +65,15 @@ namespace TabletopTweaks.Core.NewComponents {
                 return;
             }
             if (Descriptor != SpellDescriptor.None) {
-                unitPartBuffSuppress.Release(Descriptor);
+                unitPartBuffSuppress.PrepareForRelease(Descriptor);
             }
             if (Schools != null && Schools.Length > 0) {
-                unitPartBuffSuppress.Release(Schools);
+                unitPartBuffSuppress.PrepareForRelease(Schools);
             }
             foreach (BlueprintBuff buff in Buffs) {
-                unitPartBuffSuppress.Release(buff);
+                unitPartBuffSuppress.PrepareForRelease(buff);
             }
+            unitPartBuffSuppress.ApplyChanges();
         }
 
         private static IEnumerable<SpellDescriptor> GetValues(SpellDescriptor spellDescriptor) {

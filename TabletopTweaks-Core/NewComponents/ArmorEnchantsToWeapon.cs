@@ -27,7 +27,7 @@ namespace TabletopTweaks.Core.NewComponents {
             if (evt.Weapon == base.Owner) {
                 var bonus = evt.Initiator?.Body?.Armor?.MaybeArmor?.EnchantmentValue ?? 0;
                 if (bonus > 0) {
-                    evt.Enhancement = bonus > evt.Enhancement ? bonus : evt.Enhancement;
+                    Modifier modifier = new Modifier(bonus, base.Fact, ModifierDescriptor.Enhancement);
                 }
             }
         }

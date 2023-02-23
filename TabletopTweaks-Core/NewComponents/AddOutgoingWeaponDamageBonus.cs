@@ -7,6 +7,7 @@ using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
 using System;
 using TabletopTweaks.Core.Utilities;
+using UnityEngine;
 
 namespace TabletopTweaks.Core.NewComponents {
     [TypeId("03f55b5c7cb0445ab32ce2c8d44704ec")]
@@ -17,22 +18,20 @@ namespace TabletopTweaks.Core.NewComponents {
         IInitiatorRulebookSubscriber {
 
         public void OnEventAboutToTrigger(RuleCalculateDamage evt) {
-            if (evt.DamageBundle.First == null) { return; }
 
-            var WeaponDamage = evt.DamageBundle.First;
-            DamageTypeDescription description = GenerateTypeDescriptiron(WeaponDamage);
-            DamageDescription damageDescriptor = description.GetDamageDescriptor(Helpers.CreateCopy(WeaponDamage.Dice.ModifiedValue), 0);
-            damageDescriptor.TemporaryContext(dd => {
-                dd.TypeDescription.Physical.Enhancement = description.Physical.Enhancement;
-                dd.TypeDescription.Physical.EnhancementTotal = description.Physical.EnhancementTotal;
-                dd.TypeDescription.Common.Alignment = WeaponDamage.AlignmentsMask;
-                dd.SourceFact = this.Fact;
-                if (BonusDamageMultiplier > 1) {
-                    dd.ModifyDice(new DiceFormula(damageDescriptor.Dice.Rolls * BonusDamageMultiplier, damageDescriptor.Dice.Dice), this.Fact);
-                }
-                dd.AddModifier(new Modifier(WeaponDamage.Bonus * Math.Max(1, BonusDamageMultiplier), this.Fact, ModifierDescriptor.UntypedStackable));
-            });
-            evt.ParentRule.m_DamageBundle.m_Chunks.Insert(1, damageDescriptor.CreateDamage());
+            BaseDamage weaponDamage = evt.DamageBundle.WeaponDamage;
+            if (weaponDamage == null) {
+                return;
+            }
+            DiceFormula modifiedValue = weaponDamage.Dice.ModifiedValue;
+            int extraDice = modifiedValue.Rolls * BonusDamageMultiplier;
+            if (extraDice > 0) {
+                weaponDamage.PostCritIncrements.AddDiceModifier(extraDice, this.Fact);
+            }
+            int bonusDamage = weaponDamage.TotalBonus * BonusDamageMultiplier;
+            if (bonusDamage > 0) {
+                weaponDamage.PostCritIncrements.AddBonusModifier(bonusDamage, this.Fact);
+            }
         }
 
         public void OnEventDidTrigger(RuleCalculateDamage evt) {

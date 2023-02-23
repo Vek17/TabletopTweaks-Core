@@ -1,3 +1,8 @@
+## Versions 0.5.9
+* Updated for 2.1.0
+* Moved AddOutgoingWeaponDamageBonus to post crit damage system
+* Added support for more ActivatableAbilityGroups with AdditionalActivatableAbilityGroups
+
 ## Version 0.5.8
 * Support for twin spell metamagic
 * Fixed issue with aberrant bloodline and permanant polymorph durations
