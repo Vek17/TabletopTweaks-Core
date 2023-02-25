@@ -1,3 +1,6 @@
+## Versions 0.5.10
+* Added support for ChainChallenge
+
 ## Versions 0.5.9
 * Updated for 2.1.0
 * Moved AddOutgoingWeaponDamageBonus to post crit damage system

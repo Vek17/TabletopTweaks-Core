@@ -60,7 +60,7 @@ namespace TabletopTweaks.Core.NewActions {
                     validTargets
                         .Sort((UnitEntityData u1, UnitEntityData u2) => u1.DistanceTo(previousTarget).CompareTo(u2.DistanceTo(previousTarget)));
                     validTargets.ForEach(t => {
-                        Main.TTTContext.Logger.Log($"Distance from Previous Target: {t.DistanceTo(previousTarget)} - {t.View.Corpulence + previousTarget.View.Corpulence + CleaveRadius.Meters}");
+                        //Main.TTTContext.Logger.Log($"Distance from Previous Target: {t.DistanceTo(previousTarget)} - {t.View.Corpulence + previousTarget.View.Corpulence + CleaveRadius.Meters}");
                     });
                     validTargets = validTargets
                         .Where(t => t.DistanceTo(previousTarget) <= (t.View.Corpulence + previousTarget.View.Corpulence + CleaveRadius.Meters))
