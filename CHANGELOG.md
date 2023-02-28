@@ -1,5 +1,7 @@
 ## Versions 0.5.10
-* Added support for ChainChallenge
+* Added support for ChainChallenge.
+* Added AddAdditionalLimbConditional which supports extra natural attacks with checked facts.
+* Added Wild shape tools to make adding wild shaped features easier.
 
 ## Versions 0.5.9
 * Updated for 2.1.0

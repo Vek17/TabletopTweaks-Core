@@ -1,4 +1,5 @@
 ﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem;
 using Kingmaker.Enums;
@@ -6,7 +7,9 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.Utility;
 
 namespace TabletopTweaks.Core.NewComponents {
     [AllowMultipleComponents]
@@ -15,11 +18,18 @@ namespace TabletopTweaks.Core.NewComponents {
         IInitiatorRulebookHandler<RuleCalculateWeaponStats>,
         IRulebookHandler<RuleCalculateWeaponStats>,
         ISubscriber, IInitiatorRulebookSubscriber {
+
         public void OnEventAboutToTrigger(RuleCalculateWeaponStats evt) {
+            if (CheckFacts && m_Facts.Any(fact => !evt.Initiator.HasFact(fact))) {
+                return;
+            }
             if (CheckWeaponRangeType && !RangeType.IsSuitableWeapon(evt.Weapon)) {
                 return;
             }
             if (CheckWeaponCatergoy && evt.Weapon.Blueprint.Category != Category) {
+                return;
+            }
+            if (CheckWeaponGroup && !evt.Weapon.Blueprint.FighterGroup.Contains(this.Group)) {
                 return;
             }
             DamageDescription Damage = new DamageDescription {
@@ -36,9 +46,13 @@ namespace TabletopTweaks.Core.NewComponents {
 
         public DamageTypeDescription DamageType;
         public ContextDiceValue Value;
+        public bool CheckFacts;
+        public BlueprintUnitFactReference[] m_Facts = new BlueprintUnitFactReference[0];
         public bool CheckWeaponRangeType;
         public WeaponRangeType RangeType;
         public bool CheckWeaponCatergoy;
         public WeaponCategory Category;
+        public bool CheckWeaponGroup;
+        public WeaponFighterGroup Group;
     }
 }

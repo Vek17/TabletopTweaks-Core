@@ -25,6 +25,7 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintCharacterClass RangerClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("cda0615668a6df14eb36ba19ee881af6");
             public static BlueprintCharacterClass RogueClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("299aa766dee3cbf4790da4efb8c72484");
             public static BlueprintCharacterClass ShamanClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("145f1d3d360a7ad48bd95d392c81b38e");
+            public static BlueprintCharacterClass ShifterClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("a406d6ebea5c46bba3160246be03e96f");
             public static BlueprintCharacterClass SkaldClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("6afa347d804838b48bda16acb0573dc0");
             public static BlueprintCharacterClass SlayerClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("c75e0971973957d4dbad24bc7957e4fb");
             public static BlueprintCharacterClass SorcererClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("b3a505fb61437dc4097f43c3f8f9a4cf");
@@ -67,6 +68,7 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintCharacterClassReference RangerClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("cda0615668a6df14eb36ba19ee881af6");
             public static BlueprintCharacterClassReference RogueClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("299aa766dee3cbf4790da4efb8c72484");
             public static BlueprintCharacterClassReference ShamanClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("145f1d3d360a7ad48bd95d392c81b38e");
+            public static BlueprintCharacterClassReference ShifterClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("a406d6ebea5c46bba3160246be03e96f");
             public static BlueprintCharacterClassReference SkaldClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("6afa347d804838b48bda16acb0573dc0");
             public static BlueprintCharacterClassReference SlayerClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("c75e0971973957d4dbad24bc7957e4fb");
             public static BlueprintCharacterClassReference SorcererClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("b3a505fb61437dc4097f43c3f8f9a4cf");

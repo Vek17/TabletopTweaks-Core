@@ -73,7 +73,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             if (validTargets.Count <= 0) {
                 return null;
             }
-            validTargets.Sort((UnitEntityData u1, UnitEntityData u2) => u1.DistanceTo(baseTarget).CompareTo(u2.DistanceTo(baseTarget)));
+            validTargets.Sort((UnitEntityData u1, UnitEntityData u2) => u1.DistanceTo(base.Owner.Unit).CompareTo(u2.DistanceTo(base.Owner.Unit)));
             return validTargets.FirstOrDefault();
         }
 
