@@ -5,12 +5,14 @@ using JetBrains.Annotations;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
+using Kingmaker.Blueprints.Root.Strings;
 using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.Localization;
 using Kingmaker.Localization.Shared;
 using Kingmaker.ResourceLinks;
+using Kingmaker.UI.Common;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics.Components;
@@ -273,6 +275,44 @@ namespace TabletopTweaks.Core.Utilities {
         /// <param name="modContext">
         /// Context of the mod to record the LocalizedString in.
         /// </param>
+        /// <param name="name">
+        /// name used to refer to the string in the MultiLocalization pack.
+        /// </param>
+        /// <param name="description">
+        /// string that the new localized string will contain.
+        /// </param>
+        /// <param name="locale">
+        /// locale that the text will be created for.
+        /// </param>
+        /// <returns>
+        /// New Localized String built with supplied arguments.
+        /// </returns>
+        /// <param name="shouldProcess">
+        /// Determines if the localized string should have tags added to it.
+        /// </param>
+        public static GlossaryEntry CreateGlosseryEntry(ModContextBase modContext, string key, string name, string description, Locale locale = Locale.enGB, BlueprintScriptableObjectReference EncyclopediaPage = null) {
+            // See if we used the text previously.
+            // (It's common for many features to use the same localized text.
+            // In that case, we reuse the old entry instead of making a new one.)
+            var Existing = GlossaryHolder.GetEntry(key);
+            if (Existing != null) { return Existing; }
+            var LocalizedName = CreateMultiLocaleString(modContext, $"glossery.{name}.name", name, locale, false);
+            var LocalizedDescription = CreateMultiLocaleString(modContext, $"glossery.{name}.description", description, locale, true);
+            var GlosseryEntry = new GlossaryEntry() {
+                Key = key,
+                Name = LocalizedName.LocalizedString,
+                Description = LocalizedDescription.LocalizedString,
+                Blueprint = EncyclopediaPage
+            };
+            GlossaryHolder.s_EntriesbyKey[GlosseryEntry.Key.ToLowerInvariant()] = GlosseryEntry;
+            return GlosseryEntry;
+        }
+        /// <summary>
+        /// Creates a new localized string.
+        /// </summary>
+        /// <param name="modContext">
+        /// Context of the mod to record the LocalizedString in.
+        /// </param>
         /// <param name="simpleName">
         /// name used to refer to the string in the MultiLocalization pack.
         /// </param>
@@ -292,15 +332,51 @@ namespace TabletopTweaks.Core.Utilities {
             // See if we used the text previously.
             // (It's common for many features to use the same localized text.
             // In that case, we reuse the old entry instead of making a new one.)
-            string strippedText = text.StripHTML().StripEncyclopediaTags();
+            return CreateMultiLocaleString(modContext, simpleName, text, locale, shouldProcess, false).LocalizedString;
+        }
+        /// <summary>
+        /// Creates a new localized string.
+        /// </summary>
+        /// <param name="modContext">
+        /// Context of the mod to record the LocalizedString in.
+        /// </param>
+        /// <param name="simpleName">
+        /// name used to refer to the string in the MultiLocalization pack.
+        /// </param>
+        /// <param name="text">
+        /// string that the new localized string will contain.
+        /// </param>
+        /// <param name="locale">
+        /// locale that the text will be created for.
+        /// </param>
+        /// <returns>
+        /// New Localized String built with supplied arguments.
+        /// </returns>
+        /// <param name="shouldProcess">
+        /// Determines if the localized string should have tags added to it.
+        /// </param>
+        /// <param name="stripTags">
+        /// Determines if the localized string should have tags striped from it before creating.
+        /// </param>
+        public static LocalizedString CreateString(ModContextBase modContext, string simpleName, string text, bool shouldProcess, bool stripTags, Locale locale = Locale.enGB) {
+            // See if we used the text previously.
+            // (It's common for many features to use the same localized text.
+            // In that case, we reuse the old entry instead of making a new one.)
+            return CreateMultiLocaleString(modContext, simpleName, text, locale, shouldProcess, stripTags).LocalizedString;
+        }
+        private static MultiLocalizationPack.MultiLocaleString CreateMultiLocaleString(ModContextBase modContext, string simpleName, string text, Locale locale = Locale.enGB, bool shouldProcess = false, bool stripTags = true) {
+            // See if we used the text previously.
+            // (It's common for many features to use the same localized text.
+            // In that case, we reuse the old entry instead of making a new one.)
+            string strippedText = stripTags ? text.StripHTML().StripEncyclopediaTags() : text;
             MultiLocalizationPack.MultiLocaleString multiLocalized;
             if (modContext.ModLocalizationPack.TryGetText(strippedText, out multiLocalized)) {
-                return multiLocalized.LocalizedString;
+                return multiLocalized;
             }
             multiLocalized = new MultiLocalizationPack.MultiLocaleString(simpleName, strippedText, shouldProcess, locale);
-            modContext.Logger.LogWarning($"Generated New Localizaed String: {multiLocalized.Key}:{multiLocalized.SimpleName}");
+            modContext.Logger.LogWarning($"Generated New Localized String: {multiLocalized.Key}:{multiLocalized.SimpleName}");
             modContext.ModLocalizationPack.AddString(multiLocalized);
-            return multiLocalized.LocalizedString;
+            return multiLocalized;
         }
         /// <summary>
         /// Creates a new ContextRankConfig based on the supplied arguments.

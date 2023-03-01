@@ -1,4 +1,6 @@
 ﻿using HarmonyLib;
+using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Localization;
 using Kingmaker.PubSubSystem;
@@ -8,8 +10,10 @@ using Kingmaker.UI.MVVM._VM.ServiceWindows.Spellbook.Metamagic;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.Visual.HitSystem;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TabletopTweaks.Core.ModLogic;
 using TabletopTweaks.Core.NewUnitParts;
@@ -58,7 +62,8 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             Sprite icon,
             int defaultCost,
             CustomMechanicsFeature? favoriteMetamagic,
-            ISubscriber metamagicMechanics = null) {
+            ISubscriber metamagicMechanics = null,
+            BlueprintFeature metamagicFeat = null) {
             RegisterMetamagic(
                 context: context,
                 metamagic: metamagic,
@@ -67,7 +72,8 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                 defaultCost: defaultCost,
                 favoriteMetamagic: favoriteMetamagic,
                 favoriteMetamaticAdjustment: 1,
-                metamagicMechanics: metamagicMechanics
+                metamagicMechanics: metamagicMechanics,
+                metamagicFeat: metamagicFeat
             );
         }
 
@@ -79,9 +85,31 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             int defaultCost,
             CustomMechanicsFeature? favoriteMetamagic,
             int favoriteMetamaticAdjustment,
-            ISubscriber metamagicMechanics = null) {
+            ISubscriber metamagicMechanics = null,
+            BlueprintFeature metamagicFeat = null) {
+            DescriptionTools.EncyclopediaEntry entry = null;
+            if (metamagicFeat != null) {
+                Helpers.CreateGlosseryEntry(
+                    modContext: context,
+                    key: $"{name}-{context.ModEntry.Info.Id}",
+                    name: name,
+                    description: metamagicFeat.Description,
+                    EncyclopediaPage: null
+                );
+                entry = new DescriptionTools.EncyclopediaEntry {
+                    Entry = $"{name}-{context.ModEntry.Info.Id}",
+                    Patterns = {
+                        name
+                    }
+                };
+            }
             var metamagicData = new CustomMetamagicData() {
-                Name = name == null ? null : Helpers.CreateString(context, $"{name}SpellMetamagic", name),
+                Name = name == null ? null : Helpers.CreateString(
+                    modContext: context, 
+                    simpleName: $"{name}SpellMetamagic", 
+                    text: entry == null ? name : name.ApplyTags(entry.Patterns.First(), entry), 
+                    shouldProcess: false, 
+                    stripTags: false),
                 Icon = icon,
                 DefaultCost = defaultCost,
                 FavoriteMetamagic = favoriteMetamagic,

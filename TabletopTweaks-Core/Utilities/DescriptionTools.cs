@@ -321,7 +321,7 @@ namespace TabletopTweaks.Core.Utilities {
             return result;
         }
 
-        private class EncyclopediaEntry {
+        internal class EncyclopediaEntry {
             public string Entry = "";
             public List<string> Patterns = new List<string>();
 
@@ -330,7 +330,7 @@ namespace TabletopTweaks.Core.Utilities {
             }
         }
 
-        private static string ApplyTags(this string str, string from, EncyclopediaEntry entry) {
+        internal static string ApplyTags(this string str, string from, EncyclopediaEntry entry) {
             var pattern = from.EnforceSolo().ExcludeTagged();
             var matches = Regex.Matches(str, pattern, RegexOptions.IgnoreCase)
                 .OfType<Match>()
