@@ -2,6 +2,9 @@
 * Added support for ChainChallenge.
 * Added AddAdditionalLimbConditional which supports extra natural attacks with checked facts.
 * Added Wild shape tools to make adding wild shaped features easier.
+* Added support for glossery tag creation.
+* Added support for metamagic glossery tags.
+* Fixed a bug where hidden activatable abiltiies were incorrectly handled.
 
 ## Versions 0.5.9
 * Updated for 2.1.0

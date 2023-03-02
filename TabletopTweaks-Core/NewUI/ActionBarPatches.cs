@@ -152,12 +152,14 @@ namespace TabletopTweaks.Core.NewUI {
                     }
                 }
                 foreach (ActivatableAbility activatableAbility in unit.ActivatableAbilities) {
-                    List<ActionBarSlotVM> groupAbilities = __instance.GroupAbilities;
-                    MechanicActionBarSlotActivableAbility activableAbility = new MechanicActionBarSlotActivableAbility();
-                    activableAbility.ActivatableAbility = activatableAbility;
-                    activableAbility.Unit = unit;
-                    ActionBarSlotVM actionBarSlotVm = new ActionBarSlotVM(activableAbility);
-                    groupAbilities.Add(actionBarSlotVm);
+                    if (!activatableAbility.Blueprint.HiddenInUI) {
+                        List<ActionBarSlotVM> groupAbilities = __instance.GroupAbilities;
+                        MechanicActionBarSlotActivableAbility activableAbility = new MechanicActionBarSlotActivableAbility();
+                        activableAbility.ActivatableAbility = activatableAbility;
+                        activableAbility.Unit = unit;
+                        ActionBarSlotVM actionBarSlotVm = new ActionBarSlotVM(activableAbility);
+                        groupAbilities.Add(actionBarSlotVm);
+                    }
                 }
                 return false;
             }
