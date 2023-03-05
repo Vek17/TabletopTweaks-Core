@@ -21,6 +21,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         }
 
         public void OnEventDidTrigger(RuleAttackRoll evt) {
+            if (!evt.Target.CombatState.IsEngage(base.Owner)) { return; }
             if (!evt.Target.IsFlankedBy(base.Owner)) { return; }
             if (evt.IsFake
                 || !evt.IsHit

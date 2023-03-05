@@ -65,7 +65,8 @@ namespace TabletopTweaks.Core.NewUnitParts {
             TricksterReworkPersuasion3,
             ElementalSpellSplitDamage,
             GangUp,
-            ImprovedOutflank
+            ImprovedOutflank,
+            PackFlanking
         }
     }
     public static class CustomMechanicsFeaturesExtentions {

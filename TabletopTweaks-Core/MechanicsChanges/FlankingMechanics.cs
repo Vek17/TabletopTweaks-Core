@@ -21,7 +21,9 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             context.Logger.Log($"TabletopTweaks-Core FlankingProvider set by {context.ModEntry.Info.Id}");
         }
         public static bool IsFlankedBy(this UnitEntityData target, UnitEntityData initiator) {
-            return FlankingProvider.CheckFlankedBy(target, initiator);
+            var result = FlankingProvider.CheckFlankedBy(target, initiator);
+            //Main.TTTContext.Logger.Log($"Flanking check {initiator.CharacterName} -> {target.CharacterName}: {result}");
+            return result;
         }
 
         public interface IFlankingProvider {
