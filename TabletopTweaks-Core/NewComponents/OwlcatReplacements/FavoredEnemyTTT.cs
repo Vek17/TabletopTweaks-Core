@@ -1,10 +1,9 @@
-﻿using System;
-using System.Linq;
-using Kingmaker.Blueprints;
+﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Parts;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 

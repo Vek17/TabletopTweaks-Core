@@ -2,16 +2,31 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
+using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
+using Kingmaker.RuleSystem;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
+using Kingmaker.UnitLogic.ActivatableAbilities;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
+using Kingmaker.UnitLogic.Buffs.Components;
+using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
+using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.Utility;
+using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
+using TabletopTweaks.Core.Config;
 using TabletopTweaks.Core.ModLogic;
 
 namespace TabletopTweaks.Core.Utilities {
@@ -23,6 +38,21 @@ namespace TabletopTweaks.Core.Utilities {
                 Selections.FeatSelections
                     .Where(selection => feature.HasGroup(selection.Group) || feature.HasGroup(selection.Group2))
                     .ForEach(selection => selection.AddFeatures(feature));
+                ConfigureLichSkeltalSelections(feature);
+            }
+            void ConfigureLichSkeltalSelections(BlueprintFeature feature) {
+                var LichSkeletalCombatParametrized = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("b8a52bbe63e7d6b48b002ee474e90fdd");
+                var LichSkeletalTeamworkParametrized = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("b042ff9901e7b104eac92c05aa39957a");
+                var LichSkeletalWeaponParametrized = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("90f171fadf81f164d9828ce05441e617");
+
+                if (feature.HasGroup(FeatureGroup.CombatFeat)) {
+                    LichSkeletalCombatParametrized.BlueprintParameterVariants = LichSkeletalCombatParametrized.BlueprintParameterVariants
+                        .AppendToArray(feature.ToReference<AnyBlueprintReference>());
+                }
+                if (feature.HasGroup(FeatureGroup.TeamworkFeat)) {
+                    LichSkeletalTeamworkParametrized.BlueprintParameterVariants = LichSkeletalTeamworkParametrized.BlueprintParameterVariants
+                        .AppendToArray(feature.ToReference<AnyBlueprintReference>());
+                }
             }
         }
         public static void AddAsMetamagicFeat(BlueprintFeature feature) {
@@ -76,6 +106,346 @@ namespace TabletopTweaks.Core.Utilities {
         }
         public static void AddAsMythicFeat(BlueprintFeature feature) {
             Selections.MythicFeatSelection.AddFeatures(feature);
+        }
+        public static void ConfigureAsTeamworkFeat(ModContextBase context, BlueprintFeature teamworkFeat) {
+            CreateCavalierBuff();
+            CreateForesterTacticianAbility();
+            CreateVanguardTacticianAbility();
+            CreatePackRagerAbility();
+            ConfigureHunterTactics();
+            ConfigureSacredHuntsmasterTactics();
+            ConfigureBattleProwess();
+            ConfigureSummonTactics();
+            ConfigureTacticalLeader();
+
+            void ConfigureHunterTactics() {
+                var HunterTactics = BlueprintTools.GetBlueprint<BlueprintFeature>("1b9916f7675d6ef4fb427081250d49de");
+
+                HunterTactics.GetComponent<ShareFeaturesWithPet>()?.TemporaryContext(c => {
+                    c.m_Features = c.m_Features.AppendToArray(teamworkFeat.ToReference<BlueprintFeatureReference>());
+                });
+            }
+            void ConfigureSacredHuntsmasterTactics() {
+                var SacredHuntsmasterTactics = BlueprintTools.GetBlueprint<BlueprintFeature>("e1f437048db80164792155102375b62c");
+
+                SacredHuntsmasterTactics.GetComponent<ShareFeaturesWithPet>()?.TemporaryContext(c => {
+                    c.m_Features = c.m_Features.AppendToArray(teamworkFeat.ToReference<BlueprintFeatureReference>());
+                });
+            }
+            void ConfigureBattleProwess() {
+                var BattleProwessEffectBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("8c8cb2f8d83035e45843a88655da8321");
+
+                BattleProwessEffectBuff.GetComponent<AddFactsFromCaster>()?.TemporaryContext(c => {
+                    c.m_Facts = c.m_Facts.AppendToArray(teamworkFeat.ToReference<BlueprintUnitFactReference>());
+                });
+            }
+            void ConfigureSummonTactics() {
+                var MonsterTacticsBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("81ddc40b935042844a0b5fb052eeca73");
+
+                MonsterTacticsBuff.GetComponent<AddFactsFromCaster>()?.TemporaryContext(c => {
+                    c.m_Facts = c.m_Facts.AppendToArray(teamworkFeat.ToReference<BlueprintUnitFactReference>());
+                });
+            }
+            void ConfigureTacticalLeader() {
+                var TacticalLeaderFeatShareBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("a603a90d24a636c41910b3868f434447");
+
+                TacticalLeaderFeatShareBuff.GetComponent<AddFactsFromCaster>()?.TemporaryContext(c => {
+                    c.m_Facts = c.m_Facts.AppendToArray(teamworkFeat.ToReference<BlueprintUnitFactReference>());
+                });
+            }
+            BlueprintBuff CreateCavalierBuff() {
+                var CavalierTacticianSupportFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("37c496c0c2f04544b83a8d013409fd47");
+                var CavalierTacticianAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("3ff8ef7ba7b5be0429cf32cd4ddf637c");
+                var CavalierTacticianAbilitySwift = BlueprintTools.GetBlueprint<BlueprintAbility>("78b8d3fd0999f964f82d1c5ec30900e8");
+
+                var CavalierTacticianBuff = Helpers.CreateBlueprint<BlueprintBuff>(context, $"CavalierTactician{teamworkFeat.name}", bp => {
+                    bp.SetName(teamworkFeat.m_DisplayName);
+                    bp.SetDescription(teamworkFeat.m_Description);
+                    bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                    bp.m_Icon = teamworkFeat.Icon;
+                    bp.Ranks = 1;
+                    bp.IsClassFeature = true;
+                    bp.Stacking = StackingType.Ignore;
+                    bp.AddComponent<AddFeatureIfHasFact>(c => {
+                        c.m_CheckedFact = teamworkFeat.ToReference<BlueprintUnitFactReference>();
+                        c.m_Feature = teamworkFeat.ToReference<BlueprintUnitFactReference>();
+                        c.Not = true;
+                    });
+                });
+                teamworkFeat.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { CavalierTacticianBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                CavalierTacticianAbility.GetComponent<AbilityApplyFact>()?.TemporaryContext(c => {
+                    c.m_Facts = c.m_Facts.AppendToArray(CavalierTacticianBuff.ToReference<BlueprintUnitFactReference>());
+                });
+                CavalierTacticianAbilitySwift.GetComponent<AbilityApplyFact>()?.TemporaryContext(c => {
+                    c.m_Facts = c.m_Facts.AppendToArray(CavalierTacticianBuff.ToReference<BlueprintUnitFactReference>());
+                });
+                CavalierTacticianSupportFeature.AddComponent<AddFeatureIfHasFact>(c => {
+                    c.m_CheckedFact = CavalierTacticianBuff.ToReference<BlueprintUnitFactReference>();
+                    c.m_Feature = CavalierTacticianBuff.ToReference<BlueprintUnitFactReference>();
+                });
+                return CavalierTacticianBuff;
+            }
+            BlueprintAbility CreateForesterTacticianAbility() {
+                var ForesterArchetype = BlueprintTools.GetBlueprintReference<BlueprintArchetypeReference>("74ee8172df6782f4792ea0f8647dea34");
+                var ForesterTacticianBaseAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("bd4e807c7d94df24595eaa1f5a3569a0");
+                var ForesterTacticianResource = BlueprintTools.GetBlueprintReference<BlueprintAbilityResourceReference>("34dc370aa26fb304c89a39c5ad902b85");
+
+                var PrefixString = Helpers.CreateString(context, "Tactician.prefix", "Tactician — ");
+                var ForesterTacticianBuff = Helpers.CreateBlueprint<BlueprintBuff>(context, $"ForesterTactician{teamworkFeat.name}Buff", bp => {
+                    bp.SetName(teamworkFeat.m_DisplayName);
+                    bp.SetDescription(teamworkFeat.m_Description);
+                    bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                    bp.m_Icon = teamworkFeat.Icon;
+                    bp.Ranks = 1;
+                    bp.IsClassFeature = true;
+                    bp.AddComponent<AddFactsFromCaster>(c => {
+                        c.m_Facts = new BlueprintUnitFactReference[] { teamworkFeat.ToReference<BlueprintUnitFactReference>() };
+                    });
+                });
+                var ForesterTacticianAbility = Helpers.CreateBlueprint<BlueprintAbility>(context, $"ForesterTactician{teamworkFeat.name}Ability", bp => {
+                    bp.SetName(context, $"{PrefixString}{teamworkFeat.m_DisplayName}");
+                    bp.SetDescription(teamworkFeat.m_Description);
+                    bp.SetLocalizedDuration(context, "");
+                    bp.SetLocalizedSavingThrow(context, "");
+                    bp.m_Icon = teamworkFeat.Icon;
+                    bp.Type = AbilityType.Extraordinary;
+                    bp.Range = AbilityRange.Personal;
+                    bp.CanTargetSelf = true;
+                    bp.ShouldTurnToTarget = true;
+                    bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                    bp.ActionType = UnitCommand.CommandType.Standard;
+                    bp.AddComponent<AbilityEffectRunAction>(c => {
+                        c.Actions = Helpers.CreateActionList(
+                            new Conditional() {
+                                ConditionsChecker = new ConditionsChecker() { 
+                                    Conditions = new Condition[] { 
+                                        new ContextConditionHasFact() {
+                                            m_Fact = teamworkFeat.ToReference<BlueprintUnitFactReference>(),
+                                            Not = true
+                                        }
+                                    }
+                                },
+                                IfFalse = Helpers.CreateActionList(),
+                                IfTrue = Helpers.CreateActionList(
+                                    new ContextActionApplyBuff() {
+                                        m_Buff = ForesterTacticianBuff.ToReference<BlueprintBuffReference>(),
+                                        DurationValue = new ContextDurationValue() { 
+                                            DiceType = DiceType.One,
+                                            DiceCountValue = new ContextValue() { 
+                                                ValueType = ContextValueType.Rank
+                                            },
+                                            BonusValue = 3
+                                        },
+                                        AsChild = true
+                                    }
+                                )
+                            }
+                        );
+                    });
+                    bp.AddContextRankConfig(c => {
+                        c.m_BaseValueType = ContextRankBaseValueType.MaxClassLevelWithArchetype;
+                        c.m_Progression = ContextRankProgression.Div2;
+                        c.Archetype = ForesterArchetype;
+                        c.m_AdditionalArchetypes = new BlueprintArchetypeReference[0];
+                        c.m_Class = new BlueprintCharacterClassReference[] { ClassTools.ClassReferences.HunterClass };
+                    });
+                    bp.AddComponent<AbilityTargetsAround>(c => {
+                        c.m_Radius = 30.Feet();
+                        c.m_TargetType = TargetType.Ally;
+                        c.m_Condition = new ConditionsChecker() { 
+                            Conditions = new Condition[0]
+                        };
+                    });
+                    bp.AddComponent<AbilityShowIfCasterHasFact>(c => {
+                        c.m_UnitFact = teamworkFeat.ToReference<BlueprintUnitFactReference>();
+                    });
+                    bp.AddComponent<AbilityResourceLogic>(c => {
+                        c.m_RequiredResource = ForesterTacticianResource;
+                        c.Amount = 1;
+                        c.m_IsSpendResource = true;
+                    });
+                });
+
+                ForesterTacticianBaseAbility.GetComponent<AbilityVariants>()?.TemporaryContext(c => {
+                    c.m_Variants = c.m_Variants.AppendToArray(ForesterTacticianAbility.ToReference<BlueprintAbilityReference>());
+                });
+                return ForesterTacticianBaseAbility;
+            }
+            BlueprintAbility CreateVanguardTacticianAbility() {
+                var VanguardArchetype = BlueprintTools.GetBlueprintReference<BlueprintArchetypeReference>("67bbc0dcd471ea0428a362f6e94f3a51");
+                var VanguardTacticianBaseAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("00af3b5f43aa7ae4c87bcfe4e129f6e8");
+                var VanguardTacticianResource = BlueprintTools.GetBlueprintReference<BlueprintAbilityResourceReference>("61e818d575ef4ff49a4ecbe03106add9");
+                var PrefixString = Helpers.CreateString(context, "Tactician.prefix", "Tactician — ");
+
+                var VanguardTacticianBuff = Helpers.CreateBlueprint<BlueprintBuff>(context, $"VanguardTactician{teamworkFeat.name}Buff", bp => {
+                    bp.SetName(teamworkFeat.m_DisplayName);
+                    bp.SetDescription(teamworkFeat.m_Description);
+                    bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                    bp.m_Icon = teamworkFeat.Icon;
+                    bp.Ranks = 1;
+                    bp.IsClassFeature = true;
+                    bp.AddComponent<AddFactsFromCaster>(c => {
+                        c.m_Facts = new BlueprintUnitFactReference[] { teamworkFeat.ToReference<BlueprintUnitFactReference>() };
+                    });
+                });
+                var VanguardTacticianAbility = Helpers.CreateBlueprint<BlueprintAbility>(context, $"VanguardTactician{teamworkFeat.name}Ability", bp => {
+                    bp.SetName(context, $"{PrefixString}{teamworkFeat.m_DisplayName}");
+                    bp.SetDescription(teamworkFeat.m_Description);
+                    bp.SetLocalizedDuration(context, "");
+                    bp.SetLocalizedSavingThrow(context, "");
+                    bp.m_Icon = teamworkFeat.Icon;
+                    bp.Type = AbilityType.Extraordinary;
+                    bp.Range = AbilityRange.Personal;
+                    bp.CanTargetSelf = true;
+                    bp.ShouldTurnToTarget = true;
+                    bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                    bp.ActionType = UnitCommand.CommandType.Standard;
+                    bp.AddComponent<AbilityEffectRunAction>(c => {
+                        c.Actions = Helpers.CreateActionList(
+                            new Conditional() {
+                                ConditionsChecker = new ConditionsChecker() {
+                                    Conditions = new Condition[] {
+                                        new ContextConditionHasFact() {
+                                            m_Fact = teamworkFeat.ToReference<BlueprintUnitFactReference>(),
+                                            Not = true
+                                        }
+                                    }
+                                },
+                                IfFalse = Helpers.CreateActionList(),
+                                IfTrue = Helpers.CreateActionList(
+                                    new ContextActionApplyBuff() {
+                                        m_Buff = VanguardTacticianBuff.ToReference<BlueprintBuffReference>(),
+                                        DurationValue = new ContextDurationValue() {
+                                            DiceType = DiceType.One,
+                                            DiceCountValue = new ContextValue() {
+                                                ValueType = ContextValueType.Rank
+                                            },
+                                            BonusValue = 3
+                                        },
+                                        AsChild = true
+                                    }
+                                )
+                            }
+                        );
+                    });
+                    bp.AddContextRankConfig(c => {
+                        c.m_BaseValueType = ContextRankBaseValueType.MaxClassLevelWithArchetype;
+                        c.m_Progression = ContextRankProgression.Div2;
+                        c.Archetype = VanguardArchetype;
+                        c.m_AdditionalArchetypes = new BlueprintArchetypeReference[0];
+                        c.m_Class = new BlueprintCharacterClassReference[] { ClassTools.ClassReferences.SlayerClass };
+                    });
+                    bp.AddComponent<AbilityTargetsAround>(c => {
+                        c.m_Radius = 30.Feet();
+                        c.m_TargetType = TargetType.Ally;
+                        c.m_Condition = new ConditionsChecker() {
+                            Conditions = new Condition[0]
+                        };
+                    });
+                    bp.AddComponent<AbilityShowIfCasterHasFact>(c => {
+                        c.m_UnitFact = teamworkFeat.ToReference<BlueprintUnitFactReference>();
+                    });
+                    bp.AddComponent<AbilityResourceLogic>(c => {
+                        c.m_RequiredResource = VanguardTacticianResource;
+                        c.Amount = 1;
+                        c.m_IsSpendResource = true;
+                    });
+                });
+
+                VanguardTacticianBaseAbility.GetComponent<AbilityVariants>()?.TemporaryContext(c => {
+                    c.m_Variants = c.m_Variants.AppendToArray(VanguardTacticianAbility.ToReference<BlueprintAbilityReference>());
+                });
+                return VanguardTacticianBaseAbility;
+            }
+            void CreatePackRagerAbility() {
+                if (!teamworkFeat.HasGroup(FeatureGroup.CombatFeat)) { return; }
+
+                var PackRagerAlliedSpellcasterToggleAbility = BlueprintTools.GetBlueprint<BlueprintActivatableAbility>("4230d0ca826cb6b4fb6db6cdb318ec8e");
+                var ForesterArchetype = BlueprintTools.GetBlueprintReference<BlueprintArchetypeReference>("74ee8172df6782f4792ea0f8647dea34");
+                var PackRagerRagingTacticianBaseFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("54efaa577ffe5114eb839d1bee8eda95");
+                var StandartRageBuff = BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("da8ce41ac3cd74742b80984ccc3c9613");
+
+                var PackRagerBuff = Helpers.CreateBlueprint<BlueprintBuff>(context, $"PackRager{teamworkFeat.name}Buff", bp => {
+                    bp.SetName(teamworkFeat.m_DisplayName);
+                    bp.SetDescription(teamworkFeat.m_Description);
+                    bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
+                    bp.m_Icon = PackRagerAlliedSpellcasterToggleAbility.Icon;
+                    bp.Ranks = 1;
+                    bp.IsClassFeature = true;
+                    bp.AddComponent<AddTemporaryFeat>(c => {
+                        c.m_Feat = teamworkFeat.ToReference<BlueprintFeatureReference>();
+                    });
+                });
+                var PackRagerArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>(context, $"PackRager{teamworkFeat.name}Area", bp => {
+                    bp.m_TargetType = BlueprintAbilityAreaEffect.TargetType.Ally;
+                    bp.Shape = AreaEffectShape.Cylinder;
+                    bp.Size = 50.Feet();
+                    bp.Fx = new Kingmaker.ResourceLinks.PrefabLink();
+                    bp.AddComponent<AbilityAreaEffectRunAction>(c => {
+                        c.UnitEnter = Helpers.CreateActionList(
+                            new ContextActionApplyBuff() {
+                                m_Buff = PackRagerBuff.ToReference<BlueprintBuffReference>(),
+                                Permanent = true,
+                                DurationValue = new ContextDurationValue() {
+                                    DiceCountValue = 0,
+                                    BonusValue = 0
+                                },
+                                AsChild = true
+                            }    
+                        );
+                        c.UnitExit = Helpers.CreateActionList(
+                            new ContextActionRemoveBuff() {
+                                m_Buff = PackRagerBuff.ToReference<BlueprintBuffReference>()
+                            }    
+                        );
+                        c.UnitMove = Helpers.CreateActionList();
+                        c.Round = Helpers.CreateActionList();
+                    });
+                });
+                var PackRagerAreaBuff = Helpers.CreateBlueprint<BlueprintBuff>(context, $"PackRager{teamworkFeat.name}AreaBuff", bp => {
+                    bp.SetName(teamworkFeat.m_DisplayName);
+                    bp.SetDescription(teamworkFeat.m_Description);
+                    bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
+                    bp.m_Icon = PackRagerAlliedSpellcasterToggleAbility.Icon;
+                    bp.Ranks = 1;
+                    bp.IsClassFeature = true;
+                    bp.AddComponent<AddAreaEffect>(c => {
+                        c.m_AreaEffect = PackRagerArea.ToReference<BlueprintAbilityAreaEffectReference>();
+                    });
+                });
+                var PackRagerSwitchBuff = Helpers.CreateBlueprint<BlueprintBuff>(context, $"PackRager{teamworkFeat.name}SwitchBuff", bp => {
+                    bp.SetName(teamworkFeat.m_DisplayName);
+                    bp.SetDescription(teamworkFeat.m_Description);
+                    bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
+                    bp.m_Icon = PackRagerAlliedSpellcasterToggleAbility.Icon;
+                    bp.Ranks = 1;
+                    bp.IsClassFeature = true;
+                    bp.AddComponent<BuffExtraEffects>(c => {
+                        c.m_CheckedBuff = StandartRageBuff;
+                        c.m_ExtraEffectBuff = PackRagerAreaBuff.ToReference<BlueprintBuffReference>();
+                        c.m_ExceptionFact = new BlueprintUnitFactReference();
+                    });
+                });
+                var PackRagerToggleAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>(context, $"PackRager{teamworkFeat.name}ToggleAbility", bp => {
+                    bp.SetName(teamworkFeat.m_DisplayName);
+                    bp.SetDescription(teamworkFeat.m_Description);
+                    bp.m_Icon = PackRagerAlliedSpellcasterToggleAbility.Icon;
+                    bp.m_Buff = PackRagerSwitchBuff.ToReference<BlueprintBuffReference>();
+                    bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
+                    bp.m_SelectTargetAbility = new BlueprintAbilityReference();
+                    bp.Group = ActivatableAbilityGroup.RagingTactician;
+                    bp.WeightInGroup = 1;
+                    bp.IsOnByDefault = true;
+                    bp.DeactivateImmediately = true;
+                });
+
+                PackRagerRagingTacticianBaseFeature.AddComponent<AddFeatureIfHasFact>(c => {
+                    c.m_CheckedFact = teamworkFeat.ToReference<BlueprintUnitFactReference>();
+                    c.m_Feature = PackRagerToggleAbility.ToReference<BlueprintUnitFactReference>();
+                });
+            }
         }
         public static BlueprintFeature CreateSkillFeat(ModContextBase modContext, string name, StatType skill1, StatType skill2, Action<BlueprintFeature> init = null) {
             var SkillFeat = Helpers.CreateBlueprint<BlueprintFeature>(modContext, name, bp => {

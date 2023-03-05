@@ -6,8 +6,6 @@ using Kingmaker.Enums;
 using Kingmaker.Items;
 using Kingmaker.Items.Slots;
 using Kingmaker.PubSubSystem;
-using Kingmaker.RuleSystem.Rules;
-using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
@@ -85,7 +83,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             OnActivate();
         }
 
-        public void OnAreaScenesLoaded() {}
+        public void OnAreaScenesLoaded() { }
 
         public void OnAreaLoadingComplete() {
             UpdateEffect();

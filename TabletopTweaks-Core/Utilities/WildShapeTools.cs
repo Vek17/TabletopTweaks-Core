@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace TabletopTweaks.Core.Utilities {
     public class WildShapeTools {
-        public static class WildShapeBuffs{
+        public static class WildShapeBuffs {
             public static BlueprintBuffReference ShifterDragonFormBlackBuff14 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("8fb6bf56c9174d5e8cf24069e6b0c965");
             public static BlueprintBuffReference ShifterDragonFormBlackBuff9 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("662bdcd3eef541fb91d88b9ee79d0d37");
             public static BlueprintBuffReference ShifterDragonFormBlueBuff14 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("b9c75c14fe6d48e0962e1ce9f42d4c9e");

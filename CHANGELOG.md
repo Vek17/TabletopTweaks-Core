@@ -5,6 +5,7 @@
 * Added support for glossery tag creation.
 * Added support for metamagic glossery tags.
 * Fixed a bug where hidden activatable abiltiies were incorrectly handled.
+* FeatTools.ConfigureAsTeamworkFeat added to setup all tactician and shared teamwork mechanics.
 
 ## Versions 0.5.9
 * Updated for 2.1.0

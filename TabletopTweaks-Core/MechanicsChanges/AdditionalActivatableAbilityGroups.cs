@@ -52,7 +52,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                 return true;
             }
         }
- 
+
         //[HarmonyPatch(typeof(UnitPartActivatableAbility), nameof(UnitPartActivatableAbility.PersistentGroupsSizeIncreases), MethodType.Getter)]
         static class UnitPartActivatableAbility_PersistentGroupsSizeIncreases_Getter_Patch {
 

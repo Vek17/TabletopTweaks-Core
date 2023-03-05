@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Localization;
@@ -10,7 +9,6 @@ using Kingmaker.UI.MVVM._VM.ServiceWindows.Spellbook.Metamagic;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.Visual.HitSystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -105,10 +103,10 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             }
             var metamagicData = new CustomMetamagicData() {
                 Name = name == null ? null : Helpers.CreateString(
-                    modContext: context, 
-                    simpleName: $"{name}SpellMetamagic", 
-                    text: entry == null ? name : name.ApplyTags(entry.Patterns.First(), entry), 
-                    shouldProcess: false, 
+                    modContext: context,
+                    simpleName: $"{name}SpellMetamagic",
+                    text: entry == null ? name : name.ApplyTags(entry.Patterns.First(), entry),
+                    shouldProcess: false,
                     stripTags: false),
                 Icon = icon,
                 DefaultCost = defaultCost,

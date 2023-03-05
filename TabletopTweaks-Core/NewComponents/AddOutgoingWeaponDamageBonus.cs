@@ -1,13 +1,8 @@
 ﻿using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem;
-using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
-using System;
-using TabletopTweaks.Core.Utilities;
-using UnityEngine;
 
 namespace TabletopTweaks.Core.NewComponents {
     [TypeId("03f55b5c7cb0445ab32ce2c8d44704ec")]

@@ -63,7 +63,9 @@ namespace TabletopTweaks.Core.NewUnitParts {
             BypassCriticalHitImmunity,
             TricksterReworkPersuasion2,
             TricksterReworkPersuasion3,
-            ElementalSpellSplitDamage
+            ElementalSpellSplitDamage,
+            GangUp,
+            ImprovedOutflank
         }
     }
     public static class CustomMechanicsFeaturesExtentions {

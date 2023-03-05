@@ -1,9 +1,9 @@
-﻿using Kingmaker.Blueprints.Facts;
-using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
+﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.Items.Weapons;
-using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.FactLogic;
 using UnityEngine;
 
 namespace TabletopTweaks.Core.NewComponents {

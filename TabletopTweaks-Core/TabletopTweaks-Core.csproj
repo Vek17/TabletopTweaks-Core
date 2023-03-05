@@ -161,6 +161,7 @@
     <Compile Include="Bugfixes\General\RuleCalculateCMDFix.cs" />
     <Compile Include="Config\Blueprints.cs" />
     <Compile Include="MechanicsChanges\AdditionalActivatableAbilityGroups.cs" />
+    <Compile Include="MechanicsChanges\FlankingMechanics.cs" />
     <Compile Include="NewComponents\AbilitySpecific\ChainChallengeComponent.cs" />
     <Compile Include="NewComponents\AddAdditionalLimbConditional.cs" />
     <Compile Include="NewComponents\AddAdditionalWeaponDamageOnHit.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="NewComponents\OwlcatReplacements\AttackBonusAgainstTargetTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\DamageBonusOrderOfCockatriceTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\FavoredEnemyTTT.cs" />
+    <Compile Include="NewComponents\Prerequisites\PrerequisiteDeityAlignment.cs" />
     <Compile Include="NewComponents\SpellDescriptorImmunityIgnore.cs" />
     <Compile Include="NewUnitParts\UnitPartActivatableAbilityGroupExtension.cs" />
     <Compile Include="NewUnitParts\UnitPartChainChallengeTTT.cs" />

@@ -1,10 +1,9 @@
-﻿using Kingmaker;
-using Kingmaker.Blueprints;
+﻿using Kingmaker.Blueprints;
 using Kingmaker.Controllers.Optimization;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.PubSubSystem;
-using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.RuleSystem;
+using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
@@ -16,7 +15,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace TabletopTweaks.Core.NewUnitParts {
-    public class UnitPartChainChallengeTTT : OldStyleUnitPart, 
+    public class UnitPartChainChallengeTTT : OldStyleUnitPart,
         IUnitCombatHandler, IUnitBuffHandler {
 
         private BlueprintAbility TriggeredAbility => m_TriggeredAbility?.Get();

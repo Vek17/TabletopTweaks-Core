@@ -1,17 +1,8 @@
 ﻿using HarmonyLib;
-using Kingmaker.Blueprints;
-using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem;
-using Kingmaker.RuleSystem.Rules;
-using Kingmaker.RuleSystem.Rules.Damage;
-using Kingmaker.Visual.CharacterSystem;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TabletopTweaks.Core.Bugfixes.General {
     internal class EventTriggers {
@@ -39,8 +30,8 @@ namespace TabletopTweaks.Core.Bugfixes.General {
                     Main.TTTContext.Logger.Log($"HasAfterEvent: {afterEvent.GetValue(newHandler) != null}");
                     Main.TTTContext.Logger.Log($"HasBeforeEvent: {beforeEvent.GetValue(newHandler) != null}");
                     Main.TTTContext.Logger.Log($"Set complete: {newHandler == test}");
-                    
-                } catch(Exception e) {
+
+                } catch (Exception e) {
                     Main.TTTContext.Logger.Log($"{handlerConstructor?.FullDescription()}");
                     Main.TTTContext.Logger.LogError(e.ToString());
                     Main.TTTContext.Logger.LogError(e.Message);

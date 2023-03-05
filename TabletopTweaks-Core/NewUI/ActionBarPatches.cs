@@ -7,7 +7,6 @@ using Kingmaker.UI.MVVM._VM.ActionBar;
 using Kingmaker.UI.UnitSettings;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.ActivatableAbilities;
-using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
