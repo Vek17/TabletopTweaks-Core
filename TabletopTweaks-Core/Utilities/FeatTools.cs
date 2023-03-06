@@ -362,6 +362,8 @@ namespace TabletopTweaks.Core.Utilities {
             void CreatePackRagerAbility() {
                 if (!teamworkFeat.HasGroup(FeatureGroup.CombatFeat)) { return; }
 
+                Selections.PackRagerTeamworkFeatSelection.AddFeatures(teamworkFeat);
+
                 var PackRagerAlliedSpellcasterToggleAbility = BlueprintTools.GetBlueprint<BlueprintActivatableAbility>("4230d0ca826cb6b4fb6db6cdb318ec8e");
                 var ForesterArchetype = BlueprintTools.GetBlueprintReference<BlueprintArchetypeReference>("74ee8172df6782f4792ea0f8647dea34");
                 var PackRagerRagingTacticianBaseFeature = BlueprintTools.GetBlueprint<BlueprintFeature>("54efaa577ffe5114eb839d1bee8eda95");
