@@ -12,6 +12,17 @@
       "esES": null
     },
     {
+      "Key": "94b904b51b6349f9bcf2172bc0acfe61",
+      "SimpleName": "PrerequisiteCasterLevel.UI",
+      "ProcessTemplates": false,
+      "enGB": "Deity has Alignment of:\n",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
       "Key": "2aef03f8a49443c08086a6ebcf70ed49",
       "SimpleName": "PrerequisiteCasterLevel.UI",
       "ProcessTemplates": false,
@@ -177,22 +188,22 @@
       "esES": null
     },
     {
-      "Key": "a39e08aad95e4930b45bc0fd1b6fdf60",
+      "Key": "07fe8b3b84f84d60bcf4cdffcdedb5b3",
       "SimpleName": "PrerequisiteStatBonus.UI",
       "ProcessTemplates": false,
-      "enGB": "bonus",
-      "ruRU": "бонус",
+      "enGB": "Has",
+      "ruRU": "Не менее",
       "deDE": null,
       "frFR": null,
       "zhCN": null,
       "esES": null
     },
     {
-      "Key": "07fe8b3b84f84d60bcf4cdffcdedb5b3",
+      "Key": "a39e08aad95e4930b45bc0fd1b6fdf60",
       "SimpleName": "PrerequisiteStatBonus.UI",
       "ProcessTemplates": false,
-      "enGB": "Has",
-      "ruRU": "Не менее",
+      "enGB": "bonus",
+      "ruRU": "бонус",
       "deDE": null,
       "frFR": null,
       "zhCN": null,

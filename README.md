@@ -6,7 +6,7 @@
 	* Main content mod that provides numerous fixes and new content based on tabletop pathfinder.
 * [![Download zip](https://custom-icon-badges.herokuapp.com/badge/-Download-blue?style=for-the-badge&logo=download&logoColor=white "Download zip")](https://github.com/Vek17/TabletopTweaks-Reworks/releases/latest/download/TabletopTweaks-Reworks.zip) [TabletopTweaks-Reworks](https://github.com/Vek17/TabletopTweaks-Reworks). 
 	* Smaller side mod to provide homebrew changes to Owlcat's new creations that I personally feel missed the mark slightly.
-* [![Download zip](https://custom-icon-badges.herokuapp.com/badge/-Download-blue?style=for-the-badge&logo=download&logoColor=white "Download zip")](https://github.com/Vek17/TabletopTweaks-Flanking/releases/latest/download/TabletopTweaks-Flanking.zip) [TabletopTweaks-Reworks](https://github.com/Vek17/TabletopTweaks-Reworks). 
+* [![Download zip](https://custom-icon-badges.herokuapp.com/badge/-Download-blue?style=for-the-badge&logo=download&logoColor=white "Download zip")](https://github.com/Vek17/TabletopTweaks-Flanking/releases/latest/download/TabletopTweaks-Flanking.zip) [TabletopTweaks-Flanking](https://github.com/Vek17/TabletopTweaks-Flanking). 
 	* Smaller side mod to provide PnP style flanking and related mechanics.
 
 ## Third Party Tabletop Tweaks Mods
