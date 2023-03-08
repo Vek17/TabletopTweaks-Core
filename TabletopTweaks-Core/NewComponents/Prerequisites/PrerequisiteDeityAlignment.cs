@@ -21,7 +21,10 @@ namespace TabletopTweaks.Core.NewComponents.Prerequisites {
 
         public override bool CheckInternal([CanBeNull] FeatureSelectionState selectionState, [NotNull] UnitDescriptor unit, [CanBeNull] LevelUpState state) {
             var DeityAlignment = UIUtilityUnit.GetDeity(unit).GetComponent<PrerequisiteAlignment>()?.Alignment ?? AlignmentMaskType.None;
-            return (DeityAlignment & Alignment) > 0;
+            if (DeityAlignment == AlignmentMaskType.None) {
+                return true;
+            }
+            return (DeityAlignment & Alignment) > AlignmentMaskType.None;
         }
 
         public override string GetUITextInternal(UnitDescriptor unit) {

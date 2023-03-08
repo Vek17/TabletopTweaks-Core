@@ -1,3 +1,6 @@
+## Versions 0.5.10a
+* Added fallthrough case for PrerequisiteDeityAlignment in case someone breaks deity alignment checks.
+
 ## Versions 0.5.10
 * Added support for ChainChallenge.
 * Added AddAdditionalLimbConditional which supports extra natural attacks with checked facts.
