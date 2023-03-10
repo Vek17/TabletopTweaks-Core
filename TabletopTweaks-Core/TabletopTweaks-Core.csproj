@@ -168,10 +168,12 @@
     <Compile Include="NewComponents\AddConditionalWeaponDamageBonus.cs" />
     <Compile Include="NewComponents\AddExtraSkillPoint.cs" />
     <Compile Include="NewComponents\BuffDescriptorImmunityIgnore.cs" />
+    <Compile Include="NewComponents\BurningMagic.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\AttackBonusAgainstTargetTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\DamageBonusOrderOfCockatriceTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\FavoredEnemyTTT.cs" />
     <Compile Include="NewComponents\Prerequisites\PrerequisiteDeityAlignment.cs" />
+    <Compile Include="NewComponents\SetPetMinimumStat.cs" />
     <Compile Include="NewComponents\SpellDescriptorImmunityIgnore.cs" />
     <Compile Include="NewUnitParts\UnitPartActivatableAbilityGroupExtension.cs" />
     <Compile Include="NewUnitParts\UnitPartChainChallengeTTT.cs" />

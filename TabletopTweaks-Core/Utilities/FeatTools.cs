@@ -562,6 +562,12 @@ namespace TabletopTweaks.Core.Utilities {
         public static BlueprintFeature[] GetMetamagicFeats() {
             return FeatTools.Selections.BasicFeatSelection.AllFeatures
                     .Select(reference => reference)
+                    .SelectMany(feature => {
+                        return feature switch {
+                            BlueprintFeatureSelection selection => selection.AllFeatures.ToArray(),
+                            _ => new BlueprintFeature[] { feature }
+                        };
+                    })
                     .Where(feature => feature.GetComponent<AddMetamagicFeat>())
                     .ToArray();
         }
