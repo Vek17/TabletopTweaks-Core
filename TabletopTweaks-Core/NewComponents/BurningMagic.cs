@@ -48,8 +48,9 @@ namespace TabletopTweaks.Core.NewComponents {
                 owner: evt.Target,
                 blueprint: context.SourceAbility
             );
+            var spellLevel = context.Params?.SpellLevel ?? context?.SpellLevel;
             fakeContext.RecalculateAbilityParams();
-            fakeContext.Params.CasterLevel = context.Params?.SpellLevel ?? 1;
+            fakeContext.Params.CasterLevel = spellLevel ?? 1;
             fakeContext.Params.Metamagic = 0;
             var appliedBuff = evt.Target?.Descriptor?.AddBuff(Buff, fakeContext, Duration.Calculate(fakeContext).Seconds);
             if (appliedBuff != null) {
