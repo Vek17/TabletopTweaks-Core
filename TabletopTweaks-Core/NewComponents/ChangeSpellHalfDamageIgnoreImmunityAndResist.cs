@@ -45,8 +45,11 @@ namespace TabletopTweaks.Core.NewComponents {
                     if (energyDamage == null) { continue; }
                     if (energyDamage.EnergyType == EnergyType && !baseDamage.Precision) {
                         EnergyDamage newDamage = new EnergyDamage(baseDamage.Dice.ModifiedValue, EnergyType);
-                        baseDamage.Half.Set(true, this.Fact);
-
+                        if (!baseDamage.Half) {
+                            baseDamage.Half.Set(true, this.Fact);
+                        } else {
+                            baseDamage.Durability *= 0.5f; 
+                        }
                         newDamage.CopyFrom(baseDamage);
                         newDamage.SourceFact = this.Fact;
                         newDamage.IgnoreImmunities = true;
