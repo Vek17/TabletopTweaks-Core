@@ -2,8 +2,6 @@
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints.Root.Strings;
-using Kingmaker.Enums;
 using Kingmaker.Localization;
 using Kingmaker.UI.Common;
 using Kingmaker.UnitLogic;

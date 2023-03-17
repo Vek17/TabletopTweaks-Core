@@ -163,6 +163,8 @@
     <Compile Include="MechanicsChanges\AdditionalActivatableAbilityGroups.cs" />
     <Compile Include="MechanicsChanges\FlankingMechanics.cs" />
     <Compile Include="NewComponents\AbilitySpecific\ChainChallengeComponent.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\ElementalBarrageIncomingTrigger.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\ElementalBarrageOutgoingTrigger.cs" />
     <Compile Include="NewComponents\AddAdditionalLimbConditional.cs" />
     <Compile Include="NewComponents\AddAdditionalWeaponDamageOnHit.cs" />
     <Compile Include="NewComponents\AddConditionalWeaponDamageBonus.cs" />

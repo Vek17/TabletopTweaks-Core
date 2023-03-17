@@ -25,8 +25,6 @@ using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using TabletopTweaks.Core.Config;
 using TabletopTweaks.Core.ModLogic;
 
 namespace TabletopTweaks.Core.Utilities {
@@ -219,8 +217,8 @@ namespace TabletopTweaks.Core.Utilities {
                     bp.AddComponent<AbilityEffectRunAction>(c => {
                         c.Actions = Helpers.CreateActionList(
                             new Conditional() {
-                                ConditionsChecker = new ConditionsChecker() { 
-                                    Conditions = new Condition[] { 
+                                ConditionsChecker = new ConditionsChecker() {
+                                    Conditions = new Condition[] {
                                         new ContextConditionHasFact() {
                                             m_Fact = teamworkFeat.ToReference<BlueprintUnitFactReference>(),
                                             Not = true
@@ -231,9 +229,9 @@ namespace TabletopTweaks.Core.Utilities {
                                 IfTrue = Helpers.CreateActionList(
                                     new ContextActionApplyBuff() {
                                         m_Buff = ForesterTacticianBuff.ToReference<BlueprintBuffReference>(),
-                                        DurationValue = new ContextDurationValue() { 
+                                        DurationValue = new ContextDurationValue() {
                                             DiceType = DiceType.One,
-                                            DiceCountValue = new ContextValue() { 
+                                            DiceCountValue = new ContextValue() {
                                                 ValueType = ContextValueType.Rank
                                             },
                                             BonusValue = 3
@@ -254,7 +252,7 @@ namespace TabletopTweaks.Core.Utilities {
                     bp.AddComponent<AbilityTargetsAround>(c => {
                         c.m_Radius = 30.Feet();
                         c.m_TargetType = TargetType.Ally;
-                        c.m_Condition = new ConditionsChecker() { 
+                        c.m_Condition = new ConditionsChecker() {
                             Conditions = new Condition[0]
                         };
                     });
@@ -395,12 +393,12 @@ namespace TabletopTweaks.Core.Utilities {
                                     BonusValue = 0
                                 },
                                 AsChild = true
-                            }    
+                            }
                         );
                         c.UnitExit = Helpers.CreateActionList(
                             new ContextActionRemoveBuff() {
                                 m_Buff = PackRagerBuff.ToReference<BlueprintBuffReference>()
-                            }    
+                            }
                         );
                         c.UnitMove = Helpers.CreateActionList();
                         c.Round = Helpers.CreateActionList();

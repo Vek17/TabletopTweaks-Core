@@ -1,27 +1,12 @@
-﻿using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem;
-using Kingmaker.PubSubSystem;
-using Kingmaker.RuleSystem.Rules;
-using Kingmaker.RuleSystem.Rules.Damage;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.Enums.Damage;
-using Kingmaker.UnitLogic.Mechanics;
-using System.Runtime.Remoting.Contexts;
-using Kingmaker.UnitLogic;
+using Kingmaker.PubSubSystem;
+using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.Utility;
-using Kingmaker.Blueprints.Facts;
-using Kingmaker.Enums;
-using Kingmaker.Settings;
-using static Kingmaker.Blueprints.BlueprintUnitTemplate;
-using UnityEngine;
-using static LayoutRedirectElement;
+using System.Linq;
 
 namespace TabletopTweaks.Core.NewComponents {
     [AllowMultipleComponents]
@@ -48,7 +33,7 @@ namespace TabletopTweaks.Core.NewComponents {
                         if (!baseDamage.Half) {
                             baseDamage.Half.Set(true, this.Fact);
                         } else {
-                            baseDamage.Durability *= 0.5f; 
+                            baseDamage.Durability *= 0.5f;
                         }
                         newDamage.CopyFrom(baseDamage);
                         newDamage.SourceFact = this.Fact;

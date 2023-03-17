@@ -76,7 +76,7 @@ namespace TabletopTweaks.Core.NewComponents {
         public ContextValue Value;
         public PetType PetType;
 
-        public class SetPetMinimumStatData{
+        public class SetPetMinimumStatData {
             public int statAdjustment = 0;
         }
     }
