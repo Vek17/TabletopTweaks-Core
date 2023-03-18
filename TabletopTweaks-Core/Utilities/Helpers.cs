@@ -313,6 +313,44 @@ namespace TabletopTweaks.Core.Utilities {
         /// <param name="modContext">
         /// Context of the mod to record the LocalizedString in.
         /// </param>
+        /// <param name="name">
+        /// name used to refer to the string in the MultiLocalization pack.
+        /// </param>
+        /// <param name="description">
+        /// string that the new localized string will contain.
+        /// </param>
+        /// <param name="locale">
+        /// locale that the text will be created for.
+        /// </param>
+        /// <returns>
+        /// New Localized String built with supplied arguments.
+        /// </returns>
+        /// <param name="shouldProcess">
+        /// Determines if the localized string should have tags added to it.
+        /// </param>
+        public static GlossaryEntry CreateGlosseryEntry(ModContextBase modContext, string key, string name, LocalizedString description, Locale locale = Locale.enGB, BlueprintScriptableObjectReference EncyclopediaPage = null) {
+            // See if we used the text previously.
+            // (It's common for many features to use the same localized text.
+            // In that case, we reuse the old entry instead of making a new one.)
+            var Existing = GlossaryHolder.GetEntry(key);
+            if (Existing != null) { return Existing; }
+            var LocalizedName = CreateMultiLocaleString(modContext, $"glossery.{name}.name", name, locale, false);
+            var LocalizedDescription = description;
+            var GlosseryEntry = new GlossaryEntry() {
+                Key = key,
+                Name = LocalizedName.LocalizedString,
+                Description = LocalizedDescription,
+                Blueprint = EncyclopediaPage
+            };
+            GlossaryHolder.s_EntriesbyKey[GlosseryEntry.Key.ToLowerInvariant()] = GlosseryEntry;
+            return GlosseryEntry;
+        }
+        /// <summary>
+        /// Creates a new localized string.
+        /// </summary>
+        /// <param name="modContext">
+        /// Context of the mod to record the LocalizedString in.
+        /// </param>
         /// <param name="simpleName">
         /// name used to refer to the string in the MultiLocalization pack.
         /// </param>

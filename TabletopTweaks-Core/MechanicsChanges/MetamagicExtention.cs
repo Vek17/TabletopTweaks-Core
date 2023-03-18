@@ -91,7 +91,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                     modContext: context,
                     key: $"{name}-{context.ModEntry.Info.Id}",
                     name: name,
-                    description: metamagicFeat.Description,
+                    description: metamagicFeat.m_Description,
                     EncyclopediaPage: null
                 );
                 entry = new DescriptionTools.EncyclopediaEntry {
