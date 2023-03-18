@@ -1,7 +1,13 @@
 ﻿using HarmonyLib;
+using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Facts;
 using Kingmaker.EntitySystem.Entities;
+using Kingmaker.UnitLogic;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.AccessControl;
+using TabletopTweaks.Core.ModLogic;
 
 namespace TabletopTweaks.Core {
     public static class SaveGameFix {
@@ -9,6 +15,35 @@ namespace TabletopTweaks.Core {
 
         public static void AddUnitPatch(Action<UnitEntityData> patch) {
             save_game_actions.Add(patch);
+        }
+
+        public static void AddRetroactiveClassFeature(ModContextBase context, BlueprintCharacterClass characterClass, int level, BlueprintUnitFact fact) {
+            AddUnitPatch((unit) => {
+                if (unit.Progression.GetClassLevel(characterClass) >= level) {
+                    if (!unit.HasFact(fact)) {
+                        if (unit.AddFact(fact) != null) {
+                            context.Logger.Log($"SaveFix: Added: {fact.name} To: {unit.CharacterName} At: {characterClass.Name} Level: {level}");
+                            return;
+                        }
+                        context.Logger.Log($"SaveFix: Failed: {fact.name} To: {unit.CharacterName} At: {characterClass.Name} Level: {level}");
+                    }
+                }
+            });
+        }
+
+        public static void AddRetroactiveClassFeature(ModContextBase context, BlueprintCharacterClass characterClass, BlueprintArchetype archetype, int level, BlueprintUnitFact fact) {
+            AddUnitPatch((unit) => {
+                if (unit.Progression.GetClassLevel(characterClass) >= level && !unit.Progression.GetClassData(characterClass).Archetypes
+                    .Any(achetype => achetype.AssetGuid == archetype.AssetGuid)) {
+                    if (!unit.HasFact(fact)) {
+                        if (unit.AddFact(fact) != null) {
+                            context.Logger.Log($"SaveFix: Added: {fact.name} To: {unit.CharacterName} At: {characterClass.Name} - {archetype.Name} Level: {level}");
+                            return;
+                        }
+                        context.Logger.Log($"SaveFix: Failed: {fact.name} To: {unit.CharacterName} At: {characterClass.Name} - {archetype.Name} Level: {level}");
+                    }
+                }
+            });
         }
 
         [HarmonyPatch(typeof(UnitEntityData), "OnAreaDidLoad")]

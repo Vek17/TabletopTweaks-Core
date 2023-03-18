@@ -33,13 +33,14 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         }
 
         public void OnEventDidTrigger(RuleDealDamage evt) {
-            if (this.CheckDamageValue(evt.Result)) {
-                this.Apply(evt);
-            }
+            this.Apply(evt);
         }
 
         private void Apply(RuleDealDamage evt) {
             if (!CheckSource(evt)) {
+                return;
+            }
+            if (!CheckEnergyDamageType && !AboveDamageThreshold(evt.Result)) {
                 return;
             }
             if (!CheckEnergyType(evt)) {
@@ -57,20 +58,19 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             return true;
         }
         private bool CheckEnergyType(RuleDealDamage evt) {
-            bool result = true;
             if (this.CheckEnergyDamageType) {
-                result = false;
-                foreach (BaseDamage baseDamage in evt.DamageBundle) {
-                    if (baseDamage.Type == DamageType.Energy && (baseDamage as EnergyDamage).EnergyType == this.EnergyType) {
-                        result = true;
-                        break;
+                foreach (DamageValue damageValue in evt.ResultList) {
+                    if (damageValue.Source.Type == DamageType.Energy && (damageValue.Source as EnergyDamage).EnergyType == this.EnergyType) {
+                        if (AboveDamageThreshold(damageValue.FinalValue)) {
+                            return true;
+                        }
                     }
                 }
             }
-            return result;
+            return false;
         }
 
-        private bool CheckDamageValue(int damageValue) {
+        private bool AboveDamageThreshold(int damageValue) {
             return !this.CheckDamageDealt || this.CompareType.CheckCondition((float)damageValue, (float)this.TargetValue.Calculate(base.Fact.MaybeContext));
         }
 

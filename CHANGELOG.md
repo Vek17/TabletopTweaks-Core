@@ -2,6 +2,7 @@
 * Adjusted feat tools to better handle metamagic.
 * Support for Oracle Burning Magic.
 * Support for Winter Witch features.
+* More SaveGameFix options.
 
 ## Versions 0.5.10a
 * Added fallthrough case for PrerequisiteDeityAlignment in case someone breaks deity alignment checks.

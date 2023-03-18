@@ -6,6 +6,7 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.Utility;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace TabletopTweaks.Core.NewComponents {
@@ -24,6 +25,7 @@ namespace TabletopTweaks.Core.NewComponents {
             if (CheckAbilityType && !ValidAbilityTypes.Contains(Type)) {
                 return;
             }
+            var toAdd = new List<BaseDamage>();
             foreach (BaseDamage baseDamage in evt.DamageBundle) {
                 if (baseDamage.Type == DamageType.Energy) {
                     EnergyDamage energyDamage = baseDamage as EnergyDamage;
@@ -39,9 +41,12 @@ namespace TabletopTweaks.Core.NewComponents {
                         newDamage.SourceFact = this.Fact;
                         newDamage.IgnoreImmunities = true;
                         newDamage.IgnoreReduction = true;
-                        evt.Add(newDamage);
+                        toAdd.Add(newDamage);
                     }
                 }
+            }
+            foreach (var newDamage in toAdd) {
+                evt.Add(newDamage);
             }
         }
         public DamageEnergyType EnergyType;

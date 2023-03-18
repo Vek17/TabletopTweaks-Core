@@ -164,7 +164,7 @@ namespace TabletopTweaks.Core.Utilities {
         /// Class to add to progression.
         /// </param>
         public static void AddClass(this BlueprintProgression progression, BlueprintCharacterClassReference characterClass) {
-            if (progression.m_Classes.Any(a => a.m_Class == characterClass)) { return; }
+            if (progression.m_Classes.Any(a => a.m_Class.Equals(characterClass))) { return; }
             progression.m_Classes = progression.m_Classes.AppendToArray(
                 new BlueprintProgression.ClassWithLevel() {
                     m_Class = characterClass,
@@ -188,7 +188,7 @@ namespace TabletopTweaks.Core.Utilities {
         /// Archetype to add to progression.
         /// </param>
         public static void AddArchetype(this BlueprintProgression progression, BlueprintArchetypeReference archetype) {
-            if (progression.m_Archetypes.Any(a => a.m_Archetype == archetype)) { return; }
+            if (progression.m_Archetypes.Any(a => a.m_Archetype.Equals(archetype))) { return; }
             progression.m_Archetypes = progression.m_Archetypes.AppendToArray(
                 new BlueprintProgression.ArchetypeWithLevel() {
                     m_Archetype = archetype,
