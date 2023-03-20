@@ -32,8 +32,9 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             if (maybeContext != null && evt.Success) {
                 var abilityParams = base.Context.TriggerRule(new RuleCalculateAbilityParams(evt.Initiator, base.OwnerBlueprint, null));
                 using (maybeContext.GetDataScope(evt.Target)) {
+                    int defaultValue = 10 + (evt.Initiator.Progression.CharacterLevel / 2) + getHighestStatBonus(evt.Initiator, StatType.Intelligence, StatType.Wisdom, StatType.Charisma);
                     int dc = evt.Check switch {
-                        CheckType.None => Math.Max(evt?.Reason?.Context?.Params?.DC ?? 10, evt?.Context?.Params?.DC ?? 10),
+                        CheckType.None => Math.Max(evt?.Reason?.Context?.Params?.DC ?? defaultValue, evt?.Context?.Params?.DC ?? defaultValue),
                         _ => 10 + ((evt.CasterLevel + evt.Bonus) / 2) + abilityParams.m_BonusDC + getHighestStatBonus(evt.Initiator, StatType.Intelligence, StatType.Wisdom, StatType.Charisma)
                     };
                     RuleSavingThrow ruleSavingThrow = base.Context.TriggerRule(new RuleSavingThrow(evt.Target, SavingThrowType.Fortitude, dc));
