@@ -1,7 +1,9 @@
 ﻿using HarmonyLib;
+using Kingmaker;
 using Kingmaker.Blueprints.Root.Strings;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
+using Kingmaker.UI.Common;
 using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
@@ -37,6 +39,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             SpellFocusGreater = 3131,
             SchoolMastery = 3132,
             VarisianTattoo = 3133,
+            Monk = 3134,
         }
         public enum Enhancement : int {
             Weapon = 4121
@@ -95,6 +98,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             InsertAfter(Untyped.Intelligence, ModifierDescriptor.UntypedStackable);
             InsertAfter(Untyped.Wisdom, ModifierDescriptor.UntypedStackable);
             InsertAfter(Untyped.Charisma, ModifierDescriptor.UntypedStackable);
+            InsertAfter(Untyped.Monk, ModifierDescriptor.UntypedStackable);
             InsertAfter(Untyped.WeaponTraining, ModifierDescriptor.UntypedStackable);
             InsertAfter(Untyped.WeaponFocus, ModifierDescriptor.UntypedStackable);
             InsertAfter(Untyped.WeaponFocusGreater, ModifierDescriptor.UntypedStackable);
@@ -165,11 +169,23 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                         __result = "Enhancement";
                         break;
                     case (ModifierDescriptor)Untyped.Strength:
+                        __result = Game.Instance.BlueprintRoot.LocalizedTexts.UserInterfacesText.CharacterSheet.Strength;
+                        break;
                     case (ModifierDescriptor)Untyped.Dexterity:
+                        __result = Game.Instance.BlueprintRoot.LocalizedTexts.UserInterfacesText.CharacterSheet.Dexterity;
+                        break;
                     case (ModifierDescriptor)Untyped.Constitution:
+                        __result = Game.Instance.BlueprintRoot.LocalizedTexts.UserInterfacesText.CharacterSheet.Constitution;
+                        break;
                     case (ModifierDescriptor)Untyped.Intelligence:
+                        __result = Game.Instance.BlueprintRoot.LocalizedTexts.UserInterfacesText.CharacterSheet.Intelegence;
+                        break;
                     case (ModifierDescriptor)Untyped.Wisdom:
+                        __result = Game.Instance.BlueprintRoot.LocalizedTexts.UserInterfacesText.CharacterSheet.Wisdom;
+                        break;
                     case (ModifierDescriptor)Untyped.Charisma:
+                        __result = Game.Instance.BlueprintRoot.LocalizedTexts.UserInterfacesText.CharacterSheet.Charisma;
+                        break;
                     case (ModifierDescriptor)Untyped.WeaponTraining:
                     case (ModifierDescriptor)Untyped.WeaponFocus:
                     case (ModifierDescriptor)Untyped.WeaponFocusGreater:
@@ -177,6 +193,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                     case (ModifierDescriptor)Untyped.SpellFocusGreater:
                     case (ModifierDescriptor)Untyped.SchoolMastery:
                     case (ModifierDescriptor)Untyped.VarisianTattoo:
+                    case (ModifierDescriptor)Untyped.Monk:
                         __result = "Other";
                         break;
                 }

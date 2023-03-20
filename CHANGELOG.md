@@ -1,7 +1,6 @@
 ## Versions 0.5.12
 * More SaveGameFix options.
 
-
 ## Versions 0.5.11
 * Adjusted feat tools to better handle metamagic.
 * Support for Oracle Burning Magic.

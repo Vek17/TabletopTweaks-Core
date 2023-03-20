@@ -1,6 +1,8 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.UI.UnitSettings;
+using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
+using TabletopTweaks.Core.NewUnitParts;
 using UnityEngine;
 
 namespace TabletopTweaks.Core.NewUI {
@@ -12,7 +14,7 @@ namespace TabletopTweaks.Core.NewUI {
         public bool ShouldBeActive { get; set; }
         public AbilityData PseudoActivatableAbility => this.Spell;
 
-        public override bool IsActive() => ShouldBeActive;
+        public override bool IsActive() => ShouldBeActive ? ShouldBeActive : this.Unit?.HasFact(BuffToWatch) ?? false;
 
         public override int GetResource() {
             return -1;

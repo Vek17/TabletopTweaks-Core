@@ -214,7 +214,6 @@ namespace TabletopTweaks.Core.NewUnitParts {
             UpdateSlotRefs(slotRefs, shouldBeActive, buffForForeIcon);
         }
 
-
         private void UpdateSlotRefs(List<WeakReference<MechanicActionBarSlot>> slotRefs, bool shouldBeActive, BlueprintBuffReference buffForForeIcon = null) {
             List<WeakReference<MechanicActionBarSlot>> slotRefsToRemove = new List<WeakReference<MechanicActionBarSlot>>();
             foreach (var slotRef in slotRefs) {
