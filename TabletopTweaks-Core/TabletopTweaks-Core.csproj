@@ -173,6 +173,7 @@
     <Compile Include="NewComponents\BurningMagic.cs" />
     <Compile Include="NewComponents\ChangeSpellHalfDamageIgnoreImmunityAndResist.cs" />
     <Compile Include="NewComponents\IncreaseSpellDiceSize.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\AddAbilityUseTargetTriggerTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\AddAbilityUseTriggerTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\AttackBonusAgainstTargetTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\DamageBonusOrderOfCockatriceTTT.cs" />
