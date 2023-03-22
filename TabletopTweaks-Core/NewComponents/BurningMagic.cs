@@ -43,7 +43,7 @@ namespace TabletopTweaks.Core.NewComponents {
             );
             var spellLevel = context.Params?.SpellLevel ?? context?.SpellLevel;
             fakeContext.RecalculateAbilityParams();
-            fakeContext.ParentContext = context;
+            fakeContext.SetParams(Context.Params);
             fakeContext.Params.CasterLevel = spellLevel ?? 1;
             fakeContext.Params.Metamagic = 0;
             var appliedBuff = evt.Target?.Descriptor?.AddBuff(Buff, fakeContext, Duration.Calculate(fakeContext).Seconds);

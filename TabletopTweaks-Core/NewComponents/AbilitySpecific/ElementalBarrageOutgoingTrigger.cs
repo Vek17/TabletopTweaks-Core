@@ -63,13 +63,11 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
                 Buff buff = target.Descriptor.AddBuff(markBuff, Fact.MaybeContext, duration);
                 buff.IsFromSpell = false;
                 buff.IsNotDispelable = true;
-                Main.TTTContext.Logger.Log($"Applied: {markBuff.name}");
             }
             void RemoveBuffs(params BlueprintBuff[] buffs) {
                 Buff[] array = target.Buffs.Enumerable.ToArray();
                 foreach (Buff buff in array) {
                     if (buffs.Any(b => b == buff.Blueprint)) {
-                        Main.TTTContext.Logger.Log($"Triggered: {buff.Blueprint.name}");
                         buff.RunActionInContext(this.TriggerActions, target);
                         buff.Remove();
                     }
@@ -86,10 +84,9 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         private void Apply(RuleDealDamage evt) {
             if (this.CheckAbilityType) {
-                AbilityData ability = evt.Reason.Ability;
-                AbilityType? abilityType = (ability != null) ? new AbilityType?(ability.Blueprint.Type) : null;
-                AbilityType abilityType2 = this.m_AbilityType;
-                if (!(abilityType.GetValueOrDefault() == abilityType2 & abilityType != null)) {
+                var ability = evt.Reason.Ability?.Blueprint ?? evt.Reason.Context.SourceAbility;
+                AbilityType? abilityType = (ability != null) ? new AbilityType?(ability.Type) : null;
+                if (!(abilityType.GetValueOrDefault() == m_AbilityType & abilityType != null)) {
                     return;
                 }
             }

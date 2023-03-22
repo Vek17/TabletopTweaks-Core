@@ -1,5 +1,7 @@
 ## Versions 0.5.12
 * More SaveGameFix options.
+* AddAbilityUseTargetTriggerTTT adds support for triggers on immune spells.
+* Fixed context stripping from BurningMagic.
 
 ## Versions 0.5.11
 * Adjusted feat tools to better handle metamagic.
