@@ -172,12 +172,14 @@
     <Compile Include="NewComponents\BuffDescriptorImmunityIgnore.cs" />
     <Compile Include="NewComponents\BurningMagic.cs" />
     <Compile Include="NewComponents\ChangeSpellHalfDamageIgnoreImmunityAndResist.cs" />
+    <Compile Include="NewComponents\ContextConditionItemSource.cs" />
     <Compile Include="NewComponents\IncreaseSpellDiceSize.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\AddAbilityUseTargetTriggerTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\AddAbilityUseTriggerTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\AttackBonusAgainstTargetTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\DamageBonusOrderOfCockatriceTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\FavoredEnemyTTT.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\ProfaneAscensionTTT.cs" />
     <Compile Include="NewComponents\PartialEnergyResistanceIgnore.cs" />
     <Compile Include="NewComponents\Prerequisites\PrerequisiteDeityAlignment.cs" />
     <Compile Include="NewComponents\SetPetMinimumStat.cs" />

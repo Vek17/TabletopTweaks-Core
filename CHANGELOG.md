@@ -1,17 +1,22 @@
-## Versions 0.5.12
-* More SaveGameFix options.
+## Version 0.5.14
+* Added ContextConditionItemSource to check if an ability is cast from an item.
+
+## Version 0.5.13
 * AddAbilityUseTargetTriggerTTT adds support for triggers on immune spells.
 * Fixed context stripping from BurningMagic.
 
-## Versions 0.5.11
+## Version 0.5.12
+* More SaveGameFix options.
+
+## Version 0.5.11
 * Adjusted feat tools to better handle metamagic.
 * Support for Oracle Burning Magic.
 * Support for Winter Witch features.
 
-## Versions 0.5.10a
+## Version 0.5.10a
 * Added fallthrough case for PrerequisiteDeityAlignment in case someone breaks deity alignment checks.
 
-## Versions 0.5.10
+## Version 0.5.10
 * Added support for ChainChallenge.
 * Added AddAdditionalLimbConditional which supports extra natural attacks with checked facts.
 * Added Wild shape tools to make adding wild shaped features easier.
@@ -20,7 +25,7 @@
 * Fixed a bug where hidden activatable abiltiies were incorrectly handled.
 * FeatTools.ConfigureAsTeamworkFeat added to setup all tactician and shared teamwork mechanics.
 
-## Versions 0.5.9
+## Version 0.5.9
 * Updated for 2.1.0
 * Moved AddOutgoingWeaponDamageBonus to post crit damage system
 * Added support for more ActivatableAbilityGroups with AdditionalActivatableAbilityGroups

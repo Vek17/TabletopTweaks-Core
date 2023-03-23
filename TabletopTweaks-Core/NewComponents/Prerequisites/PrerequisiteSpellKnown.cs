@@ -29,8 +29,8 @@ namespace TabletopTweaks.Core.NewComponents.Prerequisites {
             }
         }
         public override bool CheckInternal([CanBeNull] FeatureSelectionState selectionState, [NotNull] UnitDescriptor unit, [CanBeNull] LevelUpState state) {
-            return unit.Spellbooks
-                .Any(book => book.IsKnown(Spell));
+            var SpellIsKnown = unit.Spellbooks.Any(book => book.IsKnown(Spell));
+            return SpellIsKnown || RequireSpellbook ? false : unit.Abilities.GetAbility(Spell) != null;
         }
 
         public override string GetUITextInternal(UnitDescriptor unit) {
@@ -44,5 +44,6 @@ namespace TabletopTweaks.Core.NewComponents.Prerequisites {
         /// Required spell.
         /// </summary>
         public BlueprintAbilityReference m_Spell;
+        public bool RequireSpellbook = true;
     }
 }
