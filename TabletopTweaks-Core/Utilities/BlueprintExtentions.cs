@@ -79,7 +79,7 @@ namespace TabletopTweaks.Core.Utilities {
         /// </returns>
         public static IEnumerable<GameAction> FlattenAllActions(this BlueprintScriptableObject blueprint) {
             List<GameAction> actions = new List<GameAction>();
-            foreach (var component in blueprint.ComponentsArray) {
+            foreach (var component in blueprint.ComponentsArray.Where(c => c is not null)) {
                 Type type = component.GetType();
                 var foundActions = AccessTools.GetDeclaredFields(type)
                     .Where(f => f.FieldType == typeof(ActionList))
