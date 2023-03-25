@@ -11,6 +11,11 @@ using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Controllers.Units;
+using System.Linq;
+using Kingmaker.Blueprints.Classes;
+using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.UnitLogic.FactLogic;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
@@ -21,10 +26,48 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         IAbilityGetCommandTypeHandler,
         ITickEachRound {
 
-        public override void OnTurnOn() {
+        private BlueprintAbility[] m_MajorHexes;
+        private BlueprintAbility[] MajorHexes {
+            get {
+                if (m_MajorHexes == null) { 
+                    m_MajorHexes = this.m_MajorHex?.Get()?.IsPrerequisiteFor
+                        .Select(f => f.Get())
+                        .SelectMany(c => c.GetComponents<AddFacts>())
+                        .Where(c => c is not null)
+                        .SelectMany(c => c.Facts)
+                        .OfType<BlueprintAbility>()
+                        .SelectMany(hex => hex.AbilityAndVariants())
+                        .SelectMany(hex => hex.AbilityAndStickyTouch())
+                        .Distinct()
+                        .ToArray();
+                }
+                return m_MajorHexes;
+            }
         }
+        private BlueprintAbility[] m_GrandHexes;
+        private BlueprintAbility[] GrandHexes {
+            get {
+                if (m_GrandHexes == null) {
+                    m_GrandHexes = this.m_GrandHex?.Get()?.IsPrerequisiteFor
+                        .Select(f => f.Get())
+                        .SelectMany(c => c.GetComponents<AddFacts>())
+                        .Where(c => c is not null)
+                        .SelectMany(c => c.Facts)
+                        .OfType<BlueprintAbility>()
+                        .SelectMany(hex => hex.AbilityAndVariants())
+                        .SelectMany(hex => hex.AbilityAndStickyTouch())
+                        .Distinct()
+                        .ToArray();
+                }
+                return m_GrandHexes;
+            }
+        }
+        private BlueprintFeature SplitMajorHex => m_SplitMajorHex?.Get();
 
-        public override void OnTurnOff() {
+        public ReferenceArrayProxy<BlueprintFeature, BlueprintFeatureReference> Features {
+            get {
+                return this.m_MajorHex?.Get()?.IsPrerequisiteFor.ToArray();
+            }
         }
 
         public void OnEventAboutToTrigger(RuleCastSpell evt) {
@@ -55,8 +98,14 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             return evt.Success
                 && evt.Spell.Blueprint.SpellDescriptor.HasFlag(SpellDescriptor.Hex)
                 && !evt.IsDuplicateSpellApplied
-                && !evt.Spell.IsAOE;
+                && !evt.Spell.IsAOE
+                && !GrandHexes.Any(hex => hex.AssetGuid == evt.Spell.Blueprint.AssetGuid)
+                && (evt.Initiator.HasFact(SplitMajorHex) || !MajorHexes.Any(hex => hex.AssetGuid == evt.Spell.Blueprint.AssetGuid));
         }
+
+        public BlueprintFeatureReference m_MajorHex;
+        public BlueprintFeatureReference m_GrandHex;
+        public BlueprintFeatureReference m_SplitMajorHex;
 
         public class SplitHexData {
             private BlueprintAbilityReference m_StoredHex;
