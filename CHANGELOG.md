@@ -3,6 +3,7 @@
 * Added WeaponGroupAttackBonusTTT to provide working versions of owlcat components.
 * Added WeaponGroupDamageBonusTTT to provide working versions of owlcat components.
 * Added SplitHex components.
+* Added BewitchingReflex components.
 
 ## Version 0.5.13
 * AddAbilityUseTargetTriggerTTT adds support for triggers on immune spells.
