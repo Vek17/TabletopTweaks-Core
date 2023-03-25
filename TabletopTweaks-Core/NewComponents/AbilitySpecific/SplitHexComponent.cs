@@ -86,6 +86,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         public void HandleGetCommandType(AbilityData ability, ref UnitCommand.CommandType commandType) {
             if (Data.HasStoredHex && ability.Blueprint.AssetGuid == Data.StoredHex.AssetGuid) {
+
                 commandType = UnitCommand.CommandType.Free;
             }
         }

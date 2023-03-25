@@ -33,6 +33,10 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         public void HandleGetCommandType(AbilityData ability, ref UnitCommand.CommandType commandType) {
             if (isValidTrigger(ability)) {
                 if (OriginalIsFaster(commandType, UnitCommand.CommandType.Swift)) { return; }
+                if (this.Owner.CombatState.HasCooldownForCommand(UnitCommand.CommandType.Swift)
+                    && !this.Owner.CombatState.HasCooldownForCommand(commandType)) {
+                    return;
+                }
                 commandType = UnitCommand.CommandType.Swift;
             }
 
