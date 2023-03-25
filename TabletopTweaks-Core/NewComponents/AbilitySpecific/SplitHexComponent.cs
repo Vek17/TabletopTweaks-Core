@@ -10,6 +10,7 @@ using TabletopTweaks.Core.NewEvents;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Controllers.Units;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
@@ -17,8 +18,8 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     public class SplitHexComponent : UnitFactComponentDelegate<SplitHexComponent.SplitHexData>,
         IInitiatorRulebookHandler<RuleCastSpell>,
         IRulebookHandler<RuleCastSpell>,
-        IAbilityGetCommandTypeHandler, 
-        IUnitNewCombatRoundHandler {
+        IAbilityGetCommandTypeHandler,
+        ITickEachRound {
 
         public override void OnTurnOn() {
         }
@@ -46,7 +47,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             }
         }
 
-        public void HandleNewCombatRound(UnitEntityData unit) {
+        public void OnNewRound() {
             Data.Clear();
         }
 

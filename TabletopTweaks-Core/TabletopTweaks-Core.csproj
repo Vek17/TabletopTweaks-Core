@@ -162,6 +162,7 @@
     <Compile Include="Config\Blueprints.cs" />
     <Compile Include="MechanicsChanges\AdditionalActivatableAbilityGroups.cs" />
     <Compile Include="MechanicsChanges\FlankingMechanics.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\BewitchingReflexComponent.cs" />
     <Compile Include="NewComponents\AbilitySpecific\ChainChallengeComponent.cs" />
     <Compile Include="NewComponents\AbilitySpecific\ElementalBarrageIncomingTrigger.cs" />
     <Compile Include="NewComponents\AbilitySpecific\ElementalBarrageOutgoingTrigger.cs" />
