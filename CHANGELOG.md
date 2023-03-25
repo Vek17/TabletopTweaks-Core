@@ -1,5 +1,7 @@
 ## Version 0.5.14
 * Added ContextConditionItemSource to check if an ability is cast from an item.
+* Added WeaponGroupAttackBonusTTT to provide working versions of owlcat components.
+* Added WeaponGroupDamageBonusTTT to provide working versions of owlcat components.
 
 ## Version 0.5.13
 * AddAbilityUseTargetTriggerTTT adds support for triggers on immune spells.

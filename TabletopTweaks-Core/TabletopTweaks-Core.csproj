@@ -165,6 +165,8 @@
     <Compile Include="NewComponents\AbilitySpecific\ChainChallengeComponent.cs" />
     <Compile Include="NewComponents\AbilitySpecific\ElementalBarrageIncomingTrigger.cs" />
     <Compile Include="NewComponents\AbilitySpecific\ElementalBarrageOutgoingTrigger.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\SplitHexComponent.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\SplitHexComponentAutomatic.cs" />
     <Compile Include="NewComponents\AddAdditionalLimbConditional.cs" />
     <Compile Include="NewComponents\AddAdditionalWeaponDamageOnHit.cs" />
     <Compile Include="NewComponents\AddConditionalWeaponDamageBonus.cs" />
@@ -180,10 +182,13 @@
     <Compile Include="NewComponents\OwlcatReplacements\DamageBonusOrderOfCockatriceTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\FavoredEnemyTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\ProfaneAscensionTTT.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\WeaponGroupAttackBonusTTT.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\WeaponGroupDamageBonusTTT.cs" />
     <Compile Include="NewComponents\PartialEnergyResistanceIgnore.cs" />
     <Compile Include="NewComponents\Prerequisites\PrerequisiteDeityAlignment.cs" />
     <Compile Include="NewComponents\SetPetMinimumStat.cs" />
     <Compile Include="NewComponents\SpellDescriptorImmunityIgnore.cs" />
+    <Compile Include="NewEvents\IAbilityGetCommandTypeHandler.cs" />
     <Compile Include="NewUnitParts\UnitPartActivatableAbilityGroupExtension.cs" />
     <Compile Include="NewUnitParts\UnitPartChainChallengeTTT.cs" />
     <Compile Include="NewUnitParts\UnitPartIgnoreBuffDescriptorImmunity.cs" />

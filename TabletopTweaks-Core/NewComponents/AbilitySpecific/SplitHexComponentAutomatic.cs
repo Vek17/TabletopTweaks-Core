@@ -1,50 +1,50 @@
-﻿using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Controllers.Optimization;
+﻿using Kingmaker.Controllers.Optimization;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.PubSubSystem;
-using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules.Abilities;
-using Kingmaker.UnitLogic;
+using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic;
 using Kingmaker.Utility;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Blueprints.Facts;
+using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.Blueprints;
+using System.Linq;
 
-namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
-    [TypeId("39daf11ada364bbab00b4ff8a92dba1d")]
-    public class AzataZippyMagicTTT : UnitFactComponentDelegate,
+namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+    [AllowedOn(typeof(BlueprintUnitFact), false)]
+    [TypeId("4656e3c83ed94900900313383aaa6980")]
+    public class SplitHexComponentAutomatic : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RuleCastSpell>,
-        IRulebookHandler<RuleCastSpell>,
-        ISubscriber,
-        IInitiatorRulebookSubscriber {
+        IRulebookHandler<RuleCastSpell> {
 
         public void OnEventAboutToTrigger(RuleCastSpell evt) {
         }
 
-        private bool isValidTrigger(RuleCastSpell evt) {
-            return evt.Success
-                && evt.Spell.Blueprint.IsSpell
-                && !evt.IsDuplicateSpellApplied
-                && !evt.Spell.IsAOE
-                && !evt.Spell.Blueprint.GetComponents<AbilityEffectStickyTouch>().Any()
-                && !evt.Spell.Blueprint.GetComponents<BlockSpellDuplicationComponent>().Any();
-        }
+        
 
         public void OnEventDidTrigger(RuleCastSpell evt) {
             if (!isValidTrigger(evt)) {
                 return;
             }
             AbilityData spell = evt.Spell;
-            UnitEntityData newTarget = this.GetNewTarget(spell, evt.SpellTarget.Unit);
+            UnitEntityData newTarget = GetNewTarget(spell, evt.SpellTarget.Unit);
             if (newTarget == null) {
                 return;
             }
-            Rulebook.Trigger<RuleCastSpell>(new RuleCastSpell(spell, newTarget) {
+            Rulebook.Trigger(new RuleCastSpell(spell, newTarget) {
                 IsDuplicateSpellApplied = true
             });
+        }
+
+        private bool isValidTrigger(RuleCastSpell evt) {
+            return evt.Success
+                && evt.Spell.Blueprint.SpellDescriptor.HasFlag(SpellDescriptor.Hex)
+                && !evt.IsDuplicateSpellApplied
+                && !evt.Spell.IsAOE;
         }
 
         private UnitEntityData GetNewTarget(AbilityData data, UnitEntityData baseTarget) {
@@ -55,7 +55,8 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
             if (list.Count <= 0) {
                 return null;
             }
-            return list.GetRandomElements(1, new System.Random())[0];
+            return list.OrderBy(t => t.DistanceTo(baseTarget)).First();
+            //return list.GetRandomElements(1, new System.Random())[0];
         }
 
         [SerializeField]
