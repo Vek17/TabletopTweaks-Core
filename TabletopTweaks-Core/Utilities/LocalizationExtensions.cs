@@ -25,6 +25,26 @@ namespace TabletopTweaks.Core.Utilities {
             archetype.LocalizedName = Helpers.CreateString(modContext, $"{archetype.name}.Name", name, shouldProcess: false);
         }
         /// <summary>
+        /// Updates the name of the archetype to the supplied string.
+        /// </summary>
+        /// <param name="archetype"></param>
+        /// <param name="name">
+        /// Text to set as the name.
+        /// </param>
+        public static void SetName(this BlueprintArchetype archetype, LocalizedString name) {
+            archetype.LocalizedName = name;
+        }
+        /// <summary>
+        /// Updates the description of the archetype to the supplied string.
+        /// </summary>
+        /// <param name="archetype"></param>
+        /// <param name="description">
+        /// Text to set as the description.
+        /// </param>
+        public static void SetDescription(this BlueprintArchetype archetype, LocalizedString description) {
+            archetype.LocalizedDescription = description;
+        }
+        /// <summary>
         /// Updates the description of the archetype to the supplied string.
         /// </summary>
         /// <param name="archetype"></param>

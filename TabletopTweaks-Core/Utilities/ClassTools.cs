@@ -45,8 +45,22 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintCharacterClass SwordlordClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("90e4d7da3ccd1a8478411e07e91d5750");
             public static BlueprintCharacterClass LoremasterClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("4a7c05adfbaf05446a6bf664d28fb103");
             public static BlueprintCharacterClass WinterWitchClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("eb24ca44debf6714aabe1af1fd905a07");
+            public static BlueprintCharacterClass MythicStartingClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("247aa787806d5da4f89cfc3dff0b217f");
+            public static BlueprintCharacterClass MythicCompanionClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("530b6a79cb691c24ba99e1577b4beb6d");
+            public static BlueprintCharacterClass AeonMythicClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("15a85e67b7d69554cab9ed5830d0268e");
+            public static BlueprintCharacterClass AngelMythicClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("a5a9fe8f663d701488bd1db8ea40484e");
+            public static BlueprintCharacterClass AzataMythicClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("9a3b2c63afa79744cbca46bea0da9a16");
+            public static BlueprintCharacterClass DemonMythicClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("8e19495ea576a8641964102d177e34b7");
+            public static BlueprintCharacterClass LichMythicClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("5d501618a28bdc24c80007a5c937dcb7");
+            public static BlueprintCharacterClass TricksterMythicClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("8df873a8c6e48294abdb78c45834aa0a");
+            public static BlueprintCharacterClass FakeLegendClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("b82f1fbd191e1f2498266ca41f05027f");
+            public static BlueprintCharacterClass LegendClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("3d420403f3e7340499931324640efe96");
+            public static BlueprintCharacterClass DevilMythicClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("211f49705f478b3468db6daa802452a2");
+            public static BlueprintCharacterClass SwarmThatWalksClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("5295b8e13c2303f4c88bdb3d7760a757");
+            public static BlueprintCharacterClass GoldenDragonClass => BlueprintTools.GetBlueprint<BlueprintCharacterClass>("daf1235b6217787499c14e4e32142523");
 
             public static BlueprintCharacterClass[] AllClasses => Game.Instance.BlueprintRoot.Progression.m_CharacterClasses.Select(c => c.Get()).ToArray();
+            public static BlueprintCharacterClass[] AllMythicClasses => Game.Instance.BlueprintRoot.Progression.m_CharacterMythics.Select(c => c.Get()).ToArray();
         }
         public static class ClassReferences {
             public static BlueprintCharacterClassReference AlchemistClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("0937bec61c0dabc468428f496580c721");
@@ -88,8 +102,22 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintCharacterClassReference SwordlordClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("90e4d7da3ccd1a8478411e07e91d5750");
             public static BlueprintCharacterClassReference LoremasterClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("4a7c05adfbaf05446a6bf664d28fb103");
             public static BlueprintCharacterClassReference WinterWitchClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("eb24ca44debf6714aabe1af1fd905a07");
+            public static BlueprintCharacterClassReference MythicStartingClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("247aa787806d5da4f89cfc3dff0b217f");
+            public static BlueprintCharacterClassReference MythicCompanionClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("530b6a79cb691c24ba99e1577b4beb6d");
+            public static BlueprintCharacterClassReference AeonMythicClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("15a85e67b7d69554cab9ed5830d0268e");
+            public static BlueprintCharacterClassReference AngelMythicClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("a5a9fe8f663d701488bd1db8ea40484e");
+            public static BlueprintCharacterClassReference AzataMythicClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("9a3b2c63afa79744cbca46bea0da9a16");
+            public static BlueprintCharacterClassReference DemonMythicClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("8e19495ea576a8641964102d177e34b7");
+            public static BlueprintCharacterClassReference LichMythicClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("5d501618a28bdc24c80007a5c937dcb7");
+            public static BlueprintCharacterClassReference TricksterMythicClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("8df873a8c6e48294abdb78c45834aa0a");
+            public static BlueprintCharacterClassReference FakeLegendClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("b82f1fbd191e1f2498266ca41f05027f");
+            public static BlueprintCharacterClassReference LegendClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("3d420403f3e7340499931324640efe96");
+            public static BlueprintCharacterClassReference DevilMythicClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("211f49705f478b3468db6daa802452a2");
+            public static BlueprintCharacterClassReference SwarmThatWalksClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("5295b8e13c2303f4c88bdb3d7760a757");
+            public static BlueprintCharacterClassReference GoldenDragonClass => BlueprintTools.GetBlueprintReference<BlueprintCharacterClassReference>("daf1235b6217787499c14e4e32142523");
 
             public static BlueprintCharacterClassReference[] AllClasses => Game.Instance.BlueprintRoot.Progression.m_CharacterClasses;
+            public static BlueprintCharacterClassReference[] AllMythicClasses => Game.Instance.BlueprintRoot.Progression.m_CharacterMythics;
         }
     }
 }
