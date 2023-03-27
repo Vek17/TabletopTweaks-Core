@@ -1,6 +1,7 @@
 ## Version 0.5.15
 * Fixed issue with PrerequisiteSpellKnown not working correctly in all cases.
 * Fixed issue with Trickster domains not 
+* Support for age effects
 
 ## Version 0.5.14
 * Added ContextConditionItemSource to check if an ability is cast from an item.
