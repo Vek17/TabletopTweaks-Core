@@ -35,6 +35,11 @@ namespace TabletopTweaks.Core.Bugfixes.General {
                                     }
                                 }
                             }
+                            if (__instance.m_FeatureList != null) {
+                                foreach (BlueprintFeatureReference blueprintFeatureReference3 in __instance.m_FeatureList) {
+                                    value += context.MaybeCaster.Descriptor.Progression.Features.GetRank(blueprintFeatureReference3.Get());
+                                }
+                            }
                             __result = value;
                         }
                         break;

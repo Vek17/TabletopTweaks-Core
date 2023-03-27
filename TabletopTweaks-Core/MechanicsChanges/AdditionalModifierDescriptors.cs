@@ -40,6 +40,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             SchoolMastery = 3132,
             VarisianTattoo = 3133,
             Monk = 3134,
+            Age = 3135
         }
         public enum Enhancement : int {
             Weapon = 4121
@@ -92,6 +93,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             InsertBefore(Dodge.Intelligence, ModifierDescriptor.Dodge);
             InsertBefore(Dodge.Wisdom, ModifierDescriptor.Dodge);
             InsertBefore(Dodge.Charisma, ModifierDescriptor.Dodge);
+            InsertBefore(Untyped.Age, ModifierDescriptor.UntypedStackable);
             InsertAfter(Untyped.Strength, ModifierDescriptor.UntypedStackable);
             InsertAfter(Untyped.Dexterity, ModifierDescriptor.UntypedStackable);
             InsertAfter(Untyped.Constitution, ModifierDescriptor.UntypedStackable);
@@ -114,6 +116,16 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                 ModifierDescriptorComparer.SortedValues = ModifierDescriptorComparer
                     .SortedValues.InsertAfterElement((ModifierDescriptor)value, after);
             };
+        }
+
+        [HarmonyPatch(typeof(ModifierDescriptorHelper), "IsStackable", new[] { typeof(ModifierDescriptor) })]
+        static class ModifierDescriptorHelper_IsStackable_Patch {
+
+            static void Postfix(ref bool __result, ModifierDescriptor descriptor) {
+                if (descriptor == (ModifierDescriptor)NaturalArmor.Stackable) {
+                    __result = true;
+                }
+            }
         }
 
         [HarmonyPatch(typeof(ModifierDescriptorComparer), "Compare", new Type[] { typeof(ModifierDescriptor), typeof(ModifierDescriptor) })]
@@ -185,6 +197,9 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                         break;
                     case (ModifierDescriptor)Untyped.Charisma:
                         __result = Game.Instance.BlueprintRoot.LocalizedTexts.UserInterfacesText.CharacterSheet.Charisma;
+                        break;
+                    case (ModifierDescriptor)Untyped.Age:
+                        __result = "Age";
                         break;
                     case (ModifierDescriptor)Untyped.WeaponTraining:
                     case (ModifierDescriptor)Untyped.WeaponFocus:
