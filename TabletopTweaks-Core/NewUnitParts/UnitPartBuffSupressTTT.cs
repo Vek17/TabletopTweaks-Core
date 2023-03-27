@@ -159,6 +159,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             public readonly EntityFactRef<EntityFact> Source;
             public virtual void ActivateSuppression(UnitDescriptor owner) {
                 foreach (Buff buff in owner.Buffs) {
+                    if (buff.Blueprint.AssetGuid == Source.Fact?.Blueprint?.AssetGuid) { continue; }
                     bool shouldSuppress = ShouldSuppress(buff);
 
                     if (shouldSuppress && !buff.IsSuppressed) {
