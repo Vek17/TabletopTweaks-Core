@@ -1,5 +1,5 @@
-﻿using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
+﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic;
 using TabletopTweaks.Core.NewUnitParts;
 

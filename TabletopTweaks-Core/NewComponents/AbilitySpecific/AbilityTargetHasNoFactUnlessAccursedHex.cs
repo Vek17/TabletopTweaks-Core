@@ -1,14 +1,14 @@
-﻿using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
-using System.Linq;
+﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Facts;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Blueprints.Root;
 using Kingmaker.EntitySystem.Entities;
-using Kingmaker.UnitLogic.Abilities.Components.Base;
-using Kingmaker.Utility;
 using Kingmaker.UI.Models.Log;
 using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components.Base;
+using Kingmaker.Utility;
+using System.Linq;
 using TabletopTweaks.Core.NewUnitParts;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {

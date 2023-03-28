@@ -1,20 +1,20 @@
-﻿using Kingmaker.Blueprints.Facts;
+﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
-using Kingmaker.UnitLogic.Commands.Base;
+using Kingmaker.Controllers.Units;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Abilities;
-using TabletopTweaks.Core.NewEvents;
+using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.Controllers.Units;
-using System.Linq;
-using Kingmaker.Blueprints.Classes;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
-using TabletopTweaks.Core.Utilities;
+using System.Linq;
+using TabletopTweaks.Core.NewEvents;
 using TabletopTweaks.Core.NewUnitParts;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
@@ -28,7 +28,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         private BlueprintAbility[] m_MajorHexes;
         private BlueprintAbility[] MajorHexes {
             get {
-                if (m_MajorHexes == null) { 
+                if (m_MajorHexes == null) {
                     m_MajorHexes = this.m_MajorHex?.Get()?.IsPrerequisiteFor
                         .Select(f => f.Get())
                         .SelectMany(c => c.GetComponents<AddFacts>())
@@ -79,7 +79,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
                 if (SplitHexPart.Data.StoredHex == evt.Spell.Blueprint) {
                     SplitHexPart.Data.Clear();
                 }
-            } else if(evt.Spell.Blueprint.SpellDescriptor.HasFlag(SpellDescriptor.Hex) && !evt.Spell.IsAOE)  {
+            } else if (evt.Spell.Blueprint.SpellDescriptor.HasFlag(SpellDescriptor.Hex) && !evt.Spell.IsAOE) {
                 SplitHexPart.Data.Store(evt.Spell.Blueprint, evt.SpellTarget.Unit);
             }
         }

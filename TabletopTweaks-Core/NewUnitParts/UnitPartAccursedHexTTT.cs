@@ -1,22 +1,17 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.Controllers.Units;
 using Kingmaker.EntitySystem;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.PubSubSystem;
-using Kingmaker.RuleSystem;
-using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.Utility;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace TabletopTweaks.Core.NewUnitParts {
-    public class UnitPartAccursedHexTTT : OldStyleUnitPart, 
+    public class UnitPartAccursedHexTTT : OldStyleUnitPart,
         IInitiatorRulebookHandler<RuleCastSpell>,
         IRulebookHandler<RuleCastSpell>,
         IUnitNewCombatRoundHandler,
@@ -46,11 +41,6 @@ namespace TabletopTweaks.Core.NewUnitParts {
             TrackedHexes
                 .Where(entry => entry.Matches(unit, guid))
                 .ForEach(entry => entry.PassedSave = true);
-            if (TrackedHexes.Any(entry => entry.Matches(unit, guid))) {
-                Main.TTTContext.Logger.Log($"UnitPartAccursedHexTTT: Set: {guid} - Unit {unit.UniqueId} - Passed");
-            } else {
-                Main.TTTContext.Logger.Log($"UnitPartAccursedHexTTT: Did not Set: {guid} - Unit {unit.UniqueId} - Passed");
-            }
         }
 
         public bool HasActiveEntry(BlueprintGuid guid, UnitEntityData unit) {
@@ -114,7 +104,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
 
         public class HexData {
             public EntityRef<UnitEntityData> Unit;
-            public BlueprintGuid Guid; 
+            public BlueprintGuid Guid;
             public int RoundsRemaining;
             public bool Triggering;
             public bool PassedSave;
@@ -143,6 +133,6 @@ namespace TabletopTweaks.Core.NewUnitParts {
             public static bool operator !=(HexData a, HexData b) {
                 return !a.Unit.Equals(b.Unit) || !a.Guid.Equals(b.Guid);
             }
-        } 
+        }
     }
 }

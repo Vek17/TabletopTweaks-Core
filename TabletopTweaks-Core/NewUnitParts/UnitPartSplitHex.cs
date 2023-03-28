@@ -1,6 +1,6 @@
 ﻿using Kingmaker.Blueprints;
-using Kingmaker.EntitySystem.Entities;
 using Kingmaker.EntitySystem;
+using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 
