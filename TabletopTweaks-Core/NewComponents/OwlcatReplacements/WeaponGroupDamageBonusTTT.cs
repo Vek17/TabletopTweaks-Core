@@ -1,19 +1,13 @@
-﻿using Kingmaker.Blueprints.Items.Weapons;
-using Kingmaker.EntitySystem.Stats;
+﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Facts;
+using Kingmaker.Blueprints.Items.Weapons;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
-using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic;
-using System;
-using System.Collections.Generic;
+using Kingmaker.UnitLogic.Mechanics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Kingmaker.Blueprints.Facts;
-using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
 
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [ComponentName("Weapon group damage bonus")]

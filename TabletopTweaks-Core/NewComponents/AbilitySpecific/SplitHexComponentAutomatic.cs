@@ -1,22 +1,22 @@
-﻿using Kingmaker.Controllers.Optimization;
-using Kingmaker.EntitySystem.Entities;
-using Kingmaker.PubSubSystem;
-using Kingmaker.RuleSystem.Rules.Abilities;
-using Kingmaker.RuleSystem;
-using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.UnitLogic;
-using Kingmaker.Utility;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
-using System.Linq;
-using Kingmaker.Blueprints.Classes;
+using Kingmaker.Controllers.Optimization;
+using Kingmaker.EntitySystem.Entities;
+using Kingmaker.PubSubSystem;
+using Kingmaker.RuleSystem;
+using Kingmaker.RuleSystem.Rules.Abilities;
+using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.Utility;
+using System.Collections.Generic;
+using System.Linq;
 using TabletopTweaks.Core.Utilities;
+using UnityEngine;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [AllowedOn(typeof(BlueprintUnitFact), false)]

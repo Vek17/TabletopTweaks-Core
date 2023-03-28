@@ -1,13 +1,13 @@
-﻿using Kingmaker.Blueprints.Classes;
+﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
-using System.Collections.Generic;
+using Kingmaker.EntitySystem.Entities;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
-using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic;
-using Kingmaker.EntitySystem.Entities;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
+using Kingmaker.UnitLogic.Mechanics;
+using System.Collections.Generic;
 
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [AllowedOn(typeof(BlueprintFeature), false)]
@@ -59,12 +59,12 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
                 var baseValue = attribute.BaseValue;
                 var modValue = attribute.ModifiedValue;
                 if (baseValue >= highestBaseValue) {
-                    if (baseValue == highestBaseValue) { 
-                        if(modValue > highestModValue) {
+                    if (baseValue == highestBaseValue) {
+                        if (modValue > highestModValue) {
                             highestModValue = modValue;
                             highestStat = stat;
                         }
-                    } else { 
+                    } else {
                         highestBaseValue = baseValue;
                         highestStat = stat;
                     }

@@ -1,27 +1,22 @@
-﻿using Kingmaker.Blueprints.Items.Weapons;
+﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Facts;
+using Kingmaker.Blueprints.Items.Weapons;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
-using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.Utility;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-using Kingmaker.Blueprints.Facts;
-using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
 
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [AllowMultipleComponents]
     [TypeId("8e2425fe221c4c189983b8fe4add4f59")]
-    public class WeaponGroupAttackBonusTTT : UnitFactComponentDelegate, 
-        IInitiatorRulebookHandler<RuleCalculateAttackBonusWithoutTarget>, 
-        IRulebookHandler<RuleCalculateAttackBonusWithoutTarget>, 
+    public class WeaponGroupAttackBonusTTT : UnitFactComponentDelegate,
+        IInitiatorRulebookHandler<RuleCalculateAttackBonusWithoutTarget>,
+        IRulebookHandler<RuleCalculateAttackBonusWithoutTarget>,
         ISubscriber, IInitiatorRulebookSubscriber {
 
         public void OnEventAboutToTrigger(RuleCalculateAttackBonusWithoutTarget evt) {

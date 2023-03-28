@@ -1,14 +1,10 @@
 ﻿using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.Blueprints;
-using Kingmaker.Controllers.Units;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Abilities;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic;
-using TabletopTweaks.Core.NewEvents;
 using Kingmaker.UnitLogic.Buffs.Components;
+using Kingmaker.UnitLogic.Commands.Base;
+using TabletopTweaks.Core.NewEvents;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     public class BewitchingReflexComponent : UnitBuffComponentDelegate,

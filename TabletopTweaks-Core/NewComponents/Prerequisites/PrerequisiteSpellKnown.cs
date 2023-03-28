@@ -9,7 +9,6 @@ using Kingmaker.UnitLogic.Class.LevelUp;
 using System.Linq;
 using System.Text;
 using TabletopTweaks.Core.Utilities;
-using static Kingmaker.Armies.TacticalCombat.Grid.TacticalCombatGrid;
 using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewComponents.Prerequisites {
@@ -30,7 +29,7 @@ namespace TabletopTweaks.Core.NewComponents.Prerequisites {
             }
         }
         public override bool CheckInternal([CanBeNull] FeatureSelectionState selectionState, [NotNull] UnitDescriptor unit, [CanBeNull] LevelUpState state) {
-            var SpellIsKnown = unit.Spellbooks.Any(book => book.IsKnown(Spell) 
+            var SpellIsKnown = unit.Spellbooks.Any(book => book.IsKnown(Spell)
                 || book.m_KnownSpells.Any(l => l.Any(s => s.Blueprint.AssetGuid == Spell.AssetGuid)));
             return SpellIsKnown || (RequireSpellbook ? false : unit.Abilities.GetAbility(Spell) != null);
         }

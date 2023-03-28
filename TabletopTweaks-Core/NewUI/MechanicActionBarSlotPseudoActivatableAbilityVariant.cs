@@ -2,7 +2,6 @@
 using Kingmaker.UI.UnitSettings;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
-using TabletopTweaks.Core.NewUnitParts;
 using UnityEngine;
 
 namespace TabletopTweaks.Core.NewUI {

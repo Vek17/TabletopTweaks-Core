@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using Kingmaker.PubSubSystem;
-using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.Commands.Base;
 
 namespace TabletopTweaks.Core.NewEvents {
     public interface IAbilityGetCommandTypeHandler : IUnitSubscriber {

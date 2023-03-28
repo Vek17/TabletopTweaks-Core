@@ -3,7 +3,6 @@ using Kingmaker;
 using Kingmaker.Blueprints.Root.Strings;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
-using Kingmaker.UI.Common;
 using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;

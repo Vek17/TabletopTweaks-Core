@@ -1,5 +1,4 @@
 ﻿using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem;
 using Kingmaker.Enums;
@@ -11,7 +10,6 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Owlcat.Runtime.UI.Utility;
 using System;
-using static Kingmaker.RuleSystem.RulebookEvent;
 
 namespace TabletopTweaks.Core.NewComponents {
     [TypeId("a4d48fc6e20e42bb8226e279d730d918")]
@@ -19,7 +17,7 @@ namespace TabletopTweaks.Core.NewComponents {
         IInitiatorRulebookHandler<RuleCalculateDamage>, IRulebookHandler<RuleCalculateDamage>,
         ISubscriber, IInitiatorRulebookSubscriber {
 
-        private EntityFact DisplayFact { 
+        private EntityFact DisplayFact {
             get {
                 EntityFact displayFact = null;
                 if (UseFalseFact) {
@@ -31,7 +29,7 @@ namespace TabletopTweaks.Core.NewComponents {
                     }
                 }
                 return displayFact ?? this.Fact;
-            } 
+            }
         }
 
         public void OnEventAboutToTrigger(RuleCalculateDamage evt) {

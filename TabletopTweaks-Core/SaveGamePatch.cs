@@ -6,7 +6,6 @@ using Kingmaker.UnitLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.AccessControl;
 using TabletopTweaks.Core.ModLogic;
 
 namespace TabletopTweaks.Core {

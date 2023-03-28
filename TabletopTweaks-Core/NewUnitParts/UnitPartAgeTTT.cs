@@ -1,15 +1,6 @@
-﻿using HarmonyLib;
-using Kingmaker.EntitySystem;
-using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.UnitLogic.Parts;
+﻿using Kingmaker.PubSubSystem;
 using Kingmaker.UnitLogic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Kingmaker.Utility;
-using Kingmaker.PubSubSystem;
 using TabletopTweaks.Core.NewEvents;
 
 namespace TabletopTweaks.Core.NewUnitParts {
@@ -20,7 +11,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
 
         public void AddNegate(AgeLevel age, NegateType type) {
             switch (type) {
-                case NegateType.Physical: 
+                case NegateType.Physical:
                     switch (age) {
                         case AgeLevel.MiddleAge:
                             m_MiddleAgePhysicalNegate.Retain();

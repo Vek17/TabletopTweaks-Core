@@ -1,33 +1,29 @@
-﻿using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.Blueprints;
+﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Blueprints.Facts;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Abilities;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
-using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.UnitLogic.Mechanics.Components;
-using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Utility;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using Kingmaker.Blueprints.Facts;
-using Kingmaker.Blueprints.JsonSystem;
 
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [AllowMultipleComponents]
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("56291ed53e7845f59586a77820c27e3b")]
-    public class AddAbilityUseTriggerTTT : UnitFactComponentDelegate, 
+    public class AddAbilityUseTriggerTTT : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RuleCastSpell>, IRulebookHandler<RuleCastSpell>,
         IInitiatorRulebookHandler<RuleApplySpell>, IRulebookHandler<RuleApplySpell>,
         ISubscriber, IInitiatorRulebookSubscriber, IApplyAbilityEffectHandler, IGlobalSubscriber {
-        
+
         public ReferenceArrayProxy<BlueprintSpellbook, BlueprintSpellbookReference> Spellbooks {
             get {
                 return this.m_Spellbooks;
