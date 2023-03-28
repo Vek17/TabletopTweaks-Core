@@ -8,19 +8,18 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Abilities;
 using TabletopTweaks.Core.NewEvents;
 using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.EntitySystem.Entities;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Controllers.Units;
 using System.Linq;
 using Kingmaker.Blueprints.Classes;
-using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.UnitLogic.FactLogic;
 using TabletopTweaks.Core.Utilities;
+using TabletopTweaks.Core.NewUnitParts;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("00d2d2c9def641d3844a98a5a95f238e")]
-    public class SplitHexComponent : UnitFactComponentDelegate<SplitHexComponent.SplitHexData>,
+    public class SplitHexComponent : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RuleCastSpell>,
         IRulebookHandler<RuleCastSpell>,
         IAbilityGetCommandTypeHandler,
@@ -74,25 +73,27 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         }
 
         public void OnEventDidTrigger(RuleCastSpell evt) {
+            var SplitHexPart = Owner.Ensure<UnitPartSplitHex>();
             if (!isValidTrigger(evt)) { return; }
-            if (Data.HasStoredHex) {
-                if (Data.StoredHex == evt.Spell.Blueprint) {
-                    Data.Clear();
+            if (SplitHexPart.Data.HasStoredHex) {
+                if (SplitHexPart.Data.StoredHex == evt.Spell.Blueprint) {
+                    SplitHexPart.Data.Clear();
                 }
             } else if(evt.Spell.Blueprint.SpellDescriptor.HasFlag(SpellDescriptor.Hex) && !evt.Spell.IsAOE)  {
-                Data.Store(evt.Spell.Blueprint);
+                SplitHexPart.Data.Store(evt.Spell.Blueprint, evt.SpellTarget.Unit);
             }
         }
 
         public void HandleGetCommandType(AbilityData ability, ref UnitCommand.CommandType commandType) {
-            if (Data.HasStoredHex && ability.Blueprint.AssetGuid == Data.StoredHex.AssetGuid) {
-
+            var SplitHexPart = Owner.Ensure<UnitPartSplitHex>();
+            if (SplitHexPart.Data.HasStoredHex && ability.Blueprint.AssetGuid == SplitHexPart.Data.StoredHex.AssetGuid) {
                 commandType = UnitCommand.CommandType.Free;
             }
         }
 
         public void OnNewRound() {
-            Data.Clear();
+            var SplitHexPart = Owner.Ensure<UnitPartSplitHex>();
+            SplitHexPart.Data.Clear();
         }
 
         private bool isValidTrigger(RuleCastSpell evt) {
@@ -107,6 +108,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         public BlueprintFeatureReference m_MajorHex;
         public BlueprintFeatureReference m_GrandHex;
         public BlueprintFeatureReference m_SplitMajorHex;
+        public BlueprintBuffReference m_SplitHexCooldown;
 
         public class SplitHexData {
             private BlueprintAbilityReference m_StoredHex;

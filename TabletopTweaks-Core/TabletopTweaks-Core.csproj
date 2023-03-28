@@ -162,6 +162,8 @@
     <Compile Include="Config\Blueprints.cs" />
     <Compile Include="MechanicsChanges\AdditionalActivatableAbilityGroups.cs" />
     <Compile Include="MechanicsChanges\FlankingMechanics.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\AccursedHexBuffComponent.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\AccursedHexComponent.cs" />
     <Compile Include="NewComponents\AbilitySpecific\AddAgeNegate.cs" />
     <Compile Include="NewComponents\AbilitySpecific\AddAgeStatChanges.cs" />
     <Compile Include="NewComponents\AbilitySpecific\BewitchingReflexComponent.cs" />
@@ -170,6 +172,8 @@
     <Compile Include="NewComponents\AbilitySpecific\ElementalBarrageOutgoingTrigger.cs" />
     <Compile Include="NewComponents\AbilitySpecific\SplitHexComponent.cs" />
     <Compile Include="NewComponents\AbilitySpecific\SplitHexComponentAutomatic.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\AbilityTargetHasNoFactUnlessAccursedHex.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\AbilityTargetNoSplitHexRepeat.cs" />
     <Compile Include="NewComponents\AddAdditionalLimbConditional.cs" />
     <Compile Include="NewComponents\AddAdditionalWeaponDamageOnHit.cs" />
     <Compile Include="NewComponents\AddConditionalWeaponDamageBonus.cs" />
@@ -194,10 +198,12 @@
     <Compile Include="NewComponents\SpellDescriptorImmunityIgnore.cs" />
     <Compile Include="NewEvents\IAbilityGetCommandTypeHandler.cs" />
     <Compile Include="NewEvents\IAgeNegateHandler.cs" />
+    <Compile Include="NewUnitParts\UnitPartAccursedHexTTT.cs" />
     <Compile Include="NewUnitParts\UnitPartActivatableAbilityGroupExtension.cs" />
     <Compile Include="NewUnitParts\UnitPartAgeTTT.cs" />
     <Compile Include="NewUnitParts\UnitPartChainChallengeTTT.cs" />
     <Compile Include="NewUnitParts\UnitPartIgnoreBuffDescriptorImmunity.cs" />
+    <Compile Include="NewUnitParts\UnitPartSplitHex.cs" />
     <Compile Include="Utilities\VenderTools.cs" />
     <Compile Include="Utilities\WildShapeTools.cs" />
     <EmbeddedResource Include="Config\Blueprints.json" />

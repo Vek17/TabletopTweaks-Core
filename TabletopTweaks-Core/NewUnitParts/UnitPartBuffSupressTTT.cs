@@ -223,7 +223,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             static void Postfix(Buff __instance) {
                 var unitPartBuffSuppress = __instance.Owner.Get<UnitPartBuffSupressTTT>();
                 if (unitPartBuffSuppress != null && !__instance.IsSuppressed) {
-                    __instance.IsSuppressed = unitPartBuffSuppress.IsSuppressedContinuously(__instance);
+                    __instance.IsSuppressed |= unitPartBuffSuppress.IsSuppressedContinuously(__instance);
                 }
             }
         }

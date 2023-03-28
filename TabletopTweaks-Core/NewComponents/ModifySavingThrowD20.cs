@@ -12,20 +12,9 @@ namespace TabletopTweaks.Core.NewComponents {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [TypeId("e8651c2865ee48f4a877df9d376bc37c")]
     public class ModifySavingThrowD20 : UnitFactComponentDelegate,
-        IInitiatorRulebookHandler<RuleSavingThrow>,
-        IRulebookHandler<RuleSavingThrow>,
         IInitiatorRulebookHandler<RuleRollD20>,
         IRulebookHandler<RuleRollD20>,
         ISubscriber, IInitiatorRulebookSubscriber {
-
-        public void OnEventAboutToTrigger(RuleSavingThrow evt) {
-            bool flag = evt.Reason.Caster != null && evt.Reason.Caster.Descriptor.Alignment.ValueRaw.HasComponent(this.Alignment);
-            if ((evt.Reason.Context != null && evt.Reason.Context.SpellDescriptor.HasAnyFlag(this.Alignment.GetAlignmentDescriptor())) || flag) {
-
-            }
-        }
-        public void OnEventDidTrigger(RuleSavingThrow evt) {
-        }
 
         public void OnEventAboutToTrigger(RuleRollD20 evt) {
             RulebookEvent previousEvent = Rulebook.CurrentContext.PreviousEvent as RuleSavingThrow;
