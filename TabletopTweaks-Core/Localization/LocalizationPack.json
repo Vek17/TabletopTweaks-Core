@@ -12,6 +12,17 @@
       "esES": null
     },
     {
+      "Key": "29a03fd78b924ea8b0e1fdb5a359c961",
+      "SimpleName": "AbilityTargetNoSplitHexRepeat.UI",
+      "ProcessTemplates": false,
+      "enGB": "Cannot target the same unit twice with Split Hex.",
+      "ruRU": null,
+      "deDE": null,
+      "frFR": null,
+      "zhCN": null,
+      "esES": null
+    },
+    {
       "Key": "94b904b51b6349f9bcf2172bc0acfe61",
       "SimpleName": "PrerequisiteCasterLevel.UI",
       "ProcessTemplates": false,
