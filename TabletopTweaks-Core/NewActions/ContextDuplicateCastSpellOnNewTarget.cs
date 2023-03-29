@@ -12,6 +12,7 @@ using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic;
 using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.RuleSystem;
+using Kingmaker.Controllers.Optimization;
 
 namespace TabletopTweaks.Core.NewActions {
     [TypeId("c4530225242448a3a56a27276c2e46ed")]
@@ -31,7 +32,9 @@ namespace TabletopTweaks.Core.NewActions {
             if (Ability == null) {
                 return;
             }
-            List<UnitEntityData> list = GameHelper.GetTargetsAround(base.Target.Point, this.Radius.Value, true, false).ToList();
+            //List<UnitEntityData> list = EntityBoundsHelper.FindUnitsInRange(base.Target.Point, this.Radius.Meters);
+            List<UnitEntityData> list = GameHelper.GetTargetsAround(base.Target.Point, this.Radius.Meters, checkLOS: true, includeDead: false).ToList();
+
             if (this.SameFaction) {
                 list.RemoveAll((UnitEntityData p) => p.Faction.AssetGuid != base.Target.Unit.Faction.AssetGuid);
             }
