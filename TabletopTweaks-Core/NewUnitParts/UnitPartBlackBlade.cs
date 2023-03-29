@@ -23,7 +23,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
         }
 
         public bool TryAddToInventory(BlueprintItem ItemToGive) {
-            var valid = Game.Instance.Player.PartyCharacters.AsEnumerable().Append(Game.Instance.Player.MainCharacter.Value).Select(u => u.Value).ToList();
+            var valid = Game.Instance.Player.AllCharacters.AsEnumerable().Append(Game.Instance.Player.MainCharacter.Value).Select(u => u).ToList();
             TTTContext.Logger.Log($"Owner: {Owner.Unit.UniqueId}:{Owner.CharacterName} - {valid.Contains(Owner)}");
             if (!BlackBlade.IsEmpty || !valid.Contains(Owner)) {
                 return false;
