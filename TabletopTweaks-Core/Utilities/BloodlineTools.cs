@@ -112,17 +112,30 @@ namespace TabletopTweaks.Core.Utilities {
             });
             AddfactContext.AddActionDeactivated(actionDeactivated);
         }
-        public static void ApplyPrimalistException(BlueprintFeature power, int level, BlueprintProgression bloodline) {
-            BlueprintFeature PrimalistProgression = BlueprintTools.GetBlueprint<BlueprintFeature>("d8b8d1dd83393484cbacf6c8830080ae");
-            BlueprintFeature PrimalistTakePower4 = BlueprintTools.GetBlueprint<BlueprintFeature>("2140040bf367e8b4a9c6a632820becbe");
-            BlueprintFeature PrimalistTakePower8 = BlueprintTools.GetBlueprint<BlueprintFeature>("c5aaccc685a37ed4b97869398cdd3ebb");
-            BlueprintFeature PrimalistTakePower12 = BlueprintTools.GetBlueprint<BlueprintFeature>("57bb4dc36611c7444817c13135ec58b4");
-            BlueprintFeature PrimalistTakePower16 = BlueprintTools.GetBlueprint<BlueprintFeature>("a56a288b9b6097f4eb67be43404321f2");
-            BlueprintFeature PrimalistTakePower20 = BlueprintTools.GetBlueprint<BlueprintFeature>("b264a03d036248544acfddbcad709345");
-            SelectedPrimalistLevel().AddComponent(
+        public static void ApplyPrimalistException(BlueprintFeature power, int level, BlueprintProgression primaryBloodline, BlueprintProgression secondaryBloodline) {
+            var PrimalistProgression = BlueprintTools.GetBlueprint<BlueprintFeature>("d8b8d1dd83393484cbacf6c8830080ae");
+            var PrimalistTakePower4 = BlueprintTools.GetBlueprint<BlueprintFeature>("2140040bf367e8b4a9c6a632820becbe");
+            var PrimalistTakePower8 = BlueprintTools.GetBlueprint<BlueprintFeature>("c5aaccc685a37ed4b97869398cdd3ebb");
+            var PrimalistTakePower12 = BlueprintTools.GetBlueprint<BlueprintFeature>("57bb4dc36611c7444817c13135ec58b4");
+            var PrimalistTakePower16 = BlueprintTools.GetBlueprint<BlueprintFeature>("a56a288b9b6097f4eb67be43404321f2");
+            var PrimalistTakePower20 = BlueprintTools.GetBlueprint<BlueprintFeature>("b264a03d036248544acfddbcad709345");
+
+            var PrimalistSecondBloodlineTakeBloodlinePower4 = BlueprintTools.GetBlueprint<BlueprintFeature>("4105276918ca423ea5d1a19e9bcb24c3");
+            var PrimalistSecondBloodlineTakeBloodlinePower8 = BlueprintTools.GetBlueprint<BlueprintFeature>("eaf71c6cc1a149b7af151037e9374ec3");
+            var PrimalistSecondBloodlineTakeBloodlinePower12 = BlueprintTools.GetBlueprint<BlueprintFeature>("d6d08878554d49b081e6fdf07b4a55e0");
+            var PrimalistSecondBloodlineTakeBloodlinePower16 = BlueprintTools.GetBlueprint<BlueprintFeature>("73e3ba6d3bf9434f8fa4a6ad53037eab");
+            var PrimalistSecondBloodlineTakeBloodlinePower20 = BlueprintTools.GetBlueprint<BlueprintFeature>("d67571685e6342ae9a5ad846727e09e3");
+
+            var PrimalistSecondBloodlineLevel4Selection = BlueprintTools.GetBlueprintReference<BlueprintFeatureBaseReference>("dfbd18edfa9443b98b1ed3b643551d31");
+            var PrimalistSecondBloodlineLevel8Selection = BlueprintTools.GetBlueprintReference<BlueprintFeatureBaseReference>("f820e9272d234162a7e6ef3b64be0f38");
+            var PrimalistSecondBloodlineLevel12Selection = BlueprintTools.GetBlueprintReference<BlueprintFeatureBaseReference>("c63fcfd424a64d1aa195e7721b33863e");
+            var PrimalistSecondBloodlineLevel16Selection = BlueprintTools.GetBlueprintReference<BlueprintFeatureBaseReference>("d43b1581b1f64f928e55d7ad6d36cb13");
+            var PrimalistSecondBloodlineLevel20Selection = BlueprintTools.GetBlueprintReference<BlueprintFeatureBaseReference>("171a7125128f407fb439c1f31d9cec43");
+
+            SelectedTakePowerLevelPrimary().AddComponent(
                 new AddFeatureIfHasFact() {
                     m_Feature = power.ToReference<BlueprintUnitFactReference>(),
-                    m_CheckedFact = bloodline.ToReference<BlueprintUnitFactReference>()
+                    m_CheckedFact = primaryBloodline.ToReference<BlueprintUnitFactReference>()
                 }
             );
             power.AddPrerequisite<PrerequisiteNoFeature>(p => {
@@ -130,12 +143,17 @@ namespace TabletopTweaks.Core.Utilities {
                 p.Group = Prerequisite.GroupType.Any;
                 p.m_Feature = PrimalistProgression.ToReference<BlueprintFeatureReference>();
             });
-            power.AddPrerequisite<PrerequisiteNoFeature>(p => {
-                p.CheckInProgression = true;
-                p.Group = Prerequisite.GroupType.Any;
-                p.m_Feature = power.ToReference<BlueprintFeatureReference>();
+            SelectedTakePowerLevelSecondary().AddComponent(
+                new AddFeatureIfHasFact() {
+                    m_Feature = power.ToReference<BlueprintUnitFactReference>(),
+                    m_CheckedFact = secondaryBloodline.ToReference<BlueprintUnitFactReference>()
+                }
+            );
+            secondaryBloodline.TemporaryContext(bp => {
+                bp.LevelEntries.Where(entry => entry.Level == level).First().m_Features.Add(SecondaryPrimalistSelection());
             });
-            BlueprintFeature SelectedPrimalistLevel() {
+
+            BlueprintFeature SelectedTakePowerLevelPrimary() {
                 switch (level) {
                     case 4: return PrimalistTakePower4;
                     case 8: return PrimalistTakePower8;
@@ -145,21 +163,40 @@ namespace TabletopTweaks.Core.Utilities {
                     default: return null;
                 }
             }
+            BlueprintFeature SelectedTakePowerLevelSecondary() {
+                switch (level) {
+                    case 4: return PrimalistSecondBloodlineTakeBloodlinePower4;
+                    case 8: return PrimalistSecondBloodlineTakeBloodlinePower8;
+                    case 12: return PrimalistSecondBloodlineTakeBloodlinePower12;
+                    case 16: return PrimalistSecondBloodlineTakeBloodlinePower16;
+                    case 20: return PrimalistSecondBloodlineTakeBloodlinePower20;
+                    default: return null;
+                }
+            }
+            BlueprintFeatureBaseReference SecondaryPrimalistSelection() {
+                switch (level) {
+                    case 4: return PrimalistSecondBloodlineLevel4Selection;
+                    case 8: return PrimalistSecondBloodlineLevel8Selection;
+                    case 12: return PrimalistSecondBloodlineLevel12Selection;
+                    case 16: return PrimalistSecondBloodlineLevel16Selection;
+                    case 20: return PrimalistSecondBloodlineLevel20Selection;
+                    default: return null;
+                }
+            }
         }
         public static void ApplyBloodrageRestriction(this BlueprintBuff bloodrage, BlueprintAbility ability) {
             ability.AddComponent(new AbilityRequirementHasBuff() {
                 RequiredBuff = bloodrage.ToReference<BlueprintBuffReference>()
             });
         }
-        public static void RegisterBloodragerBloodline(BlueprintProgression bloodline, BlueprintFeature wanderingBloodline) {
-            BlueprintFeatureSelection BloodragerBloodlineSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("62b33ac8ceb18dd47ad4c8f06849bc01");
-            BlueprintFeatureSelection SecondBloodragerBloodline = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("b7f62628915bdb14d8888c25da3fac56");
-            BlueprintAbility MixedBloodlineAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("352b4e8bb5ca4301b6e6084304a86546");
-            BlueprintAbility MixedBloodlineAbility2 = BlueprintTools.GetBlueprint<BlueprintAbility>("291fa8cf38fa401397dd3c9b7515b153");
+        public static void RegisterBloodragerBloodline(BlueprintProgression primaryBloodline, BlueprintProgression secondaryBloodlineBloodline, BlueprintFeature wanderingBloodline) {
+            var BloodragerBloodlineSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("62b33ac8ceb18dd47ad4c8f06849bc01");
+            var SecondBloodragerBloodline = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("b7f62628915bdb14d8888c25da3fac56");
+            var MixedBloodlineAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("352b4e8bb5ca4301b6e6084304a86546");
+            var MixedBloodlineAbility2 = BlueprintTools.GetBlueprint<BlueprintAbility>("291fa8cf38fa401397dd3c9b7515b153");
 
-            SecondBloodragerBloodline.m_Features = BloodragerBloodlineSelection.m_AllFeatures.AppendToArray(bloodline.ToReference<BlueprintFeatureReference>());
-            SecondBloodragerBloodline.m_AllFeatures = BloodragerBloodlineSelection.m_AllFeatures.AppendToArray(bloodline.ToReference<BlueprintFeatureReference>());
-            BloodragerBloodlineSelection.m_AllFeatures = BloodragerBloodlineSelection.m_AllFeatures.AppendToArray(bloodline.ToReference<BlueprintFeatureReference>());
+            SecondBloodragerBloodline.AddFeatures(secondaryBloodlineBloodline);
+            BloodragerBloodlineSelection.AddFeatures(primaryBloodline);
 
             AddFactToApply(MixedBloodlineAbility, wanderingBloodline);
             AddFactToApply(MixedBloodlineAbility2, wanderingBloodline);
@@ -375,6 +412,28 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintProgression BloodragerInfernalBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("9aef64b53406f114cb43f898a3aec01e");
             public static BlueprintProgression BloodragerSerpentineBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("f5b06b67f04949f4c8d88fd3bbc0771e");
             public static BlueprintProgression BloodragerUndeadBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("9f4ea90e9b9c27c48b541dbef184b3b7");
+            // Second Bloodrager Bloodlines
+            public static BlueprintProgression BloodragerAbyssalSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("12af0fda00774784b45feacb67c014f8");
+            public static BlueprintProgression BloodragerArcaneSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("a83c0d19fdcc41c79f04df934e7ebf29");
+            public static BlueprintProgression BloodragerCelestialSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("d4d3824a31df4f249833357dffe2da61");
+            public static BlueprintProgression BloodragerDragonBlackSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("7384587bd92a417793894022b03e298e");
+            public static BlueprintProgression BloodragerDragonBlueSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("4c495ac785134983b99f77eb559a81a0");
+            public static BlueprintProgression BloodragerDragonBrassSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("3a16aa26238a453da33338871d7183fd");
+            public static BlueprintProgression BloodragerDragonBronzeSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("a787a6e193c244c5901c799f4c3afe2d");
+            public static BlueprintProgression BloodragerDragonCopperSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("49e5e1528329494e84c7dc6aa0b6bd7b");
+            public static BlueprintProgression BloodragerDragonGoldSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("6e0236ac698449edb60a8beeb923d2b2");
+            public static BlueprintProgression BloodragerDragonGreenSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("b48fa4abd8a444b281bf12f7c17f0d0f");
+            public static BlueprintProgression BloodragerDragonRedSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("4a947725f58441aeafc2ae0859526d1b");
+            public static BlueprintProgression BloodragerDragonSilverSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("27bf16b1f4154059b0b5dcf994add205");
+            public static BlueprintProgression BloodragerDragonWhiteSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("215efcf398f442c4925d59dd5e836cfe");
+            public static BlueprintProgression BloodragerElementalAcidSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("caeae1df04194eef813118be2b187fb9");
+            public static BlueprintProgression BloodragerElementalColdSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("38fce508b837482cbf94eaae74431e74");
+            public static BlueprintProgression BloodragerElementalElectricitySecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("a09931d3e0054addad73a5c9d759ca41");
+            public static BlueprintProgression BloodragerElementalFireSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("5151e4d7512e41a2a35c1c2707281a64");
+            public static BlueprintProgression BloodragerFeySecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("42af960c4cb84ef6b85ec3500d5a38e4");
+            public static BlueprintProgression BloodragerInfernalSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("36bb7ed75f0c4dcc9fd3374c603b2d0e");
+            public static BlueprintProgression BloodragerSerpentineSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("bedecc3e55af4fd2b46af1fd42d0fc97");
+            public static BlueprintProgression BloodragerUndeadSecondBloodline => BlueprintTools.GetBlueprint<BlueprintProgression>("0dae08e932ef4430b391790bdf9ab9d5");
             // Sorceror Bloodlines
             public static BlueprintProgression BloodlineAbyssalProgression => BlueprintTools.GetBlueprint<BlueprintProgression>("d3a4cb7be97a6694290f0dcfbd147113");
             public static BlueprintProgression BloodlineArcaneProgression => BlueprintTools.GetBlueprint<BlueprintProgression>("4d491cf9631f7e9429444f4aed629791");
