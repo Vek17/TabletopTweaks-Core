@@ -11,6 +11,7 @@ using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Utility;
 using System.Collections.Generic;
@@ -62,6 +63,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             }
         }
         private BlueprintFeature SplitMajorHex => m_SplitMajorHex?.Get();
+        private BlueprintBuff SplitHexToggleBuff => m_SplitHexToggleBuff?.Get();
 
         public void OnEventAboutToTrigger(RuleCastSpell evt) {
         }
@@ -81,7 +83,8 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         }
 
         private bool isValidTrigger(RuleCastSpell evt) {
-            return evt.Success
+            return Owner.HasFact(SplitHexToggleBuff)
+                && evt.Success
                 && evt.Spell.Blueprint.SpellDescriptor.HasFlag(SpellDescriptor.Hex)
                 && !evt.IsDuplicateSpellApplied
                 && !evt.Spell.IsAOE
@@ -106,5 +109,6 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         public BlueprintFeatureReference m_MajorHex;
         public BlueprintFeatureReference m_GrandHex;
         public BlueprintFeatureReference m_SplitMajorHex;
+        public BlueprintBuffReference m_SplitHexToggleBuff;
     }
 }

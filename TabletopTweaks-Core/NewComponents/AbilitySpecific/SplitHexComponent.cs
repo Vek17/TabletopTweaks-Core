@@ -9,6 +9,7 @@ using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
 using System.Linq;
@@ -86,7 +87,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         public void HandleGetCommandType(AbilityData ability, ref UnitCommand.CommandType commandType) {
             var SplitHexPart = Owner.Ensure<UnitPartSplitHex>();
-            if (SplitHexPart.Data.HasStoredHex && ability.Blueprint.AssetGuid == SplitHexPart.Data.StoredHex.AssetGuid) {
+            if (SplitHexPart.SplitHexEnabled && SplitHexPart.Data.HasStoredHex && ability.Blueprint.AssetGuid == SplitHexPart.Data.StoredHex.AssetGuid) {
                 commandType = UnitCommand.CommandType.Free;
             }
         }
@@ -108,7 +109,6 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         public BlueprintFeatureReference m_MajorHex;
         public BlueprintFeatureReference m_GrandHex;
         public BlueprintFeatureReference m_SplitMajorHex;
-        public BlueprintBuffReference m_SplitHexCooldown;
 
         public class SplitHexData {
             private BlueprintAbilityReference m_StoredHex;

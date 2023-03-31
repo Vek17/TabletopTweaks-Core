@@ -3,14 +3,16 @@ using Kingmaker.EntitySystem;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.Utility;
 
 namespace TabletopTweaks.Core.NewUnitParts {
     internal class UnitPartSplitHex : OldStyleUnitPart {
 
         public bool ValidTarget(BlueprintAbility ability, UnitEntityData target) {
-            return !Data.HasStoredHex || !(Data.StoredHex.AssetGuid == ability.AssetGuid && Data.Unit.Equals(target));
+            return !SplitHexEnabled || !Data.HasStoredHex || !(Data.StoredHex.AssetGuid == ability.AssetGuid && Data.Unit.Equals(target));
         }
 
+        public CountableFlag SplitHexEnabled = new CountableFlag();
         public SplitHexData Data = new SplitHexData();
 
         public class SplitHexData : OldStyleUnitPart {
