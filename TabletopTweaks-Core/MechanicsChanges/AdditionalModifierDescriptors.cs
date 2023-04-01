@@ -44,15 +44,23 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         public enum Enhancement : int {
             Weapon = 4121
         }
+        public enum Stat : int {
+            Strength = 5121,
+            Dexterity = 5122,
+            Constitution = 5123,
+            Intelligence = 5124,
+            Wisdom = 5125,
+            Charisma = 5126,
+        }
 
-        public static ModifierDescriptor GetUntypedDescriptor(StatType stat) {
+        public static ModifierDescriptor GetStatDescriptor(StatType stat) {
             return stat switch {
-                StatType.Strength => (ModifierDescriptor)Untyped.Strength,
-                StatType.Dexterity => (ModifierDescriptor)Untyped.Dexterity,
-                StatType.Constitution => (ModifierDescriptor)Untyped.Constitution,
-                StatType.Intelligence => (ModifierDescriptor)Untyped.Intelligence,
-                StatType.Wisdom => (ModifierDescriptor)Untyped.Wisdom,
-                StatType.Charisma => (ModifierDescriptor)Untyped.Charisma,
+                StatType.Strength => (ModifierDescriptor)Stat.Strength,
+                StatType.Dexterity => (ModifierDescriptor)Stat.Dexterity,
+                StatType.Constitution => (ModifierDescriptor)Stat.Constitution,
+                StatType.Intelligence => (ModifierDescriptor)Stat.Intelligence,
+                StatType.Wisdom => (ModifierDescriptor)Stat.Wisdom,
+                StatType.Charisma => (ModifierDescriptor)Stat.Charisma,
                 _ => ModifierDescriptor.None
             };
         }
@@ -118,7 +126,17 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             InsertAfter(Untyped.SpellFocus, ModifierDescriptor.UntypedStackable);
             InsertAfter(Untyped.SpellFocusGreater, ModifierDescriptor.UntypedStackable);
             InsertBefore(Enhancement.Weapon, ModifierDescriptor.Enhancement);
+            InsertAtStart(StatType.Strength);
+            InsertAtStart(StatType.Dexterity);
+            InsertAtStart(StatType.Constitution);
+            InsertAtStart(StatType.Intelligence);
+            InsertAtStart(StatType.Wisdom);
+            InsertAtStart(StatType.Charisma);
 
+            void InsertAtStart(Enum value) {
+                var newValues = new ModifierDescriptor[] { (ModifierDescriptor)value };
+                ModifierDescriptorComparer.SortedValues = newValues.AppendToArray(ModifierDescriptorComparer.SortedValues);
+            };
             void InsertBefore(Enum value, ModifierDescriptor before) {
                 ModifierDescriptorComparer.SortedValues = ModifierDescriptorComparer
                     .SortedValues.InsertBeforeElement((ModifierDescriptor)value, before);
@@ -162,6 +180,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                 return Enum.IsDefined(typeof(NaturalArmor), (int)desc)
                     || Enum.IsDefined(typeof(Dodge), (int)desc)
                     || Enum.IsDefined(typeof(Untyped), (int)desc)
+                    || Enum.IsDefined(typeof(Stat), (int)desc)
                     || Enum.IsDefined(typeof(Enhancement), (int)desc);
             }
         }
@@ -192,21 +211,27 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                         __result = "Enhancement";
                         break;
                     case (ModifierDescriptor)Untyped.Strength:
+                    case (ModifierDescriptor)Stat.Strength:
                         __result = Game.Instance.BlueprintRoot.LocalizedTexts.UserInterfacesText.CharacterSheet.Strength;
                         break;
                     case (ModifierDescriptor)Untyped.Dexterity:
+                    case (ModifierDescriptor)Stat.Dexterity:
                         __result = Game.Instance.BlueprintRoot.LocalizedTexts.UserInterfacesText.CharacterSheet.Dexterity;
                         break;
                     case (ModifierDescriptor)Untyped.Constitution:
+                    case (ModifierDescriptor)Stat.Constitution:
                         __result = Game.Instance.BlueprintRoot.LocalizedTexts.UserInterfacesText.CharacterSheet.Constitution;
                         break;
                     case (ModifierDescriptor)Untyped.Intelligence:
+                    case (ModifierDescriptor)Stat.Intelligence:
                         __result = Game.Instance.BlueprintRoot.LocalizedTexts.UserInterfacesText.CharacterSheet.Intelegence;
                         break;
                     case (ModifierDescriptor)Untyped.Wisdom:
+                    case (ModifierDescriptor)Stat.Wisdom:
                         __result = Game.Instance.BlueprintRoot.LocalizedTexts.UserInterfacesText.CharacterSheet.Wisdom;
                         break;
                     case (ModifierDescriptor)Untyped.Charisma:
+                    case (ModifierDescriptor)Stat.Charisma:
                         __result = Game.Instance.BlueprintRoot.LocalizedTexts.UserInterfacesText.CharacterSheet.Charisma;
                         break;
                     case (ModifierDescriptor)Untyped.Age:
