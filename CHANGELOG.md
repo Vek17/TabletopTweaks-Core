@@ -1,7 +1,11 @@
-## Version 0.5.15
+## Version 0.6.1
 * Fixed issue with PrerequisiteSpellKnown not working correctly in all cases.
 * Fixed issue with Trickster domains not 
 * Support for age effects
+* Support for spell curse
+* Support for Split Hex toggle
+* Breaking change to bloodline tools to support bloodrager correctly
+
 
 ## Version 0.5.14
 * Added ContextConditionItemSource to check if an ability is cast from an item.
