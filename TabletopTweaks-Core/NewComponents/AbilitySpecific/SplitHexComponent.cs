@@ -9,7 +9,6 @@ using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
 using System.Linq;
@@ -71,6 +70,13 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         }
 
         public void OnEventAboutToTrigger(RuleCastSpell evt) {
+            var SplitHexPart = Owner.Ensure<UnitPartSplitHex>();
+            if (SplitHexPart.Data.HasStoredHex && !evt.IsDuplicateSpellApplied) {
+                if (SplitHexPart.Data.StoredHex == evt.Spell.Blueprint) {
+                    evt.IsDuplicateSpellApplied = true;
+                    SplitHexPart.Data.Clear();
+                }
+            }
         }
 
         public void OnEventDidTrigger(RuleCastSpell evt) {
@@ -99,8 +105,8 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         private bool isValidTrigger(RuleCastSpell evt) {
             return evt.Success
-                && evt.Spell.Blueprint.SpellDescriptor.HasFlag(SpellDescriptor.Hex)
                 && !evt.IsDuplicateSpellApplied
+                && evt.Spell.Blueprint.SpellDescriptor.HasFlag(SpellDescriptor.Hex)
                 && !evt.Spell.IsAOE
                 && !GrandHexes.Any(hex => hex.AssetGuid == evt.Spell.Blueprint.AssetGuid)
                 && (evt.Initiator.HasFact(SplitMajorHex) || !MajorHexes.Any(hex => hex.AssetGuid == evt.Spell.Blueprint.AssetGuid));

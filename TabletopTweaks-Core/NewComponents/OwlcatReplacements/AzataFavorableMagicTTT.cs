@@ -1,10 +1,12 @@
-﻿using Kingmaker.Blueprints.JsonSystem;
+﻿using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.Utility;
 
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [TypeId("e3b2dcf430cb449684c76fd854e732ea")]
@@ -37,12 +39,17 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
 
         private void CheckReroll(RuleSavingThrow ruleEvent, RuleRollD20 ruleRoll) {
             if (ruleRoll.Reason.Caster == Owner) {
-                if (OnlySpells) {
-                    AbilityType? abilityType = ruleEvent.Reason.Ability?.Blueprint?.Type ?? ruleEvent.Reason.Context?.SourceAbility?.Type;
-                    if (abilityType != AbilityType.Spell) {
-                        return;
+                var sourceAbility = ruleEvent.Reason.Ability?.Blueprint ?? ruleEvent.Reason.Context?.SourceAbility;
+                if (CheckAbilityType) {
+                    AbilityType? abilityType = sourceAbility?.Type;
+                    if (!Types.Any(t => t == abilityType)) {
+                        SpellDescriptor? abilityDescriptors = sourceAbility?.SpellDescriptor;
+                        if (!AllowDescriptorOverride || ((abilityDescriptors & Descriptors) == 0)) {
+                            return;
+                        }
                     }
                 }
+                
                 ruleRoll.Reroll(Fact, false);
             }
         }
@@ -53,6 +60,9 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
             }
         }
 
-        public bool OnlySpells;
+        public bool CheckAbilityType;
+        public AbilityType[] Types = new AbilityType[0];
+        public bool AllowDescriptorOverride;
+        public SpellDescriptorWrapper Descriptors;
     }
 }

@@ -1,13 +1,19 @@
 ﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Controllers.Optimization;
+using Kingmaker.Crusade.GlobalMagic.Executors;
 using Kingmaker.EntitySystem.Entities;
+using Kingmaker.Enums.Damage;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules.Abilities;
+using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,25 +32,51 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
 
         private bool isValidTrigger(RuleCastSpell evt) {
             return evt.Success
-                && evt.Spell.Blueprint.IsSpell
-                && !evt.IsDuplicateSpellApplied
+                && isValidAbility(evt.Spell.Blueprint)
                 && !evt.Spell.IsAOE
                 && !evt.Spell.Blueprint.GetComponents<AbilityEffectStickyTouch>().Any()
                 && !evt.Spell.Blueprint.GetComponents<BlockSpellDuplicationComponent>().Any();
         }
 
-        public void OnEventDidTrigger(RuleCastSpell evt) {
-            if (!isValidTrigger(evt)) {
-                return;
+        private bool isValidAbility(BlueprintAbility ability) {
+            if (CheckAbilityType) {
+                AbilityType? abilityType = ability?.Type;
+                if (!Types.Any(t => t == abilityType)) {
+                    SpellDescriptor? abilityDescriptors = ability?.SpellDescriptor;
+                    if (!AllowDescriptorOverride || ((abilityDescriptors & Descriptors) == 0)) {
+                        return false;
+                    }
+                }
             }
+            return true;
+        }
+
+        public void OnEventDidTrigger(RuleCastSpell evt) {
+            if (!isValidTrigger(evt)) { return; }
+            TriggerZippyDamage(evt.SpellTarget.Unit);
+            if (evt.IsDuplicateSpellApplied) { return; }
             AbilityData spell = evt.Spell;
             UnitEntityData newTarget = this.GetNewTarget(spell, evt.SpellTarget.Unit);
             if (newTarget == null) {
                 return;
             }
-            Rulebook.Trigger<RuleCastSpell>(new RuleCastSpell(spell, newTarget) {
+            Rulebook.Trigger(new RuleCastSpell(spell, newTarget) {
                 IsDuplicateSpellApplied = true
             });
+        }
+
+        private void TriggerZippyDamage(UnitEntityData target) {
+            if (target == null) { return; }
+            if (!target.IsEnemy(base.Owner)) { return; }
+            var rule = new RuleDealDamage(
+                base.Owner, target,
+                new EnergyDamage(ZippyDamageDice, ZippyDamageBonus.Calculate(base.Context), DamageEnergyType.Divine) {
+                    SourceFact = base.Fact
+                }) 
+                {
+                    Reason = new RuleReason(base.Fact)
+                };
+            Rulebook.Trigger(rule);
         }
 
         private UnitEntityData GetNewTarget(AbilityData data, UnitEntityData baseTarget) {
@@ -60,5 +92,11 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
 
         [SerializeField]
         private int m_FeetsRadius = 30;
+        public bool CheckAbilityType;
+        public AbilityType[] Types = new AbilityType[0];
+        public bool AllowDescriptorOverride;
+        public SpellDescriptorWrapper Descriptors;
+        public DiceFormula ZippyDamageDice = DiceFormula.Zero;
+        public ContextValue ZippyDamageBonus = 0;
     }
 }

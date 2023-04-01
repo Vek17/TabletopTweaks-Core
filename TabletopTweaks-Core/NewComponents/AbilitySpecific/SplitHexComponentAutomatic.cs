@@ -16,6 +16,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
+using TabletopTweaks.Core.NewUnitParts;
 using TabletopTweaks.Core.Utilities;
 using UnityEngine;
 
@@ -72,6 +73,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             if (!isValidTrigger(evt)) {
                 return;
             }
+            var SplitHexPart = Owner.Ensure<UnitPartSplitHex>();
             AbilityData spell = evt.Spell;
             UnitEntityData newTarget = GetNewTarget(spell, evt.SpellTarget.Unit);
             if (newTarget == null) {
@@ -85,8 +87,8 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         private bool isValidTrigger(RuleCastSpell evt) {
             return Owner.HasFact(SplitHexToggleBuff)
                 && evt.Success
-                && evt.Spell.Blueprint.SpellDescriptor.HasFlag(SpellDescriptor.Hex)
                 && !evt.IsDuplicateSpellApplied
+                && evt.Spell.Blueprint.SpellDescriptor.HasFlag(SpellDescriptor.Hex)
                 && !evt.Spell.IsAOE
                 && !GrandHexes.Contains(evt.Spell.Blueprint)
                 && (evt.Initiator.HasFact(SplitMajorHex) || !MajorHexes.Contains(evt.Spell.Blueprint)); ;
