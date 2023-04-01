@@ -196,6 +196,7 @@
     <Compile Include="NewComponents\OwlcatReplacements\WeaponGroupDamageBonusTTT.cs" />
     <Compile Include="NewComponents\PartialEnergyResistanceIgnore.cs" />
     <Compile Include="NewComponents\Prerequisites\PrerequisiteDeityAlignment.cs" />
+    <Compile Include="NewComponents\Properties\BuffCountGetter.cs" />
     <Compile Include="NewComponents\SetPetMinimumStat.cs" />
     <Compile Include="NewComponents\SpellDescriptorImmunityIgnore.cs" />
     <Compile Include="NewEvents\IAbilityGetCommandTypeHandler.cs" />

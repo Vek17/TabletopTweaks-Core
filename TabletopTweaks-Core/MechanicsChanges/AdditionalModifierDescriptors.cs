@@ -45,6 +45,18 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             Weapon = 4121
         }
 
+        public static ModifierDescriptor GetUntypedDescriptor(StatType stat) {
+            return stat switch {
+                StatType.Strength => (ModifierDescriptor)Untyped.Strength,
+                StatType.Dexterity => (ModifierDescriptor)Untyped.Dexterity,
+                StatType.Constitution => (ModifierDescriptor)Untyped.Constitution,
+                StatType.Intelligence => (ModifierDescriptor)Untyped.Intelligence,
+                StatType.Wisdom => (ModifierDescriptor)Untyped.Wisdom,
+                StatType.Charisma => (ModifierDescriptor)Untyped.Charisma,
+                _ => ModifierDescriptor.None
+            };
+        }
+
         private static class FilterAdjustments {
             private static readonly Func<ModifiableValue.Modifier, bool> FilterIsDodgeOriginal = ModifiableValueArmorClass.FilterIsDodge;
             private static readonly Func<ModifiableValue.Modifier, bool> FilterIsArmorOriginal = ModifiableValueArmorClass.FilterIsArmor;

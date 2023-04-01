@@ -25,7 +25,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         IUnitEquipmentHandler {
         private BlueprintItemEnchantment Enchantment {
             get {
-                return Enchantments[EnhancementBonus - 1];
+                return Enchantments[Math.Max(0, Math.Min(EnhancementBonus - 1, Enchantments.Length - 1))];
             }
         }
 
