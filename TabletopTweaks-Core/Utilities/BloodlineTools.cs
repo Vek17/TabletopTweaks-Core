@@ -184,6 +184,38 @@ namespace TabletopTweaks.Core.Utilities {
                 }
             }
         }
+        [Obsolete("Use: ApplyPrimalistException(BlueprintFeature power, int level, BlueprintProgression primaryBloodline, BlueprintProgression secondaryBloodline)")]
+        public static void ApplyPrimalistException(BlueprintFeature power, int level, BlueprintProgression primaryBloodline) {
+            var PrimalistProgression = BlueprintTools.GetBlueprint<BlueprintFeature>("d8b8d1dd83393484cbacf6c8830080ae");
+            var PrimalistTakePower4 = BlueprintTools.GetBlueprint<BlueprintFeature>("2140040bf367e8b4a9c6a632820becbe");
+            var PrimalistTakePower8 = BlueprintTools.GetBlueprint<BlueprintFeature>("c5aaccc685a37ed4b97869398cdd3ebb");
+            var PrimalistTakePower12 = BlueprintTools.GetBlueprint<BlueprintFeature>("57bb4dc36611c7444817c13135ec58b4");
+            var PrimalistTakePower16 = BlueprintTools.GetBlueprint<BlueprintFeature>("a56a288b9b6097f4eb67be43404321f2");
+            var PrimalistTakePower20 = BlueprintTools.GetBlueprint<BlueprintFeature>("b264a03d036248544acfddbcad709345");
+
+            SelectedTakePowerLevelPrimary().AddComponent(
+                new AddFeatureIfHasFact() {
+                    m_Feature = power.ToReference<BlueprintUnitFactReference>(),
+                    m_CheckedFact = primaryBloodline.ToReference<BlueprintUnitFactReference>()
+                }
+            );
+            power.AddPrerequisite<PrerequisiteNoFeature>(p => {
+                p.CheckInProgression = true;
+                p.Group = Prerequisite.GroupType.Any;
+                p.m_Feature = PrimalistProgression.ToReference<BlueprintFeatureReference>();
+            });
+
+            BlueprintFeature SelectedTakePowerLevelPrimary() {
+                switch (level) {
+                    case 4: return PrimalistTakePower4;
+                    case 8: return PrimalistTakePower8;
+                    case 12: return PrimalistTakePower12;
+                    case 16: return PrimalistTakePower16;
+                    case 20: return PrimalistTakePower20;
+                    default: return null;
+                }
+            }
+        }
         public static void ApplyBloodrageRestriction(this BlueprintBuff bloodrage, BlueprintAbility ability) {
             ability.AddComponent(new AbilityRequirementHasBuff() {
                 RequiredBuff = bloodrage.ToReference<BlueprintBuffReference>()
@@ -208,8 +240,25 @@ namespace TabletopTweaks.Core.Utilities {
                     .OrderBy(f => f.Get().Name)
                     .ToArray();
             }
+        }
+        [Obsolete("Use: RegisterBloodragerBloodline(BlueprintProgression primaryBloodline, BlueprintFeature wanderingBloodline)")]
+        public static void RegisterBloodragerBloodline(BlueprintProgression primaryBloodline, BlueprintFeature wanderingBloodline) {
+            var BloodragerBloodlineSelection = BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("62b33ac8ceb18dd47ad4c8f06849bc01");
+            var MixedBloodlineAbility = BlueprintTools.GetBlueprint<BlueprintAbility>("352b4e8bb5ca4301b6e6084304a86546");
+            var MixedBloodlineAbility2 = BlueprintTools.GetBlueprint<BlueprintAbility>("291fa8cf38fa401397dd3c9b7515b153");
 
+            BloodragerBloodlineSelection.AddFeatures(primaryBloodline);
 
+            AddFactToApply(MixedBloodlineAbility, wanderingBloodline);
+            AddFactToApply(MixedBloodlineAbility2, wanderingBloodline);
+
+            void AddFactToApply(BlueprintAbility ability, BlueprintUnitFact fact) {
+                var component = ability.GetComponent<AbilityApplyFact>();
+                component.m_Facts = component.m_Facts
+                    .AppendToArray(fact.ToReference<BlueprintUnitFactReference>())
+                    .OrderBy(f => f.Get().Name)
+                    .ToArray();
+            }
         }
         public static BlueprintFeature CreateMixedBloodFeature(ModContextBase modContext, string name, BlueprintProgression bloodline, Action<BlueprintFeature> init = null) {
             var BloodragerClass = BlueprintTools.GetBlueprint<BlueprintCharacterClass>("d77e67a814d686842802c9cfd8ef8499").ToReference<BlueprintCharacterClassReference>();
