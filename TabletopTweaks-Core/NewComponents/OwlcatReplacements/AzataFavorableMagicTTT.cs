@@ -49,7 +49,7 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
                         }
                     }
                 }
-                
+
                 ruleRoll.Reroll(Fact, false);
             }
         }

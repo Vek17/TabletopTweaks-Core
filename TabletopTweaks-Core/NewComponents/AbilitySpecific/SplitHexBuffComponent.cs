@@ -1,12 +1,7 @@
-﻿using Kingmaker.Blueprints.Facts;
+﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
 using Kingmaker.UnitLogic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TabletopTweaks.Core.NewUnitParts;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {

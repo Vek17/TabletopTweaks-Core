@@ -2,7 +2,6 @@
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Controllers.Optimization;
-using Kingmaker.Crusade.GlobalMagic.Executors;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.Enums.Damage;
 using Kingmaker.PubSubSystem;
@@ -72,10 +71,9 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
                 base.Owner, target,
                 new EnergyDamage(ZippyDamageDice, ZippyDamageBonus.Calculate(base.Context), DamageEnergyType.Divine) {
                     SourceFact = base.Fact
-                }) 
-                {
-                    Reason = new RuleReason(base.Fact)
-                };
+                }) {
+                Reason = new RuleReason(base.Fact)
+            };
             Rulebook.Trigger(rule);
         }
 

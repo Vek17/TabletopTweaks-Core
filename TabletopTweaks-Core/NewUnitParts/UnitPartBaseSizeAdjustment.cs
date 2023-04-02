@@ -42,8 +42,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             }
             currentSizeDelta = GetSizeDelta(Owner.OriginalSize);
             this.Owner.UpdateSizeModifiers();
-            EventBus.RaiseEvent<IUnitSizeHandler>(delegate (IUnitSizeHandler h)
-            {
+            EventBus.RaiseEvent<IUnitSizeHandler>(delegate (IUnitSizeHandler h) {
                 h.HandleUnitSizeChanged(this.Owner.Unit);
             }, true);
         }

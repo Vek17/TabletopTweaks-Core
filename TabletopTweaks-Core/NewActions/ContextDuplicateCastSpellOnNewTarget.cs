@@ -1,18 +1,16 @@
-﻿using Kingmaker.Blueprints.Facts;
-using Kingmaker.Blueprints;
+﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Facts;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Designers;
-using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Entities;
+using Kingmaker.RuleSystem;
+using Kingmaker.RuleSystem.Rules.Abilities;
+using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.UnitLogic;
-using Kingmaker.RuleSystem.Rules.Abilities;
-using Kingmaker.RuleSystem;
-using Kingmaker.Controllers.Optimization;
 
 namespace TabletopTweaks.Core.NewActions {
     [TypeId("c4530225242448a3a56a27276c2e46ed")]
