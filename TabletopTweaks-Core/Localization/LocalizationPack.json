@@ -1,4 +1,4 @@
-﻿{
+{
   "LocalizedStrings": [
     {
       "Key": "0852b76141e34f5dac891869d390a1a8",
@@ -8,7 +8,7 @@
       "ruRU": "Вы должны держать свой Чёрный Клинок",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "你必须持有黑刃",
       "esES": null
     },
     {
@@ -19,7 +19,7 @@
       "ruRU": null,
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "分裂巫术不能瞄准同一个目标两次",
       "esES": null
     },
     {
@@ -30,7 +30,7 @@
       "ruRU": null,
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "神祇拥有阵营：\n",
       "esES": null
     },
     {
@@ -41,7 +41,7 @@
       "ruRU": "Уровень заклинателя:",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "拥有施法者等级",
       "esES": null
     },
     {
@@ -52,7 +52,7 @@
       "ruRU": "Способен творить мифические заклинания",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "可以释放法术等级",
       "esES": null
     },
     {
@@ -63,7 +63,7 @@
       "ruRU": "-го уровня или выше",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "或者更高的神话法术",
       "esES": null
     },
     {
@@ -74,7 +74,7 @@
       "ruRU": "Способен творить мифические заклинания",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "拥有神话法术书",
       "esES": null
     },
     {
@@ -85,7 +85,7 @@
       "ruRU": "Нету уровней в классе",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "没有职业等级在：",
       "esES": null
     },
     {
@@ -96,7 +96,7 @@
       "ruRU": "Не более",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "不多于",
       "esES": null
     },
     {
@@ -107,7 +107,7 @@
       "ruRU": "Нет ни одной из следующих черт",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "没有以下任何特性",
       "esES": null
     },
     {
@@ -118,7 +118,7 @@
       "ruRU": "черт из списка",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "在以下特性",
       "esES": null
     },
     {
@@ -129,7 +129,7 @@
       "ruRU": "Размер:",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "体型",
       "esES": null
     },
     {
@@ -140,7 +140,7 @@
       "ruRU": "Может творить заклинания из следующих магических книг следующих классов:",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "拥有法术书：",
       "esES": null
     },
     {
@@ -151,18 +151,7 @@
       "ruRU": "-го уровня или выше из магической книги класса: ",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
-      "esES": null
-    },
-    {
-      "Key": "77598060058c447f9c073beb57e01b64",
-      "SimpleName": "PrerequisiteSpellBookType.UI",
-      "ProcessTemplates": false,
-      "enGB": "Can cast",
-      "ruRU": "Может творить",
-      "deDE": null,
-      "frFR": null,
-      "zhCN": null,
+      "zhCN": "或者更高级法术书：",
       "esES": null
     },
     {
@@ -173,7 +162,7 @@
       "ruRU": "заклинания",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "法术等级",
       "esES": null
     },
     {
@@ -184,7 +173,18 @@
       "ruRU": "-го уровня или выше",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "或更高",
+      "esES": null
+    },
+    {
+      "Key": "77598060058c447f9c073beb57e01b64",
+      "SimpleName": "PrerequisiteSpellBookType.UI",
+      "ProcessTemplates": false,
+      "enGB": "Can cast",
+      "ruRU": "Может творить",
+      "deDE": null,
+      "frFR": null,
+      "zhCN": "可以施法",
       "esES": null
     },
     {
@@ -195,7 +195,7 @@
       "ruRU": "Может творить заклинания:",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "可以释放法术：",
       "esES": null
     },
     {
@@ -206,7 +206,7 @@
       "ruRU": "Не менее",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "拥有",
       "esES": null
     },
     {
@@ -217,128 +217,7 @@
       "ruRU": "бонус",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
-      "esES": null
-    },
-    {
-      "Key": "a14d3e1dfc8e4b2ab83279b46e13c637",
-      "SimpleName": "PrerequisiteStatValues.UI",
-      "ProcessTemplates": false,
-      "enGB": "nine",
-      "ruRU": "девяти",
-      "deDE": null,
-      "frFR": null,
-      "zhCN": null,
-      "esES": null
-    },
-    {
-      "Key": "8c93421c79f549ec8cb5408f75e6960a",
-      "SimpleName": "PrerequisiteStatValues.UI",
-      "ProcessTemplates": false,
-      "enGB": "eight",
-      "ruRU": "восьми",
-      "deDE": null,
-      "frFR": null,
-      "zhCN": null,
-      "esES": null
-    },
-    {
-      "Key": "58a4a9c9f8fb456a980d6031d1a159cd",
-      "SimpleName": "PrerequisiteStatValues.UI",
-      "ProcessTemplates": false,
-      "enGB": "seven",
-      "ruRU": "семи",
-      "deDE": null,
-      "frFR": null,
-      "zhCN": null,
-      "esES": null
-    },
-    {
-      "Key": "481cca87891846e9a0c49885927cabc3",
-      "SimpleName": "PrerequisiteStatValues.UI",
-      "ProcessTemplates": false,
-      "enGB": "one",
-      "ruRU": "одного",
-      "deDE": null,
-      "frFR": null,
-      "zhCN": null,
-      "esES": null
-    },
-    {
-      "Key": "cb164420e9d042248d4443d7624c8ed9",
-      "SimpleName": "PrerequisiteStatValues.UI",
-      "ProcessTemplates": false,
-      "enGB": "five",
-      "ruRU": "пяти",
-      "deDE": null,
-      "frFR": null,
-      "zhCN": null,
-      "esES": null
-    },
-    {
-      "Key": "14b9762eba4e4bbf98963acdc4d3f352",
-      "SimpleName": "PrerequisiteStatValues.UI",
-      "ProcessTemplates": false,
-      "enGB": "four",
-      "ruRU": "четырёх",
-      "deDE": null,
-      "frFR": null,
-      "zhCN": null,
-      "esES": null
-    },
-    {
-      "Key": "a895ec2c719c41be9c0decc4bc49bf6c",
-      "SimpleName": "PrerequisiteStatValues.UI",
-      "ProcessTemplates": false,
-      "enGB": "three",
-      "ruRU": "трёх",
-      "deDE": null,
-      "frFR": null,
-      "zhCN": null,
-      "esES": null
-    },
-    {
-      "Key": "b1e6a0062ff24a4fbe59d8d695a2af49",
-      "SimpleName": "PrerequisiteStatValues.UI",
-      "ProcessTemplates": false,
-      "enGB": "two",
-      "ruRU": "двух",
-      "deDE": null,
-      "frFR": null,
-      "zhCN": null,
-      "esES": null
-    },
-    {
-      "Key": "3b27e47ec5ca4f51817516a409d468e8",
-      "SimpleName": "PrerequisiteStatValues.UI",
-      "ProcessTemplates": false,
-      "enGB": "in",
-      "ruRU": "в",
-      "deDE": null,
-      "frFR": null,
-      "zhCN": null,
-      "esES": null
-    },
-    {
-      "Key": "b00be35dc8ff464399e9a0bf1353156f",
-      "SimpleName": "PrerequisiteStatValues.UI",
-      "ProcessTemplates": false,
-      "enGB": "ranks",
-      "ruRU": "очков",
-      "deDE": null,
-      "frFR": null,
-      "zhCN": null,
-      "esES": null
-    },
-    {
-      "Key": "b3d0dd185a9e43b6a3c58bba24e7e30d",
-      "SimpleName": "PrerequisiteStatValues.UI",
-      "ProcessTemplates": false,
-      "enGB": "rank",
-      "ruRU": "очка",
-      "deDE": null,
-      "frFR": null,
-      "zhCN": null,
+      "zhCN": "加值",
       "esES": null
     },
     {
@@ -349,7 +228,128 @@
       "ruRU": "шести",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "六",
+      "esES": null
+    },
+    {
+      "Key": "b3d0dd185a9e43b6a3c58bba24e7e30d",
+      "SimpleName": "PrerequisiteStatValues.UI",
+      "ProcessTemplates": false,
+      "enGB": "rank",
+      "ruRU": "очка",
+      "deDE": null,
+      "frFR": null,
+      "zhCN": "阶层",
+      "esES": null
+    },
+    {
+      "Key": "b00be35dc8ff464399e9a0bf1353156f",
+      "SimpleName": "PrerequisiteStatValues.UI",
+      "ProcessTemplates": false,
+      "enGB": "ranks",
+      "ruRU": "очков",
+      "deDE": null,
+      "frFR": null,
+      "zhCN": "阶层",
+      "esES": null
+    },
+    {
+      "Key": "3b27e47ec5ca4f51817516a409d468e8",
+      "SimpleName": "PrerequisiteStatValues.UI",
+      "ProcessTemplates": false,
+      "enGB": "in",
+      "ruRU": "в",
+      "deDE": null,
+      "frFR": null,
+      "zhCN": "在",
+      "esES": null
+    },
+    {
+      "Key": "b1e6a0062ff24a4fbe59d8d695a2af49",
+      "SimpleName": "PrerequisiteStatValues.UI",
+      "ProcessTemplates": false,
+      "enGB": "two",
+      "ruRU": "двух",
+      "deDE": null,
+      "frFR": null,
+      "zhCN": "二",
+      "esES": null
+    },
+    {
+      "Key": "a895ec2c719c41be9c0decc4bc49bf6c",
+      "SimpleName": "PrerequisiteStatValues.UI",
+      "ProcessTemplates": false,
+      "enGB": "three",
+      "ruRU": "трёх",
+      "deDE": null,
+      "frFR": null,
+      "zhCN": "三",
+      "esES": null
+    },
+    {
+      "Key": "cb164420e9d042248d4443d7624c8ed9",
+      "SimpleName": "PrerequisiteStatValues.UI",
+      "ProcessTemplates": false,
+      "enGB": "five",
+      "ruRU": "пяти",
+      "deDE": null,
+      "frFR": null,
+      "zhCN": "五",
+      "esES": null
+    },
+    {
+      "Key": "481cca87891846e9a0c49885927cabc3",
+      "SimpleName": "PrerequisiteStatValues.UI",
+      "ProcessTemplates": false,
+      "enGB": "one",
+      "ruRU": "одного",
+      "deDE": null,
+      "frFR": null,
+      "zhCN": "一",
+      "esES": null
+    },
+    {
+      "Key": "58a4a9c9f8fb456a980d6031d1a159cd",
+      "SimpleName": "PrerequisiteStatValues.UI",
+      "ProcessTemplates": false,
+      "enGB": "seven",
+      "ruRU": "семи",
+      "deDE": null,
+      "frFR": null,
+      "zhCN": "七",
+      "esES": null
+    },
+    {
+      "Key": "8c93421c79f549ec8cb5408f75e6960a",
+      "SimpleName": "PrerequisiteStatValues.UI",
+      "ProcessTemplates": false,
+      "enGB": "eight",
+      "ruRU": "восьми",
+      "deDE": null,
+      "frFR": null,
+      "zhCN": "八",
+      "esES": null
+    },
+    {
+      "Key": "a14d3e1dfc8e4b2ab83279b46e13c637",
+      "SimpleName": "PrerequisiteStatValues.UI",
+      "ProcessTemplates": false,
+      "enGB": "nine",
+      "ruRU": "девяти",
+      "deDE": null,
+      "frFR": null,
+      "zhCN": "九",
+      "esES": null
+    },
+    {
+      "Key": "14b9762eba4e4bbf98963acdc4d3f352",
+      "SimpleName": "PrerequisiteStatValues.UI",
+      "ProcessTemplates": false,
+      "enGB": "four",
+      "ruRU": "четырёх",
+      "deDE": null,
+      "frFR": null,
+      "zhCN": "四",
       "esES": null
     },
     {
@@ -360,7 +360,7 @@
       "ruRU": "в следующих навыках:",
       "deDE": null,
       "frFR": null,
-      "zhCN": null,
+      "zhCN": "以下技能：",
       "esES": null
     }
   ]
