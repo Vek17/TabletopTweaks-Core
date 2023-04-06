@@ -1,3 +1,7 @@
+## Version 0.6.2
+* New IDispelMagicHandler added to handle entire dispel checkes instead of just dispelMagicRules.
+* DestructiveDispelComponent has been updated with new event.
+
 ## Version 0.6.1
 * Fixed issue with PrerequisiteSpellKnown not working correctly in all cases.
 * Fixed issue with Trickster domains not 

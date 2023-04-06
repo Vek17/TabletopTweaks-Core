@@ -195,12 +195,14 @@
     <Compile Include="NewComponents\OwlcatReplacements\WeaponGroupAttackBonusTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\WeaponGroupDamageBonusTTT.cs" />
     <Compile Include="NewComponents\PartialEnergyResistanceIgnore.cs" />
+    <Compile Include="NewComponents\PolymorphDamagePropertyTransfer.cs" />
     <Compile Include="NewComponents\Prerequisites\PrerequisiteDeityAlignment.cs" />
     <Compile Include="NewComponents\Properties\BuffCountGetter.cs" />
     <Compile Include="NewComponents\SetPetMinimumStat.cs" />
     <Compile Include="NewComponents\SpellDescriptorImmunityIgnore.cs" />
     <Compile Include="NewEvents\IAbilityGetCommandTypeHandler.cs" />
     <Compile Include="NewEvents\IAgeNegateHandler.cs" />
+    <Compile Include="NewEvents\IDispelMagicHandler.cs" />
     <Compile Include="NewUnitParts\UnitPartAccursedHexTTT.cs" />
     <Compile Include="NewUnitParts\UnitPartActivatableAbilityGroupExtension.cs" />
     <Compile Include="NewUnitParts\UnitPartAgeTTT.cs" />
