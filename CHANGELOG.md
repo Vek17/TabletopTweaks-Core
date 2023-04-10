@@ -1,7 +1,10 @@
-## Version 0.6.2
+## Version 0.6.3
 * New IDispelMagicHandler added to handle entire dispel checkes instead of just dispelMagicRules.
 * New PolymorphDamagePropertyTransfer that handled alignment properties correctly.
 * DestructiveDispelComponent has been updated with new event.
+
+## Version 0.6.2
+* Mod compatability fix.
 
 ## Version 0.6.1
 * Fixed issue with PrerequisiteSpellKnown not working correctly in all cases.
