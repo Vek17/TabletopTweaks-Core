@@ -176,6 +176,7 @@
     <Compile Include="NewComponents\AbilitySpecific\SplitHexComponentAutomatic.cs" />
     <Compile Include="NewComponents\AbilitySpecific\AbilityTargetHasNoFactUnlessAccursedHex.cs" />
     <Compile Include="NewComponents\AbilitySpecific\AbilityTargetNoSplitHexRepeat.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\ShiftersEdgeComponent.cs" />
     <Compile Include="NewComponents\AddAdditionalLimbConditional.cs" />
     <Compile Include="NewComponents\AddAdditionalWeaponDamageOnHit.cs" />
     <Compile Include="NewComponents\AddConditionalWeaponDamageBonus.cs" />

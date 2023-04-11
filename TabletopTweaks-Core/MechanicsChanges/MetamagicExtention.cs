@@ -179,11 +179,11 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                     }
                 }
                 __instance.Result.SpellLevelCost -= lv_adjustment;
-                var CompletlyNormalCorrection = 0;
-                if (__instance.AppliedMetamagics.Contains(Metamagic.CompletelyNormal)) {
-                    CompletlyNormalCorrection = 1;
-                }
-                if (__instance.BaseLevel + __instance.Result.SpellLevelCost + CompletlyNormalCorrection < 0) {
+                //var CompletlyNormalCorrection = 0;
+                //if (__instance.AppliedMetamagics.Contains(Metamagic.CompletelyNormal)) {
+                //    CompletlyNormalCorrection = 1;
+                //}
+                if (__instance.BaseLevel + __instance.Result.SpellLevelCost < 0) {
                     __instance.Result.SpellLevelCost = -__instance.BaseLevel;
                 }
             }

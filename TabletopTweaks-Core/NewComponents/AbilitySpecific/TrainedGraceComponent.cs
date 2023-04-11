@@ -24,13 +24,15 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         IInitiatorRulebookSubscriber {
 
         public void OnEventAboutToTrigger(RuleCalculateWeaponStats evt) {
-            UnitPartWeaponTraining unitPartWeaponTraining = Owner.Get<UnitPartWeaponTraining>();
-            if (IsSuitable(evt, unitPartWeaponTraining)) {
-                evt.AddDamageModifier(unitPartWeaponTraining.GetWeaponRank(evt.Weapon), base.Fact, Descriptor);
-            }
         }
 
         public void OnEventDidTrigger(RuleCalculateWeaponStats evt) {
+            UnitPartWeaponTraining unitPartWeaponTraining = Owner.Get<UnitPartWeaponTraining>();
+            if (unitPartWeaponTraining == null) { return; }
+            if (IsSuitable(evt, unitPartWeaponTraining)) {
+                evt.AddDamageModifier(unitPartWeaponTraining.GetWeaponRank(evt.Weapon), base.Fact, Descriptor);
+                evt.DamageDescription[0].AddModifier(new Modifier(unitPartWeaponTraining.GetWeaponRank(evt.Weapon), base.Fact, Descriptor));
+            }
         }
 
         private bool IsSuitable(RuleCalculateWeaponStats evt, UnitPartWeaponTraining unitPartWeaponTraining) {

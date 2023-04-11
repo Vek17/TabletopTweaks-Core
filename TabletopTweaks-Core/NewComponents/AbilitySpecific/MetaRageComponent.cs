@@ -81,10 +81,6 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             conversions = conversionList;
         }
 
-        private static int CalculateCost(AbilityData ability, Metamagic metamagic) {
-            return (ability.SpellLevel + AdjustedCost(metamagic, ability.Caster)) * 2;
-        }
-
         private static int AdjustedCost(Metamagic metamagic, UnitDescriptor unit) {
             UnitMechanicFeatures features = unit.State.Features;
             switch (metamagic) {
