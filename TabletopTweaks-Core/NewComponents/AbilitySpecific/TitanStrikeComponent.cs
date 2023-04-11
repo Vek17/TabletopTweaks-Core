@@ -14,8 +14,8 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     /// </summary>
     [TypeId("4a2247bdf0cf4b139863f0136abd4af8")]
     public class TitanStrikeComponent : UnitFactComponentDelegate,
-        IInitiatorRulebookHandler<RuleCalculateWeaponStats>,
-        IRulebookHandler<RuleCalculateWeaponStats>,
+        IInitiatorRulebookHandler<RuleCalculateWeaponSizeBonus>,
+        IRulebookHandler<RuleCalculateWeaponSizeBonus>,
         IInitiatorRulebookHandler<RuleCalculateCMB>,
         IRulebookHandler<RuleCalculateCMB>,
         IGlobalRulebookHandler<RuleSavingThrow>,
@@ -24,12 +24,8 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         public ReferenceArrayProxy<BlueprintBuff, BlueprintBuffReference> StunningFistBuffs => m_StunningFistBuffs;
 
-        public void OnEventAboutToTrigger(RuleCalculateWeaponStats evt) {
-            if (evt.Weapon.Blueprint.Type.IsUnarmed) {
-                evt.WeaponDamageDice.Modify(
-                    WeaponDamageScaleTable.Scale(evt.WeaponDamageDice.ModifiedValue, Size.Large, Size.Medium), base.Fact
-                );
-            }
+        public void OnEventAboutToTrigger(RuleCalculateWeaponSizeBonus evt) {
+            
         }
 
         public void OnEventAboutToTrigger(RuleCalculateCMB evt) {
@@ -55,7 +51,14 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             }
         }
 
-        public void OnEventDidTrigger(RuleCalculateWeaponStats evt) {
+        public void OnEventDidTrigger(RuleCalculateWeaponSizeBonus evt) {
+            if (evt.Weapon.Blueprint.Type.IsUnarmed) {
+                var preSize = evt.WeaponSize;
+                evt.m_SizeShift += 1;
+                evt.WeaponDamageDice.Modify(
+                   WeaponDamageScaleTable.Scale(evt.WeaponDamageDice.ModifiedValue, evt.WeaponSize, preSize, evt.Weapon.Blueprint), base.Fact
+                );
+            }
         }
 
         public void OnEventDidTrigger(RuleCalculateCMB evt) {

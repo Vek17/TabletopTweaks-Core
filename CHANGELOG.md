@@ -1,3 +1,6 @@
+## Version 0.6.4
+* New WeaponSizeChangeTTT component.
+
 ## Version 0.6.3
 * New IDispelMagicHandler added to handle entire dispel checkes instead of just dispelMagicRules.
 * New PolymorphDamagePropertyTransfer that handled alignment properties correctly.

@@ -195,6 +195,7 @@
     <Compile Include="NewComponents\OwlcatReplacements\ProfaneAscensionTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\WeaponGroupAttackBonusTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\WeaponGroupDamageBonusTTT.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\WeaponSizeChangeTTT.cs" />
     <Compile Include="NewComponents\PartialEnergyResistanceIgnore.cs" />
     <Compile Include="NewComponents\PolymorphDamagePropertyTransfer.cs" />
     <Compile Include="NewComponents\Prerequisites\PrerequisiteDeityAlignment.cs" />
