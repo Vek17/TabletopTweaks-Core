@@ -1,5 +1,6 @@
 ## Version 0.6.4
 * New WeaponSizeChangeTTT component.
+* FeatTools now supports Rage Powers.
 
 ## Version 0.6.3
 * New IDispelMagicHandler added to handle entire dispel checkes instead of just dispelMagicRules.

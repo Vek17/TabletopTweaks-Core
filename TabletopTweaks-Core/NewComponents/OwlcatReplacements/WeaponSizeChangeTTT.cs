@@ -1,4 +1,5 @@
-﻿using Kingmaker.Blueprints.Items.Weapons;
+﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
@@ -17,6 +18,8 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
         IInitiatorRulebookHandler<RuleCalculateWeaponSizeBonus>,
         IRulebookHandler<RuleCalculateWeaponSizeBonus> {
 
+        private BlueprintItemWeapon Weapon => m_Weapon?.Get();
+
         public void OnEventAboutToTrigger(RuleCalculateWeaponSizeBonus evt) {
         }
 
@@ -34,6 +37,7 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
             if (CheckRangeType && !RangeType.IsSuitableWeapon(weapon)) { return false; }
             if (CheckWeaponGroup && !weapon.FighterGroup.Contains(WeaponGroup)) { return false; }
             if (CheckWeaponCategory && !Categories.Contains(weapon.Category)) { return false; }
+            if (CheckSpecificWeapon && Weapon?.AssetGuid != weapon.AssetGuid) { return false; }
 
             return true;
         }
@@ -44,6 +48,8 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
         public WeaponFighterGroup WeaponGroup;
         public bool CheckWeaponCategory;
         public WeaponCategory[] Categories = new WeaponCategory[0];
+        public bool CheckSpecificWeapon;
+        public BlueprintItemWeaponReference m_Weapon;
         public ContextValue SizeChange = 1;
     }
 }
