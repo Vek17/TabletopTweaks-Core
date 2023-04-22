@@ -6,11 +6,7 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [TypeId("b64469c566b94f2d9b83c66d777ad5df")]

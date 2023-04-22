@@ -25,7 +25,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         public ReferenceArrayProxy<BlueprintBuff, BlueprintBuffReference> StunningFistBuffs => m_StunningFistBuffs;
 
         public void OnEventAboutToTrigger(RuleCalculateWeaponSizeBonus evt) {
-            
+
         }
 
         public void OnEventAboutToTrigger(RuleCalculateCMB evt) {

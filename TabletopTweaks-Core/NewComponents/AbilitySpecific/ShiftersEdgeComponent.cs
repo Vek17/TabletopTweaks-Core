@@ -1,6 +1,5 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Facts;
-using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
@@ -10,9 +9,6 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Buffs;
 using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.UnitLogic.Parts;
-using static Kingmaker.Blueprints.Area.FactHolder;
-using static UnityEngine.UI.GridLayoutGroup;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     /// <summary>
@@ -27,7 +23,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         ISubscriber,
         IInitiatorRulebookSubscriber {
 
-        public void OnEventAboutToTrigger(RuleCalculateWeaponStats evt) {   
+        public void OnEventAboutToTrigger(RuleCalculateWeaponStats evt) {
         }
 
         public void OnEventDidTrigger(RuleCalculateWeaponStats evt) {
@@ -46,7 +42,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
             return (evt.DamageBonusStat == StatType.Strength)
                 && ruleCalculateAttackBonus.AttackBonusStat == StatType.Dexterity
-                && (weapon.Blueprint.Category == WeaponCategory.Claw 
+                && (weapon.Blueprint.Category == WeaponCategory.Claw
                     || PolymorphDamageTransfer.IsApplicableToWeapon(weapon, evt.Initiator));
         }
         /// <summary>

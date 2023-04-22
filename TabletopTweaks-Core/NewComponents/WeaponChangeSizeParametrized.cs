@@ -1,9 +1,9 @@
 ﻿using Kingmaker.Blueprints.Items.Weapons;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
-using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic;
-using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.UnitLogic.Mechanics;
 
 namespace TabletopTweaks.Core.NewComponents {
     [TypeId("66a9a23164554207bf8245d3417f3dec")]
