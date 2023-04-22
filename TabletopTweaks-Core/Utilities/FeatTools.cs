@@ -90,6 +90,22 @@ namespace TabletopTweaks.Core.Utilities {
             };
             TalentSelections.ForEach(selection => selection.AddFeatures(feature));
         }
+        public static void AddAsRagePower(BlueprintFeature feature) {
+            var InspiredRageEffectBuff = BlueprintTools.GetBlueprint<BlueprintBuff>("75b3978757908d24aaaecaf2dc209b89");
+            var TalentSelections = new BlueprintFeatureSelection[] {
+                Selections.RagePowerSelection,
+                Selections.ExtraRagePowerSelection,
+                Selections.SkaldRagePowerSelection,
+                Selections.InstinctualWarriorRagePowerSelection,
+                Selections.LichSkeletalRageSelection,
+            };
+            TalentSelections.ForEach(selection => selection.AddFeatures(feature));
+            InspiredRageEffectBuff.TemporaryContext(bp => {
+                bp.GetComponents<AddFactsFromCaster>().ForEach(c => {
+                    c.m_Facts = c.m_Facts.AppendToArray(feature.ToReference<BlueprintUnitFactReference>());
+                });
+            });
+        }
         public static void AddAsMagusArcana(BlueprintFeature feature, params BlueprintFeatureSelection[] ignore) {
             var ArcanaSelections = new BlueprintFeatureSelection[] {
                 Selections.MagusArcanaSelection,
