@@ -33,7 +33,7 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
             if (CheckRangeType && !RangeType.IsSuitableWeapon(weapon)) { return false; }
             if (CheckWeaponGroup && !weapon.FighterGroup.Contains(WeaponGroup)) { return false; }
             if (CheckWeaponCategory && !Categories.Contains(weapon.Category)) { return false; }
-            if (CheckSpecificWeapon && Weapon?.AssetGuid != weapon.AssetGuid) { return false; }
+            if (CheckSpecificWeapon && (Weapon == null || Weapon.AssetGuid != weapon.AssetGuid)) { return false; }
 
             return true;
         }

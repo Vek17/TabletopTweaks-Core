@@ -1,3 +1,7 @@
+## Version 0.6.5
+* Support for Maximized Critical.
+* Support for rework of Mythic Improved Critical.
+
 ## Version 0.6.4
 * New WeaponSizeChangeTTT component.
 * FeatTools now supports Rage Powers.

@@ -171,6 +171,8 @@
     <Compile Include="NewComponents\AbilitySpecific\ChainChallengeComponent.cs" />
     <Compile Include="NewComponents\AbilitySpecific\ElementalBarrageIncomingTrigger.cs" />
     <Compile Include="NewComponents\AbilitySpecific\ElementalBarrageOutgoingTrigger.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\ImprovedCriticalMythicParametrizedTTT.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\MaximizedCriticalComponent.cs" />
     <Compile Include="NewComponents\AbilitySpecific\SplitHexBuffComponent.cs" />
     <Compile Include="NewComponents\AbilitySpecific\SplitHexComponent.cs" />
     <Compile Include="NewComponents\AbilitySpecific\SplitHexComponentAutomatic.cs" />
