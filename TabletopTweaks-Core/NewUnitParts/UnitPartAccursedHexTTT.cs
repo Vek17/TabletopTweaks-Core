@@ -5,6 +5,7 @@ using Kingmaker.EntitySystem.Entities;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Abilities;
 using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Buffs;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.Utility;
 using System.Collections.Generic;
@@ -110,7 +111,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             public bool PassedSave;
 
             public bool Matches(UnitEntityData Unit, BlueprintGuid HexId) {
-                return Unit.Equals(Unit) && HexId.Equals(Guid);
+                return Unit.UniqueId.Equals(this.Unit.Id) && HexId.Equals(this.Guid);
             }
 
             public override bool Equals(object obj) {
