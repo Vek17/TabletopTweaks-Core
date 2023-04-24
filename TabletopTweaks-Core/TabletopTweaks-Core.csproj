@@ -192,6 +192,7 @@
     <Compile Include="NewComponents\OwlcatReplacements\AddAbilityUseTargetTriggerTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\AddAbilityUseTriggerTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\AttackBonusAgainstTargetTTT.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\ClassLevelsForPrerequisitesTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\DamageBonusOrderOfCockatriceTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\FavoredEnemyTTT.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\ProfaneAscensionTTT.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="NewUnitParts\UnitPartActivatableAbilityGroupExtension.cs" />
     <Compile Include="NewUnitParts\UnitPartAgeTTT.cs" />
     <Compile Include="NewUnitParts\UnitPartChainChallengeTTT.cs" />
+    <Compile Include="NewUnitParts\UnitPartFakeClassLevels.cs" />
     <Compile Include="NewUnitParts\UnitPartIgnoreBuffDescriptorImmunity.cs" />
     <Compile Include="NewUnitParts\UnitPartSplitHex.cs" />
     <Compile Include="Utilities\VenderTools.cs" />

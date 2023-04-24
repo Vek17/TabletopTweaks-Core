@@ -65,15 +65,24 @@ namespace TabletopTweaks.Core.Utilities {
             MetamagicSelections.ForEach(selection => selection.AddFeatures(feature));
         }
         public static void AddAsRogueTalent(BlueprintFeature feature) {
-            var TalentSelections = new BlueprintFeatureSelection[] {
+            var RogueTalentSelection = new BlueprintFeatureSelection[] {
                 Selections.SylvanTricksterTalentSelection,
-                Selections.SlayerTalentSelection10,
-                Selections.SlayerTalentSelection6,
-                Selections.SlayerTalentSelection2,
                 Selections.RogueTalentSelection,
                 Selections.LoremasterRogueTalentSelection
             };
-            TalentSelections.ForEach(selection => selection.AddFeatures(feature));
+            var SlayerTalentSelection = new BlueprintFeatureSelection[] {
+                Selections.SlayerTalentSelection10,
+                Selections.SlayerTalentSelection6,
+                Selections.SlayerTalentSelection2,
+            };
+            
+            RogueTalentSelection.ForEach(selection => selection.AddFeatures(feature));
+            if (feature.HasGroup(FeatureGroup.SlayerTalent)) {
+                SlayerTalentSelection.ForEach(selection => selection.AddFeatures(feature));
+            }
+            if (feature.HasGroup(FeatureGroup.VivisectionistDiscovery)) {
+                Selections.VivsectionistDiscoverySelection.AddFeatures(feature);
+            }
         }
         public static void AddAsBardTalent(BlueprintFeature feature) {
             var BardSelections = new BlueprintFeatureSelection[] {
