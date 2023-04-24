@@ -1,6 +1,8 @@
 ## Version 0.6.5
 * Support for Maximized Critical.
 * Support for rework of Mythic Improved Critical.
+* Support for fake class levels.
+* Improvements to FeatTools
 
 ## Version 0.6.4
 * New WeaponSizeChangeTTT component.
