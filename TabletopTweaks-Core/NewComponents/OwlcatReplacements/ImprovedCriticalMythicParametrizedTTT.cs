@@ -25,9 +25,11 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
                 0
             );
             newDamage.SourceFact = base.Fact;
-            evt.ParentRule.m_DamageBundle.Add(
-                newDamage
-            );
+            if (evt.ParentRule.m_DamageBundle.m_Chunks.Count >= 1) {
+                evt.ParentRule.m_DamageBundle.m_Chunks.Insert(1, newDamage);
+            } else {
+                evt.ParentRule.m_DamageBundle.Add(newDamage);
+            }
         }
 
         public void OnEventDidTrigger(RuleCalculateDamage evt) {
