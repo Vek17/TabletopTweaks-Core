@@ -3,10 +3,9 @@ using Kingmaker.UnitLogic;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.RuleSystem;
-using TabletopTweaks.Core.Utilities;
 using Kingmaker.UnitLogic.Mechanics;
 
-namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
+namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [TypeId("5f0b94b3bdaf464bbefc9869e39804c2")]
     public class ImprovedCriticalMythicParametrizedTTT : UnitFactComponentDelegate, 
         IInitiatorRulebookHandler<RuleCalculateDamage>, 
@@ -19,20 +18,22 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             if (!attackRoll.IsCriticalConfirmed && !attackRoll.FortificationNegatesCriticalHit) { return; }
             if (attackRoll.Weapon?.Blueprint?.Category != base.Param) { return; }
 
-            evt.DamageBundle.WeaponDamage.TemporaryContext(damage => { 
-                damage.Dice.Modify(
-                    new DiceFormula() {
-                        m_Dice = evt.DamageBundle.WeaponDamage.Dice.ModifiedValue.Dice,
-                        m_Rolls = evt.DamageBundle.WeaponDamage.Dice.ModifiedValue.Rolls * DiceMultiplier.Calculate(base.Context),
-                    },
-                    base.Fact
-                );
-            });
+            var critMultiplier = evt.DamageBundle.WeaponDamage.CriticalModifier;
+            if (critMultiplier < 2) { return; }
+            var newDamage = evt.DamageBundle.WeaponDamage.CreateTypeDescription().CreateDamage(
+                new DiceFormula((critMultiplier.Value - 1) * DiceCount.Calculate(base.Context), Dice),
+                0
+            );
+            newDamage.SourceFact = base.Fact;
+            evt.ParentRule.m_DamageBundle.Add(
+                newDamage
+            );
         }
 
         public void OnEventDidTrigger(RuleCalculateDamage evt) {
         }
 
-        public ContextValue DiceMultiplier = 2;
+        public ContextValue DiceCount = 1;
+        public DiceType Dice = DiceType.D10;
     }
 }
