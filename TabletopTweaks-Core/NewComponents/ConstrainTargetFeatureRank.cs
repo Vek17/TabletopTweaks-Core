@@ -12,7 +12,9 @@ using UnityEngine.Serialization;
 namespace TabletopTweaks.Core.NewComponents {
     [TypeId("c1e7344a9870459a8c9fe2f8f4cf5b5e")]
     [AllowedOn(typeof(BlueprintFeature))]
-    public class ConstrainTargetFeatureRank : UnitFactComponentDelegate<CompanionBoonData>, ILevelUpCompleteUIHandler, IGlobalSubscriber, ISubscriber {
+    public class ConstrainTargetFeatureRank : UnitFactComponentDelegate<CompanionBoonData>, 
+        IUnitCompleteLevelUpHandler,
+        IGlobalSubscriber, ISubscriber {
 
         public override void OnActivate() {
             Apply();
@@ -35,9 +37,16 @@ namespace TabletopTweaks.Core.NewComponents {
                 base.Data.AppliedRank++;
                 targetRank = targetFact2?.GetRank() ?? 0;
             }
+            while (baseRank < targetRank) {
+                Feature targetFact2 = base.Owner.GetFact(this.TargetFeature) as Feature;
+                if (targetFact2 == null) { break; }
+                targetFact2.RemoveRank();
+                base.Data.AppliedRank--;
+                targetRank = targetFact2?.GetRank() ?? 0;
+            }
         }
 
-        public void HandleLevelUpComplete(UnitEntityData unit, bool isChargen) {
+        public void HandleUnitCompleteLevelup(UnitEntityData unit) {
             Apply();
         }
 
