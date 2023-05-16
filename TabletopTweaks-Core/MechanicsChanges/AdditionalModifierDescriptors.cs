@@ -15,7 +15,8 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         public enum NaturalArmor : int {
             Bonus = ModifierDescriptor.NaturalArmor,
             Size = 1717,
-            Stackable = 1718
+            Stackable = 1718,
+            Racial = 1719
         }
         public enum Dodge : int {
             Strength = 2121,
@@ -106,6 +107,7 @@ namespace TabletopTweaks.Core.MechanicsChanges {
         [PostPatchInitialize]
         static void Update_ModifierDescriptorComparer_SortedValues() {
             InsertAfter(NaturalArmor.Size, (ModifierDescriptor)NaturalArmor.Bonus);
+            InsertAfter(NaturalArmor.Racial, (ModifierDescriptor)NaturalArmor.Bonus);
             InsertBefore(NaturalArmor.Stackable, (ModifierDescriptor)NaturalArmor.Bonus);
             InsertBefore(Dodge.Strength, ModifierDescriptor.Dodge);
             InsertBefore(Dodge.Dexterity, ModifierDescriptor.Dodge);
@@ -197,6 +199,9 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                         break;
                     case (ModifierDescriptor)NaturalArmor.Size:
                         __result = "Natural armor size";
+                        break;
+                    case (ModifierDescriptor)NaturalArmor.Racial:
+                        __result = "Natural armor racial";
                         break;
                     case (ModifierDescriptor)NaturalArmor.Stackable:
                         __result = "Natural armor stackable";
