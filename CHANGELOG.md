@@ -1,3 +1,6 @@
+## Version 0.6.6
+* 2.1.4 support
+
 ## Version 0.6.5
 * Support for Maximized Critical.
 * Support for rework of Mythic Improved Critical.

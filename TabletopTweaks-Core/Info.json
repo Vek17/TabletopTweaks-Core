@@ -3,12 +3,12 @@
   "Author": "Sean Petrie",
   "DisplayName": "Tabletop Tweaks Core",
   "EntryMethod": "TabletopTweaks.Core.Main.Load",
-  "GameVersion": "2.1.0",
+  "GameVersion": "2.1.4",
   "HomePage": "https://github.com/Vek17/TabletopTweaks-Core",
   "Id": "TabletopTweaks-Core",
   "ManagerVersion": "0.23.0",
   "Repository": "https://raw.githubusercontent.com/Vek17/TabletopTweaks-Core/master/Repository.json",
   "Requirements": [],
-  "LoadAfter": ["MewsiferConsole.Mod"],
-  "Version": "0.6.5"
+  "LoadAfter": [ "MewsiferConsole.Mod" ],
+  "Version": "0.6.6"
 }
