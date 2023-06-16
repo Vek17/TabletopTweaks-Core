@@ -153,7 +153,7 @@ namespace TabletopTweaks.Core.ModLogic {
 
         private class SortedDictonaryConverter : JsonConverter {
 
-            private StringComparer comparer = StringComparer.CurrentCulture;
+            private readonly StringComparer comparer;
 
             public SortedDictonaryConverter(StringComparer comparer) : base() {
                 this.comparer = comparer;
