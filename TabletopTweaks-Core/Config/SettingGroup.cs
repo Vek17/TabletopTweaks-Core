@@ -1,15 +1,21 @@
 ﻿using Kingmaker.Utility;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using TabletopTweaks.Core.ModLogic;
 
 namespace TabletopTweaks.Core.Config {
     public class SettingGroup : IDisableableGroup {
         public bool DisableAll = false;
         public virtual bool GroupIsDisabled() => DisableAll;
         public virtual void SetGroupDisabled(bool value) => DisableAll = value;
-        public SortedDictionary<string, SettingData> Settings = new SortedDictionary<string, SettingData>();
+        //[JsonProperty(ItemConverterType = typeof(SortedDictonaryConverter))]
+        public SortedDictionary<string, SettingData> Settings = new SortedDictionary<string, SettingData>(StringComparer.InvariantCulture);
         public virtual bool this[string key] => IsEnabled(key);
         public bool IsExpanded = true;
+        private bool hasDumpedKeys = false;
 
         public void LoadSettingGroup(SettingGroup group, bool frozen) {
             DisableAll = group.DisableAll;
@@ -27,7 +33,15 @@ namespace TabletopTweaks.Core.Config {
         }
         public virtual bool IsEnabled(string key) {
             if (!Settings.TryGetValue(key, out SettingData result)) {
-                //TTTContext.Logger.LogVerbose($"COULD NOT FIND SETTING KEY: {key}");
+                if (!hasDumpedKeys) {
+                    hasDumpedKeys = true;
+                    Main.TTTContext.Logger.Log($"DUMPING KEYS: {key}");
+                    foreach (var entry in Settings) {
+                        Main.TTTContext.Logger.Log($"{entry.Key}");
+                    }
+                }
+                Main.TTTContext.Logger.LogError($"COULD NOT FIND SETTING KEY: {key}");
+                return false;
             }
             return result.Enabled && !GroupIsDisabled();
         }

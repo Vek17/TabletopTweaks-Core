@@ -1,5 +1,8 @@
 ﻿using Kingmaker.PubSubSystem;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using TabletopTweaks.Core.Config;
@@ -34,6 +37,8 @@ namespace TabletopTweaks.Core.ModLogic {
                         NullValueHandling = NullValueHandling.Include,
                         ObjectCreationHandling = ObjectCreationHandling.Replace,
                         StringEscapeHandling = StringEscapeHandling.Default,
+                        Culture = CultureInfo.InvariantCulture,
+                        Converters = new List<JsonConverter>() { new SortedDictonaryConverter(StringComparer.InvariantCulture) }
                     };
                 }
                 return cachedSettings;
@@ -83,15 +88,15 @@ namespace TabletopTweaks.Core.ModLogic {
             ModLocalizationPack.Context = this;
             EventBus.Subscribe(ModLocalizationPack);
         }
-        public virtual void SaveLocalization(MultiLocalizationPack localizaiton) {
-            localizaiton.Strings.Sort((x, y) => string.Compare(x.SimpleName, y.SimpleName));
+        public virtual void SaveLocalization(MultiLocalizationPack localization) {
+            localization.Strings.Sort((x, y) => string.Compare(x.SimpleName, y.SimpleName, true, CultureInfo.InvariantCulture));
             Directory.CreateDirectory(UserConfigFolder);
             var localizationPath = $"{LocalizationFolder}{Path.DirectorySeparatorChar}{LocalizationFile}";
 
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);
             using (StreamWriter streamWriter = new StreamWriter(localizationPath))
             using (JsonWriter jsonWriter = new JsonTextWriter(streamWriter)) {
-                serializer.Serialize(jsonWriter, localizaiton);
+                serializer.Serialize(jsonWriter, localization);
             }
         }
         public virtual void LoadSettings<T>(string fileName, string path, ref T setting) where T : IUpdatableSettings {
@@ -144,6 +149,41 @@ namespace TabletopTweaks.Core.ModLogic {
         public virtual void AfterBlueprintCachePatches() {
             Blueprints.GenerateUnused();
             SaveSettings(BlueprintsFile, Blueprints);
+        }
+
+        private class SortedDictonaryConverter : JsonConverter {
+
+            private StringComparer comparer = StringComparer.CurrentCulture;
+
+            public SortedDictonaryConverter(StringComparer comparer) : base() {
+                this.comparer = comparer;
+            }
+
+            public override bool CanConvert(Type objectType) {
+                return objectType is not null
+                    && objectType.IsConstructedGenericType
+                    && objectType.GetGenericTypeDefinition() == typeof(SortedDictionary<,>).GetGenericTypeDefinition()
+                    && objectType.GetGenericArguments()[0] == typeof(string);
+            }
+
+            public override bool CanWrite => false;
+
+            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
+                throw new NotImplementedException();
+            }
+
+            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
+                if (!CanConvert(objectType)) {
+                    throw new Exception(string.Format("This converter is not for {0}.", objectType));
+                }
+
+                var keyType = objectType.GetGenericArguments()[0];
+                var valueType = objectType.GetGenericArguments()[1];
+                var dictionaryType = typeof(Dictionary<,>).MakeGenericType(keyType, valueType);
+                var sortedDictionaryType = typeof(SortedDictionary<,>).MakeGenericType(keyType, valueType);
+                var tempDictonary = serializer.Deserialize(reader, dictionaryType);
+                return Activator.CreateInstance(sortedDictionaryType, tempDictonary, comparer);
+            }
         }
     }
 }

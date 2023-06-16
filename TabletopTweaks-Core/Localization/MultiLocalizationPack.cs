@@ -29,7 +29,7 @@ namespace TabletopTweaks.Core.Localization {
         public SortedDictionary<string, MultiLocaleString> Text {
             get {
                 if (text == null) {
-                    text = new SortedDictionary<string, MultiLocaleString>();
+                    text = new SortedDictionary<string, MultiLocaleString>(StringComparer.InvariantCulture);
                     foreach (var entry in Strings) {
                         text[entry.enGB] = entry;
                     }
@@ -43,7 +43,7 @@ namespace TabletopTweaks.Core.Localization {
         public SortedDictionary<string, MultiLocaleString> Ids {
             get {
                 if (ids == null) {
-                    ids = new SortedDictionary<string, MultiLocaleString>();
+                    ids = new SortedDictionary<string, MultiLocaleString>(StringComparer.InvariantCulture);
                     foreach (var entry in Strings) {
                         ids[entry.Key] = entry;
                     }

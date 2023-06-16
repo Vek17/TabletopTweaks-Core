@@ -5,7 +5,7 @@ namespace TabletopTweaks.Core.ModLogic {
     internal class ModContextTTTCore : ModContextBase {
 
         public ModContextTTTCore(ModEntry ModEntry) : base(ModEntry) {
-            LoadAllSettings();
+            //LoadAllSettings();
         }
         public override void LoadAllSettings() {
             LoadBlueprints("TabletopTweaks.Core.Config", TTTContext);
