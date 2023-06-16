@@ -1,3 +1,6 @@
+## Version 0.6.7
+* Fix for broken settings when the Czech language pack is installed.
+
 ## Version 0.6.6
 * 2.1.4 support
 
