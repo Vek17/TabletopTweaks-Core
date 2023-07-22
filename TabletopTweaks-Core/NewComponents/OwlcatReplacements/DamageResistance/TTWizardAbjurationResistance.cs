@@ -16,7 +16,7 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance 
     public class TTWizardAbjurationResistance : TTAddDamageResistanceEnergy {
         [SerializeField]
         [FormerlySerializedAs("Wizard")]
-        private BlueprintCharacterClassReference m_Wizard;
+        public BlueprintCharacterClassReference m_Wizard;
 
         public BlueprintCharacterClass Wizard => m_Wizard?.Get();
 
