@@ -11,7 +11,7 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance 
     public class TTWizardEnergyAbsorption : TTAddDamageResistanceEnergy {
         [SerializeField]
         [FormerlySerializedAs("Resource")]
-        private BlueprintAbilityResourceReference m_Resource;
+        public BlueprintAbilityResourceReference m_Resource;
 
         public BlueprintAbilityResource Resource => m_Resource?.Get();
 
