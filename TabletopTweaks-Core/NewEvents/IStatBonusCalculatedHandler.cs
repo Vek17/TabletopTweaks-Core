@@ -47,6 +47,21 @@ namespace TabletopTweaks.Core.NewEvents {
                     //Utilities.ILUtils.LogIL(TTTContext, codes);
                     return codes.AsEnumerable();
                 }
+                private static int FindInsertionTarget(List<CodeInstruction> codes, int startingIndex = 0) {
+                    int target = -1;
+                    for (int i = startingIndex; i < codes.Count; i++) {
+                        //Find where the modifier is added and grab the load of the value varriable
+                        //if (codes[i].opcode == OpCodes.Ldloc_0) { target = i + 1; }
+                        if (codes[i].opcode == OpCodes.Stloc_0) {
+                            target = i;
+                        }
+                    }
+                    if (target < 0) {
+                        TTTContext.Logger.Log("ADD STAT IDEALIZE PATCH - AddStatBonus: COULD NOT FIND TARGET");
+                    }
+                    return target;
+                }
+                /*
                 private static int FindInsertionTarget(List<CodeInstruction> codes) {
                     int target = 0;
                     for (int i = 0; i < codes.Count; i++) {
@@ -59,9 +74,12 @@ namespace TabletopTweaks.Core.NewEvents {
                     TTTContext.Logger.Log("ADD STAT IDEALIZE PATCH - AddStatBonus: COULD NOT FIND TARGET");
                     return -1;
                 }
+                */
             }
+
             [HarmonyPatch(typeof(AddContextStatBonus), nameof(AddContextStatBonus.OnTurnOn))]
-            static class AddContextStatBonus_Idealize_Patch {
+            static class AddContextStatBonus_Idealize_Patch 
+                {
                 static readonly MethodInfo Modifier_AddModifier = AccessTools.Method(typeof(ModifiableValue), "AddModifier", new Type[] {
                 typeof(int),
                 typeof(EntityFactComponent),
@@ -82,19 +100,36 @@ namespace TabletopTweaks.Core.NewEvents {
                         new CodeInstruction(OpCodes.Ldarg_0),
                         new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
                     });
+                    /*
                     target = FindInsertionTarget(codes, target);
                     codes.InsertRange(target, new CodeInstruction[] {
                         new CodeInstruction(OpCodes.Ldarg_0),
                         new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
                     });
+                    */
                     //Utilities.ILUtils.LogIL(TTTContext, codes);
                     return codes.AsEnumerable();
                 }
                 private static int FindInsertionTarget(List<CodeInstruction> codes, int startingIndex = 0) {
+                    int target = -1;
+                    for (int i = startingIndex; i < codes.Count; i++) {
+                        //Find where the modifier is added and grab the load of the value varriable
+                        //if (codes[i].opcode == OpCodes.Ldloc_0) { target = i + 1; }
+                        if (codes[i].opcode == OpCodes.Stloc_0) {
+                            target = i;
+                        }
+                    }
+                    if (target < 0) {
+                        TTTContext.Logger.Log("ADD STAT IDEALIZE PATCH - AddContextStatBonus: COULD NOT FIND TARGET");
+                    }
+                    return target;
+                }
+                /*
+                private static int FindInsertionTarget(List<CodeInstruction> codes, int startingIndex = 0) {
                     int target = startingIndex;
                     for (int i = startingIndex; i < codes.Count; i++) {
                         //Find where the modifier is added and grab the load of the value varriable
-                        if (codes[i].opcode == OpCodes.Ldloc_1) { target = i + 2; }
+                        if (codes[i].opcode == OpCodes.Ldloc_0) { target = i + 1; }
                         if (codes[i].Calls(Modifier_AddModifier) && target != startingIndex) {
                             return target;
                         }
@@ -102,7 +137,9 @@ namespace TabletopTweaks.Core.NewEvents {
                     TTTContext.Logger.Log("ADD STAT IDEALIZE PATCH - AddContextStatBonus: COULD NOT FIND TARGET");
                     return -1;
                 }
+                */
             }
+
             [HarmonyPatch(typeof(AddGenericStatBonus), nameof(AddStatBonus.OnTurnOn))]
             static class AddGenericStatBonus_Idealize_Patch {
                 static readonly MethodInfo Modifier_AddModifierUnique = AccessTools.Method(typeof(ModifiableValue), "AddModifierUnique", new Type[] {
@@ -120,19 +157,34 @@ namespace TabletopTweaks.Core.NewEvents {
 
                     var codes = new List<CodeInstruction>(instructions);
                     int target = FindInsertionTarget(codes);
-                    //Utilities.ILUtils.LogIL(codes);
+                    //Utilities.ILUtils.LogIL(TTTContext, codes);
                     codes.InsertRange(target, new CodeInstruction[] {
                         new CodeInstruction(OpCodes.Ldarg_0),
                         new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
                     });
-                    //Utilities.ILUtils.LogIL(codes);
+                    //Utilities.ILUtils.LogIL(TTTContext, codes);
                     return codes.AsEnumerable();
                 }
+                private static int FindInsertionTarget(List<CodeInstruction> codes, int startingIndex = 0) {
+                    int target = -1;
+                    for (int i = startingIndex; i < codes.Count; i++) {
+                        //Find where the modifier is added and grab the load of the value varriable
+                        //if (codes[i].opcode == OpCodes.Ldloc_0) { target = i + 1; }
+                        if (codes[i].opcode == OpCodes.Stloc_0) {
+                            target = i;
+                        }
+                    }
+                    if (target < 0) {
+                        TTTContext.Logger.Log("ADD STAT IDEALIZE PATCH - AddGenericStatBonus: COULD NOT FIND TARGET");
+                    }
+                    return target;
+                }
+                /*
                 private static int FindInsertionTarget(List<CodeInstruction> codes) {
                     int target = 0;
                     for (int i = 0; i < codes.Count; i++) {
                         //Find where the modifier is added and grab the load of the value varriable
-                        if (codes[i].opcode == OpCodes.Ldloc_1) { target = i + 2; }
+                        if (codes[i].opcode == OpCodes.Ldloc_0) { target = i + 1; }
                         if (codes[i].Calls(Modifier_AddModifierUnique)) {
                             return target;
                         }
@@ -140,6 +192,7 @@ namespace TabletopTweaks.Core.NewEvents {
                     TTTContext.Logger.Log("ADD STAT IDEALIZE PATCH - AddGenericStatBonus: COULD NOT FIND TARGET");
                     return -1;
                 }
+                */
             }
 
             [HarmonyPatch(typeof(AddStatBonusAbilityValue), nameof(AddStatBonusAbilityValue.OnTurnOn))]
