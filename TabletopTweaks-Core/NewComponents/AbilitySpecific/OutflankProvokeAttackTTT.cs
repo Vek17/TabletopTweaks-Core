@@ -13,7 +13,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
     [AllowMultipleComponents]
     [TypeId("af21183db47748f5b3227f293afff0fb")]
-    public class OutflankProvokeAttackTTT : UnitFactComponentDelegate, IGlobalRulebookHandler<RuleAttackRoll>, ISubscriber, IGlobalSubscriber {
+    public class OutflankProvokeAttackTTT : UnitFactComponentDelegate, IInitiatorRulebookHandler<RuleAttackRoll> {
         public BlueprintUnitFact OutflankFact => m_OutflankFact?.Get();
 
         public void OnEventAboutToTrigger(RuleAttackRoll evt) {

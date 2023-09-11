@@ -1,3 +1,7 @@
+## Version 0.6.8
+* Fix for some non functional transpilers.
+* Fix for outflank triggers.
+
 ## Version 0.6.7
 * Fix for broken settings when the Czech language pack is installed.
 
