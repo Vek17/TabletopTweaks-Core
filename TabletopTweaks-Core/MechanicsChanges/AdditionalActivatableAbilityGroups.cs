@@ -7,7 +7,8 @@ using TabletopTweaks.Core.NewUnitParts;
 namespace TabletopTweaks.Core.MechanicsChanges {
     public static class AdditionalActivatableAbilityGroups {
         public enum ExtentedActivatableAbilityGroup : int {
-            CavalierCharge = 1000
+            CavalierCharge = 1000,
+            EnergyConversion = 1001
         }
 
         private static bool IsTTTGroup(this ActivatableAbilityGroup group) {
