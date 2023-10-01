@@ -172,6 +172,7 @@
     <Compile Include="NewComponents\AbilitySpecific\ChainChallengeComponent.cs" />
     <Compile Include="NewComponents\AbilitySpecific\ElementalBarrageIncomingTrigger.cs" />
     <Compile Include="NewComponents\AbilitySpecific\ElementalBarrageOutgoingTrigger.cs" />
+    <Compile Include="NewComponents\AddContextCasterLevelBonus.cs" />
     <Compile Include="NewComponents\AddSpellConversion.cs" />
     <Compile Include="NewComponents\OwlcatReplacements\ImprovedCriticalMythicParametrizedTTT.cs" />
     <Compile Include="NewComponents\AbilitySpecific\MaximizedCriticalComponent.cs" />
