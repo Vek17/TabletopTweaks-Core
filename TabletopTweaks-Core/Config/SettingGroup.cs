@@ -1,10 +1,7 @@
 ﻿using Kingmaker.Utility;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using TabletopTweaks.Core.ModLogic;
 
 namespace TabletopTweaks.Core.Config {
     public class SettingGroup : IDisableableGroup {

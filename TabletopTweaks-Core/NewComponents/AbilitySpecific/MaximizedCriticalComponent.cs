@@ -1,7 +1,7 @@
-﻿using Kingmaker.PubSubSystem;
-using Kingmaker.UnitLogic;
-using Kingmaker.Blueprints.JsonSystem;
+﻿using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.UnitLogic;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
@@ -17,7 +17,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             if (!attackRoll.IsCriticalConfirmed && !attackRoll.FortificationNegatesCriticalHit) { return; }
 
             evt.DamageBundle.WeaponDamage.TemporaryContext(damage => {
-                damage.CalculationType.Set(DamageCalculationType.Maximized ,base.Fact);
+                damage.CalculationType.Set(DamageCalculationType.Maximized, base.Fact);
             });
         }
 

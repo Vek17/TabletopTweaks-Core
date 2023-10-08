@@ -1,12 +1,12 @@
-﻿using Kingmaker.ElementsSystem;
+﻿using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
-using Kingmaker.UnitLogic.Mechanics.Components;
-using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic;
-using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.UnitLogic.Mechanics.Components;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("4e0c887660ff412fa3fe63524e475e90")]
@@ -23,7 +23,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
                         var NewSave = base.Context.TriggerRule(new RuleSavingThrow(evt.Reason.Context.MaybeCaster, SavingThrowType.Will, evt.DifficultyClass));
                         if (!NewSave.IsPassed) {
                             factContextOwner.RunActionInContext(this.Action, evt.Reason.Context.MaybeCaster);
-                        } 
+                        }
                     }
                 }
             }

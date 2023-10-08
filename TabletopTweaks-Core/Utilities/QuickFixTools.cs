@@ -38,7 +38,7 @@ namespace TabletopTweaks.Core.Utilities {
                     c.CheckedGroups = groups;
                 });
             });
-            
+
             context.Logger.LogPatch(feature);
         }
     }

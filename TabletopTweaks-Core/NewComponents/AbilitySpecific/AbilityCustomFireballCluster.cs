@@ -1,23 +1,16 @@
 ﻿using Kingmaker;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Controllers.Projectiles;
 using Kingmaker.Controllers;
-using Kingmaker.Designers.Mechanics.Buffs;
-using Kingmaker.ElementsSystem;
+using Kingmaker.Controllers.Projectiles;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
-using Kingmaker.Items;
 using Kingmaker.RuleSystem.Rules;
-using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
-using Kingmaker.UnitLogic.Commands;
 using Kingmaker.Utility;
-using Owlcat.Runtime.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +31,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             Vector3 castPosition = context.Caster.EyePosition;
 
             int count = this.UseMaxProjectilesCount ? context[this.MaxProjectilesCountRank] : this.Projectiles.Length;
-            List<IEnumerator<AbilityDeliveryTarget>> deliveryProcesses = this.Projectiles.Take(count).Select((BlueprintProjectile proj, int index) => 
+            List<IEnumerator<AbilityDeliveryTarget>> deliveryProcesses = this.Projectiles.Take(count).Select((BlueprintProjectile proj, int index) =>
             this.Deliver(context, castPosition, target, proj, index, false)).ToList<IEnumerator<AbilityDeliveryTarget>>();
             while (deliveryProcesses.Count > 0) {
                 int num;
@@ -73,7 +66,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
             }
             TargetWrapper launcher = isControlledProjectile ? castPosition : context.Caster;
 
-            Projectile proj = null; 
+            Projectile proj = null;
             if (index == 0) {
                 proj = Game.Instance.ProjectileController.Launch(launcher, target, projectile, null);
                 proj.IsFirstProjectile = true;

@@ -1,18 +1,18 @@
-﻿using Kingmaker.Blueprints.Classes;
+﻿using HarmonyLib;
 using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Prerequisites;
+using Kingmaker.EntitySystem;
 using Kingmaker.UnitLogic;
+using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
-using Kingmaker.EntitySystem;
-using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Utility;
-using HarmonyLib;
 
 namespace TabletopTweaks.Core.NewUnitParts {
     public class UnitPartFakeClassLevels : OldStyleUnitPart {
-        public void AddPrerequisiteEntry(EntityFact source, 
-            BlueprintCharacterClassReference actualClass, 
-            BlueprintCharacterClassReference fakeClass, 
+        public void AddPrerequisiteEntry(EntityFact source,
+            BlueprintCharacterClassReference actualClass,
+            BlueprintCharacterClassReference fakeClass,
             double modifier,
             int summand,
             FeatureGroup[] checkedGroups
@@ -51,7 +51,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             public BlueprintCharacterClass FakeClass => m_FakeClass?.Get();
             public readonly EntityFactRef<EntityFact> Source;
 
-            public  FakeClassPrerequisiteEntry(
+            public FakeClassPrerequisiteEntry(
                 EntityFact source,
                 BlueprintCharacterClassReference fakeClass,
                 BlueprintCharacterClassReference actualClass,
@@ -71,7 +71,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
                 var feature = prerequisite.OwnerBlueprint as BlueprintFeature;
 
                 if (feature == null) { return 0; }
-                if (prerequisite.CharacterClass != FakeClass) { return 0; } 
+                if (prerequisite.CharacterClass != FakeClass) { return 0; }
                 if (CheckedGroups.Length > 0 && !CheckedGroups.Any(g => feature.HasGroup(g))) { return 0; }
 
                 return (int)(this.Modifier * unit.Progression.GetClassLevel(this.ActualClass)) + this.Summand;

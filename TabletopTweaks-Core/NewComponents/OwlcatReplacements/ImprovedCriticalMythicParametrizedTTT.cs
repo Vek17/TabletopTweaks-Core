@@ -1,15 +1,15 @@
-﻿using Kingmaker.PubSubSystem;
-using Kingmaker.UnitLogic;
-using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.RuleSystem.Rules.Damage;
+﻿using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem;
+using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
 
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [TypeId("5f0b94b3bdaf464bbefc9869e39804c2")]
-    public class ImprovedCriticalMythicParametrizedTTT : UnitFactComponentDelegate, 
-        IInitiatorRulebookHandler<RuleCalculateDamage>, 
-        IRulebookHandler<RuleCalculateDamage>, 
+    public class ImprovedCriticalMythicParametrizedTTT : UnitFactComponentDelegate,
+        IInitiatorRulebookHandler<RuleCalculateDamage>,
+        IRulebookHandler<RuleCalculateDamage>,
         ISubscriber, IInitiatorRulebookSubscriber {
 
         public void OnEventAboutToTrigger(RuleCalculateDamage evt) {

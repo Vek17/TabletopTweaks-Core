@@ -12,7 +12,7 @@ using UnityEngine.Serialization;
 namespace TabletopTweaks.Core.NewComponents {
     [TypeId("c1e7344a9870459a8c9fe2f8f4cf5b5e")]
     [AllowedOn(typeof(BlueprintFeature))]
-    public class ConstrainTargetFeatureRank : UnitFactComponentDelegate<CompanionBoonData>, 
+    public class ConstrainTargetFeatureRank : UnitFactComponentDelegate<CompanionBoonData>,
         IUnitCompleteLevelUpHandler,
         IGlobalSubscriber, ISubscriber {
 

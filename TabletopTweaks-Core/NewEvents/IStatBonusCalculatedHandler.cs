@@ -78,8 +78,7 @@ namespace TabletopTweaks.Core.NewEvents {
             }
 
             [HarmonyPatch(typeof(AddContextStatBonus), nameof(AddContextStatBonus.OnTurnOn))]
-            static class AddContextStatBonus_Idealize_Patch 
-                {
+            static class AddContextStatBonus_Idealize_Patch {
                 static readonly MethodInfo Modifier_AddModifier = AccessTools.Method(typeof(ModifiableValue), "AddModifier", new Type[] {
                 typeof(int),
                 typeof(EntityFactComponent),

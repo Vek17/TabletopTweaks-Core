@@ -1,15 +1,13 @@
-﻿using Kingmaker.Blueprints.Classes.Spells;
+﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Abilities;
-using Kingmaker.UnitLogic.Parts;
 using Kingmaker.UnitLogic;
-using Kingmaker.Utility;
-
-using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.Blueprints;
+using Kingmaker.UnitLogic.Parts;
 
 namespace TabletopTweaks.Core.NewComponents {
     [TypeId("4494a51dbdfe493b9e9a95bafb4b1a4c")]

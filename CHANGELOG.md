@@ -1,3 +1,6 @@
+## Version 0.6.9
+* Support for Arcane Metamastery.
+
 ## Version 0.6.8
 * Fix for some non functional transpilers.
 * Fix for outflank triggers.

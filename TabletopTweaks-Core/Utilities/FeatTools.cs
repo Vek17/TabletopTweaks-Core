@@ -75,7 +75,7 @@ namespace TabletopTweaks.Core.Utilities {
                 Selections.SlayerTalentSelection6,
                 Selections.SlayerTalentSelection2,
             };
-            
+
             RogueTalentSelection.ForEach(selection => selection.AddFeatures(feature));
             if (feature.HasGroup(FeatureGroup.SlayerTalent)) {
                 SlayerTalentSelection.ForEach(selection => selection.AddFeatures(feature));
