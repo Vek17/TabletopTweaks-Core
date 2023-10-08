@@ -1,3 +1,7 @@
+## Version 0.6.10
+* Upgrades to Greater Spell Specilization to better handle abilities with variants.
+* Upgrades to Specific Spell Conversion to handle decorations.
+
 ## Version 0.6.9
 * Support for Arcane Metamastery.
 

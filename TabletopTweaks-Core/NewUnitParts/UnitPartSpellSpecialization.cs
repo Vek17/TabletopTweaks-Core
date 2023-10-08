@@ -67,8 +67,16 @@ namespace TabletopTweaks.Core.NewUnitParts {
             conversionSpells.AddRange(this.Spells.SelectMany(entry => {
                 List<AbilityData> conversions = spellbook.GetKnownSpells(entry.Spell);
                 conversions.AddRange(spellbook.GetCustomSpells(entry.Spell));
+                conversions = conversions.SelectMany(spell => {
+                    var list = new List<AbilityData> {
+                        spell
+                    };
+                    list.AddRange(spell.GetConversions().Where(conversion => conversion.m_ConvertedFrom == spell));
+                    return list;
+                }).ToList();
                 return conversions
                     .Where(spell => spell.SpellLevel <= targetSpellLevel)
+                    .Where(spell => !spell.Blueprint.HasVariants)
                     .ToList();
             }));
             return conversionSpells;

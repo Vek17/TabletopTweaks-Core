@@ -8,6 +8,7 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using System.Collections.Generic;
 using System.Linq;
 using TabletopTweaks.Core.NewEvents;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewComponents {
     [TypeId("b522a7a4b3a44772bc5cfbdd55b1e0f9")]
@@ -20,10 +21,14 @@ namespace TabletopTweaks.Core.NewComponents {
             if (ability.Blueprint != TargetSpell) { return; }
 
             var conversionList = conversions.ToList();
-            RuleCollectMetamagic collectMetamagic = new RuleCollectMetamagic(ability.Spellbook, ability.Blueprint, ability.SpellLevel);
-            Rulebook.Trigger(collectMetamagic);
+            //RuleCollectMetamagic collectMetamagic = new RuleCollectMetamagic(ability.Spellbook, ability.Blueprint, ability.SpellLevel);
+            //Rulebook.Trigger(collectMetamagic);
 
             AbilityData convertedAbility = new AbilityData(ability, ConvertSpell);
+            convertedAbility.TemporaryContext(conversion => {
+                conversion.DecorationBorderNumber = ability.DecorationBorderNumber;
+                conversion.DecorationColorNumber = ability.DecorationColorNumber;
+            });
             conversionList.Add(convertedAbility);
 
             conversions = conversionList;
