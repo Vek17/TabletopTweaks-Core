@@ -37,7 +37,6 @@ namespace TabletopTweaks.Core.NewComponents {
         }
 
         public void OnEventDidTrigger(RulePrepareDamage evt) {
-            throw new System.NotImplementedException();
         }
 
         private bool IsSuitable(RuleAttackWithWeapon evt) {
