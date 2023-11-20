@@ -18,7 +18,7 @@ namespace TabletopTweaks.Core.NewComponents {
         public override void OnTurnOn() {
             base.OnTurnOn();
             if (Owner.HasFact(CheckedFact)) {
-                base.Data.LimbIndex = base.Owner.Body.AddAdditionalLimb(this.Weapon, false);
+                base.Data.LimbIndex = base.Owner.Body.AddAdditionalLimb(this.Weapon, base.Fact, false);
             }
         }
 

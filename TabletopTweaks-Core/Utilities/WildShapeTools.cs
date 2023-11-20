@@ -72,6 +72,15 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintBuffReference ShifterWildShapeWolverineBuff => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("350ba136f5d04e588f1a6e3ba22233cb");
             public static BlueprintBuffReference ShifterWildShapeWolverineBuff15 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("cd5f29d5f50a43f9a2d5f3debce86477");
             public static BlueprintBuffReference ShifterWildShapeWolverineBuff8 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("12272456258f4334a11b87610cf33abd");
+            public static BlueprintBuffReference ShifterWildShapeWereRatBuff => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("90c1e1f586bd4e448a6190e50820726e");
+            public static BlueprintBuffReference ShifterWildShapeWereRatBuff8 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("b112b566d38e45cb8c5b8d6310057d08");
+            public static BlueprintBuffReference ShifterWildShapeWereRatBuff15 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("9261713e33624de599d6183d6b7cf2e4");
+            public static BlueprintBuffReference ShifterWildShapeWereTigerBuff => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("7ee57fd97181455a89ecf57421cccb74");
+            public static BlueprintBuffReference ShifterWildShapeWereTigerBuff8 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("072824894a1e4dce933febb58c3e67ea");
+            public static BlueprintBuffReference ShifterWildShapeWereTigerBuff15 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("1bc5f96600c74a079c8a0c6dafeb3320");
+            public static BlueprintBuffReference ShifterWildShapeWereWolfBuff => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("93c43b7a806b410caaeed42eb0bf6a61");
+            public static BlueprintBuffReference ShifterWildShapeWereWolfBuff8 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("f7ddb0c090ae46c89774780c7a7968c7");
+            public static BlueprintBuffReference ShifterWildShapeWereWolfBuff15 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("34273feba56448bc968dd5482cdfffc7");
             public static BlueprintBuffReference WildShapeElementalAirHugeBuff => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("eb52d24d6f60fc742b32fe943b919180");
             public static BlueprintBuffReference WildShapeElementalAirLargeBuff => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("814bc75e74f969641bf110addf076ff9");
             public static BlueprintBuffReference WildShapeElementalAirMediumBuff => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("65fdf187fea97c94b9cf4ff6746901a6");
@@ -162,6 +171,15 @@ namespace TabletopTweaks.Core.Utilities {
                 ShifterWildShapeWolverineBuff,
                 ShifterWildShapeWolverineBuff15,
                 ShifterWildShapeWolverineBuff8,
+                ShifterWildShapeWereRatBuff,
+                ShifterWildShapeWereRatBuff8,
+                ShifterWildShapeWereRatBuff15,
+                ShifterWildShapeWereTigerBuff,
+                ShifterWildShapeWereTigerBuff8,
+                ShifterWildShapeWereTigerBuff15,
+                ShifterWildShapeWereWolfBuff,
+                ShifterWildShapeWereWolfBuff8,
+                ShifterWildShapeWereWolfBuff15,
                 WildShapeElementalAirHugeBuff,
                 WildShapeElementalAirLargeBuff,
                 WildShapeElementalAirMediumBuff,
