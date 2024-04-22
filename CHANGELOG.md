@@ -1,3 +1,6 @@
+## Version 0.7.2
+* Fixed issue with OutflankProvokeAttackTTT generating oppertunity attacks for the wrong character.
+
 ## Version 0.7.1
 * Upgrades to Greater Spell Specilization to better handle abilities with variants.
 * Upgrades to Specific Spell Conversion to handle decorations.
