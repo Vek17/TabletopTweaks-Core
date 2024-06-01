@@ -101,10 +101,10 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance 
         public override void ApplyValidation(ValidationContext context, int parentIndex) {
             base.ApplyValidation(context, parentIndex);
             if (BypassedByWeaponType && !(bool)(SimpleBlueprint)WeaponType)
-                context.AddError("WeaponType is missing!");
+                context.AddError(ErrorLevel.Normal, "WeaponType is missing!");
             if (!BypassedByForm || Form != 0)
                 return;
-            context.AddError("Physical damage Form is missing");
+            context.AddError(ErrorLevel.Normal, "Physical damage Form is missing");
         }
 
         protected override void AdditionalInitFromVanillaDamageResistance(Kingmaker.UnitLogic.FactLogic.AddDamageResistanceBase vanillaResistance) {

@@ -26,7 +26,7 @@ namespace TabletopTweaks.Core.NewComponents {
         public override void ApplyValidation(ValidationContext context, int parentIndex) {
             base.ApplyValidation(context, parentIndex);
             if (this.Variants.Length < 2) {
-                context.AddError("Variants count less than 2", Array.Empty<object>());
+                context.AddError(ErrorLevel.Blocker, "Variants count less than 2", Array.Empty<object>());
             }
         }
 

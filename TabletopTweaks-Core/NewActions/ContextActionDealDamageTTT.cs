@@ -200,7 +200,7 @@ namespace TabletopTweaks.Core.NewActions {
 
         public void Validate(ValidationContext context, int parentIndex) {
             if (IsAbilityDamage && !AbilityType.IsAttribute()) {
-                context.AddError("Can't deal damage to stat {0}", new object[]
+                context.AddError(ErrorLevel.Normal, "Can't deal damage to stat {0}", new object[]
                 {
                     AbilityType
                 });

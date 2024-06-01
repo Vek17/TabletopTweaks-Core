@@ -53,16 +53,53 @@ namespace TabletopTweaks.Core.Utilities {
                 }
             }
         }
+        public static void RemoveAsFeat(params BlueprintFeature[] features) {
+            foreach (var feature in features) {
+                Selections.BasicFeatSelection.RemoveFeatures(features);
+                Selections.ExtraFeatMythicFeat.RemoveFeatures(features);
+                Selections.FeatSelections
+                    .Where(selection => feature.HasGroup(selection.Group) || feature.HasGroup(selection.Group2))
+                    .ForEach(selection => selection.RemoveFeatures(feature));
+                ConfigureLichSkeltalSelections(feature);
+            }
+            void ConfigureLichSkeltalSelections(BlueprintFeature feature) {
+                var LichSkeletalCombatParametrized = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("b8a52bbe63e7d6b48b002ee474e90fdd");
+                var LichSkeletalTeamworkParametrized = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("b042ff9901e7b104eac92c05aa39957a");
+                var LichSkeletalWeaponParametrized = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("90f171fadf81f164d9828ce05441e617");
+
+                if (feature.HasGroup(FeatureGroup.CombatFeat)) {
+                    LichSkeletalCombatParametrized.BlueprintParameterVariants = LichSkeletalCombatParametrized.BlueprintParameterVariants
+                        .RemoveFromArray(feature.ToReference<AnyBlueprintReference>());
+                }
+                if (feature.HasGroup(FeatureGroup.TeamworkFeat)) {
+                    LichSkeletalTeamworkParametrized.BlueprintParameterVariants = LichSkeletalTeamworkParametrized.BlueprintParameterVariants
+                        .RemoveFromArray(feature.ToReference<AnyBlueprintReference>());
+                }
+            }
+        }
         public static void AddAsMetamagicFeat(BlueprintFeature feature) {
             var MetamagicSelections = new BlueprintFeatureSelection[] {
                 Selections.ArcaneRiderFeatSelection,
                 Selections.SeekerFeatSelection,
                 Selections.ShamanHexSecretSelection,
                 Selections.SkaldFeatSelection,
-                Selections.SorcererBonusFeat
+                Selections.SorcererBonusFeat,
+                Selections.WizardFeatSelection
             };
             AddAsFeat(feature);
             MetamagicSelections.ForEach(selection => selection.AddFeatures(feature));
+        }
+        public static void RemoveAsMetamagicFeat(BlueprintFeature feature) {
+            var MetamagicSelections = new BlueprintFeatureSelection[] {
+                Selections.ArcaneRiderFeatSelection,
+                Selections.SeekerFeatSelection,
+                Selections.ShamanHexSecretSelection,
+                Selections.SkaldFeatSelection,
+                Selections.SorcererBonusFeat,
+                Selections.WizardFeatSelection
+            };
+            RemoveAsFeat(feature);
+            MetamagicSelections.ForEach(selection => selection.RemoveFeatures(feature));
         }
         public static void AddAsRogueTalent(BlueprintFeature feature) {
             var RogueTalentSelection = new BlueprintFeatureSelection[] {
