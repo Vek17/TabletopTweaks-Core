@@ -105,6 +105,12 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
                 case Metamagic.Selective:
                     if (features.FavoriteMetamagicSelective) { return metamagic.DefaultCost() - 1; }
                     break;
+                case Metamagic.Intensified:
+                    if (features.FavoriteMetamagicIntensified) { return metamagic.DefaultCost() - 1; }
+                    break;
+                case Metamagic.Piercing:
+                    if (features.FavoriteMetamagicPiercing) { return metamagic.DefaultCost() - 1; }
+                    break;
             }
             if (MetamagicExtention.HasFavoriteMetamagic(unit, metamagic)) {
                 return metamagic.DefaultCost() - MetamagicExtention.GetFavoriteMetamagicAdjustment(unit, metamagic); ;

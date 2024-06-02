@@ -36,7 +36,8 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             Persistent = 1 << 7,
             Selective = 1 << 8,
             Bolstered = 1 << 9,
-            // Unused Buffer Space
+            //Piercing = 1 << 10,
+            //Intensified = 1 << 11,
             Intensified = 1 << 12,
             Dazing = 1 << 13,
             //Unused Buffer Space
