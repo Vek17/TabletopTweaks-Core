@@ -221,6 +221,7 @@
     <Compile Include="NewUnitParts\UnitPartFakeClassLevels.cs" />
     <Compile Include="NewUnitParts\UnitPartIgnoreBuffDescriptorImmunity.cs" />
     <Compile Include="NewUnitParts\UnitPartSplitHex.cs" />
+    <Compile Include="Utilities\DLCTools.cs" />
     <Compile Include="Utilities\VenderTools.cs" />
     <Compile Include="Utilities\WildShapeTools.cs" />
     <EmbeddedResource Include="Config\Blueprints.json" />

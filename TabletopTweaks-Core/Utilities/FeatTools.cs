@@ -84,7 +84,9 @@ namespace TabletopTweaks.Core.Utilities {
                 Selections.ShamanHexSecretSelection,
                 Selections.SkaldFeatSelection,
                 Selections.SorcererBonusFeat,
-                Selections.WizardFeatSelection
+                Selections.WizardFeatSelection,
+                Selections.LoremasterWizardFeatSelection,
+                Selections.MagusFeatSelection
             };
             AddAsFeat(feature);
             MetamagicSelections.ForEach(selection => selection.AddFeatures(feature));
@@ -96,7 +98,9 @@ namespace TabletopTweaks.Core.Utilities {
                 Selections.ShamanHexSecretSelection,
                 Selections.SkaldFeatSelection,
                 Selections.SorcererBonusFeat,
-                Selections.WizardFeatSelection
+                Selections.WizardFeatSelection,
+                Selections.LoremasterWizardFeatSelection,
+                Selections.MagusFeatSelection,
             };
             RemoveAsFeat(feature);
             MetamagicSelections.ForEach(selection => selection.RemoveFeatures(feature));
