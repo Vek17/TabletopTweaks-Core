@@ -61,6 +61,12 @@ namespace TabletopTweaks.Core.Utilities {
                     .Where(selection => feature.HasGroup(selection.Group) || feature.HasGroup(selection.Group2))
                     .ForEach(selection => selection.RemoveFeatures(feature));
                 ConfigureLichSkeltalSelections(feature);
+                feature.GetComponents<PrerequisiteFeature>().ForEach(c => {
+                    c.Feature.IsPrerequisiteFor.RemoveAll(r => r.deserializedGuid == feature.AssetGuid);
+                });
+                feature.GetComponents<PrerequisiteFeaturesFromList>().ForEach(c => {
+                    c.Features.ForEach(f => f.IsPrerequisiteFor.RemoveAll(r => r.deserializedGuid == feature.AssetGuid));
+                });
             }
             void ConfigureLichSkeltalSelections(BlueprintFeature feature) {
                 var LichSkeletalCombatParametrized = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("b8a52bbe63e7d6b48b002ee474e90fdd");
@@ -109,12 +115,14 @@ namespace TabletopTweaks.Core.Utilities {
             var RogueTalentSelection = new BlueprintFeatureSelection[] {
                 Selections.SylvanTricksterTalentSelection,
                 Selections.RogueTalentSelection,
-                Selections.LoremasterRogueTalentSelection
+                Selections.LoremasterRogueTalentSelection,
+                Selections.ExtraRogueTalentSelection
             };
             var SlayerTalentSelection = new BlueprintFeatureSelection[] {
                 Selections.SlayerTalentSelection10,
                 Selections.SlayerTalentSelection6,
                 Selections.SlayerTalentSelection2,
+                Selections.ExtraSlayerTalentSelection
             };
 
             RogueTalentSelection.ForEach(selection => selection.AddFeatures(feature));
@@ -136,7 +144,8 @@ namespace TabletopTweaks.Core.Utilities {
         public static void AddAsArcanistExploit(BlueprintFeature feature) {
             var TalentSelections = new BlueprintFeatureSelection[] {
                 Selections.ExploiterExploitSelection,
-                Selections.ArcanistExploitSelection
+                Selections.ArcanistExploitSelection,
+                Selections.ExtraArcanistExploitSelection
             };
             TalentSelections.ForEach(selection => selection.AddFeatures(feature));
         }
@@ -160,7 +169,8 @@ namespace TabletopTweaks.Core.Utilities {
             var ArcanaSelections = new BlueprintFeatureSelection[] {
                 Selections.MagusArcanaSelection,
                 Selections.HexcrafterMagusHexArcanaSelection,
-                Selections.EldritchMagusArcanaSelection
+                Selections.EldritchMagusArcanaSelection,
+                Selections.ExtraArcanaSelection
             };
             ArcanaSelections.Where(selection => !ignore?.Contains(selection) ?? true).ForEach(selection => selection.AddFeatures(feature));
         }
@@ -1034,7 +1044,15 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintFeatureSelection ZenArcherBonusFeatSelectionLevel6 => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("2a1eec5b782182f4cafbd20fcd069692");
             public static BlueprintFeatureSelection ZenArcherPointBlankMasterSelection => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("50e6aa55653bc014aafe556aad79e5c0");
             public static BlueprintFeatureSelection ZenArcherWayOfTheBowSelection => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("53420038fdc76944695bf927f7bcd51c");
-
+            public static BlueprintFeatureSelection ExtraDiscoverySelection => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("537965879fc24ad3948aaffa7a1a3a66");
+            public static BlueprintFeatureSelection ExtraMercySelection => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("8a49abed5be9473da1e1fd1e2457562e");
+            public static BlueprintFeatureSelection ExtraVivsectionistDiscoverySelection => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("10287e7b8cee479e82ea88bd6d2d4dae");
+            public static BlueprintFeatureSelection ExtraShamanHexSelection => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("d0b4c8245d504b8c9c6d3fccc1f8c5b6");
+            public static BlueprintFeatureSelection ExtraWitchHexSelection => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("b6054088b4ab4be286724127cbf48b35");
+            public static BlueprintFeatureSelection ExtraRogueTalentSelection => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("14d9089df87a43b696fa9451ca2f0a12");
+            public static BlueprintFeatureSelection ExtraSlayerTalentSelection => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("53f7237f5b1447bb851ba68045a00e41");
+            public static BlueprintFeatureSelection ExtraArcanistExploitSelection => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("0a7065e13f4449fa81bfb33199bf7f6a");
+            public static BlueprintFeatureSelection ExtraArcanaSelection => BlueprintTools.GetBlueprint<BlueprintFeatureSelection>("00727883edf145e2a6bce9ad176ecfd8");
 
 
             public static void AddModFeatureSelection(BlueprintFeatureSelection selection) {
@@ -1444,7 +1462,16 @@ namespace TabletopTweaks.Core.Utilities {
                 ZenArcherBonusFeatSelectionLevel10,
                 ZenArcherBonusFeatSelectionLevel6,
                 ZenArcherPointBlankMasterSelection,
-                ZenArcherWayOfTheBowSelection
+                ZenArcherWayOfTheBowSelection,
+                ExtraDiscoverySelection,
+                ExtraVivsectionistDiscoverySelection,
+                ExtraMercySelection,
+                ExtraShamanHexSelection,
+                ExtraWitchHexSelection,
+                ExtraRogueTalentSelection,
+                ExtraSlayerTalentSelection,
+                ExtraArcanistExploitSelection,
+                ExtraArcanaSelection
             };
             private static readonly HashSet<BlueprintFeatureSelection> FeatSelectionSet = new HashSet<BlueprintFeatureSelection>() {
                 ArcaneRiderFeatSelection,
