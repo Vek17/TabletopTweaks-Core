@@ -30,15 +30,34 @@ namespace TabletopTweaks.Core.NewComponents {
             var conversionList = conversions.ToList();
             var MatchesDescriptors = CheckDescriptors && Descriptors.HasAnyFlag(ability.Blueprint.SpellDescriptor);
             if (Abilities.Contains(ability.Blueprint) || (MatchesDescriptors && (RequireAoE ? ability.IsAOE : !ability.IsAOE))) {
-                CustomSpeedAbilityData swiftAbility = new CustomSpeedAbilityData(ability, null) {
-                    MetamagicData = ability.MetamagicData ?? new MetamagicData(),
-                    OverridenResourceLogic = new CustomSpeedResourceOverride() {
-                        m_RequiredResource = ability.ResourceLogic.RequiredResource.ToReference<BlueprintAbilityResourceReference>(),
-                        Multiplier = ResourceMultiplier
-                    },
-                    CustomActionType = ActionType
-                };
-                AbilityData.AddAbilityUnique(ref conversionList, swiftAbility);
+                if (ApplyToVariants && ability.Blueprint.HasVariants) {
+                    Main.TTTContext.Logger.Log("Entered Swift Conversion");
+                    foreach (var variant in ability.Blueprint.AbilityVariants.Variants) {
+                        Main.TTTContext.Logger.Log("Hit Variant");
+                        var variantAbilityData = conversions.First(c => c.Blueprint == variant);
+                        if (variantAbilityData == null) { continue; }
+                        CustomSpeedAbilityData swiftAbility = new CustomSpeedAbilityData(variantAbilityData, null) {
+                            MetamagicData = variantAbilityData.MetamagicData ?? new MetamagicData(),
+                            OverridenResourceLogic = new CustomSpeedResourceOverride() {
+                                m_RequiredResource = variantAbilityData.ResourceLogic.RequiredResource.ToReference<BlueprintAbilityResourceReference>(),
+                                Multiplier = ResourceMultiplier
+                            },
+                            CustomActionType = ActionType
+                        };
+                        AbilityData.AddAbilityUnique(ref conversionList, swiftAbility);
+                        Main.TTTContext.Logger.Log("Added Swift Conversion");
+                    }
+                } else {
+                    CustomSpeedAbilityData swiftAbility = new CustomSpeedAbilityData(ability, null) {
+                        MetamagicData = ability.MetamagicData ?? new MetamagicData(),
+                        OverridenResourceLogic = new CustomSpeedResourceOverride() {
+                            m_RequiredResource = ability.ResourceLogic.RequiredResource.ToReference<BlueprintAbilityResourceReference>(),
+                            Multiplier = ResourceMultiplier
+                        },
+                        CustomActionType = ActionType
+                    };
+                    AbilityData.AddAbilityUnique(ref conversionList, swiftAbility);
+                }
                 conversions = conversionList;
             }
         }
@@ -49,6 +68,7 @@ namespace TabletopTweaks.Core.NewComponents {
         public SpellDescriptorWrapper Descriptors;
         public bool CheckDescriptors;
         public bool RequireAoE;
+        public bool ApplyToVariants;
 
         [HarmonyPatch(typeof(AbilityData), nameof(AbilityData.RuntimeActionType), MethodType.Getter)]
         static class AbilityData_RuntimeActionType_QuickChannel_Patch {
