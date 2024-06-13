@@ -11,6 +11,7 @@ using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewActions {
     [TypeId("c4530225242448a3a56a27276c2e46ed")]
@@ -29,6 +30,13 @@ namespace TabletopTweaks.Core.NewActions {
             var Ability = base.AbilityContext?.Ability;
             if (Ability == null) {
                 return;
+            }
+            //Special Handling for Magic Deciever Spells
+            if (Ability.MagicHackData != null) {
+                var SpellBlueprint = Ability.MagicHackData.Spell1.FlattenAllActions().OfType<ContextDuplicateCastSpellOnNewTarget>().Any() ?
+                    Ability.MagicHackData.Spell1 : Ability.MagicHackData.Spell2;
+                if (Ability.Spellbook == null) { return; }
+                Ability = Ability.Spellbook.GetKnownSpell(SpellBlueprint);
             }
             //List<UnitEntityData> list = EntityBoundsHelper.FindUnitsInRange(base.Target.Point, this.Radius.Meters);
             List<UnitEntityData> list = GameHelper.GetTargetsAround(base.Target.Point, this.Radius.Meters, checkLOS: true, includeDead: false).ToList();
