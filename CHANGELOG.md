@@ -1,5 +1,6 @@
 ## Version 0.7.3
 * Expanded Feat tools.
+* Support fo 2.3.0
 
 ## Version 0.7.2
 * Fixed issue with OutflankProvokeAttackTTT generating oppertunity attacks for the wrong character.
