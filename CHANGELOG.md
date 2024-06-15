@@ -1,4 +1,7 @@
 ## Version 0.7.3
+* Added MasterSimplePropertyGetter
+
+## Version 0.7.3
 * Expanded Feat tools.
 * Support fo 2.3.0
 

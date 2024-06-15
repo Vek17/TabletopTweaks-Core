@@ -36,7 +36,8 @@ namespace TabletopTweaks.Core.NewComponents.Properties {
             public ComplexCustomProperty() { }
 
             public int Calculate(UnitEntityData unit) {
-                return Bonus + Mathf.FloorToInt((Numerator / Denominator) * Property.GetBaseValue(unit));
+                int baseValue = Bonus + Mathf.FloorToInt((Numerator / Denominator) * Property.GetValue(unit));
+                return baseValue;
             }
 
             public PropertyValueGetter Property;

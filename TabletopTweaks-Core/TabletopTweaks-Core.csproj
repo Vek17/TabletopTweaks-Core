@@ -208,6 +208,7 @@
     <Compile Include="NewComponents\PolymorphDamagePropertyTransfer.cs" />
     <Compile Include="NewComponents\Prerequisites\PrerequisiteDeityAlignment.cs" />
     <Compile Include="NewComponents\Properties\BuffCountGetter.cs" />
+    <Compile Include="NewComponents\Properties\MasterSimplePropertyGetter.cs" />
     <Compile Include="NewComponents\SetPetMinimumStat.cs" />
     <Compile Include="NewComponents\SpellDescriptorImmunityIgnore.cs" />
     <Compile Include="NewComponents\WeaponChangeSizeParametrized.cs" />
