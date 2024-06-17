@@ -1,5 +1,7 @@
-## Version 0.7.3
+## Version 0.7.4
 * Added MasterSimplePropertyGetter
+* Added BonusStatDamageMultiplerReplacement
+* Added SecondaryWeaponOverride
 
 ## Version 0.7.3
 * Expanded Feat tools.
