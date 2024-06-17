@@ -1,5 +1,6 @@
 ﻿using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Designers;
+using Kingmaker.EntitySystem;
 using Kingmaker.Enums;
 using Kingmaker.Items;
 using Kingmaker.Items.Slots;
@@ -7,6 +8,8 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Buffs;
 using System;
+using System.Linq;
+using TabletopTweaks.Core.NewRules;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     /// <summary>
@@ -14,12 +17,11 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     /// </summary>
     [TypeId("e90c706b6fd84f90b4dcd35ef2699483")]
     public class ArmoredMightComponent : UnitFactComponentDelegate,
-        IUnitActiveEquipmentSetHandler,
-        IGlobalSubscriber,
-        ISubscriber,
-        IUnitEquipmentHandler,
-        IUnitBuffHandler {
+        IInitiatorRulebookHandler<RuleCalculateArmorAC>,
+        IInitiatorRulebookSubscriber,
+        ISubscriber {
 
+        /*
         public override void OnTurnOn() {
             base.OnTurnOn();
             UpdateModifier();
@@ -48,7 +50,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         private void ActivateModifier() {
             if (Owner.Body.Armor.HasArmor && Owner.Body.Armor.Armor.Blueprint.IsArmor) {
-                Owner.Stats.AC.AddModifierUnique(CalculateModifier(), base.Runtime, ModifierDescriptor.ArmorFocus);
+                Owner.Stats.AC.AddModifierUnique(CalculateModifier(), base.Runtime, Descriptor);
             }
         }
 
@@ -58,17 +60,41 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         private int CalculateModifier() {
             int itemEnhancementBonus = GameHelper.GetItemEnhancementBonus(Owner.Body.Armor.Armor);
-            int mythicBonus = (Owner.Body.Armor.Armor.Blueprint.ArmorBonus + itemEnhancementBonus) / 2;
+            int focusBonus = Owner.Stats.AC.Modifiers
+                .Where(m => m.Source != this.Fact)
+                .Where(m => m.ModDescriptor == ModifierDescriptor.ArmorFocus)
+                .Sum(m => m.ModValue);
+            int mythicBonus = (Owner.Body.Armor.Armor.Blueprint.ArmorBonus + itemEnhancementBonus + focusBonus) / 2;
             int limit = (Owner.Progression.MythicLevel + 1) / 2;
             return Math.Min(mythicBonus, limit);
         }
 
-        public void HandleBuffDidAdded(Buff buff) {
+        public void HandleUnitGainFact(EntityFact fact) {
             UpdateModifier();
         }
 
-        public void HandleBuffDidRemoved(Buff buff) {
+        public void HandleUnitLostFact(EntityFact fact) {
             UpdateModifier();
+        }
+
+        public ModifierDescriptor Descriptor = ModifierDescriptor.ArmorFocus;
+        */
+
+        public override void OnTurnOn() {
+            base.OnTurnOn();
+            base.Owner.Body.Armor?.Armor?.RecalculateStats();
+        }
+
+        public override void OnTurnOff() {
+            base.OnTurnOff();
+            base.Owner.Body.Armor?.Armor?.RecalculateStats();
+        }
+
+        public void OnEventAboutToTrigger(RuleCalculateArmorAC evt) {
+            evt.EnableArmoredMight();
+        }
+
+        public void OnEventDidTrigger(RuleCalculateArmorAC evt) {
         }
     }
 }

@@ -187,6 +187,7 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintSpellbook LichSkeletalMagusSpellbookMinor => BlueprintTools.GetBlueprint<BlueprintSpellbook>("c9ff1f4b3b26dcb47ba75b218ccadd23");
             public static BlueprintSpellbook LichSpellbook => BlueprintTools.GetBlueprint<BlueprintSpellbook>("08a80074263809c4b9616aac05af90ae");
             public static BlueprintSpellbook MagusSpellbook => BlueprintTools.GetBlueprint<BlueprintSpellbook>("5d8d04e76dff6c5439de99af0d57be63");
+            public static BlueprintSpellbook MagicDeceiverSpellbook => BlueprintTools.GetBlueprint<BlueprintSpellbook>("587066af76a74f47a904bb017697ba08");
             public static BlueprintSpellbook MasterSpySpellbook => BlueprintTools.GetBlueprint<BlueprintSpellbook>("12bfcf91d5416b047a2a9110ff8968c5");
             public static BlueprintSpellbook MonsterMythicSpellbook => BlueprintTools.GetBlueprint<BlueprintSpellbook>("7425972fc2e2f294a8f8b56568337d00");
             public static BlueprintSpellbook NatureMageSpellbook => BlueprintTools.GetBlueprint<BlueprintSpellbook>("3ed7e38dc8134af28e1a2b105f74fb7b");
@@ -243,6 +244,7 @@ namespace TabletopTweaks.Core.Utilities {
                 LichSkeletalInquisitorMinorSpellbook,
                 LichSkeletalMagusSpellbookMinor,
                 LichSpellbook,
+                MagicDeceiverSpellbook,
                 MagusSpellbook,
                 MasterSpySpellbook,
                 MonsterMythicSpellbook,
@@ -320,6 +322,7 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintSpellList LifeSpiritSpellList => BlueprintTools.GetBlueprint<BlueprintSpellList>("1e6ea0d1d642c8c43ab7e72dd8f607a9");
             public static BlueprintSpellList LuckDomainSpellList => BlueprintTools.GetBlueprint<BlueprintSpellList>("9e756552e9b05ce459feac658dd2d8fb");
             public static BlueprintSpellList MadnessDomainSpellList => BlueprintTools.GetBlueprint<BlueprintSpellList>("1d1638d47e7f8404baeed23bc35ec2f2");
+            public static BlueprintSpellList MagicDeceiverSpellList => BlueprintTools.GetBlueprint<BlueprintSpellList>("cf20c10b131344c1a61b75e9cc4a4c13");
             public static BlueprintSpellList MagicDomainSpellList => BlueprintTools.GetBlueprint<BlueprintSpellList>("f997258a28a9e5f4192d973433edec5f");
             public static BlueprintSpellList MagusSpellList => BlueprintTools.GetBlueprint<BlueprintSpellList>("4d72e1e7bd6bc4f4caaea7aa43a14639");
             public static BlueprintSpellList MonsterEmptySpellllist => BlueprintTools.GetBlueprint<BlueprintSpellList>("9e4658592e5f66146a6826120e21ed26");
@@ -411,6 +414,7 @@ namespace TabletopTweaks.Core.Utilities {
                 LifeSpiritSpellList,
                 LuckDomainSpellList,
                 MadnessDomainSpellList,
+                MagicDeceiverSpellList,
                 MagicDomainSpellList,
                 MagusSpellList,
                 MonsterEmptySpellllist,
