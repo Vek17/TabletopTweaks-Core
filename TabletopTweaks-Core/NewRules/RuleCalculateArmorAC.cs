@@ -168,7 +168,7 @@ namespace TabletopTweaks.Core.NewRules {
             }
 
             static private void AddEnhancement(TooltipTemplateItem __instance, RuleCalculateArmorAC rule, List<ITooltipBrick> bricks) {
-                string text = UIUtility.AddSign(Math.Max(GameHelper.GetItemEnhancementBonus(rule.ArmorItem), GetBlueprintEnhancement(rule.ArmorItem)));
+                string text = UIUtility.AddSign(GameHelper.GetItemEnhancementBonus(rule.ArmorItem));
                 if (string.IsNullOrEmpty(text)) {
                     return;
                 }
@@ -188,27 +188,6 @@ namespace TabletopTweaks.Core.NewRules {
                     string text = UIUtility.AddSign(rule.ArmoredMightBonus);
                     bricks.Add(new TooltipBrickValueStatFormula(text, enhancementTextSymbol, rule.ArmoredMight?.Blueprint?.Name, TooltipBrickElementType.Small));
                 }
-            }
-            static private int GetBlueprintEnhancement(ItemEntityArmor armor) {
-                var blueprint = armor?.Blueprint;
-                if (blueprint != null) {
-                    int? num = null;
-                    foreach (BlueprintItemEnchantment itemEnchantment in blueprint.Enchantments) {
-                        ArmorEnhancementBonus component = itemEnchantment.GetComponent<ArmorEnhancementBonus>();
-                        if (component != null) {
-                            if (num != null) {
-                                int enhancementValue = component.EnhancementValue;
-                                int? num2 = num;
-                                if (!(enhancementValue > num2.GetValueOrDefault() & num2 != null)) {
-                                    continue;
-                                }
-                            }
-                            num = new int?(component.EnhancementValue);
-                        }
-                    }
-                    return num.GetValueOrDefault();
-                }
-                return 0;
             }
         }
     }  
