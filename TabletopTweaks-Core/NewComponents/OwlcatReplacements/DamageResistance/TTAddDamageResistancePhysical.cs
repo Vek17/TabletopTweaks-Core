@@ -125,6 +125,7 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance 
                 BypassedByMeleeWeapon = vanillaPhysicalResistance.BypassedByMeleeWeapon;
                 BypassedByEpic = vanillaPhysicalResistance.BypassedByEpic;
                 m_CheckedFactMythic = vanillaPhysicalResistance.m_CheckedFactMythic;
+                AddToAllStacks = vanillaPhysicalResistance.m_IsStackable;
             }
         }
     }

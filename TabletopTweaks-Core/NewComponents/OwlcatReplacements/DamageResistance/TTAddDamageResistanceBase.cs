@@ -107,7 +107,6 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements.DamageResistance 
             m_PrototypeLink = vanillaResistance.m_PrototypeLink;
             OwnerBlueprint = vanillaResistance.OwnerBlueprint;
             Disabled = vanillaResistance.Disabled;
-            AddToAllStacks = vanillaResistance.IsStackable;
             // AddDamageResistanceBase
             Value = vanillaResistance.Value;
             UsePool = vanillaResistance.UsePool;

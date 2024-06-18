@@ -2,7 +2,6 @@
 using JetBrains.Annotations;
 using Kingmaker;
 using Kingmaker.Blueprints.Facts;
-using Kingmaker.Blueprints.Items.Armors;
 using Kingmaker.Blueprints.Root;
 using Kingmaker.Designers;
 using Kingmaker.EntitySystem.Entities;
@@ -10,7 +9,6 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.Items;
 using Kingmaker.RuleSystem;
-using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UI.Common;
 using Kingmaker.UI.MVVM._VM.Tooltip.Bricks;
 using Kingmaker.UI.MVVM._VM.Tooltip.Templates;
@@ -24,6 +22,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
+using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewRules {
     public class RuleCalculateArmorAC : RulebookEvent {
@@ -58,128 +57,140 @@ namespace TabletopTweaks.Core.NewRules {
 
         private class CalculateArmor {
             [HarmonyPatch(typeof(ItemEntityArmor), nameof(ItemEntityArmor.RecalculateStats))]
-            static class ItemEntityArmor_RecalculateStats_ICalculateArmorStatsHandler_Patch {
+            static class ItemEntityArmor_RecalculateStats_RuleCalculateArmorAC_Patch {
 
-                static readonly MethodInfo EventTriggers_AddEvent = AccessTools.Method(
-                    typeof(CalculateArmor),
-                    nameof(CalculateArmor.CallEvent),
+                static readonly MethodInfo CalculateArmor_AddArmorACBonuses = AccessTools.Method(
+                    typeof(CalculateArmor.ItemEntityArmor_RecalculateStats_RuleCalculateArmorAC_Patch),
+                    nameof(CalculateArmor.ItemEntityArmor_RecalculateStats_RuleCalculateArmorAC_Patch.AddArmorACBonuses),
                     new Type[] { typeof(ItemEntityArmor) }
+                );
+                static readonly MethodInfo ItemEntityArmor_AddModifier = AccessTools.Method(
+                    typeof(ItemEntityArmor),
+                    nameof(ItemEntityArmor.AddModifier),
+                    new Type[] { 
+                        typeof(ModifiableValue),
+                        typeof(int),
+                        typeof(ModifierDescriptor),
+                    }
+                );
+                static readonly MethodInfo GameHelper_GetItemEnhancementBonus = AccessTools.Method(
+                    typeof(GameHelper),
+                    nameof(GameHelper.GetItemEnhancementBonus),
+                    new Type[] {
+                        typeof(ItemEntity)
+                    }
                 );
                 static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
 
-                    var codes = new List<CodeInstruction>();
+                    var codes = new List<CodeInstruction>(instructions);
+                    var target = FindInsertionTarget(codes);
+
                     //Utilities.ILUtils.LogIL(TTTContext, codes);
-                    codes.AddRange(new CodeInstruction[] {
-                        new CodeInstruction(OpCodes.Ldarg_0),
-                        new CodeInstruction(OpCodes.Call, EventTriggers_AddEvent)
-                    });
+                    for (int i = target.Index; i <= target.End; i++) {
+                        codes[i] = new CodeInstruction(OpCodes.Nop);
+                    }
+                    codes[target.Index] = new CodeInstruction(OpCodes.Call, CalculateArmor_AddArmorACBonuses);
                     //Utilities.ILUtils.LogIL(TTTContext, codes);
                     return codes.AsEnumerable();
                 }
-            }
 
-            private static void CallEvent(ItemEntityArmor itemArmor) {
-                if (itemArmor.m_RecalculateInProgress) {
-                    return;
-                }
-                if (itemArmor.Wielder == null) {
-                    return;
-                }
-                itemArmor.m_RecalculateInProgress = true;
-                List<ModifiableValue.Modifier> modifiers = itemArmor.m_Modifiers;
-                if (modifiers != null) {
-                    modifiers.ForEach(delegate (ModifiableValue.Modifier m) {
-                        ModifiableValue appliedTo = m.AppliedTo;
-                        if (((appliedTo != null) ? appliedTo.Owner : null) != null) {
-                            m.Remove();
+                private static TargetInfo FindInsertionTarget(List<CodeInstruction> codes) {
+                    var info = new TargetInfo(0, -1);
+                    for (int i = 0; i < codes.Count; i++) {
+                        if (codes[i].opcode == OpCodes.Call && codes[i].Calls(GameHelper_GetItemEnhancementBonus)) {
+                            info.Index = i;
+                            break;
                         }
-                    });
+                    }
+                    var firstModifier = false;
+                    for (int i = info.Index; i < codes.Count; i++) {
+                        if (codes[i].opcode == OpCodes.Call && codes[i].Calls(ItemEntityArmor_AddModifier)) {
+                            if (!firstModifier) { 
+                                firstModifier = true; 
+                                continue; }
+                            info.End = i;
+                            break;
+                        }
+                    }
+                    if (info.End == -1 || info.Index == 0) {
+                        Main.TTTContext.Logger.Log("RuleCalculateArmorAC: COULD NOT FIND TARGET");
+                    }
+                    return info;
                 }
-                itemArmor.m_Modifiers = null;
-                ModifierDescriptor modifierDescriptor = (itemArmor.Shield != null) ? ModifierDescriptor.Shield : ModifierDescriptor.Armor;
-                AddArmorACBonuses(itemArmor);
-                int ArmorCheckPenalty = Rulebook.Trigger<RuleCalculateArmorCheckPenalty>(new RuleCalculateArmorCheckPenalty(itemArmor.Wielder.Unit, itemArmor)).Result;
-                if (ArmorCheckPenalty < 0) {
-                    AddArmorPenalties(itemArmor, ArmorCheckPenalty);
-                }
-                itemArmor.RecalculateMaxDexBonus();
-                if (((itemArmor.ArmorType() == ArmorProficiencyGroup.Medium && !itemArmor.Wielder.State.Features.ImmunityToMediumArmorSpeedPenalty) || itemArmor.ArmorType() == ArmorProficiencyGroup.Heavy) && !itemArmor.Wielder.State.Features.ImmuneToArmorSpeedPenalty) {
-                    int value = (itemArmor.Wielder.Stats.Speed.Racial < 30) ? -5 : -10;
-                    itemArmor.m_Modifiers.Add(itemArmor.Wielder.Stats.Speed.AddItemModifier(value, itemArmor, modifierDescriptor));
-                }
-                itemArmor.m_RecalculateInProgress = false;
-            }
-            private static void AddArmorACBonuses(ItemEntityArmor itemArmor) {
-                CharacterStats stats = itemArmor.Wielder.Stats;
-                ModifierDescriptor modifierDescriptor = (itemArmor.Shield != null) ? ModifierDescriptor.Shield : ModifierDescriptor.Armor;
-                itemArmor.m_Modifiers = new List<ModifiableValue.Modifier>();
-                var RuleCalculateArmorAC = Rulebook.Trigger<RuleCalculateArmorAC>(new RuleCalculateArmorAC(itemArmor.Wielder, itemArmor));
-                itemArmor.AddModifier(stats.AC, RuleCalculateArmorAC.ArmorBonus, modifierDescriptor);
-            }
-            private static void AddArmorPenalties(ItemEntityArmor itemArmor, int result) {
-                CharacterStats stats = itemArmor.Wielder.Stats;
-                ModifierDescriptor modifierDescriptor = (itemArmor.Shield != null) ? ModifierDescriptor.Shield : ModifierDescriptor.Armor;
-                foreach (StatType type in ItemEntityArmor.PenaltyDependentSkills) {
-                    itemArmor.AddModifier(itemArmor.Wielder.Stats.GetStat(type), result, modifierDescriptor);
-                }
-            }
-        }
+                private struct TargetInfo {
+                    public int Index;
+                    public int End;
 
-        [HarmonyPatch(typeof(TooltipTemplateItem), nameof(TooltipTemplateItem.AddArmorClass), new Type[] { typeof(List<ITooltipBrick>) })]
-        class TooltipTemplateItem_AddArmorClass_Patch {
-            static bool Prefix(TooltipTemplateItem __instance, List<ITooltipBrick> bricks) {
-                var ArmorItem = __instance.m_Item as ItemEntityArmor;
-                var Wielder = Game.Instance?.SelectionCharacter?.CurrentSelectedCharacter;
-                if (Wielder == null) { return true; }
-                if (ArmorItem == null) {
-                    ArmorItem = (__instance.m_Item as ItemEntityShield)?.ArmorComponent;
+                    public TargetInfo(int index, int end) {
+                        this.Index = index;
+                        this.End = end;
+                    }
                 }
-                if (ArmorItem == null) { return true; }
-                var CalculateArmorAC = Rulebook.Trigger<RuleCalculateArmorAC>(new RuleCalculateArmorAC(Wielder, ArmorItem));
-                if (TryAddArmorClass(__instance, CalculateArmorAC, bricks)) {
-                    __instance.AddArmorClassBase(bricks);
-                    AddEnhancement(__instance, CalculateArmorAC, bricks);
-                    AddModifiers(__instance, CalculateArmorAC, bricks);
-                    __instance.AddEnergy(bricks);
-                    __instance.AddEnergyResist(bricks);
-                    bricks.Add(new TooltipBrickSeparator(TooltipBrickElementType.Small));
+                private static void AddArmorACBonuses(ItemEntityArmor itemArmor) {
+                    CharacterStats stats = itemArmor.Wielder.Stats;
+                    ModifierDescriptor modifierDescriptor = (itemArmor.Shield != null) ? ModifierDescriptor.Shield : ModifierDescriptor.Armor;
+                    itemArmor.m_Modifiers = new List<ModifiableValue.Modifier>();
+                    var RuleCalculateArmorAC = Rulebook.Trigger<RuleCalculateArmorAC>(new RuleCalculateArmorAC(itemArmor.Wielder, itemArmor));
+                    itemArmor.AddModifier(stats.AC, RuleCalculateArmorAC.ArmorBonus, modifierDescriptor);
                 }
-                return false;
             }
 
-            static private bool TryAddArmorClass(TooltipTemplateItem __instance, RuleCalculateArmorAC rule, List<ITooltipBrick> bricks) {
-                string text = __instance.m_ItemTooltipData.GetText(TooltipElement.FullArmorClass);
-                if (string.IsNullOrEmpty(text)) {
+            [HarmonyPatch(typeof(TooltipTemplateItem), nameof(TooltipTemplateItem.AddArmorClass), new Type[] { typeof(List<ITooltipBrick>) })]
+            class TooltipTemplateItem_AddArmorClass_Patch {
+                static bool Prefix(TooltipTemplateItem __instance, List<ITooltipBrick> bricks) {
+                    var ArmorItem = __instance.m_Item as ItemEntityArmor;
+                    var Wielder = Game.Instance?.SelectionCharacter?.CurrentSelectedCharacter;
+                    if (Wielder == null) { return true; }
+                    if (ArmorItem == null) {
+                        ArmorItem = (__instance.m_Item as ItemEntityShield)?.ArmorComponent;
+                    }
+                    if (ArmorItem == null) { return true; }
+                    var CalculateArmorAC = Rulebook.Trigger<RuleCalculateArmorAC>(new RuleCalculateArmorAC(Wielder, ArmorItem));
+                    if (TryAddArmorClass(__instance, CalculateArmorAC, bricks)) {
+                        __instance.AddArmorClassBase(bricks);
+                        AddEnhancement(__instance, CalculateArmorAC, bricks);
+                        AddModifiers(__instance, CalculateArmorAC, bricks);
+                        __instance.AddEnergy(bricks);
+                        __instance.AddEnergyResist(bricks);
+                        bricks.Add(new TooltipBrickSeparator(TooltipBrickElementType.Small));
+                    }
                     return false;
                 }
-                Sprite armorClass = BlueprintRoot.Instance.UIRoot.UIIcons.ArmorClass;
-                string value = rule.ArmorBonus.ToString();
-                string glossaryEntryName = UIUtility.GetGlossaryEntryName(TooltipElement.ArmorClass.ToString());
-                return __instance.TryAddIconValueStat(bricks, value, glossaryEntryName, armorClass, TooltipIconValueStatType.Normal, null);
-            }
 
-            static private void AddEnhancement(TooltipTemplateItem __instance, RuleCalculateArmorAC rule, List<ITooltipBrick> bricks) {
-                string text = UIUtility.AddSign(GameHelper.GetItemEnhancementBonus(rule.ArmorItem));
-                if (string.IsNullOrEmpty(text)) {
-                    return;
+                static private bool TryAddArmorClass(TooltipTemplateItem __instance, RuleCalculateArmorAC rule, List<ITooltipBrick> bricks) {
+                    string text = __instance.m_ItemTooltipData.GetText(TooltipElement.FullArmorClass);
+                    if (string.IsNullOrEmpty(text)) {
+                        return false;
+                    }
+                    Sprite armorClass = BlueprintRoot.Instance.UIRoot.UIIcons.ArmorClass;
+                    string value = rule.ArmorBonus.ToString();
+                    string glossaryEntryName = UIUtility.GetGlossaryEntryName(TooltipElement.ArmorClass.ToString());
+                    return __instance.TryAddIconValueStat(bricks, value, glossaryEntryName, armorClass, TooltipIconValueStatType.Normal, null);
                 }
-                string enhancementTextSymbol = UIUtilityTexts.EnhancementTextSymbol;
-                string glossaryEntryName = UIUtility.GetGlossaryEntryName(TooltipElement.Enhancement.ToString());
-                bricks.Add(new TooltipBrickValueStatFormula(text, enhancementTextSymbol, glossaryEntryName, TooltipBrickElementType.Small));
-            }
 
-            static private void AddModifiers(TooltipTemplateItem __instance, RuleCalculateArmorAC rule, List<ITooltipBrick> bricks) {
-                string enhancementTextSymbol = UIUtilityTexts.EnhancementTextSymbol;
-                rule.AllBonuses.ForEach(modifier => {
-                    string glossaryEntryName = (modifier.Fact?.Blueprint as BlueprintUnitFact)?.Name ?? Game.Instance.BlueprintRoot.LocalizedTexts.AbilityModifiers.GetName(modifier.Descriptor);
-                    string text = UIUtility.AddSign(modifier.Value);
+                static private void AddEnhancement(TooltipTemplateItem __instance, RuleCalculateArmorAC rule, List<ITooltipBrick> bricks) {
+                    string text = UIUtility.AddSign(GameHelper.GetItemEnhancementBonus(rule.ArmorItem));
+                    if (string.IsNullOrEmpty(text)) {
+                        return;
+                    }
+                    string enhancementTextSymbol = UIUtilityTexts.EnhancementTextSymbol;
+                    string glossaryEntryName = UIUtility.GetGlossaryEntryName(TooltipElement.Enhancement.ToString());
                     bricks.Add(new TooltipBrickValueStatFormula(text, enhancementTextSymbol, glossaryEntryName, TooltipBrickElementType.Small));
-                });
-                if (rule.ArmoredMightBonus > 0) {
-                    string text = UIUtility.AddSign(rule.ArmoredMightBonus);
-                    bricks.Add(new TooltipBrickValueStatFormula(text, enhancementTextSymbol, rule.ArmoredMight?.Blueprint?.Name, TooltipBrickElementType.Small));
+                }
+
+                static private void AddModifiers(TooltipTemplateItem __instance, RuleCalculateArmorAC rule, List<ITooltipBrick> bricks) {
+                    string directTextSymbol = UIUtilityTexts.DirectTextSymbol;
+                    rule.AllBonuses.ForEach(modifier => {
+                        string glossaryEntryName = (modifier.Fact?.Blueprint as BlueprintUnitFact)?.Name ?? Game.Instance.BlueprintRoot.LocalizedTexts.AbilityModifiers.GetName(modifier.Descriptor);
+                        string text = UIUtility.AddSign(modifier.Value);
+                        bricks.Add(new TooltipBrickValueStatFormula(text, directTextSymbol, glossaryEntryName, TooltipBrickElementType.Small));
+                    });
+                    if (rule.ArmoredMightBonus > 0) {
+                        string text = UIUtility.AddSign(rule.ArmoredMightBonus);
+                        bricks.Add(new TooltipBrickValueStatFormula(text, directTextSymbol, rule.ArmoredMight?.Blueprint?.Name, TooltipBrickElementType.Small));
+                    }
                 }
             }
-        }
+        } 
     }
 }
