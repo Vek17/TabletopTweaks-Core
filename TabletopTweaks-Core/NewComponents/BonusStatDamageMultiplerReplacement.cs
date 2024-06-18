@@ -1,5 +1,4 @@
-﻿using Kingmaker.Blueprints.Items.Ecnchantments;
-using Kingmaker.Blueprints.JsonSystem;
+﻿using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;

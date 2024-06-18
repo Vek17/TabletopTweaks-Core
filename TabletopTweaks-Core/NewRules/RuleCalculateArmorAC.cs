@@ -1,37 +1,29 @@
 ﻿using HarmonyLib;
+using JetBrains.Annotations;
+using Kingmaker;
+using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.Items.Armors;
+using Kingmaker.Blueprints.Root;
 using Kingmaker.Designers;
+using Kingmaker.EntitySystem.Entities;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.Items;
-using Kingmaker.PubSubSystem;
-using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem;
-using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.UnitLogic.Buffs;
-using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.RuleSystem.Rules;
+using Kingmaker.UI.Common;
+using Kingmaker.UI.MVVM._VM.Tooltip.Bricks;
+using Kingmaker.UI.MVVM._VM.Tooltip.Templates;
+using Kingmaker.UI.Tooltip;
+using Kingmaker.UnitLogic;
+using Kingmaker.Utility;
+using Owlcat.Runtime.UI.Tooltips;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using JetBrains.Annotations;
-using Kingmaker.EntitySystem.Entities;
-using Kingmaker.UnitLogic;
-using Kingmaker.Blueprints.Items.Ecnchantments;
-using Kingmaker.Blueprints.Root;
-using Kingmaker.UI.Common;
-using Kingmaker.UI.MVVM._VM.Tooltip.Bricks;
-using Kingmaker.UI.MVVM._VM.Tooltip.Templates;
-using Kingmaker.UI.Tooltip;
-using Kingmaker;
-using Owlcat.Runtime.UI.Tooltips;
 using UnityEngine;
-using Kingmaker.Utility;
-using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.Facts;
 
 namespace TabletopTweaks.Core.NewRules {
     public class RuleCalculateArmorAC : RulebookEvent {
@@ -96,8 +88,7 @@ namespace TabletopTweaks.Core.NewRules {
                 itemArmor.m_RecalculateInProgress = true;
                 List<ModifiableValue.Modifier> modifiers = itemArmor.m_Modifiers;
                 if (modifiers != null) {
-                    modifiers.ForEach(delegate (ModifiableValue.Modifier m)
-                    {
+                    modifiers.ForEach(delegate (ModifiableValue.Modifier m) {
                         ModifiableValue appliedTo = m.AppliedTo;
                         if (((appliedTo != null) ? appliedTo.Owner : null) != null) {
                             m.Remove();
@@ -190,5 +181,5 @@ namespace TabletopTweaks.Core.NewRules {
                 }
             }
         }
-    }  
+    }
 }

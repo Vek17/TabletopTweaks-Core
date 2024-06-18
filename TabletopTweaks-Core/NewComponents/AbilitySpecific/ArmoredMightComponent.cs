@@ -1,14 +1,6 @@
 ﻿using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Designers;
-using Kingmaker.EntitySystem;
-using Kingmaker.Enums;
-using Kingmaker.Items;
-using Kingmaker.Items.Slots;
 using Kingmaker.PubSubSystem;
 using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.Buffs;
-using System;
-using System.Linq;
 using TabletopTweaks.Core.NewRules;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
