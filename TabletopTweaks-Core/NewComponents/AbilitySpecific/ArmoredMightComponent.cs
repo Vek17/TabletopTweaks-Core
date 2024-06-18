@@ -91,7 +91,8 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
         }
 
         public void OnEventAboutToTrigger(RuleCalculateArmorAC evt) {
-            evt.EnableArmoredMight();
+            if (evt.IsShield) { return; }
+            evt.EnableArmoredMight(base.Fact);
         }
 
         public void OnEventDidTrigger(RuleCalculateArmorAC evt) {

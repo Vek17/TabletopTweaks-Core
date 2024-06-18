@@ -37,10 +37,7 @@ namespace TabletopTweaks.Core.NewComponents {
 
         public void OnEventAboutToTrigger(RuleCalculateArmorAC evt) {
             if (CheckArmorType && !ArmorTypes.Any(t => t == evt.ArmorItem.Blueprint.ProficiencyGroup)) { return; }
-            Main.TTTContext.Logger.Log("AddArmorACModifier: Trigger");
             evt.AddModifier(CalculateBaseValue(base.Fact.MaybeContext), base.Fact, Descriptor);
-            Main.TTTContext.Logger.Log($"AddArmorACModifier: StatBonus {CalculateBaseValue(base.Fact.MaybeContext)} ");
-            Main.TTTContext.Logger.Log($"AddArmorACModifier: ContextOwner {base.Fact.MaybeContext.MaybeOwner?.CharacterName} ");
         }
 
         public void OnEventDidTrigger(RuleCalculateArmorAC evt) {
@@ -49,7 +46,6 @@ namespace TabletopTweaks.Core.NewComponents {
         public int CalculateBaseValue(MechanicsContext context) {
             if (context == null) {
                 PFLog.Default.ErrorWithReport("Context is missing", Array.Empty<object>());
-                Main.TTTContext.Logger.Log("AddArmorACModifier: Context is missing");
                 return 0;
             }
             return this.Value.Calculate(context);
