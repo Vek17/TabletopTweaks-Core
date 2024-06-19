@@ -1,3 +1,6 @@
+## Version 0.7.5
+* RuleCalculateArmorAC introduced
+
 ## Version 0.7.4
 * Added MasterSimplePropertyGetter
 * Added BonusStatDamageMultiplerReplacement
