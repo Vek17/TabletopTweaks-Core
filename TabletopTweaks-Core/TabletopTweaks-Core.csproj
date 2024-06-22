@@ -174,7 +174,7 @@
     <Compile Include="NewComponents\AbilitySpecific\ChainChallengeComponent.cs" />
     <Compile Include="NewComponents\AbilitySpecific\ElementalBarrageIncomingTrigger.cs" />
     <Compile Include="NewComponents\AbilitySpecific\ElementalBarrageOutgoingTrigger.cs" />
-    <Compile Include="NewComponents\AbilitySpecific\MythicMediumArmorFocus.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\MythicMediumArmorFocusEndurance.cs" />
     <Compile Include="NewComponents\AddArmorACModifier.cs" />
     <Compile Include="NewComponents\AddContextCasterLevelBonus.cs" />
     <Compile Include="NewComponents\AddSpecificSpellConversion.cs" />
@@ -214,6 +214,7 @@
     <Compile Include="NewComponents\Properties\BuffCountGetter.cs" />
     <Compile Include="NewComponents\Properties\MasterSimplePropertyGetter.cs" />
     <Compile Include="NewComponents\SetPetMinimumStat.cs" />
+    <Compile Include="NewComponents\SpellCastersOnslaught.cs" />
     <Compile Include="NewComponents\SpellDescriptorImmunityIgnore.cs" />
     <Compile Include="NewComponents\WeaponChangeSizeParametrized.cs" />
     <Compile Include="NewEvents\IAbilityGetCommandTypeHandler.cs" />

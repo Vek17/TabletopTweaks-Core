@@ -20,16 +20,16 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
                 using ((maybeContext != null) ? maybeContext.GetDataScope(base.Owner) : null) {
                     IFactContextOwner factContextOwner = base.Fact as IFactContextOwner;
                     if (factContextOwner != null) {
-                        var NewSave = base.Context.TriggerRule(new RuleSavingThrow(evt.Reason.Context.MaybeCaster, SavingThrowType.Will, evt.DifficultyClass));
+                        var NewSave = base.Context.TriggerRule(new RuleSavingThrow(evt.Reason.Caster, SavingThrowType.Will, evt.DifficultyClass));
                         if (!NewSave.IsPassed) {
-                            factContextOwner.RunActionInContext(this.Action, evt.Reason.Context.MaybeCaster);
+                            factContextOwner.RunActionInContext(this.Action, evt.Reason.Caster);
                         }
                     }
                 }
             }
         }
         private bool CheckConditions(RuleSavingThrow evt) {
-            return evt.IsPassed && evt.Reason?.Context.MaybeCaster != null && (evt.Reason?.Context.SpellDescriptor & this.Descriptor) != SpellDescriptor.None;
+            return evt.IsPassed && evt.Reason?.Caster != null && (evt.Reason?.Context?.SpellDescriptor.HasFlag(Descriptor) ?? false);
         }
 
         public SpellDescriptorWrapper Descriptor = SpellDescriptor.MindAffecting;

@@ -22,17 +22,23 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
-using static TabletopTweaks.Core.Main;
 
 namespace TabletopTweaks.Core.NewRules {
     public class RuleCalculateArmorAC : RulebookEvent {
 
-        public int ArmorBonus => ArmorBaseBonus + ArmorEnhancementBonus + ArmorModifier + ArmoredMightBonus;
+        public int ArmorBonus => ArmorBaseBonus + ArmorEnhancementBonus + ArmorModifier + MythicMediumArmorEnduranceBonus + ArmoredMightBonus;
         public int ArmoredMightBonus {
             get {
                 int limit = (base.Initiator.Progression.MythicLevel + 1) / 2;
-                int bonus = (ArmorBaseBonus + ArmorEnhancementBonus + ArmorModifier) / 2;
+                int bonus = (ArmorBaseBonus + ArmorEnhancementBonus + ArmorModifier + MythicMediumArmorEnduranceBonus) / 2;
                 return m_ArmoredMight != null && !IsShield ? Math.Min(bonus, limit) : 0; ;
+            }
+        }
+        public int MythicMediumArmorEnduranceBonus {
+            get {
+                int limit = (base.Initiator.Progression.MythicLevel + 1) / 2;
+                int bonus = (ArmorBaseBonus + ArmorEnhancementBonus + ArmorModifier) / 2;
+                return m_MythicMediumArmorEndurance != null && !IsShield ? bonus : 0; ;
             }
         }
         public int ArmorBaseBonus => ArmorItem.Blueprint.ArmorBonus;
@@ -40,6 +46,7 @@ namespace TabletopTweaks.Core.NewRules {
         public int ArmorModifier => TotalBonusValue;
         public bool IsShield => ArmorItem.Shield != null;
         public UnitFact ArmoredMight => m_ArmoredMight;
+        public UnitFact MythicMediumArmorEndurance => m_MythicMediumArmorEndurance;
 
         public RuleCalculateArmorAC([NotNull] UnitEntityData initiator, [NotNull] ItemEntityArmor armorItem) : base(initiator) {
             ArmorItem = armorItem;
@@ -52,8 +59,13 @@ namespace TabletopTweaks.Core.NewRules {
             m_ArmoredMight = fact;
         }
 
+        public void EnableMythicMediumArmorEndurance(UnitFact fact) {
+            m_MythicMediumArmorEndurance = fact;
+        }
+
         public readonly ItemEntityArmor ArmorItem;
         private UnitFact m_ArmoredMight;
+        public UnitFact m_MythicMediumArmorEndurance;
 
         private class CalculateArmor {
             [HarmonyPatch(typeof(ItemEntityArmor), nameof(ItemEntityArmor.RecalculateStats))]
@@ -170,7 +182,7 @@ namespace TabletopTweaks.Core.NewRules {
 
                 static private void AddEnhancement(TooltipTemplateItem __instance, RuleCalculateArmorAC rule, List<ITooltipBrick> bricks) {
                     string text = UIUtility.AddSign(GameHelper.GetItemEnhancementBonus(rule.ArmorItem));
-                    if (string.IsNullOrEmpty(text)) {
+                    if (GameHelper.GetItemEnhancementBonus(rule.ArmorItem) == 0 || string.IsNullOrEmpty(text)) {
                         return;
                     }
                     string enhancementTextSymbol = UIUtilityTexts.EnhancementTextSymbol;
@@ -185,6 +197,10 @@ namespace TabletopTweaks.Core.NewRules {
                         string text = UIUtility.AddSign(modifier.Value);
                         bricks.Add(new TooltipBrickValueStatFormula(text, directTextSymbol, glossaryEntryName, TooltipBrickElementType.Small));
                     });
+                    if (rule.MythicMediumArmorEnduranceBonus > 0) {
+                        string text = UIUtility.AddSign(rule.MythicMediumArmorEnduranceBonus);
+                        bricks.Add(new TooltipBrickValueStatFormula(text, directTextSymbol, rule.MythicMediumArmorEndurance?.Blueprint?.Name, TooltipBrickElementType.Small));
+                    }
                     if (rule.ArmoredMightBonus > 0) {
                         string text = UIUtility.AddSign(rule.ArmoredMightBonus);
                         bricks.Add(new TooltipBrickValueStatFormula(text, directTextSymbol, rule.ArmoredMight?.Blueprint?.Name, TooltipBrickElementType.Small));

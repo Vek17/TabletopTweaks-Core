@@ -14,7 +14,7 @@ using Kingmaker.Blueprints.JsonSystem;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("cf98f0d59230406d99ec6d88fc639d41")]
-    public class MythicMediumArmorFocus : UnitFactComponentDelegate,
+    public class MythicMediumArmorFocusEndurance : UnitFactComponentDelegate,
         IInitiatorRulebookHandler<RuleCalculateArmorAC>,
         IInitiatorRulebookSubscriber,
         ISubscriber {
@@ -31,7 +31,7 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
 
         public void OnEventAboutToTrigger(RuleCalculateArmorAC evt) {
             if (CheckArmorType && !ArmorTypes.Any(t => t == evt.ArmorItem.Blueprint.ProficiencyGroup)) { return; }
-            evt.AddModifier((evt.ArmorBaseBonus + evt.ArmorEnhancementBonus) / 2, base.Fact, Descriptor);
+            evt.EnableMythicMediumArmorEndurance(base.Fact);
         }
 
         public void OnEventDidTrigger(RuleCalculateArmorAC evt) {
