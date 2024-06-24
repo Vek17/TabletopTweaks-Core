@@ -22,7 +22,7 @@ namespace TabletopTweaks.Core.NewComponents {
             if (IsShield) {
                 base.Owner.Body.CurrentHandsEquipmentSet?.SecondaryHand?.MaybeShield?.ArmorComponent?.RecalculateStats();
             } else {
-                base.Owner.Body.Armor?.Armor?.RecalculateStats();
+                base.Owner.Body.Armor?.MaybeArmor?.RecalculateStats();
             }
         }
 
@@ -31,7 +31,7 @@ namespace TabletopTweaks.Core.NewComponents {
             if (IsShield) {
                 base.Owner.Body.CurrentHandsEquipmentSet?.SecondaryHand?.MaybeShield?.ArmorComponent?.RecalculateStats();
             } else {
-                base.Owner.Body.Armor?.Armor?.RecalculateStats();
+                base.Owner.Body.Armor?.MaybeArmor?.RecalculateStats();
             }
         }
 
