@@ -1,4 +1,5 @@
 ﻿using Kingmaker.DLC;
+using Kingmaker.Stores;
 
 namespace TabletopTweaks.Core.Utilities {
     public static class DLCTools {
@@ -11,15 +12,18 @@ namespace TabletopTweaks.Core.Utilities {
         private static BlueprintDlc Dlc6 = BlueprintTools.GetBlueprint<BlueprintDlc>("c2340df3fdaf403baffe824ae7a0a547");
 
         public static bool HasDLC(int number) {
-            switch (number) {
-                case 1: return Dlc1.IsAvailable;
-                case 2: return Dlc2.IsAvailable;
-                case 3: return Dlc3.IsAvailable;
-                case 4: return Dlc4.IsAvailable;
-                case 5: return Dlc5.IsAvailable;
-                case 6: return Dlc6.IsAvailable;
-                default: return false;
-            }
+            var DLC = number switch {
+                1 => Dlc1,
+                2 => Dlc2,
+                3 => Dlc3,
+                4 => Dlc4,
+                5 => Dlc5,
+                6 => Dlc6,
+                _ => null
+            };
+            if(DLC == null) { return false; }
+            StoreManager.RefreshDLCs(new BlueprintDlc[] { DLC });
+            return DLC.IsAvailable;
         }
     }
 }

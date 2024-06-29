@@ -1,3 +1,6 @@
+## Version 0.7.6
+* Updates to DLC handling
+
 ## Version 0.7.5
 * RuleCalculateArmorAC introduced
 
