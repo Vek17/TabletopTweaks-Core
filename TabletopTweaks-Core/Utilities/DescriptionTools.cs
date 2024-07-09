@@ -330,9 +330,14 @@ namespace TabletopTweaks.Core.Utilities {
             }
         }
 
+        internal static Dictionary<string, Regex> TagPatternsDictionary = new();
         internal static string ApplyTags(this string str, string from, EncyclopediaEntry entry) {
-            var pattern = from.EnforceSolo().ExcludeTagged();
-            var matches = Regex.Matches(str, pattern, RegexOptions.IgnoreCase)
+            TagPatternsDictionary.TryGetValue(from, out var regex);
+            if (regex == null) {
+                regex = new Regex(from.EnforceSolo().ExcludeTagged(), RegexOptions.IgnoreCase);
+                TagPatternsDictionary.Add(from, regex);
+            }
+            var matches = regex.Matches(str)
                 .OfType<Match>()
                 .Select(m => m.Value)
                 .Distinct();
@@ -348,11 +353,15 @@ namespace TabletopTweaks.Core.Utilities {
             */
             return str;
         }
+
+        private static Regex HTMLRegex = new("<.*?>");
         public static string StripHTML(this string str) {
-            return Regex.Replace(str, "<.*?>", string.Empty);
+            return HTMLRegex.Replace(str, string.Empty);
         }
+
+        private static Regex EncyclopediaTagRegex = new("{.*?}");
         public static string StripEncyclopediaTags(this string str) {
-            return Regex.Replace(str, "{.*?}", string.Empty);
+            return EncyclopediaTagRegex.Replace(str, string.Empty);
         }
         private static string ExcludeTagged(this string str) {
             return $"{@"(?<!{g\|Encyclopedia:\w+}[^}]*)"}{str}{@"(?![^{]*{\/g})"}";
