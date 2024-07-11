@@ -1,3 +1,6 @@
+## Version 0.7.7
+* Updates to Mithril handling
+
 ## Version 0.7.6
 * Updates to DLC handling
 

@@ -36,9 +36,9 @@ namespace TabletopTweaks.Core.Utilities {
                 Selections.FeatSelections
                     .Where(selection => feature.HasGroup(selection.Group) || feature.HasGroup(selection.Group2))
                     .ForEach(selection => selection.AddFeatures(feature));
-                ConfigureLichSkeltalSelections(feature);
+                ConfigureLichSkeletalSelections(feature);
             }
-            void ConfigureLichSkeltalSelections(BlueprintFeature feature) {
+            void ConfigureLichSkeletalSelections(BlueprintFeature feature) {
                 var LichSkeletalCombatParametrized = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("b8a52bbe63e7d6b48b002ee474e90fdd");
                 var LichSkeletalTeamworkParametrized = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("b042ff9901e7b104eac92c05aa39957a");
                 var LichSkeletalWeaponParametrized = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("90f171fadf81f164d9828ce05441e617");
@@ -60,7 +60,7 @@ namespace TabletopTweaks.Core.Utilities {
                 Selections.FeatSelections
                     .Where(selection => feature.HasGroup(selection.Group) || feature.HasGroup(selection.Group2))
                     .ForEach(selection => selection.RemoveFeatures(feature));
-                ConfigureLichSkeltalSelections(feature);
+                ConfigureLichSkeletalSelections(feature);
                 feature.GetComponents<PrerequisiteFeature>().ForEach(c => {
                     c.Feature.IsPrerequisiteFor.RemoveAll(r => r.deserializedGuid == feature.AssetGuid);
                 });
@@ -68,7 +68,7 @@ namespace TabletopTweaks.Core.Utilities {
                     c.Features.ForEach(f => f.IsPrerequisiteFor.RemoveAll(r => r.deserializedGuid == feature.AssetGuid));
                 });
             }
-            void ConfigureLichSkeltalSelections(BlueprintFeature feature) {
+            void ConfigureLichSkeletalSelections(BlueprintFeature feature) {
                 var LichSkeletalCombatParametrized = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("b8a52bbe63e7d6b48b002ee474e90fdd");
                 var LichSkeletalTeamworkParametrized = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("b042ff9901e7b104eac92c05aa39957a");
                 var LichSkeletalWeaponParametrized = BlueprintTools.GetBlueprint<BlueprintParametrizedFeature>("90f171fadf81f164d9828ce05441e617");

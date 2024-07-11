@@ -30,7 +30,7 @@ namespace TabletopTweaks.Core.NewComponents {
         }
 
         public void OnEventAboutToTrigger(RuleCalculateArmorMaxDexBonusLimit evt) {
-            if (!evt.Armor.Blueprint.IsShield && (!CheckCategory || Categorys.Contains(evt.Armor.ArmorType()))) {
+            if (!evt.Armor.Blueprint.IsShield && (!CheckCategory || Categorys.Contains(evt.Armor.Blueprint.ProficiencyGroup))) {
                 evt.AddBonus(Value.Calculate(base.Context));
                 return;
             }

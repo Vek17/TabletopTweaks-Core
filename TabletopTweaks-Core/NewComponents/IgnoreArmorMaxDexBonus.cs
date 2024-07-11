@@ -33,7 +33,7 @@ namespace TabletopTweaks.Core.NewComponents {
                 evt.Result = null;
                 return;
             }
-            if (!evt.Armor.Blueprint.IsShield && CheckCategory && Categorys.Contains(evt.Armor.ArmorType())) {
+            if (!evt.Armor.Blueprint.IsShield && CheckCategory && (Categorys.Contains(evt.Armor.ArmorType()) || Categorys.Contains(evt.Armor.Blueprint.ProficiencyGroup))) {
                 evt.Result = null;
                 return;
             }

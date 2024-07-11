@@ -86,6 +86,13 @@ namespace TabletopTweaks.Core.MechanicsChanges {
             }
             static void Postfix(ActivatableAbilityResourceLogic __instance) {
                 if (!__instance.RequiredResource) { return; }
+                switch (__instance.SpendType) {
+                    case ResourceSpendType.NewRound: return;
+                    case ResourceSpendType.OncePerMinute: return;
+                    case ResourceSpendType.OncePerTenMinutes: return;
+                    case ResourceSpendType.OncePerHour: return;
+                    default: break;
+                }
                 if (__instance.SpendType.IsCustomSpendType()) {
                     if (!__instance.Owner.Resources.HasEnoughResource(__instance.RequiredResource, __instance.SpendType.CustomValue())) {
                         __instance.Fact.TurnOffImmediately();
