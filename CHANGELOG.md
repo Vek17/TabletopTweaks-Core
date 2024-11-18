@@ -1,3 +1,6 @@
+# Version 0.7.9
+* Added BuffEnchantAnyWeaponTTT
+
 ## Version 0.7.8
 * Update to weapon training handling
 
