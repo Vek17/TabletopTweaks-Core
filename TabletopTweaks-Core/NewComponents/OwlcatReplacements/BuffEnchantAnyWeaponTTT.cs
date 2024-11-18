@@ -165,47 +165,4 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
         public BlueprintItemEnchantmentReference m_EnchantmentBlueprint;
         public EquipSlotBase.SlotType Slot;
     }
-
-    public class BuffEnchantAnyWeaponDataTTT {
-        public void AddEnchantment(ItemEnchantment enchantment) {
-            if (enchantment == null) {
-                return;
-            }
-            if (this.m_Enchantment == null) {
-                this.m_Enchantment = enchantment;
-                return;
-            }
-            this.m_EnchantmentsList.Add(enchantment);
-        }
-
-        public IEnumerable<ItemEnchantment> GetAll() {
-            if (this.m_Enchantment != null) {
-                yield return this.m_Enchantment;
-            }
-            foreach (ItemEnchantment itemEnchantment in this.m_EnchantmentsList) {
-                yield return itemEnchantment;
-            }
-            yield break;
-        }
-
-        public void RemoveAndClear() {
-            foreach (ItemEnchantment itemEnchantment in this.GetAll()) {
-                ItemEntity owner = itemEnchantment.Owner;
-                if (owner != null) {
-                    owner.RemoveEnchantment(itemEnchantment);
-                }
-            }
-            this.m_Enchantment = null;
-            this.m_EnchantmentsList.Clear();
-            this.m_IsActive = false;
-        }
-
-        [JsonProperty(PropertyName = "Enchantment")]
-        private ItemEnchantment m_Enchantment;
-
-        [JsonProperty]
-        private List<ItemEnchantment> m_EnchantmentsList = new List<ItemEnchantment>();
-        [JsonProperty]
-        public bool m_IsActive;
-    }
 }
