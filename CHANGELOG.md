@@ -1,3 +1,6 @@
+## Version 0.7.8
+* Update to weapon training handling
+
 ## Version 0.7.7
 * Updates to Mithril handling
 
