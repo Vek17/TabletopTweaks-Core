@@ -15,8 +15,17 @@ namespace TabletopTweaks.Core.NewUnitParts {
             if (adjustment.Type == ChangeType.Value) {
                 return adjustment.Size - originalSize;
             }
-            Size result = originalSize.Shift(adjustment.SizeDelta);
-            return result - originalSize;
+            var ResultSize = originalSize;
+            var ValueShift = 0;
+            foreach (var adj in Adjustments.Where(a => a.Type == ChangeType.Value)) {
+                ValueShift = adj.Size - originalSize;
+            }
+            ResultSize = ResultSize.Shift(ValueShift);
+            foreach (var adj in Adjustments.Where(a => a.Type == ChangeType.Delta)) {
+                ResultSize = ResultSize.Shift(adj.SizeDelta);
+            }
+
+            return ResultSize - originalSize;
         }
         public void AddEntry(int sizeDelta, EntityFact source) {
             Adjustments.Add(new BaseSizeAdjustmentEntry(sizeDelta, source));
@@ -42,7 +51,7 @@ namespace TabletopTweaks.Core.NewUnitParts {
             }
             currentSizeDelta = GetSizeDelta(Owner.OriginalSize);
             this.Owner.UpdateSizeModifiers();
-            EventBus.RaiseEvent<IUnitSizeHandler>(delegate (IUnitSizeHandler h) {
+            EventBus.RaiseEvent<IUnitSizeHandler>(h => {
                 h.HandleUnitSizeChanged(this.Owner.Unit);
             }, true);
         }
@@ -72,7 +81,6 @@ namespace TabletopTweaks.Core.NewUnitParts {
         [HarmonyPatch(typeof(UnitState), nameof(UnitState.Size), MethodType.Getter)]
         class UnitState_Size_Patch {
             static void Postfix(UnitState __instance, ref Size __result) {
-                //if (TTTContext.Fixes.BaseFixes.IsDisabled("FixMythicSpellbookSlotsUI")) { return; }
                 var SizePart = __instance.Owner.Get<UnitPartBaseSizeAdjustment>();
                 if (SizePart == null) { return; }
                 __result += SizePart.currentSizeDelta;

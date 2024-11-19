@@ -1,3 +1,6 @@
+# Version 0.7.10
+* Adjusted BaseSizeAdjustment to better handle multiple adjustments.
+
 # Version 0.7.9
 * Added BuffEnchantAnyWeaponTTT
 

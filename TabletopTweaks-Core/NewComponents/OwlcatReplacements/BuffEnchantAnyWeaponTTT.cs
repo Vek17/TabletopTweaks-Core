@@ -12,8 +12,12 @@ using UnityEngine.Serialization;
 using UnityEngine;
 using Kingmaker.UnitLogic.FactLogic;
 using System.Linq;
+using Kingmaker.Blueprints.Facts;
+using Kingmaker.Blueprints.JsonSystem;
 
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
+    [AllowedOn(typeof(BlueprintUnitFact), false)]
+    [TypeId("04083e8bd6fa4c39b1a5e7590e0ce9bd")]
     public class BuffEnchantAnyWeaponTTT : UnitBuffComponentDelegate<BuffEnchantAnyWeaponData>, IUnitActiveEquipmentSetHandler, IGlobalSubscriber, ISubscriber, IUnitEquipmentHandler {
 
         public BlueprintItemEnchantment Enchantment {
