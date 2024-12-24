@@ -1,3 +1,6 @@
+# Version 0.7.12
+* Fixed issue with missing log creators creating stutters and bloated logs.
+
 # Version 0.7.11
 * Fix for broken type issue in some game versions.
 

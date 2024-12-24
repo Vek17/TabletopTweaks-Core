@@ -15,6 +15,20 @@ using TabletopTweaks.Core.Utilities;
 namespace TabletopTweaks.Core.NewRules {
     public class RuleFortificationCheck : RulebookTargetEvent {
 
+        [PostPatchInitialize]
+        static void AddGameLogEventCreator() {
+            if (!GameLogEventsFactory.Creators.ContainsKey(typeof(RuleFortificationCheck))) {
+                Type gameLogEventType = typeof(GameLogRuleEvent<>).MakeGenericType(new Type[]
+                {
+                        typeof(RuleFortificationCheck)
+                });
+                GameLogEventsFactory.Creators.Add(typeof(RuleFortificationCheck), (RulebookEvent rule) => (GameLogEvent)Activator.CreateInstance(gameLogEventType, new object[]
+                {
+                        rule
+                }));
+            }
+        }
+
         public RuleFortificationCheck([NotNull] RuleAttackRoll evt) : base(evt.Initiator, evt.Target) {
             this.Roll = new RuleRollD100(Initiator);
             this.ForCritical = evt.IsCriticalConfirmed;

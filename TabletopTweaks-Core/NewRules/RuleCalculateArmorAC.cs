@@ -10,6 +10,8 @@ using Kingmaker.Enums;
 using Kingmaker.Items;
 using Kingmaker.RuleSystem;
 using Kingmaker.UI.Common;
+using Kingmaker.UI.Models.Log;
+using Kingmaker.UI.Models.Log.Events;
 using Kingmaker.UI.MVVM._VM.Tooltip.Bricks;
 using Kingmaker.UI.MVVM._VM.Tooltip.Templates;
 using Kingmaker.UI.Tooltip;
@@ -21,10 +23,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using TabletopTweaks.Core.Utilities;
 using UnityEngine;
 
 namespace TabletopTweaks.Core.NewRules {
     public class RuleCalculateArmorAC : RulebookEvent {
+
+        [PostPatchInitialize]
+        static void AddGameLogEventCreator() {
+            if (!GameLogEventsFactory.Creators.ContainsKey(typeof(RuleCalculateArmorAC))) {
+                Type gameLogEventType = typeof(GameLogRuleEvent<>).MakeGenericType(new Type[]
+                {
+                        typeof(RuleCalculateArmorAC)
+                });
+                GameLogEventsFactory.Creators.Add(typeof(RuleCalculateArmorAC), (RulebookEvent rule) => (GameLogEvent)Activator.CreateInstance(gameLogEventType, new object[]
+                {
+                        rule
+                }));
+            }
+        }
 
         public int ArmorBonus => ArmorBaseBonus + ArmorEnhancementBonus + ArmorModifier + MythicMediumArmorEnduranceBonus + ArmoredMightBonus;
         public int ArmoredMightBonus {
@@ -79,7 +96,7 @@ namespace TabletopTweaks.Core.NewRules {
                 static readonly MethodInfo ItemEntityArmor_AddModifier = AccessTools.Method(
                     typeof(ItemEntityArmor),
                     nameof(ItemEntityArmor.AddModifier),
-                    new Type[] { 
+                    new Type[] {
                         typeof(ModifiableValue),
                         typeof(int),
                         typeof(ModifierDescriptor),
@@ -117,9 +134,10 @@ namespace TabletopTweaks.Core.NewRules {
                     var firstModifier = false;
                     for (int i = info.Index; i < codes.Count; i++) {
                         if (codes[i].opcode == OpCodes.Call && codes[i].Calls(ItemEntityArmor_AddModifier)) {
-                            if (!firstModifier) { 
-                                firstModifier = true; 
-                                continue; }
+                            if (!firstModifier) {
+                                firstModifier = true;
+                                continue;
+                            }
                             info.End = i;
                             break;
                         }
@@ -207,6 +225,6 @@ namespace TabletopTweaks.Core.NewRules {
                     }
                 }
             }
-        } 
+        }
     }
 }

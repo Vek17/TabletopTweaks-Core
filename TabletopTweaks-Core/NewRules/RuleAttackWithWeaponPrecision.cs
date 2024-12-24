@@ -14,6 +14,20 @@ using TabletopTweaks.Core.Utilities;
 namespace TabletopTweaks.Core.NewRules {
     class RuleAttackWithWeaponPrecision : RuleAttackWithWeapon {
 
+        [PostPatchInitialize]
+        static void AddGameLogEventCreator() {
+            if (!GameLogEventsFactory.Creators.ContainsKey(typeof(RuleAttackWithWeaponPrecision))) {
+                Type gameLogEventType = typeof(GameLogRuleEvent<>).MakeGenericType(new Type[]
+                {
+                        typeof(RuleAttackWithWeaponPrecision)
+                });
+                GameLogEventsFactory.Creators.Add(typeof(RuleAttackWithWeaponPrecision), (RulebookEvent rule) => (GameLogEvent)Activator.CreateInstance(gameLogEventType, new object[]
+                {
+                        rule
+                }));
+            }
+        }
+
         public bool ForceSneakAttack { get; set; }
         public RuleAttackWithWeaponPrecision([NotNull] UnitEntityData attacker, [NotNull] UnitEntityData target, [NotNull] ItemEntityWeapon weapon, int attackBonusPenalty) : base(attacker, target, weapon, attackBonusPenalty) {
         }
