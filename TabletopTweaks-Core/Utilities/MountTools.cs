@@ -17,7 +17,7 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintRaceReference Mongrelman => BlueprintTools.GetBlueprintReference<BlueprintRaceReference>("daca06a3f3355664bba1e87e67f3b5b3");//Normal
             public static BlueprintRaceReference Oread => BlueprintTools.GetBlueprintReference<BlueprintRaceReference>("4d4555326b9b7144f93be1ea61337cd7");
             public static BlueprintRaceReference Tiefling => BlueprintTools.GetBlueprintReference<BlueprintRaceReference>("5c4e42124dc2b4647af6e36cf2590500");//Normal
-                                                                                                                                                            //Weird options
+                                                                                                                                                              //Weird options
             public static BlueprintRaceReference Android => BlueprintTools.GetBlueprintReference<BlueprintRaceReference>("d1d114f539b74468b157ac69c275f266");//Normal
             public static BlueprintRaceReference AscendingSuccubus => BlueprintTools.GetBlueprintReference<BlueprintRaceReference>("5e464d1d5fd0e7a4380b6ce60ef2c83b");//Normal
 

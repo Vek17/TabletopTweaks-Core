@@ -21,7 +21,7 @@ namespace TabletopTweaks.Core.Utilities {
                 6 => Dlc6,
                 _ => null
             };
-            if(DLC == null) { return false; }
+            if (DLC == null) { return false; }
             StoreManager.RefreshDLCs(new BlueprintDlc[] { DLC });
             return DLC.IsAvailable;
         }

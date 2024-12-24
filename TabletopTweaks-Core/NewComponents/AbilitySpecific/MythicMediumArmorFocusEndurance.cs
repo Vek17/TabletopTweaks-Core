@@ -1,16 +1,10 @@
 ﻿using Kingmaker.Blueprints.Items.Armors;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
-using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic;
-using Kingmaker;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TabletopTweaks.Core.NewRules;
-using Kingmaker.Blueprints.JsonSystem;
 
 namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
     [TypeId("cf98f0d59230406d99ec6d88fc639d41")]

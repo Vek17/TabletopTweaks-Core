@@ -1,19 +1,18 @@
 ﻿using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.Items.Ecnchantments;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Items;
 using Kingmaker.Items.Slots;
 using Kingmaker.PubSubSystem;
 using Kingmaker.UI.GenericSlot;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Buffs.Components;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using UnityEngine.Serialization;
-using UnityEngine;
 using Kingmaker.UnitLogic.FactLogic;
+using System.Collections.Generic;
 using System.Linq;
-using Kingmaker.Blueprints.Facts;
-using Kingmaker.Blueprints.JsonSystem;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [AllowedOn(typeof(BlueprintUnitFact), false)]
