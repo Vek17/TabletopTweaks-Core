@@ -82,10 +82,13 @@ namespace TabletopTweaks.Core.Utilities {
         /// </returns>
         public static List<BlueprintAbility> GetAllSpells(bool excludeMythic = false) {
             return SpellTools.SpellList.AllSpellLists
+                .Where(list => list.SpellsByLevel is not null)
                 .Where(list => excludeMythic ? !list.IsMythic : true)
                 .SelectMany(list => list.SpellsByLevel)
                 .Where(spellList => spellList.SpellLevel != 0)
-                .SelectMany(level => level.Spells)
+                .SelectMany(level => level.m_Spells)
+                .Where(m_spell => m_spell is not null && !m_spell.IsEmpty())
+                .Select(m_spell => m_spell.Get())
                 .Concat(SpellTools.ElementalBloodlineSpells.AllSpells)
                 .Concat(AzataBonusSpells.AllSpells)
                 .Distinct()
