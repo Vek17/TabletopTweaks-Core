@@ -5,24 +5,34 @@ using System.Linq;
 namespace TabletopTweaks.Core.Utilities {
     public class WildShapeTools {
         public static class WildShapeBuffs {
+            public static BlueprintBuffReference ShifterDragonFormBlackBuff20 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("2288af142a164f8799c4af47a1d59964");
             public static BlueprintBuffReference ShifterDragonFormBlackBuff14 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("8fb6bf56c9174d5e8cf24069e6b0c965");
             public static BlueprintBuffReference ShifterDragonFormBlackBuff9 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("662bdcd3eef541fb91d88b9ee79d0d37");
+            public static BlueprintBuffReference ShifterDragonFormBlueBuff20 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("3a046d0a7bec4740b55df562950ef8ef");
             public static BlueprintBuffReference ShifterDragonFormBlueBuff14 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("b9c75c14fe6d48e0962e1ce9f42d4c9e");
             public static BlueprintBuffReference ShifterDragonFormBlueBuff9 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("abaa7d56f843410e97c61ff2c87d39c6");
+            public static BlueprintBuffReference ShifterDragonFormBrassBuff20 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("6ccdc7596ec744a3aaf5c1ea87079277");
             public static BlueprintBuffReference ShifterDragonFormBrassBuff14 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("445d70781c2848dc9c63d80718a6c26f");
             public static BlueprintBuffReference ShifterDragonFormBrassBuff9 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("205e7bae0d7c428b8f2a451f7934219a");
+            public static BlueprintBuffReference ShifterDragonFormBronzeBuff20 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("3aa815d2677a4ed791abe20cb7e7a2e6");
             public static BlueprintBuffReference ShifterDragonFormBronzeBuff14 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("0ff1819f465140068e02aaf87c17ec2c");
             public static BlueprintBuffReference ShifterDragonFormBronzeBuff9 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("cd72e19154f143269e48caff753eab63");
+            public static BlueprintBuffReference ShifterDragonFormCopperBuff20 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("42887e88445b48a6bcc90f293c8b6967");
             public static BlueprintBuffReference ShifterDragonFormCopperBuff14 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("e9736d47de3643009a5514668a48ffe0");
             public static BlueprintBuffReference ShifterDragonFormCopperBuff9 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("3f5625345d0c481abec69c0241d50019");
+            public static BlueprintBuffReference ShifterDragonFormGoldBuff20 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("833873205d9b46e99217d02cd04a20d4");
             public static BlueprintBuffReference ShifterDragonFormGoldBuff14 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("5a679cd137d64c629995c626616dbb17");
             public static BlueprintBuffReference ShifterDragonFormGoldBuff9 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("f5ac253cbee44744a7399f17765160d5");
+            public static BlueprintBuffReference ShifterDragonFormGreenBuff20 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("988155b6f04a49dabc1b6cb674b71f04");
             public static BlueprintBuffReference ShifterDragonFormGreenBuff14 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("3d887a79a7384149bd38b4d9d97c44b5");
             public static BlueprintBuffReference ShifterDragonFormGreenBuff9 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("ab25d91564a04b3fa0ae84d52b6407d5");
+            public static BlueprintBuffReference ShifterDragonFormRedBuff20 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("2ef361195bc048839608bac3950b1f23");
             public static BlueprintBuffReference ShifterDragonFormRedBuff14 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("8242311f5c3c4cad90e67ef79cf5a6c2");
             public static BlueprintBuffReference ShifterDragonFormRedBuff9 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("a1f0de0190ce40e19d97c6967a9693c3");
+            public static BlueprintBuffReference ShifterDragonFormSilverBuff20 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("3be4d85d65a94960b4242522d0965633");
             public static BlueprintBuffReference ShifterDragonFormSilverBuff14 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("2de04456ce2d4e79804f899498ab31cc");
             public static BlueprintBuffReference ShifterDragonFormSilverBuff9 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("3c4bf82676d345dca2718cac680f5906");
+            public static BlueprintBuffReference ShifterDragonFormWhiteBuff20 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("9d6996a50f6a4de289a44293420f75be");
             public static BlueprintBuffReference ShifterDragonFormWhiteBuff14 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("b9b1fbf0ec224ccfac3dc5451d00a26a");
             public static BlueprintBuffReference ShifterDragonFormWhiteBuff9 => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("8b82ee0ca203452a952a25c0f867b2fe");
             public static BlueprintBuffReference ShifterWildShapeBearBuff => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("68ca4094f4e7488c8e869af833e153f1");
@@ -104,24 +114,34 @@ namespace TabletopTweaks.Core.Utilities {
             public static BlueprintBuffReference WildShapeIWolfBuff => BlueprintTools.GetBlueprintReference<BlueprintBuffReference>("470fb1a22e7eb5849999f1101eacc5dc");
 
             public static BlueprintBuffReference[] AllReferences => new BlueprintBuffReference[] {
+                ShifterDragonFormBlackBuff20,
                 ShifterDragonFormBlackBuff14,
                 ShifterDragonFormBlackBuff9,
+                ShifterDragonFormBlueBuff20,
                 ShifterDragonFormBlueBuff14,
                 ShifterDragonFormBlueBuff9,
+                ShifterDragonFormBrassBuff20,
                 ShifterDragonFormBrassBuff14,
                 ShifterDragonFormBrassBuff9,
+                ShifterDragonFormBronzeBuff20,
                 ShifterDragonFormBronzeBuff14,
                 ShifterDragonFormBronzeBuff9,
+                ShifterDragonFormCopperBuff20,
                 ShifterDragonFormCopperBuff14,
                 ShifterDragonFormCopperBuff9,
+                ShifterDragonFormGoldBuff20,
                 ShifterDragonFormGoldBuff14,
                 ShifterDragonFormGoldBuff9,
+                ShifterDragonFormGreenBuff20,
                 ShifterDragonFormGreenBuff14,
                 ShifterDragonFormGreenBuff9,
+                ShifterDragonFormRedBuff20,
                 ShifterDragonFormRedBuff14,
                 ShifterDragonFormRedBuff9,
+                ShifterDragonFormSilverBuff20,
                 ShifterDragonFormSilverBuff14,
                 ShifterDragonFormSilverBuff9,
+                ShifterDragonFormWhiteBuff20,
                 ShifterDragonFormWhiteBuff14,
                 ShifterDragonFormWhiteBuff9,
                 ShifterWildShapeBearBuff,
