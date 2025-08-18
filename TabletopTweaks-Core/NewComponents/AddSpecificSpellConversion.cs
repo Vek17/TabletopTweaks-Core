@@ -9,7 +9,7 @@ using TabletopTweaks.Core.NewEvents;
 using TabletopTweaks.Core.Utilities;
 
 namespace TabletopTweaks.Core.NewComponents {
-    [TypeId("b522a7a4b3a44772bc5cfbdd55b1e0f9")]
+    [TypeId("31d6b6b03ae14037a0785d9c7870f124")]
     public class AddSpecificSpellConversion : UnitFactComponentDelegate, ISpontaneousConversionHandler {
 
         private BlueprintAbility TargetSpell { get => m_targetSpell?.Get(); }
