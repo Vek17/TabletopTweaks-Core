@@ -60,9 +60,10 @@ namespace TabletopTweaks.Core.NewComponents {
         }
 
         private SpellDescriptor GetWorkingImmunities() {
-            var rr = this.Owner.Ensure<UnitPartIgnoreBuffDescriptorImmunity>().Entries();
-            if (rr != SpellDescriptor.None) {
-                return this.Descriptor.Value & ~this.Owner.Ensure<UnitPartIgnoreBuffDescriptorImmunity>().Entries();
+            var ignorePart = this.Owner.Get<UnitPartIgnoreBuffDescriptorImmunity>();
+            var ignoredDescriptors = ignorePart == null ? SpellDescriptor.None : ignorePart.Entries();
+            if (ignoredDescriptors != SpellDescriptor.None) {
+                return this.Descriptor.Value & ~ignoredDescriptors;
             } else {
                 return this.Descriptor.Value;
             }
