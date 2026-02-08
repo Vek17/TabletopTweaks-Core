@@ -103,9 +103,10 @@ namespace TabletopTweaks.Core.NewUnitParts {
 
             }
             static SpellDescriptor GetWorkingImmunities(BuffDescriptorImmunity bdi) {
-                var rr = bdi.Owner.Ensure<UnitPartIgnoreBuffDescriptorImmunity>().Entries();
-                if (rr != SpellDescriptor.None) {
-                    return bdi.Descriptor.Value & ~bdi.Owner.Ensure<UnitPartIgnoreBuffDescriptorImmunity>().Entries();
+                var ignorePart = bdi.Owner.Get<UnitPartIgnoreBuffDescriptorImmunity>();
+                var ignoredDescriptors = ignorePart == null ? SpellDescriptor.None : ignorePart.Entries();
+                if (ignoredDescriptors != SpellDescriptor.None) {
+                    return bdi.Descriptor.Value & ~ignoredDescriptors;
                 } else {
                     return bdi.Descriptor.Value;
                 }
