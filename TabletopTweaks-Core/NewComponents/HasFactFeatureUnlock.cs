@@ -59,8 +59,9 @@ namespace TabletopTweaks.Core.NewComponents {
 
         private void RemoveFact() {
             if (Data.AppliedFact != null) {
-                Owner.RemoveFact(Data.AppliedFact);
+                var factToRemove = Data.AppliedFact;
                 Data.AppliedFact = null;
+                Owner.RemoveFact(factToRemove);
             }
         }
 

@@ -140,15 +140,18 @@ namespace TabletopTweaks.Core.MechanicsChanges {
                 var newValues = ModifierDescriptorComparer.SortedValues.ToList();
                 newValues.Insert(0, (ModifierDescriptor)value);
                 ModifierDescriptorComparer.SortedValues = newValues.ToArray();
-            };
+            }
+            ;
             void InsertBefore(Enum value, ModifierDescriptor before) {
                 ModifierDescriptorComparer.SortedValues = ModifierDescriptorComparer
                     .SortedValues.InsertBeforeElement((ModifierDescriptor)value, before);
-            };
+            }
+            ;
             void InsertAfter(Enum value, ModifierDescriptor after) {
                 ModifierDescriptorComparer.SortedValues = ModifierDescriptorComparer
                     .SortedValues.InsertAfterElement((ModifierDescriptor)value, after);
-            };
+            }
+            ;
         }
 
         [HarmonyPatch(typeof(ModifierDescriptorHelper), "IsStackable", new[] { typeof(ModifierDescriptor) })]

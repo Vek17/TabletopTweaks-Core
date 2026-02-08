@@ -172,7 +172,8 @@ namespace TabletopTweaks.Core.NewComponents.AbilitySpecific {
                                     SaveSpellbookSlot = true,
                                     ParamSpellSlot = __instance.SpellSlot
                                 });
-                            };
+                            }
+                            ;
                         }
                     }
                 }

@@ -104,7 +104,8 @@ namespace TabletopTweaks.Core.NewUI {
                                     };
                                 }
                                 return spontaneusConvertedSpell;
-                            };
+                            }
+                            ;
                         case MechanicActionBarSlotActivableAbility activatableSlot: return activatableSlot;
                         default: return slot;
                     }
