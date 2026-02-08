@@ -1,3 +1,6 @@
+# Version 0.7.13
+* Minor updates to spell lists to fix some missed cases.
+
 # Version 0.7.12
 * Fixed issue with missing log creators creating stutters and bloated logs.
 
