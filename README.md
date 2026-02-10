@@ -1,3 +1,35 @@
+
+<div align="right">
+  <details>
+    <summary >🌐 Language</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=id">Bahasa Indonesia</a>
+        | <a href="https://openaitx.github.io/view.html?user=Vek17&project=TabletopTweaks-Core&lang=as">অসমীয়া</
+      </div>
+    </div>
+  </details>
+</div>
+
 ## [![Download zip](https://custom-icon-badges.herokuapp.com/badge/-Download-blue?style=for-the-badge&logo=download&logoColor=white "Download zip")](https://github.com/Vek17/TabletopTweaks-Core/releases/latest/download/TabletopTweaks-Core.zip) Latest Release 
 
 ﻿This module provides a shared core system for all TabletopTweaks mods, and and any third party mods wishing to use TabletopTweaks systems and utilities.
