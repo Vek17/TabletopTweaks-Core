@@ -1,3 +1,6 @@
+# Version 0.7.15
+* Fixed a bug where Vorpal weapons would kill thier wielders.
+
 # Version 0.7.14
 * Rewrote Expanded Arsenal to fix stacking bugs.
 
