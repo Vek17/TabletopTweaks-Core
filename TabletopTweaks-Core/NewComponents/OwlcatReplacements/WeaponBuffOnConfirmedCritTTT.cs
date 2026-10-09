@@ -36,6 +36,7 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
                 if (OnTarget) {
                     evt.Target.Descriptor.AddBuff(Buff, base.Owner.Wielder.Unit, new TimeSpan?(Duration.Seconds), null);
                     FxHelper.SpawnFxOnUnit(Fx.Load(false), evt.Target.View, null, default);
+                    return;
                 }
                 evt.Initiator.Descriptor.AddBuff(Buff, base.Owner.Wielder.Unit, new TimeSpan?(Duration.Seconds), null);
                 FxHelper.SpawnFxOnUnit(Fx.Load(false), evt.Initiator.View, null, default);
