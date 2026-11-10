@@ -1,3 +1,6 @@
+# Version 0.7.16
+* Fixed a bug where Mythic Improved Critical could not benifit from vulnerability.
+
 # Version 0.7.15
 * Fixed a bug where Vorpal weapons would kill thier wielders.
 

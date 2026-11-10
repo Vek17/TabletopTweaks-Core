@@ -8,11 +8,14 @@ using Kingmaker.UnitLogic.Mechanics;
 namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
     [TypeId("5f0b94b3bdaf464bbefc9869e39804c2")]
     public class ImprovedCriticalMythicParametrizedTTT : UnitFactComponentDelegate,
-        IInitiatorRulebookHandler<RuleCalculateDamage>,
-        IRulebookHandler<RuleCalculateDamage>,
+        IInitiatorRulebookHandler<RulePrepareDamage>,
+        IRulebookHandler<RulePrepareDamage>,
         ISubscriber, IInitiatorRulebookSubscriber {
 
-        public void OnEventAboutToTrigger(RuleCalculateDamage evt) {
+        public void OnEventAboutToTrigger(RulePrepareDamage evt) {
+        }
+
+        public void OnEventDidTrigger(RulePrepareDamage evt) {
             var attackRoll = evt.ParentRule?.AttackRoll;
             if (attackRoll == null) { return; }
             if (!attackRoll.IsCriticalConfirmed && !attackRoll.FortificationNegatesCriticalHit) { return; }
@@ -30,9 +33,6 @@ namespace TabletopTweaks.Core.NewComponents.OwlcatReplacements {
             } else {
                 evt.ParentRule.m_DamageBundle.Add(newDamage);
             }
-        }
-
-        public void OnEventDidTrigger(RuleCalculateDamage evt) {
         }
 
         public ContextValue DiceCount = 1;
